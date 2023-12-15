@@ -23,26 +23,52 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.TimeZone;
 
+// TODO: Auto-generated Javadoc
 /**
  * Container and initialization code for the data objects of the reference scenario.
  * 
  */
 public class DataContainer {
 
+  /** The Constant IMAGE_JPEG. */
   private static final String IMAGE_JPEG = "image/jpeg";
 
+  /** The employees. */
   private List<Employee> employees = new ArrayList<Employee>();
+  
+  /** The teams. */
   private List<Team> teams = new ArrayList<Team>();
+  
+  /** The rooms. */
   private List<Room> rooms = new ArrayList<Room>();
+  
+  /** The managers. */
   private List<Manager> managers = new ArrayList<Manager>();
+  
+  /** The buildings. */
   private List<Building> buildings = new ArrayList<Building>();
+  
+  /** The photos. */
   private List<Photo> photos = new ArrayList<Photo>();
+  
+  /** The employee id. */
   private int employeeId = 0;
+  
+  /** The team id. */
   private int teamId = 0;
+  
+  /** The room id. */
   private int roomId = 0;
+  
+  /** The building id. */
   private int buildingId = 0;
+  
+  /** The photo id. */
   private int photoId = 0;
 
+  /**
+   * Inits the.
+   */
   public void init() {
     // ------------- Teams ---------------
     Team team1 = createTeam();
@@ -213,6 +239,14 @@ public class DataContainer {
     photos.add(photo4);
   }
 
+  /**
+   * Generate date.
+   *
+   * @param year the year
+   * @param month the month
+   * @param day the day
+   * @return the calendar
+   */
   private Calendar generateDate(final int year, final int month, final int day) {
     Calendar date = Calendar.getInstance();
 
@@ -222,54 +256,118 @@ public class DataContainer {
     return date;
   }
 
+  /**
+   * Creates the employee.
+   *
+   * @return the employee
+   */
   public Employee createEmployee() {
     return new Employee(++employeeId, "Employee " + employeeId);
   }
 
+  /**
+   * Creates the team.
+   *
+   * @return the team
+   */
   public Team createTeam() {
     return new Team(++teamId, "Team " + teamId);
   }
 
+  /**
+   * Creates the room.
+   *
+   * @return the room
+   */
   public Room createRoom() {
     return new Room(++roomId, "Room " + roomId);
   }
 
+  /**
+   * Creates the manager.
+   *
+   * @return the manager
+   */
   public Manager createManager() {
     return new Manager(++employeeId, "Employee " + employeeId);
   }
 
+  /**
+   * Creates the building.
+   *
+   * @return the building
+   */
   public Building createBuilding() {
     return new Building(++buildingId, "Building " + buildingId);
   }
 
+  /**
+   * Creates the photo.
+   *
+   * @param type the type
+   * @return the photo
+   */
   public Photo createPhoto(final String type) {
     return new Photo(++photoId, "Photo " + photoId, type);
   }
 
+  /**
+   * Gets the employees.
+   *
+   * @return the employees
+   */
   public List<Employee> getEmployees() {
     return employees;
   }
 
+  /**
+   * Gets the teams.
+   *
+   * @return the teams
+   */
   public List<Team> getTeams() {
     return teams;
   }
 
+  /**
+   * Gets the rooms.
+   *
+   * @return the rooms
+   */
   public List<Room> getRooms() {
     return rooms;
   }
 
+  /**
+   * Gets the managers.
+   *
+   * @return the managers
+   */
   public List<Manager> getManagers() {
     return managers;
   }
 
+  /**
+   * Gets the buildings.
+   *
+   * @return the buildings
+   */
   public List<Building> getBuildings() {
     return buildings;
   }
 
+  /**
+   * Gets the photos.
+   *
+   * @return the photos
+   */
   public List<Photo> getPhotos() {
     return photos;
   }
 
+  /**
+   * Reset.
+   */
   public void reset() {
     employees.clear();
     teams.clear();

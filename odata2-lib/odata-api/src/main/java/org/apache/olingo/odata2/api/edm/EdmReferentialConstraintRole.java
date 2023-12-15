@@ -20,21 +20,24 @@ package org.apache.olingo.odata2.api.edm;
 
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
 /**
- * @org.apache.olingo.odata2.DoNotImplement
- * <p>EdmReferentialConstraintRole indicates the role of the association end
- * 
+ * The Interface EdmReferentialConstraintRole.
+ *
+ * @org.apache.olingo.odata2.DoNotImplement <p>EdmReferentialConstraintRole indicates the role of the association end
  */
 public interface EdmReferentialConstraintRole {
 
   /**
-   * Get the role
+   * Get the role.
+   *
    * @return a role as String
    */
   public String getRole();
 
   /**
-   * Get the properties
+   * Get the properties.
+   *
    * @return a list of names of the properties
    */
   public List<String> getPropertyRefNames();

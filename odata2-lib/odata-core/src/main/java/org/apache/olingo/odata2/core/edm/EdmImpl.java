@@ -34,21 +34,41 @@ import org.apache.olingo.odata2.api.edm.EdmServiceMetadata;
 import org.apache.olingo.odata2.api.edm.FullQualifiedName;
 import org.apache.olingo.odata2.api.exception.ODataException;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class EdmImpl.
  */
 public abstract class EdmImpl implements Edm {
 
+  /** The edm entity containers. */
   private Map<String, EdmEntityContainer> edmEntityContainers;
+  
+  /** The edm entity types. */
   private Map<FullQualifiedName, EdmEntityType> edmEntityTypes;
+  
+  /** The edm complex types. */
   private Map<FullQualifiedName, EdmComplexType> edmComplexTypes;
+  
+  /** The edm associations. */
   private Map<FullQualifiedName, EdmAssociation> edmAssociations;
+  
+  /** The alias to namespace info. */
   private Map<String, String> aliasToNamespaceInfo;
+  
+  /** The edm entity sets. */
   private List<EdmEntitySet> edmEntitySets;
+  
+  /** The edm function imports. */
   private List<EdmFunctionImport> edmFunctionImports;
 
+  /** The edm service metadata. */
   protected EdmServiceMetadata edmServiceMetadata;
 
+  /**
+   * Instantiates a new edm impl.
+   *
+   * @param edmServiceMetadata the edm service metadata
+   */
   public EdmImpl(final EdmServiceMetadata edmServiceMetadata) {
     edmEntityContainers = new HashMap<String, EdmEntityContainer>();
     edmEntityTypes = new HashMap<FullQualifiedName, EdmEntityType>();
@@ -57,6 +77,13 @@ public abstract class EdmImpl implements Edm {
     this.edmServiceMetadata = edmServiceMetadata;
   }
 
+  /**
+   * Gets the entity container.
+   *
+   * @param name the name
+   * @return the entity container
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmEntityContainer getEntityContainer(final String name) throws EdmException {
     if (edmEntityContainers.containsKey(name)) {
@@ -90,6 +117,14 @@ public abstract class EdmImpl implements Edm {
     return edmEntityContainer;
   }
 
+  /**
+   * Gets the entity type.
+   *
+   * @param namespaceOrAlias the namespace or alias
+   * @param name the name
+   * @return the entity type
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmEntityType getEntityType(final String namespaceOrAlias, final String name) throws EdmException {
     String finalNamespace = getNamespaceForAlias(namespaceOrAlias);
@@ -115,6 +150,13 @@ public abstract class EdmImpl implements Edm {
     return edmEntityType;
   }
 
+  /**
+   * Gets the namespace for alias.
+   *
+   * @param namespaceOrAlias the namespace or alias
+   * @return the namespace for alias
+   * @throws EdmException the edm exception
+   */
   private String getNamespaceForAlias(final String namespaceOrAlias) throws EdmException {
     if (aliasToNamespaceInfo == null) {
       try {
@@ -136,6 +178,14 @@ public abstract class EdmImpl implements Edm {
     return namespace;
   }
 
+  /**
+   * Gets the complex type.
+   *
+   * @param namespaceOrAlias the namespace or alias
+   * @param name the name
+   * @return the complex type
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmComplexType getComplexType(final String namespaceOrAlias, final String name) throws EdmException {
     String finalNamespace = getNamespaceForAlias(namespaceOrAlias);
@@ -160,6 +210,14 @@ public abstract class EdmImpl implements Edm {
     return edmComplexType;
   }
 
+  /**
+   * Gets the association.
+   *
+   * @param namespaceOrAlias the namespace or alias
+   * @param name the name
+   * @return the association
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmAssociation getAssociation(final String namespaceOrAlias, final String name) throws EdmException {
     String finalNamespace = getNamespaceForAlias(namespaceOrAlias);
@@ -184,16 +242,33 @@ public abstract class EdmImpl implements Edm {
     return edmAssociation;
   }
 
+  /**
+   * Gets the service metadata.
+   *
+   * @return the service metadata
+   */
   @Override
   public EdmServiceMetadata getServiceMetadata() {
     return edmServiceMetadata;
   }
 
+  /**
+   * Gets the default entity container.
+   *
+   * @return the default entity container
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmEntityContainer getDefaultEntityContainer() throws EdmException {
     return getEntityContainer(null);
   }
 
+  /**
+   * Gets the entity sets.
+   *
+   * @return the entity sets
+   * @throws EdmException the edm exception
+   */
   @Override
   public List<EdmEntitySet> getEntitySets() throws EdmException {
     try {
@@ -208,6 +283,12 @@ public abstract class EdmImpl implements Edm {
     return edmEntitySets;
   }
 
+  /**
+   * Gets the function imports.
+   *
+   * @return the function imports
+   * @throws EdmException the edm exception
+   */
   @Override
   public List<EdmFunctionImport> getFunctionImports() throws EdmException {
     try {
@@ -222,17 +303,63 @@ public abstract class EdmImpl implements Edm {
     return edmFunctionImports;
   }
 
+  /**
+   * Creates the entity container.
+   *
+   * @param name the name
+   * @return the edm entity container
+   * @throws ODataException the o data exception
+   */
   protected abstract EdmEntityContainer createEntityContainer(String name) throws ODataException;
 
+  /**
+   * Creates the entity type.
+   *
+   * @param fqName the fq name
+   * @return the edm entity type
+   * @throws ODataException the o data exception
+   */
   protected abstract EdmEntityType createEntityType(FullQualifiedName fqName) throws ODataException;
 
+  /**
+   * Creates the complex type.
+   *
+   * @param fqName the fq name
+   * @return the edm complex type
+   * @throws ODataException the o data exception
+   */
   protected abstract EdmComplexType createComplexType(FullQualifiedName fqName) throws ODataException;
 
+  /**
+   * Creates the association.
+   *
+   * @param fqName the fq name
+   * @return the edm association
+   * @throws ODataException the o data exception
+   */
   protected abstract EdmAssociation createAssociation(FullQualifiedName fqName) throws ODataException;
 
+  /**
+   * Creates the entity sets.
+   *
+   * @return the list
+   * @throws ODataException the o data exception
+   */
   protected abstract List<EdmEntitySet> createEntitySets() throws ODataException;
 
+  /**
+   * Creates the function imports.
+   *
+   * @return the list
+   * @throws ODataException the o data exception
+   */
   protected abstract List<EdmFunctionImport> createFunctionImports() throws ODataException;
 
+  /**
+   * Creates the alias to namespace info.
+   *
+   * @return the map
+   * @throws ODataException the o data exception
+   */
   protected abstract Map<String, String> createAliasToNamespaceInfo() throws ODataException;
 }

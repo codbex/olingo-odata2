@@ -18,36 +18,37 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.servicedocument;
 
+// TODO: Auto-generated Javadoc
 /**
  * A ExtensionAttribute
- * <p>ExtensionAttribute is an attribute of an extension element
- * 
+ * <p>ExtensionAttribute is an attribute of an extension element.
  */
 public interface ExtensionAttribute {
+  
   /**
-   * Get the namespace
-   * 
+   * Get the namespace.
+   *
    * @return namespace as String
    */
   public String getNamespace();
 
   /**
-   * Get the prefix of the attribute
-   * 
+   * Get the prefix of the attribute.
+   *
    * @return prefix as String
    */
   public String getPrefix();
 
   /**
-   * Get the local name of the attribute
-   * 
+   * Get the local name of the attribute.
+   *
    * @return name as String
    */
   public String getName();
 
   /**
-   * Get the text
-   * 
+   * Get the text.
+   *
    * @return text as String
    */
   public String getText();

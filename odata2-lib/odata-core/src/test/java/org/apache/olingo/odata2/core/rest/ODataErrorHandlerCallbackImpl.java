@@ -30,8 +30,18 @@ import org.apache.olingo.odata2.api.processor.ODataResponse;
 import org.apache.olingo.odata2.api.processor.ODataResponse.ODataResponseBuilder;
 import org.apache.olingo.odata2.api.uri.PathInfo;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ODataErrorHandlerCallbackImpl.
+ */
 public class ODataErrorHandlerCallbackImpl implements ODataErrorCallback {
 
+  /**
+   * Handle error.
+   *
+   * @param context the context
+   * @return the o data response
+   */
   @Override
   public ODataResponse handleError(final ODataErrorContext context) {
     ODataResponseBuilder responseBuilder =

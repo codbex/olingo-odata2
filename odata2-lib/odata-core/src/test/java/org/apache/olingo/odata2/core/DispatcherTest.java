@@ -55,12 +55,19 @@ import org.junit.Test;
 import org.mockito.Mockito;
 import org.mockito.stubbing.Answer;
 
+// TODO: Auto-generated Javadoc
 /**
  * Tests for request dispatching according to URI type and HTTP method.
  *
  */
 public class DispatcherTest extends BaseTest {
 
+    /**
+     * Gets the mock service.
+     *
+     * @return the mock service
+     * @throws ODataException the o data exception
+     */
     public static ODataService getMockService() throws ODataException {
         ServiceDocumentProcessor serviceDocument = mock(ServiceDocumentProcessor.class);
         when(serviceDocument.readServiceDocument(any(UriInfoImpl.class), anyString())).thenAnswer(getAnswer());
@@ -141,11 +148,22 @@ public class DispatcherTest extends BaseTest {
         return service;
     }
 
+    /**
+     * Gets the answer.
+     *
+     * @return the answer
+     */
     private static Answer<ODataResponse> getAnswer() {
         return invocation -> mockResponse(invocation.getMethod()
                                                     .getName());
     }
 
+    /**
+     * Mock response.
+     *
+     * @param value the value
+     * @return the o data response
+     */
     private static ODataResponse mockResponse(final String value) {
         ODataResponse response = mock(ODataResponse.class);
         when(response.getStatus()).thenReturn(HttpStatusCodes.PAYMENT_REQUIRED);
@@ -154,6 +172,14 @@ public class DispatcherTest extends BaseTest {
         return response;
     }
 
+    /**
+     * Mock uri info.
+     *
+     * @param uriType the uri type
+     * @param isValue the is value
+     * @return the uri info impl
+     * @throws EdmException the edm exception
+     */
     private static UriInfoImpl mockUriInfo(final UriType uriType, final boolean isValue) throws EdmException {
         UriInfoImpl uriInfo = mock(UriInfoImpl.class);
         when(uriInfo.getUriType()).thenReturn(uriType);
@@ -161,6 +187,15 @@ public class DispatcherTest extends BaseTest {
         return uriInfo;
     }
 
+    /**
+     * Check dispatch.
+     *
+     * @param method the method
+     * @param uriType the uri type
+     * @param isValue the is value
+     * @param expectedMethodName the expected method name
+     * @throws ODataException the o data exception
+     */
     private static void checkDispatch(final ODataHttpMethod method, final UriType uriType, final boolean isValue,
             final String expectedMethodName) throws ODataException {
         ODataServiceFactory factory = mock(ODataServiceFactory.class);
@@ -171,11 +206,25 @@ public class DispatcherTest extends BaseTest {
         assertEquals(expectedMethodName, response.getEntity());
     }
 
+    /**
+     * Check dispatch.
+     *
+     * @param method the method
+     * @param uriType the uri type
+     * @param expectedMethodName the expected method name
+     * @throws ODataException the o data exception
+     */
     private static void checkDispatch(final ODataHttpMethod method, final UriType uriType, final String expectedMethodName)
             throws ODataException {
         checkDispatch(method, uriType, false, expectedMethodName);
     }
 
+    /**
+     * Wrong dispatch.
+     *
+     * @param method the method
+     * @param uriType the uri type
+     */
     private static void wrongDispatch(final ODataHttpMethod method, final UriType uriType) {
         try {
             checkDispatch(method, uriType, null);
@@ -187,6 +236,12 @@ public class DispatcherTest extends BaseTest {
         }
     }
 
+    /**
+     * Not supported dispatch.
+     *
+     * @param method the method
+     * @param uriType the uri type
+     */
     private static void notSupportedDispatch(final ODataHttpMethod method, final UriType uriType) {
         try {
             checkDispatch(method, uriType, null);
@@ -198,6 +253,11 @@ public class DispatcherTest extends BaseTest {
         }
     }
 
+    /**
+     * Dispatch.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void dispatch() throws Exception {
         checkDispatch(ODataHttpMethod.GET, UriType.URI0, "readServiceDocument");
@@ -275,6 +335,11 @@ public class DispatcherTest extends BaseTest {
         checkDispatch(ODataHttpMethod.GET, UriType.URI50B, "countEntityLinks");
     }
 
+    /**
+     * Dispatch not allowed combinations.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void dispatchNotAllowedCombinations() throws Exception {
         wrongDispatch(null, UriType.URI0);
@@ -356,6 +421,11 @@ public class DispatcherTest extends BaseTest {
         wrongDispatch(ODataHttpMethod.MERGE, UriType.URI50B);
     }
 
+    /**
+     * Dispatch not supported combinations.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void dispatchNotSupportedCombinations() throws Exception {
         notSupportedDispatch(ODataHttpMethod.PUT, UriType.URI6A);
@@ -364,6 +434,14 @@ public class DispatcherTest extends BaseTest {
         notSupportedDispatch(ODataHttpMethod.MERGE, UriType.URI6A);
     }
 
+    /**
+     * Check feature.
+     *
+     * @param uriType the uri type
+     * @param isValue the is value
+     * @param feature the feature
+     * @throws ODataException the o data exception
+     */
     private static void checkFeature(final UriType uriType, final boolean isValue, final Class<? extends ODataProcessor> feature)
             throws ODataException {
         ODataServiceFactory factory = mock(ODataServiceFactory.class);
@@ -372,6 +450,11 @@ public class DispatcherTest extends BaseTest {
         assertEquals(feature, Dispatcher.mapUriTypeToProcessorFeature(mockUriInfo(uriType, isValue)));
     }
 
+    /**
+     * Processor feature.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void processorFeature() throws Exception {
         checkFeature(UriType.URI0, false, ServiceDocumentProcessor.class);
@@ -401,26 +484,58 @@ public class DispatcherTest extends BaseTest {
         checkFeature(UriType.URI50B, false, EntityLinksProcessor.class);
     }
 
+    /**
+     * Content negotiation default charset.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void contentNegotiationDefaultCharset() throws Exception {
         negotiateContentTypeCharset("application/xml", "application/xml;charset=utf-8", false);
     }
 
+    /**
+     * Content negotiation default charset as dollar format.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void contentNegotiationDefaultCharsetAsDollarFormat() throws Exception {
         negotiateContentTypeCharset("application/xml", "application/xml;charset=utf-8", true);
     }
 
+    /**
+     * Content negotiation supported charset.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void contentNegotiationSupportedCharset() throws Exception {
         negotiateContentTypeCharset("application/xml;charset=utf-8", "application/xml;charset=utf-8", false);
     }
 
+    /**
+     * Content negotiation supported charset as dollar format.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void contentNegotiationSupportedCharsetAsDollarFormat() throws Exception {
         negotiateContentTypeCharset("application/xml;charset=utf-8", "application/xml;charset=utf-8", true);
     }
 
+    /**
+     * Negotiate content type charset.
+     *
+     * @param requestType the request type
+     * @param supportedType the supported type
+     * @param asFormat the as format
+     * @throws SecurityException the security exception
+     * @throws IllegalArgumentException the illegal argument exception
+     * @throws NoSuchFieldException the no such field exception
+     * @throws IllegalAccessException the illegal access exception
+     * @throws ODataException the o data exception
+     */
     @SuppressWarnings("unchecked")
     private void negotiateContentTypeCharset(final String requestType, final String supportedType, final boolean asFormat)
             throws SecurityException, IllegalArgumentException, NoSuchFieldException, IllegalAccessException, ODataException {

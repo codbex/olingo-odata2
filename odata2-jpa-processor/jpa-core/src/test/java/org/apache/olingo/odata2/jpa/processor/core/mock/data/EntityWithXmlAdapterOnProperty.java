@@ -20,14 +20,30 @@ package org.apache.olingo.odata2.jpa.processor.core.mock.data;
 
 import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EntityWithXmlAdapterOnProperty.
+ */
 public class EntityWithXmlAdapterOnProperty {
+	
+	/** The self. */
 	private EntityWithXmlAdapterOnProperty self;
 
+	/**
+	 * Gets the self.
+	 *
+	 * @return the self
+	 */
 	@XmlJavaTypeAdapter(XmlAdapter.class)
 	public EntityWithXmlAdapterOnProperty getSelf() {
 		return self;
 	}
 
+	/**
+	 * Sets the self.
+	 *
+	 * @param self the new self
+	 */
 	public void setSelf(EntityWithXmlAdapterOnProperty self) {
 		this.self = self;
 	}

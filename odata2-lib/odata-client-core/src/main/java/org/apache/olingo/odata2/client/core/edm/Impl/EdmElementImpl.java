@@ -23,31 +23,63 @@ import org.apache.olingo.odata2.api.edm.EdmException;
 import org.apache.olingo.odata2.api.edm.EdmFacets;
 import org.apache.olingo.odata2.api.edm.EdmMapping;
 
+// TODO: Auto-generated Javadoc
 /**
- *  Objects of this class represent EdmElement
+ *  Objects of this class represent EdmElement.
  */
 public abstract class EdmElementImpl extends EdmTypedImpl implements EdmElement {
 
+  /** The edm facets. */
   private EdmFacets edmFacets;
+  
+  /** The edm mapping. */
   private EdmMapping edmMapping;
 
+  /**
+   * Gets the mapping.
+   *
+   * @return the mapping
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmMapping getMapping() throws EdmException {
     return edmMapping;
   }
 
+  /**
+   * Sets the facets.
+   *
+   * @param edmFacets the new facets
+   */
   public void setFacets(EdmFacets edmFacets) {
     this.edmFacets = edmFacets;
   }
 
+  /**
+   * Sets the mapping.
+   *
+   * @param edmMapping the new mapping
+   */
   public void setMapping(EdmMapping edmMapping) {
     this.edmMapping = edmMapping;
   }
 
+  /**
+   * Gets the facets.
+   *
+   * @return the facets
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmFacets getFacets() throws EdmException {
     return edmFacets;
   }  
+  
+  /**
+   * To string.
+   *
+   * @return the string
+   */
   @Override
   public String toString() {
       return String.format(name);

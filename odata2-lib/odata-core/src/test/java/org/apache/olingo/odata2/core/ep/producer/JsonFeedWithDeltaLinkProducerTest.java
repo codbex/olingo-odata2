@@ -46,17 +46,31 @@ import org.junit.Test;
 
 import com.google.gson.Gson;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JsonFeedWithDeltaLinkProducerTest.
+ */
 public class JsonFeedWithDeltaLinkProducerTest extends BaseTest {
 
+  /** The Constant BASE_URI. */
   protected static final String BASE_URI = "http://host:80/service/";
+  
+  /** The Constant DEFAULT_PROPERTIES. */
   protected static final EntityProviderWriteProperties DEFAULT_PROPERTIES =
       EntityProviderWriteProperties.serviceRoot(URI.create(BASE_URI)).build();
 
+  /** The deleted room data. */
   private ArrayList<Map<String, Object>> deletedRoomData;
+  
+  /** The rooms data. */
   private ArrayList<Map<String, Object>> roomsData;
 
+  /** The gson. */
   private Gson gson = new Gson();
 
+  /**
+   * Initialize room data.
+   */
   private void initializeRoomData() {
     Map<String, Object> roomData1 = new HashMap<String, Object>();
     roomData1.put("Id", "1");
@@ -72,6 +86,9 @@ public class JsonFeedWithDeltaLinkProducerTest extends BaseTest {
     roomsData.add(roomData2);
   }
 
+  /**
+   * Initialize deleted room data.
+   */
   private void initializeDeletedRoomData() {
     deletedRoomData = new ArrayList<Map<String, Object>>();
     for (int i = roomsData.size() + 1; i <= roomsData.size() + 1 + 2; i++) {
@@ -84,12 +101,20 @@ public class JsonFeedWithDeltaLinkProducerTest extends BaseTest {
     }
   }
 
+  /**
+   * Before.
+   */
   @Before
   public void before() {
     initializeRoomData();
     initializeDeletedRoomData();
   }
 
+  /**
+   * Delta link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void deltaLink() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");
@@ -103,6 +128,11 @@ public class JsonFeedWithDeltaLinkProducerTest extends BaseTest {
         .contains("__delta\":\"http://host:80/service/Rooms?!deltatoken=1234"));
   }
 
+  /**
+   * Deleted entries.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void deletedEntries() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");
@@ -116,6 +146,11 @@ public class JsonFeedWithDeltaLinkProducerTest extends BaseTest {
     assertTrue("Somthing wrong with closing brakets after deleted entries!", json.endsWith("}]}}"));
   }
 
+  /**
+   * Deleted entries empty.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void deletedEntriesEmpty() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");
@@ -130,6 +165,11 @@ public class JsonFeedWithDeltaLinkProducerTest extends BaseTest {
     assertTrue("Something wrong with empty deletedRoomData list!", json.contains("nr_Building\"}}}]}}"));
   }
 
+  /**
+   * Deleted entries with no previous data.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void deletedEntriesWithNoPreviousData() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");
@@ -145,6 +185,11 @@ public class JsonFeedWithDeltaLinkProducerTest extends BaseTest {
         json.contains("[,"));
   }
 
+  /**
+   * Deleted entries and delta link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void deletedEntriesAndDeltaLink() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");
@@ -162,6 +207,11 @@ public class JsonFeedWithDeltaLinkProducerTest extends BaseTest {
 
   }
 
+  /**
+   * Assert deleted entries.
+   *
+   * @param json the json
+   */
   private void assertDeletedEntries(final String json) {
     assertTrue("Somthing wrong with @odata.context!", json
         .contains("{\"@odata.context\":\"$metadata#Rooms/$deletedEntity\",\""));
@@ -179,6 +229,16 @@ public class JsonFeedWithDeltaLinkProducerTest extends BaseTest {
             + "host:80/service/Rooms('5')\"}"));
   }
 
+  /**
+   * Write room data.
+   *
+   * @param entitySet the entity set
+   * @param tombstoneCallback the tombstone callback
+   * @return the string
+   * @throws URISyntaxException the URI syntax exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private String writeRoomData(final EdmEntitySet entitySet, final TombstoneCallback tombstoneCallback)
       throws URISyntaxException, EntityProviderException, IOException {
     Map<String, ODataCallback> callbacks = new HashMap<String, ODataCallback>();
@@ -201,6 +261,11 @@ public class JsonFeedWithDeltaLinkProducerTest extends BaseTest {
     return json;
   }
 
+  /**
+   * Validate.
+   *
+   * @param json the json
+   */
   private void validate(final String json) {
     Object obj = gson.fromJson(json, Object.class);
     assertNotNull(obj);

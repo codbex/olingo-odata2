@@ -56,12 +56,16 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+// TODO: Auto-generated Javadoc
 /**
- *
+ * The Class AnnotationsInMemoryDsTest.
  */
 public class AnnotationsInMemoryDsTest {
 
+  /** The Constant ANNOTATED_MODEL_CLASSES. */
   final static Set<Class<?>> ANNOTATED_MODEL_CLASSES = new HashSet<Class<?>>();
+  
+  /** The Constant ANNOTATED_ENTITY_SET_CLASSES. */
   final static Set<Class<?>> ANNOTATED_ENTITY_SET_CLASSES = new HashSet<Class<?>>();
 
   static {
@@ -78,45 +82,85 @@ public class AnnotationsInMemoryDsTest {
     ANNOTATED_MODEL_CLASSES.add(RefBase.class);
   }
 
+  /** The datasource. */
   private final AnnotationInMemoryDs datasource;
+  
+  /** The edm provider. */
   private final AnnotationEdmProvider edmProvider;
+  
+  /** The Constant DEFAULT_CONTAINER. */
   private static final String DEFAULT_CONTAINER = ModelSharedConstants.CONTAINER_1;
 
+  /**
+   * Instantiates a new annotations in memory ds test.
+   *
+   * @throws ODataException the o data exception
+   */
   public AnnotationsInMemoryDsTest() throws ODataException {
     datasource = new AnnotationInMemoryDs(Building.class.getPackage().getName(), false);
     edmProvider = new AnnotationEdmProvider(Building.class.getPackage().getName());
   }
 
+  /**
+   * Inits the from package.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void initFromPackage() throws Exception {
     AnnotationInMemoryDs ds = new AnnotationInMemoryDs(Building.class.getPackage().getName(), false);
     Assert.assertNotNull(ds);
   }
 
+  /**
+   * Inits the from not existing package.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = IllegalArgumentException.class)
   public void initFromNotExistingPackage() throws Exception {
     AnnotationInMemoryDs ds = new AnnotationInMemoryDs("does.not.exist", false);
     Assert.assertNotNull(ds);
   }
 
+  /**
+   * Inits the from package without annotated classes.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void initFromPackageWithoutAnnotatedClasses() throws Exception {
     AnnotationInMemoryDs ds = new AnnotationInMemoryDs(this.getClass().getPackage().getName(), false);
     Assert.assertNotNull(ds);
   }
 
+  /**
+   * Inits the from class collection entity sets.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void initFromClassCollectionEntitySets() throws Exception {
     AnnotationInMemoryDs ds = new AnnotationInMemoryDs(ANNOTATED_ENTITY_SET_CLASSES, false);
     Assert.assertNotNull(ds);
   }
 
+  /**
+   * Inits the from class collection model.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void initFromClassCollectionModel() throws Exception {
     AnnotationInMemoryDs ds = new AnnotationInMemoryDs(ANNOTATED_MODEL_CLASSES, false);
     Assert.assertNotNull(ds);
   }
 
+  /**
+   * Inits the from class collection not annotated.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = ODataException.class)
   public void initFromClassCollectionNotAnnotated() throws Exception {
     Set<Class<?>> annotatedClassesAndMore = new HashSet<Class<?>>(ANNOTATED_ENTITY_SET_CLASSES);
@@ -126,6 +170,11 @@ public class AnnotationsInMemoryDsTest {
     Assert.assertNotNull(ds);
   }
 
+  /**
+   * Multi threaded sync on buildings test.
+   *
+   * @throws Exception the exception
+   */
   @Test
   @Ignore
   public void multiThreadedSyncOnBuildingsTest() throws Exception {
@@ -151,17 +200,28 @@ public class AnnotationsInMemoryDsTest {
     Assert.assertEquals(max, buildings.size());
   }
 
+  /**
+   * The Class SimpleEntity.
+   */
   @org.apache.olingo.odata2.api.annotation.edm.EdmEntitySet
   @org.apache.olingo.odata2.api.annotation.edm.EdmEntityType
   private static class SimpleEntity {
 
+    /** The id. */
     @EdmKey
     @EdmProperty
     public Integer id;
+    
+    /** The name. */
     @EdmProperty
     public String name;
   }
 
+  /**
+   * Multi threaded sync create read test.
+   *
+   * @throws Exception the exception
+   */
   @Test
   @Ignore
   public void multiThreadedSyncCreateReadTest() throws Exception {
@@ -206,6 +266,15 @@ public class AnnotationsInMemoryDsTest {
     Assert.assertEquals(max, buildings.size());
   }
 
+  /**
+   * Creates the building thread.
+   *
+   * @param latch the latch
+   * @param datasource the datasource
+   * @param edmEntitySet the edm entity set
+   * @param id the id
+   * @return the thread
+   */
   private Thread createBuildingThread(final CountDownLatch latch, final DataSource datasource,
       final EdmEntitySet edmEntitySet, final String id) {
     Runnable run = new Runnable() {
@@ -228,6 +297,11 @@ public class AnnotationsInMemoryDsTest {
     return new Thread(run);
   }
 
+  /**
+   * Read binary data.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readBinaryData() throws Exception {
     EdmEntitySet entitySet = createMockedEdmEntitySet("Photos");
@@ -255,6 +329,11 @@ public class AnnotationsInMemoryDsTest {
     Assert.assertEquals("image/png", readBinaryData.getMimeType());
   }
 
+  /**
+   * Read binary data direct.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readBinaryDataDirect() throws Exception {
     EdmEntitySet entitySet = createMockedEdmEntitySet("Photos");
@@ -281,6 +360,11 @@ public class AnnotationsInMemoryDsTest {
     Assert.assertEquals("image/png", readBinaryData.getMimeType());
   }
 
+  /**
+   * Write binary data.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void writeBinaryData() throws Exception {
     EdmEntitySet entitySet = createMockedEdmEntitySet("Photos");
@@ -307,6 +391,11 @@ public class AnnotationsInMemoryDsTest {
     Assert.assertEquals("image/png", storedPhoto.getImageType());
   }
 
+  /**
+   * Write binary data not found.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = ODataNotFoundException.class)
   public void writeBinaryDataNotFound() throws Exception {
     EdmEntitySet entitySet = createMockedEdmEntitySet("Photos");
@@ -321,6 +410,11 @@ public class AnnotationsInMemoryDsTest {
     datasource.writeBinaryData(entitySet, toWritePhoto, writeBinaryData);
   }
 
+  /**
+   * New data object.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void newDataObject() throws Exception {
     EdmEntitySet roomsEntitySet = createMockedEdmEntitySet("Rooms");
@@ -329,6 +423,11 @@ public class AnnotationsInMemoryDsTest {
     Assert.assertNotNull(room);
   }
 
+  /**
+   * Read entity.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readEntity() throws Exception {
     EdmEntitySet buildingsEntitySet = createMockedEdmEntitySet("Buildings");
@@ -369,6 +468,11 @@ public class AnnotationsInMemoryDsTest {
     }
   }
 
+  /**
+   * Read unknown entity.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = AnnotationRuntimeException.class)
   public void readUnknownEntity() throws Exception {
     EdmEntitySet unknownEntitySet = Mockito.mock(EdmEntitySet.class);
@@ -380,6 +484,11 @@ public class AnnotationsInMemoryDsTest {
     datasource.readData(unknownEntitySet, keys);
   }
 
+  /**
+   * Read unknown entities.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = AnnotationRuntimeException.class)
   public void readUnknownEntities() throws Exception {
     EdmEntitySet unknownEntitySet = Mockito.mock(EdmEntitySet.class);
@@ -389,6 +498,11 @@ public class AnnotationsInMemoryDsTest {
     datasource.readData(unknownEntitySet);
   }
 
+  /**
+   * Read entities.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readEntities() throws Exception {
     EdmEntitySet roomsEntitySet = createMockedEdmEntitySet("Rooms");
@@ -419,6 +533,11 @@ public class AnnotationsInMemoryDsTest {
     }
   }
 
+  /**
+   * Read related entities.
+   *
+   * @throws Exception the exception
+   */
   @Test
   @SuppressWarnings("unchecked")
   public void readRelatedEntities() throws Exception {
@@ -462,6 +581,11 @@ public class AnnotationsInMemoryDsTest {
     }
   }
 
+  /**
+   * Read related entity.
+   *
+   * @throws Exception the exception
+   */
   @Test
   @SuppressWarnings("unchecked")
   public void readRelatedEntity() throws Exception {
@@ -492,6 +616,11 @@ public class AnnotationsInMemoryDsTest {
     Assert.assertEquals("Common Building", b.getName());
   }
 
+  /**
+   * Read related entity with null.
+   *
+   * @throws Exception the exception
+   */
   @Test
   @SuppressWarnings("unchecked")
   public void readRelatedEntityWithNull() throws Exception {
@@ -520,6 +649,11 @@ public class AnnotationsInMemoryDsTest {
     Assert.assertNull("Related data must be null.", relatedData);
   }
 
+  /**
+   * Read related target entity.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readRelatedTargetEntity() throws Exception {
     EdmEntitySet buildingsEntitySet = createMockedEdmEntitySet("Buildings");
@@ -561,6 +695,11 @@ public class AnnotationsInMemoryDsTest {
     Assert.assertEquals("Common Building", relatedRoom.getBuilding().getName());
   }
 
+  /**
+   * Creates the simple entity.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void createSimpleEntity() throws Exception {
     EdmEntitySet edmEntitySet = createMockedEdmEntitySet("Buildings");
@@ -577,6 +716,11 @@ public class AnnotationsInMemoryDsTest {
     Assert.assertEquals("1", read.getId());
   }
 
+  /**
+   * Creates the simple entity with own key.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void createSimpleEntityWithOwnKey() throws Exception {
     EdmEntitySet edmEntitySet = createMockedEdmEntitySet("Buildings");
@@ -595,6 +739,11 @@ public class AnnotationsInMemoryDsTest {
     Assert.assertEquals("42", read.getId());
   }
 
+  /**
+   * Creates the simple entity with duplicate key.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void createSimpleEntityWithDuplicateKey() throws Exception {
     EdmEntitySet edmEntitySet = createMockedEdmEntitySet("Buildings");
@@ -623,6 +772,11 @@ public class AnnotationsInMemoryDsTest {
     Assert.assertEquals("1", read.getId());
   }
 
+  /**
+   * Creates the entity two keys.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void createEntityTwoKeys() throws Exception {
     EdmEntitySet edmEntitySet = createMockedEdmEntitySet("Photos");
@@ -645,6 +799,11 @@ public class AnnotationsInMemoryDsTest {
     Assert.assertEquals("https://localhost/image.png", read.getImageUri());
   }
 
+  /**
+   * Creates the and update entity two keys.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void createAndUpdateEntityTwoKeys() throws Exception {
     EdmEntitySet edmEntitySet = createMockedEdmEntitySet("Photos");
@@ -687,6 +846,11 @@ public class AnnotationsInMemoryDsTest {
     Assert.assertEquals("https://localhost/image.jpg", readUpdated.getImageUri());
   }
 
+  /**
+   * Creates the two key entity with one key already set.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void createTwoKeyEntityWithOneKeyAlreadySet() throws Exception {
     EdmEntitySet edmEntitySet = createMockedEdmEntitySet("Photos");
@@ -706,6 +870,11 @@ public class AnnotationsInMemoryDsTest {
             readPhoto.getName() + ":" + readPhoto.getType());
   }
 
+  /**
+   * Ensure two key entity keys are unique.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void ensureTwoKeyEntityKeysAreUnique() throws Exception {
     EdmEntitySet edmEntitySet = createMockedEdmEntitySet("Photos");
@@ -755,6 +924,11 @@ public class AnnotationsInMemoryDsTest {
     Assert.assertEquals(imageUri2, readPhoto2.getImageUri());
   }
 
+  /**
+   * Creates the guid key entity.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void createGuidKeyEntity() throws Exception {
     EdmEntitySet edmEntitySet = createMockedEdmEntitySet(GuidKeyEntity.GUID_KEY_ENTITIES);
@@ -769,6 +943,11 @@ public class AnnotationsInMemoryDsTest {
     Assert.assertEquals(entityName, readEntity.getName());
   }
 
+  /**
+   * Creates the guid key entity with own key.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void createGuidKeyEntityWithOwnKey() throws Exception {
     EdmEntitySet edmEntitySet = createMockedEdmEntitySet(GuidKeyEntity.GUID_KEY_ENTITIES);
@@ -788,6 +967,11 @@ public class AnnotationsInMemoryDsTest {
     Assert.assertEquals(entityName, readEntity.getName());
   }
 
+  /**
+   * Delete simple entity.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void deleteSimpleEntity() throws Exception {
     EdmEntitySet edmEntitySet = createMockedEdmEntitySet("Buildings");
@@ -814,6 +998,11 @@ public class AnnotationsInMemoryDsTest {
     } catch (ODataNotFoundException e) {}
   }
 
+  /**
+   * Unknown entity set for entity.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = AnnotationRuntimeException.class)
   public void unknownEntitySetForEntity() throws Exception {
     String entitySetName = "Unknown";
@@ -831,6 +1020,11 @@ public class AnnotationsInMemoryDsTest {
     datasource.readData(edmEntitySet, keys);
   }
 
+  /**
+   * Unknown entity set for entities.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = AnnotationRuntimeException.class)
   public void unknownEntitySetForEntities() throws Exception {
     String entitySetName = "Unknown";
@@ -846,6 +1040,11 @@ public class AnnotationsInMemoryDsTest {
     datasource.readData(edmEntitySet);
   }
 
+  /**
+   * Write relations.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void writeRelations() throws Exception {
     DataStore<Building> buildingStore = DataStore.createInMemory(Building.class, true);
@@ -884,10 +1083,25 @@ public class AnnotationsInMemoryDsTest {
     Assert.assertEquals(readBuilding, readRoom.getBuilding());
   }
 
+  /**
+   * Creates the mocked edm entity set.
+   *
+   * @param entitySetName the entity set name
+   * @return the edm entity set
+   * @throws ODataException the o data exception
+   */
   private EdmEntitySet createMockedEdmEntitySet(final String entitySetName) throws ODataException {
     return createMockedEdmEntitySet(edmProvider, entitySetName);
   }
 
+  /**
+   * Creates the mocked edm entity set.
+   *
+   * @param edmProvider the edm provider
+   * @param entitySetName the entity set name
+   * @return the edm entity set
+   * @throws ODataException the o data exception
+   */
   private EdmEntitySet createMockedEdmEntitySet(final AnnotationEdmProvider edmProvider, final String entitySetName)
       throws ODataException {
     EntitySet entitySet = edmProvider.getEntitySet(DEFAULT_CONTAINER, entitySetName);

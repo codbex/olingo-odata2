@@ -20,8 +20,15 @@ package org.apache.olingo.odata2.spring;
 
 import org.springframework.beans.factory.xml.NamespaceHandlerSupport;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class OlingoNamespaceHandler.
+ */
 public class OlingoNamespaceHandler extends NamespaceHandlerSupport {
 
+  /**
+   * Inits the.
+   */
   @Override
   public void init() {
     registerBeanDefinitionParser("server", new OlingoServerDefinitionParser());

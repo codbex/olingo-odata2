@@ -22,6 +22,7 @@ import java.util.List;
 
 import org.apache.olingo.odata2.api.edm.provider.EntitySet;
 
+// TODO: Auto-generated Javadoc
 /**
  * A view on Java Persistence entity type and EDM entity sets. Java persistence
  * entity types are converted into EDM entity types and EDM entity sets.
@@ -33,9 +34,9 @@ import org.apache.olingo.odata2.api.edm.provider.EntitySet;
  * 
  * 
  * <p>
- * @org.apache.olingo.odata2.DoNotImplement
+ *
  * @see org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmEntityTypeView
- * 
+ * @org.apache.olingo.odata2.DoNotImplement 
  */
 public interface JPAEdmEntitySetView extends JPAEdmBaseView {
   /**

@@ -20,6 +20,7 @@ package org.apache.olingo.odata2.jpa.processor.api.exception;
 
 import org.apache.olingo.odata2.api.exception.MessageReference;
 
+// TODO: Auto-generated Javadoc
 /**
  * The interface is used to access language dependent message texts. Default
  * language is "English - EN". <br>
@@ -35,14 +36,15 @@ import org.apache.olingo.odata2.api.exception.MessageReference;
  * @see org.apache.olingo.odata2.api.exception.MessageReference
  */
 public interface ODataJPAMessageService {
+  
   /**
    * The method returns a language dependent message texts for the given
    * {@link org.apache.olingo.odata2.api.exception.MessageReference}.
-   * 
-   * @param context
-   * is a Message Reference
+   *
+   * @param context is a Message Reference
    * exception
    * is a Throwable Exception
+   * @param exception the exception
    * @return a language dependent message text
    */
   public String getLocalizedMessage(MessageReference context, Throwable exception);

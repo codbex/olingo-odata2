@@ -21,17 +21,24 @@ package org.apache.olingo.odata2.api.uri.expression;
 import org.apache.olingo.odata2.api.exception.MessageReference;
 import org.apache.olingo.odata2.api.exception.ODataMessageException;
 
+// TODO: Auto-generated Javadoc
 /**
- * Exception thrown while traversing/visiting a filter expression tree
- * 
+ * Exception thrown while traversing/visiting a filter expression tree.
  */
 public class ExceptionVisitExpression extends ODataMessageException {
+  
+  /** The Constant serialVersionUID. */
   private static final long serialVersionUID = 7701L;
 
+  /** The Constant COMMON. */
   public static final MessageReference COMMON = createMessageReference(ExceptionVisitExpression.class, "COMMON");
 
+  /** The filter tree. */
   private CommonExpression filterTree;
 
+  /**
+   * Instantiates a new exception visit expression.
+   */
   public ExceptionVisitExpression() {
     super(COMMON);
   }
@@ -61,7 +68,8 @@ public class ExceptionVisitExpression extends ODataMessageException {
   }
 
   /**
-   * Get erroneous filter for debug information
+   * Get erroneous filter for debug information.
+   *
    * @return Erroneous filter tree
    */
   public CommonExpression getFilterTree() {

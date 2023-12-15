@@ -46,20 +46,41 @@ import org.apache.olingo.odata2.core.batch.BatchHandlerImpl;
 import org.apache.olingo.odata2.core.exception.ODataRuntimeException;
 import org.apache.olingo.odata2.core.uri.UriInfoImpl;
 
+// TODO: Auto-generated Javadoc
 /**
  * Request dispatching according to URI type and HTTP method.
  * 
  */
 public class Dispatcher {
 
+  /** The service. */
   private final ODataService service;
+  
+  /** The service factory. */
   private final ODataServiceFactory serviceFactory;
 
+  /**
+   * Instantiates a new dispatcher.
+   *
+   * @param serviceFactory the service factory
+   * @param service the service
+   */
   public Dispatcher(final ODataServiceFactory serviceFactory, final ODataService service) {
     this.service = service;
     this.serviceFactory = serviceFactory;
   }
 
+  /**
+   * Dispatch.
+   *
+   * @param method the method
+   * @param uriInfo the uri info
+   * @param content the content
+   * @param requestContentType the request content type
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   public ODataResponse dispatch(final ODataHttpMethod method, final UriInfoImpl uriInfo, final InputStream content,
       final String requestContentType, final String contentType) throws ODataException {
     switch (uriInfo.getUriType()) {
@@ -251,6 +272,12 @@ public class Dispatcher {
     }
   }
 
+  /**
+   * Map uri type to processor feature.
+   *
+   * @param uriInfo the uri info
+   * @return the class<? extends O data processor>
+   */
   protected static Class<? extends ODataProcessor> mapUriTypeToProcessorFeature(final UriInfoImpl uriInfo) {
     Class<? extends ODataProcessor> feature;
 

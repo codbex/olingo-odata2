@@ -26,9 +26,20 @@ import java.util.List;
 import org.apache.olingo.odata2.api.batch.BatchException;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AcceptParserTest.
+ */
 public class AcceptParserTest {
+  
+  /** The Constant TAB. */
   private static final String TAB = "\t";
 
+  /**
+   * Test accept header.
+   *
+   * @throws BatchException the batch exception
+   */
   @Test
   public void testAcceptHeader() throws BatchException {
     AcceptParser parser = new AcceptParser();
@@ -43,6 +54,11 @@ public class AcceptParserTest {
     assertEquals("*/*", acceptHeaders.get(3));
   }
 
+  /**
+   * Test accept header with parameter.
+   *
+   * @throws BatchException the batch exception
+   */
   @Test
   public void testAcceptHeaderWithParameter() throws BatchException {
     AcceptParser parser = new AcceptParser();
@@ -55,6 +71,11 @@ public class AcceptParserTest {
     assertEquals("*/*", acceptHeaders.get(1));
   }
 
+  /**
+   * Test accept header with parameter and lws.
+   *
+   * @throws BatchException the batch exception
+   */
   @Test
   public void testAcceptHeaderWithParameterAndLws() throws BatchException {
     AcceptParser parser = new AcceptParser();
@@ -67,6 +88,11 @@ public class AcceptParserTest {
     assertEquals("*/*", acceptHeaders.get(1));
   }
 
+  /**
+   * Test accept header with tabulator.
+   *
+   * @throws BatchException the batch exception
+   */
   @Test
   public void testAcceptHeaderWithTabulator() throws BatchException {
     AcceptParser parser = new AcceptParser();
@@ -79,6 +105,11 @@ public class AcceptParserTest {
     assertEquals("*/*", acceptHeaders.get(1));
   }
   
+  /**
+   * Test special accept language.
+   *
+   * @throws BatchException the batch exception
+   */
   @Test
   public void testSpecialAcceptLanguage() throws BatchException {
     AcceptParser parser = new AcceptParser();
@@ -89,6 +120,11 @@ public class AcceptParserTest {
     assertEquals("en-US-x-XXXXXX", acceptLanguageHeaders.get(0)); 
   }
   
+  /**
+   * Test invalid accept language 1.
+   *
+   * @throws BatchException the batch exception
+   */
   @Test(expected = BatchException.class)
   public void testInvalidAcceptLanguage1() throws BatchException {
     AcceptParser parser = new AcceptParser();
@@ -96,6 +132,11 @@ public class AcceptParserTest {
     parser.parseAcceptHeaders();
   }
   
+  /**
+   * Test invalid accept language 2.
+   *
+   * @throws BatchException the batch exception
+   */
   @Test(expected = BatchException.class)
   public void testInvalidAcceptLanguage2() throws BatchException {
     AcceptParser parser = new AcceptParser();
@@ -103,6 +144,11 @@ public class AcceptParserTest {
     parser.parseAcceptableLanguages();
   }
   
+  /**
+   * Test all accept language invalid.
+   *
+   * @throws BatchException the batch exception
+   */
   @Test(expected = BatchException.class)
   public void testAllAcceptLanguageInvalid() throws BatchException {
     AcceptParser parser = new AcceptParser();
@@ -110,6 +156,11 @@ public class AcceptParserTest {
     parser.parseAcceptableLanguages();
   }
   
+  /**
+   * Test accept language 16 char.
+   *
+   * @throws BatchException the batch exception
+   */
   @Test(expected = BatchException.class)
   public void testAcceptLanguage16Char() throws BatchException {
     AcceptParser parser = new AcceptParser();
@@ -117,6 +168,11 @@ public class AcceptParserTest {
     parser.parseAcceptableLanguages();
   }
   
+  /**
+   * Test accept language upper.
+   *
+   * @throws BatchException the batch exception
+   */
   @Test
   public void testAcceptLanguageUpper() throws BatchException {
     AcceptParser parser = new AcceptParser();
@@ -127,6 +183,11 @@ public class AcceptParserTest {
     assertEquals(1, acceptLanguageHeaders.size());
   }
   
+  /**
+   * Test accept language many parts.
+   *
+   * @throws BatchException the batch exception
+   */
   @Test
   public void testAcceptLanguageManyParts() throws BatchException {
     AcceptParser parser = new AcceptParser();
@@ -137,6 +198,11 @@ public class AcceptParserTest {
     assertEquals(1, acceptLanguageHeaders.size());
   }
   
+  /**
+   * Test accept language ciphers.
+   *
+   * @throws BatchException the batch exception
+   */
   @Test
   public void testAcceptLanguageCiphers() throws BatchException {
     AcceptParser parser = new AcceptParser();
@@ -147,6 +213,11 @@ public class AcceptParserTest {
     assertEquals(1, acceptLanguageHeaders.size());
   }
   
+  /**
+   * Test invalid accept language 4.
+   *
+   * @throws BatchException the batch exception
+   */
   @Test(expected = BatchException.class)
   public void testInvalidAcceptLanguage4() throws BatchException {
     AcceptParser parser = new AcceptParser();
@@ -154,6 +225,11 @@ public class AcceptParserTest {
     parser.parseAcceptableLanguages();
   }
   
+  /**
+   * Test invalid accept language 5.
+   *
+   * @throws BatchException the batch exception
+   */
   @Test(expected = BatchException.class)
   public void testInvalidAcceptLanguage5() throws BatchException {
     AcceptParser parser = new AcceptParser();
@@ -161,6 +237,11 @@ public class AcceptParserTest {
     parser.parseAcceptableLanguages();
   }
   
+  /**
+   * Test accept header with two parameters.
+   *
+   * @throws BatchException the batch exception
+   */
   @Test
   public void testAcceptHeaderWithTwoParameters() throws BatchException {
     AcceptParser parser = new AcceptParser();
@@ -173,6 +254,11 @@ public class AcceptParserTest {
     assertEquals("*/*", acceptHeaders.get(1));
   }
 
+  /**
+   * Test accept header 2.
+   *
+   * @throws BatchException the batch exception
+   */
   @Test
   public void testAcceptHeader2() throws BatchException {
     AcceptParser parser = new AcceptParser();
@@ -186,6 +272,11 @@ public class AcceptParserTest {
     assertEquals("*/*", acceptHeaders.get(2));
   }
 
+  /**
+   * Test more specific media type.
+   *
+   * @throws BatchException the batch exception
+   */
   @Test
   public void testMoreSpecificMediaType() throws BatchException {
     AcceptParser parser = new AcceptParser();
@@ -198,6 +289,11 @@ public class AcceptParserTest {
     assertEquals("application/*", acceptHeaders.get(1));
   }
 
+  /**
+   * Test quality parameter.
+   *
+   * @throws BatchException the batch exception
+   */
   @Test
   public void testQualityParameter() throws BatchException {
     AcceptParser parser = new AcceptParser();
@@ -207,6 +303,11 @@ public class AcceptParserTest {
     assertNotNull(acceptHeaders);
   }
 
+  /**
+   * Test invalid accept header.
+   *
+   * @throws BatchException the batch exception
+   */
   @Test(expected = BatchException.class)
   public void testInvalidAcceptHeader() throws BatchException {
     AcceptParser parser = new AcceptParser();
@@ -214,6 +315,11 @@ public class AcceptParserTest {
     parser.parseAcceptHeaders();
   }
 
+  /**
+   * Test invalid quality parameter.
+   *
+   * @throws BatchException the batch exception
+   */
   @Test(expected = BatchException.class)
   public void testInvalidQualityParameter() throws BatchException {
     AcceptParser parser = new AcceptParser();
@@ -221,6 +327,11 @@ public class AcceptParserTest {
     parser.parseAcceptHeaders();
   }
 
+  /**
+   * Test invalid quality parameter 2.
+   *
+   * @throws BatchException the batch exception
+   */
   @Test(expected = BatchException.class)
   public void testInvalidQualityParameter2() throws BatchException {
     AcceptParser parser = new AcceptParser();
@@ -228,6 +339,11 @@ public class AcceptParserTest {
     parser.parseAcceptHeaders();
   }
 
+  /**
+   * Test accept languages.
+   *
+   * @throws BatchException the batch exception
+   */
   @Test
   public void testAcceptLanguages() throws BatchException {
     AcceptParser parser = new AcceptParser();
@@ -241,6 +357,11 @@ public class AcceptParserTest {
     assertEquals("en", acceptLanguageHeaders.get(2));
   }
 
+  /**
+   * Test all accept languages.
+   *
+   * @throws BatchException the batch exception
+   */
   @Test
   public void testAllAcceptLanguages() throws BatchException {
     AcceptParser parser = new AcceptParser();
@@ -251,6 +372,11 @@ public class AcceptParserTest {
     assertEquals(1, acceptLanguageHeaders.size());
   }
 
+  /**
+   * Test long accept language value.
+   *
+   * @throws BatchException the batch exception
+   */
   @Test
   public void testLongAcceptLanguageValue() throws BatchException {
     AcceptParser parser = new AcceptParser();
@@ -261,6 +387,11 @@ public class AcceptParserTest {
     assertEquals("english", acceptLanguageHeaders.get(0));
   }
 
+  /**
+   * Test invalid accept language value.
+   *
+   * @throws BatchException the batch exception
+   */
   @Test(expected = BatchException.class)
   public void testInvalidAcceptLanguageValue() throws BatchException {
     AcceptParser parser = new AcceptParser();
@@ -268,6 +399,11 @@ public class AcceptParserTest {
     parser.parseAcceptableLanguages();
   }
   
+  /**
+   * Test accept languages with alpha numeric values.
+   *
+   * @throws BatchException the batch exception
+   */
   @Test
   public void testAcceptLanguagesWithAlphaNumericValues() throws BatchException {
     AcceptParser parser = new AcceptParser();

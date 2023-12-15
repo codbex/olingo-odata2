@@ -23,6 +23,7 @@ import org.apache.olingo.odata2.api.processor.ODataProcessor;
 import org.apache.olingo.odata2.api.processor.ODataResponse;
 import org.apache.olingo.odata2.api.uri.info.GetServiceDocumentUriInfo;
 
+// TODO: Auto-generated Javadoc
 /**
  * Execute a OData service document request.
  * 
@@ -31,9 +32,12 @@ import org.apache.olingo.odata2.api.uri.info.GetServiceDocumentUriInfo;
 public interface ServiceDocumentProcessor extends ODataProcessor {
 
   /**
-   * @param contentType
+   * Read service document.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
    * @return a {@link ODataResponse} object
-   * @throws ODataException
+   * @throws ODataException the o data exception
    */
   ODataResponse readServiceDocument(GetServiceDocumentUriInfo uriInfo, String contentType) throws ODataException;
 

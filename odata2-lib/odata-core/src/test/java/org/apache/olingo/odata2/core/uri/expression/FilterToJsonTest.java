@@ -35,23 +35,50 @@ import org.junit.Test;
 import com.google.gson.Gson;
 import com.google.gson.internal.LinkedTreeMap;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class FilterToJsonTest.
  */
 public class FilterToJsonTest {
 
+  /** The Constant PARAMETERS. */
   private static final String PARAMETERS = "parameters";
+  
+  /** The Constant NODETYPE. */
   private static final String NODETYPE = "nodeType";
+  
+  /** The Constant OPERATOR. */
   private static final String OPERATOR = "operator";
+  
+  /** The Constant LEFT. */
   private static final String LEFT = "left";
+  
+  /** The Constant RIGHT. */
   private static final String RIGHT = "right";
+  
+  /** The Constant TYPE. */
   private static final String TYPE = "type";
+  
+  /** The Constant VALUE. */
   private static final String VALUE = "value";
+  
+  /** The Constant OPERAND. */
   private static final Object OPERAND = "operand";
+  
+  /** The Constant NAME. */
   private static final Object NAME = "name";
+  
+  /** The Constant SOURCE. */
   private static final Object SOURCE = "source";
+  
+  /** The Constant PATH. */
   private static final Object PATH = "path";
 
+  /**
+   * Test to json binary property.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void testToJsonBinaryProperty() throws Exception {
@@ -69,6 +96,11 @@ public class FilterToJsonTest {
     checkProperty(right, null, "b");
   }
 
+  /**
+   * Test to json binary literal.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void testToJsonBinaryLiteral() throws Exception {
@@ -86,6 +118,11 @@ public class FilterToJsonTest {
     checkLiteral(right, "Edm.String", "b");
   }
 
+  /**
+   * Test to json binary add.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void testToJsonBinaryAdd() throws Exception {
@@ -115,6 +152,11 @@ public class FilterToJsonTest {
     checkLiteral(right1, "Edm.Double", "4");
   }
 
+  /**
+   * Test to json method.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void testToJsonMethod() throws Exception {
@@ -130,6 +172,11 @@ public class FilterToJsonTest {
     checkLiteral((LinkedTreeMap<String, Object>) parameter.get(1), "Edm.String", "b");
   }
 
+  /**
+   * Test to json unary.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void testToJsonUnary() throws Exception {
@@ -143,6 +190,11 @@ public class FilterToJsonTest {
     checkLiteral(operand, "Edm.String", "a");
   }
 
+  /**
+   * Test to json member.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void testToJsonMember() throws Exception {
@@ -160,6 +212,11 @@ public class FilterToJsonTest {
     checkProperty(path, null, "Country");
   }
 
+  /**
+   * Test to json member 2.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void testToJsonMember2() throws Exception {
@@ -183,6 +240,13 @@ public class FilterToJsonTest {
     checkProperty(path, null, "PostalCode");
   }
 
+  /**
+   * Check unary.
+   *
+   * @param unary the unary
+   * @param expectedOperator the expected operator
+   * @param expectedType the expected type
+   */
   private void
       checkUnary(final LinkedTreeMap<String, Object> unary, final UnaryOperator expectedOperator,
           final String expectedType) {
@@ -192,6 +256,12 @@ public class FilterToJsonTest {
     assertNotNull(unary.get(OPERAND));
   }
 
+  /**
+   * Check member.
+   *
+   * @param member the member
+   * @param expectedType the expected type
+   */
   private void checkMember(final LinkedTreeMap<String, Object> member, final String expectedType) {
     assertEquals(ExpressionKind.MEMBER.toString(), member.get(NODETYPE));
     assertEquals(expectedType, member.get(TYPE));
@@ -199,6 +269,13 @@ public class FilterToJsonTest {
     assertNotNull(member.get(PATH));
   }
 
+  /**
+   * Check method.
+   *
+   * @param method the method
+   * @param expectedOperator the expected operator
+   * @param expectedType the expected type
+   */
   private void checkMethod(final LinkedTreeMap<String, Object> method, final MethodOperator expectedOperator,
       final String expectedType) {
     assertEquals(ExpressionKind.METHOD.toString(), method.get(NODETYPE));
@@ -207,6 +284,13 @@ public class FilterToJsonTest {
     assertNotNull(method.get(PARAMETERS));
   }
 
+  /**
+   * Check property.
+   *
+   * @param property the property
+   * @param expectedType the expected type
+   * @param expectedValue the expected value
+   */
   private void checkProperty(final LinkedTreeMap<String, Object> property, final String expectedType,
       final Object expectedValue) {
     assertEquals(ExpressionKind.PROPERTY.toString(), property.get(NODETYPE));
@@ -214,6 +298,13 @@ public class FilterToJsonTest {
     assertEquals(expectedType, property.get(TYPE));
   }
 
+  /**
+   * Check literal.
+   *
+   * @param literal the literal
+   * @param expectedType the expected type
+   * @param expectedValue the expected value
+   */
   private void
       checkLiteral(final LinkedTreeMap<String, Object> literal, final String expectedType, final Object expectedValue) {
     assertEquals(ExpressionKind.LITERAL.toString(), literal.get(NODETYPE));
@@ -221,6 +312,14 @@ public class FilterToJsonTest {
     assertEquals(expectedValue, literal.get(VALUE));
   }
 
+  /**
+   * Check binary.
+   *
+   * @param binary the binary
+   * @param expectedOperator the expected operator
+   * @param expectedType the expected type
+   * @throws Exception the exception
+   */
   private void checkBinary(final LinkedTreeMap<String, Object> binary, final String expectedOperator,
       final String expectedType)
       throws Exception {
@@ -231,6 +330,14 @@ public class FilterToJsonTest {
     assertNotNull(binary.get(RIGHT));
   }
 
+  /**
+   * To json.
+   *
+   * @param expression the expression
+   * @return the string
+   * @throws ExceptionVisitExpression the exception visit expression
+   * @throws ODataApplicationException the o data application exception
+   */
   private static String toJson(final FilterExpression expression) throws ExceptionVisitExpression,
       ODataApplicationException {
     return (String) expression.accept(new JsonVisitor());

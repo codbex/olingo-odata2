@@ -40,15 +40,27 @@ import org.apache.olingo.odata2.core.exception.ODataRuntimeException;
 import org.apache.olingo.odata2.testutil.server.ServletType;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class ErrorResponseTest.
  */
 public class ErrorResponseTest extends AbstractBasicTest {
 
+  /**
+   * Instantiates a new error response test.
+   *
+   * @param servletType the servlet type
+   */
   public ErrorResponseTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /**
+   * Creates the processor.
+   *
+   * @return the o data single processor
+   * @throws ODataException the o data exception
+   */
   @Override
   protected ODataSingleProcessor createProcessor() throws ODataException {
     final ODataSingleProcessor processor = mock(ODataSingleProcessor.class);
@@ -62,6 +74,13 @@ public class ErrorResponseTest extends AbstractBasicTest {
     return processor;
   }
   
+  /**
+   * Test 500 runtime error.
+   *
+   * @throws ClientProtocolException the client protocol exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws ODataException the o data exception
+   */
   @Test
   public void test500RuntimeError() throws ClientProtocolException, IOException, ODataException {
     disableLogging();
@@ -70,6 +89,13 @@ public class ErrorResponseTest extends AbstractBasicTest {
     assertEquals(HttpStatusCodes.INTERNAL_SERVER_ERROR.getStatusCode(), response.getStatusLine().getStatusCode());
   }
 
+  /**
+   * Test O data runtime application exception.
+   *
+   * @throws ClientProtocolException the client protocol exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws ODataException the o data exception
+   */
   @Test
   public void testODataRuntimeApplicationException() throws ClientProtocolException, IOException, ODataException {
     disableLogging();

@@ -53,23 +53,59 @@ import org.apache.olingo.odata2.client.core.edm.Impl.EdmNavigationPropertyImpl;
 import org.junit.Before;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EdmEntityImplTest.
+ */
 public class EdmEntityImplTest {
 
+  /** The annotations. */
   private EdmAnnotationsImpl annotations;
+  
+  /** The documentation. */
   private EdmDocumentationImpl documentation;
+  
+  /** The edm. */
   private EdmImpl edm;
+  
+  /** The edm entity container. */
   private EdmEntityContainerImpl edmEntityContainer;
+  
+  /** The edm entity type. */
   private EdmEntityTypeImpl edmEntityType;
+  
+  /** The fq name. */
   private FullQualifiedName fqName;
+  
+  /** The entity type name. */
   private FullQualifiedName entityTypeName;
+  
+  /** The mapping. */
   private EdmMapping mapping;
+  
+  /** The name. */
   private String name;
+  
+  /** The edm customizable feed mappings. */
   private EdmCustomizableFeedMappings edmCustomizableFeedMappings;
+  
+  /** The edm key properties. */
   private List<EdmProperty> edmKeyProperties;
+  
+  /** The edm key property names. */
   private List<String> edmKeyPropertyNames;
+  
+  /** The navigation properties. */
   private List<EdmNavigationProperty> navigationProperties;
+  
+  /** The structural type. */
   private EdmComplexTypeImpl structuralType;
 
+  /**
+   * Initialize.
+   *
+   * @throws EdmException the edm exception
+   */
   @Before
   public void initialize() throws EdmException {
     annotations = new EdmAnnotationsImpl();
@@ -103,6 +139,11 @@ public class EdmEntityImplTest {
     edm.setAliasToNamespaceInfo(aliasToNamespaceInfo );
   }
 
+  /**
+   * Entity set test.
+   *
+   * @throws EdmException the edm exception
+   */
   @Test
   public void entitySetTest() throws EdmException {
     EdmEntitySetImpl entity = new EdmEntitySetImpl();
@@ -128,6 +169,11 @@ public class EdmEntityImplTest {
 
   }
 
+  /**
+   * Entity type test.
+   *
+   * @throws EdmException the edm exception
+   */
   @Test
   public void entityTypeTest() throws EdmException {
     EdmEntityTypeImpl entity = new EdmEntityTypeImpl();
@@ -168,6 +214,11 @@ public class EdmEntityImplTest {
 
   }
 
+  /**
+   * Entity container test.
+   *
+   * @throws EdmException the edm exception
+   */
   @Test
   public void entityContainerTest() throws EdmException {
     EdmEntityContainerImpl cont = new EdmEntityContainerImpl(edm);
@@ -204,6 +255,11 @@ public class EdmEntityImplTest {
     assertNotNull(cont.getName());
   }
 
+  /**
+   * Complex type test.
+   *
+   * @throws EdmException the edm exception
+   */
   @Test
   public void complexTypeTest() throws EdmException {
     EdmComplexType complexType = edm.getComplexType("namespace", "name");

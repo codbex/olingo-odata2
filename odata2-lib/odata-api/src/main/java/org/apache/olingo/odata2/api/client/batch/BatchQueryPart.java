@@ -22,22 +22,45 @@ import java.util.Map;
 
 import org.apache.olingo.odata2.api.rt.RuntimeDelegate;
 
+// TODO: Auto-generated Javadoc
 /**
  * A BatchQueryPart
- * <p>BatchQueryPart represents a single retrieve request
+ * <p>BatchQueryPart represents a single retrieve request.
  */
 public abstract class BatchQueryPart implements BatchPart {
 
+  /**
+   * Gets the headers.
+   *
+   * @return the headers
+   */
   public abstract Map<String, String> getHeaders();
 
+  /**
+   * Gets the uri.
+   *
+   * @return the uri
+   */
   public abstract String getUri();
 
+  /**
+   * Gets the method.
+   *
+   * @return the method
+   */
   public abstract String getMethod();
 
+  /**
+   * Gets the content id.
+   *
+   * @return the content id
+   */
   public abstract String getContentId();
 
   /**
-   * @param headers
+   * Headers.
+   *
+   * @param headers the headers
    * @return a new builder object
    */
   public static BatchQueryPartBuilder headers(final Map<String, String> headers) {
@@ -45,6 +68,8 @@ public abstract class BatchQueryPart implements BatchPart {
   }
 
   /**
+   * Uri.
+   *
    * @param uri should not be null
    * @return a new builder object
    */
@@ -53,6 +78,8 @@ public abstract class BatchQueryPart implements BatchPart {
   }
 
   /**
+   * Method.
+   *
    * @param method MUST be the HTTP GET method
    * @return a new builder object
    */
@@ -61,6 +88,8 @@ public abstract class BatchQueryPart implements BatchPart {
   }
 
   /**
+   * Content id.
+   *
    * @param contentId can be used to identify the different request within a the batch
    * @return a new builder object
    */
@@ -69,28 +98,70 @@ public abstract class BatchQueryPart implements BatchPart {
   }
 
   /**
+   * New builder.
+   *
    * @return returns a new builder object
    */
   public static BatchQueryPartBuilder newBuilder() {
     return BatchQueryPartBuilder.newInstance();
   }
 
+  /**
+   * The Class BatchQueryPartBuilder.
+   */
   public static abstract class BatchQueryPartBuilder {
 
+    /**
+     * Instantiates a new batch query part builder.
+     */
     protected BatchQueryPartBuilder() {}
 
+    /**
+     * New instance.
+     *
+     * @return the batch query part builder
+     */
     private static BatchQueryPartBuilder newInstance() {
       return RuntimeDelegate.createBatchQueryPartBuilder();
     }
 
+    /**
+     * Builds the.
+     *
+     * @return the batch query part
+     */
     public abstract BatchQueryPart build();
 
+    /**
+     * Headers.
+     *
+     * @param headers the headers
+     * @return the batch query part builder
+     */
     public abstract BatchQueryPartBuilder headers(Map<String, String> headers);
 
+    /**
+     * Uri.
+     *
+     * @param uri the uri
+     * @return the batch query part builder
+     */
     public abstract BatchQueryPartBuilder uri(String uri);
 
+    /**
+     * Method.
+     *
+     * @param method the method
+     * @return the batch query part builder
+     */
     public abstract BatchQueryPartBuilder method(String method);
 
+    /**
+     * Content id.
+     *
+     * @param contentId the content id
+     * @return the batch query part builder
+     */
     public abstract BatchQueryPartBuilder contentId(String contentId);
 
   }

@@ -62,24 +62,57 @@ import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmSchemaView;
 import org.apache.olingo.odata2.jpa.processor.core.access.model.JPAEdmNameBuilder;
 import org.apache.olingo.odata2.jpa.processor.core.access.model.JPATypeConverter;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAEdmProperty.
+ */
 public class JPAEdmProperty extends JPAEdmBaseViewImpl implements
     JPAEdmPropertyView, JPAEdmComplexPropertyView {
 
+  /** The schema view. */
   private JPAEdmSchemaView schemaView;
+  
+  /** The entity type view. */
   private JPAEdmEntityTypeView entityTypeView;
+  
+  /** The complex type view. */
   private JPAEdmComplexTypeView complexTypeView;
+  
+  /** The navigation property view. */
   private JPAEdmNavigationPropertyView navigationPropertyView = null;
 
+  /** The key view. */
   private JPAEdmKeyView keyView;
+  
+  /** The properties. */
   private List<Property> properties;
+  
+  /** The current simple property. */
   private SimpleProperty currentSimpleProperty = null;
+  
+  /** The current complex property. */
   private ComplexProperty currentComplexProperty = null;
+  
+  /** The current attribute. */
   private Attribute<?, ?> currentAttribute;
+  
+  /** The current ref attribute. */
   private Attribute<?, ?> currentRefAttribute;
+  
+  /** The is build mode complex type. */
   private boolean isBuildModeComplexType;
+  
+  /** The association count. */
   private Map<String, Integer> associationCount;
+  
+  /** The join column names. */
   private ArrayList<String[]> joinColumnNames = null;
 
+  /**
+   * Instantiates a new JPA edm property.
+   *
+   * @param view the view
+   */
   public JPAEdmProperty(final JPAEdmSchemaView view) {
     super(view);
     schemaView = view;
@@ -91,6 +124,12 @@ public class JPAEdmProperty extends JPAEdmBaseViewImpl implements
     associationCount = new HashMap<String, Integer>();
   }
 
+  /**
+   * Instantiates a new JPA edm property.
+   *
+   * @param schemaView the schema view
+   * @param view the view
+   */
   public JPAEdmProperty(final JPAEdmSchemaView schemaView,
       final JPAEdmComplexTypeView view) {
     super(view);
@@ -99,6 +138,11 @@ public class JPAEdmProperty extends JPAEdmBaseViewImpl implements
     isBuildModeComplexType = true;
   }
 
+  /**
+   * Gets the builder.
+   *
+   * @return the builder
+   */
   @Override
   public JPAEdmBuilder getBuilder() {
     if (builder == null) {
@@ -108,47 +152,97 @@ public class JPAEdmProperty extends JPAEdmBaseViewImpl implements
     return builder;
   }
 
+  /**
+   * Gets the edm property list.
+   *
+   * @return the edm property list
+   */
   @Override
   public List<Property> getEdmPropertyList() {
     return properties;
   }
 
+  /**
+   * Gets the JPA edm key view.
+   *
+   * @return the JPA edm key view
+   */
   @Override
   public JPAEdmKeyView getJPAEdmKeyView() {
     return keyView;
   }
 
+  /**
+   * Gets the edm simple property.
+   *
+   * @return the edm simple property
+   */
   @Override
   public SimpleProperty getEdmSimpleProperty() {
     return currentSimpleProperty;
   }
 
+  /**
+   * Gets the JPA attribute.
+   *
+   * @return the JPA attribute
+   */
   @Override
   public Attribute<?, ?> getJPAAttribute() {
     return currentAttribute;
   }
 
+  /**
+   * Gets the JPA referenced attribute.
+   *
+   * @return the JPA referenced attribute
+   */
   @Override
   public Attribute<?, ?> getJPAReferencedAttribute() {
     return currentRefAttribute;
   }
 
+  /**
+   * Gets the edm complex property.
+   *
+   * @return the edm complex property
+   */
   @Override
   public ComplexProperty getEdmComplexProperty() {
     return currentComplexProperty;
   }
 
+  /**
+   * Gets the JPA edm navigation property view.
+   *
+   * @return the JPA edm navigation property view
+   */
   @Override
   public JPAEdmNavigationPropertyView getJPAEdmNavigationPropertyView() {
     return navigationPropertyView;
   }
 
+  /**
+   * Gets the JPA join columns.
+   *
+   * @return the JPA join columns
+   */
   @Override
   public List<String[]> getJPAJoinColumns() {
     return joinColumnNames;
   }
 
+  /**
+   * The Class JPAEdmPropertyBuilder.
+   */
   private class JPAEdmPropertyBuilder implements JPAEdmBuilder {
+    
+    /**
+     * Builds the.
+     *
+     * @throws ODataJPAModelException the o data JPA model exception
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
+     */
     /*
      *
      * Each call to build method creates a new EDM Property List.
@@ -324,11 +418,30 @@ public class JPAEdmProperty extends JPAEdmBaseViewImpl implements
 
     }
 
+    /**
+     * Builds the simple property.
+     *
+     * @param jpaAttribute the jpa attribute
+     * @param simpleProperty the simple property
+     * @return the simple property
+     * @throws ODataJPAModelException the o data JPA model exception
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
+     */
     private SimpleProperty buildSimpleProperty(final Attribute<?, ?> jpaAttribute, final SimpleProperty simpleProperty)
         throws ODataJPAModelException, ODataJPARuntimeException {
       return buildSimpleProperty(jpaAttribute, simpleProperty, null);
     }
 
+    /**
+     * Builds the simple property.
+     *
+     * @param jpaAttribute the jpa attribute
+     * @param simpleProperty the simple property
+     * @param joinColumn the join column
+     * @return the simple property
+     * @throws ODataJPAModelException the o data JPA model exception
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
+     */
     private SimpleProperty buildSimpleProperty(final Attribute<?, ?> jpaAttribute, final SimpleProperty simpleProperty,
         final JoinColumn joinColumn)
         throws ODataJPAModelException, ODataJPARuntimeException {
@@ -348,6 +461,13 @@ public class JPAEdmProperty extends JPAEdmBaseViewImpl implements
 
     }
 
+    /**
+     * Adds the foreign key.
+     *
+     * @param jpaAttribute the jpa attribute
+     * @throws ODataJPAModelException the o data JPA model exception
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
+     */
     private void addForeignKey(final Attribute<?, ?> jpaAttribute) throws ODataJPAModelException,
         ODataJPARuntimeException {
 
@@ -369,6 +489,14 @@ public class JPAEdmProperty extends JPAEdmBaseViewImpl implements
       }
     }
 
+    /**
+     * Builds the foreign key.
+     *
+     * @param joinColumn the join column
+     * @param jpaAttribute the jpa attribute
+     * @throws ODataJPAModelException the o data JPA model exception
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
+     */
     private void buildForeignKey(final JoinColumn joinColumn, final Attribute<?, ?> jpaAttribute)
         throws ODataJPAModelException, ODataJPARuntimeException {
 
@@ -460,6 +588,12 @@ public class JPAEdmProperty extends JPAEdmBaseViewImpl implements
 
     }
 
+    /**
+     * Sort in ascending order.
+     *
+     * @param jpaAttributes the jpa attributes
+     * @return the list
+     */
     @SuppressWarnings("rawtypes")
     private List<Attribute<?, ?>> sortInAscendingOrder(final Set<?> jpaAttributes) {
       List<Attribute<?, ?>> jpaAttributeList = new ArrayList<Attribute<?, ?>>();
@@ -481,6 +615,13 @@ public class JPAEdmProperty extends JPAEdmBaseViewImpl implements
     }
   }
 
+  /**
+   * Gets the reference column name.
+   *
+   * @param annotatedElement2 the annotated element 2
+   * @param referencedAttribute the referenced attribute
+   * @return the reference column name
+   */
   private String getReferenceColumnName(AnnotatedElement annotatedElement2, Attribute<?, ?> referencedAttribute) {
     String refColName = null;
     Column c = annotatedElement2.getAnnotation(Column.class);
@@ -492,16 +633,34 @@ public class JPAEdmProperty extends JPAEdmBaseViewImpl implements
         : refColName;
   }
 
+  /**
+   * Gets the JPA edm entity type view.
+   *
+   * @return the JPA edm entity type view
+   */
   @Override
   public JPAEdmEntityTypeView getJPAEdmEntityTypeView() {
     return entityTypeView;
   }
 
+  /**
+   * Gets the JPA edm complex type view.
+   *
+   * @return the JPA edm complex type view
+   */
   @Override
   public JPAEdmComplexTypeView getJPAEdmComplexTypeView() {
     return complexTypeView;
   }
 
+  /**
+   * Checks if is excluded.
+   *
+   * @param jpaEdmPropertyView the jpa edm property view
+   * @param jpaEntityTypeName the jpa entity type name
+   * @param jpaAttributeName the jpa attribute name
+   * @return true, if is excluded
+   */
   private boolean isExcluded(final JPAEdmPropertyView jpaEdmPropertyView, final String jpaEntityTypeName,
       final String jpaAttributeName) {
     JPAEdmMappingModelAccess mappingModelAccess = jpaEdmPropertyView

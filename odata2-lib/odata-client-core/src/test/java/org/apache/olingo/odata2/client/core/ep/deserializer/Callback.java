@@ -26,8 +26,20 @@ import org.apache.olingo.odata2.api.exception.ODataApplicationException;
 import org.apache.olingo.odata2.client.api.ep.DeserializerProperties;
 import org.apache.olingo.odata2.client.api.ep.callback.OnDeserializeInlineContent;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Callback.
+ */
 public class Callback implements OnDeserializeInlineContent {
 
+  /**
+   * Receive read properties.
+   *
+   * @param readProperties the read properties
+   * @param navigationProperty the navigation property
+   * @return the deserializer properties
+   * @throws ODataApplicationException the o data application exception
+   */
   @Override
   public DeserializerProperties receiveReadProperties(DeserializerProperties readProperties,
       EdmNavigationProperty navigationProperty) throws ODataApplicationException {

@@ -20,30 +20,30 @@ package org.apache.olingo.odata2.api.servicedocument;
 
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
 /**
  * A AtomInfo
- * <p>AtomInfo represents the structure of Service Document according RFC 5023 (for ATOM format)
- * 
+ * <p>AtomInfo represents the structure of Service Document according RFC 5023 (for ATOM format).
  */
 public interface AtomInfo {
 
   /**
-   * Get the list of workspaces
-   * 
+   * Get the list of workspaces.
+   *
    * @return a list of {@link Workspace}
    */
   public List<Workspace> getWorkspaces();
 
   /**
-   * Get common attributes
-   * 
+   * Get common attributes.
+   *
    * @return {@link CommonAttributes}
    */
   public CommonAttributes getCommonAttributes();
 
   /**
-   * Get the list of extension elements
-   * 
+   * Get the list of extension elements.
+   *
    * @return a list of {@link ExtensionElement}
    */
   public List<ExtensionElement> getExtesionElements();

@@ -28,10 +28,18 @@ import java.util.List;
 import org.apache.olingo.odata2.jpa.processor.core.access.data.JPAPage.JPAPageBuilder;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAPageBuilderDeltaTest.
+ */
 public class JPAPageBuilderDeltaTest {
 
+  /** The Constant PAGE_SIZE. */
   private static final int PAGE_SIZE = 10;
 
+  /**
+   * Test build default delta.
+   */
   @Test
   public void testBuildDefaultDelta() {
     JPAPageBuilder pageBuilder = new JPAPageBuilder();
@@ -53,6 +61,9 @@ public class JPAPageBuilderDeltaTest {
     assertEquals("18", pagedEntities.get(9));
   }
 
+  /**
+   * Test build with no skip token delta.
+   */
   @Test
   public void testBuildWithNoSkipTokenDelta() {
     JPAPageBuilder pageBuilder = new JPAPageBuilder();
@@ -73,6 +84,9 @@ public class JPAPageBuilderDeltaTest {
     assertEquals("9", pagedEntities.get(9));
   }
 
+  /**
+   * Test build default zero page delta.
+   */
   @Test
   public void testBuildDefaultZeroPageDelta() {
     JPAPageBuilder pageBuilder = new JPAPageBuilder();
@@ -90,6 +104,9 @@ public class JPAPageBuilderDeltaTest {
 
   }
 
+  /**
+   * Test build with null skip token.
+   */
   @Test
   public void testBuildWithNullSkipToken() {
     JPAPageBuilder pageBuilder = new JPAPageBuilder();
@@ -109,6 +126,9 @@ public class JPAPageBuilderDeltaTest {
     assertEquals("9", pagedEntities.get(9));
   }
 
+  /**
+   * Test build with invalid skip token.
+   */
   @Test
   public void testBuildWithInvalidSkipToken() {
     JPAPageBuilder pageBuilder = new JPAPageBuilder();
@@ -121,6 +141,9 @@ public class JPAPageBuilderDeltaTest {
     fail("Exception Expected");
   }
 
+  /**
+   * Test build with top.
+   */
   @Test
   public void testBuildWithTop() {
     JPAPageBuilder pageBuilder = new JPAPageBuilder();
@@ -142,6 +165,9 @@ public class JPAPageBuilderDeltaTest {
     assertEquals("23", pagedEntities.get(4));
   }
 
+  /**
+   * Test build with top zero page.
+   */
   @Test
   public void testBuildWithTopZeroPage() {
     JPAPageBuilder pageBuilder = new JPAPageBuilder();
@@ -158,6 +184,9 @@ public class JPAPageBuilderDeltaTest {
     assertEquals(5, page.getPagedEntities().size());
   }
 
+  /**
+   * Test build with skip zero page.
+   */
   @Test
   public void testBuildWithSkipZeroPage() {
     JPAPageBuilder pageBuilder = new JPAPageBuilder();
@@ -175,6 +204,9 @@ public class JPAPageBuilderDeltaTest {
     assertEquals(0, page.getPagedEntities().size());
   }
 
+  /**
+   * Test build with top skip zero page.
+   */
   @Test
   public void testBuildWithTopSkipZeroPage() {
     JPAPageBuilder pageBuilder = new JPAPageBuilder();
@@ -192,6 +224,9 @@ public class JPAPageBuilderDeltaTest {
     assertEquals(5, page.getPagedEntities().size());
   }
 
+  /**
+   * Test build with top exceeds.
+   */
   @Test
   public void testBuildWithTopExceeds() {
     JPAPageBuilder pageBuilder = new JPAPageBuilder();
@@ -211,6 +246,9 @@ public class JPAPageBuilderDeltaTest {
     assertEquals("18", pagedEntities.get(9));
   }
 
+  /**
+   * Test build with top skip exceeds.
+   */
   @Test
   public void testBuildWithTopSkipExceeds() {
     JPAPageBuilder pageBuilder = new JPAPageBuilder();
@@ -229,6 +267,9 @@ public class JPAPageBuilderDeltaTest {
 
   }
 
+  /**
+   * Test build with top skip more.
+   */
   @Test
   public void testBuildWithTopSkipMore() {
     JPAPageBuilder pageBuilder = new JPAPageBuilder();
@@ -249,6 +290,9 @@ public class JPAPageBuilderDeltaTest {
     assertEquals(1, pagedEntities.size());
   }
 
+  /**
+   * Test build with top more skip.
+   */
   @Test
   public void testBuildWithTopMoreSkip() {
     JPAPageBuilder pageBuilder = new JPAPageBuilder();
@@ -269,6 +313,9 @@ public class JPAPageBuilderDeltaTest {
     assertEquals(1, pagedEntities.size());
   }
 
+  /**
+   * Test build with top X skip X.
+   */
   @Test
   public void testBuildWithTopXSkipX() {
     JPAPageBuilder pageBuilder = new JPAPageBuilder();
@@ -288,6 +335,9 @@ public class JPAPageBuilderDeltaTest {
     assertEquals(0, pagedEntities.size());
   }
 
+  /**
+   * Test build with negative top.
+   */
   @Test
   public void testBuildWithNegativeTop() {
     JPAPageBuilder pageBuilder = new JPAPageBuilder();
@@ -307,6 +357,9 @@ public class JPAPageBuilderDeltaTest {
     assertEquals(10, pagedEntities.size());
   }
 
+  /**
+   * Test build with negative top skip token.
+   */
   @Test
   public void testBuildWithNegativeTopSkipToken() {
     JPAPageBuilder pageBuilder = new JPAPageBuilder();
@@ -327,6 +380,9 @@ public class JPAPageBuilderDeltaTest {
 
   }
 
+  /**
+   * Test build with no records.
+   */
   @Test
   public void testBuildWithNoRecords() {
     JPAPageBuilder pageBuilder = new JPAPageBuilder();
@@ -347,6 +403,11 @@ public class JPAPageBuilderDeltaTest {
     assertEquals("10", pagedEntities.get(0));
   }
 
+  /**
+   * Mock entities.
+   *
+   * @return the list
+   */
   private List<Object> mockEntities() {
     List<Object> entities = new ArrayList<Object>();
     for (int i = 0; i < 30; i++) {

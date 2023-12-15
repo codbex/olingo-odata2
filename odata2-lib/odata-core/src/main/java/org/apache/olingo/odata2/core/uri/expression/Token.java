@@ -23,13 +23,32 @@ package org.apache.olingo.odata2.core.uri.expression;
 import org.apache.olingo.odata2.api.edm.EdmLiteral;
 import org.apache.olingo.odata2.api.edm.EdmType;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Token.
+ */
 public class Token {
 
+  /** The kind. */
   private TokenKind kind;
+  
+  /** The position. */
   private int position;
+  
+  /** The uri literal. */
   private String uriLiteral;
+  
+  /** The java literal. */
   private EdmLiteral javaLiteral;
 
+  /**
+   * Instantiates a new token.
+   *
+   * @param kind the kind
+   * @param position the position
+   * @param uriLiteral the uri literal
+   * @param javaLiteral the java literal
+   */
   public Token(final TokenKind kind, final int position, final String uriLiteral, final EdmLiteral javaLiteral) {
     this.kind = kind;
     this.position = position;
@@ -37,6 +56,13 @@ public class Token {
     this.javaLiteral = javaLiteral;
   }
 
+  /**
+   * Instantiates a new token.
+   *
+   * @param kind the kind
+   * @param position the position
+   * @param uriLiteral the uri literal
+   */
   public Token(final TokenKind kind, final int position, final String uriLiteral) {
     this.kind = kind;
     this.position = position;
@@ -44,14 +70,29 @@ public class Token {
     javaLiteral = null;
   }
 
+  /**
+   * Gets the kind.
+   *
+   * @return the kind
+   */
   public TokenKind getKind() {
     return kind;
   }
 
+  /**
+   * Gets the position.
+   *
+   * @return the position
+   */
   public int getPosition() {
     return position;
   }
 
+  /**
+   * Gets the edm type.
+   *
+   * @return the edm type
+   */
   public EdmType getEdmType() {
     if (javaLiteral == null) {
       return null;
@@ -59,10 +100,20 @@ public class Token {
     return javaLiteral.getType();
   }
 
+  /**
+   * Gets the uri literal.
+   *
+   * @return the uri literal
+   */
   public String getUriLiteral() {
     return uriLiteral;
   }
 
+  /**
+   * Gets the java literal.
+   *
+   * @return the java literal
+   */
   public EdmLiteral getJavaLiteral() {
     return javaLiteral;
   }

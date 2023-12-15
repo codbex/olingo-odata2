@@ -23,6 +23,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+// TODO: Auto-generated Javadoc
 /**
  * <p>Annotation for a EDM/CSDL EntitySet element.</p>
  * <p>EdmEntitySet is the container for entity type instances as described in the OData protocol.

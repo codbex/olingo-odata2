@@ -48,17 +48,36 @@ import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmSchemaView;
 import org.apache.olingo.odata2.jpa.processor.core.access.model.JPAEdmNameBuilder;
 import org.apache.olingo.odata2.jpa.processor.core.access.model.JPATypeConverter;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAEdmFunctionImport.
+ */
 public class JPAEdmFunctionImport extends JPAEdmBaseViewImpl implements JPAEdmFunctionImportView {
 
+  /** The consistent function import list. */
   private List<FunctionImport> consistentFunctionImportList = new ArrayList<FunctionImport>();
+  
+  /** The builder. */
   private JPAEdmBuilder builder = null;
+  
+  /** The schema view. */
   private JPAEdmSchemaView schemaView;
 
+  /**
+   * Instantiates a new JPA edm function import.
+   *
+   * @param view the view
+   */
   public JPAEdmFunctionImport(final JPAEdmSchemaView view) {
     super(view);
     schemaView = view;
   }
 
+  /**
+   * Gets the builder.
+   *
+   * @return the builder
+   */
   @Override
   public JPAEdmBuilder getBuilder() {
     if (builder == null) {
@@ -67,16 +86,33 @@ public class JPAEdmFunctionImport extends JPAEdmBaseViewImpl implements JPAEdmFu
     return builder;
   }
 
+  /**
+   * Gets the consistent function import list.
+   *
+   * @return the consistent function import list
+   */
   @Override
   public List<FunctionImport> getConsistentFunctionImportList() {
     return consistentFunctionImportList;
   }
 
+  /**
+   * The Class JPAEdmFunctionImportBuilder.
+   */
   protected class JPAEdmFunctionImportBuilder implements JPAEdmBuilder {
 
+    /** The jpa edm entity type view. */
     private JPAEdmEntityTypeView jpaEdmEntityTypeView = null;
+    
+    /** The jpa edm complex type view. */
     private JPAEdmComplexTypeView jpaEdmComplexTypeView = null;
 
+    /**
+     * Builds the.
+     *
+     * @throws ODataJPAModelException the o data JPA model exception
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
+     */
     @Override
     public void build() throws ODataJPAModelException, ODataJPARuntimeException {
 
@@ -135,6 +171,13 @@ public class JPAEdmFunctionImport extends JPAEdmBaseViewImpl implements JPAEdmFu
       }
     }
 
+    /**
+     * Builds the function import.
+     *
+     * @param method the method
+     * @return the function import
+     * @throws ODataJPAModelException the o data JPA model exception
+     */
     private FunctionImport buildFunctionImport(final Method method) throws ODataJPAModelException {
 
       EdmFunctionImport edmAnnotationFunctionImport = method.getAnnotation(EdmFunctionImport.class);
@@ -145,6 +188,14 @@ public class JPAEdmFunctionImport extends JPAEdmBaseViewImpl implements JPAEdmFu
       return null;
     }
 
+    /**
+     * Builds the edm function import.
+     *
+     * @param method the method
+     * @param edmAnnotationFunctionImport the edm annotation function import
+     * @return the function import
+     * @throws ODataJPAModelException the o data JPA model exception
+     */
     private FunctionImport buildEdmFunctionImport(final Method method,
         final EdmFunctionImport edmAnnotationFunctionImport)
         throws ODataJPAModelException {
@@ -172,6 +223,13 @@ public class JPAEdmFunctionImport extends JPAEdmBaseViewImpl implements JPAEdmFu
       return null;
     }
 
+    /**
+     * Builds the edm parameter.
+     *
+     * @param functionImport the function import
+     * @param method the method
+     * @throws ODataJPAModelException the o data JPA model exception
+     */
     private void buildEdmParameter(final FunctionImport functionImport, final Method method)
         throws ODataJPAModelException {
       Annotation[][] annotations = method.getParameterAnnotations();
@@ -225,6 +283,14 @@ public class JPAEdmFunctionImport extends JPAEdmBaseViewImpl implements JPAEdmFu
       }
     }
 
+    /**
+     * Builds the edm return type.
+     *
+     * @param functionImport the function import
+     * @param method the method
+     * @param edmAnnotationFunctionImport the edm annotation function import
+     * @throws ODataJPAModelException the o data JPA model exception
+     */
     private void buildEdmReturnType(final FunctionImport functionImport, final Method method,
         final EdmFunctionImport edmAnnotationFunctionImport) throws ODataJPAModelException {
       ReturnType returnType = edmAnnotationFunctionImport.returnType();
@@ -310,6 +376,12 @@ public class JPAEdmFunctionImport extends JPAEdmBaseViewImpl implements JPAEdmFu
       }
     }
 
+    /**
+     * Gets the return type name.
+     *
+     * @param method the method
+     * @return the return type name
+     */
     private String getReturnTypeName(final Method method) {
       try {
         ParameterizedType pt = (ParameterizedType) method.getGenericReturnType();
@@ -320,6 +392,12 @@ public class JPAEdmFunctionImport extends JPAEdmBaseViewImpl implements JPAEdmFu
       }
     }
 
+    /**
+     * Gets the return type simple name.
+     *
+     * @param method the method
+     * @return the return type simple name
+     */
     private String getReturnTypeSimpleName(final Method method) {
       try {
         ParameterizedType pt = (ParameterizedType) method.getGenericReturnType();

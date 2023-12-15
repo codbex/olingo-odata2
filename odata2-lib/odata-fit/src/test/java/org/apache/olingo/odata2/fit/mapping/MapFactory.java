@@ -23,11 +23,19 @@ import org.apache.olingo.odata2.api.ODataServiceFactory;
 import org.apache.olingo.odata2.api.exception.ODataException;
 import org.apache.olingo.odata2.api.processor.ODataContext;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * A factory for creating Map objects.
  */
 public class MapFactory extends ODataServiceFactory {
 
+  /**
+   * Creates a new Map object.
+   *
+   * @param ctx the ctx
+   * @return the o data service
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataService createService(final ODataContext ctx) throws ODataException {
     final MapProvider provider = new MapProvider();
@@ -36,6 +44,12 @@ public class MapFactory extends ODataServiceFactory {
     return createODataSingleProcessorService(provider, processor);
   }
 
+  /**
+   * Creates the.
+   *
+   * @return the o data service
+   * @throws ODataException the o data exception
+   */
   public static ODataService create() throws ODataException {
     return new MapFactory().createService(null);
   }

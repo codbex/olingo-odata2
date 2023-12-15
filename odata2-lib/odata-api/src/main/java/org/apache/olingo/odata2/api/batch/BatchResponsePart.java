@@ -23,6 +23,7 @@ import java.util.List;
 import org.apache.olingo.odata2.api.processor.ODataResponse;
 import org.apache.olingo.odata2.api.rt.RuntimeDelegate;
 
+// TODO: Auto-generated Javadoc
 /**
  * A BatchResponsePart
  * <p> BatchResponsePart represents a distinct part of a Batch Response body. It can be a ChangeSet response or a
@@ -38,13 +39,15 @@ public abstract class BatchResponsePart implements BatchParserResult {
   public abstract List<ODataResponse> getResponses();
 
   /**
-   * Get the info if a BatchResponsePart is a ChangeSet response
+   * Get the info if a BatchResponsePart is a ChangeSet response.
+   *
    * @return true or false
    */
   public abstract boolean isChangeSet();
 
   /**
-   * 
+   * Responses.
+   *
    * @param responses a list of {@link ODataResponse}
    * @return a builder object
    */
@@ -53,6 +56,8 @@ public abstract class BatchResponsePart implements BatchParserResult {
   }
 
   /**
+   * Change set.
+   *
    * @param isChangeSet true if a BatchResponsePart is a ChangeSet response
    * @return a builder object
    */
@@ -61,6 +66,8 @@ public abstract class BatchResponsePart implements BatchParserResult {
   }
 
   /**
+   * New builder.
+   *
    * @return returns a new builder object
    */
   public static BatchResponsePartBuilder newBuilder() {
@@ -72,14 +79,37 @@ public abstract class BatchResponsePart implements BatchParserResult {
    * 
    */
   public static abstract class BatchResponsePartBuilder {
+    
+    /**
+     * Builds the.
+     *
+     * @return the batch response part
+     */
     public abstract BatchResponsePart build();
 
+    /**
+     * New instance.
+     *
+     * @return the batch response part builder
+     */
     private static BatchResponsePartBuilder newInstance() {
       return RuntimeDelegate.createBatchResponsePartBuilder();
     }
 
+    /**
+     * Responses.
+     *
+     * @param responses the responses
+     * @return the batch response part builder
+     */
     public abstract BatchResponsePartBuilder responses(List<ODataResponse> responses);
 
+    /**
+     * Change set.
+     *
+     * @param isChangeSet the is change set
+     * @return the batch response part builder
+     */
     public abstract BatchResponsePartBuilder changeSet(boolean isChangeSet);
   }
 }

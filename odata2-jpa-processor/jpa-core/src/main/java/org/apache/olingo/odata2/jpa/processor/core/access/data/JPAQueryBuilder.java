@@ -59,25 +59,59 @@ import org.apache.olingo.odata2.jpa.processor.api.jpql.JPQLStatement;
 import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmMapping;
 import org.apache.olingo.odata2.jpa.processor.core.ODataExpressionParser;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAQueryBuilder.
+ */
 public class JPAQueryBuilder {
 
+  /**
+   * The Enum UriInfoType.
+   */
   enum UriInfoType {
+    
+    /** The Get entity set. */
     GetEntitySet,
+    
+    /** The Get entity. */
     GetEntity,
+    
+    /** The Get entity set count. */
     GetEntitySetCount,
+    
+    /** The Get entity count. */
     GetEntityCount,
+    
+    /** The Put merge patch. */
     PutMergePatch,
+    
+    /** The Delete. */
     Delete
   }
 
+  /** The em. */
   private EntityManager em = null;
+  
+  /** The page size. */
   private int pageSize = 0;
 
+  /**
+   * Instantiates a new JPA query builder.
+   *
+   * @param odataJPAContext the odata JPA context
+   */
   public JPAQueryBuilder(ODataJPAContext odataJPAContext) {
     this.em = odataJPAContext.getEntityManager();
     this.pageSize = odataJPAContext.getPageSize();
   }
 
+  /**
+   * Builds the.
+   *
+   * @param uriInfo the uri info
+   * @return the JPA query info
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   public JPAQueryInfo build(GetEntitySetUriInfo uriInfo) throws ODataJPARuntimeException {
     JPAQueryInfo queryInfo = new JPAQueryInfo();
     Query query = null;
@@ -105,6 +139,13 @@ public class JPAQueryBuilder {
   }
 
 
+  /**
+   * Gets the count.
+   *
+   * @param uriInfo the uri info
+   * @return the count
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   public void getCount(GetEntitySetUriInfo uriInfo) throws ODataJPARuntimeException {
     JPAQueryInfo queryInfo = new JPAQueryInfo();
     Query query = null;
@@ -148,6 +189,13 @@ public class JPAQueryBuilder {
   }
 
 
+  /**
+   * Builds the.
+   *
+   * @param uriInfo the uri info
+   * @return the query
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   public Query build(GetEntityUriInfo uriInfo) throws ODataJPARuntimeException {
     Query query = null;
     try {
@@ -170,6 +218,13 @@ public class JPAQueryBuilder {
     return query;
   }
 
+  /**
+   * Builds the.
+   *
+   * @param uriInfo the uri info
+   * @return the query
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   public Query build(GetEntitySetCountUriInfo uriInfo) throws ODataJPARuntimeException {
     Query query = null;
     try {
@@ -192,6 +247,13 @@ public class JPAQueryBuilder {
     return query;
   }
 
+  /**
+   * Builds the.
+   *
+   * @param uriInfo the uri info
+   * @return the query
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   public Query build(GetEntityCountUriInfo uriInfo) throws ODataJPARuntimeException {
     Query query = null;
     try {
@@ -214,6 +276,13 @@ public class JPAQueryBuilder {
     return query;
   }
 
+  /**
+   * Builds the.
+   *
+   * @param uriInfo the uri info
+   * @return the query
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   public Query build(DeleteUriInfo uriInfo) throws ODataJPARuntimeException {
     Query query = null;
     try {
@@ -236,6 +305,13 @@ public class JPAQueryBuilder {
     return query;
   }
 
+  /**
+   * Builds the.
+   *
+   * @param uriInfo the uri info
+   * @return the query
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   public Query build(PutMergePatchUriInfo uriInfo) throws ODataJPARuntimeException {
     Query query = null;
     try {
@@ -258,6 +334,16 @@ public class JPAQueryBuilder {
     return query;
   }
 
+  /**
+   * Builds the query.
+   *
+   * @param uriParserResultView the uri parser result view
+   * @param type the type
+   * @return the query
+   * @throws EdmException the edm exception
+   * @throws ODataJPAModelException the o data JPA model exception
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   private Query buildQuery(UriInfo uriParserResultView, UriInfoType type)
       throws EdmException,
       ODataJPAModelException, ODataJPARuntimeException {
@@ -272,10 +358,13 @@ public class JPAQueryBuilder {
   }
 
   /**
-   * @param contextType
-   * @param jpqlContext
-   * @param jpqlStatement
-   * @param query
+   * Gets the parameterized query.
+   *
+   * @param contextType the context type
+   * @param jpqlContext the jpql context
+   * @param jpqlStatement the jpql statement
+   * @param query the query
+   * @return the parameterized query
    */
   private Query getParameterizedQuery(JPQLContextType contextType, JPQLContext jpqlContext, JPQLStatement jpqlStatement,
       Query query) {
@@ -308,6 +397,13 @@ public class JPAQueryBuilder {
     return query;
   }
   
+  /**
+   * Gets the parameterized query for listeners.
+   *
+   * @param jpqlContext the jpql context
+   * @param query the query
+   * @return the parameterized query for listeners
+   */
   private Query getParameterizedQueryForListeners(JPQLContext jpqlContext, Query query) {
     Map<String, Map<Integer, Object>> parameterizedMap = null;
     String jpqlStatement = null;
@@ -343,6 +439,15 @@ public class JPAQueryBuilder {
     return query;
   }
 
+  /**
+   * Gets the o data JPA query entity listener.
+   *
+   * @param uriInfo the uri info
+   * @return the o data JPA query entity listener
+   * @throws EdmException the edm exception
+   * @throws InstantiationException the instantiation exception
+   * @throws IllegalAccessException the illegal access exception
+   */
   public ODataJPAQueryExtensionEntityListener getODataJPAQueryEntityListener(UriInfo uriInfo) throws EdmException,
       InstantiationException, IllegalAccessException {
     ODataJPAQueryExtensionEntityListener queryListener = null;
@@ -353,6 +458,15 @@ public class JPAQueryBuilder {
     return queryListener;
   }
 
+  /**
+   * Gets the o data JPA tombstone entity listener.
+   *
+   * @param uriParserResultView the uri parser result view
+   * @return the o data JPA tombstone entity listener
+   * @throws InstantiationException the instantiation exception
+   * @throws IllegalAccessException the illegal access exception
+   * @throws EdmException the edm exception
+   */
   public ODataJPATombstoneEntityListener getODataJPATombstoneEntityListener(UriInfo uriParserResultView)
       throws InstantiationException, IllegalAccessException, EdmException {
     JPAEdmMapping mapping = (JPAEdmMapping) uriParserResultView.getTargetEntitySet().getEntityType().getMapping();
@@ -362,6 +476,15 @@ public class JPAQueryBuilder {
     return null;
   }
 
+  /**
+   * Builds the JPQL context.
+   *
+   * @param contextType the context type
+   * @param uriParserResultView the uri parser result view
+   * @return the JPQL context
+   * @throws ODataJPAModelException the o data JPA model exception
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   public JPQLContext buildJPQLContext(JPQLContextType contextType, UriInfo uriParserResultView)
       throws ODataJPAModelException, ODataJPARuntimeException {
     if (pageSize > 0 && (contextType == JPQLContextType.SELECT || contextType == JPQLContextType.JOIN)) {
@@ -371,6 +494,13 @@ public class JPAQueryBuilder {
     }
   }
 
+  /**
+   * Determine JPQL context type.
+   *
+   * @param uriParserResultView the uri parser result view
+   * @param type the type
+   * @return the JPQL context type
+   */
   public JPQLContextType determineJPQLContextType(UriInfo uriParserResultView, UriInfoType type) {
     JPQLContextType contextType = null;
 
@@ -397,10 +527,22 @@ public class JPAQueryBuilder {
     return contextType;
   }
 
+  /** The Constant NORMALIZATION_NEEDED_PATTERN. */
   private static final Pattern NORMALIZATION_NEEDED_PATTERN = Pattern.compile(".*[\\s(](\\S+\\.\\S+\\.\\S+).*");
+  
+  /** The Constant VALUE_NORM_PATTERN. */
   private static final Pattern VALUE_NORM_PATTERN = Pattern.compile("(?:^|\\s|\\()'(([^']*)')");
+  
+  /** The Constant JOIN_ALIAS_PATTERN. */
   private static final Pattern JOIN_ALIAS_PATTERN = Pattern.compile(".*\\sJOIN\\s(\\S*\\s\\S*).*");
 
+  /**
+   * Normalize members.
+   *
+   * @param em the em
+   * @param jpqlQuery the jpql query
+   * @return the string
+   */
   private static String normalizeMembers(EntityManager em, String jpqlQuery) {  
     
     //check if clause values are string with x.y.z format
@@ -480,7 +622,10 @@ public class JPAQueryBuilder {
    * Check if the statement contains ORDERBY having x.y.z kind of format
    * It will remove those values before checking for normalization 
    * and later added back
-   * */
+   *
+   * @param jpqlQuery the jpql query
+   * @return the string
+   */
   private static String removeExtraClause(String jpqlQuery) {
     String query = jpqlQuery;
     if(query.contains(JPQLStatement.KEYWORD.ORDERBY )){
@@ -494,7 +639,10 @@ public class JPAQueryBuilder {
    * Check if the statement contains string values having x.y.z kind of format
    * It will replace those values with parameters before checking for normalization 
    * and later added back
-   * */
+   *
+   * @param jpqlQuery the jpql query
+   * @return the string
+   */
   private static String checkConditionValues(String jpqlQuery) {
     int i=0;
     StringBuffer query= new StringBuffer();
@@ -540,6 +688,14 @@ public class JPAQueryBuilder {
     return false;
   }
 
+  /**
+   * Ordinal index of.
+   *
+   * @param str the str
+   * @param s the s
+   * @param n the n
+   * @return the int
+   */
   private static int ordinalIndexOf(String str, char s, int n) {
     int pos = str.indexOf(s, 0);
     while (n-- > 0 && pos != -1) {
@@ -548,22 +704,49 @@ public class JPAQueryBuilder {
     return pos;
   }
 
+  /**
+   * The Class JPAQueryInfo.
+   */
   final class JPAQueryInfo {
+    
+    /** The query. */
     private Query query = null;
+    
+    /** The is tombstone query. */
     private boolean isTombstoneQuery = false;
 
+    /**
+     * Gets the query.
+     *
+     * @return the query
+     */
     public Query getQuery() {
       return query;
     }
 
+    /**
+     * Sets the query.
+     *
+     * @param query the new query
+     */
     public void setQuery(Query query) {
       this.query = query;
     }
 
+    /**
+     * Checks if is tombstone query.
+     *
+     * @return true, if is tombstone query
+     */
     public boolean isTombstoneQuery() {
       return isTombstoneQuery;
     }
 
+    /**
+     * Sets the tombstone query.
+     *
+     * @param isTombstoneQuery the new tombstone query
+     */
     public void setTombstoneQuery(boolean isTombstoneQuery) {
       this.isTombstoneQuery = isTombstoneQuery;
     }

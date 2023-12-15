@@ -22,6 +22,7 @@ import org.apache.olingo.odata2.api.edm.EdmNavigationProperty;
 import org.apache.olingo.odata2.api.ep.EntityProviderReadProperties;
 import org.apache.olingo.odata2.api.exception.ODataApplicationException;
 
+// TODO: Auto-generated Javadoc
 /**
  * <p>
  * Callback interface for the deep insert read calls (read of <code><m:inline></code> content).
@@ -42,11 +43,11 @@ public interface OnReadInlineContent {
   /**
    * Receive (request) to be used {@link EntityProviderReadProperties} to read the found inline navigation property
    * (<code>><m:inline>...</m:inline></code>).
-   * 
+   *
    * @param readProperties read properties which are used to read enclosing parent entity
    * @param navigationProperty emd navigation property information of found inline navigation property
    * @return read properties which are used to read (de-serialize) found inline navigation property
-   * @throws ODataApplicationException
+   * @throws ODataApplicationException the o data application exception
    */
   EntityProviderReadProperties receiveReadProperties(EntityProviderReadProperties readProperties,
       EdmNavigationProperty navigationProperty) throws ODataApplicationException;
@@ -56,10 +57,10 @@ public interface OnReadInlineContent {
    * The given {@link ReadEntryResult} object contains all contextual information
    * about the de-serialized inline navigation property and the entry as
    * {@link org.apache.olingo.odata2.api.ep.entry.ODataEntry ODataEntry}.
-   * 
+   *
    * @param readEntryResult with contextual information about and de-serialized
    * inlined navigation property as {@link org.apache.olingo.odata2.api.ep.entry.ODataEntry ODataEntry}
-   * @throws ODataApplicationException
+   * @throws ODataApplicationException the o data application exception
    */
   void handleReadEntry(ReadEntryResult readEntryResult) throws ODataApplicationException;
 
@@ -68,10 +69,10 @@ public interface OnReadInlineContent {
    * The given {@link ReadFeedResult} object contains all contextual information
    * about the de-serialized inline navigation property and the entry as
    * a list of {@link org.apache.olingo.odata2.api.ep.entry.ODataEntry ODataEntry}.
-   * 
+   *
    * @param readFeedResult with contextual information about and de-serialized
    * inlined navigation property as a list of {@link org.apache.olingo.odata2.api.ep.entry.ODataEntry ODataEntry}
-   * @throws ODataApplicationException
+   * @throws ODataApplicationException the o data application exception
    */
   void handleReadFeed(ReadFeedResult readFeedResult) throws ODataApplicationException;
 }

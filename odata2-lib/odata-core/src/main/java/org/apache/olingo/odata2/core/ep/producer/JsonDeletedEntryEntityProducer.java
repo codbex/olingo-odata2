@@ -31,14 +31,33 @@ import org.apache.olingo.odata2.core.ep.util.FormatJson;
 import org.apache.olingo.odata2.core.ep.util.JsonStreamWriter;
 import org.apache.olingo.odata2.core.ep.util.JsonUtils;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JsonDeletedEntryEntityProducer.
+ */
 public class JsonDeletedEntryEntityProducer {
 
+  /** The properties. */
   private EntityProviderWriteProperties properties;
 
+  /**
+   * Instantiates a new json deleted entry entity producer.
+   *
+   * @param properties the properties
+   */
   public JsonDeletedEntryEntityProducer(final EntityProviderWriteProperties properties) {
     this.properties = properties;
   }
 
+  /**
+   * Append.
+   *
+   * @param writer the writer
+   * @param entityInfo the entity info
+   * @param deletedEntries the deleted entries
+   * @param noPreviousEntries the no previous entries
+   * @throws EntityProviderException the entity provider exception
+   */
   public void append(final Writer writer, final EntityInfoAggregator entityInfo,
       final List<Map<String, Object>> deletedEntries, boolean noPreviousEntries)
       throws EntityProviderException {

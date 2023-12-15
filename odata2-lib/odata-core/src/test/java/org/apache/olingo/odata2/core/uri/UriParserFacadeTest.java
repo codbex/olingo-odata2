@@ -26,11 +26,17 @@ import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.apache.olingo.odata2.testutil.mock.MockFacade;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class UriParserFacadeTest.
  */
 public class UriParserFacadeTest extends BaseTest {
 
+  /**
+   * Parses the with facade.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseWithFacade() throws Exception {
     UriParser.parse(MockFacade.getMockEdm(),

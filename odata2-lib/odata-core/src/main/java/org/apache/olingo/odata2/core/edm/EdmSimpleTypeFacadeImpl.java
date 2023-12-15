@@ -28,13 +28,22 @@ import org.apache.olingo.odata2.api.edm.EdmSimpleTypeFacade;
 import org.apache.olingo.odata2.api.edm.EdmSimpleTypeKind;
 import org.apache.olingo.odata2.core.exception.ODataRuntimeException;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class EdmSimpleTypeFacadeImpl.
  */
 public class EdmSimpleTypeFacadeImpl implements EdmSimpleTypeFacade {
   
+  /** The facets. */
   private EdmFacets facets = null;
 
+  /**
+   * Parses the uri literal.
+   *
+   * @param uriLiteral the uri literal
+   * @return the edm literal
+   * @throws EdmLiteralException the edm literal exception
+   */
   @Override
   public EdmLiteral parseUriLiteral(final String uriLiteral) throws EdmLiteralException {
     if (uriLiteral == null || "null".equals(uriLiteral)) {
@@ -122,12 +131,30 @@ public class EdmSimpleTypeFacadeImpl implements EdmSimpleTypeFacade {
     throw new EdmLiteralException(EdmLiteralException.UNKNOWNLITERAL.addContent(uriLiteral));
   }
   
+  /**
+   * Parses the uri literal.
+   *
+   * @param uriLiteral the uri literal
+   * @param facets the facets
+   * @return the edm literal
+   * @throws EdmLiteralException the edm literal exception
+   */
   @Override
   public EdmLiteral parseUriLiteral(String uriLiteral, EdmFacets facets) throws EdmLiteralException {
     this.facets = facets;
     return parseUriLiteral(uriLiteral);
   }
 
+  /**
+   * Creates the edm literal.
+   *
+   * @param typeKind the type kind
+   * @param literal the literal
+   * @param prefixLength the prefix length
+   * @param suffixLength the suffix length
+   * @return the edm literal
+   * @throws EdmLiteralException the edm literal exception
+   */
   private static EdmLiteral createEdmLiteral(final EdmSimpleTypeKind typeKind, final String literal,
       final int prefixLength, final int suffixLength) throws EdmLiteralException {
     final EdmSimpleType type = getEdmSimpleType(typeKind);
@@ -138,11 +165,23 @@ public class EdmSimpleTypeFacadeImpl implements EdmSimpleTypeFacade {
     }
   }
 
+  /**
+   * Gets the edm simple type instance.
+   *
+   * @param typeKind the type kind
+   * @return the edm simple type instance
+   */
   @Override
   public EdmSimpleType getEdmSimpleTypeInstance(final EdmSimpleTypeKind typeKind) {
     return getEdmSimpleType(typeKind);
   }
 
+  /**
+   * Gets the edm simple type.
+   *
+   * @param typeKind the type kind
+   * @return the edm simple type
+   */
   public static EdmSimpleType getEdmSimpleType(final EdmSimpleTypeKind typeKind) {
 
     switch (typeKind) {
@@ -183,6 +222,12 @@ public class EdmSimpleTypeFacadeImpl implements EdmSimpleTypeFacade {
     }
   }
 
+  /**
+   * Gets the internal edm simple type by string.
+   *
+   * @param edmSimpleType the edm simple type
+   * @return the internal edm simple type by string
+   */
   public static EdmSimpleType getInternalEdmSimpleTypeByString(final String edmSimpleType) {
     if ("Bit".equals(edmSimpleType)) {
       return Bit.getInstance();

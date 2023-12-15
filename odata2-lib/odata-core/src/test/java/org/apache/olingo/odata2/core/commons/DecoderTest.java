@@ -24,11 +24,15 @@ import static org.junit.Assert.assertNull;
 import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class DecoderTest.
  */
 public class DecoderTest extends BaseTest {
 
+  /**
+   * Ascii characters.
+   */
   @Test
   public void asciiCharacters() {
     assertNull(Decoder.decode(null));
@@ -40,11 +44,17 @@ public class DecoderTest extends BaseTest {
     assertEquals(s, Decoder.decode(s));
   }
 
+  /**
+   * Ascii control.
+   */
   @Test
   public void asciiControl() {
     assertEquals("\u0000\b\t\n\r", Decoder.decode("%00%08%09%0a%0d"));
   }
 
+  /**
+   * Ascii encoded.
+   */
   @Test
   public void asciiEncoded() {
     assertEquals("<>%&", Decoder.decode("%3c%3e%25%26"));
@@ -52,37 +62,58 @@ public class DecoderTest extends BaseTest {
     assertEquals(" !\"$'()*+,-.", Decoder.decode("%20%21%22%24%27%28%29%2A%2B%2C%2D%2E"));
   }
 
+  /**
+   * Unicode characters.
+   */
   @Test
   public void unicodeCharacters() {
     assertEquals("€", Decoder.decode("%E2%82%AC"));
     assertEquals("\uFDFC", Decoder.decode("%EF%B7%BC"));
   }
 
+  /**
+   * Characters outside bmp.
+   */
   @Test
   public void charactersOutsideBmp() {
     assertEquals(String.valueOf(Character.toChars(0x1F603)), Decoder.decode("%f0%9f%98%83"));
   }
 
+  /**
+   * Wrong character.
+   */
   @Test(expected = IllegalArgumentException.class)
   public void wrongCharacter() {
     Decoder.decode("%20ä");
   }
 
+  /**
+   * Wrong percent number.
+   */
   @Test(expected = NumberFormatException.class)
   public void wrongPercentNumber() {
     Decoder.decode("%-3");
   }
 
+  /**
+   * Wrong percent percent.
+   */
   @Test(expected = IllegalArgumentException.class)
   public void wrongPercentPercent() {
     Decoder.decode("%%a");
   }
 
+  /**
+   * Unfinished percent.
+   */
   @Test(expected = IllegalArgumentException.class)
   public void unfinishedPercent() {
     Decoder.decode("%a");
   }
 
+  /**
+   * Null byte.
+   */
   @Test(expected = IllegalArgumentException.class)
   public void nullByte() {
     Decoder.decode("%\u0000ff");

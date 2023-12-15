@@ -33,11 +33,23 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ODataApplicationTest.
+ */
 public class ODataApplicationTest {
 
+  /** The Constant endpoint. */
   private static final URI endpoint = URI.create("http://localhost:19080/osgi");
+  
+  /** The server. */
   private Server server;
 
+  /**
+   * Before.
+   *
+   * @throws Exception the exception
+   */
   @Before
   public void before() throws Exception {
     final ServletContextHandler contextHandler = createContextHandler();
@@ -48,6 +60,11 @@ public class ODataApplicationTest {
     server.start();
   }
 
+  /**
+   * After.
+   *
+   * @throws Exception the exception
+   */
   @After
   public void after() throws Exception {
     if (server != null) {
@@ -55,6 +72,11 @@ public class ODataApplicationTest {
     }
   }
 
+  /**
+   * Run.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void run() throws Exception {
     URL url = new URL(endpoint + "/$metadata");
@@ -65,6 +87,11 @@ public class ODataApplicationTest {
 
   }
 
+  /**
+   * Creates the context handler.
+   *
+   * @return the servlet context handler
+   */
   private ServletContextHandler createContextHandler() {
     final CXFNonSpringJaxrsServlet odataServlet = new CXFNonSpringJaxrsServlet();
     final ServletHolder odataServletHolder = new ServletHolder(odataServlet);

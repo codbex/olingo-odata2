@@ -48,6 +48,7 @@ import org.apache.olingo.odata2.core.ep.feed.FeedMetadataImpl;
 import org.apache.olingo.odata2.core.ep.feed.ODataDeltaFeedImpl;
 import org.apache.olingo.odata2.core.ep.util.FormatXml;
 
+// TODO: Auto-generated Javadoc
 /**
  * Atom/XML format reader/consumer for entries.
  *
@@ -58,22 +59,33 @@ import org.apache.olingo.odata2.core.ep.util.FormatXml;
  */
 public class XmlEntryDeserializer {
 
+    /** The read entry result. */
     private ODataEntryImpl readEntryResult;
+    
+    /** The properties. */
     private Map<String, Object> properties;
+    
+    /** The media metadata. */
     private MediaMetadataImpl mediaMetadata;
+    
+    /** The entry metadata. */
     private EntryMetadataImpl entryMetadata;
+    
+    /** The type mappings. */
     private EntityTypeMapping typeMappings;
+    
+    /** The current handled start tag name. */
     private String currentHandledStartTagName;
 
     /**
-     * Deserializes payload entry
+     * Deserializes payload entry.
      *
-     * @param reader
-     * @param eia
-     * @param readProperties
-     * @param isInline
+     * @param reader the reader
+     * @param eia the eia
+     * @param readProperties the read properties
+     * @param isInline the is inline
      * @return ODataEntry
-     * @throws EntityProviderException
+     * @throws EntityProviderException the entity provider exception
      */
     public ODataEntry readEntry(final XMLStreamReader reader, final EntityInfoAggregator eia, final DeserializerProperties readProperties,
             final boolean isInline) throws EntityProviderException {
@@ -99,6 +111,12 @@ public class XmlEntryDeserializer {
         }
     }
 
+    /**
+     * Checks if is entry end tag.
+     *
+     * @param reader the reader
+     * @return true, if is entry end tag
+     */
     private boolean isEntryEndTag(final XMLStreamReader reader) {
         return reader.isEndElement() && Edm.NAMESPACE_ATOM_2005.equals(reader.getNamespaceURI())
                 && FormatXml.ATOM_ENTRY.equals(reader.getLocalName());
@@ -107,8 +125,8 @@ public class XmlEntryDeserializer {
     /**
      * Initializes the {@link XmlEntryDeserializer} to be ready for reading an entry.
      *
-     * @param readProperties
-     * @throws EntityProviderException
+     * @param readProperties the read properties
+     * @throws EntityProviderException the entity provider exception
      */
     private void initialize(final DeserializerProperties readProperties) throws EntityProviderException {
         properties = new HashMap<String, Object>();
@@ -119,6 +137,16 @@ public class XmlEntryDeserializer {
         typeMappings = EntityTypeMapping.create(readProperties.getTypeMappings());
     }
 
+    /**
+     * Handle started tag.
+     *
+     * @param reader the reader
+     * @param eia the eia
+     * @param readProperties the read properties
+     * @throws EntityProviderException the entity provider exception
+     * @throws XMLStreamException the XML stream exception
+     * @throws EdmException the edm exception
+     */
     private void handleStartedTag(final XMLStreamReader reader, final EntityInfoAggregator eia, final DeserializerProperties readProperties)
             throws EntityProviderException, XMLStreamException, EdmException {
 
@@ -139,6 +167,17 @@ public class XmlEntryDeserializer {
         }
     }
 
+    /**
+     * Read custom element.
+     *
+     * @param reader the reader
+     * @param tagName the tag name
+     * @param eia the eia
+     * @param readProperties the read properties
+     * @throws EdmException the edm exception
+     * @throws EntityProviderException the entity provider exception
+     * @throws XMLStreamException the XML stream exception
+     */
     private void readCustomElement(final XMLStreamReader reader, final String tagName, // NOSONAR
             final EntityInfoAggregator eia, final DeserializerProperties readProperties)
             throws EdmException, EntityProviderException, XMLStreamException { // NOSONAR
@@ -187,8 +226,8 @@ public class XmlEntryDeserializer {
      * Skip the tag to which the {@link XMLStreamReader} currently points. Therefore it is read until an
      * end element tag with current local name is found.
      *
-     * @param reader
-     * @throws XMLStreamException
+     * @param reader the reader
+     * @throws XMLStreamException the XML stream exception
      */
     private void skipStartedTag(final XMLStreamReader reader) throws XMLStreamException {
         final String name = reader.getLocalName();
@@ -205,24 +244,36 @@ public class XmlEntryDeserializer {
         }
     }
 
+    /**
+     * Read entry.
+     *
+     * @param reader the reader
+     * @throws XMLStreamException the XML stream exception
+     */
     private void readEntry(final XMLStreamReader reader) throws XMLStreamException {
         reader.require(XMLStreamConstants.START_ELEMENT, Edm.NAMESPACE_ATOM_2005, FormatXml.ATOM_ENTRY);
         setETag(reader);
     }
 
+    /**
+     * Sets the e tag.
+     *
+     * @param reader the new e tag
+     */
     private void setETag(final XMLStreamReader reader) {
         final String etag = reader.getAttributeValue(Edm.NAMESPACE_M_2007_08, FormatXml.M_ETAG);
         entryMetadata.setEtag(etag);
     }
 
     /**
+     * Read link.
      *
-     * @param reader
-     * @param eia
-     * @param readProperties
-     * @throws EntityProviderException
-     * @throws XMLStreamException
-     * @throws EdmException
+     * @param reader the reader
+     * @param eia the eia
+     * @param readProperties the read properties
+     * @throws EntityProviderException the entity provider exception
+     * @throws XMLStreamException the XML stream exception
+     * @throws EdmException the edm exception
      */
     private void readLink(final XMLStreamReader reader, final EntityInfoAggregator eia, final DeserializerProperties readProperties)
             throws EntityProviderException, XMLStreamException, EdmException {
@@ -258,14 +309,14 @@ public class XmlEntryDeserializer {
     /**
      * Inline content was found and {@link XMLStreamReader} already points to <m:inline> tag.
      *
-     * @param reader
-     * @param eia
-     * @param readProperties
+     * @param reader the reader
+     * @param eia the eia
+     * @param readProperties the read properties
      * @param atomLinkType the atom <code>type</code> attribute value of the <code>link</code> tag
      * @param atomLinkRel the atom <code>rel</code> attribute value of the <code>link</code> tag
-     * @throws XMLStreamException
-     * @throws EntityProviderException
-     * @throws EdmException
+     * @throws XMLStreamException the XML stream exception
+     * @throws EntityProviderException the entity provider exception
+     * @throws EdmException the edm exception
      */
     private void readInlineContent(final XMLStreamReader reader, final EntityInfoAggregator eia,
             final DeserializerProperties readProperties, final String atomLinkType, final String atomLinkRel)
@@ -309,12 +360,9 @@ public class XmlEntryDeserializer {
      * Updates the read properties ({@link #properties}) for this {@link ReadEntryResult}
      * ({@link #readEntryResult}).
      *
-     * @param readProperties
-     * @param navigationPropertyName
-     * @param navigationProperty
-     * @param isFeed
-     * @param inlineEntries
-     * @throws EntityProviderException
+     * @param navigationPropertyName the navigation property name
+     * @param isFeed the is feed
+     * @param inlineEntries the inline entries
      */
     private void updateReadProperties(final String navigationPropertyName, final boolean isFeed, final List<ODataEntry> inlineEntries) {
         Object entry = extractODataEntity(isFeed, inlineEntries);
@@ -329,9 +377,9 @@ public class XmlEntryDeserializer {
      * Get a list of {@link ODataEntry}, an empty list, a single {@link ODataEntry} or <code>NULL</code>
      * based on <code>isFeed</code> value and <code>inlineEntries</code> content.
      *
-     * @param isFeed
-     * @param inlineEntries
-     * @return
+     * @param isFeed the is feed
+     * @param inlineEntries the inline entries
+     * @return the object
      */
     private Object extractODataEntity(final boolean isFeed, final List<ODataEntry> inlineEntries) {
         if (isFeed) {
@@ -348,10 +396,10 @@ public class XmlEntryDeserializer {
      * Create {@link EntityProviderReadProperties} which can be used for reading of inline
      * properties/entrys of navigation links within this current read entry.
      *
-     * @param readProperties
-     * @param navigationProperty
-     * @return
-     * @throws EntityProviderException
+     * @param readProperties the read properties
+     * @param navigationProperty the navigation property
+     * @return the deserializer properties
+     * @throws EntityProviderException the entity provider exception
      */
     private DeserializerProperties createInlineProperties(final DeserializerProperties readProperties,
             final EdmNavigationProperty navigationProperty) throws EntityProviderException {
@@ -387,14 +435,13 @@ public class XmlEntryDeserializer {
      * <li>...{@link FormatXml#ATOM_TYPE} tag is correctly set and according to
      * {@link FormatXml#ATOM_ENTRY} or {@link FormatXml#ATOM_FEED} to following tags are available.</li>
      * </ul>
-     *
+     * 
      * For the case that one of above validations fail an {@link EntityProviderException} is thrown. If
      * validation was successful <code>true</code> is returned for <code>Feed</code> and
      * <code>false</code> for <code>Entry</code> multiplicity.
      * </p>
      *
      * @param reader xml content reader which already points to <code><m:inline> tag</code>
-     * @param eia all necessary information about the entity
      * @param type the atom type attribute value of the <code>link</code> tag
      * @param navigationProperty the navigation property name of the entity
      * @return <code>true</code> for <code>Feed</code> and <code>false</code> for <code>Entry</code>
@@ -429,6 +476,14 @@ public class XmlEntryDeserializer {
         return isFeed;
     }
 
+    /**
+     * Validate entry tags.
+     *
+     * @param reader the reader
+     * @param cType the c type
+     * @throws XMLStreamException the XML stream exception
+     * @throws EntityProviderException the entity provider exception
+     */
     private void validateEntryTags(final XMLStreamReader reader, final ContentType cType)
             throws XMLStreamException, EntityProviderException {
         if (!FormatXml.ATOM_ENTRY.equals(cType.getParameters()
@@ -443,6 +498,14 @@ public class XmlEntryDeserializer {
         }
     }
 
+    /**
+     * Validate feed tags.
+     *
+     * @param reader the reader
+     * @param cType the c type
+     * @throws XMLStreamException the XML stream exception
+     * @throws EntityProviderException the entity provider exception
+     */
     private void validateFeedTags(final XMLStreamReader reader, final ContentType cType)
             throws XMLStreamException, EntityProviderException {
         if (!FormatXml.ATOM_FEED.equals(cType.getParameters()
@@ -457,6 +520,16 @@ public class XmlEntryDeserializer {
         }
     }
 
+    /**
+     * Read content.
+     *
+     * @param reader the reader
+     * @param eia the eia
+     * @param readProperties the read properties
+     * @throws EntityProviderException the entity provider exception
+     * @throws XMLStreamException the XML stream exception
+     * @throws EdmException the edm exception
+     */
     private void readContent(final XMLStreamReader reader, final EntityInfoAggregator eia, final DeserializerProperties readProperties)
             throws EntityProviderException, XMLStreamException, EdmException {
         reader.require(XMLStreamConstants.START_ELEMENT, Edm.NAMESPACE_ATOM_2005, FormatXml.ATOM_CONTENT);
@@ -480,12 +553,29 @@ public class XmlEntryDeserializer {
         mediaMetadata.setSourceLink(sourceLink);
     }
 
+    /**
+     * Read id.
+     *
+     * @param reader the reader
+     * @throws EntityProviderException the entity provider exception
+     * @throws XMLStreamException the XML stream exception
+     */
     private void readId(final XMLStreamReader reader) throws EntityProviderException, XMLStreamException {
         reader.require(XMLStreamConstants.START_ELEMENT, Edm.NAMESPACE_ATOM_2005, FormatXml.ATOM_ID);
         entryMetadata.setId(reader.getElementText());
         reader.require(XMLStreamConstants.END_ELEMENT, Edm.NAMESPACE_ATOM_2005, FormatXml.ATOM_ID);
     }
 
+    /**
+     * Read properties.
+     *
+     * @param reader the reader
+     * @param entitySet the entity set
+     * @param readProperties the read properties
+     * @throws XMLStreamException the XML stream exception
+     * @throws EdmException the edm exception
+     * @throws EntityProviderException the entity provider exception
+     */
     private void readProperties(final XMLStreamReader reader, final EntityInfoAggregator entitySet, // NOSONAR
             final DeserializerProperties readProperties) throws XMLStreamException, EdmException, EntityProviderException {
         // validate namespace
@@ -574,13 +664,13 @@ public class XmlEntryDeserializer {
     /**
      * Get validated {@link EntityPropertyInfo} for property with given <code>name</code>. If validation
      * fails an {@link EntityProviderException} is thrown.
-     *
+     * 
      * Currently this is the case if no {@link EntityPropertyInfo} if found for given <code>name</code>.
      *
-     * @param entitySet
-     * @param name
+     * @param entitySet the entity set
+     * @param name the name
      * @return valid {@link EntityPropertyInfo} (which is never <code>NULL</code>).
-     * @throws EntityProviderException
+     * @throws EntityProviderException the entity provider exception
      */
     private EntityPropertyInfo getValidatedPropertyInfo(final EntityInfoAggregator entitySet, final String name)
             throws EntityProviderException {

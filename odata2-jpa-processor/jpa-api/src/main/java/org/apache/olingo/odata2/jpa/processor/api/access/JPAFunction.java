@@ -21,6 +21,7 @@ package org.apache.olingo.odata2.jpa.processor.api.access;
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
 
+// TODO: Auto-generated Javadoc
 /**
  * A container for JPA Functions. A JPA function can be
  * <ol>
@@ -33,11 +34,26 @@ import java.lang.reflect.Type;
  */
 public class JPAFunction {
 
+  /** The function. */
   private Method function;
+  
+  /** The parameter types. */
   private Class<?>[] parameterTypes;
+  
+  /** The return type. */
   private Type returnType;
+  
+  /** The args. */
   private Object[] args;
 
+  /**
+   * Instantiates a new JPA function.
+   *
+   * @param function the function
+   * @param parameterTypes the parameter types
+   * @param returnType the return type
+   * @param args the args
+   */
   public JPAFunction(final Method function, final Class<?>[] parameterTypes, final Type returnType,
       final Object[] args) {
     this.function = function;

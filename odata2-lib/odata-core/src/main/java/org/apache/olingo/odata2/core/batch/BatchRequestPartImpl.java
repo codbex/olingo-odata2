@@ -25,32 +25,68 @@ import java.util.List;
 import org.apache.olingo.odata2.api.batch.BatchRequestPart;
 import org.apache.olingo.odata2.api.processor.ODataRequest;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BatchRequestPartImpl.
+ */
 public class BatchRequestPartImpl implements BatchRequestPart {
 
+  /** The requests. */
   private List<ODataRequest> requests = new ArrayList<ODataRequest>();
+  
+  /** The is change set. */
   private boolean isChangeSet;
 
+  /**
+   * Instantiates a new batch request part impl.
+   */
   public BatchRequestPartImpl() {}
 
+  /**
+   * Instantiates a new batch request part impl.
+   *
+   * @param isChangeSet the is change set
+   * @param requests the requests
+   */
   public BatchRequestPartImpl(final boolean isChangeSet, final List<ODataRequest> requests) {
     this.isChangeSet = isChangeSet;
     this.requests = requests;
   }
 
+  /**
+   * Checks if is change set.
+   *
+   * @return true, if is change set
+   */
   @Override
   public boolean isChangeSet() {
     return isChangeSet;
   }
 
+  /**
+   * Sets the change set.
+   *
+   * @param isChangeSet the new change set
+   */
   public void setChangeSet(final boolean isChangeSet) {
     this.isChangeSet = isChangeSet;
   }
 
+  /**
+   * Gets the requests.
+   *
+   * @return the requests
+   */
   @Override
   public List<ODataRequest> getRequests() {
     return Collections.unmodifiableList(requests);
   }
 
+  /**
+   * Sets the requests.
+   *
+   * @param requests the new requests
+   */
   public void setRequests(final List<ODataRequest> requests) {
     this.requests = requests;
   }

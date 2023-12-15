@@ -46,6 +46,7 @@ import org.apache.olingo.odata2.testutil.server.ServletType;
 import org.junit.Before;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
  * Based on OLINGO-763 we changed the behaviour of serializer exceptions. Now they must result in 500 internal server
  * errors if an application provides false data. This test is to ensure that the serializer throws the correct exception
@@ -53,10 +54,20 @@ import org.junit.Test;
  */
 public class InvalidDataInScenarioTest extends AbstractRefTest {
 
+  /**
+   * Instantiates a new invalid data in scenario test.
+   *
+   * @param servletType the servlet type
+   */
   public InvalidDataInScenarioTest(ServletType servletType) {
     super(servletType);
   }
 
+  /**
+   * Creates the service.
+   *
+   * @return the o data single processor service
+   */
   @Override
   protected ODataSingleProcessorService createService() {
     ODataSingleProcessor processor = new LocalProcessor();
@@ -65,11 +76,19 @@ public class InvalidDataInScenarioTest extends AbstractRefTest {
     return new ODataSingleProcessorService(provider, processor) {};
   }
 
+  /**
+   * Show stacktrace.
+   */
   @Before
   public void showStacktrace() {
     disableLogging();
   }
 
+  /**
+   * Null key in entry data.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void nullKeyInEntryData() throws Exception {
     HttpResponse response = callUri("Employees('1')", HttpStatusCodes.INTERNAL_SERVER_ERROR);
@@ -78,6 +97,11 @@ public class InvalidDataInScenarioTest extends AbstractRefTest {
     assertTrue(getBody(response).contains("null value"));
   }
 
+  /**
+   * Violated facets in entry.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void violatedFacetsInEntry() throws Exception {
     HttpResponse response = callUri("Employees('2')", HttpStatusCodes.INTERNAL_SERVER_ERROR);
@@ -86,6 +110,11 @@ public class InvalidDataInScenarioTest extends AbstractRefTest {
     assertTrue(getBody(response).contains("metadata constraints"));
   }
 
+  /**
+   * Null key in feed data.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void nullKeyInFeedData() throws Exception {
     HttpResponse response = callUri("Employees", HttpStatusCodes.INTERNAL_SERVER_ERROR);
@@ -94,6 +123,11 @@ public class InvalidDataInScenarioTest extends AbstractRefTest {
     assertTrue(getBody(response).contains("null value"));
   }
 
+  /**
+   * Wrong property value is null.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void wrongPropertyValueIsNull() throws Exception {
     HttpResponse response = callUri("Employees('1')/EmployeeId", HttpStatusCodes.INTERNAL_SERVER_ERROR);
@@ -102,6 +136,11 @@ public class InvalidDataInScenarioTest extends AbstractRefTest {
     assertTrue(getBody(response).contains("null value"));
   }
 
+  /**
+   * Wrong property value with facets.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void wrongPropertyValueWithFacets() throws Exception {
     HttpResponse response = callUri("Employees('2')/TeamId", HttpStatusCodes.INTERNAL_SERVER_ERROR);
@@ -110,8 +149,19 @@ public class InvalidDataInScenarioTest extends AbstractRefTest {
     assertTrue(getBody(response).contains("metadata constraints"));
   }
 
+  /**
+   * The Class LocalProcessor.
+   */
   public class LocalProcessor extends ODataSingleProcessor {
 
+    /**
+     * Read entity.
+     *
+     * @param uriInfo the uri info
+     * @param contentType the content type
+     * @return the o data response
+     * @throws ODataException the o data exception
+     */
     @Override
     public ODataResponse readEntity(GetEntityUriInfo uriInfo, String contentType) throws ODataException {
       HashMap<String, Object> data = new HashMap<String, Object>();
@@ -132,6 +182,14 @@ public class InvalidDataInScenarioTest extends AbstractRefTest {
       }
     }
 
+    /**
+     * Read entity set.
+     *
+     * @param uriInfo the uri info
+     * @param contentType the content type
+     * @return the o data response
+     * @throws ODataException the o data exception
+     */
     @Override
     public ODataResponse readEntitySet(GetEntitySetUriInfo uriInfo, String contentType) throws ODataException {
       if ("Employees".equals(uriInfo.getTargetEntitySet().getName())) {
@@ -146,6 +204,14 @@ public class InvalidDataInScenarioTest extends AbstractRefTest {
       }
     }
 
+    /**
+     * Read entity simple property.
+     *
+     * @param uriInfo the uri info
+     * @param contentType the content type
+     * @return the o data response
+     * @throws ODataException the o data exception
+     */
     @Override
     public ODataResponse readEntitySimpleProperty(GetSimplePropertyUriInfo uriInfo, String contentType)
         throws ODataException {

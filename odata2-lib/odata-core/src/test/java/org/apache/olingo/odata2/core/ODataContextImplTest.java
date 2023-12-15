@@ -33,13 +33,18 @@ import org.apache.olingo.odata2.api.processor.ODataRequest;
 import org.junit.Before;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class ODataContextImplTest.
  */
 public class ODataContextImplTest {
 
+  /** The context. */
   ODataContextImpl context;
 
+  /**
+   * Before.
+   */
   @Before
   public void before() {
     ODataServiceFactory factory = mock(ODataServiceFactory.class);
@@ -51,18 +56,27 @@ public class ODataContextImplTest {
     context = new ODataContextImpl(request, factory);
   }
 
+  /**
+   * Http method.
+   */
   @Test
   public void httpMethod() {
     context.setHttpMethod(ODataHttpMethod.GET.name());
     assertEquals(ODataHttpMethod.GET.name(), context.getHttpMethod());
   }
 
+  /**
+   * Debug mode.
+   */
   @Test
   public void debugMode() {
     context.setDebugMode(true);
     assertTrue(context.isInDebugMode());
   }
 
+  /**
+   * Parent context.
+   */
   @Test
   public void parentContext() {
 

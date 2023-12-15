@@ -26,6 +26,7 @@ import org.apache.olingo.odata2.jpa.processor.api.ODataJPAContext;
 import org.apache.olingo.odata2.jpa.processor.api.ODataJPAResponseBuilder;
 import org.apache.olingo.odata2.jpa.processor.api.exception.ODataJPAMessageService;
 
+// TODO: Auto-generated Javadoc
 /**
  * Factory interface for creating following instances
  * 
@@ -54,9 +55,9 @@ public interface ODataJPAAccessFactory {
   public ODataSingleProcessor createODataProcessor(ODataJPAContext oDataJPAContext);
 
   /**
-   * 
-   * @param oDataJPAContext
-   * an instance of type {@link org.apache.olingo.odata2.jpa.processor.api.ODataJPAContext}.
+   * Creates a new ODataJPAAccess object.
+   *
+   * @param oDataJPAContext an instance of type {@link org.apache.olingo.odata2.jpa.processor.api.ODataJPAContext}.
    * The context should be initialized properly and cannot be null.
    * @return An implementation of JPA EdmProvider. EdmProvider handles
    * meta-data.
@@ -83,8 +84,9 @@ public interface ODataJPAAccessFactory {
   public ODataJPAMessageService getODataJPAMessageService(Locale locale);
 
   /**
-   * @param oDataJPAContext
-   * an instance of type {@link org.apache.olingo.odata2.jpa.processor.api.ODataJPAContext}.
+   * Gets the o data JPA response builder.
+   *
+   * @param oDataJPAContext an instance of type {@link org.apache.olingo.odata2.jpa.processor.api.ODataJPAContext}.
    * The context should be initialized properly and cannot be null.
    * 
    * The method creates an instance of OData Response Builder for building OData Responses from a JPA Entity.

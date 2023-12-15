@@ -26,11 +26,18 @@ import org.apache.olingo.odata2.api.exception.ODataNotImplementedException;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+// TODO: Auto-generated Javadoc
 /**
- *
+ * The Class AnnotationValueAccessTest.
  */
 public class AnnotationValueAccessTest {
 
+  /**
+   * Gets the property type.
+   *
+   * @return the property type
+   * @throws ODataException the o data exception
+   */
   @Test
   public void getPropertyType() throws ODataException {
     AnnotationValueAccess ava = new AnnotationValueAccess();
@@ -43,6 +50,12 @@ public class AnnotationValueAccessTest {
     Assert.assertEquals(String.class, type);
   }
 
+  /**
+   * Gets the property type null data.
+   *
+   * @return the property type null data
+   * @throws ODataException the o data exception
+   */
   @Test
   public void getPropertyTypeNullData() throws ODataException {
     AnnotationValueAccess ava = new AnnotationValueAccess();
@@ -53,6 +66,12 @@ public class AnnotationValueAccessTest {
     Assert.assertNull(type);
   }
 
+  /**
+   * Gets the property type not annotated.
+   *
+   * @return the property type not annotated
+   * @throws ODataException the o data exception
+   */
   @Test(expected = ODataNotImplementedException.class)
   public void getPropertyTypeNotAnnotated() throws ODataException {
     AnnotationValueAccess ava = new AnnotationValueAccess();
@@ -64,6 +83,12 @@ public class AnnotationValueAccessTest {
     Assert.assertEquals(String.class, type);
   }
 
+  /**
+   * Gets the property value.
+   *
+   * @return the property value
+   * @throws ODataException the o data exception
+   */
   @Test
   public void getPropertyValue() throws ODataException {
     AnnotationValueAccess ava = new AnnotationValueAccess();
@@ -77,6 +102,12 @@ public class AnnotationValueAccessTest {
     Assert.assertEquals("A Name", value);
   }
 
+  /**
+   * Gets the property value null.
+   *
+   * @return the property value null
+   * @throws ODataException the o data exception
+   */
   @Test
   public void getPropertyValueNull() throws ODataException {
     AnnotationValueAccess ava = new AnnotationValueAccess();
@@ -88,6 +119,12 @@ public class AnnotationValueAccessTest {
     Assert.assertNull(value);
   }
 
+  /**
+   * Gets the property value null data.
+   *
+   * @return the property value null data
+   * @throws ODataException the o data exception
+   */
   @Test
   public void getPropertyValueNullData() throws ODataException {
     AnnotationValueAccess ava = new AnnotationValueAccess();
@@ -99,6 +136,12 @@ public class AnnotationValueAccessTest {
     Assert.assertNull(value);
   }
 
+  /**
+   * Gets the property value not annotated.
+   *
+   * @return the property value not annotated
+   * @throws ODataException the o data exception
+   */
   @Test(expected = ODataNotImplementedException.class)
   public void getPropertyValueNotAnnotated() throws ODataException {
     AnnotationValueAccess ava = new AnnotationValueAccess();
@@ -109,6 +152,11 @@ public class AnnotationValueAccessTest {
     Assert.assertEquals("A Name", value);
   }
 
+  /**
+   * Sets the property value.
+   *
+   * @throws ODataException the o data exception
+   */
   @Test
   public void setPropertyValue() throws ODataException {
     AnnotationValueAccess ava = new AnnotationValueAccess();
@@ -122,6 +170,11 @@ public class AnnotationValueAccessTest {
     Assert.assertEquals("Another Name", data.name);
   }
 
+  /**
+   * Sets the property value not annotated.
+   *
+   * @throws ODataException the o data exception
+   */
   @Test(expected = ODataNotImplementedException.class)
   public void setPropertyValueNotAnnotated() throws ODataException {
     AnnotationValueAccess ava = new AnnotationValueAccess();
@@ -132,6 +185,11 @@ public class AnnotationValueAccessTest {
     ava.setPropertyValue(data, property, value);
   }
 
+  /**
+   * Sets the property value null.
+   *
+   * @throws ODataException the o data exception
+   */
   @Test
   public void setPropertyValueNull() throws ODataException {
     AnnotationValueAccess ava = new AnnotationValueAccess();
@@ -144,6 +202,11 @@ public class AnnotationValueAccessTest {
     Assert.assertNull(null, data.name);
   }
 
+  /**
+   * Sets the property data null.
+   *
+   * @throws ODataException the o data exception
+   */
   @Test
   public void setPropertyDataNull() throws ODataException {
     AnnotationValueAccess ava = new AnnotationValueAccess();
@@ -155,6 +218,12 @@ public class AnnotationValueAccessTest {
     // no exception is thrown, all fine
   }
 
+  /**
+   * Gets the mapping value.
+   *
+   * @return the mapping value
+   * @throws Exception the exception
+   */
   @Test
   public void getMappingValue() throws Exception {
     AnnotationValueAccess ava = new AnnotationValueAccess();
@@ -168,6 +237,12 @@ public class AnnotationValueAccessTest {
     Assert.assertEquals("mapped property value", value);
   }
 
+  /**
+   * Gets the mapping value null mapping.
+   *
+   * @return the mapping value null mapping
+   * @throws Exception the exception
+   */
   @Test
   public void getMappingValueNullMapping() throws Exception {
     AnnotationValueAccess ava = new AnnotationValueAccess();
@@ -180,6 +255,12 @@ public class AnnotationValueAccessTest {
     Assert.assertNull(value);
   }
 
+  /**
+   * Gets the mapping value null value.
+   *
+   * @return the mapping value null value
+   * @throws Exception the exception
+   */
   @Test
   public void getMappingValueNullValue() throws Exception {
     AnnotationValueAccess ava = new AnnotationValueAccess();
@@ -192,6 +273,11 @@ public class AnnotationValueAccessTest {
     Assert.assertNull(value);
   }
 
+  /**
+   * Sets the mapping value.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void setMappingValue() throws Exception {
     AnnotationValueAccess ava = new AnnotationValueAccess();
@@ -205,6 +291,11 @@ public class AnnotationValueAccessTest {
     Assert.assertEquals("Changed mapped property value", data.myMappedProperty);
   }
 
+  /**
+   * Sets the mapping value null value.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void setMappingValueNullValue() throws Exception {
     AnnotationValueAccess ava = new AnnotationValueAccess();
@@ -218,6 +309,11 @@ public class AnnotationValueAccessTest {
     Assert.assertNull(data.myMappedProperty);
   }
 
+  /**
+   * Sets the mapping value null mapping.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void setMappingValueNullMapping() throws Exception {
     AnnotationValueAccess ava = new AnnotationValueAccess();
@@ -231,25 +327,49 @@ public class AnnotationValueAccessTest {
     Assert.assertEquals("mapped property value", data.myMappedProperty);
   }
 
+  /**
+   * Mock property.
+   *
+   * @param name the name
+   * @return the edm property
+   * @throws EdmException the edm exception
+   */
   private EdmProperty mockProperty(final String name) throws EdmException {
     EdmProperty property = Mockito.mock(EdmProperty.class);
     Mockito.when(property.getName()).thenReturn(name);
     return property;
   }
 
+  /**
+   * Mock mapping.
+   *
+   * @param mimeTypeKey the mime type key
+   * @return the edm mapping
+   * @throws EdmException the edm exception
+   */
   private EdmMapping mockMapping(final String mimeTypeKey) throws EdmException {
     EdmMapping mapping = Mockito.mock(EdmMapping.class);
     Mockito.when(mapping.getMediaResourceMimeTypeKey()).thenReturn(mimeTypeKey);
     return mapping;
   }
 
+  /**
+   * The Class SimpleEntity.
+   */
   @EdmEntityType
   private class SimpleEntity {
+    
+    /** The name. */
     @org.apache.olingo.odata2.api.annotation.edm.EdmProperty
     String name;
+    
+    /** The my mapped property. */
     @org.apache.olingo.odata2.api.annotation.edm.EdmProperty
     String myMappedProperty;
   }
 
+  /**
+   * The Class NotAnnotatedBean.
+   */
   private class NotAnnotatedBean {}
 }

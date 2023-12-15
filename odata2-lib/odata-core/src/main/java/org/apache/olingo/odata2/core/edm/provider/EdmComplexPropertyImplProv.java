@@ -22,18 +22,33 @@ import org.apache.olingo.odata2.api.edm.EdmException;
 import org.apache.olingo.odata2.api.edm.EdmType;
 import org.apache.olingo.odata2.api.edm.provider.ComplexProperty;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class EdmComplexPropertyImplProv.
  */
 public class EdmComplexPropertyImplProv extends EdmPropertyImplProv {
 
+  /** The property. */
   private ComplexProperty property;
 
+  /**
+   * Instantiates a new edm complex property impl prov.
+   *
+   * @param edm the edm
+   * @param property the property
+   * @throws EdmException the edm exception
+   */
   public EdmComplexPropertyImplProv(final EdmImplProv edm, final ComplexProperty property) throws EdmException {
     super(edm, property.getType(), property);
     this.property = property;
   }
 
+  /**
+   * Gets the type.
+   *
+   * @return the type
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmType getType() throws EdmException {
     if (edmType == null) {
@@ -45,6 +60,11 @@ public class EdmComplexPropertyImplProv extends EdmPropertyImplProv {
     return edmType;
   }
 
+  /**
+   * Checks if is simple.
+   *
+   * @return true, if is simple
+   */
   @Override
   public boolean isSimple() {
     return false;

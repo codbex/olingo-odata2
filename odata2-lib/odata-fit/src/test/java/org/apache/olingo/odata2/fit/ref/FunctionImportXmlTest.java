@@ -42,16 +42,27 @@ import org.apache.olingo.odata2.testutil.helper.StringHelper;
 import org.apache.olingo.odata2.testutil.server.ServletType;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
  * Tests employing the reference scenario reading function-import output in XML format.
  * 
  */
 public class FunctionImportXmlTest extends AbstractRefXmlTest {
 
+  /**
+   * Instantiates a new function import xml test.
+   *
+   * @param servletType the servlet type
+   */
   public FunctionImportXmlTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /**
+   * Function imports.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void functionImports() throws Exception {
     HttpResponse response = callUri("EmployeeSearch?q='alter'");
@@ -121,6 +132,11 @@ public class FunctionImportXmlTest extends AbstractRefXmlTest {
     notFound("ManagerPhoto?Id='2'");
   }
 
+  /**
+   * Function imports accept format equals atom.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void functionImportsAcceptFormatEqualsAtom() throws Exception {
     HttpResponse response = callUri("OldestEmployee?$format=atom");
@@ -128,6 +144,11 @@ public class FunctionImportXmlTest extends AbstractRefXmlTest {
     assertXpathEvaluatesTo(EMPLOYEE_3_NAME, "/atom:entry/m:properties/d:EmployeeName", getBody(response));
   }
 
+  /**
+   * Function imports accept equals atom.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void functionImportsAcceptEqualsAtom() throws Exception {
     HttpResponse response =
@@ -136,6 +157,11 @@ public class FunctionImportXmlTest extends AbstractRefXmlTest {
     assertXpathEvaluatesTo(EMPLOYEE_3_NAME, "/atom:entry/m:properties/d:EmployeeName", getBody(response));
   }
 
+  /**
+   * Function imports default accept.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void functionImportsDefaultAccept() throws Exception {
     HttpResponse response = callUri("EmployeeSearch?q='alter'");
@@ -184,11 +210,23 @@ public class FunctionImportXmlTest extends AbstractRefXmlTest {
     notFound("ManagerPhoto?Id='2'");
   }
 
+  /**
+   * Check media type.
+   *
+   * @param response the response
+   * @param expectedContentType the expected content type
+   */
   @Override
   public void checkMediaType(final HttpResponse response, final String expectedContentType) {
     checkMediaType(response, ContentType.parse(expectedContentType));
   }
 
+  /**
+   * Check media type.
+   *
+   * @param response the response
+   * @param expectedContentType the expected content type
+   */
   private void checkMediaType(final HttpResponse response, final ContentType expectedContentType) {
     ContentType responseContentType =
         ContentType.parse(response.getFirstHeader(HttpHeaders.CONTENT_TYPE).getValue());

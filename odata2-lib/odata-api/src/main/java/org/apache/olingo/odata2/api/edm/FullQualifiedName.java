@@ -18,19 +18,25 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.edm;
 
+// TODO: Auto-generated Javadoc
 /**
- * @org.apache.olingo.odata2.DoNotImplement
- * A full qualified name of any element in the EDM consists of a name and a namespace.
- * 
+ * The Class FullQualifiedName.
+ *
+ * @org.apache.olingo.odata2.DoNotImplement A full qualified name of any element in the EDM consists of a name and a namespace.
  */
 public class FullQualifiedName {
 
+  /** The namespace. */
   private final String namespace;
+  
+  /** The name. */
   private final String name;
 
   /**
-   * @param namespace
-   * @param name
+   * Instantiates a new full qualified name.
+   *
+   * @param namespace the namespace
+   * @param name the name
    */
   public FullQualifiedName(final String namespace, final String name) {
     this.namespace = namespace;
@@ -38,6 +44,8 @@ public class FullQualifiedName {
   }
 
   /**
+   * Gets the namespace.
+   *
    * @return namespace
    */
   public String getNamespace() {
@@ -45,17 +53,30 @@ public class FullQualifiedName {
   }
 
   /**
+   * Gets the name.
+   *
    * @return name
    */
   public String getName() {
     return name;
   }
 
+  /**
+   * Hash code.
+   *
+   * @return the int
+   */
   @Override
   public int hashCode() {
     return toString().hashCode();
   }
 
+  /**
+   * Equals.
+   *
+   * @param obj the obj
+   * @return true, if successful
+   */
   @Override
   public boolean equals(final Object obj) {
     if (this == obj) {
@@ -68,6 +89,11 @@ public class FullQualifiedName {
     return namespace.equals(other.getNamespace()) && name.equals(other.getName());
   }
 
+  /**
+   * To string.
+   *
+   * @return the string
+   */
   @Override
   public String toString() {
     return namespace + Edm.DELIMITER + name;

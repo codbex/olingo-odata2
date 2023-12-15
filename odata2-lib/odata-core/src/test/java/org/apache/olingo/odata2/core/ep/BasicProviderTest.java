@@ -51,17 +51,29 @@ import org.custommonkey.xmlunit.SimpleNamespaceContext;
 import org.custommonkey.xmlunit.XMLUnit;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class BasicProviderTest.
  */
 public class BasicProviderTest extends AbstractProviderTest {
 
+  /**
+   * Instantiates a new basic provider test.
+   *
+   * @param type the type
+   */
   public BasicProviderTest(final StreamWriterImplType type) {
     super(type);
   }
 
+  /** The provider. */
   protected static BasicEntityProvider provider = new BasicEntityProvider();
 
+  /**
+   * Write metadata.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void writeMetadata() throws Exception {
     Map<String, String> predefinedNamespaces = new HashMap<String, String>();
@@ -81,6 +93,9 @@ public class BasicProviderTest extends AbstractProviderTest {
     assertTrue(metadata.contains("xmlns:annoPrefix2=\"http://annoNamespace\""));
   }
 
+  /**
+   * Sets the namespaces.
+   */
   private void setNamespaces() {
     Map<String, String> prefixMap = new HashMap<String, String>();
     prefixMap.put("edmx", Edm.NAMESPACE_EDMX_2007_06);
@@ -93,6 +108,11 @@ public class BasicProviderTest extends AbstractProviderTest {
     XMLUnit.setXpathNamespaceContext(new SimpleNamespaceContext(prefixMap));
   }
 
+  /**
+   * Write metadata 2.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void writeMetadata2() throws Exception {
     EdmProvider testProvider = new EdmTestProvider();
@@ -138,6 +158,11 @@ public class BasicProviderTest extends AbstractProviderTest {
         metadata);
   }
 
+  /**
+   * Metadata with references.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void metadataWithReferences() throws Exception {
     DataServices serviceMetadata = new DataServices();
@@ -156,6 +181,11 @@ public class BasicProviderTest extends AbstractProviderTest {
     assertTrue(metadata.contains("edmx:Include xmlns:edmx=\"http://docs.oasis-open.org/odata/ns/edmx\""));
   }
   
+  /**
+   * Metadata with references and predefined namespaces.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void metadataWithReferencesAndPredefinedNamespaces() throws Exception {
     DataServices serviceMetadata = new DataServices();
@@ -181,6 +211,11 @@ public class BasicProviderTest extends AbstractProviderTest {
     assertTrue(metadata.contains("edmx:Edmx xmlns:edmx=\"http://docs.oasis-open.org/odata/ns/edmx\" Version=\"4.0\""));
   }
 
+  /**
+   * Creates the element with include.
+   *
+   * @return the annotation element
+   */
   private AnnotationElement createElementWithInclude() {
     List<AnnotationAttribute> childAttributes = new ArrayList<AnnotationAttribute>();
     childAttributes.add(new AnnotationAttribute().setName("Namespace").setText("Org.OData.Core.V1"));
@@ -194,6 +229,11 @@ public class BasicProviderTest extends AbstractProviderTest {
         "http://docs.oasis-open.org/odata/ns/edmx").setAttributes(referenceAttributes).setChildElements(childElements);
   }
 
+  /**
+   * Creates the element without include.
+   *
+   * @return the annotation element
+   */
   private AnnotationElement createElementWithoutInclude() {
     List<AnnotationAttribute> referenceAttributes = new ArrayList<AnnotationAttribute>();
     referenceAttributes.add(new AnnotationAttribute().setName("Uri").setText("http://someurl.com"));
@@ -201,6 +241,11 @@ public class BasicProviderTest extends AbstractProviderTest {
         "http://docs.oasis-open.org/odata/ns/edmx").setAttributes(referenceAttributes);
   }
 
+  /**
+   * Write metadata 3.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void writeMetadata3() throws Exception {
     EdmProvider testProvider = new EdmTestProvider();
@@ -238,6 +283,11 @@ public class BasicProviderTest extends AbstractProviderTest {
         metadata);
   }
 
+  /**
+   * Write property value.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void writePropertyValue() throws Exception {
     EdmTyped edmTyped = MockFacade.getMockEdm().getEntityType("RefScenario", "Employee").getProperty("Age");
@@ -251,6 +301,11 @@ public class BasicProviderTest extends AbstractProviderTest {
     assertEquals(employeeData.get("Age").toString(), value);
   }
 
+  /**
+   * Read property value.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readPropertyValue() throws Exception {
     final EdmProperty property =
@@ -261,6 +316,11 @@ public class BasicProviderTest extends AbstractProviderTest {
     assertEquals(Integer.valueOf(42), age);
   }
 
+  /**
+   * Read property value with mapping.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readPropertyValueWithMapping() throws Exception {
     final EdmProperty property =
@@ -271,6 +331,11 @@ public class BasicProviderTest extends AbstractProviderTest {
     assertEquals(Long.valueOf(42), age);
   }
 
+  /**
+   * Read property value with invalid mapping.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void readPropertyValueWithInvalidMapping() throws Exception {
     final EdmProperty property =
@@ -281,6 +346,11 @@ public class BasicProviderTest extends AbstractProviderTest {
     assertEquals(Float.valueOf(42), age);
   }
 
+  /**
+   * Read property binary value.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readPropertyBinaryValue() throws Exception {
     final byte[] bytes = new byte[] { 1, 2, 3, 4, -128 };
@@ -291,6 +361,11 @@ public class BasicProviderTest extends AbstractProviderTest {
         .readPropertyValue(property, new ByteArrayInputStream(bytes), null)));
   }
 
+  /**
+   * Write binary.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void writeBinary() throws Exception {
     final byte[] bytes = new byte[] { 49, 50, 51, 52, 65 };
@@ -302,6 +377,11 @@ public class BasicProviderTest extends AbstractProviderTest {
     assertEquals("1234A", value);
   }
 
+  /**
+   * Read binary.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readBinary() throws Exception {
     final byte[] bytes = new byte[] { 1, 2, 3, 4, -128 };

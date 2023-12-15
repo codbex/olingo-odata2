@@ -45,15 +45,32 @@ import org.apache.olingo.odata2.testutil.mock.MockFacade;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class UriInfoTest.
+ */
 public class UriInfoTest {
 
+  /** The edm. */
   private static Edm edm;
   
+  /**
+   * Gets the edm.
+   *
+   * @return the edm
+   * @throws ODataException the o data exception
+   * @throws EdmException the edm exception
+   */
   @BeforeClass
   public static void getEdm() throws ODataException, EdmException {
     edm = MockFacade.getMockEdm();
   }
   
+  /**
+   * Everything initial.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void everythingInitial() throws Exception {
     UriInfoImpl result = parse("/");
@@ -80,6 +97,11 @@ public class UriInfoTest {
     assertNull(result.getTop());
   }
 
+  /**
+   * All initial.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void allInitial() throws Exception {
     UriInfoImpl result = parse("/Employees");
@@ -94,6 +116,11 @@ public class UriInfoTest {
     assertEquals(Collections.emptyMap(), result.getCustomQueryOptions());
   }
 
+  /**
+   * Some initial.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void someInitial() throws Exception {
     UriInfoImpl result = parse("/Employees('1')");
@@ -109,6 +136,11 @@ public class UriInfoTest {
     assertEquals(Collections.emptyMap(), result.getCustomQueryOptions());
   }
 
+  /**
+   * Some initial 2.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void someInitial2() throws Exception {
     UriInfoImpl result = parse("/Employees('1')/ne_Manager");
@@ -127,8 +159,12 @@ public class UriInfoTest {
   /**
    * Parse the URI part after an OData service root, given as string.
    * Query parameters can be included.
+   *
    * @param uri the URI part
    * @return a {@link UriInfoImpl} instance containing the parsed information
+   * @throws UriSyntaxException the uri syntax exception
+   * @throws UriNotMatchingException the uri not matching exception
+   * @throws EdmException the edm exception
    */
   private UriInfoImpl parse(final String uri) throws UriSyntaxException, UriNotMatchingException, EdmException {
     final String[] path = uri.split("\\?", -1);
@@ -149,6 +185,13 @@ public class UriInfoTest {
     return (UriInfoImpl) result;
   }
   
+  /**
+   * Gets the path segments.
+   *
+   * @param uri the uri
+   * @return the path segments
+   * @throws UriSyntaxException the uri syntax exception
+   */
   private List<PathSegment> getPathSegments(final String uri) throws UriSyntaxException {
     List<PathSegment> pathSegments = new ArrayList<PathSegment>();
     for (final String segment : uri.split("/", -1)) {
@@ -159,6 +202,12 @@ public class UriInfoTest {
     return pathSegments;
   }
   
+  /**
+   * Gets the query parameters.
+   *
+   * @param uri the uri
+   * @return the query parameters
+   */
   private Map<String, List<String>> getQueryParameters(final String uri) {
     Map<String, List<String>> allQueryParameters = new HashMap<String, List<String>>();
 
@@ -175,6 +224,13 @@ public class UriInfoTest {
     return allQueryParameters;
   }
   
+  /**
+   * Unescape.
+   *
+   * @param s the s
+   * @return the string
+   * @throws UriSyntaxException the uri syntax exception
+   */
   private String unescape(final String s) throws UriSyntaxException {
     try {
       return new URI(s).getPath();

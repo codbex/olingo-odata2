@@ -46,6 +46,7 @@ import org.apache.olingo.odata2.api.processor.ODataResponse;
 import org.apache.olingo.odata2.core.commons.ContentType;
 import org.apache.olingo.odata2.core.ep.ProviderFacadeImpl;
 
+// TODO: Auto-generated Javadoc
 /**
  * Creates an error response according to the format defined by the OData standard
  * if an exception occurs that is not handled elsewhere.
@@ -54,22 +55,41 @@ import org.apache.olingo.odata2.core.ep.ProviderFacadeImpl;
 @Provider
 public class ODataExceptionMapperImpl implements ExceptionMapper<Exception> {
 
+  /** The Constant DOLLAR_FORMAT. */
   private static final String DOLLAR_FORMAT = "$format";
+  
+  /** The Constant DOLLAR_FORMAT_JSON. */
   private static final String DOLLAR_FORMAT_JSON = "json";
 
+  /** The Constant DEFAULT_RESPONSE_LOCALE. */
   private static final Locale DEFAULT_RESPONSE_LOCALE = Locale.ENGLISH;
 
+  /** The uri info. */
   @Context
   UriInfo uriInfo;
+  
+  /** The http headers. */
   @Context
   HttpHeaders httpHeaders;
+  
+  /** The servlet config. */
   @Context
   ServletConfig servletConfig;
+  
+  /** The servlet request. */
   @Context
   HttpServletRequest servletRequest;
+  
+  /** The app. */
   @Context
   Application app;
 
+  /**
+   * To response.
+   *
+   * @param exception the exception
+   * @return the response
+   */
   @Override
   public Response toResponse(final Exception exception) {
     ODataResponse response;
@@ -88,6 +108,12 @@ public class ODataExceptionMapperImpl implements ExceptionMapper<Exception> {
     return RestUtil.convertResponse(response);
   }
 
+  /**
+   * Handle exception.
+   *
+   * @param exception the exception
+   * @return the o data response
+   */
   private ODataResponse handleException(final Exception exception) {
 
     ODataExceptionWrapper exceptionWrapper =
@@ -95,6 +121,16 @@ public class ODataExceptionMapperImpl implements ExceptionMapper<Exception> {
     return exceptionWrapper.wrapInExceptionResponse(exception);
   }
 
+  /**
+   * Handle web application exception.
+   *
+   * @param exception the exception
+   * @return the o data response
+   * @throws ClassNotFoundException the class not found exception
+   * @throws InstantiationException the instantiation exception
+   * @throws IllegalAccessException the illegal access exception
+   * @throws EntityProviderException the entity provider exception
+   */
   private ODataResponse handleWebApplicationException(final Exception exception) throws ClassNotFoundException,
       InstantiationException, IllegalAccessException, EntityProviderException {
     ODataErrorContext errorContext = createErrorContext((WebApplicationException) exception);
@@ -103,6 +139,13 @@ public class ODataExceptionMapperImpl implements ExceptionMapper<Exception> {
         new ProviderFacadeImpl().writeErrorDocument(errorContext) : executeErrorCallback(errorContext, callback);
   }
 
+  /**
+   * Execute error callback.
+   *
+   * @param errorContext the error context
+   * @param callback the callback
+   * @return the o data response
+   */
   private ODataResponse executeErrorCallback(final ODataErrorContext errorContext, final ODataErrorCallback callback) {
     ODataResponse oDataResponse;
     try {
@@ -113,6 +156,12 @@ public class ODataExceptionMapperImpl implements ExceptionMapper<Exception> {
     return oDataResponse;
   }
 
+  /**
+   * Creates the error context.
+   *
+   * @param exception the exception
+   * @return the o data error context
+   */
   private ODataErrorContext createErrorContext(final WebApplicationException exception) {
     ODataErrorContext context = new ODataErrorContext();
     if (uriInfo != null) {
@@ -147,6 +196,11 @@ public class ODataExceptionMapperImpl implements ExceptionMapper<Exception> {
     return context;
   }
 
+  /**
+   * Gets the content type.
+   *
+   * @return the content type
+   */
   private ContentType getContentType() {
     ContentType contentType = getContentTypeByUriInfo();
     if (contentType == null) {
@@ -155,6 +209,11 @@ public class ODataExceptionMapperImpl implements ExceptionMapper<Exception> {
     return contentType;
   }
 
+  /**
+   * Gets the content type by uri info.
+   *
+   * @return the content type by uri info
+   */
   private ContentType getContentTypeByUriInfo() {
     ContentType contentType = null;
     if (uriInfo != null && uriInfo.getQueryParameters() != null) {
@@ -173,6 +232,11 @@ public class ODataExceptionMapperImpl implements ExceptionMapper<Exception> {
     return contentType;
   }
 
+  /**
+   * Gets the content type by accept header.
+   *
+   * @return the content type by accept header
+   */
   private ContentType getContentTypeByAcceptHeader() {
     for (MediaType type : httpHeaders.getAcceptableMediaTypes()) {
       if (ContentType.isParseable(type.toString())) {
@@ -192,6 +256,11 @@ public class ODataExceptionMapperImpl implements ExceptionMapper<Exception> {
     return ContentType.APPLICATION_XML;
   }
 
+  /**
+   * Gets the error handler callback.
+   *
+   * @return the error handler callback
+   */
   private ODataErrorCallback getErrorHandlerCallback() {
     final ODataServiceFactory serviceFactory =
         ODataRootLocator.createServiceFactoryFromContext(app, servletRequest, servletConfig);

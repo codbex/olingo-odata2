@@ -23,6 +23,7 @@ import java.util.List;
 import org.apache.olingo.odata2.api.edm.EdmEntitySet;
 import org.apache.olingo.odata2.api.edm.EdmNavigationProperty;
 
+// TODO: Auto-generated Javadoc
 /**
  * Navigation segment, consisting of a navigation property, its target entity set,
  * and, optionally, a list of key predicates to determine a single entity out of

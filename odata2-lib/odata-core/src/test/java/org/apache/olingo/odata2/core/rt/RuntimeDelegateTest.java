@@ -24,8 +24,15 @@ import org.apache.olingo.odata2.api.rt.RuntimeDelegate;
 import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class RuntimeDelegateTest.
+ */
 public class RuntimeDelegateTest extends BaseTest {
 
+  /**
+   * Test instance.
+   */
   @Test
   public void testInstance() {
     assertNotNull(RuntimeDelegate.createODataResponseBuilder());

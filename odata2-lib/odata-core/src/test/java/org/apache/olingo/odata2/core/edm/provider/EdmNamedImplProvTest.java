@@ -30,11 +30,21 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EdmNamedImplProvTest.
+ */
 public class EdmNamedImplProvTest extends BaseTest {
 
+  /** The expected ex. */
   @Rule
   public ExpectedException expectedEx = ExpectedException.none();
   
+  /**
+   * Test property simple.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EdmException.class)
   public void testPropertySimple() throws Exception {
 
@@ -45,6 +55,11 @@ public class EdmNamedImplProvTest extends BaseTest {
     new EdmSimplePropertyImplProv(edmImplProv, propertySimple);
   }
 
+  /**
+   * Test property illegal start with number.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EdmException.class)
   public void testPropertyIllegalStartWithNumber() throws Exception {
 
@@ -57,6 +72,11 @@ public class EdmNamedImplProvTest extends BaseTest {
     expectedEx.expectMessage("'Prop;ertyName' name pattern not valid.");
   }
 
+  /**
+   * Test property with number.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testPropertyWithNumber() throws Exception {
 
@@ -69,6 +89,11 @@ public class EdmNamedImplProvTest extends BaseTest {
     assertEquals("Prop_1_Name", new EdmSimplePropertyImplProv(edmImplProv, propertySimple).getName());
   }
 
+  /**
+   * Test property umlaut.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testPropertyUmlaut() throws Exception {
     EdmProvider edmProvider = mock(EdmProvider.class);
@@ -78,6 +103,11 @@ public class EdmNamedImplProvTest extends BaseTest {
     assertEquals("ÄropertyName", new EdmSimplePropertyImplProv(edmImplProv, propertySimple).getName());
   }
 
+  /**
+   * Test property unicode.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testPropertyUnicode() throws Exception {
     EdmProvider edmProvider = mock(EdmProvider.class);
@@ -88,6 +118,11 @@ public class EdmNamedImplProvTest extends BaseTest {
     assertEquals("ÀropertyÁameÀÕÖ", new EdmSimplePropertyImplProv(edmImplProv, propertySimple).getName());
   }
 
+  /**
+   * Test property unicode two.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testPropertyUnicodeTwo() throws Exception {
     EdmProvider edmProvider = mock(EdmProvider.class);

@@ -22,13 +22,36 @@ import java.util.List;
 
 import org.apache.olingo.odata2.api.edm.EdmType;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Interface InputTypeValidator.
+ */
 public interface InputTypeValidator {
 
+  /**
+   * Validate parameter set.
+   *
+   * @param allowedParameterTypes the allowed parameter types
+   * @param actualParameterTypes the actual parameter types
+   * @return the edm type
+   * @throws ExpressionParserInternalError the expression parser internal error
+   */
   public EdmType validateParameterSet(List<ParameterSet> allowedParameterTypes, List<EdmType> actualParameterTypes)
       throws ExpressionParserInternalError;
 
+  /**
+   * The Class TypePromotionValidator.
+   */
   public static class TypePromotionValidator implements InputTypeValidator {
 
+    /**
+     * Validate parameter set.
+     *
+     * @param allowedParameterTypes the allowed parameter types
+     * @param actualParameterTypes the actual parameter types
+     * @return the edm type
+     * @throws ExpressionParserInternalError the expression parser internal error
+     */
     @Override
     public EdmType validateParameterSet(final List<ParameterSet> allowedParameterTypes,
         final List<EdmType> actualParameterTypes) throws ExpressionParserInternalError {

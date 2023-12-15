@@ -27,15 +27,22 @@ import org.apache.olingo.odata2.testutil.server.ServletType;
 import org.junit.Ignore;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class ContentNegotiationPostRequestTest.
  */
 public class ContentNegotiationPostRequestTest extends AbstractContentNegotiationTest {
 
+  /**
+   * Instantiates a new content negotiation post request test.
+   *
+   * @param servletType the servlet type
+   */
   public ContentNegotiationPostRequestTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /** The Constant EMPLOYEE_1_XML. */
   public static final String EMPLOYEE_1_XML =
       "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
           +
@@ -89,6 +96,7 @@ public class ContentNegotiationPostRequestTest extends AbstractContentNegotiatio
           "</m:properties>" +
           "</entry>";
 
+  /** The Constant ROOM_1_XML. */
   private static final String ROOM_1_XML =
       "<?xml version='1.0' encoding='UTF-8'?>"
           +
@@ -126,6 +134,11 @@ public class ContentNegotiationPostRequestTest extends AbstractContentNegotiatio
           "</content>" +
           "</entry>";
 
+  /**
+   * Test UR I 1 entity set GET.
+   *
+   * @throws Exception the exception
+   */
   @Test
   @Ignore("Currently ignored because of bad jenkins server performance")
   public void testURI_1_EntitySet_GET() throws Exception {
@@ -159,6 +172,11 @@ public class ContentNegotiationPostRequestTest extends AbstractContentNegotiatio
     testSet.execute(getEndpoint());
   }
 
+  /**
+   * Test UR I 1 entity set.
+   *
+   * @throws Exception the exception
+   */
   @Test
   @Ignore("Currently ignored because of bad jenkins server performance")
   public void testURI_1_EntitySet() throws Exception {
@@ -194,6 +212,11 @@ public class ContentNegotiationPostRequestTest extends AbstractContentNegotiatio
     testSet.execute(getEndpoint());
   }
 
+  /**
+   * Test UR I 1 for issue.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testURI_1_ForIssue() throws Exception {
     // create test set
@@ -214,6 +237,11 @@ public class ContentNegotiationPostRequestTest extends AbstractContentNegotiatio
     test.execute(getEndpoint());
   }
 
+  /**
+   * Test UR I 2 for issue.
+   *
+   * @throws Exception the exception
+   */
   @Test
   @Ignore("What is expected service behavior?")
   public void testURI_2_ForIssue() throws Exception {
@@ -235,6 +263,11 @@ public class ContentNegotiationPostRequestTest extends AbstractContentNegotiatio
     test.execute(getEndpoint());
   }
 
+  /**
+   * Test UR I 17 entity set with media resource.
+   *
+   * @throws Exception the exception
+   */
   @Test
   @Ignore("Some test failure")
   public void testURI_17_EntitySetWithMediaResource() throws Exception {
@@ -266,6 +299,11 @@ public class ContentNegotiationPostRequestTest extends AbstractContentNegotiatio
     testSet.execute(getEndpoint());
   }
 
+  /**
+   * Test UR I 5 entity set.
+   *
+   * @throws Exception the exception
+   */
   @Test
   @Ignore("Some test failure")
   public void testURI_5_EntitySet() throws Exception {

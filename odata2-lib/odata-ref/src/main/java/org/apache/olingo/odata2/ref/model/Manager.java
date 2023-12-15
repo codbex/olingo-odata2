@@ -21,17 +21,30 @@ package org.apache.olingo.odata2.ref.model;
 import java.util.ArrayList;
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class Manager.
  */
 public class Manager extends Employee {
 
+  /** The employees. */
   private List<Employee> employees = new ArrayList<Employee>();
 
+  /**
+   * Instantiates a new manager.
+   *
+   * @param id the id
+   * @param name the name
+   */
   public Manager(final int id, final String name) {
     super(id, name);
   }
 
+  /**
+   * Gets the employees.
+   *
+   * @return the employees
+   */
   public List<Employee> getEmployees() {
     return employees;
   }

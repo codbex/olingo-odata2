@@ -44,20 +44,33 @@ import org.apache.olingo.odata2.api.uri.info.GetServiceDocumentUriInfo;
 import org.apache.olingo.odata2.testutil.server.ServletType;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class FitLoadTest.
  */
 public class FitLoadTest extends AbstractBasicTest {
 
+  /**
+   * Instantiates a new fit load test.
+   *
+   * @param servletType the servlet type
+   */
   public FitLoadTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /** The Constant LOOP_COUNT. */
   /*
    * increase for load analysis > 10.000
    */
   private static final int LOOP_COUNT = 1;
 
+  /**
+   * Creates the processor.
+   *
+   * @return the o data single processor
+   * @throws ODataException the o data exception
+   */
   @Override
   protected ODataSingleProcessor createProcessor() throws ODataException {
     ODataSingleProcessor processor = mock(ODataSingleProcessor.class);
@@ -69,6 +82,12 @@ public class FitLoadTest extends AbstractBasicTest {
     return processor;
   }
 
+  /**
+   * Use apache http client.
+   *
+   * @throws ClientProtocolException the client protocol exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Test
   public void useApacheHttpClient() throws ClientProtocolException, IOException {
     final URI uri = URI.create(getEndpoint().toString() + "$metadata");
@@ -80,6 +99,11 @@ public class FitLoadTest extends AbstractBasicTest {
     }
   }
 
+  /**
+   * Use java http client.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Test
   public void useJavaHttpClient() throws IOException {
     final URI uri = URI.create(getEndpoint().toString() + "$metadata");

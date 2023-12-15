@@ -43,19 +43,46 @@ import org.apache.olingo.odata2.core.ODataPathSegmentImpl;
 import org.apache.olingo.odata2.core.ODataRequestHandler;
 import org.apache.olingo.odata2.core.PathInfoImpl;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BatchHandlerImpl.
+ */
 public class BatchHandlerImpl implements BatchHandler {
+  
+  /** The Constant BAD_REQUEST. */
   private static final int BAD_REQUEST = 400;
+  
+  /** The factory. */
   private ODataServiceFactory factory;
+  
+  /** The service. */
   private ODataService service;
+  
+  /** The content id map. */
   private Map<String, String> contentIdMap;
+  
+  /** The Constant BATCH_ODATA_REQUEST_HEADERS. */
   private static final String BATCH_ODATA_REQUEST_HEADERS = "batchODataRequestHeaders";
 
+  /**
+   * Instantiates a new batch handler impl.
+   *
+   * @param factory the factory
+   * @param service the service
+   */
   public BatchHandlerImpl(final ODataServiceFactory factory, final ODataService service) {
     this.factory = factory;
     this.service = service;
     contentIdMap = new HashMap<String, String>();
   }
 
+  /**
+   * Handle batch part.
+   *
+   * @param batchPart the batch part
+   * @return the batch response part
+   * @throws ODataException the o data exception
+   */
   @Override
   public BatchResponsePart handleBatchPart(final BatchRequestPart batchPart) throws ODataException {
     if (batchPart.isChangeSet()) {
@@ -84,6 +111,13 @@ public class BatchHandlerImpl implements BatchHandler {
     }
   }
 
+  /**
+   * Handle request.
+   *
+   * @param suppliedRequest the supplied request
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse handleRequest(final ODataRequest suppliedRequest) throws ODataException {
     ODataRequest request;
@@ -114,6 +148,13 @@ public class BatchHandlerImpl implements BatchHandler {
     return response;
   }
 
+  /**
+   * Fill content id map.
+   *
+   * @param response the response
+   * @param contentId the content id
+   * @param baseUri the base uri
+   */
   private void fillContentIdMap(final ODataResponse response, final String contentId, final String baseUri) {
     String location = response.getHeader(HttpHeaders.LOCATION);
     if (location != null) {
@@ -122,6 +163,14 @@ public class BatchHandlerImpl implements BatchHandler {
     }
   }
 
+  /**
+   * Modify request.
+   *
+   * @param request the request
+   * @param odataSegments the odata segments
+   * @return the o data request
+   * @throws ODataException the o data exception
+   */
   private ODataRequest modifyRequest(final ODataRequest request, final List<PathSegment> odataSegments)
       throws ODataException {
     String contentId = contentIdMap.get(odataSegments.get(0).getPath());
@@ -157,6 +206,15 @@ public class BatchHandlerImpl implements BatchHandler {
     return modifiedRequest;
   }
 
+  /**
+   * Sets the content id header.
+   *
+   * @param request the request
+   * @param response the response
+   * @param mimeHeaderContentId the mime header content id
+   * @param requestHeaderContentId the request header content id
+   * @return the o data response
+   */
   private ODataResponse setContentIdHeader(ODataRequest request, final ODataResponse response, 
       final String mimeHeaderContentId, final String requestHeaderContentId) {
     ODataResponse modifiedResponse;
@@ -180,6 +238,12 @@ public class BatchHandlerImpl implements BatchHandler {
     return modifiedResponse;
   }
 
+  /**
+   * Gets the base uri.
+   *
+   * @param request the request
+   * @return the base uri
+   */
   private String getBaseUri(final ODataRequest request) {
     // The service root already contains any additional path parameters
     String baseUri = request.getPathInfo().getServiceRoot().toASCIIString();
@@ -189,6 +253,13 @@ public class BatchHandlerImpl implements BatchHandler {
     return baseUri;
   }
 
+  /**
+   * Creates the handler.
+   *
+   * @param request the request
+   * @return the o data request handler
+   * @throws ODataException the o data exception
+   */
   private ODataRequestHandler createHandler(final ODataRequest request) throws ODataException {
     ODataContextImpl context = new ODataContextImpl(request, factory);
     ODataContext parentContext = service.getProcessor().getContext();

@@ -27,12 +27,16 @@ import java.util.Map.Entry;
 
 import org.apache.olingo.odata2.api.uri.PathSegment;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class ODataPathSegmentImpl.
  */
 public class ODataPathSegmentImpl implements PathSegment {
 
+  /** The path. */
   private String path;
+  
+  /** The matrix parameter. */
   private Map<String, List<String>> matrixParameter;
 
   /**
@@ -56,11 +60,21 @@ public class ODataPathSegmentImpl implements PathSegment {
     matrixParameter = Collections.unmodifiableMap(unmodifiableMap);
   }
 
+  /**
+   * Gets the path.
+   *
+   * @return the path
+   */
   @Override
   public String getPath() {
     return path;
   }
 
+  /**
+   * Gets the matrix parameters.
+   *
+   * @return the matrix parameters
+   */
   @Override
   public Map<String, List<String>> getMatrixParameters() {
     return matrixParameter;

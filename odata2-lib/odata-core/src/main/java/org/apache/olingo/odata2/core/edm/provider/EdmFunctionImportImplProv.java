@@ -37,19 +37,41 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class EdmFunctionImportImplProv.
  */
 public class EdmFunctionImportImplProv extends EdmNamedImplProv implements EdmFunctionImport, EdmAnnotatable {
 
+  /** The function import. */
   private FunctionImport functionImport;
+  
+  /** The edm entity container. */
   private EdmEntityContainer edmEntityContainer;
+  
+  /** The edm parameters. */
   private Map<String, EdmParameter> edmParameters;
+  
+  /** The parameters. */
   private Map<String, FunctionImportParameter> parameters;
+  
+  /** The parameters list. */
   private List<String> parametersList;
+  
+  /** The annotations. */
   private EdmAnnotations annotations;
+  
+  /** The edm return type. */
   private EdmTyped edmReturnType;
 
+  /**
+   * Instantiates a new edm function import impl prov.
+   *
+   * @param edm the edm
+   * @param functionImport the function import
+   * @param edmEntityContainer the edm entity container
+   * @throws EdmException the edm exception
+   */
   public EdmFunctionImportImplProv(final EdmImplProv edm, final FunctionImport functionImport,
       final EdmEntityContainer edmEntityContainer) throws EdmException {
     super(edm, functionImport.getName());
@@ -61,6 +83,9 @@ public class EdmFunctionImportImplProv extends EdmNamedImplProv implements EdmFu
     edmParameters = new HashMap<String, EdmParameter>();
   }
 
+  /**
+   * Builds the function import parameters internal.
+   */
   private void buildFunctionImportParametersInternal() {
     parameters = new HashMap<String, FunctionImportParameter>();
 
@@ -72,6 +97,13 @@ public class EdmFunctionImportImplProv extends EdmNamedImplProv implements EdmFu
     }
   }
 
+  /**
+   * Gets the parameter.
+   *
+   * @param name the name
+   * @return the parameter
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmParameter getParameter(final String name) throws EdmException {
     EdmParameter parameter = null;
@@ -84,6 +116,13 @@ public class EdmFunctionImportImplProv extends EdmNamedImplProv implements EdmFu
     return parameter;
   }
 
+  /**
+   * Creates the parameter.
+   *
+   * @param name the name
+   * @return the edm parameter
+   * @throws EdmException the edm exception
+   */
   private EdmParameter createParameter(final String name) throws EdmException {
     EdmParameter edmParameter = null;
     if (parameters.containsKey(name)) {
@@ -94,6 +133,12 @@ public class EdmFunctionImportImplProv extends EdmNamedImplProv implements EdmFu
     return edmParameter;
   }
 
+  /**
+   * Gets the parameter names.
+   *
+   * @return the parameter names
+   * @throws EdmException the edm exception
+   */
   @Override
   public List<String> getParameterNames() throws EdmException {
     if (parametersList == null) {
@@ -110,16 +155,34 @@ public class EdmFunctionImportImplProv extends EdmNamedImplProv implements EdmFu
     return parametersList;
   }
 
+  /**
+   * Gets the entity set.
+   *
+   * @return the entity set
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmEntitySet getEntitySet() throws EdmException {
     return edmEntityContainer.getEntitySet(functionImport.getEntitySet());
   }
 
+  /**
+   * Gets the http method.
+   *
+   * @return the http method
+   * @throws EdmException the edm exception
+   */
   @Override
   public String getHttpMethod() throws EdmException {
     return functionImport.getHttpMethod();
   }
 
+  /**
+   * Gets the return type.
+   *
+   * @return the return type
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmTyped getReturnType() throws EdmException {
     if (edmReturnType == null) {
@@ -132,11 +195,23 @@ public class EdmFunctionImportImplProv extends EdmNamedImplProv implements EdmFu
     return edmReturnType;
   }
 
+  /**
+   * Gets the entity container.
+   *
+   * @return the entity container
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmEntityContainer getEntityContainer() throws EdmException {
     return edmEntityContainer;
   }
 
+  /**
+   * Gets the annotations.
+   *
+   * @return the annotations
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmAnnotations getAnnotations() throws EdmException {
     if (annotations == null) {
@@ -146,6 +221,12 @@ public class EdmFunctionImportImplProv extends EdmNamedImplProv implements EdmFu
     return annotations;
   }
 
+  /**
+   * Gets the mapping.
+   *
+   * @return the mapping
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmMapping getMapping() throws EdmException {
     return functionImport.getMapping();

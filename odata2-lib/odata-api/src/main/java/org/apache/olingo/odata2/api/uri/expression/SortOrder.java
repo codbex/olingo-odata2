@@ -18,31 +18,37 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.uri.expression;
 
+// TODO: Auto-generated Javadoc
 /**
- * Enumeration describing all possible sort orders used in an $orderby expression
- * 
+ * Enumeration describing all possible sort orders used in an $orderby expression.
  */
 public enum SortOrder {
 
-  /**
-   * Sort order ascending
-   */
+  /** Sort order ascending. */
   asc("asc"),
 
-  /**
-   * Sort order descending
-   */
+  /** Sort order descending. */
   desc("desc");
 
+  /** The syntax. */
   private String syntax;
+  
+  /** The string respresentation. */
   private String stringRespresentation;
 
+  /**
+   * Instantiates a new sort order.
+   *
+   * @param syntax the syntax
+   */
   private SortOrder(final String syntax) {
     this.syntax = syntax;
     stringRespresentation = syntax;
   }
 
   /**
+   * To string.
+   *
    * @return Operators name for usage in in text
    */
   @Override
@@ -51,6 +57,8 @@ public enum SortOrder {
   }
 
   /**
+   * To uri literal.
+   *
    * @return URI literal of the unary operator as used in the URL.
    */
   public String toUriLiteral() {

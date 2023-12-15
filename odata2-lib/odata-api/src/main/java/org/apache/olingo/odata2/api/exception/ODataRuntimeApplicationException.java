@@ -22,6 +22,7 @@ import java.util.Locale;
 
 import org.apache.olingo.odata2.api.commons.HttpStatusCodes;
 
+// TODO: Auto-generated Javadoc
 /**
  * This class represents a translated application runtime exception. Use this exception class to display custom
  * exception
@@ -33,16 +34,23 @@ import org.apache.olingo.odata2.api.commons.HttpStatusCodes;
  */
 public class ODataRuntimeApplicationException extends RuntimeException {
 
+  /** The Constant serialVersionUID. */
   private static final long serialVersionUID = -7869148184447528782L;
 
+  /** The error code. */
   private String errorCode;
+  
+  /** The http status. */
   private HttpStatusCodes httpStatus = HttpStatusCodes.INTERNAL_SERVER_ERROR;
+  
+  /** The locale. */
   private final Locale locale;
 
   /**
    * Since this is a translated application exception locale must not be null.
-   * @param message
-   * @param locale
+   *
+   * @param message the message
+   * @param locale the locale
    */
   public ODataRuntimeApplicationException(final String message, final Locale locale) {
     super(message);
@@ -52,9 +60,10 @@ public class ODataRuntimeApplicationException extends RuntimeException {
   /**
    * Since this is a translated application exception locale must not be null.
    * <br>The status code given will be displayed at the client.
-   * @param message
-   * @param locale
-   * @param status
+   *
+   * @param message the message
+   * @param locale the locale
+   * @param status the status
    */
   public ODataRuntimeApplicationException(final String message, final Locale locale, final HttpStatusCodes status) {
     this(message, locale);
@@ -66,10 +75,11 @@ public class ODataRuntimeApplicationException extends RuntimeException {
    * <br>The status code given will be displayed at the client.
    * <br>The error code may be used as a substatus for the HTTP status code as described in the OData protocol
    * specification.
-   * @param message
-   * @param locale
-   * @param status
-   * @param errorCode
+   *
+   * @param message the message
+   * @param locale the locale
+   * @param status the status
+   * @param errorCode the error code
    */
   public ODataRuntimeApplicationException(final String message, final Locale locale, final HttpStatusCodes status,
       final String errorCode) {
@@ -82,11 +92,12 @@ public class ODataRuntimeApplicationException extends RuntimeException {
    * <br>The status code given will be displayed at the client.
    * <br>The error code may be used as a substatus for the HTTP status code as described in the OData protocol
    * specification.
-   * @param message
-   * @param locale
-   * @param status
-   * @param errorCode
-   * @param e
+   *
+   * @param message the message
+   * @param locale the locale
+   * @param status the status
+   * @param errorCode the error code
+   * @param e the e
    */
   public ODataRuntimeApplicationException(final String message, final Locale locale, final HttpStatusCodes status,
       final String errorCode, final Throwable e) {
@@ -98,9 +109,10 @@ public class ODataRuntimeApplicationException extends RuntimeException {
 
   /**
    * Since this is a translated application exception locale must not be null.
-   * @param message
-   * @param locale
-   * @param e
+   *
+   * @param message the message
+   * @param locale the locale
+   * @param e the e
    */
   public ODataRuntimeApplicationException(final String message, final Locale locale, final Throwable e) {
     super(message, e);
@@ -110,10 +122,11 @@ public class ODataRuntimeApplicationException extends RuntimeException {
   /**
    * Since this is a translated application exception locale must not be null.
    * <br>The status code given will be displayed at the client.
-   * @param message
-   * @param locale
-   * @param status
-   * @param e
+   *
+   * @param message the message
+   * @param locale the locale
+   * @param status the status
+   * @param e the e
    */
   public ODataRuntimeApplicationException(final String message, final Locale locale, final HttpStatusCodes status,
       final Throwable e) {
@@ -125,10 +138,11 @@ public class ODataRuntimeApplicationException extends RuntimeException {
    * Since this is a translated application exception locale must not be null.
    * <br>The error code may be used as a substatus for the HTTP status code as described in the OData protocol
    * specification.
-   * @param message
-   * @param locale
-   * @param errorCode
-   * @param e
+   *
+   * @param message the message
+   * @param locale the locale
+   * @param errorCode the error code
+   * @param e the e
    */
   public ODataRuntimeApplicationException(final String message, final Locale locale, final String errorCode,
       final Throwable e) {
@@ -138,6 +152,8 @@ public class ODataRuntimeApplicationException extends RuntimeException {
   }
 
   /**
+   * Gets the locale.
+   *
    * @return {@link Locale} the locale
    */
   public Locale getLocale() {
@@ -153,7 +169,8 @@ public class ODataRuntimeApplicationException extends RuntimeException {
   }
 
   /**
-   * Default code is null
+   * Default code is null.
+   *
    * @return <b>String</b>The error code displayed in the error message.
    */
   public String getCode() {

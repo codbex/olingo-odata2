@@ -25,8 +25,17 @@ import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.binary.Hex;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TestTokenizer.
+ */
 public class TestTokenizer {
 
+  /**
+   * Tokenize white spaces.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void tokenizeWhiteSpaces() throws Exception {
     // space
@@ -44,6 +53,11 @@ public class TestTokenizer {
     getTTW("A   B   C").at(3).aKind(TokenKind.WHITESPACE).aUriLiteral("   ").aPosition(5);
   }
 
+  /**
+   * Tokenize symbols.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void tokenizeSymbols() throws Exception {
 
@@ -67,6 +81,12 @@ public class TestTokenizer {
 
   }
 
+  /**
+   * Hex to base 64.
+   *
+   * @param hex the hex
+   * @return the string
+   */
   public static String HexToBase64(final String hex) {
     String base64 = "";
     byte bArr[];
@@ -79,6 +99,11 @@ public class TestTokenizer {
     return base64;
   }
 
+  /**
+   * Tokenize types.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void tokenizeTypes() throws Exception {
     getTT("a").aKind(TokenKind.LITERAL).aUriLiteral("a").aPosition(0);
@@ -109,12 +134,22 @@ public class TestTokenizer {
         "datetime'2011-01-12T00:00:00'").aPosition(4);
   }
 
+  /**
+   * Tokenize operators.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void tokenizeOperators() throws Exception {
     getTT("a eq b").at(1).aKind(TokenKind.LITERAL).aUriLiteral("eq");
     getTT("a eqotto b").at(1).aKind(TokenKind.LITERAL).aUriLiteral("eqotto");
   }
 
+  /**
+   * Test exceptions.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testExceptions() throws Exception {
     // http://services.odata.org/Northwind/Northwind.svc/Products(1)/Supplier?$filter='a
@@ -132,6 +167,11 @@ public class TestTokenizer {
     getTT("\\").aExMsgText("Unknown character '\\' at position '0' detected in \"\\\".");
   }
 
+  /**
+   * Tokenize function.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void tokenizeFunction() throws Exception {
     getTT("substringof('10')").at(0).aKind(TokenKind.LITERAL).aUriLiteral("substringof").at(2).aKind(
@@ -141,6 +181,11 @@ public class TestTokenizer {
         TokenKind.SIMPLE_TYPE).aUriLiteral("'10'");
   }
 
+  /**
+   * Test ex 1111 ceptions.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testEx1111ceptions() throws Exception {
     getTT("a 1").at(0).aKind(TokenKind.LITERAL).aUriLiteral("a").at(1).aKind(TokenKind.SIMPLE_TYPE).aUriLiteral("1");
@@ -156,16 +201,20 @@ public class TestTokenizer {
   }
 
   /**
-   * Create TokenTool ( and Token list) without respecting whitespaces
+   * Create TokenTool ( and Token list) without respecting whitespaces.
+   *
    * @param expression Expression to be tokenized
+   * @return the tt
    */
   public TokenTool getTT(final String expression) {
     return new TokenTool(expression, false);
   }
 
   /**
-   * Create TokenTool ( and Token list) without respecting whitespaces
+   * Create TokenTool ( and Token list) without respecting whitespaces.
+   *
    * @param expression Expression to be tokenized
+   * @return the ttw
    */
   public TokenTool getTTW(final String expression) {
     return new TokenTool(expression, true);

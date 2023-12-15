@@ -28,8 +28,15 @@ import java.util.Map;
 import org.apache.olingo.odata2.api.processor.ODataRequest;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ODataRequestTest.
+ */
 public class ODataRequestTest {
 
+  /**
+   * Test insensitve headers.
+   */
   @Test
   public void testInsensitveHeaders() {
 
@@ -47,6 +54,11 @@ public class ODataRequestTest {
 
   }
 
+  /**
+   * Verify header.
+   *
+   * @param r the r
+   */
   void verifyHeader(final ODataRequest r) {
     assertEquals("lower", r.getRequestHeaderValue("lower"));
     assertEquals("lower", r.getRequestHeaderValue("LOWER"));

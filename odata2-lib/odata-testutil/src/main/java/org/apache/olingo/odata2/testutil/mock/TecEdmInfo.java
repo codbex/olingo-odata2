@@ -25,29 +25,58 @@ import org.apache.olingo.odata2.api.edm.EdmEntityType;
 import org.apache.olingo.odata2.api.edm.EdmException;
 import org.apache.olingo.odata2.api.edm.FullQualifiedName;
 
+// TODO: Auto-generated Javadoc
 /**
  * Helper for the entity data model used as technical reference scenario.
  * 
  */
 public class TecEdmInfo {
+  
+  /** The edm. */
   private final Edm edm;
 
+  /**
+   * Instantiates a new tec edm info.
+   *
+   * @param edm the edm
+   */
   public TecEdmInfo(final Edm edm) {
     this.edm = edm;
   }
 
+  /**
+   * Gets the type et all types.
+   *
+   * @return the type et all types
+   */
   public EdmEntityType getTypeEtAllTypes() {
     return getEntityType(TechnicalScenarioEdmProvider.ET_ALL_TYPES);
   }
 
+  /**
+   * Gets the type et key type integer.
+   *
+   * @return the type et key type integer
+   */
   public EdmEntityType getTypeEtKeyTypeInteger() {
     return getEntityType(TechnicalScenarioEdmProvider.ET_KEY_IS_INTEGER);
   }
 
+  /**
+   * Gets the type et key type string.
+   *
+   * @return the type et key type string
+   */
   public EdmEntityType getTypeEtKeyTypeString() {
     return getEntityType(TechnicalScenarioEdmProvider.ET_KEY_IS_STRING);
   }
 
+  /**
+   * Gets the entity type.
+   *
+   * @param name the name
+   * @return the entity type
+   */
   private EdmEntityType getEntityType(final FullQualifiedName name) {
     try {
       return edm.getEntityType(name.getNamespace(), name.getName());

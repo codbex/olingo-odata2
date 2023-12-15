@@ -51,21 +51,47 @@ import org.easymock.EasyMock;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPQLSelectContextImplTest.
+ */
 public class JPQLSelectContextImplTest {
 
+  /** The entity type name. */
   private static String entityTypeName = "MockEntity";
+  
+  /** The fields. */
   private static String[] fields = { "Field1", "Field2" };
+  
+  /** The key predicates. */
   private static List<KeyPredicate> keyPredicates;
+  
+  /** The order type. */
   private static SortOrder[] orderType = { SortOrder.asc, SortOrder.desc };
 
+  /** The builder. */
   private static JPQLSelectContextBuilder builder;
+  
+  /** The select context. */
   private static JPQLSelectContext selectContext;
 
+  /**
+   * Setup.
+   */
   @BeforeClass
   public static void setup() {
 
   }
 
+  /**
+   * Builds the select context.
+   *
+   * @param orderByIsNull the order by is null
+   * @param selectFieldsIsNull the select fields is null
+   * @param filterIsNull the filter is null
+   * @param isTopNull the is top null
+   * @param isSkipNull the is skip null
+   */
   private void buildSelectContext(final boolean orderByIsNull, final boolean selectFieldsIsNull,
       final boolean filterIsNull, final boolean isTopNull, final boolean isSkipNull) {
     builder = null;
@@ -203,6 +229,11 @@ public class JPQLSelectContextImplTest {
     }
   }
 
+  /**
+   * Gets the local key properties.
+   *
+   * @return the local key properties
+   */
   private List<EdmProperty> getLocalKeyProperties() {
     List<EdmProperty> propertyList = new ArrayList<EdmProperty>();
     EdmProperty edmProperty = EasyMock.createMock(EdmProperty.class);
@@ -217,6 +248,9 @@ public class JPQLSelectContextImplTest {
     return propertyList;
   }
 
+  /**
+   * Test entity name throwing exception.
+   */
   @Test
   public void testEntityNameThrowingException() {
     // buildSelectContext(false, false, false);
@@ -253,6 +287,9 @@ public class JPQLSelectContextImplTest {
     }
   }
 
+  /**
+   * Test select fields as null.
+   */
   @Test
   public void testSelectFieldsAsNull() {
     buildSelectContext(false, true, true, true, true);
@@ -267,36 +304,54 @@ public class JPQLSelectContextImplTest {
     }
   }
 
+  /**
+   * Test get order by collection.
+   */
   @Test
   public void testGetOrderByCollection() {
     buildSelectContext(false, false, true, true, true);
     assertEquals("E1.Field1 , E1.Field2 DESC", selectContext.getOrderByCollection());
   }
 
+  /**
+   * Test get where expression.
+   */
   @Test
   public void testGetWhereExpression() {
     buildSelectContext(false, false, true, true, true);
     // fail("Not yet implemented");
   }
 
+  /**
+   * Test get JPA entity name.
+   */
   @Test
   public void testGetJPAEntityName() {
     buildSelectContext(false, false, true, true, true);
     assertEquals(JPQLSelectContextImplTest.entityTypeName, selectContext.getJPAEntityName());
   }
 
+  /**
+   * Test get type.
+   */
   @Test
   public void testGetType() {
     buildSelectContext(false, false, true, true, true);
     assertEquals(JPQLContextType.SELECT, selectContext.getType());
   }
 
+  /**
+   * Test create builder.
+   */
   @Test
   public void testCreateBuilder() {
     buildSelectContext(false, false, true, true, true);
     assertEquals(JPQLSelectContextBuilder.class.toString(), builder.getClass().toString());
   }
 
+  /**
+   * Test entity set as null.
+   */
   @Test
   public void testEntitySetAsNull() {
     buildSelectContext(false, false, true, true, true);
@@ -318,6 +373,9 @@ public class JPQLSelectContextImplTest {
     }
   }
 
+  /**
+   * Test ordering with skip.
+   */
   @Test
   public void testOrderingWithSkip() {
     buildSelectContext(true, false, true, true, false);
@@ -325,18 +383,27 @@ public class JPQLSelectContextImplTest {
 
   }
 
+  /**
+   * Test ordering with top.
+   */
   @Test
   public void testOrderingWithTop() {
     buildSelectContext(true, false, true, false, true);
     assertEquals("E1.Field1", selectContext.getOrderByCollection());
   }
 
+  /**
+   * Test order by top skip as null.
+   */
   @Test
   public void testOrderByTopSkipAsNull() {
     buildSelectContext(true, true, true, true, true);
     assertNull(selectContext.getOrderByCollection());
   }
 
+  /**
+   * Test filter.
+   */
   @Test
   public void testFilter() {
     buildSelectContext(true, false, false, false, false);
@@ -344,6 +411,14 @@ public class JPQLSelectContextImplTest {
 
   }
 
+  /**
+   * Gets the filter expression mocked obj.
+   *
+   * @param leftOperandExpKind the left operand exp kind
+   * @param propertyName the property name
+   * @return the filter expression mocked obj
+   * @throws EdmException the edm exception
+   */
   private FilterExpression getFilterExpressionMockedObj(final ExpressionKind leftOperandExpKind,
       final String propertyName) throws EdmException {
     FilterExpression filterExpression = EasyMock.createMock(FilterExpression.class);
@@ -354,6 +429,13 @@ public class JPQLSelectContextImplTest {
     return filterExpression;
   }
 
+  /**
+   * Gets the property expression mocked obj.
+   *
+   * @param expKind the exp kind
+   * @param propertyName the property name
+   * @return the property expression mocked obj
+   */
   private PropertyExpression getPropertyExpressionMockedObj(final ExpressionKind expKind, final String propertyName) {
     PropertyExpression leftOperandPropertyExpresion = EasyMock.createMock(PropertyExpression.class);
     EasyMock.expect(leftOperandPropertyExpresion.getKind()).andReturn(ExpressionKind.PROPERTY);

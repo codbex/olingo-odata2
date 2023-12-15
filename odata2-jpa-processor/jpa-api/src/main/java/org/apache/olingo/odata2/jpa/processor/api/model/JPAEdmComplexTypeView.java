@@ -24,6 +24,7 @@ import org.apache.olingo.odata2.api.edm.FullQualifiedName;
 import org.apache.olingo.odata2.api.edm.provider.ComplexType;
 import org.apache.olingo.odata2.api.edm.provider.Property;
 
+// TODO: Auto-generated Javadoc
 /**
  * A view on Java Persistence embeddable types and EDM complex types. Java
  * persistence embeddable types are converted into EDM entity types. Only those
@@ -41,9 +42,9 @@ import org.apache.olingo.odata2.api.edm.provider.Property;
  * 
  * 
  * <p>
- * @org.apache.olingo.odata2.DoNotImplement
+ *
  * @see org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmComplexPropertyView
- * 
+ * @org.apache.olingo.odata2.DoNotImplement 
  */
 public interface JPAEdmComplexTypeView extends JPAEdmBaseView {
 
@@ -81,11 +82,8 @@ public interface JPAEdmComplexTypeView extends JPAEdmBaseView {
 
   /**
    * The method add a JPA EDM complex type view to the container.
-   * 
-   * @param view
-   * @param isReferencedInKey
-   * is the complex type referenced in an Entity as a key property
-   * is an instance of type {@link org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmComplexTypeView}
+   *
+   * @param view the view
    */
   public void addJPAEdmCompleTypeView(JPAEdmComplexTypeView view);
 
@@ -116,21 +114,19 @@ public interface JPAEdmComplexTypeView extends JPAEdmBaseView {
       String embeddablePropertyName);
 
   /**
-   * The method checks if the given EDM complex type is referenced as a Key property in any Entity
-   * @param complexTypeName
-   * EDM complex type name
-   * @return
-   * <ul><li><b>true</b> : if the complex type is referenced as an entity's key property</li>
+   * The method checks if the given EDM complex type is referenced as a Key property in any Entity.
+   *
+   * @param complexTypeName EDM complex type name
+   * @return <ul><li><b>true</b> : if the complex type is referenced as an entity's key property</li>
    * <li><b>false</b> : if the complex type is not referenced as an entity's key property</li>
    * </ul>
-   * 
    */
   public boolean isReferencedInKey(String complexTypeName);
 
   /**
-   * The method sets the given EDM complex type as referenced in an Entity as a key property
-   * @param complexTypeName
-   * EDM complex Type name
+   * The method sets the given EDM complex type as referenced in an Entity as a key property.
+   *
+   * @param complexTypeName EDM complex Type name
    */
   public void setReferencedInKey(String complexTypeName);
 

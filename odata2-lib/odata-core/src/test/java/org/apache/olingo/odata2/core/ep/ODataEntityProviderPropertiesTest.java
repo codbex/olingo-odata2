@@ -38,11 +38,17 @@ import org.apache.olingo.odata2.core.uri.ExpandSelectTreeNodeImpl;
 import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class ODataEntityProviderPropertiesTest.
  */
 public class ODataEntityProviderPropertiesTest extends BaseTest {
 
+  /**
+   * Builds the feed properties.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void buildFeedProperties() throws Exception {
     URI serviceRoot = new URI("http://localhost:80/");
@@ -58,6 +64,11 @@ public class ODataEntityProviderPropertiesTest extends BaseTest {
     assertEquals("Wrong nextLink", "http://localhost", properties.getNextLink());
   }
 
+  /**
+   * Builds the properties default.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void buildPropertiesDefault() throws Exception {
     URI serviceRoot = new URI("http://localhost:80/");
@@ -81,6 +92,11 @@ public class ODataEntityProviderPropertiesTest extends BaseTest {
     assertFalse(properties.isOmitInlineForNullData());
   }
 
+  /**
+   * Builds the properties all set.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void buildPropertiesAllSet() throws Exception {
     URI serviceRoot = new URI("http://localhost:80/");
@@ -128,6 +144,11 @@ public class ODataEntityProviderPropertiesTest extends BaseTest {
     assertTrue("omitInlineForNullData should be set", properties.isOmitInlineForNullData());
   }
 
+  /**
+   * Builds the entry properties from existing.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void buildEntryPropertiesFromExisting() throws Exception {
     URI serviceRoot = new URI("http://localhost:80/");

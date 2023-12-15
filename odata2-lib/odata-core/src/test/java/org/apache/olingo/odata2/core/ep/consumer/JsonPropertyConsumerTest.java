@@ -52,11 +52,17 @@ import org.junit.Test;
 
 import com.google.gson.stream.JsonReader;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class JsonPropertyConsumerTest.
  */
 public class JsonPropertyConsumerTest extends BaseTest {
 
+  /**
+   * Boolean simple property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void booleanSimpleProperty() throws Exception {
     EdmProperty property = mock(EdmProperty.class);
@@ -69,6 +75,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     assertEquals(Boolean.TRUE, resultMap.get("Boolean"));
   }
 
+  /**
+   * All number simple property kinds.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void allNumberSimplePropertyKinds() throws Exception {
     String simplePropertyJson = "{\"d\":{\"Age\":67}}";
@@ -114,6 +125,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     assertEquals(BigDecimal.valueOf(67.56), resultMap.get("Revenue"));
   }
 
+  /**
+   * All string simple property kinds.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void allStringSimplePropertyKinds() throws Exception {
     EdmProperty edmProperty = mock(EdmProperty.class);
@@ -203,6 +219,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     assertEquals(dateTime, resultMap.get("Name"));
   }
 
+  /**
+   * Simple property on open reader.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void simplePropertyOnOpenReader() throws Exception {
     String simplePropertyJson = "{\"Name\":\"Team 1\"}";
@@ -219,6 +240,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     assertEquals("Team 1", value);
   }
 
+  /**
+   * Very long string standalone.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void veryLongStringStandalone() throws Exception {
     char[] chars = new char[32768];
@@ -237,6 +263,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     assertEquals(propertyValue, resultMap.get("Name"));
   }
 
+  /**
+   * Simple property violating validation.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void simplePropertyViolatingValidation() throws Exception {
     EdmProperty property = (EdmProperty) MockFacade.getMockEdm().getEntityType("RefScenario", "Room")
@@ -247,6 +278,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     new JsonPropertyConsumer().readPropertyStandalone(prepareReader("{\"Name\":\"TooLongName\"}"), property, null);
   }
 
+  /**
+   * Simple property ignoring validation.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void simplePropertyIgnoringValidation() throws Exception {
     EdmProperty property = (EdmProperty) MockFacade.getMockEdm().getEntityType("RefScenario", "Room")
@@ -261,6 +297,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     assertEquals("TooLongName", resultMap.get("Name"));
   }
 
+  /**
+   * Simple property null.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void simplePropertyNull() throws Exception {
     JsonReader reader = prepareReader("{\"Name\":null}");
@@ -271,6 +312,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     assertNull(resultMap.get("Name"));
   }
 
+  /**
+   * Simple property null value not allowed.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void simplePropertyNullValueNotAllowed() throws Exception {
     JsonReader reader = prepareReader("{\"Age\":null}");
@@ -283,6 +329,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     new JsonPropertyConsumer().readPropertyStandalone(reader, property, null);
   }
 
+  /**
+   * Simple property with null mapping standalone.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void simplePropertyWithNullMappingStandalone() throws Exception {
     String simplePropertyJson = "{\"d\":{\"Age\":67}}";
@@ -298,6 +349,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     assertEquals(Integer.valueOf(67), resultMap.get("Age"));
   }
 
+  /**
+   * Simple property with null mapping standalone without D.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void simplePropertyWithNullMappingStandaloneWithoutD() throws Exception {
     String simplePropertyJson = "{\"Age\":67}";
@@ -313,6 +369,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     assertEquals(Integer.valueOf(67), resultMap.get("Age"));
   }
 
+  /**
+   * Simple property with empty mapping standalone.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void simplePropertyWithEmptyMappingStandalone() throws Exception {
     String simplePropertyJson = "{\"d\":{\"Age\":67}}";
@@ -328,6 +389,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     assertEquals(Integer.valueOf(67), resultMap.get("Age"));
   }
 
+  /**
+   * Simple property with string to long mapping standalone.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void simplePropertyWithStringToLongMappingStandalone() throws Exception {
     String simplePropertyJson = "{\"d\":{\"Age\":67}}";
@@ -345,6 +411,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     assertEquals(Long.valueOf(67), resultMap.get("Age"));
   }
 
+  /**
+   * Simple property with string to null mapping standalone.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void simplePropertyWithStringToNullMappingStandalone() throws Exception {
     String simplePropertyJson = "{\"d\":{\"Age\":67}}";
@@ -362,6 +433,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     assertEquals(Integer.valueOf(67), resultMap.get("Age"));
   }
 
+  /**
+   * No content.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void noContent() throws Exception {
     final EdmProperty property =
@@ -370,6 +446,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     new JsonPropertyConsumer().readPropertyStandalone(reader, property, null);
   }
 
+  /**
+   * Simple property unfinished.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void simplePropertyUnfinished() throws Exception {
     final EdmProperty property =
@@ -378,6 +459,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     new JsonPropertyConsumer().readPropertyStandalone(reader, property, null);
   }
 
+  /**
+   * Simple propert invalid name.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void simplePropertInvalidName() throws Exception {
     String simplePropertyJson = "{\"d\":{\"Invalid\":67}}";
@@ -388,6 +474,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     new JsonPropertyConsumer().readPropertyStandalone(reader, edmProperty, null);
   }
 
+  /**
+   * Complex property with string to string mapping standalone.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void complexPropertyWithStringToStringMappingStandalone() throws Exception {
     final String complexPropertyJson =
@@ -412,6 +503,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     assertEquals("69124", innerResult.get("PostalCode"));
   }
 
+  /**
+   * Deep complex property with string to string mapping standalone.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void deepComplexPropertyWithStringToStringMappingStandalone() throws Exception {
     final String complexPropertyJson =
@@ -447,6 +543,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     assertEquals("69124", innerResult.get("PostalCode"));
   }
 
+  /**
+   * Complex property on open reader.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void complexPropertyOnOpenReader() throws Exception {
     final String complexPropertyJson =
@@ -465,6 +566,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     assertEquals("69124", result.get("PostalCode"));
   }
 
+  /**
+   * Complex property on open reader with no metadata.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void complexPropertyOnOpenReaderWithNoMetadata() throws Exception {
     final String complexPropertyJson = "{\"PostalCode\":\"69124\",\"CityName\":\"Heidelberg\"}";
@@ -482,6 +588,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     assertEquals("69124", result.get("PostalCode"));
   }
 
+  /**
+   * Deep complex property on open reader.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void deepComplexPropertyOnOpenReader() throws Exception {
     final String complexPropertyJson =
@@ -507,6 +618,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     assertEquals("69124", innerResult.get("PostalCode"));
   }
 
+  /**
+   * Simple property standalone.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void simplePropertyStandalone() throws Exception {
     String simplePropertyJson = "{\"d\":{\"Name\":\"Team 1\"}}";
@@ -519,6 +635,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     assertEquals("Team 1", result.get("Name"));
   }
 
+  /**
+   * Complex property standalone.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void complexPropertyStandalone() throws Exception {
     final String complexPropertyJson =
@@ -537,6 +658,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     assertEquals("69124", innerResult.get("PostalCode"));
   }
 
+  /**
+   * Deep complex property standalone.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void deepComplexPropertyStandalone() throws Exception {
     final String complexPropertyJson =
@@ -563,6 +689,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     assertEquals("69124", innerResult.get("PostalCode"));
   }
 
+  /**
+   * Complex property with invalid child.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void complexPropertyWithInvalidChild() throws Exception {
     String cityProperty = "{\"d\":{\"City\":{\"Invalid\":\"69124\",\"CityName\":\"Heidelberg\"}}}";
@@ -573,6 +704,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     new JsonPropertyConsumer().readPropertyStandalone(reader, property, null);
   }
 
+  /**
+   * Complex property with invalid name.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void complexPropertyWithInvalidName() throws Exception {
     String cityProperty = "{\"d\":{\"Invalid\":{\"PostalCode\":\"69124\",\"CityName\":\"Heidelberg\"}}}";
@@ -583,6 +719,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     new JsonPropertyConsumer().readPropertyStandalone(reader, property, null);
   }
 
+  /**
+   * Complex property null.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void complexPropertyNull() throws Exception {
     final String locationProperty = "{\"Location\":null}";
@@ -598,6 +739,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     assertNull(propertyData.get("Location"));
   }
 
+  /**
+   * Complex property null value not allowed.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void complexPropertyNullValueNotAllowed() throws Exception {
     final String locationProperty = "{\"Location\":null}";
@@ -612,6 +758,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     new JsonPropertyConsumer().readPropertyStandalone(reader, property, null);
   }
 
+  /**
+   * Complex property null value not allowed but not validated.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void complexPropertyNullValueNotAllowedButNotValidated() throws Exception {
     final EdmProperty property = (EdmProperty) MockFacade.getMockEdm().getDefaultEntityContainer()
@@ -629,6 +780,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     assertNull(propertyData.get("Location"));
   }
 
+  /**
+   * Complex property empty.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void complexPropertyEmpty() throws Exception {
     final String cityProperty = "{\"d\":{\"City\":{}}}";
@@ -645,6 +801,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     assertTrue(innerMap.isEmpty());
   }
 
+  /**
+   * Complex property metadata invalid tag.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void complexPropertyMetadataInvalidTag() throws Exception {
     String complexPropertyJson =
@@ -657,6 +818,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     new JsonPropertyConsumer().readPropertyValue(reader, entityPropertyInfo, null, null);
   }
 
+  /**
+   * Complex property metadata invalid type content.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void complexPropertyMetadataInvalidTypeContent() throws Exception {
     String complexPropertyJson =
@@ -669,12 +835,27 @@ public class JsonPropertyConsumerTest extends BaseTest {
     new JsonPropertyConsumer().readPropertyValue(reader, entityPropertyInfo, null, null);
   }
 
+  /**
+   * Prepare reader.
+   *
+   * @param json the json
+   * @return the json reader
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   private JsonReader prepareReader(final String json) throws UnsupportedEncodingException {
     InputStream jsonStream = createContentAsStream(json);
     JsonReader reader = new JsonReader(new InputStreamReader(jsonStream));
     return reader;
   }
 
+  /**
+   * Execute.
+   *
+   * @param edmProperty the edm property
+   * @param reader the reader
+   * @return the map
+   * @throws EntityProviderException the entity provider exception
+   */
   private Map<String, Object> execute(final EdmProperty edmProperty, final JsonReader reader)
       throws EntityProviderException {
     JsonPropertyConsumer jpc = new JsonPropertyConsumer();
@@ -682,6 +863,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     return resultMap;
   }
 
+  /**
+   * Invalid double closing brackets.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void invalidDoubleClosingBrackets() throws Exception {
     String simplePropertyJson = "{\"d\":{\"Name\":\"Team 1\"}}}";
@@ -693,6 +879,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     new JsonPropertyConsumer().readPropertyStandalone(reader, edmProperty, null);
   }
 
+  /**
+   * Invalid double closing brackets without D.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void invalidDoubleClosingBracketsWithoutD() throws Exception {
     String simplePropertyJson = "{\"Name\":\"Team 1\"}}";
@@ -704,6 +895,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     new JsonPropertyConsumer().readPropertyStandalone(reader, edmProperty, null);
   }
 
+  /**
+   * Collection empty.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void collectionEmpty() throws Exception {
     final EntityPropertyInfo info = EntityInfoAggregator.create(
@@ -725,6 +921,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     assertTrue(collection.isEmpty());
   }
 
+  /**
+   * Collection simple.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void collectionSimple() throws Exception {
     final EntityPropertyInfo info = EntityInfoAggregator.create(
@@ -734,6 +935,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     assertEquals(Arrays.asList("1", "42"), collection);
   }
 
+  /**
+   * Collection simple with metadata.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void collectionSimpleWithMetadata() throws Exception {
     final EntityPropertyInfo info = EntityInfoAggregator.create(
@@ -745,6 +951,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     assertEquals(Arrays.asList("1", "42"), collection);
   }
 
+  /**
+   * Collection simple with mapping.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void collectionSimpleWithMapping() throws Exception {
     final EntityPropertyInfo info = EntityInfoAggregator.create(
@@ -758,6 +969,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     assertEquals(Arrays.asList("1", "42"), collection);
   }
 
+  /**
+   * Collection complex.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void collectionComplex() throws Exception {
     final EntityPropertyInfo info = EntityInfoAggregator.create(
@@ -780,6 +996,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     assertEquals("Germany", secondLocation.get("Country"));
   }
 
+  /**
+   * Collection unfinished.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void collectionUnfinished() throws Exception {
     final EntityPropertyInfo info = EntityInfoAggregator.create(
@@ -787,6 +1008,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     new JsonPropertyConsumer().readCollection(prepareReader("[\"1\""), info, null);
   }
 
+  /**
+   * Collection without closing.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void collectionWithoutClosing() throws Exception {
     final EntityPropertyInfo info = EntityInfoAggregator.create(
@@ -794,6 +1020,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     new JsonPropertyConsumer().readCollection(prepareReader("{\"results\":[]"), info, null);
   }
 
+  /**
+   * Collection with wrong tag.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void collectionWithWrongTag() throws Exception {
     final EntityPropertyInfo info = EntityInfoAggregator.create(
@@ -801,6 +1032,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     new JsonPropertyConsumer().readCollection(prepareReader("{\"something\":[]}"), info, null);
   }
 
+  /**
+   * Collection with wrong inner tag.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void collectionWithWrongInnerTag() throws Exception {
     final EntityPropertyInfo info = EntityInfoAggregator.create(
@@ -808,6 +1044,11 @@ public class JsonPropertyConsumerTest extends BaseTest {
     new JsonPropertyConsumer().readCollection(prepareReader("{\"d\":{\"something\":[]}}"), info, null);
   }
 
+  /**
+   * Collection with trailing.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void collectionWithTrailing() throws Exception {
     final EntityPropertyInfo info = EntityInfoAggregator.create(
@@ -815,6 +1056,13 @@ public class JsonPropertyConsumerTest extends BaseTest {
     new JsonPropertyConsumer().readCollection(prepareReader("{\"results\":[],\"a\":0}"), info, null);
   }
 
+  /**
+   * Creates the content as stream.
+   *
+   * @param json the json
+   * @return the input stream
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   private InputStream createContentAsStream(final String json) throws UnsupportedEncodingException {
     return new ByteArrayInputStream(json.getBytes("UTF-8"));
   }

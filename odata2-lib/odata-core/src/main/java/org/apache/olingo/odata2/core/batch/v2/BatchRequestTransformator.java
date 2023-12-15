@@ -37,8 +37,21 @@ import org.apache.olingo.odata2.core.batch.BatchRequestPartImpl;
 import org.apache.olingo.odata2.core.batch.v2.BatchTransformatorCommon.HttpRequestStatusLine;
 import org.apache.olingo.odata2.core.batch.v2.Header.HeaderField;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BatchRequestTransformator.
+ */
 public class BatchRequestTransformator implements BatchTransformator {
 
+  /**
+   * Transform.
+   *
+   * @param bodyPart the body part
+   * @param pathInfo the path info
+   * @param baseUri the base uri
+   * @return the list
+   * @throws BatchException the batch exception
+   */
   @Override
   public List<BatchParserResult> transform(final BatchBodyPart bodyPart, final PathInfo pathInfo, final String baseUri)
       throws BatchException {
@@ -56,6 +69,13 @@ public class BatchRequestTransformator implements BatchTransformator {
     return resultList;
   }
 
+  /**
+   * Validate header.
+   *
+   * @param bodyPart the body part
+   * @param isChangeSet the is change set
+   * @throws BatchException the batch exception
+   */
   private void validateHeader(final BatchPart bodyPart, final boolean isChangeSet) throws BatchException {
     Header headers = bodyPart.getHeaders();
 
@@ -63,6 +83,16 @@ public class BatchRequestTransformator implements BatchTransformator {
     BatchTransformatorCommon.validateContentTransferEncoding(headers, isChangeSet);
   }
 
+  /**
+   * Process query operation.
+   *
+   * @param bodyPart the body part
+   * @param pathInfo the path info
+   * @param baseUri the base uri
+   * @param queryOperation the query operation
+   * @return the o data request
+   * @throws BatchException the batch exception
+   */
   private ODataRequest processQueryOperation(final BatchBodyPart bodyPart, final PathInfo pathInfo,
       final String baseUri, final BatchQueryOperation queryOperation) throws BatchException {
 
@@ -79,6 +109,17 @@ public class BatchRequestTransformator implements BatchTransformator {
     }
   }
 
+  /**
+   * Creates the request.
+   *
+   * @param operation the operation
+   * @param headers the headers
+   * @param pathInfo the path info
+   * @param baseUri the base uri
+   * @param isChangeSet the is change set
+   * @return the o data request
+   * @throws BatchException the batch exception
+   */
   private ODataRequest createRequest(final BatchQueryOperation operation, final Header headers,
       final PathInfo pathInfo, final String baseUri, final boolean isChangeSet) throws BatchException {
 
@@ -107,6 +148,13 @@ public class BatchRequestTransformator implements BatchTransformator {
     return requestBuilder.build();
   }
 
+  /**
+   * Validate body.
+   *
+   * @param httpStatusLine the http status line
+   * @param operation the operation
+   * @throws BatchException the batch exception
+   */
   private void validateBody(final HttpRequestStatusLine httpStatusLine, final BatchQueryOperation operation)
       throws BatchException {
     if (httpStatusLine.getMethod().equals(ODataHttpMethod.GET) && isUnvalidGetRequestBody(operation)) {
@@ -115,11 +163,26 @@ public class BatchRequestTransformator implements BatchTransformator {
     }
   }
 
+  /**
+   * Checks if is unvalid get request body.
+   *
+   * @param operation the operation
+   * @return true, if is unvalid get request body
+   */
   private boolean isUnvalidGetRequestBody(final BatchQueryOperation operation) {
     return (operation.getBody().size() > 1)
         || (operation.getBody().size() == 1 && !"".equals(operation.getBody().get(0).toString().trim()));
   }
 
+  /**
+   * Gets the body stream.
+   *
+   * @param operation the operation
+   * @param headers the headers
+   * @param httpStatusLine the http status line
+   * @return the body stream
+   * @throws BatchException the batch exception
+   */
   private InputStream getBodyStream(final BatchQueryOperation operation, final Header headers,
       final HttpRequestStatusLine httpStatusLine) throws BatchException {
 
@@ -132,6 +195,13 @@ public class BatchRequestTransformator implements BatchTransformator {
     }
   }
 
+  /**
+   * Transform header.
+   *
+   * @param operation the operation
+   * @param parentPart the parent part
+   * @return the header
+   */
   private Header transformHeader(final BatchPart operation, final BatchPart parentPart) {
     final Header headers = operation.getHeaders().clone();
     headers.removeHeader(BatchHelper.HTTP_CONTENT_ID);
@@ -150,6 +220,12 @@ public class BatchRequestTransformator implements BatchTransformator {
     return headers;
   }
 
+  /**
+   * Gets the accept language headers.
+   *
+   * @param headers the headers
+   * @return the accept language headers
+   */
   private List<Locale> getAcceptLanguageHeaders(final Header headers) {
     final List<String> acceptLanguageValues = headers.getHeaders(HttpHeaders.ACCEPT_LANGUAGE);
     List<Locale> acceptLanguages = new ArrayList<Locale>();

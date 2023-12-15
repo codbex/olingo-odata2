@@ -26,6 +26,7 @@ import org.apache.olingo.odata2.api.edm.EdmException;
 import org.apache.olingo.odata2.api.edm.EdmProperty;
 import org.apache.olingo.odata2.api.rt.RuntimeDelegate;
 
+// TODO: Auto-generated Javadoc
 /**
  * Expression tree node with information about selected properties and to be expanded links.
  * @org.apache.olingo.odata2.DoNotImplement
@@ -35,6 +36,8 @@ public abstract class ExpandSelectTreeNode {
 
   /**
    * Determines whether all properties (including navigation properties) have been selected.
+   *
+   * @return true, if is all
    */
   public abstract boolean isAll();
 
@@ -70,12 +73,13 @@ public abstract class ExpandSelectTreeNode {
   }
 
   /**
-   * Builder interface
+   * Builder interface.
    */
   public static abstract class ExpandSelectTreeNodeBuilder {
 
     /**
-     * Uses the runtime delegate to create a new instance
+     * Uses the runtime delegate to create a new instance.
+     *
      * @return instance of {@link ExpandSelectTreeNodeBuilder}
      */
     private static ExpandSelectTreeNodeBuilder newInstance() {
@@ -100,7 +104,8 @@ public abstract class ExpandSelectTreeNode {
     /**
      * A list of properties which are selected. Selected means that they appear in the payload during serialization.
      * MUST NOT CONTAIN navigation properties.
-     * @param selectedPropertyNames
+     *
+     * @param selectedPropertyNames the selected property names
      * @return {@link ExpandSelectTreeNodeBuilder} for method chaining.
      */
     public abstract ExpandSelectTreeNodeBuilder selectedProperties(List<String> selectedPropertyNames);
@@ -109,7 +114,8 @@ public abstract class ExpandSelectTreeNode {
      * A list of selected links. Selected means they appear as links in the payload. If a link should be
      * expanded they navigation property does not need to appear here but can. Expanded links will win over selected
      * links.
-     * @param selectedNavigationPropertyNames
+     *
+     * @param selectedNavigationPropertyNames the selected navigation property names
      * @return {@link ExpandSelectTreeNodeBuilder} for method chaining.
      */
     public abstract ExpandSelectTreeNodeBuilder selectedLinks(List<String> selectedNavigationPropertyNames);
@@ -119,7 +125,8 @@ public abstract class ExpandSelectTreeNode {
      * selected. Custom nodes for a navigation properties will win over navigation properties which are also specified
      * in the expanded links list. Example: if a link A is set with a custom node and A appears in the expanded link
      * list it will be expanded with the custom node.
-     * @param navigationPropertyName
+     *
+     * @param navigationPropertyName the navigation property name
      * @param expandNode must not be null
      * @return {@link ExpandSelectTreeNodeBuilder} for method chaining.
      */
@@ -132,7 +139,8 @@ public abstract class ExpandSelectTreeNode {
      * properties and links. If this is not needed use the customExpandedLink method to set a custom node for this
      * expanded link. Expanded links will win over selected links. If a custom node was set for a particular link it
      * will win over a link that is specified in this list.
-     * @param navigationPropertyNames
+     *
+     * @param navigationPropertyNames the navigation property names
      * @return {@link ExpandSelectTreeNodeBuilder} for method chaining.
      */
     public abstract ExpandSelectTreeNodeBuilder expandedLinks(List<String> navigationPropertyNames);

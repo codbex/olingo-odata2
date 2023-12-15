@@ -21,16 +21,21 @@ package org.apache.olingo.odata2.api.edm.provider;
 import org.apache.olingo.odata2.api.edm.EdmMultiplicity;
 import org.apache.olingo.odata2.api.edm.FullQualifiedName;
 
+// TODO: Auto-generated Javadoc
 /**
- * Objects of this Class represent a return type of a function import
- * 
+ * Objects of this Class represent a return type of a function import.
  */
 public class ReturnType {
 
+  /** The type name. */
   private FullQualifiedName typeName;
+  
+  /** The multiplicity. */
   private EdmMultiplicity multiplicity;
 
   /**
+   * Gets the type name.
+   *
    * @return {@link FullQualifiedName} type of this {@link ReturnType}
    */
   public FullQualifiedName getTypeName() {
@@ -38,6 +43,8 @@ public class ReturnType {
   }
 
   /**
+   * Gets the multiplicity.
+   *
    * @return {@link EdmMultiplicity} of this {@link ReturnType}
    */
   public EdmMultiplicity getMultiplicity() {
@@ -45,8 +52,9 @@ public class ReturnType {
   }
 
   /**
-   * Sets the type of this {@link ReturnType} via the types {@link FullQualifiedName}
-   * @param qualifiedName
+   * Sets the type of this {@link ReturnType} via the types {@link FullQualifiedName}.
+   *
+   * @param qualifiedName the qualified name
    * @return {@link ReturnType} for method chaining
    */
   public ReturnType setTypeName(final FullQualifiedName qualifiedName) {
@@ -55,8 +63,9 @@ public class ReturnType {
   }
 
   /**
-   * Sets the {@link EdmMultiplicity} of this {@link ReturnType}
-   * @param multiplicity
+   * Sets the {@link EdmMultiplicity} of this {@link ReturnType}.
+   *
+   * @param multiplicity the multiplicity
    * @return {@link ReturnType} for method chaining
    */
   public ReturnType setMultiplicity(final EdmMultiplicity multiplicity) {
@@ -64,6 +73,11 @@ public class ReturnType {
     return this;
   }
 
+  /**
+   * To string.
+   *
+   * @return the string
+   */
   @Override
   public String toString() {
     if (EdmMultiplicity.MANY == multiplicity) {

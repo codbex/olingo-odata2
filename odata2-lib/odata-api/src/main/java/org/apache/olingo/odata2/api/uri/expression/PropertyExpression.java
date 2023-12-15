@@ -20,6 +20,7 @@ package org.apache.olingo.odata2.api.uri.expression;
 
 import org.apache.olingo.odata2.api.edm.EdmTyped;
 
+// TODO: Auto-generated Javadoc
 /**
  * Represents a property expression in the expression tree
  * <br>
@@ -32,12 +33,17 @@ import org.apache.olingo.odata2.api.edm.EdmTyped;
  * 
  */
 public interface PropertyExpression extends CommonExpression {
+  
   /**
+   * Gets the property name.
+   *
    * @return the property name as used in the EDM
    */
   public String getPropertyName();
 
   /**
+   * Gets the edm property.
+   *
    * @return Returns the EDM property matching the property name used in the expression String.
    * This may be an instance of EdmProperty or EdmNavigationProperty
    * @see EdmTyped

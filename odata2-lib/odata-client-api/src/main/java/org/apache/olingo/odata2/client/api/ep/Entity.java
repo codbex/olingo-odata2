@@ -21,31 +21,44 @@ package org.apache.olingo.odata2.client.api.ep;
 import java.util.HashMap;
 import java.util.Map;
 
+// TODO: Auto-generated Javadoc
 /**
  * Data representation for a single entity.
  */
 public class Entity {
 
+  /** The properties. */
   private final Map<String, Object> properties = new HashMap<String, Object>();
+  
+  /** The navigations. */
   private final Map<String, Object> navigations = new HashMap<String, Object>();
+  
+  /** The write properties. */
   private EntitySerializerProperties writeProperties;
  
+  /**
+   * Gets the navigations.
+   *
+   * @return the navigations
+   */
   public Map<String, Object> getNavigations() {
     return navigations;
   }
   
   /**
-   * Add Navigation
-   * @param link
-   * @param value
+   * Add Navigation.
+   *
+   * @param link the link
+   * @param value the value
    */
   public void addNavigation(final String link, final Object value) {
     navigations.put(link, value);
   }
 
   /**
-   * 
-   * @param link
+   * Gets the navigation.
+   *
+   * @param link the link
    * @return Object
    */
   public Object getNavigation(String link) {
@@ -53,7 +66,8 @@ public class Entity {
   }
  
   /**
-   * Return properties of an entity
+   * Return properties of an entity.
+   *
    * @return Properties
    */
   public Map<String, Object> getProperties() {
@@ -61,17 +75,19 @@ public class Entity {
   }
   
   /**
-   * Add a property to entity
-   * @param property
-   * @param value
+   * Add a property to entity.
+   *
+   * @param property the property
+   * @param value the value
    */
   public void addProperty(final String property, final Object value) {
     properties.put(property, value);
   }
 
   /**
-   * Get Property of an entity
-   * @param property
+   * Get Property of an entity.
+   *
+   * @param property the property
    * @return Object
    */
   public Object getProperty(String property) {
@@ -79,7 +95,8 @@ public class Entity {
   }
 
   /**
-   * Returns the Write properties
+   * Returns the Write properties.
+   *
    * @return EntitySerializerProperties
    */
   public EntitySerializerProperties getWriteProperties() {
@@ -87,8 +104,9 @@ public class Entity {
   }
 
   /**
-   * Sets the write properties for an entity
-   * @param writeProperties
+   * Sets the write properties for an entity.
+   *
+   * @param writeProperties the new write properties
    */
   public void setWriteProperties(EntitySerializerProperties writeProperties) {
     this.writeProperties = writeProperties;

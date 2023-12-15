@@ -20,18 +20,27 @@ package org.apache.olingo.odata2.api.edm.provider;
 
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
 /**
- * Objects of this class represent documentation
- * 
+ * Objects of this class represent documentation.
  */
 public class Documentation {
 
+  /** The summary. */
   private String summary;
+  
+  /** The long description. */
   private String longDescription;
+  
+  /** The annotation attributes. */
   private List<AnnotationAttribute> annotationAttributes;
+  
+  /** The annotation elements. */
   private List<AnnotationElement> annotationElements;
 
   /**
+   * Gets the summary.
+   *
    * @return <b>String</b> summary
    */
   public String getSummary() {
@@ -39,6 +48,8 @@ public class Documentation {
   }
 
   /**
+   * Gets the long description.
+   *
    * @return <b>String</b> the long description
    */
   public String getLongDescription() {
@@ -46,6 +57,8 @@ public class Documentation {
   }
 
   /**
+   * Gets the annotation attributes.
+   *
    * @return collection of {@link AnnotationAttribute} annotation attributes
    */
   public List<AnnotationAttribute> getAnnotationAttributes() {
@@ -53,6 +66,8 @@ public class Documentation {
   }
 
   /**
+   * Gets the annotation elements.
+   *
    * @return collection of {@link AnnotationElement} annotation elements
    */
   public List<AnnotationElement> getAnnotationElements() {
@@ -60,8 +75,9 @@ public class Documentation {
   }
 
   /**
-   * Sets the summary for this {@link Documentation}
-   * @param summary
+   * Sets the summary for this {@link Documentation}.
+   *
+   * @param summary the summary
    * @return {@link Documentation} for method chaining
    */
   public Documentation setSummary(final String summary) {
@@ -70,8 +86,9 @@ public class Documentation {
   }
 
   /**
-   * Sets the long description for this {@link Documentation}
-   * @param longDescription
+   * Sets the long description for this {@link Documentation}.
+   *
+   * @param longDescription the long description
    * @return {@link Documentation} for method chaining
    */
   public Documentation setLongDescription(final String longDescription) {
@@ -80,8 +97,9 @@ public class Documentation {
   }
 
   /**
-   * Sets the collection of {@link AnnotationAttribute} for this {@link Documentation}
-   * @param annotationAttributes
+   * Sets the collection of {@link AnnotationAttribute} for this {@link Documentation}.
+   *
+   * @param annotationAttributes the annotation attributes
    * @return {@link Documentation} for method chaining
    */
   public Documentation setAnnotationAttributes(final List<AnnotationAttribute> annotationAttributes) {
@@ -90,8 +108,9 @@ public class Documentation {
   }
 
   /**
-   * Sets the collection of {@link AnnotationElement} for this {@link Documentation}
-   * @param annotationElements
+   * Sets the collection of {@link AnnotationElement} for this {@link Documentation}.
+   *
+   * @param annotationElements the annotation elements
    * @return {@link Documentation} for method chaining
    */
   public Documentation setAnnotationElements(final List<AnnotationElement> annotationElements) {

@@ -23,17 +23,20 @@ import org.apache.olingo.odata2.api.processor.ODataProcessor;
 import org.apache.olingo.odata2.api.processor.ODataResponse;
 import org.apache.olingo.odata2.api.uri.info.GetFunctionImportUriInfo;
 
+// TODO: Auto-generated Javadoc
 /**
  * Execute an OData function import request.
  * 
  */
 public interface FunctionImportProcessor extends ODataProcessor {
+  
   /**
    * Executes a function import and returns the result.
+   *
    * @param uriInfo information about the request URI
    * @param contentType the content type of the response
    * @return an {@link ODataResponse} object
-   * @throws ODataException
+   * @throws ODataException the o data exception
    */
   ODataResponse executeFunctionImport(GetFunctionImportUriInfo uriInfo, String contentType) throws ODataException;
 }

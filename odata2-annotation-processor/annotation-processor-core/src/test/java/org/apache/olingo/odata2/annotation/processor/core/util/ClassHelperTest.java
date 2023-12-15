@@ -27,11 +27,13 @@ import org.apache.olingo.odata2.api.exception.ODataException;
 import org.apache.olingo.odata2.testutil.mock.AnnotatedEntity;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *
+ * The Class ClassHelperTest.
  */
 public class ClassHelperTest {
 
+  /** The annotated test entity inner classes. */
   private final ClassValidator annotatedTestEntityInnerClasses = new ClassValidator() {
     @Override
     public boolean isClassValid(final Class<?> c) {
@@ -40,6 +42,7 @@ public class ClassHelperTest {
     }
   };
 
+  /** The annotated entity classes. */
   private final ClassValidator annotatedEntityClasses = new ClassValidator() {
     @Override
     public boolean isClassValid(final Class<?> c) {
@@ -47,6 +50,11 @@ public class ClassHelperTest {
     }
   };
 
+  /**
+   * Load single entity.
+   *
+   * @throws ODataException the o data exception
+   */
   @Test
   public void loadSingleEntity() throws ODataException {
     final String packageToScan = ClassHelperTest.class.getPackage().getName();
@@ -59,6 +67,11 @@ public class ClassHelperTest {
     Assert.assertEquals(SimpleEntity.class.getName(), loadedClasses.get(0).getName());
   }
 
+  /**
+   * Load from space dir.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = ClassFormatError.class)
   public void loadFromSpaceDir() throws Exception {
     final String packageToScan = "space space.package";
@@ -71,6 +84,11 @@ public class ClassHelperTest {
     Assert.assertEquals(SimpleEntity.class.getName(), loadedClasses.get(0).getName());
   }
 
+  /**
+   * Load from dir with unsafe name.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = ClassFormatError.class)
   public void loadFromDirWithUnsafeName() throws Exception {
     final String packageToScan = "space space.package";
@@ -83,6 +101,11 @@ public class ClassHelperTest {
     Assert.assertEquals(SimpleEntity.class.getName(), loadedClasses.get(0).getName());
   }
 
+  /**
+   * Load single entity from jar.
+   *
+   * @throws ODataException the o data exception
+   */
   @Test
   public void loadSingleEntityFromJar() throws ODataException {
     final String packageToScan = AnnotatedEntity.class.getPackage().getName();
@@ -100,12 +123,19 @@ public class ClassHelperTest {
   // the 'ClassHelper'
   //
 
+  /**
+   * The Class SimpleEntity.
+   */
   @EdmEntityType
 //  @SuppressWarnings("unused")
   private class SimpleEntity {
+    
+    /** The id. */
     @EdmKey
     @EdmProperty
     Long id;
+    
+    /** The name. */
     @EdmProperty
     String name;
   }

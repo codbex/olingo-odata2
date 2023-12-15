@@ -29,6 +29,7 @@ import org.apache.olingo.odata2.api.edm.EdmType;
 import org.apache.olingo.odata2.api.uri.KeyPredicate;
 import org.apache.olingo.odata2.api.uri.NavigationSegment;
 
+// TODO: Auto-generated Javadoc
 /**
  * Access to the parts of the request URI that are relevant for GET requests
  * of the number of links to a single entity (also known as existence check).

@@ -27,16 +27,26 @@ import org.apache.olingo.odata2.api.commons.HttpContentType;
 import org.apache.olingo.odata2.testutil.server.ServletType;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- * Tests employing the reference scenario reading links in XML format
- * 
+ * Tests employing the reference scenario reading links in XML format.
  */
 public final class LinksXmlReadOnlyTest extends AbstractRefXmlTest {
 
+  /**
+   * Instantiates a new links xml read only test.
+   *
+   * @param servletType the servlet type
+   */
   public LinksXmlReadOnlyTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /**
+   * Single link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void singleLink() throws Exception {
     HttpResponse response = callUri("Employees('6')/$links/ne_Room");
@@ -59,6 +69,11 @@ public final class LinksXmlReadOnlyTest extends AbstractRefXmlTest {
     badRequest("Employees('6')/ne_Manager/$links");
   }
 
+  /**
+   * Links.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void links() throws Exception {
     HttpResponse response = callUri("Managers('3')/$links/nm_Employees()");

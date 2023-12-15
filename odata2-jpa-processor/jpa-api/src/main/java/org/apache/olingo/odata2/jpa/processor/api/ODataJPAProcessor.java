@@ -25,6 +25,7 @@ import org.apache.olingo.odata2.jpa.processor.api.access.JPAProcessor;
 import org.apache.olingo.odata2.jpa.processor.api.exception.ODataJPAException;
 import org.apache.olingo.odata2.jpa.processor.api.factory.ODataJPAFactory;
 
+// TODO: Auto-generated Javadoc
 /**
  * Extend this class and implement an OData JPA processor if the default
  * behavior of OData JPA Processor library has to be overwritten.
@@ -52,19 +53,28 @@ public abstract class ODataJPAProcessor extends ODataSingleProcessor {
    */
   protected ODataJPAResponseBuilder responseBuilder;
 
+  /**
+   * Gets the odata JPA context.
+   *
+   * @return the odata JPA context
+   */
   public ODataJPAContext getOdataJPAContext() {
     return oDataJPAContext;
   }
 
+  /**
+   * Sets the odata JPA context.
+   *
+   * @param odataJPAContext the new odata JPA context
+   */
   public void setOdataJPAContext(final ODataJPAContext odataJPAContext) {
     oDataJPAContext = odataJPAContext;
   }
 
   /**
-   * Constructor
-   * 
-   * @param oDataJPAContext
-   * non null OData JPA Context object
+   * Constructor.
+   *
+   * @param oDataJPAContext non null OData JPA Context object
    */
   public ODataJPAProcessor(final ODataJPAContext oDataJPAContext) {
     if (oDataJPAContext == null) {
@@ -82,6 +92,8 @@ public abstract class ODataJPAProcessor extends ODataSingleProcessor {
    * <p/>
    * <b>ATTENTION:</b> If <code>isContainerManaged</code> is set to <code>true</code> at
    * the ODataJPAContext only the cleanup is run but the EntityManager is not closed.
+   *
+   * @param forceClose the force close
    */
   public void close(boolean forceClose) {
     ODataJPATombstoneContext.cleanup();
@@ -95,6 +107,9 @@ public abstract class ODataJPAProcessor extends ODataSingleProcessor {
     }
   }
 
+  /**
+   * Close.
+   */
   public void close() {
     close(false);
   }

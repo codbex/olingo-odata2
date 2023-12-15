@@ -27,26 +27,39 @@ import java.util.List;
 import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class ManagerTest.
  */
 public class ManagerTest extends BaseTest {
 
+  /** The Constant VALUE_NAME. */
   private static final String VALUE_NAME = "Peter Schulz";
+  
+  /** The Constant TEAM_NAME. */
   private static final String TEAM_NAME = "Team 1";
 
+  /**
+   * Test id.
+   */
   @Test
   public void testId() {
     Manager manager = new Manager(1, null);
     assertNotNull(manager.getId());
   }
 
+  /**
+   * Test manager name.
+   */
   @Test
   public void testManagerName() {
     Manager manager = new Manager(1, VALUE_NAME);
     assertEquals(VALUE_NAME, manager.getEmployeeName());
   }
 
+  /**
+   * Test manager.
+   */
   @Test
   public void testManager() {
     Manager manager = new Manager(1, "Walter Winter");
@@ -61,6 +74,9 @@ public class ManagerTest extends BaseTest {
     assertEquals(manager, employee.getManager());
   }
 
+  /**
+   * Test room.
+   */
   @Test
   public void testRoom() {
     Employee manager = new Manager(1, null);
@@ -71,6 +87,9 @@ public class ManagerTest extends BaseTest {
     assertEquals(manager, room.getEmployees().get(0));
   }
 
+  /**
+   * Test team.
+   */
   @Test
   public void testTeam() {
     Employee manager = new Manager(1, null);
@@ -82,6 +101,9 @@ public class ManagerTest extends BaseTest {
     assertEquals(list, team.getEmployees());
   }
 
+  /**
+   * Test employees.
+   */
   @Test
   public void testEmployees() {
     Manager manager = new Manager(1, null);

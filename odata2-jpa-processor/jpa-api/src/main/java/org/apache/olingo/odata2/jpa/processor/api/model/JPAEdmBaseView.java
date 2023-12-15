@@ -23,6 +23,7 @@ import jakarta.persistence.metamodel.Metamodel;
 import org.apache.olingo.odata2.jpa.processor.api.access.JPAEdmBuilder;
 import org.apache.olingo.odata2.jpa.processor.api.access.JPAEdmMappingModelAccess;
 
+// TODO: Auto-generated Javadoc
 /**
  * <p>
  * A base view on Java Persistence Model and Entity Data Model.
@@ -37,35 +38,36 @@ import org.apache.olingo.odata2.jpa.processor.api.access.JPAEdmMappingModelAcces
  * 
  */
 public interface JPAEdmBaseView {
+  
   /**
-   * 
+   * Gets the p unit name.
+   *
    * @return Java Persistence Unit Name
    */
   public String getpUnitName();
 
   /**
-   * The method returns the Java Persistence MetaModel
-   * 
+   * The method returns the Java Persistence MetaModel.
+   *
    * @return a meta model of type {@link jakarta.persistence.metamodel.Metamodel}
    */
   public Metamodel getJPAMetaModel();
 
   /**
    * The method returns a builder for building Entity Data Model elements from
-   * Java Persistence Model Elements
-   * 
+   * Java Persistence Model Elements.
+   *
    * @return a builder of type {@link org.apache.olingo.odata2.jpa.processor.api.access.JPAEdmBuilder}
    */
   public JPAEdmBuilder getBuilder();
 
   /**
-   * The method returns the if the container is consistent without any errors
-   * 
+   * The method returns the if the container is consistent without any errors.
+   *
    * @return <ul>
    * <li>true - if the container is consistent without errors</li>
    * <li>false - if the container is inconsistent with errors</li>
    * </ul>
-   * 
    */
   public boolean isConsistent();
 

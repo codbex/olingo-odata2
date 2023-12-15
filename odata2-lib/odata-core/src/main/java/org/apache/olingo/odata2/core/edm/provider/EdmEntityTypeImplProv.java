@@ -33,17 +33,38 @@ import org.apache.olingo.odata2.api.edm.provider.EntityType;
 import org.apache.olingo.odata2.api.edm.provider.NavigationProperty;
 import org.apache.olingo.odata2.api.edm.provider.PropertyRef;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EdmEntityTypeImplProv.
+ */
 public class EdmEntityTypeImplProv extends EdmStructuralTypeImplProv implements EdmEntityType {
 
+  /** The entity type. */
   private EntityType entityType;
 
+  /** The key properties. */
   private Map<String, EdmProperty> keyProperties;
+  
+  /** The edm key properties. */
   private List<EdmProperty> edmKeyProperties;
+  
+  /** The edm key property names. */
   private List<String> edmKeyPropertyNames;
 
+  /** The navigation properties. */
   private Map<String, NavigationProperty> navigationProperties;
+  
+  /** The edm navigation property names. */
   private List<String> edmNavigationPropertyNames;
 
+  /**
+   * Instantiates a new edm entity type impl prov.
+   *
+   * @param edm the edm
+   * @param entityType the entity type
+   * @param namespace the namespace
+   * @throws EdmException the edm exception
+   */
   public EdmEntityTypeImplProv(final EdmImplProv edm, final EntityType entityType, final String namespace)
       throws EdmException {
     super(edm, entityType, EdmTypeKind.ENTITY, namespace);
@@ -52,6 +73,11 @@ public class EdmEntityTypeImplProv extends EdmStructuralTypeImplProv implements 
     buildNavigationPropertiesInternal();
   }
 
+  /**
+   * Builds the navigation properties internal.
+   *
+   * @throws EdmException the edm exception
+   */
   private void buildNavigationPropertiesInternal() throws EdmException {
     navigationProperties = new HashMap<String, NavigationProperty>();
 
@@ -62,6 +88,12 @@ public class EdmEntityTypeImplProv extends EdmStructuralTypeImplProv implements 
     }
   }
 
+  /**
+   * Gets the key property names.
+   *
+   * @return the key property names
+   * @throws EdmException the edm exception
+   */
   @Override
   public List<String> getKeyPropertyNames() throws EdmException {
     if (edmKeyPropertyNames == null) {
@@ -84,6 +116,12 @@ public class EdmEntityTypeImplProv extends EdmStructuralTypeImplProv implements 
     return edmKeyPropertyNames;
   }
 
+  /**
+   * Gets the key properties.
+   *
+   * @return the key properties
+   * @throws EdmException the edm exception
+   */
   @Override
   public List<EdmProperty> getKeyProperties() throws EdmException {
     if (edmKeyProperties == null) {
@@ -110,16 +148,34 @@ public class EdmEntityTypeImplProv extends EdmStructuralTypeImplProv implements 
     return edmKeyProperties;
   }
 
+  /**
+   * Checks for stream.
+   *
+   * @return true, if successful
+   * @throws EdmException the edm exception
+   */
   @Override
   public boolean hasStream() throws EdmException {
     return entityType.isHasStream();
   }
 
+  /**
+   * Gets the customizable feed mappings.
+   *
+   * @return the customizable feed mappings
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmCustomizableFeedMappings getCustomizableFeedMappings() throws EdmException {
     return entityType.getCustomizableFeedMappings();
   }
 
+  /**
+   * Gets the navigation property names.
+   *
+   * @return the navigation property names
+   * @throws EdmException the edm exception
+   */
   @Override
   public List<String> getNavigationPropertyNames() throws EdmException {
     if (edmNavigationPropertyNames == null) {
@@ -136,11 +192,24 @@ public class EdmEntityTypeImplProv extends EdmStructuralTypeImplProv implements 
     return edmNavigationPropertyNames;
   }
 
+  /**
+   * Gets the base type.
+   *
+   * @return the base type
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmEntityType getBaseType() throws EdmException {
     return (EdmEntityType) edmBaseType;
   }
 
+  /**
+   * Gets the property internal.
+   *
+   * @param name the name
+   * @return the property internal
+   * @throws EdmException the edm exception
+   */
   @Override
   protected EdmTyped getPropertyInternal(final String name) throws EdmException {
     EdmTyped edmProperty = super.getPropertyInternal(name);
@@ -162,6 +231,13 @@ public class EdmEntityTypeImplProv extends EdmStructuralTypeImplProv implements 
     return edmProperty;
   }
 
+  /**
+   * Creates the navigation property.
+   *
+   * @param property the property
+   * @return the edm typed
+   * @throws EdmException the edm exception
+   */
   protected EdmTyped createNavigationProperty(final NavigationProperty property) throws EdmException {
     return new EdmNavigationPropertyImplProv(edm, property);
   }

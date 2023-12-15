@@ -23,22 +23,24 @@ import java.util.List;
 import org.apache.olingo.odata2.api.edm.EdmEntitySetInfo;
 import org.apache.olingo.odata2.api.ep.EntityProviderException;
 
+// TODO: Auto-generated Javadoc
 /**
  * A Service document
- * <p>Service document lists all EntitySets
- * 
+ * <p>Service document lists all EntitySets.
  */
 public interface ServiceDocument {
+  
   /**
-   * Get the list of the EntitySets
-   * 
+   * Get the list of the EntitySets.
+   *
    * @return a list of {@link EdmEntitySetInfo}
+   * @throws EntityProviderException the entity provider exception
    */
   public List<EdmEntitySetInfo> getEntitySetsInfo() throws EntityProviderException;
 
   /**
-   * Get additional information if the service document is in atom format
-   * 
+   * Get additional information if the service document is in atom format.
+   *
    * @return {@link AtomInfo} or null
    */
   public AtomInfo getAtomInfo();

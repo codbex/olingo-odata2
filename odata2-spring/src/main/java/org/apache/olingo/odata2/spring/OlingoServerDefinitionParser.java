@@ -29,25 +29,52 @@ import org.springframework.beans.factory.support.ManagedList;
 import org.springframework.beans.factory.xml.ParserContext;
 import org.w3c.dom.Element;
 
+// TODO: Auto-generated Javadoc
 /**
- *
+ * The Class OlingoServerDefinitionParser.
  */
 public class OlingoServerDefinitionParser extends JAXRSServerFactoryBeanDefinitionParser {
 
+  /** The Constant OLINGO_ROOT_LOCATOR. */
   protected static final String OLINGO_ROOT_LOCATOR = "OlingoRootLocator";
+  
+  /** The Constant OLINGO_ODATA_PROVIDER. */
   protected static final String OLINGO_ODATA_PROVIDER = "OlingoODataProvider";
+  
+  /** The Constant OLINGO_ODATA_EXCEPTION_HANDLER. */
   protected static final String OLINGO_ODATA_EXCEPTION_HANDLER = "OlingoODataExceptionHandler";
+  
+  /** The Constant SERVICE_FACTORY. */
   protected static final String SERVICE_FACTORY = "serviceFactory";
+  
+  /** The Constant SERVICE_BEANS. */
   protected static final String SERVICE_BEANS = "serviceBeans";
+  
+  /** The Constant ID. */
   protected static final String ID = "id";
+  
+  /** The Constant FACTORY. */
   protected static final String FACTORY = "factory";
+  
+  /** The Constant PATH_SPLIT. */
   protected static final String PATH_SPLIT = "pathSplit";
 
+  /**
+   * Instantiates a new olingo server definition parser.
+   */
   public OlingoServerDefinitionParser() {
     super();
     setBeanClass(SpringJAXRSServerFactoryBean.class);
   }
 
+  /**
+   * Map attribute.
+   *
+   * @param bean the bean
+   * @param e the e
+   * @param name the name
+   * @param val the val
+   */
   @Override
   protected void mapAttribute(BeanDefinitionBuilder bean, Element e, String name, String val) {
     if (ID.equals(name) || "address".equals(name)) {
@@ -55,6 +82,13 @@ public class OlingoServerDefinitionParser extends JAXRSServerFactoryBeanDefiniti
     }
   }
 
+  /**
+   * Do parse.
+   *
+   * @param element the element
+   * @param parserContext the parser context
+   * @param bean the bean
+   */
   @Override
   protected void doParse(Element element, ParserContext parserContext, BeanDefinitionBuilder bean) {
     super.doParse(element, parserContext, bean);

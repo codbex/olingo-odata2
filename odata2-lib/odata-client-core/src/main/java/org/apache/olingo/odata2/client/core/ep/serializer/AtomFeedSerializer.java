@@ -39,17 +39,20 @@ import org.apache.olingo.odata2.core.ep.EntityProviderProducerException;
 import org.apache.olingo.odata2.core.ep.aggregator.EntityInfoAggregator;
 import org.apache.olingo.odata2.core.ep.util.FormatXml;
 
+// TODO: Auto-generated Javadoc
 /**
  * Serializes an ATOM feed.
  * 
  */
 public class AtomFeedSerializer {
 
+  /** The properties. */
   private final EntityCollectionSerializerProperties properties;
 
   /**
-   * 
-   * @param properties
+   * Instantiates a new atom feed serializer.
+   *
+   * @param properties the properties
    */
   public AtomFeedSerializer(final EntityCollectionSerializerProperties properties) {
     this.properties = properties == null ? 
@@ -58,12 +61,13 @@ public class AtomFeedSerializer {
   }
  
   /**
-   * This serializes the xml payload feed
-   * @param writer
-   * @param eia
-   * @param data
-   * @param isInline
-   * @throws EntityProviderException
+   * This serializes the xml payload feed.
+   *
+   * @param writer the writer
+   * @param eia the eia
+   * @param data the data
+   * @param isInline the is inline
+   * @throws EntityProviderException the entity provider exception
    */
   public void append(final XMLStreamWriter writer, final EntityInfoAggregator eia,
       final EntityCollection data, final boolean isInline) throws EntityProviderException {
@@ -98,6 +102,14 @@ public class AtomFeedSerializer {
     }
   }
 
+  /**
+   * Append entries.
+   *
+   * @param writer the writer
+   * @param eia the eia
+   * @param data the data
+   * @throws EntityProviderException the entity provider exception
+   */
   private void appendEntries(final XMLStreamWriter writer, final EntityInfoAggregator eia,
       final EntityCollection data) throws EntityProviderException {
     AtomEntryEntitySerializer entryProvider;
@@ -112,6 +124,13 @@ public class AtomFeedSerializer {
   }
 
 
+  /**
+   * Append atom self link.
+   *
+   * @param writer the writer
+   * @param eia the eia
+   * @throws EntityProviderException the entity provider exception
+   */
   private void appendAtomSelfLink(final XMLStreamWriter writer, final EntityInfoAggregator eia)
       throws EntityProviderException {
 
@@ -133,6 +152,12 @@ public class AtomFeedSerializer {
     }
   }
 
+  /**
+   * Creates the self link.
+   *
+   * @param eia the eia
+   * @return the string
+   */
   private String createSelfLink(final EntityInfoAggregator eia) {
     StringBuilder sb = new StringBuilder();
     if (!eia.isDefaultEntityContainer()) {
@@ -144,6 +169,13 @@ public class AtomFeedSerializer {
     return sb.toString();
   }
 
+  /**
+   * Append atom mandatory parts.
+   *
+   * @param writer the writer
+   * @param eia the eia
+   * @throws EntityProviderException the entity provider exception
+   */
   private void appendAtomMandatoryParts(final XMLStreamWriter writer, final EntityInfoAggregator eia)
       throws EntityProviderException {
     try {
@@ -177,6 +209,13 @@ public class AtomFeedSerializer {
     }
   }
 
+  /**
+   * Creates the atom id.
+   *
+   * @param eia the eia
+   * @return the string
+   * @throws EntityProviderException the entity provider exception
+   */
   private String createAtomId(final EntityInfoAggregator eia) throws EntityProviderException {
     return properties.getServiceRoot() + createSelfLink(eia);
   }

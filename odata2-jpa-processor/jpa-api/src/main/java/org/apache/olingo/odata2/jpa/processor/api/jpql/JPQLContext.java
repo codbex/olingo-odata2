@@ -22,6 +22,7 @@ import org.apache.olingo.odata2.jpa.processor.api.exception.ODataJPAModelExcepti
 import org.apache.olingo.odata2.jpa.processor.api.exception.ODataJPARuntimeException;
 import org.apache.olingo.odata2.jpa.processor.api.factory.ODataJPAFactory;
 
+// TODO: Auto-generated Javadoc
 /**
  * The abstract class is a compilation of objects required for building
  * {@link org.apache.olingo.odata2.jpa.processor.api.jpql.JPQLStatement}. Extend this
@@ -40,43 +41,44 @@ import org.apache.olingo.odata2.jpa.processor.api.factory.ODataJPAFactory;
  */
 public abstract class JPQLContext implements JPQLContextView {
 
-  /**
-   * An alias for Java Persistence Entity
-   */
+  /** An alias for Java Persistence Entity. */
   protected String jpaEntityAlias;
-  /**
-   * Java Persistence Entity name
-   */
+  
+  /** Java Persistence Entity name. */
   protected String jpaEntityName;
   /**
    * The type of JPQL context. Based on the type JPQL statements can be built.
    */
   protected JPQLContextType type;
+  
+  /** The paging requested. */
   protected boolean pagingRequested = false;
+  
+  /** The Constant jpqlContext. */
   protected static final ThreadLocal<JPQLContext> jpqlContext = new ThreadLocal<JPQLContext>();
 
   /**
-   * sets JPA Entity Name into the context
-   * 
-   * @param jpaEntityName
-   * is the name of JPA Entity
+   * sets JPA Entity Name into the context.
+   *
+   * @param jpaEntityName is the name of JPA Entity
    */
   protected final void setJPAEntityName(final String jpaEntityName) {
     this.jpaEntityName = jpaEntityName;
   }
 
   /**
-   * sets JPA Entity alias name into the context
-   * 
-   * @param jpaEntityAlias
-   * is the JPA entity alias name
+   * sets JPA Entity alias name into the context.
+   *
+   * @param jpaEntityAlias is the JPA entity alias name
    */
   protected final void setJPAEntityAlias(final String jpaEntityAlias) {
     this.jpaEntityAlias = jpaEntityAlias;
   }
 
   /**
-   * gets the JPA entity alias name set into the context
+   * gets the JPA entity alias name set into the context.
+   *
+   * @return the JPA entity alias
    */
   @Override
   public final String getJPAEntityAlias() {
@@ -84,17 +86,18 @@ public abstract class JPQLContext implements JPQLContextView {
   }
 
   /**
-   * sets the JPQL context type into the context
-   * 
-   * @param type
-   * is JPQLContextType
+   * sets the JPQL context type into the context.
+   *
+   * @param type is JPQLContextType
    */
   protected final void setType(final JPQLContextType type) {
     this.type = type;
   }
   
   /**
-   * gets the JPA entity name set into the context
+   * gets the JPA entity name set into the context.
+   *
+   * @return the JPA entity name
    */
   @Override
   public final String getJPAEntityName() {
@@ -102,13 +105,20 @@ public abstract class JPQLContext implements JPQLContextView {
   }
 
   /**
-   * gets the JPQL context type set into the context
+   * gets the JPQL context type set into the context.
+   *
+   * @return the type
    */
   @Override
   public final JPQLContextType getType() {
     return type;
   }
 
+  /**
+   * Checks if is paging requested.
+   *
+   * @param pagingRequested the paging requested
+   */
   protected void isPagingRequested(final boolean pagingRequested) {
     this.pagingRequested = pagingRequested;
   }
@@ -118,13 +128,11 @@ public abstract class JPQLContext implements JPQLContextView {
    * {@link org.apache.olingo.odata2.jpa.processor.api.jpql.JPQLContext.JPQLContextBuilder} based on the
    * JPQLContextType. The context builder can be used for
    * building different JPQL contexts.
-   * 
-   * @param contextType
-   * is the JPQLContextType
-   * @param resultsView
-   * is the OData request view
+   *
+   * @param contextType is the JPQLContextType
+   * @param resultsView is the OData request view
    * @return an instance of type {@link org.apache.olingo.odata2.jpa.processor.api.jpql.JPQLContext.JPQLContextBuilder}
-   * @throws ODataJPARuntimeException
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
    */
   public final static JPQLContextBuilder createBuilder(final JPQLContextType contextType, final Object resultsView)
       throws ODataJPARuntimeException {
@@ -136,15 +144,12 @@ public abstract class JPQLContext implements JPQLContextView {
    * {@link org.apache.olingo.odata2.jpa.processor.api.jpql.JPQLContext.JPQLContextBuilder} based on the
    * JPQLContextType. The context builder can be used for
    * building different JPQL contexts.
-   * 
-   * @param contextType
-   * is the JPQLContextType
-   * @param resultsView
-   * is the OData request view
-   * @param withPaging
-   * indicates whether to build the context with paging
+   *
+   * @param contextType is the JPQLContextType
+   * @param resultsView is the OData request view
+   * @param withPaging indicates whether to build the context with paging
    * @return an instance of type {@link org.apache.olingo.odata2.jpa.processor.api.jpql.JPQLContext.JPQLContextBuilder}
-   * @throws ODataJPARuntimeException
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
    */
   public final static JPQLContextBuilder createBuilder(final JPQLContextType contextType, final Object resultsView,
       final boolean withPaging)
@@ -152,14 +157,27 @@ public abstract class JPQLContext implements JPQLContextView {
     return JPQLContextBuilder.create(contextType, resultsView, withPaging);
   }
   
+  /**
+   * Sets the JPQL context.
+   *
+   * @param context the new JPQL context
+   */
   protected static void setJPQLContext(JPQLContext context) {
     jpqlContext.set(context);
   }
   
+  /**
+   * Gets the JPQL context.
+   *
+   * @return the JPQL context
+   */
   public final static JPQLContext getJPQLContext() {
     return jpqlContext.get();
   }
   
+  /**
+   * Removes the JPQL context.
+   */
   public final static void removeJPQLContext() {
     jpqlContext.remove();
   }
@@ -171,6 +189,8 @@ public abstract class JPQLContext implements JPQLContextView {
    * 
    */
   public static abstract class JPQLContextBuilder {
+    
+    /** The Constant ALIAS. */
     private static final String ALIAS = "E";
 
     /**
@@ -180,20 +200,23 @@ public abstract class JPQLContext implements JPQLContextView {
      */
     protected int aliasCounter = 0;
 
+    /** The with paging. */
     protected boolean withPaging = false;
 
+    /**
+     * Instantiates a new JPQL context builder.
+     */
     protected JPQLContextBuilder() {}
 
     /**
      * the method instantiates an instance of type JPQLContextBuilder.
-     * 
-     * @param contextType
-     * indicates the type of JPQLContextBuilder to instantiate.
-     * @param resultsView
-     * is the OData request view
+     *
+     * @param contextType indicates the type of JPQLContextBuilder to instantiate.
+     * @param resultsView is the OData request view
+     * @param withPaging the with paging
      * @return an instance of type
      * {@link org.apache.olingo.odata2.jpa.processor.api.jpql.JPQLContext.JPQLContextBuilder}
-     * @throws ODataJPARuntimeException
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
      */
     private static JPQLContextBuilder create(final JPQLContextType contextType, final Object resultsView,
         final boolean withPaging)
@@ -212,10 +235,10 @@ public abstract class JPQLContext implements JPQLContextView {
      * The abstract method is implemented by specific JPQL context builders
      * to build JPQL Contexts. The build method makes use of information set
      * into the context to built JPQL Context Types.
-     * 
+     *
      * @return an instance of {@link org.apache.olingo.odata2.jpa.processor.api.jpql.JPQLContext}
-     * @throws ODataJPAModelException
-     * @throws ODataJPARuntimeException
+     * @throws ODataJPAModelException the o data JPA model exception
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
      */
     public abstract JPQLContext build() throws ODataJPAModelException, ODataJPARuntimeException;
 

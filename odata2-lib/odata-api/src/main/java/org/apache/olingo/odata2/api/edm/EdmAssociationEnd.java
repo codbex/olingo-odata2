@@ -18,23 +18,28 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.edm;
 
+// TODO: Auto-generated Javadoc
 /**
- * @org.apache.olingo.odata2.DoNotImplement
- * A CSDL AssociationEnd element
+ * The Interface EdmAssociationEnd.
+ *
+ * @org.apache.olingo.odata2.DoNotImplement A CSDL AssociationEnd element
  * 
  * <p>EdmAssociationEnd defines one side of the relationship of two entity types.
- * 
  */
 public interface EdmAssociationEnd extends EdmAnnotatable {
 
   /**
+   * Gets the role.
+   *
    * @return the role of this {@link EdmAssociationEnd} as a String.
    */
   String getRole();
 
   /**
+   * Gets the entity type.
+   *
    * @return {@link EdmEntityType} this association end points to.
-   * @throws EdmException
+   * @throws EdmException the edm exception
    */
   EdmEntityType getEntityType() throws EdmException;
 

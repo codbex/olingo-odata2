@@ -47,12 +47,26 @@ import org.apache.olingo.odata2.core.exception.ODataRuntimeException;
 import org.apache.olingo.odata2.testutil.mock.MockFacade;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JsonEntryDeepInsertEntryTest.
+ */
 public class JsonEntryDeepInsertEntryTest extends AbstractConsumerTest {
 
+  /** The Constant EMPLOYEE_WITH_INLINE_TEAM. */
   private static final String EMPLOYEE_WITH_INLINE_TEAM = "JsonEmployeeWithInlineTeam.json";
+  
+  /** The Constant INLINE_ROOM_WITH_INLINE_BUILDING. */
   private static final String INLINE_ROOM_WITH_INLINE_BUILDING = "JsonInlineRoomWithInlineBuilding.json";
+  
+  /** The Constant INLINE_ROOM_WITH_INLINE_NULL. */
   private static final String INLINE_ROOM_WITH_INLINE_NULL = "JsonInlineRoomWithInlineNull.json";
 
+  /**
+   * Inner entry no media resource without callback.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void innerEntryNoMediaResourceWithoutCallback() throws Exception {
     ODataEntry outerEntry = prepareAndExecuteEntry(EMPLOYEE_WITH_INLINE_TEAM, "Employees", DEFAULT_PROPERTIES);
@@ -74,6 +88,11 @@ public class JsonEntryDeepInsertEntryTest extends AbstractConsumerTest {
     assertEquals("http://localhost:8080/ReferenceScenario.svc/Teams('1')/nt_Employees", associationUris.get(0));
   }
 
+  /**
+   * Inner entry no media resource with callback.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void innerEntryNoMediaResourceWithCallback() throws Exception {
     EntryCallback callback = new EntryCallback();
@@ -96,6 +115,11 @@ public class JsonEntryDeepInsertEntryTest extends AbstractConsumerTest {
     assertEquals("http://localhost:8080/ReferenceScenario.svc/Teams('1')/nt_Employees", associationUris.get(0));
   }
 
+  /**
+   * Inner entry with optional navigation property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void innerEntryWithOptionalNavigationProperty() throws Exception {
     // prepare
@@ -137,6 +161,11 @@ public class JsonEntryDeepInsertEntryTest extends AbstractConsumerTest {
     assertEquals("http://localhost:8080/ReferenceScenario.svc/Teams('1')/nt_Employees", associationUris.get(0));
   }
 
+  /**
+   * Inline room with inline building no callback.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void inlineRoomWithInlineBuildingNoCallback() throws Exception {
     ODataEntry outerEntry = prepareAndExecuteEntry(INLINE_ROOM_WITH_INLINE_BUILDING, "Employees", DEFAULT_PROPERTIES);
@@ -180,6 +209,11 @@ public class JsonEntryDeepInsertEntryTest extends AbstractConsumerTest {
     assertEquals("http://localhost:8080/ReferenceScenario.svc/Buildings('1')/nb_Rooms", associationUris.get(0));
   }
 
+  /**
+   * Inline room with inline building with room callback.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void inlineRoomWithInlineBuildingWithRoomCallback() throws Exception {
     EntryCallback callback = new EntryCallback();
@@ -223,6 +257,11 @@ public class JsonEntryDeepInsertEntryTest extends AbstractConsumerTest {
     assertEquals("http://localhost:8080/ReferenceScenario.svc/Buildings('1')/nb_Rooms", associationUris.get(0));
   }
 
+  /**
+   * Inline room with inline building with callbacks.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void inlineRoomWithInlineBuildingWithCallbacks() throws Exception {
     EntryCallback buildingCallback = new EntryCallback();
@@ -269,6 +308,11 @@ public class JsonEntryDeepInsertEntryTest extends AbstractConsumerTest {
     assertEquals("http://localhost:8080/ReferenceScenario.svc/Buildings('1')/nb_Rooms", associationUris.get(0));
   }
 
+  /**
+   * Inline room with inline null with callbacks.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void inlineRoomWithInlineNullWithCallbacks() throws Exception {
     EntryCallback buildingCallback = new EntryCallback();
@@ -284,32 +328,69 @@ public class JsonEntryDeepInsertEntryTest extends AbstractConsumerTest {
     assertNull(innerRoom);
   }
 
+  /**
+   * The Class EntryCallback.
+   */
   private class EntryCallback implements OnReadInlineContent {
+    
+    /** The entry. */
     private ODataEntry entry;
+    
+    /** The inner callback. */
     private EntryCallback innerCallback;
 
+    /**
+     * Instantiates a new entry callback.
+     *
+     * @param innerCallback the inner callback
+     */
     public EntryCallback(final EntryCallback innerCallback) {
       this.innerCallback = innerCallback;
     }
 
+    /**
+     * Instantiates a new entry callback.
+     */
     public EntryCallback() {
 
     }
 
+    /**
+     * Gets the entry.
+     *
+     * @return the entry
+     */
     public ODataEntry getEntry() {
       return entry;
     }
 
+    /**
+     * Handle read entry.
+     *
+     * @param context the context
+     */
     @Override
     public void handleReadEntry(final ReadEntryResult context) {
       entry = context.getResult();
     }
 
+    /**
+     * Handle read feed.
+     *
+     * @param context the context
+     */
     @Override
     public void handleReadFeed(final ReadFeedResult context) {
       throw new ODataRuntimeException("No feed expected");
     }
 
+    /**
+     * Receive read properties.
+     *
+     * @param readProperties the read properties
+     * @param navString the nav string
+     * @return the entity provider read properties
+     */
     @Override
     public EntityProviderReadProperties receiveReadProperties(final EntityProviderReadProperties readProperties,
         final EdmNavigationProperty navString) {

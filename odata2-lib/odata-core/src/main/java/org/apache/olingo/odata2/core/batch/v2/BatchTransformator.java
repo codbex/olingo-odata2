@@ -24,7 +24,21 @@ import org.apache.olingo.odata2.api.batch.BatchException;
 import org.apache.olingo.odata2.api.batch.BatchParserResult;
 import org.apache.olingo.odata2.api.uri.PathInfo;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Interface BatchTransformator.
+ */
 public interface BatchTransformator {
+  
+  /**
+   * Transform.
+   *
+   * @param bodyPart the body part
+   * @param pathInfo the path info
+   * @param baseUri the base uri
+   * @return the list
+   * @throws BatchException the batch exception
+   */
   public List<BatchParserResult> transform(BatchBodyPart bodyPart, PathInfo pathInfo, String baseUri)
       throws BatchException;
 }

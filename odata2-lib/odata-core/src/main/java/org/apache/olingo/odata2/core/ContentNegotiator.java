@@ -32,13 +32,22 @@ import org.apache.olingo.odata2.core.commons.ContentType;
 import org.apache.olingo.odata2.core.uri.UriInfoImpl;
 import org.apache.olingo.odata2.core.uri.UriType;
 
+// TODO: Auto-generated Javadoc
 /**
  * Handles content negotiation with handling of OData special cases.
  */
 public class ContentNegotiator {
+  
+  /** The Constant URI_INFO_FORMAT_JSON. */
   private static final String URI_INFO_FORMAT_JSON = "json";
+  
+  /** The Constant URI_INFO_FORMAT_ATOM. */
   private static final String URI_INFO_FORMAT_ATOM = "atom";
+  
+  /** The Constant URI_INFO_FORMAT_XML. */
   private static final String URI_INFO_FORMAT_XML = "xml";
+  
+  /** The Constant DEFAULT_CHARSET. */
   static final String DEFAULT_CHARSET = "utf-8";
 
   /**
@@ -47,8 +56,8 @@ public class ContentNegotiator {
    * in combination with uri information from {@link org.apache.olingo.odata2.api.uri.UriInfo} and from given supported
    * content types (via
    * <code>supportedContentTypes</code>).
-   * 
-   * @param request specific request
+   *
+   * @param odataRequest the odata request
    * @param uriInfo specific uri information
    * @param supportedContentTypes list of supported content types
    * @return best fitting content type or <code>NULL</code> if content type is not set and for given
@@ -78,6 +87,13 @@ public class ContentNegotiator {
     }
   }
 
+  /**
+   * Validate not null.
+   *
+   * @param odataRequest the odata request
+   * @param uriInfo the uri info
+   * @param supportedContentTypes the supported content types
+   */
   private void validateNotNull(final ODataRequest odataRequest, final UriInfoImpl uriInfo,
       final List<String> supportedContentTypes) {
     if (uriInfo == null) {
@@ -91,6 +107,14 @@ public class ContentNegotiator {
     }
   }
 
+  /**
+   * Do content negotiation for format.
+   *
+   * @param uriInfo the uri info
+   * @param supportedContentTypes the supported content types
+   * @return the content type
+   * @throws ODataException the o data exception
+   */
   private ContentType doContentNegotiationForFormat(final UriInfoImpl uriInfo,
       final List<ContentType> supportedContentTypes) throws ODataException {
     validateFormatQuery(uriInfo);
@@ -110,9 +134,9 @@ public class ContentNegotiator {
   /**
    * Validates that <code>dollar format query/syntax</code> is correct for further processing.
    * If some validation error occurs an exception is thrown.
-   * 
-   * @param uriInfo
-   * @throws ODataBadRequestException
+   *
+   * @param uriInfo the uri info
+   * @throws ODataBadRequestException the o data bad request exception
    */
   private void validateFormatQuery(final UriInfoImpl uriInfo) throws ODataBadRequestException {
     if (uriInfo.isValue()) {
@@ -120,6 +144,12 @@ public class ContentNegotiator {
     }
   }
 
+  /**
+   * Map format.
+   *
+   * @param uriInfo the uri info
+   * @return the content type
+   */
   private ContentType mapFormat(final UriInfoImpl uriInfo) {
     final String format = uriInfo.getFormat();
     if (URI_INFO_FORMAT_XML.equals(format)) {
@@ -140,11 +170,26 @@ public class ContentNegotiator {
     return ContentType.createAsCustom(format);
   }
 
+  /**
+   * Do content negotiation for accept header.
+   *
+   * @param acceptHeaderContentTypes the accept header content types
+   * @param supportedContentTypes the supported content types
+   * @return the content type
+   * @throws ODataException the o data exception
+   */
   private ContentType doContentNegotiationForAcceptHeader(final List<String> acceptHeaderContentTypes,
       final List<ContentType> supportedContentTypes) throws ODataException {
     return contentNegotiation(extractAcceptHeaders(acceptHeaderContentTypes), supportedContentTypes);
   }
 
+  /**
+   * Extract accept headers.
+   *
+   * @param acceptHeaderValues the accept header values
+   * @return the list
+   * @throws ODataBadRequestException the o data bad request exception
+   */
   private List<ContentType> extractAcceptHeaders(final List<String> acceptHeaderValues)
       throws ODataBadRequestException {
     final List<ContentType> mediaTypes = new ArrayList<ContentType>();
@@ -162,6 +207,14 @@ public class ContentNegotiator {
     return mediaTypes;
   }
 
+  /**
+   * Content negotiation.
+   *
+   * @param acceptedContentTypes the accepted content types
+   * @param supportedContentTypes the supported content types
+   * @return the content type
+   * @throws ODataException the o data exception
+   */
   ContentType contentNegotiation(final List<ContentType> acceptedContentTypes,
       final List<ContentType> supportedContentTypes) throws ODataException {
     final Set<ContentType> setSupported = new HashSet<ContentType>(supportedContentTypes);
@@ -184,6 +237,12 @@ public class ContentNegotiator {
         .addContent(acceptedContentTypes.toString()));
   }
 
+  /**
+   * Ensure charset.
+   *
+   * @param contentType the content type
+   * @return the content type
+   */
   private ContentType ensureCharset(final ContentType contentType) {
     if (ContentType.APPLICATION_ATOM_XML.isCompatible(contentType)
         || ContentType.APPLICATION_ATOM_SVC.isCompatible(contentType)

@@ -32,17 +32,29 @@ import java.util.ResourceBundle;
 
 import org.apache.olingo.odata2.api.exception.MessageReference;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class MessageService.
  */
 public class MessageService {
+  
+  /** The Constant BUNDLE_NAME. */
   private static final String BUNDLE_NAME = "i18n";
 
+  /** The resource bundle. */
   private final ResourceBundle resourceBundle;
+  
+  /** The requested locale. */
   private final Locale requestedLocale;
 
+  /** The Constant LOCALE_2_MESSAGE_SERVICE. */
   private static final Map<Locale, MessageService> LOCALE_2_MESSAGE_SERVICE = new HashMap<Locale, MessageService>();
 
+  /**
+   * Instantiates a new message service.
+   *
+   * @param locale the locale
+   */
   private MessageService(final Locale locale) {
     requestedLocale = locale;
     resourceBundle = createResourceBundle(locale);
@@ -87,20 +99,43 @@ public class MessageService {
     return bundle;
   }
 
+  /**
+   * The Class Message.
+   */
   public static class Message {
+    
+    /** The localized text. */
     private final String localizedText;
+    
+    /** The locale. */
     private final Locale locale;
 
+    /**
+     * Instantiates a new message.
+     *
+     * @param locale the locale
+     * @param localizedMessage the localized message
+     */
     public Message(final Locale locale, final String localizedMessage) {
       super();
       localizedText = localizedMessage;
       this.locale = locale;
     }
 
+    /**
+     * Gets the text.
+     *
+     * @return the text
+     */
     public String getText() {
       return localizedText;
     }
 
+    /**
+     * Gets the locale.
+     *
+     * @return the locale
+     */
     public Locale getLocale() {
       return locale;
     }
@@ -119,6 +154,12 @@ public class MessageService {
     }
   }
 
+  /**
+   * Gets the single instance of MessageService.
+   *
+   * @param locale the locale
+   * @return single instance of MessageService
+   */
   public static MessageService getInstance(final Locale locale) {
     MessageService messagesInstance = LOCALE_2_MESSAGE_SERVICE.get(locale);
     if (messagesInstance == null) {
@@ -128,6 +169,12 @@ public class MessageService {
     return messagesInstance;
   }
 
+  /**
+   * Checks if is locale supported.
+   *
+   * @param locale the locale
+   * @return true, if is locale supported
+   */
   public static boolean isLocaleSupported(final Locale locale) {
     if (locale == null) {
       return false;
@@ -139,8 +186,8 @@ public class MessageService {
   /**
    * Return first found supported {@link Locale} (iterating over list starting with first element).
    * If no {@link Locale} is supported <code>NULL</code> is returned.
-   * 
-   * @param locales
+   *
+   * @param locales the locales
    * @return first supported {@link Locale} or <code>NULL</code>.
    */
   public static Locale getSupportedLocale(final List<Locale> locales) {
@@ -164,6 +211,12 @@ public class MessageService {
     return defaultLocale;
   }
 
+  /**
+   * Gets the single instance of MessageService.
+   *
+   * @param locales the locales
+   * @return single instance of MessageService
+   */
   public static MessageService getInstance(final List<Locale> locales) {
     MessageService service = null;
 
@@ -177,20 +230,36 @@ public class MessageService {
     return service;
   }
 
+  /**
+   * Gets the message.
+   *
+   * @param language the language
+   * @param context the context
+   * @return the message
+   */
   public static Message getMessage(final Locale language, final MessageReference context) {
     Object[] contentAsArray = context.getContent().toArray(new Object[0]);
     return getMessage(language, context.getKey(), contentAsArray);
   }
 
+  /**
+   * Gets the message.
+   *
+   * @param locale the locale
+   * @param key the key
+   * @param replacements the replacements
+   * @return the message
+   */
   public static Message getMessage(final Locale locale, final String key, final Object... replacements) {
     MessageService messages = MessageService.getInstance(locale);
     return messages.getMessage(key, replacements);
   }
 
   /**
-   * 
-   * @param key
-   * @param replacements
+   * Gets the message.
+   *
+   * @param key the key
+   * @param replacements the replacements
    * @return the message
    */
   private Message getMessage(final String key, final Object... replacements) {
@@ -213,10 +282,20 @@ public class MessageService {
     }
   }
 
+  /**
+   * Gets the locale.
+   *
+   * @return the locale
+   */
   public Locale getLocale() {
     return resourceBundle.getLocale();
   }
 
+  /**
+   * Gets the keys.
+   *
+   * @return the keys
+   */
   public Enumeration<String> getKeys() {
     return resourceBundle.getKeys();
   }

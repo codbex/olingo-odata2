@@ -47,25 +47,47 @@ import org.junit.Before;
 import org.junit.Test;
 import org.xml.sax.SAXException;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class PerformanceTest.
  */
 public class PerformanceTest extends AbstractProviderTest {
 
+  /**
+   * Instantiates a new performance test.
+   *
+   * @param type the type
+   */
   public PerformanceTest(final StreamWriterImplType type) {
     super(type);
   }
 
+  /** The Constant TIMES. */
   private static final long TIMES = 100L; // increase for manual performance testing (also increase vm memory -Xmx1G)
 
+  /** The provider. */
   private AtomEntryEntityProducer provider;
+  
+  /** The edm entity set. */
   private EdmEntitySet edmEntitySet;
+  
+  /** The out stream. */
   private OutputStream outStream = null;
+  
+  /** The csb. */
   private CircleStreamBuffer csb;
+  
+  /** The writer. */
   private XMLStreamWriter writer;
 
+  /** The use csb. */
   private boolean useCsb = true;
 
+  /**
+   * Before.
+   *
+   * @throws Exception the exception
+   */
   @Before
   public void before() throws Exception {
     EntityProviderWriteProperties properties = EntityProviderWriteProperties.serviceRoot(BASE_URI).build();
@@ -88,6 +110,11 @@ public class PerformanceTest extends AbstractProviderTest {
     writer.writeAttribute(Edm.PREFIX_XML, Edm.NAMESPACE_XML_1998, "base", "xxx");
   }
 
+  /**
+   * After.
+   *
+   * @throws Exception the exception
+   */
   @After
   public void after() throws Exception {
     writer.writeEndElement();
@@ -110,6 +137,16 @@ public class PerformanceTest extends AbstractProviderTest {
     }
   }
 
+  /**
+   * Read atom entry.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws XpathException the xpath exception
+   * @throws SAXException the SAX exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws FactoryConfigurationError the factory configuration error
+   * @throws ODataException the o data exception
+   */
   @Test
   public void readAtomEntry() throws IOException, XpathException, SAXException, XMLStreamException,
       FactoryConfigurationError, ODataException {
@@ -123,6 +160,11 @@ public class PerformanceTest extends AbstractProviderTest {
     stopTimer(t, "readAtomEntry");
   }
 
+  /**
+   * Read atom entry csb.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readAtomEntryCsb() throws Exception {
     useCsb = true;
@@ -139,6 +181,16 @@ public class PerformanceTest extends AbstractProviderTest {
     stopTimer(t, "readAtomEntry");
   }
 
+  /**
+   * Read atom entry optimized.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws XpathException the xpath exception
+   * @throws SAXException the SAX exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws FactoryConfigurationError the factory configuration error
+   * @throws ODataException the o data exception
+   */
   @Test
   public void readAtomEntryOptimized() throws IOException, XpathException, SAXException, XMLStreamException,
       FactoryConfigurationError, ODataException {
@@ -152,6 +204,11 @@ public class PerformanceTest extends AbstractProviderTest {
     stopTimer(t, "readAtomEntryOptimized");
   }
 
+  /**
+   * Read atom entry optimized csb.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readAtomEntryOptimizedCsb() throws Exception {
     useCsb = true;
@@ -168,6 +225,12 @@ public class PerformanceTest extends AbstractProviderTest {
     stopTimer(t, "readAtomEntryOptimizedCsb");
   }
 
+  /**
+   * Stop timer.
+   *
+   * @param t the t
+   * @param msg the msg
+   */
   private void stopTimer(long t, final String msg) {
     t = (System.nanoTime() - t) / TIMES;
 
@@ -179,6 +242,11 @@ public class PerformanceTest extends AbstractProviderTest {
     log.debug(msg + ": " + millis + "." + micros / 1000L + "[ms] (" + TIMES + " in " + sum + " [ms])");
   }
 
+  /**
+   * Start timer.
+   *
+   * @return the long
+   */
   private long startTimer() {
     long t = System.nanoTime();
     return t;

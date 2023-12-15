@@ -23,6 +23,7 @@ import java.util.Locale;
 import org.apache.olingo.odata2.api.exception.MessageReference;
 import org.apache.olingo.odata2.api.exception.ODataException;
 
+// TODO: Auto-generated Javadoc
 /**
  * The exception class is the base of OData JPA exceptions. The class also
  * provides non localized error texts that can be used for raising OData JPA
@@ -33,13 +34,25 @@ import org.apache.olingo.odata2.api.exception.ODataException;
  */
 public abstract class ODataJPAException extends ODataException {
 
+  /** The message reference. */
   protected MessageReference messageReference;
 
+  /** The Constant ODATA_JPACTX_NULL. */
   public static final String ODATA_JPACTX_NULL = "OData JPA Context cannot be null";
 
+  /** The Constant serialVersionUID. */
   private static final long serialVersionUID = -6884673558124441214L;
+  
+  /** The Constant DEFAULT_LOCALE. */
   protected static final Locale DEFAULT_LOCALE = Locale.ENGLISH;
 
+  /**
+   * Instantiates a new o data JPA exception.
+   *
+   * @param localizedMessage the localized message
+   * @param e the e
+   * @param msgRef the msg ref
+   */
   protected ODataJPAException(final String localizedMessage, final Throwable e, final MessageReference msgRef) {
     super(localizedMessage, e);
     messageReference = msgRef;
@@ -61,6 +74,11 @@ public abstract class ODataJPAException extends ODataException {
     return MessageReference.create(clazz, messageReferenceKey);
   }
 
+  /**
+   * Gets the message reference.
+   *
+   * @return the message reference
+   */
   public MessageReference getMessageReference() {
     return messageReference;
   }

@@ -45,8 +45,17 @@ import org.apache.olingo.odata2.jpa.processor.core.common.ODataJPATestConstants;
 import org.apache.olingo.odata2.jpa.processor.core.model.JPAEdmMappingImpl;
 import org.easymock.EasyMock;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EdmMockUtil.
+ */
 public class EdmMockUtil {
 
+  /**
+   * Mock expand select tree node.
+   *
+   * @return the expand select tree node
+   */
   public static ExpandSelectTreeNode mockExpandSelectTreeNode() {
     ExpandSelectTreeNode nextExpandNode = EasyMock.createMock(ExpandSelectTreeNode.class);
     Map<String, ExpandSelectTreeNode> nextLink = null;
@@ -63,6 +72,11 @@ public class EdmMockUtil {
     return expandNode;
   }
 
+  /**
+   * Mock current expand select tree node.
+   *
+   * @return the expand select tree node
+   */
   public static ExpandSelectTreeNode mockCurrentExpandSelectTreeNode() {
     ExpandSelectTreeNode expandNode = EasyMock.createMock(ExpandSelectTreeNode.class);
     Map<String, ExpandSelectTreeNode> links = new HashMap<String, ExpandSelectTreeNode>();
@@ -74,6 +88,11 @@ public class EdmMockUtil {
     return expandNode;
   }
 
+  /**
+   * Gets the expand list.
+   *
+   * @return the expand list
+   */
   public static List<ArrayList<NavigationPropertySegment>> getExpandList() {
     List<ArrayList<NavigationPropertySegment>> expandList = new ArrayList<ArrayList<NavigationPropertySegment>>();
     ArrayList<NavigationPropertySegment> expands = new ArrayList<NavigationPropertySegment>();
@@ -82,6 +101,11 @@ public class EdmMockUtil {
     return expandList;
   }
 
+  /**
+   * Gets the write feed call back context.
+   *
+   * @return the write feed call back context
+   */
   public static WriteFeedCallbackContext getWriteFeedCallBackContext() {
     URI selfLink = null;
     WriteFeedCallbackContext writeContext = new WriteFeedCallbackContext();
@@ -99,6 +123,11 @@ public class EdmMockUtil {
     return writeContext;
   }
 
+  /**
+   * Gets the write entry call back context.
+   *
+   * @return the write entry call back context
+   */
   public static WriteEntryCallbackContext getWriteEntryCallBackContext() {
     WriteEntryCallbackContext writeContext = new WriteEntryCallbackContext();
     writeContext.setCurrentExpandSelectTreeNode(mockCurrentExpandSelectTreeNode());
@@ -108,6 +137,11 @@ public class EdmMockUtil {
     return writeContext;
   }
 
+  /**
+   * Mock source entity set.
+   *
+   * @return the edm entity set
+   */
   private static EdmEntitySet mockSourceEntitySet() {
     EdmEntitySet entitySet = EasyMock.createMock(EdmEntitySet.class);
     try {
@@ -119,6 +153,11 @@ public class EdmMockUtil {
     return entitySet;
   }
 
+  /**
+   * Mock source edm entity type.
+   *
+   * @return the edm entity type
+   */
   public static EdmEntityType mockSourceEdmEntityType() {
     EdmEntityType entityType = EasyMock.createMock(EdmEntityType.class);
     EdmMapping mapping = EasyMock.createMock(EdmMapping.class);
@@ -148,6 +187,11 @@ public class EdmMockUtil {
     return entityType;
   }
 
+  /**
+   * Mock edm property of source 2.
+   *
+   * @return the edm typed
+   */
   private static EdmTyped mockEdmPropertyOfSource2() {
     EdmProperty edmProperty = EasyMock.createMock(EdmProperty.class);
     EdmType type = EasyMock.createMock(EdmType.class);
@@ -167,6 +211,11 @@ public class EdmMockUtil {
     return edmProperty;
   }
 
+  /**
+   * Mock edm property of source 1.
+   *
+   * @return the edm property
+   */
   private static EdmProperty mockEdmPropertyOfSource1() {
     EdmProperty edmProperty = EasyMock.createMock(EdmProperty.class);
     EdmType type = EasyMock.createMock(EdmType.class);
@@ -186,6 +235,11 @@ public class EdmMockUtil {
     return edmProperty;
   }
 
+  /**
+   * Gets the feed data.
+   *
+   * @return the feed data
+   */
   private static Map<String, Object> getFeedData() {
     Map<String, Object> entryData = new HashMap<String, Object>();
     entryData.put("id", 1);
@@ -197,6 +251,11 @@ public class EdmMockUtil {
     return entryData;
   }
 
+  /**
+   * Gets the entry data.
+   *
+   * @return the entry data
+   */
   private static Map<String, Object> getEntryData() {
     Map<String, Object> entryData = new HashMap<String, Object>();
     entryData.put("id", 1);
@@ -205,6 +264,12 @@ public class EdmMockUtil {
     return entryData;
   }
 
+  /**
+   * Mock navigation property segment.
+   *
+   * @param fromRoleAppendix the from role appendix
+   * @return the navigation property segment
+   */
   public static NavigationPropertySegment mockNavigationPropertySegment(String fromRoleAppendix) {
     NavigationPropertySegment navigationPropSegment = EasyMock.createMock(NavigationPropertySegment.class);
     EasyMock.expect(navigationPropSegment.getNavigationProperty()).andStubReturn(
@@ -214,10 +279,20 @@ public class EdmMockUtil {
     return navigationPropSegment;
   }
 
+  /**
+   * Mock navigation property segment.
+   *
+   * @return the navigation property segment
+   */
   public static NavigationPropertySegment mockNavigationPropertySegment() {
     return mockNavigationPropertySegment(null);
   }
 
+  /**
+   * Mock third navigation property segment.
+   *
+   * @return the navigation property segment
+   */
   public static NavigationPropertySegment mockThirdNavigationPropertySegment() {
     NavigationPropertySegment navigationPropSegment = EasyMock.createMock(NavigationPropertySegment.class);
     EasyMock.expect(navigationPropSegment.getNavigationProperty()).andStubReturn(mockSecondNavigationProperty());
@@ -226,6 +301,11 @@ public class EdmMockUtil {
     return navigationPropSegment;
   }
 
+  /**
+   * Mock second navigation property.
+   *
+   * @return the edm navigation property
+   */
   public static EdmNavigationProperty mockSecondNavigationProperty() {
     EdmNavigationProperty navigationProperty = EasyMock.createMock(EdmNavigationProperty.class);
     EdmMapping mapping = EasyMock.createMock(EdmMapping.class);
@@ -243,6 +323,11 @@ public class EdmMockUtil {
     return navigationProperty;
   }
 
+  /**
+   * Mock target entity set.
+   *
+   * @return the edm entity set
+   */
   public static EdmEntitySet mockTargetEntitySet() {
     EdmEntitySet entitySet = EasyMock.createMock(EdmEntitySet.class);
     try {
@@ -255,6 +340,11 @@ public class EdmMockUtil {
     return entitySet;
   }
 
+  /**
+   * Mock third entity set.
+   *
+   * @return the edm entity set
+   */
   public static EdmEntitySet mockThirdEntitySet() {
     EdmEntitySet entitySet = EasyMock.createMock(EdmEntitySet.class);
     try {
@@ -267,6 +357,11 @@ public class EdmMockUtil {
 
   }
 
+  /**
+   * Mock third edm entity type.
+   *
+   * @return the edm entity type
+   */
   private static EdmEntityType mockThirdEdmEntityType() {
     EdmEntityType entityType = EasyMock.createMock(EdmEntityType.class);
     EdmMapping mapping = EasyMock.createMock(EdmMapping.class);
@@ -289,6 +384,11 @@ public class EdmMockUtil {
     return entityType;
   }
 
+  /**
+   * Mock target edm entity type.
+   *
+   * @return the edm entity type
+   */
   public static EdmEntityType mockTargetEdmEntityType() {
     EdmEntityType entityType = EasyMock.createMock(EdmEntityType.class);
     EdmMapping mapping = EasyMock.createMock(EdmMapping.class);
@@ -315,6 +415,11 @@ public class EdmMockUtil {
     return entityType;
   }
 
+  /**
+   * Mock edm property of target.
+   *
+   * @return the edm property
+   */
   private static EdmProperty mockEdmPropertyOfTarget() {
     EdmProperty edmProperty = EasyMock.createMock(EdmProperty.class);
 
@@ -336,10 +441,21 @@ public class EdmMockUtil {
     return edmProperty;
   }
 
+  /**
+   * Mock navigation property.
+   *
+   * @return the edm navigation property
+   */
   public static EdmNavigationProperty mockNavigationProperty() {
     return mockNavigationProperty(null);
   }
 
+  /**
+   * Mock navigation property.
+   *
+   * @param fromRoleAppendix the from role appendix
+   * @return the edm navigation property
+   */
   public static EdmNavigationProperty mockNavigationProperty(String fromRoleAppendix) {
     EdmNavigationProperty navigationProperty = EasyMock.createMock(EdmNavigationProperty.class);
     EdmMapping mapping = EasyMock.createMock(EdmMapping.class);

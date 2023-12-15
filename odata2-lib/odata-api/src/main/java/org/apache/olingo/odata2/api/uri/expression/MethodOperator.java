@@ -18,26 +18,77 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.uri.expression;
 
+// TODO: Auto-generated Javadoc
 /**
  * Enumerations for all supported methods of the ODATA expression parser
  * for ODATA version 2.0 (with some restrictions).
  * 
  */
 public enum MethodOperator {
-  ENDSWITH("endswith"), INDEXOF("indexof"), STARTSWITH("startswith"), TOLOWER("tolower"), TOUPPER("toupper"), TRIM(
-      "trim"), SUBSTRING("substring"), SUBSTRINGOF("substringof"), CONCAT("concat"), LENGTH("length"), YEAR("year"),
-  MONTH("month"), DAY("day"), HOUR("hour"), MINUTE("minute"), SECOND("second"), ROUND("round"), FLOOR("floor"),
-  CEILING("ceiling"), REPLACE("replace");
+  
+  /** The endswith. */
+  ENDSWITH("endswith"), 
+ /** The indexof. */
+ INDEXOF("indexof"), 
+ /** The startswith. */
+ STARTSWITH("startswith"), 
+ /** The tolower. */
+ TOLOWER("tolower"), 
+ /** The toupper. */
+ TOUPPER("toupper"), 
+ /** The trim. */
+ TRIM(
+      "trim"), 
+ /** The substring. */
+ SUBSTRING("substring"), 
+ /** The substringof. */
+ SUBSTRINGOF("substringof"), 
+ /** The concat. */
+ CONCAT("concat"), 
+ /** The length. */
+ LENGTH("length"), 
+ /** The year. */
+ YEAR("year"),
+  
+  /** The month. */
+  MONTH("month"), 
+ /** The day. */
+ DAY("day"), 
+ /** The hour. */
+ HOUR("hour"), 
+ /** The minute. */
+ MINUTE("minute"), 
+ /** The second. */
+ SECOND("second"), 
+ /** The round. */
+ ROUND("round"), 
+ /** The floor. */
+ FLOOR("floor"),
+  
+  /** The ceiling. */
+  CEILING("ceiling"), 
+ /** The replace. */
+ REPLACE("replace");
 
+  /** The syntax. */
   private String syntax;
+  
+  /** The string respresentation. */
   private String stringRespresentation;
 
+  /**
+   * Instantiates a new method operator.
+   *
+   * @param syntax the syntax
+   */
   private MethodOperator(final String syntax) {
     this.syntax = syntax;
     stringRespresentation = syntax;
   }
 
   /**
+   * To string.
+   *
    * @return Operators name for usage in in text
    */
   @Override
@@ -46,6 +97,8 @@ public enum MethodOperator {
   }
 
   /**
+   * To uri literal.
+   *
    * @return URI literal of the unary operator as used in the URL.
    */
   public String toUriLiteral() {

@@ -21,42 +21,85 @@ package org.apache.olingo.odata2.jpa.processor.ref.model;
 import java.io.Serializable;
 import java.util.Calendar;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class NoteKey.
+ */
 public class NoteKey implements Serializable {
 
-  /**
-   * 
-   */
+  /** The Constant serialVersionUID. */
   private static final long serialVersionUID = 1L;
 
+  /**
+   * Gets the creation time.
+   *
+   * @return the creation time
+   */
   public Calendar getCreationTime() {
     return creationTime;
   }
 
+  /**
+   * Sets the creation time.
+   *
+   * @param creationTime the new creation time
+   */
   public void setCreationTime(final Calendar creationTime) {
     this.creationTime = creationTime;
   }
 
+  /**
+   * Gets the creation date.
+   *
+   * @return the creation date
+   */
   public Calendar getCreationDate() {
     return creationDate;
   }
 
+  /**
+   * Sets the creation date.
+   *
+   * @param creationDate the new creation date
+   */
   public void setCreationDate(final Calendar creationDate) {
     this.creationDate = creationDate;
   }
 
+  /**
+   * Gets the created by.
+   *
+   * @return the created by
+   */
   public String getCreatedBy() {
     return createdBy;
   }
 
+  /**
+   * Sets the created by.
+   *
+   * @param createdBy the new created by
+   */
   public void setCreatedBy(final String createdBy) {
     this.createdBy = createdBy;
   }
 
+  /**
+   * Hash code.
+   *
+   * @return the int
+   */
   @Override
   public int hashCode() {
     return creationTime.hashCode() + creationDate.hashCode() + createdBy.hashCode();
   }
 
+  /**
+   * Equals.
+   *
+   * @param obj the obj
+   * @return true, if successful
+   */
   @Override
   public boolean equals(final Object obj) {
     if (obj instanceof Note) {
@@ -76,8 +119,13 @@ public class NoteKey implements Serializable {
     return false;
   }
 
+  /** The creation time. */
   private Calendar creationTime;
+  
+  /** The creation date. */
   private Calendar creationDate;
+  
+  /** The created by. */
   private String createdBy;
 
 }

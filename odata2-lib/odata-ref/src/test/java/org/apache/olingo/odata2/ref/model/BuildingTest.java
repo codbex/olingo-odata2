@@ -28,26 +28,39 @@ import java.util.List;
 import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class BuildingTest.
  */
 public class BuildingTest extends BaseTest {
 
+  /** The Constant VALUE_NAME. */
   private static final String VALUE_NAME = "bd01";
+  
+  /** The Constant VALUE_IMAGE. */
   private static final String VALUE_IMAGE = "String for convert";
 
+  /**
+   * Test id.
+   */
   @Test
   public void testId() {
     Building build1 = new Building(1, null);
     assertNotNull(build1.getId());
   }
 
+  /**
+   * Test name.
+   */
   @Test
   public void testName() {
     Building build1 = new Building(1, VALUE_NAME);
     assertEquals(VALUE_NAME, build1.getName());
   }
 
+  /**
+   * Test image.
+   */
   @Test
   public void testImage() {
     Building build1 = new Building(1, null);
@@ -58,6 +71,9 @@ public class BuildingTest extends BaseTest {
     assertArrayEquals(byteArray, testArray);
   }
 
+  /**
+   * Test rooms.
+   */
   @Test
   public void testRooms() {
     List<Room> list = Arrays.asList(new Room(1, null), new Room(2, null), new Room(3, null));

@@ -32,11 +32,21 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CxfCacheUriInfoIssue2Test.
+ */
 public class CxfCacheUriInfoIssue2Test {
 
+  /** The server 1. */
   private TestServer server1;
+  
+  /** The server 2. */
   private TestServer server2;
 
+  /**
+   * Before.
+   */
   @Before
   public void before() {
     server1 = new TestServer("/service1", ServletType.JAXRS_SERVLET);
@@ -49,6 +59,11 @@ public class CxfCacheUriInfoIssue2Test {
     server2.startServer(CxfCacheUriInfoIssueService2Factory.class, 19100);
   }
 
+  /**
+   * Test servlet context path.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testServletContextPath() throws Exception {
     URI uri1 = URI.create(server1.getEndpoint().toASCIIString() + "$metadata");
@@ -72,6 +87,9 @@ public class CxfCacheUriInfoIssue2Test {
         .getServiceRoot());
   }
 
+  /**
+   * After.
+   */
   @After
   public void after() {
     server1.stopServer();

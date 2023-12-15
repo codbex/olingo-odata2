@@ -27,6 +27,7 @@ import org.apache.olingo.odata2.api.uri.expression.CommonExpression;
 import org.apache.olingo.odata2.api.uri.expression.ExpressionParserException;
 import org.apache.olingo.odata2.api.uri.expression.PropertyExpression;
 
+// TODO: Auto-generated Javadoc
 /**
  * This class is used to create exceptions of type FilterParserException.
  * Because this class lies inside org.apache.olingo.odata2.core it is possible to define better/more detailed
@@ -36,8 +37,17 @@ import org.apache.olingo.odata2.api.uri.expression.PropertyExpression;
  * 
  */
 public class FilterParserExceptionImpl extends ExpressionParserException {
+  
+  /** The Constant serialVersionUID. */
   private static final long serialVersionUID = 77L;
 
+  /**
+   * Creates the ERRO R I N TOKENIZER.
+   *
+   * @param exceptionTokenizer the exception tokenizer
+   * @param expression the expression
+   * @return the expression parser exception
+   */
   static public ExpressionParserException createERROR_IN_TOKENIZER(final TokenizerException exceptionTokenizer,
       final String expression) {
     Token token = exceptionTokenizer.getToken();
@@ -50,6 +60,13 @@ public class FilterParserExceptionImpl extends ExpressionParserException {
     return new ExpressionParserException(msgRef, exceptionTokenizer);
   }
 
+  /**
+   * Creates the INVALI D TRAILIN G TOKE N DETECTE D AFTE R PARSING.
+   *
+   * @param token the token
+   * @param expression the expression
+   * @return the expression parser exception
+   */
   static public ExpressionParserException createINVALID_TRAILING_TOKEN_DETECTED_AFTER_PARSING(final Token token,
       final String expression) {
     MessageReference msgRef = ExpressionParserException.INVALID_TRAILING_TOKEN_DETECTED_AFTER_PARSING.create();
@@ -61,6 +78,13 @@ public class FilterParserExceptionImpl extends ExpressionParserException {
     return new ExpressionParserException(msgRef);
   }
 
+  /**
+   * Creates the EXPRESSIO N EXPECTE D AFTE R POS.
+   *
+   * @param token the token
+   * @param expression the expression
+   * @return the expression parser exception
+   */
   static public ExpressionParserException
       createEXPRESSION_EXPECTED_AFTER_POS(final Token token, final String expression) {
     MessageReference msgRef = ExpressionParserException.EXPRESSION_EXPECTED_AFTER_POS.create();
@@ -71,6 +95,13 @@ public class FilterParserExceptionImpl extends ExpressionParserException {
     return new ExpressionParserException(msgRef);
   }
 
+  /**
+   * Creates the EXPRESSIO N EXPECTE D AFTE R POS.
+   *
+   * @param position the position
+   * @param expression the expression
+   * @return the expression parser exception
+   */
   static public ExpressionParserException createEXPRESSION_EXPECTED_AFTER_POS(final int position,
       final String expression) {
     MessageReference msgRef = ExpressionParserException.EXPRESSION_EXPECTED_AFTER_POS.create();
@@ -81,6 +112,13 @@ public class FilterParserExceptionImpl extends ExpressionParserException {
     return new ExpressionParserException(msgRef);
   }
 
+  /**
+   * Creates the COMM A O R EN D EXPECTE D A T POS.
+   *
+   * @param token the token
+   * @param expression the expression
+   * @return the expression parser exception
+   */
   static public ExpressionParserException
       createCOMMA_OR_END_EXPECTED_AT_POS(final Token token, final String expression) {
     MessageReference msgRef = ExpressionParserException.COMMA_OR_END_EXPECTED_AT_POS.create();
@@ -91,6 +129,13 @@ public class FilterParserExceptionImpl extends ExpressionParserException {
     return new ExpressionParserException(msgRef);
   }
 
+  /**
+   * Creates the EXPRESSIO N EXPECTE D A T POS.
+   *
+   * @param token the token
+   * @param expression the expression
+   * @return the expression parser exception
+   */
   static public ExpressionParserException createEXPRESSION_EXPECTED_AT_POS(final Token token, final String expression) {
     MessageReference msgRef = ExpressionParserException.EXPRESSION_EXPECTED_AT_POS.create();
 
@@ -100,6 +145,13 @@ public class FilterParserExceptionImpl extends ExpressionParserException {
     return new ExpressionParserException(msgRef);
   }
 
+  /**
+   * Creates the COMM A O R CLOSIN G PARENTHESI S EXPECTE D AFTE R POS.
+   *
+   * @param token the token
+   * @param expression the expression
+   * @return the expression parser exception
+   */
   static public ExpressionParserException createCOMMA_OR_CLOSING_PARENTHESIS_EXPECTED_AFTER_POS(final Token token,
       final String expression) {
     MessageReference msgRef = ExpressionParserException.COMMA_OR_CLOSING_PARENTHESIS_EXPECTED_AFTER_POS.create();
@@ -110,6 +162,14 @@ public class FilterParserExceptionImpl extends ExpressionParserException {
     return new ExpressionParserException(msgRef);
   }
 
+  /**
+   * Creates the METHO D WRON G AR G COUNT.
+   *
+   * @param methodExpression the method expression
+   * @param token the token
+   * @param expression the expression
+   * @return the expression parser exception
+   */
   public static ExpressionParserException createMETHOD_WRONG_ARG_COUNT(final MethodExpressionImpl methodExpression,
       final Token token, final String expression) {
     MessageReference msgRef = null;
@@ -154,6 +214,14 @@ public class FilterParserExceptionImpl extends ExpressionParserException {
     return new ExpressionParserException(msgRef);
   }
 
+  /**
+   * Creates the METHO D WRON G INPU T TYPE.
+   *
+   * @param methodExpression the method expression
+   * @param token the token
+   * @param expression the expression
+   * @return the expression parser exception
+   */
   public static ExpressionParserException createMETHOD_WRONG_INPUT_TYPE(final MethodExpressionImpl methodExpression,
       final Token token, final String expression) {
     MessageReference msgRef = null;
@@ -167,6 +235,14 @@ public class FilterParserExceptionImpl extends ExpressionParserException {
     return new ExpressionParserException(msgRef);
   }
 
+  /**
+   * Creates the LEF T SID E NO T A PROPERTY.
+   *
+   * @param token the token
+   * @param expression the expression
+   * @return the expression parser exception
+   * @throws ExpressionParserInternalError the expression parser internal error
+   */
   public static ExpressionParserException createLEFT_SIDE_NOT_A_PROPERTY(final Token token, final String expression)
       throws ExpressionParserInternalError {
     MessageReference msgRef = ExpressionParserException.LEFT_SIDE_NOT_A_PROPERTY.create();
@@ -177,6 +253,16 @@ public class FilterParserExceptionImpl extends ExpressionParserException {
     return new ExpressionParserException(msgRef);
   }
 
+  /**
+   * Creates the LEF T SID E NO T STRUCTURA L TYPE.
+   *
+   * @param parentType the parent type
+   * @param property the property
+   * @param token the token
+   * @param expression the expression
+   * @return the expression parser exception
+   * @throws ExpressionParserInternalError the expression parser internal error
+   */
   public static ExpressionParserException createLEFT_SIDE_NOT_STRUCTURAL_TYPE(final EdmType parentType,
       final PropertyExpressionImpl property, final Token token, final String expression)
       throws ExpressionParserInternalError {
@@ -194,6 +280,16 @@ public class FilterParserExceptionImpl extends ExpressionParserException {
     return new ExpressionParserException(msgRef);
   }
 
+  /**
+   * Creates the PROPERT Y NAM E NO T FOUN D I N TYPE.
+   *
+   * @param parentType the parent type
+   * @param property the property
+   * @param token the token
+   * @param expression the expression
+   * @return the expression parser exception
+   * @throws ExpressionParserInternalError the expression parser internal error
+   */
   public static ExpressionParserException createPROPERTY_NAME_NOT_FOUND_IN_TYPE(final EdmStructuralType parentType,
       final PropertyExpression property, final Token token, final String expression)
       throws ExpressionParserInternalError {
@@ -211,6 +307,13 @@ public class FilterParserExceptionImpl extends ExpressionParserException {
     return new ExpressionParserException(msgRef);
   }
 
+  /**
+   * Creates the TOKE N UNDETERMINATE D STRING.
+   *
+   * @param position the position
+   * @param expression the expression
+   * @return the expression parser exception
+   */
   public static ExpressionParserException
       createTOKEN_UNDETERMINATED_STRING(final int position, final String expression) {
     MessageReference msgRef = ExpressionParserException.TOKEN_UNDETERMINATED_STRING.create();
@@ -221,6 +324,16 @@ public class FilterParserExceptionImpl extends ExpressionParserException {
     return new ExpressionParserException(msgRef);
   }
 
+  /**
+   * Creates the INVALI D TYPE S FO R BINAR Y OPERATOR.
+   *
+   * @param op the op
+   * @param left the left
+   * @param right the right
+   * @param token the token
+   * @param expression the expression
+   * @return the expression parser exception
+   */
   public static ExpressionParserException createINVALID_TYPES_FOR_BINARY_OPERATOR(final BinaryOperator op,
       final EdmType left, final EdmType right, final Token token, final String expression) {
     MessageReference msgRef = ExpressionParserException.INVALID_TYPES_FOR_BINARY_OPERATOR.create();
@@ -243,6 +356,14 @@ public class FilterParserExceptionImpl extends ExpressionParserException {
     return new ExpressionParserException(msgRef);
   }
 
+  /**
+   * Creates the MISSIN G CLOSIN G PARENTHESIS.
+   *
+   * @param position the position
+   * @param expression the expression
+   * @param e the e
+   * @return the expression parser exception
+   */
   public static ExpressionParserException createMISSING_CLOSING_PARENTHESIS(final int position,
       final String expression, final TokenizerExpectError e) {
     MessageReference msgRef = ExpressionParserException.MISSING_CLOSING_PARENTHESIS.create();
@@ -253,6 +374,13 @@ public class FilterParserExceptionImpl extends ExpressionParserException {
     return new ExpressionParserException(msgRef, e);
   }
 
+  /**
+   * Creates the INVALI D SOR T ORDER.
+   *
+   * @param token the token
+   * @param expression the expression
+   * @return the expression parser exception
+   */
   public static ExpressionParserException createINVALID_SORT_ORDER(final Token token, final String expression) {
     MessageReference msgRef = ExpressionParserException.INVALID_SORT_ORDER.create();
     msgRef.addContent(token.getPosition() + 1);
@@ -261,6 +389,14 @@ public class FilterParserExceptionImpl extends ExpressionParserException {
     return new ExpressionParserException(msgRef);
   }
 
+  /**
+   * Creates the INVALI D METHO D CALL.
+   *
+   * @param leftNode the left node
+   * @param prevToken the prev token
+   * @param expression the expression
+   * @return the expression parser exception
+   */
   public static ExpressionParserException createINVALID_METHOD_CALL(final CommonExpression leftNode,
       final Token prevToken, final String expression) {
     final MessageReference msgRef = ExpressionParserException.INVALID_METHOD_CALL.create();
@@ -273,6 +409,15 @@ public class FilterParserExceptionImpl extends ExpressionParserException {
 
   }
 
+  /**
+   * Creates the TYP E EXPECTE D AT.
+   *
+   * @param expectedType the expected type
+   * @param actualType the actual type
+   * @param position the position
+   * @param expression the expression
+   * @return the expression parser exception
+   */
   public static ExpressionParserException createTYPE_EXPECTED_AT(final EdmType expectedType, final EdmType actualType,
       final int position, final String expression) {
     final MessageReference msgRef = ExpressionParserException.TYPE_EXPECTED_AT.create();

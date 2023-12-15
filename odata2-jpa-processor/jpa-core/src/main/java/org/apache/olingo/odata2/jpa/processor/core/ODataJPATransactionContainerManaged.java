@@ -20,27 +20,43 @@ package org.apache.olingo.odata2.jpa.processor.core;
 
 import org.apache.olingo.odata2.jpa.processor.api.ODataJPATransaction;
 
+// TODO: Auto-generated Javadoc
 /**
  * <code>ODataJPATransactionContainerManaged</code> only implements the methods for
  * <code>ODataJPATransaction</code> bot does nothing for all methods because the
  * whole persistence is managed by the environment (CMP).
  */
 public class ODataJPATransactionContainerManaged implements ODataJPATransaction {
+  
+  /**
+   * Begin.
+   */
   @Override
   public void begin() {
     /** do nothing for CMP */
   }
 
+  /**
+   * Commit.
+   */
   @Override
   public void commit() {
     /** do nothing for CMP */
   }
 
+  /**
+   * Rollback.
+   */
   @Override
   public void rollback() {
     /** do nothing for CMP */
   }
 
+  /**
+   * Checks if is active.
+   *
+   * @return true, if is active
+   */
   @Override
   public boolean isActive() {
     /** do nothing for CMP */

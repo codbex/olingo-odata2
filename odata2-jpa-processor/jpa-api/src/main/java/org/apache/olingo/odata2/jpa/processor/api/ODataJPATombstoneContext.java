@@ -22,25 +22,46 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
 /**
- * This class provides a thread safe container for accessing Tombstone objects
- * 
+ * This class provides a thread safe container for accessing Tombstone objects.
  */
 public final class ODataJPATombstoneContext {
 
+  /** The Constant deltaToken. */
   private static final ThreadLocal<String> deltaToken = new ThreadLocal<String>();
+  
+  /** The Constant deltaTokenUTCTimeStamp. */
   private static final ThreadLocal<Long> deltaTokenUTCTimeStamp = new ThreadLocal<Long>();
+  
+  /** The Constant deltas. */
   private static final ThreadLocal<HashMap<String, List<Object>>> deltas =
       new ThreadLocal<HashMap<String, List<Object>>>();
 
+  /**
+   * Gets the delta token.
+   *
+   * @return the delta token
+   */
   public static String getDeltaToken() {
     return deltaToken.get();
   }
 
+  /**
+   * Sets the delta token.
+   *
+   * @param token the new delta token
+   */
   public static void setDeltaToken(final String token) {
     deltaToken.set(token);
   }
 
+  /**
+   * Adds the to delta result.
+   *
+   * @param entity the entity
+   * @param entityName the entity name
+   */
   public static void addToDeltaResult(final Object entity, final String entityName) {
     HashMap<String, List<Object>> entityDeltaMap = deltas.get();
     if (entityDeltaMap == null) {
@@ -53,6 +74,12 @@ public final class ODataJPATombstoneContext {
     entityDeltaMap.get(entityName).add(entity);
   }
 
+  /**
+   * Gets the delta result.
+   *
+   * @param entityName the entity name
+   * @return the delta result
+   */
   public static List<Object> getDeltaResult(final String entityName) {
     HashMap<String, List<Object>> entityDeltaMap = deltas.get();
     if (entityDeltaMap != null) {
@@ -62,12 +89,20 @@ public final class ODataJPATombstoneContext {
     }
   }
 
+  /**
+   * Cleanup.
+   */
   public static void cleanup() {
     deltas.remove();
     deltaToken.remove();
     deltaTokenUTCTimeStamp.remove();
   }
 
+  /**
+   * Gets the delta token UTC time stamp.
+   *
+   * @return the delta token UTC time stamp
+   */
   public static Long getDeltaTokenUTCTimeStamp() {
     Long timestamp = deltaTokenUTCTimeStamp.get();
 

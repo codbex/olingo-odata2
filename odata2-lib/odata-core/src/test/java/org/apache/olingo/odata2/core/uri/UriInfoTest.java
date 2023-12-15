@@ -43,13 +43,22 @@ import org.apache.olingo.odata2.testutil.mock.MockFacade;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class UriInfoTest.
  */
 public class UriInfoTest extends BaseTest {
 
+  /** The edm. */
   private static Edm edm;
 
+  /**
+   * Gets the edm.
+   *
+   * @return the edm
+   * @throws ODataException the o data exception
+   * @throws EdmException the edm exception
+   */
   @BeforeClass
   public static void getEdm() throws ODataException, EdmException {
     edm = MockFacade.getMockEdm();
@@ -58,8 +67,12 @@ public class UriInfoTest extends BaseTest {
   /**
    * Parse the URI part after an OData service root, given as string.
    * Query parameters can be included.
+   *
    * @param uri the URI part
    * @return a {@link UriInfoImpl} instance containing the parsed information
+   * @throws UriSyntaxException the uri syntax exception
+   * @throws UriNotMatchingException the uri not matching exception
+   * @throws EdmException the edm exception
    */
   private UriInfoImpl parse(final String uri) throws UriSyntaxException, UriNotMatchingException, EdmException {
     final String[] path = uri.split("\\?", -1);
@@ -80,6 +93,13 @@ public class UriInfoTest extends BaseTest {
     return (UriInfoImpl) result;
   }
 
+  /**
+   * Gets the path segments.
+   *
+   * @param uri the uri
+   * @return the path segments
+   * @throws UriSyntaxException the uri syntax exception
+   */
   private List<PathSegment> getPathSegments(final String uri) throws UriSyntaxException {
     List<PathSegment> pathSegments = new ArrayList<PathSegment>();
     for (final String segment : uri.split("/", -1)) {
@@ -90,6 +110,12 @@ public class UriInfoTest extends BaseTest {
     return pathSegments;
   }
 
+  /**
+   * Gets the query parameters.
+   *
+   * @param uri the uri
+   * @return the query parameters
+   */
   private Map<String, String> getQueryParameters(final String uri) {
     Map<String, String> queryParameters = new HashMap<String, String>();
     for (final String option : uri.split("&")) {
@@ -103,6 +129,13 @@ public class UriInfoTest extends BaseTest {
     return queryParameters;
   }
 
+  /**
+   * Unescape.
+   *
+   * @param s the s
+   * @return the string
+   * @throws UriSyntaxException the uri syntax exception
+   */
   private String unescape(final String s) throws UriSyntaxException {
     try {
       return new URI(s).getPath();
@@ -111,6 +144,11 @@ public class UriInfoTest extends BaseTest {
     }
   }
 
+  /**
+   * Everything initial.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void everythingInitial() throws Exception {
     UriInfoImpl result = parse("/");
@@ -137,6 +175,11 @@ public class UriInfoTest extends BaseTest {
     assertNull(result.getTop());
   }
 
+  /**
+   * All initial.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void allInitial() throws Exception {
     UriInfoImpl result = parse("/Employees");
@@ -151,6 +194,11 @@ public class UriInfoTest extends BaseTest {
     assertEquals(Collections.emptyMap(), result.getCustomQueryOptions());
   }
 
+  /**
+   * Some initial.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void someInitial() throws Exception {
     UriInfoImpl result = parse("/Employees('1')");
@@ -166,6 +214,11 @@ public class UriInfoTest extends BaseTest {
     assertEquals(Collections.emptyMap(), result.getCustomQueryOptions());
   }
 
+  /**
+   * Some initial 2.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void someInitial2() throws Exception {
     UriInfoImpl result = parse("/Employees('1')/ne_Manager");

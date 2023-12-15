@@ -18,14 +18,17 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.edm;
 
+// TODO: Auto-generated Javadoc
 /**
- * @org.apache.olingo.odata2.DoNotImplement
- * EdmConcurrencyMode can be applied to any primitive Entity Data Model (EDM) type.
+ * The Enum EdmConcurrencyMode.
+ *
+ * @org.apache.olingo.odata2.DoNotImplement EdmConcurrencyMode can be applied to any primitive Entity Data Model (EDM) type.
  * <p>Possible values are "None", which is the default, and "Fixed". Fixed implies that the property should be used for
  * optimistic concurrency checks.
- * 
  */
 public enum EdmConcurrencyMode {
 
-  None, Fixed;
+  /** The None. */
+  None, /** The Fixed. */
+ Fixed;
 }

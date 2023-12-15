@@ -31,11 +31,10 @@ import org.junit.runner.Description;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+// TODO: Auto-generated Javadoc
 /**
  * Provides basic support for JUnit tests<br>
- * - log & tracing
- * 
- * 
+ * - log & tracing.
  */
 public abstract class BaseTest {
 
@@ -43,13 +42,13 @@ public abstract class BaseTest {
     DOMConfigurator.configureAndWatch("/log4j.xml");
   }
 
+  /** The log. */
   protected final Logger log = LoggerFactory.getLogger(this.getClass());
 
+  /** The disabled loggings. */
   private final Map<Class<?>, Level> disabledLoggings = new HashMap<Class<?>, Level>();
 
-  /**
-   * trace each junit error
-   */
+  /** trace each junit error. */
   @Rule
   public TestRule watch = new TestWatcher() {
 
@@ -90,8 +89,8 @@ public abstract class BaseTest {
   /**
    * Disable logging for over handed classes.
    * Disabled logging will be automatically re-enabled after test execution (see {@link #reEnableLogging()}).
-   * 
-   * @param classes
+   *
+   * @param classes the classes
    */
   protected void disableLogging(final Class<?>... classes) {
     for (final Class<?> clazz : classes) {
@@ -103,6 +102,9 @@ public abstract class BaseTest {
     }
   }
 
+  /**
+   * Re enable logging.
+   */
   protected void reEnableLogging() {
     for (final Entry<Class<?>, Level> entry : disabledLoggings.entrySet()) {
       final org.apache.log4j.Logger l = org.apache.log4j.Logger.getLogger(entry.getKey());

@@ -21,32 +21,59 @@ package org.apache.olingo.odata2.client.core.edm.Impl;
 import org.apache.olingo.odata2.api.edm.Edm;
 import org.apache.olingo.odata2.api.edm.EdmAnnotationAttribute;
 
+// TODO: Auto-generated Javadoc
 /**
- * Objects of this class represent an annotation attribute
- * 
+ * Objects of this class represent an annotation attribute.
  */
 public class EdmAnnotationAttributeImpl implements EdmAnnotationAttribute {
 
+  /** The namespace. */
   private String namespace;
+  
+  /** The prefix. */
   private String prefix;
+  
+  /** The name. */
   private String name;
+  
+  /** The text. */
   private String text;
 
+  /**
+   * Gets the namespace.
+   *
+   * @return the namespace
+   */
   @Override
   public String getNamespace() {
     return namespace;
   }
 
+  /**
+   * Gets the prefix.
+   *
+   * @return the prefix
+   */
   @Override
   public String getPrefix() {
     return prefix;
   }
 
+  /**
+   * Gets the name.
+   *
+   * @return the name
+   */
   @Override
   public String getName() {
     return name;
   }
 
+  /**
+   * Gets the text.
+   *
+   * @return the text
+   */
   @Override
   public String getText() {
     return text;
@@ -54,7 +81,8 @@ public class EdmAnnotationAttributeImpl implements EdmAnnotationAttribute {
 
   /**
    * Sets the namespace for this {@link EdmAnnotationAttributeImpl}.
-   * @param namespace
+   *
+   * @param namespace the namespace
    * @return {@link EdmAnnotationAttributeImpl} for method chaining
    */
   public EdmAnnotationAttributeImpl setNamespace(final String namespace) {
@@ -64,7 +92,8 @@ public class EdmAnnotationAttributeImpl implements EdmAnnotationAttribute {
 
   /**
    * Sets the prefix for this {@link EdmAnnotationAttributeImpl}.
-   * @param prefix
+   *
+   * @param prefix the prefix
    * @return {@link EdmAnnotationAttributeImpl} for method chaining
    */
   public EdmAnnotationAttributeImpl setPrefix(final String prefix) {
@@ -74,7 +103,8 @@ public class EdmAnnotationAttributeImpl implements EdmAnnotationAttribute {
 
   /**
    * Sets the name for this {@link EdmAnnotationAttributeImpl}.
-   * @param name
+   *
+   * @param name the name
    * @return {@link EdmAnnotationAttributeImpl} for method chaining
    */
   public EdmAnnotationAttributeImpl setName(final String name) {
@@ -84,7 +114,8 @@ public class EdmAnnotationAttributeImpl implements EdmAnnotationAttribute {
 
   /**
    * Sets the text for this {@link EdmAnnotationAttributeImpl}.
-   * @param text
+   *
+   * @param text the text
    * @return {@link EdmAnnotationAttributeImpl} for method chaining
    */
   public EdmAnnotationAttributeImpl setText(final String text) {
@@ -92,6 +123,11 @@ public class EdmAnnotationAttributeImpl implements EdmAnnotationAttribute {
     return this;
   }
 
+  /**
+   * To string.
+   *
+   * @return the string
+   */
   @Override
   public String toString() {
     return namespace + Edm.DELIMITER + name;

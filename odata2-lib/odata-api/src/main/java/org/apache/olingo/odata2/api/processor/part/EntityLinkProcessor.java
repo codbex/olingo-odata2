@@ -28,48 +28,54 @@ import org.apache.olingo.odata2.api.uri.info.GetEntityLinkCountUriInfo;
 import org.apache.olingo.odata2.api.uri.info.GetEntityLinkUriInfo;
 import org.apache.olingo.odata2.api.uri.info.PutMergePatchUriInfo;
 
+// TODO: Auto-generated Javadoc
 /**
  * Execute an OData entity link request.
  * 
  * 
  */
 public interface EntityLinkProcessor extends ODataProcessor {
+  
   /**
    * Reads the URI of the target entity of a navigation property.
+   *
    * @param uriInfo information about the request URI
    * @param contentType the content type of the response
    * @return an {@link ODataResponse} object
-   * @throws ODataException
+   * @throws ODataException the o data exception
    */
   ODataResponse readEntityLink(GetEntityLinkUriInfo uriInfo, String contentType) throws ODataException;
 
   /**
    * Returns whether the target entity of a navigation property exists.
+   *
    * @param uriInfo information about the request URI
    * @param contentType the content type of the response
    * @return an {@link ODataResponse} object
-   * @throws ODataException
+   * @throws ODataException the o data exception
    */
   ODataResponse existsEntityLink(GetEntityLinkCountUriInfo uriInfo, String contentType) throws ODataException;
 
   /**
    * Updates the link to the target entity of a navigation property.
+   *
    * @param uriInfo information about the request URI
    * @param content the content of the request, containing the new URI
    * @param requestContentType the content type of the request body
    * @param contentType the content type of the response
    * @return an {@link ODataResponse} object
-   * @throws ODataException
+   * @throws ODataException the o data exception
    */
   ODataResponse updateEntityLink(PutMergePatchUriInfo uriInfo, InputStream content, String requestContentType,
       String contentType) throws ODataException;
 
   /**
    * Deletes the link to the target entity of a navigation property.
+   *
    * @param uriInfo information about the request URI
    * @param contentType the content type of the response
    * @return an {@link ODataResponse} object
-   * @throws ODataException
+   * @throws ODataException the o data exception
    */
   ODataResponse deleteEntityLink(DeleteUriInfo uriInfo, String contentType) throws ODataException;
 }

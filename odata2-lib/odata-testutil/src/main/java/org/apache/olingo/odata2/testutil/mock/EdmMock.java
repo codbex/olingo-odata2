@@ -50,12 +50,19 @@ import org.apache.olingo.odata2.api.edm.provider.CustomizableFeedMappings;
 import org.apache.olingo.odata2.api.exception.ODataException;
 import org.mockito.Mockito;
 
+// TODO: Auto-generated Javadoc
 /**
  * Mocked Entity Data Model, more or less aligned to the Reference Scenario.
  * 
  */
 class EdmMock {
 
+  /**
+   * Creates the mock edm.
+   *
+   * @return the edm
+   * @throws ODataException the o data exception
+   */
   public static Edm createMockEdm() throws ODataException {
     EdmEntityContainer defaultContainer = mock(EdmEntityContainer.class);
     when(defaultContainer.isDefaultEntityContainer()).thenReturn(true);
@@ -366,6 +373,16 @@ class EdmMock {
     return edm;
   }
 
+  /**
+   * Creates the navigation property.
+   *
+   * @param name the name
+   * @param multiplicity the multiplicity
+   * @param entitySet the entity set
+   * @param targetEntitySet the target entity set
+   * @return the edm navigation property
+   * @throws EdmException the edm exception
+   */
   private static EdmNavigationProperty createNavigationProperty(final String name, final EdmMultiplicity multiplicity,
       final EdmEntitySet entitySet, final EdmEntitySet targetEntitySet) throws EdmException {
     EdmType navigationType = mock(EdmType.class);
@@ -383,6 +400,15 @@ class EdmMock {
     return navigationProperty;
   }
 
+  /**
+   * Creates the property.
+   *
+   * @param name the name
+   * @param kind the kind
+   * @param entityType the entity type
+   * @return the edm property
+   * @throws EdmException the edm exception
+   */
   private static EdmProperty createProperty(final String name, final EdmSimpleTypeKind kind,
       final EdmStructuralType entityType) throws EdmException {
     EdmProperty property = mock(EdmProperty.class);
@@ -392,6 +418,16 @@ class EdmMock {
     return property;
   }
 
+  /**
+   * Creates the entity set mock.
+   *
+   * @param container the container
+   * @param name the name
+   * @param kind the kind
+   * @param keyPropertyId the key property id
+   * @return the edm entity set
+   * @throws EdmException the edm exception
+   */
   private static EdmEntitySet createEntitySetMock(final EdmEntityContainer container, final String name,
       final EdmSimpleTypeKind kind, final String keyPropertyId) throws EdmException {
     final EdmEntityType entityType = createEntityTypeMock(name.substring(0, name.length() - 1), kind, keyPropertyId);
@@ -407,6 +443,15 @@ class EdmMock {
     return entitySet;
   }
 
+  /**
+   * Creates the entity type mock.
+   *
+   * @param name the name
+   * @param kind the kind
+   * @param keyPropertyId the key property id
+   * @return the edm entity type
+   * @throws EdmException the edm exception
+   */
   private static EdmEntityType createEntityTypeMock(final String name, final EdmSimpleTypeKind kind,
       final String keyPropertyId) throws EdmException {
     EdmEntityType entityType = mock(EdmEntityType.class);
@@ -427,6 +472,16 @@ class EdmMock {
     return entityType;
   }
 
+  /**
+   * Creates the function import mock.
+   *
+   * @param container the container
+   * @param name the name
+   * @param type the type
+   * @param multiplicity the multiplicity
+   * @return the edm function import
+   * @throws EdmException the edm exception
+   */
   private static EdmFunctionImport createFunctionImportMock(final EdmEntityContainer container, final String name,
       final EdmType type, final EdmMultiplicity multiplicity) throws EdmException {
     EdmTyped returnType = mock(EdmTyped.class);
@@ -445,6 +500,16 @@ class EdmMock {
   
   
   
+  /**
+   * Creates the action import mock.
+   *
+   * @param container the container
+   * @param name the name
+   * @param type the type
+   * @param multiplicity the multiplicity
+   * @return the edm function import
+   * @throws EdmException the edm exception
+   */
   private static EdmFunctionImport createActionImportMock(final EdmEntityContainer container, final String name,
       final EdmType type, final EdmMultiplicity multiplicity) throws EdmException {
 

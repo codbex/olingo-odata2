@@ -20,6 +20,7 @@ package org.apache.olingo.odata2.jpa.processor.api.model;
 
 import org.apache.olingo.odata2.api.edm.provider.ReferentialConstraintRole;
 
+// TODO: Auto-generated Javadoc
 /**
  * <p>
  * A view on Java Persistence Entity Join Column's "name" and
@@ -38,21 +39,25 @@ import org.apache.olingo.odata2.api.edm.provider.ReferentialConstraintRole;
  * 
  * 
  * <p>
- * @org.apache.olingo.odata2.DoNotImplement
+ *
  * @see org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmReferentialConstraintView
- * 
+ * @org.apache.olingo.odata2.DoNotImplement 
  */
 public interface JPAEdmReferentialConstraintRoleView extends JPAEdmBaseView {
   /**
    * Two types of EDM roles of a referential constraint.
    */
   public enum RoleType {
-    PRINCIPAL, DEPENDENT
+    
+    /** The principal. */
+    PRINCIPAL, 
+ /** The dependent. */
+ DEPENDENT
   }
 
   /**
-   * The method returns the role type (PRINCIPAL or DEPENDENT)
-   * 
+   * The method returns the role type (PRINCIPAL or DEPENDENT).
+   *
    * @return a {@link org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmReferentialConstraintRoleView.RoleType}
    */
   RoleType getRoleType();

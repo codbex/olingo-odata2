@@ -25,6 +25,7 @@ import java.nio.ByteBuffer;
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
 
+// TODO: Auto-generated Javadoc
 /**
  * Circular stream buffer to write/read into/from one single buffer.
  * With support of {@link InputStream} and {@link OutputStream} access to buffered data.
@@ -33,21 +34,40 @@ import java.util.concurrent.LinkedBlockingQueue;
  */
 public class CircleStreamBuffer {
 
+  /** The Constant NEW_BUFFER_RESIZE_FACTOR. */
   private static final int NEW_BUFFER_RESIZE_FACTOR = 2;
+  
+  /** The Constant READ_EOF. */
   private static final int READ_EOF = -1;
+  
+  /** The Constant DEFAULT_CAPACITY. */
   private static final int DEFAULT_CAPACITY = 8192;
+  
+  /** The Constant MAX_CAPACITY. */
   private static final int MAX_CAPACITY = DEFAULT_CAPACITY * 32;
 
+  /** The current allocate capacity. */
   private int currentAllocateCapacity = DEFAULT_CAPACITY;
 
+  /** The write mode. */
   private boolean writeMode = true;
+  
+  /** The write closed. */
   private boolean writeClosed = false;
+  
+  /** The read closed. */
   private boolean readClosed = false;
 
+  /** The buffer queue. */
   private Queue<ByteBuffer> bufferQueue = new LinkedBlockingQueue<ByteBuffer>();
+  
+  /** The current write buffer. */
   private ByteBuffer currentWriteBuffer;
 
+  /** The in stream. */
   private InternalInputStream inStream;
+  
+  /** The out stream. */
   private InternalOutputStream outStream;
 
   /**
@@ -123,6 +143,12 @@ public class CircleStreamBuffer {
     closeRead();
   }
 
+  /**
+   * Remaining.
+   *
+   * @return the int
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private int remaining() throws IOException {
     if (writeMode) {
       return currentWriteBuffer.remaining();
@@ -141,6 +167,12 @@ public class CircleStreamBuffer {
   // #
   // #############################################
 
+  /**
+   * Gets the read buffer.
+   *
+   * @return the read buffer
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private ByteBuffer getReadBuffer() throws IOException {
     if (readClosed) {
       throw new IOException("Tried to read from closed stream.");
@@ -170,6 +202,15 @@ public class CircleStreamBuffer {
     return tmp;
   }
 
+  /**
+   * Read.
+   *
+   * @param b the b
+   * @param off the off
+   * @param len the len
+   * @return the int
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private int read(final byte[] b, final int off, final int len) throws IOException {
     ByteBuffer readBuffer = getReadBuffer();
     if (readBuffer == null) {
@@ -184,6 +225,12 @@ public class CircleStreamBuffer {
     return toReadLength;
   }
 
+  /**
+   * Read.
+   *
+   * @return the int
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private int read() throws IOException {
     ByteBuffer readBuffer = getReadBuffer();
     if (readBuffer == null) {
@@ -199,11 +246,26 @@ public class CircleStreamBuffer {
   // #
   // #############################################
 
+  /**
+   * Write.
+   *
+   * @param data the data
+   * @param off the off
+   * @param len the len
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private void write(final byte[] data, final int off, final int len) throws IOException {
     ByteBuffer writeBuffer = getWriteBuffer(len);
     writeBuffer.put(data, off, len);
   }
 
+  /**
+   * Gets the write buffer.
+   *
+   * @param size the size
+   * @return the write buffer
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private ByteBuffer getWriteBuffer(final int size) throws IOException {
     if (writeClosed) {
       throw new IOException("Tried to write into closed stream.");
@@ -221,11 +283,20 @@ public class CircleStreamBuffer {
     return currentWriteBuffer;
   }
 
+  /**
+   * Write.
+   *
+   * @param b the b
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private void write(final int b) throws IOException {
     ByteBuffer writeBuffer = getWriteBuffer(1);
     writeBuffer.put((byte) b);
   }
 
+  /**
+   * Creates the new write buffer.
+   */
   private void createNewWriteBuffer() {
     createNewWriteBuffer(currentAllocateCapacity);
   }
@@ -244,7 +315,7 @@ public class CircleStreamBuffer {
   }
 
   /**
-   * Allocate a new buffer with requested capacity
+   * Allocate a new buffer with requested capacity.
    *
    * @param requestedCapacity minimal capacity of new buffer
    * @return the buffer
@@ -274,31 +345,63 @@ public class CircleStreamBuffer {
   // #############################################
 
   /**
-   * 
+   * The Class InternalInputStream.
    */
   private static class InternalInputStream extends InputStream {
 
+    /** The in buffer. */
     private final CircleStreamBuffer inBuffer;
 
+    /**
+     * Instantiates a new internal input stream.
+     *
+     * @param csBuffer the cs buffer
+     */
     public InternalInputStream(final CircleStreamBuffer csBuffer) {
       inBuffer = csBuffer;
     }
 
+    /**
+     * Available.
+     *
+     * @return the int
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @Override
     public int available() throws IOException {
       return inBuffer.remaining();
     }
 
+    /**
+     * Read.
+     *
+     * @return the int
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @Override
     public int read() throws IOException {
       return inBuffer.read();
     }
 
+    /**
+     * Read.
+     *
+     * @param b the b
+     * @param off the off
+     * @param len the len
+     * @return the int
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @Override
     public int read(final byte[] b, final int off, final int len) throws IOException {
       return inBuffer.read(b, off, len);
     }
 
+    /**
+     * Close.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @Override
     public void close() throws IOException {
       inBuffer.closeRead();
@@ -306,25 +409,51 @@ public class CircleStreamBuffer {
   }
 
   /**
-   * 
+   * The Class InternalOutputStream.
    */
   private static class InternalOutputStream extends OutputStream {
+    
+    /** The out buffer. */
     private final CircleStreamBuffer outBuffer;
 
+    /**
+     * Instantiates a new internal output stream.
+     *
+     * @param csBuffer the cs buffer
+     */
     public InternalOutputStream(final CircleStreamBuffer csBuffer) {
       outBuffer = csBuffer;
     }
 
+    /**
+     * Write.
+     *
+     * @param b the b
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @Override
     public void write(final int b) throws IOException {
       outBuffer.write(b);
     }
 
+    /**
+     * Write.
+     *
+     * @param b the b
+     * @param off the off
+     * @param len the len
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @Override
     public void write(final byte[] b, final int off, final int len) throws IOException {
       outBuffer.write(b, off, len);
     }
 
+    /**
+     * Close.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @Override
     public void close() throws IOException {
       outBuffer.closeWrite();

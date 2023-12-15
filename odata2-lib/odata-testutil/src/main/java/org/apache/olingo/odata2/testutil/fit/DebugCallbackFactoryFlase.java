@@ -21,8 +21,19 @@ package org.apache.olingo.odata2.testutil.fit;
 import org.apache.olingo.odata2.api.ODataCallback;
 import org.apache.olingo.odata2.api.ODataDebugCallback;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class DebugCallbackFactoryFlase.
+ */
 public class DebugCallbackFactoryFlase extends FitStaticServiceFactory {
 
+  /**
+   * Gets the callback.
+   *
+   * @param <T> the generic type
+   * @param callbackInterface the callback interface
+   * @return the callback
+   */
   @SuppressWarnings("unchecked")
   @Override
   public <T extends ODataCallback> T getCallback(final Class<T> callbackInterface) {

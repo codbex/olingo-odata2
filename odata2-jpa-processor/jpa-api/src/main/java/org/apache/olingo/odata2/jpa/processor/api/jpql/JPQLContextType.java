@@ -18,6 +18,7 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.jpa.processor.api.jpql;
 
+// TODO: Auto-generated Javadoc
 /**
  * Enumerated list of JPQL context Types.
  * 
@@ -25,49 +26,31 @@ package org.apache.olingo.odata2.jpa.processor.api.jpql;
  * 
  */
 public enum JPQLContextType {
-  /**
-   * indicates that the JPQL context can be used for building JPQL select
-   * statements
-   */
+  
+  /** indicates that the JPQL context can be used for building JPQL select statements. */
   SELECT,
-  /**
-   * indicates that the JPQL context can be used for building JPQL modify
-   * statements
-   */
+  
+  /** indicates that the JPQL context can be used for building JPQL modify statements. */
   MODIFY,
-  /**
-   * indicates that the JPQL context can be used for building JPQL delete
-   * statements
-   */
+  
+  /** indicates that the JPQL context can be used for building JPQL delete statements. */
   DELETE,
-  /**
-   * indicates that the JPQL context can be used for building JPQL select
-   * statement that fetches single record
-   */
+  
+  /** indicates that the JPQL context can be used for building JPQL select statement that fetches single record. */
   SELECT_SINGLE,
-  /**
-   * indicates that the JPQL context can be used for building JPQL join
-   * statement
-   */
+  
+  /** indicates that the JPQL context can be used for building JPQL join statement. */
   JOIN,
-  /**
-   * indicates that the JPQL context can be used for building JPQL join
-   * statement that fetches single record
-   */
+  
+  /** indicates that the JPQL context can be used for building JPQL join statement that fetches single record. */
   JOIN_SINGLE,
-  /**
-   * indicates that the JPQL context can be used for building JPQL select
-   * statement that fetches record counts
-   */
+  
+  /** indicates that the JPQL context can be used for building JPQL select statement that fetches record counts. */
   SELECT_COUNT,
-  /**
-   * indicates that the JPQL context can be used for building JPQL join
-   * statement that fetches single record
-   */
+  
+  /** indicates that the JPQL context can be used for building JPQL join statement that fetches single record. */
   JOIN_COUNT,
-  /**
-   * indicates that the JPQL context can be used for building JPA Method
-   * context that can be used for invoking custom functions
-   */
+  
+  /** indicates that the JPQL context can be used for building JPA Method context that can be used for invoking custom functions. */
   FUNCTION
 }

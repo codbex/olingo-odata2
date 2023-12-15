@@ -48,19 +48,44 @@ import org.apache.olingo.odata2.testutil.mock.MockFacade;
 import org.junit.Before;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TombstoneProducerTest.
+ */
 public class TombstoneProducerTest extends AbstractProviderTest {
 
+  /** The Constant DEFAULT_CHARSET. */
   private static final String DEFAULT_CHARSET = ContentType.CHARSET_UTF_8;
+  
+  /** The Constant XML_VERSION. */
   private static final String XML_VERSION = "1.0";
+  
+  /** The writer. */
   private XMLStreamWriter writer;
+  
+  /** The default properties. */
   private EntityProviderWriteProperties defaultProperties;
+  
+  /** The default eia. */
   private EntityInfoAggregator defaultEia;
+  
+  /** The csb. */
   private CircleStreamBuffer csb;
 
+  /**
+   * Instantiates a new tombstone producer test.
+   *
+   * @param type the type
+   */
   public TombstoneProducerTest(final StreamWriterImplType type) {
     super(type);
   }
 
+  /**
+   * Initialize.
+   *
+   * @throws Exception the exception
+   */
   @Before
   public void initialize() throws Exception {
     csb = new CircleStreamBuffer();
@@ -72,6 +97,11 @@ public class TombstoneProducerTest extends AbstractProviderTest {
             defaultProperties.getExpandSelectTree());
   }
 
+  /**
+   * One deleted entry with all properties.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void oneDeletedEntryWithAllProperties() throws Exception {
     // Prepare Data
@@ -90,6 +120,11 @@ public class TombstoneProducerTest extends AbstractProviderTest {
     assertXpathEvaluatesTo("http://host:80/service/Rooms('1')", "/a:feed/at:deleted-entry/@ref", xml);
   }
 
+  /**
+   * Two deleted entries with all properties.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void twoDeletedEntriesWithAllProperties() throws Exception {
     // Prepare Data
@@ -116,6 +151,11 @@ public class TombstoneProducerTest extends AbstractProviderTest {
     assertXpathExists("/a:feed/at:deleted-entry[@ref=\"http://host:80/service/Rooms('2')\"]", xml);
   }
 
+  /**
+   * One deleted entry with key properties.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void oneDeletedEntryWithKeyProperties() throws Exception {
     // Prepare Data
@@ -131,6 +171,11 @@ public class TombstoneProducerTest extends AbstractProviderTest {
     assertXpathEvaluatesTo("http://host:80/service/Rooms('1')", "/a:feed/at:deleted-entry/@ref", xml);
   }
 
+  /**
+   * One deleted entry without properties.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void oneDeletedEntryWithoutProperties() throws Exception {
     // Prepare Data
@@ -141,6 +186,11 @@ public class TombstoneProducerTest extends AbstractProviderTest {
     execute(deletedEntries);
   }
 
+  /**
+   * Empty entry list.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void emptyEntryList() throws Exception {
     // Prepare Data
@@ -153,6 +203,11 @@ public class TombstoneProducerTest extends AbstractProviderTest {
     assertXpathNotExists("/a:feed/at:deleted-entry[@ref and @when]", xml);
   }
 
+  /**
+   * Entry with syndicated updated mapping present.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entryWithSyndicatedUpdatedMappingPresent() throws Exception {
     // Prepare Data
@@ -170,6 +225,11 @@ public class TombstoneProducerTest extends AbstractProviderTest {
     assertXpathEvaluatesTo("1999-01-01T00:00:00Z", "/a:feed/at:deleted-entry/@when", xml);
   }
 
+  /**
+   * Entry with syndicated updated mapping not present.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entryWithSyndicatedUpdatedMappingNotPresent() throws Exception {
     // Prepare Data
@@ -189,6 +249,11 @@ public class TombstoneProducerTest extends AbstractProviderTest {
     assertXpathNotExists("/a:feed/at:deleted-entry[@when='1999-01-01T00:00:00Z']", xml);
   }
 
+  /**
+   * Entry with syndicated updated mapping null.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entryWithSyndicatedUpdatedMappingNull() throws Exception {
     // Prepare Data
@@ -207,6 +272,12 @@ public class TombstoneProducerTest extends AbstractProviderTest {
     assertXpathNotExists("/a:feed/at:deleted-entry[@when='1999-01-01T00:00:00Z']", xml);
   }
 
+  /**
+   * Gets the xml.
+   *
+   * @return the xml
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private String getXML() throws IOException {
     InputStream inputStream = csb.getInputStream();
     assertNotNull(inputStream);
@@ -215,6 +286,13 @@ public class TombstoneProducerTest extends AbstractProviderTest {
     return xml;
   }
 
+  /**
+   * Execute.
+   *
+   * @param deletedEntries the deleted entries
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   void execute(final List<Map<String, Object>> deletedEntries) throws XMLStreamException, EntityProviderException {
     TombstoneProducer producer = new TombstoneProducer();
     writer.writeStartDocument(DEFAULT_CHARSET, XML_VERSION);

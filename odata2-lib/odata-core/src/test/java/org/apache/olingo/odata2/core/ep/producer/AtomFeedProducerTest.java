@@ -70,19 +70,32 @@ import org.junit.Before;
 import org.junit.Test;
 import org.xml.sax.SAXException;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class AtomFeedProducerTest.
  */
 public class AtomFeedProducerTest extends AbstractProviderTest {
 
+  /** The employee X path string. */
   private String employeeXPathString = "/a:entry/a:link[@href=\"Rooms('1')/nr_Employees\" and @title='nr_Employees']";
   
+  /**
+   * Instantiates a new atom feed producer test.
+   *
+   * @param type the type
+   */
   public AtomFeedProducerTest(final StreamWriterImplType type) {
     super(type);
   }
 
+  /** The view. */
   private GetEntitySetUriInfo view;
 
+  /**
+   * Before.
+   *
+   * @throws Exception the exception
+   */
   @Before
   public void before() throws Exception {
     initializeRoomData(1);
@@ -93,6 +106,11 @@ public class AtomFeedProducerTest extends AbstractProviderTest {
     when(view.getTargetEntitySet()).thenReturn(set);
   }
 
+  /**
+   * Test with include simple property types.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testWithIncludeSimplePropertyTypes() throws Exception {
     AtomEntityProvider ser = createAtomEntityProvider();
@@ -109,6 +127,11 @@ public class AtomFeedProducerTest extends AbstractProviderTest {
     assertXpathExists("/a:feed/a:entry/a:content/m:properties/d:Version[@m:type=\"Edm.Int16\"]", xmlString);
   }
 
+  /**
+   * Test feed namespaces.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testFeedNamespaces() throws Exception {
     AtomEntityProvider ser = createAtomEntityProvider();
@@ -121,6 +144,11 @@ public class AtomFeedProducerTest extends AbstractProviderTest {
     assertXpathEvaluatesTo(BASE_URI.toASCIIString(), "/a:feed/@xml:base", xmlString);
   }
 
+  /**
+   * Test self link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testSelfLink() throws Exception {
     AtomEntityProvider ser = createAtomEntityProvider();
@@ -134,6 +162,11 @@ public class AtomFeedProducerTest extends AbstractProviderTest {
     assertXpathEvaluatesTo("Rooms", "/a:feed/a:link[@rel='self']/@title", xmlString);
   }
 
+  /**
+   * Test custom self link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testCustomSelfLink() throws Exception {
     String customLink = "Test";
@@ -149,6 +182,11 @@ public class AtomFeedProducerTest extends AbstractProviderTest {
     assertXpathEvaluatesTo("Rooms", "/a:feed/a:link[@rel='self']/@title", xmlString);
   }
 
+  /**
+   * Test feed mandatory parts.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testFeedMandatoryParts() throws Exception {
     AtomEntityProvider ser = createAtomEntityProvider();
@@ -168,6 +206,13 @@ public class AtomFeedProducerTest extends AbstractProviderTest {
     assertXpathExists("/a:feed/a:author/a:name", xmlString);
   }
 
+  /**
+   * Verify response.
+   *
+   * @param response the response
+   * @return the string
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private String verifyResponse(final ODataResponse response) throws IOException {
     assertNotNull(response);
     assertNotNull(response.getEntity());
@@ -176,6 +221,11 @@ public class AtomFeedProducerTest extends AbstractProviderTest {
     return xmlString;
   }
 
+  /**
+   * Test inline count allpages.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testInlineCountAllpages() throws Exception {
     initializeRoomData(20);
@@ -192,6 +242,11 @@ public class AtomFeedProducerTest extends AbstractProviderTest {
     assertXpathEvaluatesTo("103", "/a:feed/m:count/text()", xmlString);
   }
 
+  /**
+   * Test inline count none.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testInlineCountNone() throws Exception {
     when(view.getInlineCount()).thenReturn(InlineCount.NONE);
@@ -205,6 +260,11 @@ public class AtomFeedProducerTest extends AbstractProviderTest {
     assertXpathNotExists("/a:feed/m:count", xmlString);
   }
 
+  /**
+   * Test next link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testNextLink() throws Exception {
     when(view.getInlineCount()).thenReturn(InlineCount.NONE);
@@ -220,6 +280,11 @@ public class AtomFeedProducerTest extends AbstractProviderTest {
     assertXpathEvaluatesTo("http://thisisanextlink", "/a:feed/a:link[@rel='next']/@href", xmlString);
   }
 
+  /**
+   * Test inline count invalid.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void testInlineCountInvalid() throws Exception {
     AtomEntityProvider ser = createAtomEntityProvider();
@@ -229,6 +294,11 @@ public class AtomFeedProducerTest extends AbstractProviderTest {
     ser.writeFeed(view.getTargetEntitySet(), roomsData, properties);
   }
 
+  /**
+   * Test entries.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testEntries() throws Exception {
     initializeRoomData(103);
@@ -244,6 +314,11 @@ public class AtomFeedProducerTest extends AbstractProviderTest {
     assertXpathExists("/a:feed/a:entry[103]", xmlString);
   }
 
+  /**
+   * Unbalanced property feed.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void unbalancedPropertyFeed() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Companys");
@@ -258,6 +333,11 @@ public class AtomFeedProducerTest extends AbstractProviderTest {
     compareList(originalData, feed.getEntries());
   }
 
+  /**
+   * Unbalanced property feed with invalid property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void unbalancedPropertyFeedWithInvalidProperty() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Companys");
@@ -272,6 +352,11 @@ public class AtomFeedProducerTest extends AbstractProviderTest {
     compareList(originalData, feed.getEntries());
   }
   
+  /**
+   * Unbalanced property feed with null key.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderProducerException.class)
   public void unbalancedPropertyFeedWithNullKey() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Companys");
@@ -280,6 +365,11 @@ public class AtomFeedProducerTest extends AbstractProviderTest {
         EntityProviderWriteProperties.serviceRoot(BASE_URI).isDataBasedPropertySerialization(true).build());
   }
   
+  /**
+   * Unbalanced property feed without keys.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderProducerException.class)
   public void unbalancedPropertyFeedWithoutKeys() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Companys");
@@ -288,6 +378,11 @@ public class AtomFeedProducerTest extends AbstractProviderTest {
         EntityProviderWriteProperties.serviceRoot(BASE_URI).isDataBasedPropertySerialization(true).build());
   }
   
+  /**
+   * Unbalanced property feed with empty data.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderProducerException.class)
   public void unbalancedPropertyFeedWithEmptyData() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Companys");
@@ -298,6 +393,11 @@ public class AtomFeedProducerTest extends AbstractProviderTest {
         EntityProviderWriteProperties.serviceRoot(BASE_URI).isDataBasedPropertySerialization(true).build());
   }
   
+  /**
+   * Unbalanced property feed with select.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void unbalancedPropertyFeedWithSelect() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Companys");
@@ -319,6 +419,11 @@ public class AtomFeedProducerTest extends AbstractProviderTest {
     compareList(originalData, feed.getEntries());
   }
   
+  /**
+   * Unbalanced property entry with inline feed.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void unbalancedPropertyEntryWithInlineFeed() throws Exception {
     ExpandSelectTreeNode selectTree = getSelectExpandTree("Rooms('1')", "nr_Employees", "nr_Employees");
@@ -385,6 +490,15 @@ public class AtomFeedProducerTest extends AbstractProviderTest {
     verifyEmployees(employeeXPathString, xmlString);
   }
     
+  /**
+   * Gets the select expand tree.
+   *
+   * @param pathSegment the path segment
+   * @param selectString the select string
+   * @param expandString the expand string
+   * @return the select expand tree
+   * @throws Exception the exception
+   */
   private ExpandSelectTreeNode getSelectExpandTree(final String pathSegment, final String selectString,
       final String expandString) throws Exception {
 
@@ -410,6 +524,15 @@ public class AtomFeedProducerTest extends AbstractProviderTest {
     return expandSelectTree;
   }
   
+  /**
+   * Verify employees.
+   *
+   * @param path the path
+   * @param xmlString the xml string
+   * @throws XpathException the xpath exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws SAXException the SAX exception
+   */
   private void verifyEmployees(final String path, final String xmlString) throws XpathException, IOException,
   SAXException {
   assertXpathExists(path, xmlString);
@@ -436,6 +559,12 @@ public class AtomFeedProducerTest extends AbstractProviderTest {
   
   }
   
+  /**
+   * Compare list.
+   *
+   * @param expectedList the expected list
+   * @param actualList the actual list
+   */
   private void compareList(List<Map<String, Object>> expectedList, List<ODataEntry> actualList) {
     assertEquals(expectedList.size(), actualList.size());
 
@@ -446,6 +575,13 @@ public class AtomFeedProducerTest extends AbstractProviderTest {
     }
   }
 
+  /**
+   * Compare map.
+   *
+   * @param index the index
+   * @param expected the expected
+   * @param actual the actual
+   */
   @SuppressWarnings("unchecked")
   private void compareMap(int index, Map<String, Object> expected, Map<String, Object> actual) {
     
@@ -464,6 +600,12 @@ public class AtomFeedProducerTest extends AbstractProviderTest {
     }
   }
 
+  /**
+   * Creates the data.
+   *
+   * @param includeKeys the include keys
+   * @return the list
+   */
   private List<Map<String, Object>> createData(boolean includeKeys) {
     List<Map<String, Object>> feedData = new ArrayList<Map<String, Object>>();
     Map<String, Object> entryData = new HashMap<String, Object>();
@@ -519,6 +661,12 @@ public class AtomFeedProducerTest extends AbstractProviderTest {
     return feedData;
   }
   
+  /**
+   * Creates the data with invalid property.
+   *
+   * @param includeKeys the include keys
+   * @return the list
+   */
   private List<Map<String, Object>> createDataWithInvalidProperty(boolean includeKeys) {
     List<Map<String, Object>> feedData = new ArrayList<Map<String, Object>>();
     Map<String, Object> entryData = new HashMap<String, Object>();
@@ -535,6 +683,12 @@ public class AtomFeedProducerTest extends AbstractProviderTest {
     return feedData;
   }
   
+  /**
+   * Creates the data with key null.
+   *
+   * @param includeKeys the include keys
+   * @return the list
+   */
   private List<Map<String, Object>> createDataWithKeyNull(boolean includeKeys) {
     List<Map<String, Object>> feedData = new ArrayList<Map<String, Object>>();
     Map<String, Object> entryData = new HashMap<String, Object>();
@@ -550,6 +704,12 @@ public class AtomFeedProducerTest extends AbstractProviderTest {
     return feedData;
   }
   
+  /**
+   * Creates the data without key.
+   *
+   * @param includeKeys the include keys
+   * @return the list
+   */
   private List<Map<String, Object>> createDataWithoutKey(boolean includeKeys) {
     List<Map<String, Object>> feedData = new ArrayList<Map<String, Object>>();
     Map<String, Object> entryData = new HashMap<String, Object>();

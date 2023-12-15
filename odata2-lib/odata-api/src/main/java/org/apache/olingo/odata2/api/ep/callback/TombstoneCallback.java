@@ -20,6 +20,7 @@ package org.apache.olingo.odata2.api.ep.callback;
 
 import org.apache.olingo.odata2.api.ODataCallback;
 
+// TODO: Auto-generated Javadoc
 /**
  * <p>Interface that must be implemented in order to provide tombstone support.</p>
  * <p>The callback implementing this interface is registered at the
@@ -34,9 +35,14 @@ public interface TombstoneCallback extends ODataCallback {
    * {@link org.apache.olingo.odata2.api.ep.EntityProviderWriteProperties EntityProviderWriteProperties}
    */
   public static final String CALLBACK_KEY_TOMBSTONE = "~tombstoneCallback";
+  
+  /** The Constant PREFIX_TOMBSTONE. */
   public static final String PREFIX_TOMBSTONE = "at";
+  
+  /** The Constant NAMESPACE_TOMBSTONE. */
   public static final String NAMESPACE_TOMBSTONE = "http://purl.org/atompub/tombstones/1.0";
 
+  /** The Constant REL_DELTA. */
   @Deprecated
   public static final String REL_DELTA = "delta";
 
@@ -51,6 +57,8 @@ public interface TombstoneCallback extends ODataCallback {
    * The provided value here will result in the value of the "when" attribute
    * of the deleted entry.</li></ul></p>
    * <p>The provided delta link will be serialized at the end of the feed document.</p>
+   *
+   * @return the tombstone callback result
    */
   TombstoneCallbackResult getTombstoneCallbackResult();
 }

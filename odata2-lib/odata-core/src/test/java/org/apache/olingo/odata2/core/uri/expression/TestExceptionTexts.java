@@ -23,30 +23,47 @@ import org.apache.olingo.odata2.api.uri.expression.ExpressionParserException;
 import org.apache.olingo.odata2.testutil.helper.ODataMessageTextVerifier;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class TestExceptionTexts.
  */
 public class TestExceptionTexts extends TestBase {
+  
+  /**
+   * Test filter parser exception messages.
+   */
   @Test
   public void TestFilterParserExceptionMessages() {
     ODataMessageTextVerifier.TestClass(ExpressionParserException.class);
   }
 
+  /**
+   * Test filter parser internal error messages.
+   */
   @Test
   public void TestFilterParserInternalErrorMessages() {
     ODataMessageTextVerifier.TestClass(ExpressionParserInternalError.class);
   }
 
+  /**
+   * Test exception visit expression messages.
+   */
   @Test
   public void TestExceptionVisitExpressionMessages() {
     ODataMessageTextVerifier.TestClass(ExceptionVisitExpression.class);
   }
 
+  /**
+   * Test exception tokenizer expect messages.
+   */
   @Test
   public void TestExceptionTokenizerExpectMessages() {
     ODataMessageTextVerifier.TestClass(TokenizerExpectError.class);
   }
 
+  /**
+   * Test exception tokenizer messages.
+   */
   @Test
   public void TestExceptionTokenizerMessages() {
     ODataMessageTextVerifier.TestClass(TokenizerException.class);

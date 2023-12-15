@@ -20,6 +20,7 @@ package org.apache.olingo.odata2.api.edm.provider;
 
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
 /**
  * Objects of this class represent the data service. They contain all schemas of the EDM as well as the
  * dataServiceVersion
@@ -27,14 +28,22 @@ import java.util.List;
  */
 public class DataServices {
 
+  /** The schemas. */
   private List<Schema> schemas;
+  
+  /** The data service version. */
   private String dataServiceVersion;
+  
+  /** The custom edmx version. */
   private String customEdmxVersion;
+  
+  /** The annotation elements. */
   private List<AnnotationElement> annotationElements;
 
   /**
-   * Sets the schemas for this {@link DataServices}
-   * @param schemas
+   * Sets the schemas for this {@link DataServices}.
+   *
+   * @param schemas the schemas
    * @return {@link DataServices} for method chaining
    */
   public DataServices setSchemas(final List<Schema> schemas) {
@@ -43,8 +52,9 @@ public class DataServices {
   }
 
   /**
-   * Sets the data service version for this {@link DataServices}
-   * @param dataServiceVersion
+   * Sets the data service version for this {@link DataServices}.
+   *
+   * @param dataServiceVersion the data service version
    * @return {@link DataServices} for method chaining
    */
   public DataServices setDataServiceVersion(final String dataServiceVersion) {
@@ -53,8 +63,9 @@ public class DataServices {
   }
 
   /**
-   * Sets the collection of {@link AnnotationElement} for this {@link DataServices}
-   * @param annotationElements
+   * Sets the collection of {@link AnnotationElement} for this {@link DataServices}.
+   *
+   * @param annotationElements the annotation elements
    * @return {@link ComplexType} for method chaining
    */
   public DataServices setAnnotationElements(final List<AnnotationElement> annotationElements) {
@@ -63,8 +74,9 @@ public class DataServices {
   }
 
   /**
-   * Sets a custom edmx version which is used in the metadata document
-   * @param customEdmxVersion
+   * Sets a custom edmx version which is used in the metadata document.
+   *
+   * @param customEdmxVersion the custom edmx version
    * @return {@link ComplexType} for method chaining
    */
   public DataServices setCustomEdmxVersion(String customEdmxVersion) {
@@ -73,6 +85,8 @@ public class DataServices {
   }
 
   /**
+   * Gets the annotation elements.
+   *
    * @return collection of {@link AnnotationElement} annotation elements
    */
   public List<AnnotationElement> getAnnotationElements() {
@@ -80,6 +94,8 @@ public class DataServices {
   }
 
   /**
+   * Gets the schemas.
+   *
    * @return List<{@link Schema}>
    */
   public List<Schema> getSchemas() {
@@ -87,6 +103,8 @@ public class DataServices {
   }
 
   /**
+   * Gets the data service version.
+   *
    * @return <b>String</b> data service version
    */
   public String getDataServiceVersion() {
@@ -94,6 +112,8 @@ public class DataServices {
   }
 
   /**
+   * Gets the custom edmx version.
+   *
    * @return <b>String</b> custom edmx version
    */
   public String getCustomEdmxVersion() {

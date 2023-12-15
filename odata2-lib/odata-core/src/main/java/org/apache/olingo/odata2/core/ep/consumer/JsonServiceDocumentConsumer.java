@@ -38,19 +38,40 @@ import org.apache.olingo.odata2.core.servicedocument.ServiceDocumentImpl;
 
 import com.google.gson.stream.JsonReader;
 
+// TODO: Auto-generated Javadoc
 /**
  * Reads the OData service document (JSON).
  * 
  */
 public class JsonServiceDocumentConsumer {
+  
+  /** The Constant DEFAULT_CHARSET. */
   private static final String DEFAULT_CHARSET = "UTF-8";
+  
+  /** The entity sets. */
   List<EdmEntitySetInfo> entitySets = new ArrayList<EdmEntitySetInfo>();
+  
+  /** The current handled object name. */
   private String currentHandledObjectName;
 
+  /**
+   * Parses the json.
+   *
+   * @param in the in
+   * @return the service document impl
+   * @throws EntityProviderException the entity provider exception
+   */
   public ServiceDocumentImpl parseJson(final InputStream in) throws EntityProviderException {
     return readServiceDocument(createJsonReader(in));
   }
 
+  /**
+   * Read service document.
+   *
+   * @param reader the reader
+   * @return the service document impl
+   * @throws EntityProviderException the entity provider exception
+   */
   private ServiceDocumentImpl readServiceDocument(final JsonReader reader) throws EntityProviderException {
     try {
       reader.beginObject();
@@ -76,6 +97,14 @@ public class JsonServiceDocumentConsumer {
     return new ServiceDocumentImpl().setEntitySetsInfo(entitySets);
   }
 
+  /**
+   * Read content.
+   *
+   * @param reader the reader
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws EdmException the edm exception
+   * @throws EntityProviderException the entity provider exception
+   */
   private void readContent(final JsonReader reader) throws IOException, EdmException, EntityProviderException {
     currentHandledObjectName = reader.nextName();
     if (FormatJson.ENTITY_SETS.equals(currentHandledObjectName)) {
@@ -85,6 +114,14 @@ public class JsonServiceDocumentConsumer {
     }
   }
 
+  /**
+   * Read entity sets.
+   *
+   * @param reader the reader
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   */
   private void readEntitySets(final JsonReader reader) throws IOException, EntityProviderException, EdmException {
     while (reader.hasNext()) {
       currentHandledObjectName = reader.nextString();
@@ -107,6 +144,13 @@ public class JsonServiceDocumentConsumer {
     }
   }
 
+  /**
+   * Creates the json reader.
+   *
+   * @param in the in
+   * @return the json reader
+   * @throws EntityProviderException the entity provider exception
+   */
   private JsonReader createJsonReader(final InputStream in) throws EntityProviderException {
     if (in == null) {
       throw new EntityProviderException(EntityProviderException.INVALID_STATE

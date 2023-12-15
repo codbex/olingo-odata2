@@ -31,6 +31,7 @@ import org.apache.olingo.odata2.api.ep.feed.ODataFeed;
 import org.apache.olingo.odata2.api.processor.ODataErrorContext;
 import org.apache.olingo.odata2.api.processor.ODataResponse;
 
+// TODO: Auto-generated Javadoc
 /**
  * Interface for all none basic (content type <b>dependent</b>) deserializer methods.
  * 
@@ -39,21 +40,23 @@ import org.apache.olingo.odata2.api.processor.ODataResponse;
 public interface ContentTypeBasedDeserializer {
 
   /**
-   * Returns an ODataFeed
-   * @param entitySet
-   * @param content
+   * Returns an ODataFeed.
+   *
+   * @param entitySet the entity set
+   * @param content the content
    * @return ODataFeed
-   * @throws EntityProviderException
+   * @throws EntityProviderException the entity provider exception
    */
   ODataFeed readFeed(EdmEntitySet entitySet, EntityStream content)
       throws EntityProviderException;
 
   /**
-   * Returns an ODataEntry
-   * @param entitySet
-   * @param content
+   * Returns an ODataEntry.
+   *
+   * @param entitySet the entity set
+   * @param content the content
    * @return ODataEntry
-   * @throws EntityProviderException
+   * @throws EntityProviderException the entity provider exception
    */
   ODataEntry readEntry(EdmEntitySet entitySet, EntityStream content)
       throws EntityProviderException;
@@ -61,29 +64,30 @@ public interface ContentTypeBasedDeserializer {
   /**
    * Read (de-serialize) data from error document as {@link InputStream} and provide according
    * {@link ODataErrorContext}.
-   * 
+   *
    * @param errorDocument error document which is read
-   * @param contentType format of content in the given input stream
    * @return read error document
    * @throws EntityProviderException if reading of data (de-serialization) fails
    */
   ODataErrorContext readErrorDocument(InputStream errorDocument) throws EntityProviderException;
 
   /**
-   * Returns an ODataResponse
-   * @param batchResponseParts
+   * Returns an ODataResponse.
+   *
+   * @param batchResponseParts the batch response parts
    * @return ODataResponse
-   * @throws BatchException
+   * @throws BatchException the batch exception
    */
   ODataResponse writeBatchResponse(final List<BatchResponsePart> batchResponseParts) 
       throws BatchException;
   
   /**
-   * Returns an object
-   * @param functionImport
-   * @param content
-   * @return
-   * @throws EntityProviderException
+   * Returns an object.
+   *
+   * @param functionImport the function import
+   * @param content the content
+   * @return the object
+   * @throws EntityProviderException the entity provider exception
    */
   Object readFunctionImport(final EdmFunctionImport functionImport, 
       final EntityStream content) throws EntityProviderException;

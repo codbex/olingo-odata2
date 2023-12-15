@@ -25,12 +25,29 @@ import org.apache.olingo.odata2.api.ep.EntityProviderException;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JsonUtils.
+ */
 public class JsonUtils {
 
+  /**
+   * Creates the O data context value for tombstone.
+   *
+   * @param entitySetName the entity set name
+   * @return the string
+   */
   public static String createODataContextValueForTombstone(final String entitySetName) {
     return FormatJson.DELTA_CONTEXT_PREFIX + entitySetName + FormatJson.DELTA_CONTEXT_POSTFIX;
   }
 
+  /**
+   * Start json.
+   *
+   * @param reader the reader
+   * @return the int
+   * @throws EntityProviderException the entity provider exception
+   */
   public static int startJson(final JsonReader reader) throws EntityProviderException {
     // The enclosing "d" and "results" are optional - so we cannot check for the presence
     // but we have to read over them in case they are present.
@@ -68,6 +85,15 @@ public class JsonUtils {
     }
   }
 
+  /**
+   * End json.
+   *
+   * @param reader the reader
+   * @param openJsonObjects the open json objects
+   * @return true, if successful
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws EntityProviderException the entity provider exception
+   */
   public static boolean endJson(final JsonReader reader, final int openJsonObjects) throws IOException,
       EntityProviderException {
 

@@ -26,42 +26,83 @@ import org.apache.olingo.odata2.api.edm.EdmNavigationProperty;
 import org.apache.olingo.odata2.api.uri.KeyPredicate;
 import org.apache.olingo.odata2.api.uri.NavigationSegment;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class NavigationSegmentImpl.
  */
 public class NavigationSegmentImpl implements NavigationSegment {
 
+  /** The navigation property. */
   private EdmNavigationProperty navigationProperty;
+  
+  /** The target entity set. */
   private EdmEntitySet targetEntitySet;
+  
+  /** The key predicates. */
   private List<KeyPredicate> keyPredicates = Collections.emptyList();
 
+  /**
+   * Gets the key predicates.
+   *
+   * @return the key predicates
+   */
   @Override
   public List<KeyPredicate> getKeyPredicates() {
     return keyPredicates;
   }
 
+  /**
+   * Sets the key predicates.
+   *
+   * @param keyPredicates the new key predicates
+   */
   public void setKeyPredicates(final List<KeyPredicate> keyPredicates) {
     this.keyPredicates = keyPredicates;
   }
 
+  /**
+   * Gets the navigation property.
+   *
+   * @return the navigation property
+   */
   @Override
   public EdmNavigationProperty getNavigationProperty() {
     return navigationProperty;
   }
 
+  /**
+   * Sets the navigation property.
+   *
+   * @param edmNavigationProperty the new navigation property
+   */
   public void setNavigationProperty(final EdmNavigationProperty edmNavigationProperty) {
     navigationProperty = edmNavigationProperty;
   }
 
+  /**
+   * Gets the entity set.
+   *
+   * @return the entity set
+   */
   @Override
   public EdmEntitySet getEntitySet() {
     return targetEntitySet;
   }
 
+  /**
+   * Sets the entity set.
+   *
+   * @param edmEntitySet the new entity set
+   */
   public void setEntitySet(final EdmEntitySet edmEntitySet) {
     targetEntitySet = edmEntitySet;
   }
 
+  /**
+   * To string.
+   *
+   * @return the string
+   */
   @Override
   public String toString() {
     return "Navigation Property: " + navigationProperty + ", "

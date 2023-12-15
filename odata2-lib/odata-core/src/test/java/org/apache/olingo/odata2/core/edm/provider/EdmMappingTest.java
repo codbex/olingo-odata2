@@ -33,12 +33,26 @@ import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EdmMappingTest.
+ */
 public class EdmMappingTest extends BaseTest {
 
+  /** The property simple provider. */
   private static EdmPropertyImplProv propertySimpleProvider;
+  
+  /** The nav property provider. */
   private static EdmNavigationPropertyImplProv navPropertyProvider;
+  
+  /** The mapped object. */
   private static EdmMappingTest mappedObject;
 
+  /**
+   * Setup.
+   *
+   * @throws Exception the exception
+   */
   @BeforeClass
   public static void setup() throws Exception {
 
@@ -61,6 +75,11 @@ public class EdmMappingTest extends BaseTest {
     navPropertyProvider = new EdmNavigationPropertyImplProv(edmImplProv, navProperty);
   }
 
+  /**
+   * Test mapping property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testMappingProperty() throws Exception {
     EdmMapping mapping = propertySimpleProvider.getMapping();
@@ -69,6 +88,11 @@ public class EdmMappingTest extends BaseTest {
     assertEquals(mappedObject, mapping.getObject());
   }
 
+  /**
+   * Test mapping navigation property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testMappingNavigationProperty() throws Exception {
     EdmMapping mapping = navPropertyProvider.getMapping();

@@ -40,22 +40,42 @@ import org.apache.olingo.odata2.api.ep.feed.ODataFeed;
 import org.apache.olingo.odata2.testutil.mock.MockFacade;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class JsonEntryConsumerTest.
  */
 public class JsonEntryConsumerTest extends AbstractConsumerTest {
 
+  /** The Constant SIMPLE_ENTRY_BUILDING. */
   private static final String SIMPLE_ENTRY_BUILDING = "JsonBuilding.json";
+  
+  /** The Constant SIMPLE_ENTRY_ROOM. */
   private static final String SIMPLE_ENTRY_ROOM = "JsonRoom.json";
+  
+  /** The Constant SIMPLE_ENTRY_EMPLOYEE. */
   private static final String SIMPLE_ENTRY_EMPLOYEE = "JsonEmployee.json";
+  
+  /** The Constant SIMPLE_ENTRY_TEAM. */
   private static final String SIMPLE_ENTRY_TEAM = "JsonTeam.json";
+  
+  /** The Constant INVALID_ENTRY_TEAM_DOUBLE_NAME_PROPERTY. */
   private static final String INVALID_ENTRY_TEAM_DOUBLE_NAME_PROPERTY = "JsonInvalidTeamDoubleNameProperty.json";
+  
+  /** The Constant SIMPLE_ENTRY_BUILDING_WITHOUT_D. */
   private static final String SIMPLE_ENTRY_BUILDING_WITHOUT_D = "JsonBuildingWithoutD.json";
 
+  /** The Constant negativeJsonStart_1. */
   // Negative Test jsonStart
   private static final String negativeJsonStart_1 = "{ \"abc\": {";
+  
+  /** The Constant negativeJsonStart_2. */
   private static final String negativeJsonStart_2 = "{ \"d\": [a: 1, b: 2] }";
 
+  /**
+   * Read content only employee.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readContentOnlyEmployee() throws Exception {
     // prepare
@@ -72,6 +92,11 @@ public class JsonEntryConsumerTest extends AbstractConsumerTest {
     assertEquals(9, result.getProperties().size());
   }
 
+  /**
+   * Read content only room.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readContentOnlyRoom() throws Exception {
     // prepare
@@ -88,6 +113,11 @@ public class JsonEntryConsumerTest extends AbstractConsumerTest {
     assertEquals(4, result.getProperties().size());
   }
 
+  /**
+   * Read content only employee with additional link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readContentOnlyEmployeeWithAdditionalLink() throws Exception {
     // prepare
@@ -107,6 +137,11 @@ public class JsonEntryConsumerTest extends AbstractConsumerTest {
     assertEquals("http://host:8080/ReferenceScenario.svc/Managers('1')", associationUris.get(0));
   }
 
+  /**
+   * Read content only room with additional link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readContentOnlyRoomWithAdditionalLink() throws Exception {
     // prepare
@@ -126,6 +161,11 @@ public class JsonEntryConsumerTest extends AbstractConsumerTest {
     assertEquals("http://host:8080/ReferenceScenario.svc/Buildings('1')", associationUris.get(0));
   }
 
+  /**
+   * Double closing brackets at the end.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void doubleClosingBracketsAtTheEnd() throws Exception {
     String invalidJson = "{ \"Id\" : \"1\", \"Seats\" : 1, \"Version\" : 1}}";
@@ -137,6 +177,11 @@ public class JsonEntryConsumerTest extends AbstractConsumerTest {
     xec.readEntry(entitySet, contentBody, DEFAULT_PROPERTIES);
   }
 
+  /**
+   * Read simple room entry.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readSimpleRoomEntry() throws Exception {
     ODataEntry roomEntry = prepareAndExecuteEntry(SIMPLE_ENTRY_ROOM, "Rooms", DEFAULT_PROPERTIES);
@@ -162,6 +207,11 @@ public class JsonEntryConsumerTest extends AbstractConsumerTest {
     assertEquals("W/\"1\"", metadata.getEtag());
   }
 
+  /**
+   * Read simple employee entry.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void readSimpleEmployeeEntry() throws Exception {
@@ -208,6 +258,11 @@ public class JsonEntryConsumerTest extends AbstractConsumerTest {
     assertNull(mediaMetadata.getEtag());
   }
 
+  /**
+   * Read simple team entry.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readSimpleTeamEntry() throws Exception {
     ODataEntry result = prepareAndExecuteEntry(SIMPLE_ENTRY_TEAM, "Teams", DEFAULT_PROPERTIES);
@@ -226,6 +281,11 @@ public class JsonEntryConsumerTest extends AbstractConsumerTest {
     checkMediaDataInitial(result.getMediaMetadata());
   }
 
+  /**
+   * Read simple building entry.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readSimpleBuildingEntry() throws Exception {
     ODataEntry result = prepareAndExecuteEntry(SIMPLE_ENTRY_BUILDING, "Buildings", DEFAULT_PROPERTIES);
@@ -244,6 +304,11 @@ public class JsonEntryConsumerTest extends AbstractConsumerTest {
     checkMediaDataInitial(result.getMediaMetadata());
   }
 
+  /**
+   * Read simple building entry without D.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readSimpleBuildingEntryWithoutD() throws Exception {
     ODataEntry result = prepareAndExecuteEntry(SIMPLE_ENTRY_BUILDING_WITHOUT_D, "Buildings", DEFAULT_PROPERTIES);
@@ -262,6 +327,11 @@ public class JsonEntryConsumerTest extends AbstractConsumerTest {
     checkMediaDataInitial(result.getMediaMetadata());
   }
 
+  /**
+   * Read minimal entry.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readMinimalEntry() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -277,6 +347,11 @@ public class JsonEntryConsumerTest extends AbstractConsumerTest {
     checkMediaDataInitial(result.getMediaMetadata());
   }
 
+  /**
+   * Read entry with null property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readEntryWithNullProperty() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");
@@ -298,6 +373,11 @@ public class JsonEntryConsumerTest extends AbstractConsumerTest {
     }
   }
 
+  /**
+   * Read with double property on team.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readWithDoublePropertyOnTeam() throws Exception {
     // The file contains the name property two times
@@ -309,6 +389,11 @@ public class JsonEntryConsumerTest extends AbstractConsumerTest {
     }
   }
 
+  /**
+   * Entry with metadata element properties.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entryWithMetadataElementProperties() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -320,6 +405,11 @@ public class JsonEntryConsumerTest extends AbstractConsumerTest {
     checkMediaDataInitial(result.getMediaMetadata());
   }
 
+  /**
+   * Check media data initial.
+   *
+   * @param mediaMetadata the media metadata
+   */
   private void checkMediaDataInitial(final MediaMetadata mediaMetadata) {
     assertNull(mediaMetadata.getContentType());
     assertNull(mediaMetadata.getEditLink());
@@ -327,12 +417,22 @@ public class JsonEntryConsumerTest extends AbstractConsumerTest {
     assertNull(mediaMetadata.getSourceLink());
   }
 
+  /**
+   * Empty entry.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void emptyEntry() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
     new JsonEntityConsumer().readEntry(entitySet, createContentAsStream("{}"), DEFAULT_PROPERTIES);
   }
 
+  /**
+   * Wrong start.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void wrongStart() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -340,17 +440,24 @@ public class JsonEntryConsumerTest extends AbstractConsumerTest {
     new JsonEntityConsumer().readEntry(entitySet, contentBody, DEFAULT_PROPERTIES);
   }
 
+  /**
+   * Wrong start 2.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void wrongStart2() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
     InputStream contentBody = createContentAsStream(negativeJsonStart_2);
     new JsonEntityConsumer().readEntry(entitySet, contentBody, DEFAULT_PROPERTIES);
   }
+  
   /**
    * Employee with inline entity Room with inline entity Buildings 
    * Scenario of 1:1:1 navigation
    * E.g: Employees('1')?$expand=ne_Room/nr_Building
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test
   public void employeesEntryWithEmployeeToRoomToBuilding() throws Exception {
@@ -380,7 +487,8 @@ public class JsonEntryConsumerTest extends AbstractConsumerTest {
    * Employee with inline entity Room with inline entity Buildings with no metadata
    * Scenario of 1:1:1 navigation
    * E.g: Employees('1')?$expand=ne_Room/nr_Building
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test
   public void employeesEntryWithEmployeeToRoomToBuildingWithoutMetadata() throws Exception {
@@ -410,7 +518,8 @@ public class JsonEntryConsumerTest extends AbstractConsumerTest {
    * Room has inline entity to Employees and has inline entry To Team
    * Scenario of 1:n:1 navigation 
    * E.g: Rooms('1')?$expand=nr_Employees/ne_Team
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test
   public void RoomEntryWithInlineEmployeeInlineTeam() throws Exception {
@@ -441,7 +550,8 @@ public class JsonEntryConsumerTest extends AbstractConsumerTest {
    * Room has inline entity to Employees and has inline entry To Team
    * Scenario of 1:n:1 navigation 
    * E.g: Rooms('1')?$expand=nr_Employees/ne_Team
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test
   public void RoomEntryWithInlineEmployeeInlineTeamWithoutMetadata() throws Exception {
@@ -471,7 +581,8 @@ public class JsonEntryConsumerTest extends AbstractConsumerTest {
   /**
    * Room has empty inline entity to Employees and has inline entry To Team
    * E.g: Rooms('10')?$expand=nr_Employees/ne_Team
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test
   public void RoomEntryWithEmptyInlineEmployeeInlineTeam() throws Exception {
@@ -496,6 +607,11 @@ public class JsonEntryConsumerTest extends AbstractConsumerTest {
   }
   
   
+  /**
+   * Rooms feed with room inline different.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void roomsFeedWithRoomInlineDifferent() throws Exception {
     InputStream stream = getFileAsStream("jsonEmployeesWithDifferentInlines.json");

@@ -39,6 +39,7 @@ import org.apache.olingo.odata2.api.exception.ODataException;
 import org.apache.olingo.odata2.core.exception.ODataRuntimeException;
 import org.apache.olingo.odata2.core.rest.app.AbstractODataApplication;
 
+// TODO: Auto-generated Javadoc
 /**
  * Default OData root locator responsible to handle the whole path and delegate all calls to a sub locator:<p>
  * <code>/{odata path} e.g. http://host:port/webapp/odata.svc/$metadata</code><br>
@@ -54,30 +55,41 @@ import org.apache.olingo.odata2.core.rest.app.AbstractODataApplication;
 @Path("/")
 public class ODataRootLocator {
 
+  /** The http headers. */
   @Context
   private HttpHeaders httpHeaders;
+  
+  /** The uri info. */
   @Context
   private UriInfo uriInfo;
+  
+  /** The request. */
   @Context
   private Request request;
+  
+  /** The servlet config. */
   @Context
   private ServletConfig servletConfig;
+  
+  /** The servlet request. */
   @Context
   private HttpServletRequest servletRequest;
 
+  /** The app. */
   @Context
   private Application app;
 
   /**
    * Default root behavior which will delegate all paths to a ODataLocator.
+   *
    * @param pathSegments URI path segments - all segments have to be OData
    * @param xHttpMethod HTTP Header X-HTTP-Method for tunneling through POST
    * @param xHttpMethodOverride HTTP Header X-HTTP-Method-Override for tunneling through POST
    * @return a locator handling OData protocol
-   * @throws ODataException
-   * @throws ClassNotFoundException
-   * @throws IllegalAccessException
-   * @throws InstantiationException
+   * @throws ODataException the o data exception
+   * @throws ClassNotFoundException the class not found exception
+   * @throws InstantiationException the instantiation exception
+   * @throws IllegalAccessException the illegal access exception
    */
   @Path("/{pathSegments: .*}")
   public Object handleRequest(
@@ -118,10 +130,20 @@ public class ODataRootLocator {
     return ODataSubLocator.create(param);
   }
 
+  /**
+   * Gets the service factory.
+   *
+   * @return the service factory
+   */
   public ODataServiceFactory getServiceFactory() {
     return createServiceFactoryFromContext(app, servletRequest, servletConfig);
   }
 
+  /**
+   * Gets the path split.
+   *
+   * @return the path split
+   */
   public int getPathSplit() {
     int pathSplit = 0;
     final String pathSplitAsString = servletConfig.getInitParameter(ODataServiceFactory.PATH_SPLIT_LABEL);
@@ -131,6 +153,14 @@ public class ODataRootLocator {
     return pathSplit;
   }
 
+  /**
+   * Creates the service factory from context.
+   *
+   * @param app the app
+   * @param servletRequest the servlet request
+   * @param servletConfig the servlet config
+   * @return the o data service factory
+   */
   public static ODataServiceFactory createServiceFactoryFromContext(final Application app,
       final HttpServletRequest servletRequest,
       final ServletConfig servletConfig) {
@@ -157,6 +187,11 @@ public class ODataRootLocator {
     }
   }
 
+  /**
+   * Handle redirect.
+   *
+   * @return the object
+   */
   private Object handleRedirect() {
     return new ODataRedirectLocator();
   }

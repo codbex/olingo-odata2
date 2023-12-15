@@ -42,21 +42,43 @@ import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmPropertyView;
 import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmSchemaView;
 import org.apache.olingo.odata2.jpa.processor.core.access.model.JPAEdmNameBuilder;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAEdmEntityType.
+ */
 public class JPAEdmEntityType extends JPAEdmBaseViewImpl implements JPAEdmEntityTypeView {
 
+  /** The schema view. */
   private JPAEdmSchemaView schemaView = null;
+  
+  /** The current edm entity type. */
   private EntityType currentEdmEntityType = null;
+  
+  /** The current JPA entity type. */
   private jakarta.persistence.metamodel.EntityType<?> currentJPAEntityType = null;
+  
+  /** The consistent entity types. */
   private EntityTypeList<EntityType> consistentEntityTypes = null;
 
+  /** The consistent entity type map. */
   private HashMap<String, EntityType> consistentEntityTypeMap;
 
+  /**
+   * Instantiates a new JPA edm entity type.
+   *
+   * @param view the view
+   */
   public JPAEdmEntityType(final JPAEdmSchemaView view) {
     super(view);
     schemaView = view;
     consistentEntityTypeMap = new HashMap<String, EntityType>();
   }
 
+  /**
+   * Gets the builder.
+   *
+   * @return the builder
+   */
   @Override
   public JPAEdmBuilder getBuilder() {
     if (builder == null) {
@@ -66,28 +88,58 @@ public class JPAEdmEntityType extends JPAEdmBaseViewImpl implements JPAEdmEntity
     return builder;
   }
 
+  /**
+   * Gets the edm entity type.
+   *
+   * @return the edm entity type
+   */
   @Override
   public EntityType getEdmEntityType() {
     return currentEdmEntityType;
   }
 
+  /**
+   * Gets the JPA entity type.
+   *
+   * @return the JPA entity type
+   */
   @Override
   public jakarta.persistence.metamodel.EntityType<?> getJPAEntityType() {
     return currentJPAEntityType;
   }
 
+  /**
+   * Gets the consistent edm entity types.
+   *
+   * @return the consistent edm entity types
+   */
   @Override
   public List<EntityType> getConsistentEdmEntityTypes() {
     return consistentEntityTypes;
   }
 
+  /**
+   * Search edm entity type.
+   *
+   * @param jpaEntityTypeName the jpa entity type name
+   * @return the entity type
+   */
   @Override
   public EntityType searchEdmEntityType(final String jpaEntityTypeName) {
     return consistentEntityTypeMap.get(jpaEntityTypeName);
   }
 
+  /**
+   * The Class JPAEdmEntityTypeBuilder.
+   */
   private class JPAEdmEntityTypeBuilder implements JPAEdmBuilder {
 
+    /**
+     * Builds the.
+     *
+     * @throws ODataJPAModelException the o data JPA model exception
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
+     */
     @SuppressWarnings("unchecked")
     @Override
     public void build() throws ODataJPAModelException, ODataJPARuntimeException {
@@ -144,6 +196,12 @@ public class JPAEdmEntityType extends JPAEdmBaseViewImpl implements JPAEdmEntity
 
     }
 
+    /**
+     * Sort JPA entity types.
+     *
+     * @param entities the entities
+     * @return the list
+     */
     private List<jakarta.persistence.metamodel.EntityType<?>> sortJPAEntityTypes(
       final Collection<jakarta.persistence.metamodel.EntityType<?>> entities) {
 
@@ -169,6 +227,12 @@ public class JPAEdmEntityType extends JPAEdmBaseViewImpl implements JPAEdmEntity
       return entityTypeList;
     }
 
+    /**
+     * Checks if is excluded.
+     *
+     * @param jpaEdmEntityType the jpa edm entity type
+     * @return true, if is excluded
+     */
     private boolean isExcluded(final JPAEdmEntityType jpaEdmEntityType) {
       JPAEdmMappingModelAccess mappingModelAccess = jpaEdmEntityType.getJPAEdmMappingModelAccess();
       if (mappingModelAccess != null && mappingModelAccess.isMappingModelExists()
@@ -180,13 +244,21 @@ public class JPAEdmEntityType extends JPAEdmBaseViewImpl implements JPAEdmEntity
 
   }
 
+  /**
+   * The Class EntityTypeList.
+   *
+   * @param <X> the generic type
+   */
   private class EntityTypeList<X> extends ArrayList<EntityType> {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 719079109608251592L;
 
+    /**
+     * Iterator.
+     *
+     * @return the iterator
+     */
     @Override
     public Iterator<EntityType> iterator() {
       return new EntityTypeListIterator<X>(size());
@@ -194,21 +266,44 @@ public class JPAEdmEntityType extends JPAEdmBaseViewImpl implements JPAEdmEntity
 
   }
 
+  /**
+   * The Class EntityTypeListIterator.
+   *
+   * @param <E> the element type
+   */
   private class EntityTypeListIterator<E> implements ListIterator<EntityType> {
 
+    /** The size. */
     private int size = 0;
+    
+    /** The pos. */
     private int pos = 0;
 
+    /**
+     * Instantiates a new entity type list iterator.
+     *
+     * @param listSize the list size
+     */
     public EntityTypeListIterator(final int listSize) {
       this.size = listSize;
     }
 
+    /**
+     * Adds the.
+     *
+     * @param e the e
+     */
     @Override
     public void add(final EntityType e) {
       consistentEntityTypes.add(e);
       size++;
     }
 
+    /**
+     * Checks for next.
+     *
+     * @return true, if successful
+     */
     @Override
     public boolean hasNext() {
       if (pos < size) {
@@ -218,6 +313,11 @@ public class JPAEdmEntityType extends JPAEdmBaseViewImpl implements JPAEdmEntity
       return false;
     }
 
+    /**
+     * Checks for previous.
+     *
+     * @return true, if successful
+     */
     @Override
     public boolean hasPrevious() {
       if (pos > 0) {
@@ -226,6 +326,11 @@ public class JPAEdmEntityType extends JPAEdmBaseViewImpl implements JPAEdmEntity
       return false;
     }
 
+    /**
+     * Next.
+     *
+     * @return the entity type
+     */
     @Override
     public EntityType next() {
       if (pos < size) {
@@ -236,11 +341,21 @@ public class JPAEdmEntityType extends JPAEdmBaseViewImpl implements JPAEdmEntity
       return null;
     }
 
+    /**
+     * Next index.
+     *
+     * @return the int
+     */
     @Override
     public int nextIndex() {
       return pos;
     }
 
+    /**
+     * Previous.
+     *
+     * @return the entity type
+     */
     @Override
     public EntityType previous() {
       if (pos > 0 && pos < size) {
@@ -250,6 +365,11 @@ public class JPAEdmEntityType extends JPAEdmBaseViewImpl implements JPAEdmEntity
       return null;
     }
 
+    /**
+     * Previous index.
+     *
+     * @return the int
+     */
     @Override
     public int previousIndex() {
       if (pos > 0) {
@@ -259,11 +379,19 @@ public class JPAEdmEntityType extends JPAEdmBaseViewImpl implements JPAEdmEntity
       return 0;
     }
 
+    /**
+     * Removes the.
+     */
     @Override
     public void remove() {
       consistentEntityTypes.remove(pos);
     }
 
+    /**
+     * Sets the.
+     *
+     * @param e the e
+     */
     @Override
     public void set(final EntityType e) {
       consistentEntityTypes.set(pos, e);

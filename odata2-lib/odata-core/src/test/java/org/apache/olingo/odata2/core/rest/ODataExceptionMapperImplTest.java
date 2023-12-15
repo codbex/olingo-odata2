@@ -61,14 +61,23 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class ODataExceptionMapperImplTest.
  */
 public class ODataExceptionMapperImplTest extends BaseTest {
 
+  /** The exception mapper. */
   ODataExceptionMapperImpl exceptionMapper;
+  
+  /** The uri. */
   URI uri;
 
+  /**
+   * Setup.
+   *
+   * @throws Exception the exception
+   */
   @BeforeClass
   public static void setup() throws Exception {
     Map<String, String> prefixMap = new HashMap<String, String>();
@@ -76,6 +85,11 @@ public class ODataExceptionMapperImplTest extends BaseTest {
     XMLUnit.setXpathNamespaceContext(new SimpleNamespaceContext(prefixMap));
   }
 
+  /**
+   * Before.
+   *
+   * @throws URISyntaxException the URI syntax exception
+   */
   @Before
   public void before() throws URISyntaxException {
     exceptionMapper = new ODataExceptionMapperImpl();
@@ -100,6 +114,11 @@ public class ODataExceptionMapperImplTest extends BaseTest {
 
   }
 
+  /**
+   * Test extended O data error context.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testExtendedODataErrorContext() throws Exception {
     MultivaluedMap<String, String> value = new MultivaluedHashMap<String, String>();
@@ -124,6 +143,11 @@ public class ODataExceptionMapperImplTest extends BaseTest {
     assertEquals("[AcceptValue_1, AcceptValue_2]", response.getHeaderString("AcceptMulti"));
   }
 
+  /**
+   * Servlet request with classloader.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void servletRequestWithClassloader() throws Exception {
     MultivaluedMap<String, String> value = new MultivaluedHashMap<String, String>();
@@ -143,6 +167,11 @@ public class ODataExceptionMapperImplTest extends BaseTest {
     assertEquals("bla", errorMessage);
   }
 
+  /**
+   * Dollar format json.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void dollarFormatJson() throws Exception {
     MultivaluedMap<String, String> queryParameters = new MultivaluedHashMap<String, String>();
@@ -157,6 +186,11 @@ public class ODataExceptionMapperImplTest extends BaseTest {
     assertEquals("{\"error\":{\"code\":null,\"message\":{\"lang\":\"en\",\"value\":\"text\"}}}", errorMessage);
   }
 
+  /**
+   * Dollar format xml.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void dollarFormatXml() throws Exception {
     MultivaluedMap<String, String> queryParameters = new MultivaluedHashMap<String, String>();
@@ -172,6 +206,11 @@ public class ODataExceptionMapperImplTest extends BaseTest {
     assertXpathEvaluatesTo("text", "/a:error/a:message", errorMessage);
   }
 
+  /**
+   * Dollar format atom.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void dollarFormatAtom() throws Exception {
     MultivaluedMap<String, String> queryParameters = new MultivaluedHashMap<String, String>();
@@ -187,6 +226,11 @@ public class ODataExceptionMapperImplTest extends BaseTest {
     assertXpathEvaluatesTo("text", "/a:error/a:message", errorMessage);
   }
 
+  /**
+   * Dollar format unknown.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void dollarFormatUnknown() throws Exception {
     MultivaluedMap<String, String> queryParameters = new MultivaluedHashMap<String, String>();
@@ -202,6 +246,11 @@ public class ODataExceptionMapperImplTest extends BaseTest {
     assertXpathEvaluatesTo("text", "/a:error/a:message", errorMessage);
   }
 
+  /**
+   * Test O data not found exception.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testODataNotFoundException() throws Exception {
     // prepare
@@ -215,6 +264,11 @@ public class ODataExceptionMapperImplTest extends BaseTest {
         HttpStatusCodes.NOT_FOUND);
   }
 
+  /**
+   * Test entity provider exception.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testEntityProviderException() throws Exception {
     // prepare
@@ -228,6 +282,11 @@ public class ODataExceptionMapperImplTest extends BaseTest {
         EntityProviderException.INVALID_PROPERTY.addContent("unknown")).getText(), HttpStatusCodes.BAD_REQUEST);
   }
 
+  /**
+   * Test O data not found exception de.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testODataNotFoundExceptionDe() throws Exception {
     // prepare
@@ -243,6 +302,11 @@ public class ODataExceptionMapperImplTest extends BaseTest {
         HttpStatusCodes.NOT_FOUND);
   }
 
+  /**
+   * Test wrapped O data not found exception.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testWrappedODataNotFoundException() throws Exception {
     // prepare
@@ -258,6 +322,11 @@ public class ODataExceptionMapperImplTest extends BaseTest {
         HttpStatusCodes.NOT_FOUND);
   }
 
+  /**
+   * Test O data application exception.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testODataApplicationException() throws Exception {
     // prepare
@@ -271,6 +340,11 @@ public class ODataExceptionMapperImplTest extends BaseTest {
     verifyResponse(response, message, HttpStatusCodes.INTERNAL_SERVER_ERROR);
   }
 
+  /**
+   * Test O data application exception wrapped.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testODataApplicationExceptionWrapped() throws Exception {
     // prepare
@@ -284,6 +358,11 @@ public class ODataExceptionMapperImplTest extends BaseTest {
     verifyResponse(response, message, HttpStatusCodes.INTERNAL_SERVER_ERROR);
   }
 
+  /**
+   * Test O data application exception with status.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testODataApplicationExceptionWithStatus() throws Exception {
     // prepare
@@ -298,6 +377,11 @@ public class ODataExceptionMapperImplTest extends BaseTest {
     verifyResponse(response, message, status);
   }
 
+  /**
+   * Test O data application exception with status wrapped.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testODataApplicationExceptionWithStatusWrapped() throws Exception {
     // prepare
@@ -312,6 +396,11 @@ public class ODataExceptionMapperImplTest extends BaseTest {
     verifyResponse(response, message, status);
   }
 
+  /**
+   * Test uri parser exception.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testUriParserException() throws Exception {
     // prepare
@@ -325,6 +414,11 @@ public class ODataExceptionMapperImplTest extends BaseTest {
         HttpStatusCodes.BAD_REQUEST);
   }
 
+  /**
+   * Test uri parser exception wrapped.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testUriParserExceptionWrapped() throws Exception {
     // prepare
@@ -339,6 +433,11 @@ public class ODataExceptionMapperImplTest extends BaseTest {
         HttpStatusCodes.BAD_REQUEST);
   }
 
+  /**
+   * Test io exception.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testIoException() throws Exception {
     // prepare
@@ -352,6 +451,11 @@ public class ODataExceptionMapperImplTest extends BaseTest {
     verifyResponse(response, message, HttpStatusCodes.INTERNAL_SERVER_ERROR);
   }
 
+  /**
+   * Test O data exception.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testODataException() throws Exception {
     // prepare
@@ -365,6 +469,11 @@ public class ODataExceptionMapperImplTest extends BaseTest {
     verifyResponse(response, exceptionMessage, HttpStatusCodes.INTERNAL_SERVER_ERROR);
   }
 
+  /**
+   * Test not allowed jax rs exception.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testNotAllowedJaxRsException() throws Exception {
     // prepare
@@ -380,6 +489,11 @@ public class ODataExceptionMapperImplTest extends BaseTest {
     verifyResponse(response, message, HttpStatusCodes.NOT_IMPLEMENTED);
   }
 
+  /**
+   * Test O data exception without text.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testODataExceptionWithoutText() throws Exception {
     final String text = null;
@@ -392,6 +506,11 @@ public class ODataExceptionMapperImplTest extends BaseTest {
     assertXpathEvaluatesTo("en", "/a:error/a:message/@xml:lang", errorMessage);
   }
 
+  /**
+   * Test O data runtime exception.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testODataRuntimeException() throws Exception {
     // prepare
@@ -405,6 +524,11 @@ public class ODataExceptionMapperImplTest extends BaseTest {
     verifyResponse(response, exceptionMessage, HttpStatusCodes.INTERNAL_SERVER_ERROR);
   }
 
+  /**
+   * Test error code for application exception.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testErrorCodeForApplicationException() throws Exception {
     // prepare
@@ -421,6 +545,11 @@ public class ODataExceptionMapperImplTest extends BaseTest {
     assertXpathEvaluatesTo(errorCode, "/a:error/a:code", errorMessage);
   }
 
+  /**
+   * Test O data not found exception with error code.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testODataNotFoundExceptionWithErrorCode() throws Exception {
     // prepare
@@ -437,6 +566,11 @@ public class ODataExceptionMapperImplTest extends BaseTest {
     assertXpathEvaluatesTo(errorCode, "/a:error/a:code", errorMessage);
   }
 
+  /**
+   * Test callback.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testCallback() throws Exception {
     when(exceptionMapper.servletConfig.getInitParameter(ODataServiceFactory.FACTORY_LABEL)).thenReturn(
@@ -452,6 +586,15 @@ public class ODataExceptionMapperImplTest extends BaseTest {
     assertEquals("text/html", contentTypeHeader);
   }
 
+  /**
+   * Verify response.
+   *
+   * @param response the response
+   * @param message the message
+   * @param statusCode the status code
+   * @return the string
+   * @throws Exception the exception
+   */
   private String verifyResponse(final Response response, final String message, final HttpStatusCodes statusCode)
       throws Exception {
     assertNotNull(response);

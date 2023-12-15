@@ -18,6 +18,7 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.jpa.processor.api.access;
 
+// TODO: Auto-generated Javadoc
 /**
  * A container for Java Persistence Join Clause that can be used for building
  * JPQL statements. The container has two main elements <b>
@@ -41,20 +42,34 @@ public class JPAJoinClause {
    * <li>FETCH - enable fetching of an association as a side effect of the
    * execution of a query</li>
    * <li>INNER - inner join
-   * </ol>
-   * 
-   * 
-   * 
+   * </ol>.
    */
   public enum JOIN {
-    LEFT, FETCH, INNER
+    
+    /** The left. */
+    LEFT, 
+ /** The fetch. */
+ FETCH, 
+ /** The inner. */
+ INNER
   }
 
+  /** The entity name. */
   private String entityName;
+  
+  /** The entity alias. */
   private String entityAlias;
+  
+  /** The entity relation ship. */
   private String entityRelationShip;
+  
+  /** The entity relation ship alias. */
   private String entityRelationShipAlias;
+  
+  /** The join type. */
   private JOIN joinType;
+  
+  /** The join condition. */
   private String joinCondition;
 
   /**

@@ -22,8 +22,19 @@ import org.apache.olingo.odata2.jpa.processor.api.exception.ODataJPARuntimeExcep
 import org.hsqldb.jdbc.JDBCBlob;
 import org.hsqldb.jdbc.JDBCClob;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class OnDBWriteContent.
+ */
 public class OnDBWriteContent implements OnJPAWriteContent {
 
+    /**
+     * Gets the JPA blob.
+     *
+     * @param binaryData the binary data
+     * @return the JPA blob
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
+     */
     @Override
     public Blob getJPABlob(final byte[] binaryData) throws ODataJPARuntimeException {
         try {
@@ -34,6 +45,13 @@ public class OnDBWriteContent implements OnJPAWriteContent {
         return null;
     }
 
+    /**
+     * Gets the JPA clob.
+     *
+     * @param characterData the character data
+     * @return the JPA clob
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
+     */
     @Override
     public Clob getJPAClob(final char[] characterData) throws ODataJPARuntimeException {
         try {

@@ -22,6 +22,7 @@ import org.apache.olingo.odata2.api.edm.EdmNavigationProperty;
 import org.apache.olingo.odata2.api.exception.ODataApplicationException;
 import org.apache.olingo.odata2.client.api.ep.DeserializerProperties;
 
+// TODO: Auto-generated Javadoc
 /**
  * <p>
  * Callback interface for the deep insert read calls (read of <code><m:inline></code> content).
@@ -35,11 +36,11 @@ public interface OnDeserializeInlineContent {
   /**
    * Receive (request) to be used {@link EntityProviderReadProperties} to read the found inline navigation property
    * (<code>><m:inline>...</m:inline></code>).
-   * 
+   *
    * @param readProperties read properties which are used to read enclosing parent entity
    * @param navigationProperty emd navigation property information of found inline navigation property
    * @return read properties which are used to read (de-serialize) found inline navigation property
-   * @throws ODataApplicationException
+   * @throws ODataApplicationException the o data application exception
    */
   DeserializerProperties receiveReadProperties(DeserializerProperties readProperties,
       EdmNavigationProperty navigationProperty) throws ODataApplicationException;

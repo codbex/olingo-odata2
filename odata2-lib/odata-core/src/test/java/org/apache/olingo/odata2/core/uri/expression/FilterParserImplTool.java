@@ -25,15 +25,24 @@ import java.util.Map;
 import org.apache.olingo.odata2.api.edm.EdmEntityType;
 import org.apache.olingo.odata2.api.uri.expression.MethodOperator;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class FilterParserImplTool.
  */
 public class FilterParserImplTool extends FilterParserImpl {
 
+  /**
+   * Instantiates a new filter parser impl tool.
+   *
+   * @param resourceEntityType the resource entity type
+   */
   public FilterParserImplTool(final EdmEntityType resourceEntityType) {
     super(resourceEntityType);
   }
 
+  /**
+   * Adds the testfunctions.
+   */
   public void addTestfunctions() {
     Map<String, InfoMethod> lAvailableMethods = new HashMap<String, InfoMethod>(availableMethods);
     ParameterSetCombination combination = null;

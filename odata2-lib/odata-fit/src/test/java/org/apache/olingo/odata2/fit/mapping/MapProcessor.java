@@ -34,9 +34,16 @@ import org.apache.olingo.odata2.api.uri.info.GetEntitySetUriInfo;
 import org.apache.olingo.odata2.api.uri.info.GetEntityUriInfo;
 import org.apache.olingo.odata2.api.uri.info.GetSimplePropertyUriInfo;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MapProcessor.
+ */
 public class MapProcessor extends ODataSingleProcessor {
 
+  /** The Constant RECORD_COUNT. */
   public static final int RECORD_COUNT = 10;
+  
+  /** The records. */
   private final ArrayList<HashMap<String, String>> records = new ArrayList<HashMap<String, String>>();
 
   {
@@ -51,6 +58,13 @@ public class MapProcessor extends ODataSingleProcessor {
     }
   }
 
+  /**
+   * Index of.
+   *
+   * @param key the key
+   * @param value the value
+   * @return the int
+   */
   private int indexOf(final String key, final String value) {
     for (int i = 0; i < RECORD_COUNT; i++) {
       if (records.get(i).containsKey(key) && records.get(i).containsValue(value)) {
@@ -60,6 +74,14 @@ public class MapProcessor extends ODataSingleProcessor {
     return -1;
   }
 
+  /**
+   * Read entity set.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse readEntitySet(final GetEntitySetUriInfo uriInfo, final String contentType)
       throws ODataException {
@@ -86,6 +108,14 @@ public class MapProcessor extends ODataSingleProcessor {
     return response;
   }
 
+  /**
+   * Read entity.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse readEntity(final GetEntityUriInfo uriInfo, final String contentType) throws ODataException {
     final EntityProviderWriteProperties properties =
@@ -113,6 +143,14 @@ public class MapProcessor extends ODataSingleProcessor {
     return response;
   }
 
+  /**
+   * Read entity simple property value.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse readEntitySimplePropertyValue(final GetSimplePropertyUriInfo uriInfo, final String contentType)
       throws ODataException {

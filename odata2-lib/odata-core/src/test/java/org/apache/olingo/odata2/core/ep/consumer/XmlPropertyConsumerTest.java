@@ -48,15 +48,26 @@ import org.apache.olingo.odata2.core.ep.aggregator.EntityInfoAggregator;
 import org.apache.olingo.odata2.testutil.mock.MockFacade;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
  * Tests consuming XML properties.
  */
 public class XmlPropertyConsumerTest extends AbstractXmlConsumerTest {
 
+  /**
+   * Instantiates a new xml property consumer test.
+   *
+   * @param type the type
+   */
   public XmlPropertyConsumerTest(final StreamWriterImplType type) {
     super(type);
   }
 
+  /**
+   * Read integer property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readIntegerProperty() throws Exception {
     String xml = "<Age xmlns=\"" + Edm.NAMESPACE_D_2007_08 + "\">67</Age>";
@@ -69,6 +80,11 @@ public class XmlPropertyConsumerTest extends AbstractXmlConsumerTest {
     assertEquals(Integer.valueOf(67), resultMap.get("Age"));
   }
   
+  /**
+   * Read decimal property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readDecimalProperty() throws Exception {
     String xml = "<Revenue xmlns=\"" + Edm.NAMESPACE_D_2007_08 + "\">67.56</Revenue>";
@@ -81,6 +97,11 @@ public class XmlPropertyConsumerTest extends AbstractXmlConsumerTest {
     assertEquals(BigDecimal.valueOf(67.56), resultMap.get("Revenue"));
   }
 
+  /**
+   * Read integer property as long.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readIntegerPropertyAsLong() throws Exception {
     String xml = "<Age xmlns=\"" + Edm.NAMESPACE_D_2007_08 + "\">67</Age>";
@@ -95,6 +116,11 @@ public class XmlPropertyConsumerTest extends AbstractXmlConsumerTest {
     assertEquals(Long.valueOf(67), resultMap.get("Age"));
   }
 
+  /**
+   * Read integer property with null mapping.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readIntegerPropertyWithNullMapping() throws Exception {
     String xml = "<Age xmlns=\"" + Edm.NAMESPACE_D_2007_08 + "\">67</Age>";
@@ -109,6 +135,11 @@ public class XmlPropertyConsumerTest extends AbstractXmlConsumerTest {
     assertEquals(Integer.valueOf(67), resultMap.get("Age"));
   }
 
+  /**
+   * Read integer property with empty mapping.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readIntegerPropertyWithEmptyMapping() throws Exception {
     String xml = "<Age xmlns=\"" + Edm.NAMESPACE_D_2007_08 + "\">67</Age>";
@@ -123,6 +154,11 @@ public class XmlPropertyConsumerTest extends AbstractXmlConsumerTest {
     assertEquals(Integer.valueOf(67), resultMap.get("Age"));
   }
 
+  /**
+   * Read string property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readStringProperty() throws Exception {
     String xml = "<EmployeeName xmlns=\"" + Edm.NAMESPACE_D_2007_08 + "\">Max Mustermann</EmployeeName>";
@@ -135,6 +171,11 @@ public class XmlPropertyConsumerTest extends AbstractXmlConsumerTest {
     assertEquals("Max Mustermann", resultMap.get("EmployeeName"));
   }
 
+  /**
+   * Read string property empty.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readStringPropertyEmpty() throws Exception {
     final String xml = "<EmployeeName xmlns=\"" + Edm.NAMESPACE_D_2007_08 + "\" />";
@@ -148,6 +189,11 @@ public class XmlPropertyConsumerTest extends AbstractXmlConsumerTest {
     assertEquals("", resultMap.get("EmployeeName"));
   }
 
+  /**
+   * Read string property null.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readStringPropertyNull() throws Exception {
     final String xml = "<EntryDate xmlns=\"" + Edm.NAMESPACE_D_2007_08
@@ -162,6 +208,11 @@ public class XmlPropertyConsumerTest extends AbstractXmlConsumerTest {
     assertNull(resultMap.get("EntryDate"));
   }
 
+  /**
+   * Read string property null false.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readStringPropertyNullFalse() throws Exception {
     final String xml = "<EntryDate xmlns=\"" + Edm.NAMESPACE_D_2007_08
@@ -175,6 +226,11 @@ public class XmlPropertyConsumerTest extends AbstractXmlConsumerTest {
     assertEquals(86400000L, ((Calendar) resultMap.get("EntryDate")).getTimeInMillis());
   }
 
+  /**
+   * Invalid simple property name.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void invalidSimplePropertyName() throws Exception {
     final String xml = "<Invalid xmlns=\"" + Edm.NAMESPACE_D_2007_08 + "\">67</Invalid>";
@@ -185,6 +241,11 @@ public class XmlPropertyConsumerTest extends AbstractXmlConsumerTest {
     new XmlPropertyConsumer().readProperty(reader, property, null);
   }
 
+  /**
+   * Invalid null attribute.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void invalidNullAttribute() throws Exception {
     final String xml = "<Age xmlns=\"" + Edm.NAMESPACE_D_2007_08
@@ -196,6 +257,11 @@ public class XmlPropertyConsumerTest extends AbstractXmlConsumerTest {
     new XmlPropertyConsumer().readProperty(reader, property, null);
   }
 
+  /**
+   * Null value not allowed.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void nullValueNotAllowed() throws Exception {
     final String xml = "<Age xmlns=\"" + Edm.NAMESPACE_D_2007_08
@@ -210,6 +276,11 @@ public class XmlPropertyConsumerTest extends AbstractXmlConsumerTest {
     new XmlPropertyConsumer().readProperty(reader, property, null);
   }
 
+  /**
+   * Violated validation.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void violatedValidation() throws Exception {
     final String xml = "<Name xmlns=\"" + Edm.NAMESPACE_D_2007_08 + "\">TooLongName</Name>";
@@ -222,6 +293,11 @@ public class XmlPropertyConsumerTest extends AbstractXmlConsumerTest {
     new XmlPropertyConsumer().readProperty(createReaderForTest(xml, true), property, null);
   }
 
+  /**
+   * Ignoring validation.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void ignoringValidation() throws Exception {
     final String xml = "<Name xmlns=\"" + Edm.NAMESPACE_D_2007_08 + "\">TooLongName</Name>";
@@ -238,6 +314,11 @@ public class XmlPropertyConsumerTest extends AbstractXmlConsumerTest {
     assertEquals("TooLongName", resultMap.get("Name"));
   }
 
+  /**
+   * Read complex property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   @SuppressWarnings("unchecked")
   public void readComplexProperty() throws Exception {
@@ -263,6 +344,11 @@ public class XmlPropertyConsumerTest extends AbstractXmlConsumerTest {
     assertEquals("Heidelberg", cityMap.get("CityName"));
   }
 
+  /**
+   * Read complex property with line breaks.
+   *
+   * @throws Exception the exception
+   */
   @Test
   @SuppressWarnings("unchecked")
   public void readComplexPropertyWithLineBreaks() throws Exception {
@@ -291,6 +377,11 @@ public class XmlPropertyConsumerTest extends AbstractXmlConsumerTest {
     assertEquals("Heidelberg", cityMap.get("CityName"));
   }
 
+  /**
+   * Read complex property invalid mapping.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void readComplexPropertyInvalidMapping() throws Exception {
     String xml =
@@ -320,6 +411,11 @@ public class XmlPropertyConsumerTest extends AbstractXmlConsumerTest {
     }
   }
 
+  /**
+   * Read complex property with mappings.
+   *
+   * @throws Exception the exception
+   */
   @Test
   @SuppressWarnings("unchecked")
   public void readComplexPropertyWithMappings() throws Exception {
@@ -358,6 +454,11 @@ public class XmlPropertyConsumerTest extends AbstractXmlConsumerTest {
     assertEquals("Heidelberg", cityMap.get("CityName"));
   }
 
+  /**
+   * Read complex property with namespace.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void readComplexPropertyWithNamespace() throws Exception {
@@ -385,6 +486,11 @@ public class XmlPropertyConsumerTest extends AbstractXmlConsumerTest {
     assertEquals("Heidelberg", cityMap.get("CityName"));
   }
 
+  /**
+   * Read complex property with invalid child.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void readComplexPropertyWithInvalidChild() throws Exception {
     String xml =
@@ -403,6 +509,11 @@ public class XmlPropertyConsumerTest extends AbstractXmlConsumerTest {
     new XmlPropertyConsumer().readProperty(reader, property, null);
   }
 
+  /**
+   * Read complex property with invalid deep child.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void readComplexPropertyWithInvalidDeepChild() throws Exception {
     String xml =
@@ -421,6 +532,11 @@ public class XmlPropertyConsumerTest extends AbstractXmlConsumerTest {
     new XmlPropertyConsumer().readProperty(reader, property, null);
   }
 
+  /**
+   * Read complex property with invalid name.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void readComplexPropertyWithInvalidName() throws Exception {
     String xml =
@@ -439,6 +555,11 @@ public class XmlPropertyConsumerTest extends AbstractXmlConsumerTest {
     new XmlPropertyConsumer().readProperty(reader, property, null);
   }
 
+  /**
+   * Read complex property with invalid type attribute.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void readComplexPropertyWithInvalidTypeAttribute() throws Exception {
     String xml =
@@ -457,6 +578,11 @@ public class XmlPropertyConsumerTest extends AbstractXmlConsumerTest {
     new XmlPropertyConsumer().readProperty(reader, property, null);
   }
 
+  /**
+   * Read complex property without type attribute.
+   *
+   * @throws Exception the exception
+   */
   @Test
   @SuppressWarnings("unchecked")
   public void readComplexPropertyWithoutTypeAttribute() throws Exception {
@@ -482,6 +608,11 @@ public class XmlPropertyConsumerTest extends AbstractXmlConsumerTest {
     assertEquals("Heidelberg", cityMap.get("CityName"));
   }
 
+  /**
+   * Complex property null.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void complexPropertyNull() throws Exception {
     String xml = "<Location xmlns=\"" + Edm.NAMESPACE_D_2007_08
@@ -496,6 +627,11 @@ public class XmlPropertyConsumerTest extends AbstractXmlConsumerTest {
     assertNull(resultMap.get("Location"));
   }
 
+  /**
+   * Complex property null value not allowed.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void complexPropertyNullValueNotAllowed() throws Exception {
     final String xml = "<Location xmlns=\"" + Edm.NAMESPACE_D_2007_08
@@ -510,6 +646,11 @@ public class XmlPropertyConsumerTest extends AbstractXmlConsumerTest {
     new XmlPropertyConsumer().readProperty(reader, property, null);
   }
 
+  /**
+   * Complex property null value not allowed but not validated.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void complexPropertyNullValueNotAllowedButNotValidated() throws Exception {
     final String xml = "<Location xmlns=\"" + Edm.NAMESPACE_D_2007_08
@@ -527,6 +668,11 @@ public class XmlPropertyConsumerTest extends AbstractXmlConsumerTest {
     assertNull(resultMap.get("Location"));
   }
 
+  /**
+   * Complex property null with content.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void complexPropertyNullWithContent() throws Exception {
     String xml = "<Location xmlns=\"" + Edm.NAMESPACE_D_2007_08
@@ -540,6 +686,11 @@ public class XmlPropertyConsumerTest extends AbstractXmlConsumerTest {
     new XmlPropertyConsumer().readProperty(reader, property, null);
   }
 
+  /**
+   * Complex property empty.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void complexPropertyEmpty() throws Exception {
     final String xml = "<Location xmlns=\"" + Edm.NAMESPACE_D_2007_08 + "\" />";
@@ -555,6 +706,11 @@ public class XmlPropertyConsumerTest extends AbstractXmlConsumerTest {
     assertTrue(innerMap.isEmpty());
   }
 
+  /**
+   * Collection simple type.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void collectionSimpleType() throws Exception {
     final String xml = "<AllUsedRoomIds xmlns=\"" + Edm.NAMESPACE_D_2007_08 + "\">"
@@ -571,6 +727,11 @@ public class XmlPropertyConsumerTest extends AbstractXmlConsumerTest {
     assertEquals(Arrays.asList("1", null, ""), result);
   }
 
+  /**
+   * Collection simple type wrong.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void collectionSimpleTypeWrong() throws Exception {
     final String xml = "<AllUsedRoomIds xmlns=\"" + Edm.NAMESPACE_D_2007_08 + "\">"
@@ -581,6 +742,11 @@ public class XmlPropertyConsumerTest extends AbstractXmlConsumerTest {
             .getFunctionImport("AllUsedRoomIds")), null);
   }
 
+  /**
+   * Collection simple type wrong mapping.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void collectionSimpleTypeWrongMapping() throws Exception {
     final String xml = "<AllUsedRoomIds xmlns=\"" + Edm.NAMESPACE_D_2007_08 + "\">"
@@ -592,6 +758,11 @@ public class XmlPropertyConsumerTest extends AbstractXmlConsumerTest {
             Collections.<String, Object> singletonMap("AllUsedRoomIds", Integer.class)).build());
   }
 
+  /**
+   * Collection simple type wrong xml.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void collectionSimpleTypeWrongXml() throws Exception {
     final String xml = "<AllUsedRoomIds xmlns=\"" + Edm.NAMESPACE_D_2007_08 + "\"><element>1</element>";
@@ -600,6 +771,11 @@ public class XmlPropertyConsumerTest extends AbstractXmlConsumerTest {
             .getFunctionImport("AllUsedRoomIds")), null);
   }
 
+  /**
+   * Collection complex type.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void collectionComplexType() throws Exception {
     final String xml = "<d:AllLocations xmlns:d=\"" + Edm.NAMESPACE_D_2007_08 + "\">"

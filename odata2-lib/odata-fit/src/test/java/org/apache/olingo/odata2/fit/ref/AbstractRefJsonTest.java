@@ -25,16 +25,28 @@ import com.google.gson.Gson;
 import com.google.gson.internal.LinkedTreeMap;
 import com.google.gson.reflect.TypeToken;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class AbstractRefJsonTest.
  */
 @Ignore("no test methods")
 public class AbstractRefJsonTest extends AbstractRefTest {
 
+  /**
+   * Instantiates a new abstract ref json test.
+   *
+   * @param servletType the servlet type
+   */
   public AbstractRefJsonTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /**
+   * Gets the linked tree map.
+   *
+   * @param body the body
+   * @return the linked tree map
+   */
   public LinkedTreeMap<?,?> getLinkedTreeMap(final String body) {
     Gson gson = new Gson();
     final LinkedTreeMap<?,?> map = gson.fromJson(body, new TypeToken<LinkedTreeMap<?,?>>() {}.getType());

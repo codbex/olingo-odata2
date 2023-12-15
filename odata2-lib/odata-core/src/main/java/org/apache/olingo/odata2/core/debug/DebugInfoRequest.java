@@ -27,16 +27,32 @@ import java.util.Map.Entry;
 
 import org.apache.olingo.odata2.core.ep.util.JsonStreamWriter;
 
+// TODO: Auto-generated Javadoc
 /**
  * Request debug information.
  */
 public class DebugInfoRequest implements DebugInfo {
 
+  /** The method. */
   private final String method;
+  
+  /** The uri. */
   private final URI uri;
+  
+  /** The protocol. */
   private final String protocol;
+  
+  /** The headers. */
   private final Map<String, List<String>> headers;
 
+  /**
+   * Instantiates a new debug info request.
+   *
+   * @param method the method
+   * @param uri the uri
+   * @param protocol the protocol
+   * @param headers the headers
+   */
   public DebugInfoRequest(final String method, final URI uri, final String protocol,
       final Map<String, List<String>> headers) {
     this.method = method;
@@ -45,11 +61,22 @@ public class DebugInfoRequest implements DebugInfo {
     this.headers = headers;
   }
 
+  /**
+   * Gets the name.
+   *
+   * @return the name
+   */
   @Override
   public String getName() {
     return "Request";
   }
 
+  /**
+   * Append json.
+   *
+   * @param jsonStreamWriter the json stream writer
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Override
   public void appendJson(final JsonStreamWriter jsonStreamWriter) throws IOException {
     jsonStreamWriter.beginObject()
@@ -80,6 +107,12 @@ public class DebugInfoRequest implements DebugInfo {
     jsonStreamWriter.endObject();
   }
 
+  /**
+   * Append html.
+   *
+   * @param writer the writer
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Override
   public void appendHtml(final Writer writer) throws IOException {
     writer.append("<h2>Request Method</h2>\n")

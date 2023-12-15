@@ -31,213 +31,483 @@ import jakarta.persistence.metamodel.SetAttribute;
 import jakarta.persistence.metamodel.SingularAttribute;
 import jakarta.persistence.metamodel.Type;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAEntityTypeMock.
+ *
+ * @param <X> the generic type
+ */
 public abstract class JPAEntityTypeMock<X> implements EntityType<X> {
 
+  /**
+   * Gets the declared id.
+   *
+   * @param <Y> the generic type
+   * @param arg0 the arg 0
+   * @return the declared id
+   */
   @Override
   public <Y> SingularAttribute<X, Y> getDeclaredId(final Class<Y> arg0) {
     return null;
   }
 
+  /**
+   * Gets the declared version.
+   *
+   * @param <Y> the generic type
+   * @param arg0 the arg 0
+   * @return the declared version
+   */
   @Override
   public <Y> SingularAttribute<X, Y> getDeclaredVersion(final Class<Y> arg0) {
     return null;
   }
 
+  /**
+   * Gets the id.
+   *
+   * @param <Y> the generic type
+   * @param arg0 the arg 0
+   * @return the id
+   */
   @Override
   public <Y> SingularAttribute<? super X, Y> getId(final Class<Y> arg0) {
     return null;
   }
 
+  /**
+   * Gets the id class attributes.
+   *
+   * @return the id class attributes
+   */
   @Override
   public Set<SingularAttribute<? super X, ?>> getIdClassAttributes() {
     return null;
   }
 
+  /**
+   * Gets the id type.
+   *
+   * @return the id type
+   */
   @Override
   public Type<?> getIdType() {
     return null;
   }
 
+  /**
+   * Gets the supertype.
+   *
+   * @return the supertype
+   */
   @Override
   public IdentifiableType<? super X> getSupertype() {
     return null;
   }
 
+  /**
+   * Gets the version.
+   *
+   * @param <Y> the generic type
+   * @param arg0 the arg 0
+   * @return the version
+   */
   @Override
   public <Y> SingularAttribute<? super X, Y> getVersion(final Class<Y> arg0) {
     return null;
   }
 
+  /**
+   * Checks for single id attribute.
+   *
+   * @return true, if successful
+   */
   @Override
   public boolean hasSingleIdAttribute() {
     return false;
   }
 
+  /**
+   * Checks for version attribute.
+   *
+   * @return true, if successful
+   */
   @Override
   public boolean hasVersionAttribute() {
     return false;
   }
 
+  /**
+   * Gets the attribute.
+   *
+   * @param arg0 the arg 0
+   * @return the attribute
+   */
   @Override
   public Attribute<? super X, ?> getAttribute(final String arg0) {
     return null;
   }
 
+  /**
+   * Gets the attributes.
+   *
+   * @return the attributes
+   */
   @Override
   public Set<Attribute<? super X, ?>> getAttributes() {
     return null;
   }
 
+  /**
+   * Gets the collection.
+   *
+   * @param arg0 the arg 0
+   * @return the collection
+   */
   @Override
   public CollectionAttribute<? super X, ?> getCollection(final String arg0) {
     return null;
   }
 
+  /**
+   * Gets the collection.
+   *
+   * @param <E> the element type
+   * @param arg0 the arg 0
+   * @param arg1 the arg 1
+   * @return the collection
+   */
   @Override
   public <E> CollectionAttribute<? super X, E> getCollection(final String arg0, final Class<E> arg1) {
     return null;
   }
 
+  /**
+   * Gets the declared attribute.
+   *
+   * @param arg0 the arg 0
+   * @return the declared attribute
+   */
   @Override
   public Attribute<X, ?> getDeclaredAttribute(final String arg0) {
     return null;
   }
 
+  /**
+   * Gets the declared attributes.
+   *
+   * @return the declared attributes
+   */
   @Override
   public Set<Attribute<X, ?>> getDeclaredAttributes() {
     return null;
   }
 
+  /**
+   * Gets the declared collection.
+   *
+   * @param arg0 the arg 0
+   * @return the declared collection
+   */
   @Override
   public CollectionAttribute<X, ?> getDeclaredCollection(final String arg0) {
     return null;
   }
 
+  /**
+   * Gets the declared collection.
+   *
+   * @param <E> the element type
+   * @param arg0 the arg 0
+   * @param arg1 the arg 1
+   * @return the declared collection
+   */
   @Override
   public <E> CollectionAttribute<X, E> getDeclaredCollection(final String arg0, final Class<E> arg1) {
     return null;
   }
 
+  /**
+   * Gets the declared list.
+   *
+   * @param arg0 the arg 0
+   * @return the declared list
+   */
   @Override
   public ListAttribute<X, ?> getDeclaredList(final String arg0) {
     return null;
   }
 
+  /**
+   * Gets the declared list.
+   *
+   * @param <E> the element type
+   * @param arg0 the arg 0
+   * @param arg1 the arg 1
+   * @return the declared list
+   */
   @Override
   public <E> ListAttribute<X, E> getDeclaredList(final String arg0, final Class<E> arg1) {
     return null;
   }
 
+  /**
+   * Gets the declared map.
+   *
+   * @param arg0 the arg 0
+   * @return the declared map
+   */
   @Override
   public MapAttribute<X, ?, ?> getDeclaredMap(final String arg0) {
     return null;
   }
 
+  /**
+   * Gets the declared map.
+   *
+   * @param <K> the key type
+   * @param <V> the value type
+   * @param arg0 the arg 0
+   * @param arg1 the arg 1
+   * @param arg2 the arg 2
+   * @return the declared map
+   */
   @Override
   public <K, V> MapAttribute<X, K, V> getDeclaredMap(final String arg0, final Class<K> arg1, final Class<V> arg2) {
     return null;
   }
 
+  /**
+   * Gets the declared plural attributes.
+   *
+   * @return the declared plural attributes
+   */
   @Override
   public Set<PluralAttribute<X, ?, ?>> getDeclaredPluralAttributes() {
     return null;
   }
 
+  /**
+   * Gets the declared set.
+   *
+   * @param arg0 the arg 0
+   * @return the declared set
+   */
   @Override
   public SetAttribute<X, ?> getDeclaredSet(final String arg0) {
     return null;
   }
 
+  /**
+   * Gets the declared set.
+   *
+   * @param <E> the element type
+   * @param arg0 the arg 0
+   * @param arg1 the arg 1
+   * @return the declared set
+   */
   @Override
   public <E> SetAttribute<X, E> getDeclaredSet(final String arg0, final Class<E> arg1) {
     return null;
   }
 
+  /**
+   * Gets the declared singular attribute.
+   *
+   * @param arg0 the arg 0
+   * @return the declared singular attribute
+   */
   @Override
   public SingularAttribute<X, ?> getDeclaredSingularAttribute(final String arg0) {
     return null;
   }
 
+  /**
+   * Gets the declared singular attribute.
+   *
+   * @param <Y> the generic type
+   * @param arg0 the arg 0
+   * @param arg1 the arg 1
+   * @return the declared singular attribute
+   */
   @Override
   public <Y> SingularAttribute<X, Y> getDeclaredSingularAttribute(final String arg0, final Class<Y> arg1) {
     return null;
   }
 
+  /**
+   * Gets the declared singular attributes.
+   *
+   * @return the declared singular attributes
+   */
   @Override
   public Set<SingularAttribute<X, ?>> getDeclaredSingularAttributes() {
     return null;
   }
 
+  /**
+   * Gets the list.
+   *
+   * @param arg0 the arg 0
+   * @return the list
+   */
   @Override
   public ListAttribute<? super X, ?> getList(final String arg0) {
     return null;
   }
 
+  /**
+   * Gets the list.
+   *
+   * @param <E> the element type
+   * @param arg0 the arg 0
+   * @param arg1 the arg 1
+   * @return the list
+   */
   @Override
   public <E> ListAttribute<? super X, E> getList(final String arg0, final Class<E> arg1) {
     return null;
   }
 
+  /**
+   * Gets the map.
+   *
+   * @param arg0 the arg 0
+   * @return the map
+   */
   @Override
   public MapAttribute<? super X, ?, ?> getMap(final String arg0) {
     return null;
   }
 
+  /**
+   * Gets the map.
+   *
+   * @param <K> the key type
+   * @param <V> the value type
+   * @param arg0 the arg 0
+   * @param arg1 the arg 1
+   * @param arg2 the arg 2
+   * @return the map
+   */
   @Override
   public <K, V> MapAttribute<? super X, K, V> getMap(final String arg0, final Class<K> arg1, final Class<V> arg2) {
     return null;
   }
 
+  /**
+   * Gets the plural attributes.
+   *
+   * @return the plural attributes
+   */
   @Override
   public Set<PluralAttribute<? super X, ?, ?>> getPluralAttributes() {
     return null;
   }
 
+  /**
+   * Gets the set.
+   *
+   * @param arg0 the arg 0
+   * @return the sets the
+   */
   @Override
   public SetAttribute<? super X, ?> getSet(final String arg0) {
     return null;
   }
 
+  /**
+   * Gets the set.
+   *
+   * @param <E> the element type
+   * @param arg0 the arg 0
+   * @param arg1 the arg 1
+   * @return the sets the
+   */
   @Override
   public <E> SetAttribute<? super X, E> getSet(final String arg0, final Class<E> arg1) {
     return null;
   }
 
+  /**
+   * Gets the singular attribute.
+   *
+   * @param arg0 the arg 0
+   * @return the singular attribute
+   */
   @Override
   public SingularAttribute<? super X, ?> getSingularAttribute(final String arg0) {
     return null;
   }
 
+  /**
+   * Gets the singular attribute.
+   *
+   * @param <Y> the generic type
+   * @param arg0 the arg 0
+   * @param arg1 the arg 1
+   * @return the singular attribute
+   */
   @Override
   public <Y> SingularAttribute<? super X, Y> getSingularAttribute(final String arg0, final Class<Y> arg1) {
     return null;
   }
 
+  /**
+   * Gets the singular attributes.
+   *
+   * @return the singular attributes
+   */
   @Override
   public Set<SingularAttribute<? super X, ?>> getSingularAttributes() {
     return null;
   }
 
+  /**
+   * Gets the java type.
+   *
+   * @return the java type
+   */
   @Override
   public Class<X> getJavaType() {
     return null;
   }
 
+  /**
+   * Gets the persistence type.
+   *
+   * @return the persistence type
+   */
   @Override
   public jakarta.persistence.metamodel.Type.PersistenceType getPersistenceType() {
     return null;
   }
 
+  /**
+   * Gets the bindable java type.
+   *
+   * @return the bindable java type
+   */
   @Override
   public Class<X> getBindableJavaType() {
     return null;
   }
 
+  /**
+   * Gets the bindable type.
+   *
+   * @return the bindable type
+   */
   @Override
   public jakarta.persistence.metamodel.Bindable.BindableType getBindableType() {
     return null;
   }
 
+  /**
+   * Gets the name.
+   *
+   * @return the name
+   */
   @Override
   public String getName() {
     return null;

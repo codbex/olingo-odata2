@@ -24,18 +24,27 @@ import org.apache.olingo.odata2.api.edm.EdmAnnotationAttribute;
 import org.apache.olingo.odata2.api.edm.EdmAnnotationElement;
 import org.apache.olingo.odata2.client.api.edm.EdmDocumentation;
 
+// TODO: Auto-generated Javadoc
 /**
- * Objects of this class represent documentation
- * 
+ * Objects of this class represent documentation.
  */
 public class EdmDocumentationImpl implements EdmDocumentation{
 
+  /** The summary. */
   private String summary;
+  
+  /** The long description. */
   private String longDescription;
+  
+  /** The annotation attributes. */
   private List<EdmAnnotationAttribute> annotationAttributes;
+  
+  /** The annotation elements. */
   private List<EdmAnnotationElement> annotationElements;
 
   /**
+   * Gets the summary.
+   *
    * @return <b>String</b> summary
    */
   public String getSummary() {
@@ -43,6 +52,8 @@ public class EdmDocumentationImpl implements EdmDocumentation{
   }
 
   /**
+   * Gets the long description.
+   *
    * @return <b>String</b> the long description
    */
   public String getLongDescription() {
@@ -50,6 +61,8 @@ public class EdmDocumentationImpl implements EdmDocumentation{
   }
 
   /**
+   * Gets the annotation attributes.
+   *
    * @return collection of {@link EdmAnnotationAttributeImpl} annotation attributes
    */
   public List<EdmAnnotationAttribute> getAnnotationAttributes() {
@@ -57,6 +70,8 @@ public class EdmDocumentationImpl implements EdmDocumentation{
   }
 
   /**
+   * Gets the annotation elements.
+   *
    * @return collection of {@link AnnotationElement} annotation elements
    */
   public List<EdmAnnotationElement> getAnnotationElements() {
@@ -64,8 +79,9 @@ public class EdmDocumentationImpl implements EdmDocumentation{
   }
 
   /**
-   * Sets the summary for this {@link EdmDocumentationImpl}
-   * @param summary
+   * Sets the summary for this {@link EdmDocumentationImpl}.
+   *
+   * @param summary the summary
    * @return {@link EdmDocumentationImpl} for method chaining
    */
   public EdmDocumentationImpl setSummary(final String summary) {
@@ -74,8 +90,9 @@ public class EdmDocumentationImpl implements EdmDocumentation{
   }
 
   /**
-   * Sets the long description for this {@link EdmDocumentationImpl}
-   * @param longDescription
+   * Sets the long description for this {@link EdmDocumentationImpl}.
+   *
+   * @param longDescription the long description
    * @return {@link EdmDocumentationImpl} for method chaining
    */
   public EdmDocumentationImpl setLongDescription(final String longDescription) {
@@ -84,8 +101,9 @@ public class EdmDocumentationImpl implements EdmDocumentation{
   }
 
   /**
-   * Sets the collection of {@link EdmAnnotationAttributeImpl} for this {@link EdmDocumentationImpl}
-   * @param annotationAttributes
+   * Sets the collection of {@link EdmAnnotationAttributeImpl} for this {@link EdmDocumentationImpl}.
+   *
+   * @param annotationAttributes the annotation attributes
    * @return {@link EdmDocumentationImpl} for method chaining
    */
   public EdmDocumentationImpl setAnnotationAttributes(final List<EdmAnnotationAttribute> annotationAttributes) {
@@ -94,8 +112,9 @@ public class EdmDocumentationImpl implements EdmDocumentation{
   }
 
   /**
-   * Sets the collection of {@link AnnotationElement} for this {@link EdmDocumentationImpl}
-   * @param annotationElements
+   * Sets the collection of {@link AnnotationElement} for this {@link EdmDocumentationImpl}.
+   *
+   * @param annotationElements the annotation elements
    * @return {@link EdmDocumentationImpl} for method chaining
    */
   public EdmDocumentationImpl setAnnotationElements(final List<EdmAnnotationElement> annotationElements) {
@@ -103,6 +122,11 @@ public class EdmDocumentationImpl implements EdmDocumentation{
     return this;
   }
   
+  /**
+   * To string.
+   *
+   * @return the string
+   */
   @Override
   public String toString() {
       return String.format(summary);

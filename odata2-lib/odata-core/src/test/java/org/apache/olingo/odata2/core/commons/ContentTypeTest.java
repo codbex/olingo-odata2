@@ -40,6 +40,7 @@ import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 // 14.1 Accept
 //
 // The Accept request-header field can be used to specify certain media types which are acceptable for the response.
@@ -56,10 +57,13 @@ import org.junit.Test;
 // accept-extension = ";" token [ "=" ( token | quoted-string ) ]
 
 /**
- *  
+ * The Class ContentTypeTest.
  */
 public class ContentTypeTest extends BaseTest {
 
+  /**
+   * Test me.
+   */
   @Test
   public void testMe() {
     MediaType t = new MediaType("*", "xml");
@@ -67,6 +71,9 @@ public class ContentTypeTest extends BaseTest {
     assertTrue(t.isCompatible(new MediaType("app", "xml")));
   }
 
+  /**
+   * Parseable.
+   */
   @Test
   public void parseable() {
     assertTrue(ContentType.isParseable("application/xml"));
@@ -84,6 +91,9 @@ public class ContentTypeTest extends BaseTest {
     assertFalse(ContentType.isParseable("hugo/"));
   }
 
+  /**
+   * Parses the not throw.
+   */
   @Test
   public void parseNotThrow() {
     assertNotNull(ContentType.parse("application/xml"));
@@ -101,6 +111,9 @@ public class ContentTypeTest extends BaseTest {
     assertNull(ContentType.parse("hugo/"));
   }
 
+  /**
+   * Creation custom content type.
+   */
   @Test
   public void creationCustomContentType() {
     ContentType mt = ContentType.createAsCustom("custom");
@@ -111,6 +124,9 @@ public class ContentTypeTest extends BaseTest {
     assertEquals(ODataFormat.CUSTOM, mt.getODataFormat());
   }
 
+  /**
+   * Creation custom content type image jpeg.
+   */
   @Test
   public void creationCustomContentTypeImageJpeg() {
     ContentType mt = ContentType.createAsCustom("image/jpeg");
@@ -121,6 +137,9 @@ public class ContentTypeTest extends BaseTest {
     assertEquals(ODataFormat.MIME, mt.getODataFormat());
   }
 
+  /**
+   * Creation custom content types.
+   */
   @Test
   public void creationCustomContentTypes() {
     List<ContentType> contentTypes = ContentType.createAsCustom(Arrays.asList("custom", "image/jpeg"));
@@ -144,6 +163,9 @@ public class ContentTypeTest extends BaseTest {
     }
   }
 
+  /**
+   * Creation content type image jpeg.
+   */
   @Test
   public void creationContentTypeImageJpeg() {
     ContentType mt = ContentType.create("image/jpeg");
@@ -154,6 +176,9 @@ public class ContentTypeTest extends BaseTest {
     assertEquals(ODataFormat.MIME, mt.getODataFormat());
   }
 
+  /**
+   * Creation from http content type atom xml entry.
+   */
   @Test
   public void creationFromHttpContentTypeAtomXmlEntry() {
     ContentType mt = ContentType.create(HttpContentType.APPLICATION_ATOM_XML_ENTRY_UTF8);
@@ -168,6 +193,9 @@ public class ContentTypeTest extends BaseTest {
     assertEquals(ContentType.APPLICATION_ATOM_XML_ENTRY_CS_UTF_8, mt);
   }
 
+  /**
+   * Creation from http content type multipart mixed.
+   */
   @Test
   public void creationFromHttpContentTypeMultipartMixed() {
     ContentType mt = ContentType.create(HttpContentType.MULTIPART_MIXED);
@@ -181,6 +209,9 @@ public class ContentTypeTest extends BaseTest {
     assertTrue(ContentType.MULTIPART_MIXED.isCompatible(mt));
   }
 
+  /**
+   * Creation from http content type multipart mixed with parameters.
+   */
   @Test
   public void creationFromHttpContentTypeMultipartMixedWithParameters() {
     String boundary = UUID.randomUUID().toString();
@@ -195,6 +226,9 @@ public class ContentTypeTest extends BaseTest {
     assertTrue(ContentType.MULTIPART_MIXED.isCompatible(mt));
   }
 
+  /**
+   * Creation from http content type application xml.
+   */
   @Test
   public void creationFromHttpContentTypeApplicationXml() {
     ContentType mt = ContentType.create(HttpContentType.APPLICATION_XML_UTF8);
@@ -207,6 +241,9 @@ public class ContentTypeTest extends BaseTest {
     assertEquals(ContentType.create(ContentType.APPLICATION_XML, "charset", "utf-8"), mt);
   }
 
+  /**
+   * Creation from http content type application json.
+   */
   @Test
   public void creationFromHttpContentTypeApplicationJson() {
     ContentType mt = ContentType.create(HttpContentType.APPLICATION_JSON_UTF8);
@@ -219,6 +256,9 @@ public class ContentTypeTest extends BaseTest {
     assertEquals(ContentType.create(ContentType.APPLICATION_JSON, "charset", "utf-8"), mt);
   }
 
+  /**
+   * Test content type creation.
+   */
   @Test
   public void testContentTypeCreation() {
     ContentType mt = ContentType.create("type", "subtype");
@@ -229,11 +269,17 @@ public class ContentTypeTest extends BaseTest {
     assertEquals(ODataFormat.CUSTOM, mt.getODataFormat());
   }
 
+  /**
+   * Test content type creation wildcard type.
+   */
   @Test(expected = IllegalArgumentException.class)
   public void testContentTypeCreationWildcardType() {
     ContentType.create("*", "subtype");
   }
 
+  /**
+   * Test content type creation wildcard type single format.
+   */
   @Test(expected = IllegalArgumentException.class)
   public void testContentTypeCreationWildcardTypeSingleFormat() {
     ContentType.create("*/subtype");
@@ -247,7 +293,8 @@ public class ContentTypeTest extends BaseTest {
    * subtype,
    * nor between an attribute and its value.
    * </p>
-   * @throws Throwable
+   *
+   * @throws Throwable the throwable
    */
   @Test
   public void testContentTypeCreationInvalidWithSpaces() throws Throwable {
@@ -256,6 +303,13 @@ public class ContentTypeTest extends BaseTest {
     failContentTypeCreation("app    /   space", IllegalArgumentException.class);
   }
 
+  /**
+   * Fail content type creation.
+   *
+   * @param contentType the content type
+   * @param expectedExceptionClass the expected exception class
+   * @throws Exception the exception
+   */
   private void
       failContentTypeCreation(final String contentType, final Class<? extends Exception> expectedExceptionClass)
           throws Exception {
@@ -268,6 +322,9 @@ public class ContentTypeTest extends BaseTest {
     }
   }
 
+  /**
+   * Test content type creation wildcard sub type.
+   */
   @Test
   public void testContentTypeCreationWildcardSubType() {
     ContentType mt = ContentType.create("type", "*");
@@ -278,6 +335,9 @@ public class ContentTypeTest extends BaseTest {
     assertEquals(ODataFormat.CUSTOM, mt.getODataFormat());
   }
 
+  /**
+   * Test content type creation wildcard sub type single format.
+   */
   @Test
   public void testContentTypeCreationWildcardSubTypeSingleFormat() {
     ContentType mt = ContentType.create("type/*");
@@ -288,6 +348,9 @@ public class ContentTypeTest extends BaseTest {
     assertEquals(ODataFormat.CUSTOM, mt.getODataFormat());
   }
 
+  /**
+   * Test content type creation atom.
+   */
   @Test
   public void testContentTypeCreationAtom() {
     ContentType mt = ContentType.create("application", "atom+xml");
@@ -298,6 +361,9 @@ public class ContentTypeTest extends BaseTest {
     assertEquals(ODataFormat.ATOM, mt.getODataFormat());
   }
 
+  /**
+   * Test content type creation xml.
+   */
   @Test
   public void testContentTypeCreationXml() {
     ContentType mt = ContentType.create("application", "xml");
@@ -308,6 +374,9 @@ public class ContentTypeTest extends BaseTest {
     assertEquals(ODataFormat.XML, mt.getODataFormat());
   }
 
+  /**
+   * Test content type creation json.
+   */
   @Test
   public void testContentTypeCreationJson() {
     ContentType mt = ContentType.create("application", "json");
@@ -318,6 +387,9 @@ public class ContentTypeTest extends BaseTest {
     assertEquals(ODataFormat.JSON, mt.getODataFormat());
   }
 
+  /**
+   * Test content type creation one string.
+   */
   @Test
   public void testContentTypeCreationOneString() {
     ContentType mt = ContentType.create("type/subtype");
@@ -328,6 +400,9 @@ public class ContentTypeTest extends BaseTest {
     assertEquals(ODataFormat.CUSTOM, mt.getODataFormat());
   }
 
+  /**
+   * Test content type creation atom one string.
+   */
   @Test
   public void testContentTypeCreationAtomOneString() {
     ContentType mt = ContentType.create("application/atom+xml");
@@ -338,6 +413,9 @@ public class ContentTypeTest extends BaseTest {
     assertEquals(ODataFormat.ATOM, mt.getODataFormat());
   }
 
+  /**
+   * Test content type creation xml one string.
+   */
   @Test
   public void testContentTypeCreationXmlOneString() {
     ContentType mt = ContentType.create("application/xml");
@@ -348,6 +426,9 @@ public class ContentTypeTest extends BaseTest {
     assertEquals(ODataFormat.XML, mt.getODataFormat());
   }
 
+  /**
+   * Test content type creation xml with para one string.
+   */
   @Test
   public void testContentTypeCreationXmlWithParaOneString() {
     ContentType mt = ContentType.create("application/xml;q=0.9");
@@ -358,6 +439,9 @@ public class ContentTypeTest extends BaseTest {
     assertEquals(ODataFormat.XML, mt.getODataFormat());
   }
 
+  /**
+   * Test content type creation json one string.
+   */
   @Test
   public void testContentTypeCreationJsonOneString() {
     ContentType mt = ContentType.create("application/json");
@@ -368,6 +452,9 @@ public class ContentTypeTest extends BaseTest {
     assertEquals(ODataFormat.JSON, mt.getODataFormat());
   }
 
+  /**
+   * Test content type creation from strings.
+   */
   @Test
   public void testContentTypeCreationFromStrings() {
     List<ContentType> types =
@@ -395,6 +482,9 @@ public class ContentTypeTest extends BaseTest {
     assertEquals(ODataFormat.JSON, third.getODataFormat());
   }
 
+  /**
+   * Test content type creation from strings fail.
+   */
   @Test(expected = IllegalArgumentException.class)
   public void testContentTypeCreationFromStringsFail() {
     List<ContentType> types =
@@ -403,6 +493,9 @@ public class ContentTypeTest extends BaseTest {
     assertEquals(3, types.size());
   }
 
+  /**
+   * Test ensure charset parameter.
+   */
   @Test
   public void testEnsureCharsetParameter() {
     ContentType mt = ContentType.create("application/json");
@@ -416,6 +509,9 @@ public class ContentTypeTest extends BaseTest {
     assertEquals(ODataFormat.JSON, mt.getODataFormat());
   }
 
+  /**
+   * Test ensure charset parameter iso.
+   */
   @Test
   public void testEnsureCharsetParameterIso() {
     ContentType mt = ContentType.create("application/xml");
@@ -429,6 +525,9 @@ public class ContentTypeTest extends BaseTest {
     assertEquals(ODataFormat.XML, mt.getODataFormat());
   }
 
+  /**
+   * Test ensure charset parameter already set.
+   */
   @Test
   public void testEnsureCharsetParameterAlreadySet() {
     ContentType mt = ContentType.create("application/json;charset=utf-8");
@@ -442,6 +541,9 @@ public class ContentTypeTest extends BaseTest {
     assertEquals(ODataFormat.JSON, mt.getODataFormat());
   }
 
+  /**
+   * Test ensure charset parameter already set diff value.
+   */
   @Test
   public void testEnsureCharsetParameterAlreadySetDiffValue() {
     ContentType mt = ContentType.create("application/json;charset=utf-8");
@@ -455,6 +557,9 @@ public class ContentTypeTest extends BaseTest {
     assertEquals(ODataFormat.JSON, mt.getODataFormat());
   }
 
+  /**
+   * Test content type with parameter creation.
+   */
   @Test
   public void testContentTypeWithParameterCreation() {
     ContentType mt = ContentType.create("type", "subtype", addParameters("key", "value"));
@@ -466,6 +571,9 @@ public class ContentTypeTest extends BaseTest {
     assertEquals("type/subtype;key=value", mt.toString());
   }
 
+  /**
+   * Test content type with parameters creation.
+   */
   @Test
   public void testContentTypeWithParametersCreation() {
     ContentType mt = ContentType.create("type", "subtype", addParameters("key1", "value1", "key2", "value2"));
@@ -477,31 +585,49 @@ public class ContentTypeTest extends BaseTest {
     assertEquals("type/subtype;key1=value1;key2=value2", mt.toString());
   }
 
+  /**
+   * Test format parser in valid input only type.
+   */
   @Test(expected = IllegalArgumentException.class)
   public void testFormatParserInValidInputOnlyType() {
     ContentType.create("aaa");
   }
 
+  /**
+   * Test format parser in valid input only type with separtor.
+   */
   @Test(expected = IllegalArgumentException.class)
   public void testFormatParserInValidInputOnlyTypeWithSepartor() {
     ContentType.create("aaa/");
   }
 
+  /**
+   * Test format parser in valid input only sub type with separtor.
+   */
   @Test(expected = IllegalArgumentException.class)
   public void testFormatParserInValidInputOnlySubTypeWithSepartor() {
     ContentType.create("/aaa");
   }
 
+  /**
+   * Test format parser in valid input only separtor.
+   */
   @Test(expected = IllegalArgumentException.class)
   public void testFormatParserInValidInputOnlySepartor() {
     ContentType.create("/");
   }
 
+  /**
+   * Test format parser in valid input empty.
+   */
   @Test(expected = IllegalArgumentException.class)
   public void testFormatParserInValidInputEmpty() {
     ContentType.create("");
   }
 
+  /**
+   * Test format parser valid input type subtype.
+   */
   @Test
   public void testFormatParserValidInputTypeSubtype() {
     ContentType t = ContentType.create("aaa/bbb");
@@ -510,6 +636,9 @@ public class ContentTypeTest extends BaseTest {
     assertEquals(0, t.getParameters().size());
   }
 
+  /**
+   * Test format parser valid input type sybtype para.
+   */
   @Test
   public void testFormatParserValidInputTypeSybtypePara() {
     ContentType t = ContentType.create("aaa/bbb;x=y");
@@ -518,6 +647,9 @@ public class ContentTypeTest extends BaseTest {
     assertEquals(1, t.getParameters().size());
   }
 
+  /**
+   * Test format parser valid input type subtype paras.
+   */
   @Test
   public void testFormatParserValidInputTypeSubtypeParas() {
     ContentType t = ContentType.create("aaa/bbb;x=y;a=b");
@@ -526,6 +658,9 @@ public class ContentTypeTest extends BaseTest {
     assertEquals(2, t.getParameters().size());
   }
 
+  /**
+   * Test format parser valid input type subtype null para.
+   */
   @Test
   public void testFormatParserValidInputTypeSubtypeNullPara() {
     ContentType t = ContentType.create("aaa/bbb;x=y;a");
@@ -535,41 +670,65 @@ public class ContentTypeTest extends BaseTest {
     assertEquals(2, t.getParameters().size());
   }
 
+  /**
+   * Test format parser in valid input type null para.
+   */
   @Test(expected = IllegalArgumentException.class)
   public void testFormatParserInValidInputTypeNullPara() {
     ContentType.create("aaa;x=y;a");
   }
 
+  /**
+   * Test format parser invalid parameter with spaces.
+   */
   @Test(expected = IllegalArgumentException.class)
   public void testFormatParserInvalidParameterWithSpaces() {
     ContentType.create("aaa/bbb;x= y;a");
   }
 
+  /**
+   * Test format parser invalid parameter with line feed.
+   */
   @Test(expected = IllegalArgumentException.class)
   public void testFormatParserInvalidParameterWithLineFeed() {
     ContentType.create("aaa/bbb;x=\ny;a");
   }
 
+  /**
+   * Test format parser invalid parameter with carriage return.
+   */
   @Test(expected = IllegalArgumentException.class)
   public void testFormatParserInvalidParameterWithCarriageReturn() {
     ContentType.create("aaa/bbb;x=\ry;a");
   }
 
+  /**
+   * Test format parser invalid parameter with tabs.
+   */
   @Test(expected = IllegalArgumentException.class)
   public void testFormatParserInvalidParameterWithTabs() {
     ContentType.create("aaa/bbb;x=\ty;a");
   }
 
+  /**
+   * Test format parser invalid parameter with all lws.
+   */
   @Test(expected = IllegalArgumentException.class)
   public void testFormatParserInvalidParameterWithAllLws() {
     ContentType.create("aaa/bbb;x=\t \n \ry;a");
   }
 
+  /**
+   * Test format parser invalid parameter with all lws 2.
+   */
   @Test(expected = IllegalArgumentException.class)
   public void testFormatParserInvalidParameterWithAllLws2() {
     ContentType.create("aaa/bbb;x=\n \ry;a= \tbla  ");
   }
 
+  /**
+   * Test simple equal.
+   */
   @Test
   public void testSimpleEqual() {
     ContentType t1 = ContentType.create("aaa/bbb");
@@ -578,6 +737,9 @@ public class ContentTypeTest extends BaseTest {
     assertEquals(t1, t2);
   }
 
+  /**
+   * Test equal with parameters.
+   */
   @Test
   public void testEqualWithParameters() {
     ContentType t1 = ContentType.create("aaa/bbb;x=y;a");
@@ -588,6 +750,9 @@ public class ContentTypeTest extends BaseTest {
     assertTrue(t2.equals(t1));
   }
 
+  /**
+   * Test equal with parameters ignore case.
+   */
   @Test
   public void testEqualWithParametersIgnoreCase() {
     ContentType t1 = ContentType.create("aaa/bbb;x=YY");
@@ -598,6 +763,9 @@ public class ContentTypeTest extends BaseTest {
     assertTrue(t2.equals(t1));
   }
 
+  /**
+   * Test equal with unsorted parameters.
+   */
   @Test
   public void testEqualWithUnsortedParameters() {
     ContentType t1 = ContentType.create("aaa/bbb;x=y;a=b");
@@ -608,6 +776,9 @@ public class ContentTypeTest extends BaseTest {
     assertTrue(t2.equals(t1));
   }
 
+  /**
+   * Test equal with unsorted parameters ignore case.
+   */
   @Test
   public void testEqualWithUnsortedParametersIgnoreCase() {
     ContentType t1 = ContentType.create("aaa/bbb;xx=y;a=BB");
@@ -618,6 +789,9 @@ public class ContentTypeTest extends BaseTest {
     assertTrue(t2.equals(t1));
   }
 
+  /**
+   * Test equal with wildcard.
+   */
   @Test
   public void testEqualWithWildcard() {
     ContentType t1 = ContentType.create("aaa/bbb");
@@ -628,6 +802,9 @@ public class ContentTypeTest extends BaseTest {
     assertEquals(t1, t2);
   }
 
+  /**
+   * Test equal with wildcard subtype.
+   */
   @Test
   public void testEqualWithWildcardSubtype() {
     ContentType t1 = ContentType.create("aaa/bbb");
@@ -638,6 +815,9 @@ public class ContentTypeTest extends BaseTest {
     assertTrue(t2.equals(t1));
   }
 
+  /**
+   * Test equal with diff type wildcard subtype.
+   */
   @Test
   public void testEqualWithDiffTypeWildcardSubtype() {
     ContentType t1 = ContentType.create("ccc/bbb");
@@ -647,12 +827,18 @@ public class ContentTypeTest extends BaseTest {
     assertFalse(t2.equals(t1));
   }
 
+  /**
+   * Test illegal sub type wildcard subtype.
+   */
   @Test(expected = IllegalArgumentException.class)
   public void testIllegalSubTypeWildcardSubtype() {
     ContentType t1 = ContentType.create("*/bbb");
     assertNull(t1);
   }
 
+  /**
+   * Test equal with wildcard and parameters.
+   */
   @Test
   public void testEqualWithWildcardAndParameters() {
     ContentType t1 = ContentType.create("aaa/bbb;x=y;a");
@@ -663,6 +849,9 @@ public class ContentTypeTest extends BaseTest {
     assertTrue(t2.equals(t1));
   }
 
+  /**
+   * Test equal with wildcard subtype and parameters.
+   */
   @Test
   public void testEqualWithWildcardSubtypeAndParameters() {
     ContentType t1 = ContentType.create("aaa/bbb;x=y;a");
@@ -673,6 +862,9 @@ public class ContentTypeTest extends BaseTest {
     assertTrue(t2.equals(t1));
   }
 
+  /**
+   * Test equal with wildcard subtype and parameters both.
+   */
   @Test
   public void testEqualWithWildcardSubtypeAndParametersBoth() {
     ContentType t1 = ContentType.create("aaa/bbb;x=y");
@@ -683,6 +875,9 @@ public class ContentTypeTest extends BaseTest {
     assertTrue(t2.equals(t1));
   }
 
+  /**
+   * Test un equal with wildcard subtype and diff parameters.
+   */
   @Test
   @Ignore("If ContentType contains wildcards parameters are ignored.")
   public void testUnEqualWithWildcardSubtypeAndDiffParameters() {
@@ -693,6 +888,9 @@ public class ContentTypeTest extends BaseTest {
     assertFalse(t2.equals(t1));
   }
 
+  /**
+   * Test un simple equal.
+   */
   @Test
   public void testUnSimpleEqual() {
     ContentType t1 = ContentType.create("aaa/ccc");
@@ -702,6 +900,9 @@ public class ContentTypeTest extends BaseTest {
     assertFalse(t2.equals(t1));
   }
 
+  /**
+   * Test un equal types with parameters.
+   */
   @Test
   public void testUnEqualTypesWithParameters() {
     ContentType t1 = ContentType.create("aaa/bbb;x=y;a");
@@ -711,6 +912,9 @@ public class ContentTypeTest extends BaseTest {
     assertFalse(t2.equals(t1));
   }
 
+  /**
+   * Test un equal parameters.
+   */
   @Test
   public void testUnEqualParameters() {
     ContentType t1 = ContentType.create("aaa/bbb;x=y;a");
@@ -720,6 +924,9 @@ public class ContentTypeTest extends BaseTest {
     assertFalse(t2.equals(t1));
   }
 
+  /**
+   * Test un equal parameters counts.
+   */
   @Test
   public void testUnEqualParametersCounts() {
     ContentType t1 = ContentType.create("aaa/bbb");
@@ -729,6 +936,9 @@ public class ContentTypeTest extends BaseTest {
     assertFalse(t2.equals(t1));
   }
 
+  /**
+   * Test un equal parameters counts ignore Q.
+   */
   @Test
   public void testUnEqualParametersCountsIgnoreQ() {
     ContentType t1 = ContentType.create("aaa/bbb;q=0.9");
@@ -738,6 +948,9 @@ public class ContentTypeTest extends BaseTest {
     assertFalse(t2.equals(t1));
   }
 
+  /**
+   * Test equal parameters counts ignore Q.
+   */
   @Test
   public void testEqualParametersCountsIgnoreQ() {
     ContentType t1 = ContentType.create("aaa/bbb;q=0.9;x=y;a=b");
@@ -747,6 +960,9 @@ public class ContentTypeTest extends BaseTest {
     assertTrue(t2.equals(t1));
   }
 
+  /**
+   * Test equal parameters counts with Q.
+   */
   @Test
   public void testEqualParametersCountsWithQ() {
     ContentType t1 = ContentType.create("aaa", "bbb", addParameters("a", "b", "x", "y", "q", "0.9"));
@@ -756,6 +972,9 @@ public class ContentTypeTest extends BaseTest {
     assertTrue(t2.equals(t1));
   }
 
+  /**
+   * Test un equal with unsorted parameters.
+   */
   @Test
   public void testUnEqualWithUnsortedParameters() {
     ContentType t1 = ContentType.create("aaa/bbb;x=z;a=b");
@@ -765,6 +984,9 @@ public class ContentTypeTest extends BaseTest {
     assertFalse(t2.equals(t1));
   }
 
+  /**
+   * Test compare same.
+   */
   @Test
   public void testCompareSame() {
     ContentType t1 = ContentType.create("aaa/bbb");
@@ -774,6 +996,9 @@ public class ContentTypeTest extends BaseTest {
     assertEquals(0, t2.compareWildcardCounts(t1));
   }
 
+  /**
+   * Test compare two wildcard.
+   */
   @Test
   public void testCompareTwoWildcard() {
     ContentType t1 = ContentType.create("*/*");
@@ -785,6 +1010,9 @@ public class ContentTypeTest extends BaseTest {
     assertTrue(t2.equals(t1));
   }
 
+  /**
+   * Test compare sub wildcard.
+   */
   @Test
   public void testCompareSubWildcard() {
     ContentType t1 = ContentType.create("aaa/*");
@@ -796,6 +1024,9 @@ public class ContentTypeTest extends BaseTest {
     assertTrue(t2.equals(t1));
   }
 
+  /**
+   * Test compare sub type wildcard.
+   */
   @Test
   public void testCompareSubTypeWildcard() {
     ContentType t1 = ContentType.create("aaa/*");
@@ -807,6 +1038,9 @@ public class ContentTypeTest extends BaseTest {
     assertFalse(t2.equals(t1));
   }
 
+  /**
+   * Test non equal charset.
+   */
   @Test
   public void testNonEqualCharset() {
     ContentType t1 = ContentType.create("aaa/bbb;charset=c1");
@@ -815,6 +1049,9 @@ public class ContentTypeTest extends BaseTest {
     assertFalse(t1.equals(t2));
   }
 
+  /**
+   * Test compatible.
+   */
   @Test
   public void testCompatible() {
     ContentType t1 = ContentType.create("aaa/bbb");
@@ -826,6 +1063,9 @@ public class ContentTypeTest extends BaseTest {
     assertTrue(t1.equals(t2));
   }
 
+  /**
+   * Test compatible Q parameters set.
+   */
   @Test
   public void testCompatibleQ_ParametersSet() {
     ContentType t1 = ContentType.create("aaa/bbb;q=0.9;x=y;a=b");
@@ -837,6 +1077,9 @@ public class ContentTypeTest extends BaseTest {
     assertTrue(t1.equals(t2));
   }
 
+  /**
+   * Test compatible diff parameter values set.
+   */
   @Test
   public void testCompatibleDiffParameterValuesSet() {
     ContentType t1 = ContentType.create("aaa/bbb;x=z;a=c");
@@ -848,6 +1091,9 @@ public class ContentTypeTest extends BaseTest {
     assertFalse(t1.equals(t2));
   }
 
+  /**
+   * Test compatible diff parameter count set.
+   */
   @Test
   public void testCompatibleDiffParameterCountSet() {
     ContentType t1 = ContentType.create("aaa/bbb;a=b");
@@ -859,6 +1105,9 @@ public class ContentTypeTest extends BaseTest {
     assertFalse(t1.equals(t2));
   }
 
+  /**
+   * Test match simple.
+   */
   @Test
   public void testMatchSimple() {
     ContentType m1 = ContentType.create("aaa/bbb;x=z;a=b");
@@ -877,6 +1126,9 @@ public class ContentTypeTest extends BaseTest {
     assertEquals("foo/me", match.toContentTypeString());
   }
 
+  /**
+   * Test match no match.
+   */
   @Test
   public void testMatchNoMatch() {
     ContentType m1 = ContentType.create("aaa/bbb;x=z;a=b");
@@ -894,6 +1146,9 @@ public class ContentTypeTest extends BaseTest {
     assertTrue(match == null);
   }
 
+  /**
+   * Test has match simple.
+   */
   @Test
   public void testHasMatchSimple() {
     ContentType m1 = ContentType.create("aaa/bbb;x=z;a=b");
@@ -910,6 +1165,9 @@ public class ContentTypeTest extends BaseTest {
     assertTrue(match);
   }
 
+  /**
+   * Test has match no match.
+   */
   @Test
   public void testHasMatchNoMatch() {
     ContentType m1 = ContentType.create("aaa/bbb;x=z;a=b");
@@ -926,6 +1184,9 @@ public class ContentTypeTest extends BaseTest {
     assertFalse(match);
   }
 
+  /**
+   * Test match compatible simple.
+   */
   @Test
   public void testMatchCompatibleSimple() {
     ContentType m1 = ContentType.create("aaa/bbb;x=z;a=b");
@@ -944,6 +1205,9 @@ public class ContentTypeTest extends BaseTest {
     assertEquals("foo/me", match.toContentTypeString());
   }
 
+  /**
+   * Test match compatible no match.
+   */
   @Test
   public void testMatchCompatibleNoMatch() {
     ContentType m1 = ContentType.create("aaa/bbb;x=z;a=b");
@@ -961,6 +1225,9 @@ public class ContentTypeTest extends BaseTest {
     assertTrue(match == null);
   }
 
+  /**
+   * Test is wildcard.
+   */
   @Test
   public void testIsWildcard() {
     assertFalse(ContentType.create("aaa/bbb;x=y;a").isWildcard());
@@ -969,6 +1236,9 @@ public class ContentTypeTest extends BaseTest {
     assertTrue(ContentType.create("*/*").isWildcard());
   }
 
+  /**
+   * Test has wildcard.
+   */
   @Test
   public void testHasWildcard() {
     assertFalse(ContentType.create("aaa/bbb;x=y;a").hasWildcard());
@@ -977,6 +1247,9 @@ public class ContentTypeTest extends BaseTest {
     assertTrue(ContentType.create("*/*").hasWildcard());
   }
 
+  /**
+   * Test Q parameter sort.
+   */
   @Test
   public void testQParameterSort() {
     validateSort(Arrays.asList("a1/b1;q=0.2", "a2/b2;q=0.5", "a3/b3;q=0.333"), 1, 2, 0);
@@ -986,6 +1259,12 @@ public class ContentTypeTest extends BaseTest {
     validateSort(Arrays.asList("a1/b1;q=0.2", "a2/b2;q=0.9", "a3/b3"), 2, 1, 0);
   }
 
+  /**
+   * Validate sort.
+   *
+   * @param toSort the to sort
+   * @param expectedSequence the expected sequence
+   */
   private void validateSort(final List<String> toSort, final int... expectedSequence) {
     List<String> expected = new ArrayList<String>();
     for (int i : expectedSequence) {
@@ -998,6 +1277,12 @@ public class ContentTypeTest extends BaseTest {
     }
   }
 
+  /**
+   * Adds the parameters.
+   *
+   * @param content the content
+   * @return the map
+   */
   private Map<String, String> addParameters(final String... content) {
     Map<String, String> map = new HashMap<String, String>();
     for (int i = 0; i < content.length - 1; i += 2) {

@@ -32,6 +32,7 @@ import org.apache.olingo.odata2.core.commons.XmlHelper;
 import org.apache.olingo.odata2.core.ep.aggregator.EntityInfoAggregator;
 import org.apache.olingo.odata2.core.ep.aggregator.EntityPropertyInfo;
 
+// TODO: Auto-generated Javadoc
 /**
  * Xml entity (content type dependent) consumer for reading input (from <code>content</code>).
  * 
@@ -40,19 +41,21 @@ import org.apache.olingo.odata2.core.ep.aggregator.EntityPropertyInfo;
 public class XmlEntityDeserializer {
 
   /**
-   * 
-   * @throws EntityProviderException
+   * Instantiates a new xml entity deserializer.
+   *
+   * @throws EntityProviderException the entity provider exception
    */
   public XmlEntityDeserializer() throws EntityProviderException {
     super();
   }
 
   /**
-   * Returns an ODataDeltaFeed deserializing EntityStream
-   * @param entitySet
-   * @param entity
+   * Returns an ODataDeltaFeed deserializing EntityStream.
+   *
+   * @param entitySet the entity set
+   * @param entity the entity
    * @return ODataDeltaFeed
-   * @throws EntityProviderException
+   * @throws EntityProviderException the entity provider exception
    */
   public ODataDeltaFeed readFeed(final EdmEntitySet entitySet, final EntityStream entity)
       throws EntityProviderException {
@@ -86,11 +89,12 @@ public class XmlEntityDeserializer {
   }
 
   /**
-   * Returns an ODataEntry deserializing EntityStream
-   * @param entitySet
-   * @param entity
+   * Returns an ODataEntry deserializing EntityStream.
+   *
+   * @param entitySet the entity set
+   * @param entity the entity
    * @return ODataEntry
-   * @throws EntityProviderException
+   * @throws EntityProviderException the entity provider exception
    */
   public ODataEntry readEntry(final EdmEntitySet entitySet, final EntityStream entity)
       throws EntityProviderException {
@@ -123,11 +127,12 @@ public class XmlEntityDeserializer {
   }
   
   /**
-   * 
-   * @param info
-   * @param entityStream
-   * @return
-   * @throws EntityProviderException
+   * Read collection.
+   *
+   * @param info the info
+   * @param entityStream the entity stream
+   * @return the object
+   * @throws EntityProviderException the entity provider exception
    */
   public Object readCollection(final EntityPropertyInfo info, EntityStream entityStream) 
       throws EntityProviderException {
@@ -156,11 +161,12 @@ public class XmlEntityDeserializer {
   }
   
   /**
-   * 
-   * @param propertyInfo
-   * @param entityStream
-   * @return
-   * @throws EntityProviderException
+   * Read property.
+   *
+   * @param propertyInfo the property info
+   * @param entityStream the entity stream
+   * @return the map
+   * @throws EntityProviderException the entity provider exception
    */
   public Map<String, Object> readProperty(final EntityPropertyInfo propertyInfo, final EntityStream entityStream)
       throws EntityProviderException {

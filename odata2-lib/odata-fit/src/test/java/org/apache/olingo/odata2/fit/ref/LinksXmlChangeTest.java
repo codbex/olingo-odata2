@@ -27,18 +27,30 @@ import org.apache.olingo.odata2.api.edm.Edm;
 import org.apache.olingo.odata2.testutil.server.ServletType;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
  * Tests employing the reference scenario changing links in XML format.
  * 
  */
 public final class LinksXmlChangeTest extends AbstractRefTest {
 
+  /**
+   * Instantiates a new links xml change test.
+   *
+   * @param servletType the servlet type
+   */
   public LinksXmlChangeTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /** The Constant XML_DECLARATION. */
   private static final String XML_DECLARATION = "<?xml version='1.0' encoding='utf-8'?>";
 
+  /**
+   * Creates the link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void createLink() throws Exception {
     final String uriString = "Rooms('101')/$links/nr_Employees";
@@ -50,6 +62,11 @@ public final class LinksXmlChangeTest extends AbstractRefTest {
     postUri(uriString, requestBody.replace("'1'", "'99'"), HttpContentType.APPLICATION_XML, HttpStatusCodes.NOT_FOUND);
   }
 
+  /**
+   * Update link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void updateLink() throws Exception {
     final String uriString = "Employees('2')/$links/ne_Room";

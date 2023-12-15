@@ -40,11 +40,21 @@ import org.apache.olingo.odata2.jpa.processor.core.mock.model.JPAPluralAttribute
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAEdmNavigationPropertyTest.
+ */
 public class JPAEdmNavigationPropertyTest extends JPAEdmTestModelView {
 
+  /** The obj navigation property. */
   private static JPAEdmNavigationProperty objNavigationProperty;
+  
+  /** The nav prop view. */
   private static JPAEdmNavigationPropertyTest navPropView;
 
+  /**
+   * Setup.
+   */
   @BeforeClass
   public static void setup() {
     JPAEdmNavigationPropertyTest localView = new JPAEdmNavigationPropertyTest();
@@ -60,31 +70,61 @@ public class JPAEdmNavigationPropertyTest extends JPAEdmTestModelView {
     }
   }
 
+  /**
+   * Gets the p unit name.
+   *
+   * @return the p unit name
+   */
   @Override
   public String getpUnitName() {
     return "salesorderprocessing";
   }
 
+  /**
+   * Gets the JPA edm entity type view.
+   *
+   * @return the JPA edm entity type view
+   */
   @Override
   public JPAEdmEntityTypeView getJPAEdmEntityTypeView() {
     return this;
   }
 
+  /**
+   * Gets the JPA entity type.
+   *
+   * @return the JPA entity type
+   */
   @Override
   public EntityType<?> getJPAEntityType() {
     return new JPAEdmEntityType();
   }
 
+  /**
+   * Gets the JPA attribute local.
+   *
+   * @return the JPA attribute local
+   */
   private Attribute<?, ?> getJPAAttributeLocal() {
     AttributeMock<Object, String> attr = new AttributeMock<Object, String>();
     return attr;
   }
 
+  /**
+   * Gets the JPA attribute.
+   *
+   * @return the JPA attribute
+   */
   @Override
   public Attribute<?, ?> getJPAAttribute() {
     return getJPAAttributeLocal();
   }
 
+  /**
+   * Gets the edm association.
+   *
+   * @return the edm association
+   */
   @Override
   public Association getEdmAssociation() {
 
@@ -100,12 +140,18 @@ public class JPAEdmNavigationPropertyTest extends JPAEdmTestModelView {
     return association;
   }
 
+  /**
+   * Test get builder.
+   */
   @Test
   public void testGetBuilder() {
     assertNotNull(objNavigationProperty.getBuilder());
 
   }
 
+  /**
+   * Test get builder idempotent.
+   */
   @Test
   public void testGetBuilderIdempotent() {
     JPAEdmBuilder builder1 = objNavigationProperty.getBuilder();
@@ -114,6 +160,9 @@ public class JPAEdmNavigationPropertyTest extends JPAEdmTestModelView {
     assertEquals(builder1.hashCode(), builder2.hashCode());
   }
 
+  /**
+   * Test get edm navigation property.
+   */
   @Test
   public void testGetEdmNavigationProperty() {
     if (objNavigationProperty == null || objNavigationProperty.getEdmNavigationProperty() == null) {
@@ -134,12 +183,18 @@ public class JPAEdmNavigationPropertyTest extends JPAEdmTestModelView {
         "StringDetails");
   }
 
+  /**
+   * Test get consistent edm navigation properties.
+   */
   @Test
   public void testGetConsistentEdmNavigationProperties() {
     assertTrue(objNavigationProperty.getConsistentEdmNavigationProperties()
         .size() > 0);
   }
 
+  /**
+   * Test add JPA edm navigation property view.
+   */
   @Test
   public void testAddJPAEdmNavigationPropertyView() {
     JPAEdmNavigationPropertyTest localView = new JPAEdmNavigationPropertyTest();
@@ -158,11 +213,19 @@ public class JPAEdmNavigationPropertyTest extends JPAEdmTestModelView {
         .size() > 1);
   }
 
+  /**
+   * Checks if is consistent.
+   *
+   * @return true, if is consistent
+   */
   @Override
   public boolean isConsistent() {
     return true;
   }
 
+  /**
+   * Test build navigation property.
+   */
   @Test
   public void testBuildNavigationProperty() {
 
@@ -180,35 +243,73 @@ public class JPAEdmNavigationPropertyTest extends JPAEdmTestModelView {
 
   }
 
+  /**
+   * The Class AttributeMock.
+   *
+   * @param <Object> the generic type
+   * @param <String> the generic type
+   */
   @SuppressWarnings("hiding")
   private class AttributeMock<Object, String> extends
       JPAPluralAttributeMock {
 
+    /**
+     * Checks if is collection.
+     *
+     * @return true, if is collection
+     */
     @Override
     public boolean isCollection() {
       return true;
     }
 
+    /**
+     * Gets the element type.
+     *
+     * @return the element type
+     */
     @Override
     public Type<java.lang.String> getElementType() {
       return new ElementType();
     }
   }
 
+  /**
+   * The Class JPAEdmEntityType.
+   */
   private class JPAEdmEntityType extends JPAEntityTypeMock<String> {
+    
+    /**
+     * Gets the name.
+     *
+     * @return the name
+     */
     @Override
     public String getName() {
       return "SalesOrderHeader";
     }
   }
 
+  /**
+   * The Class ElementType.
+   */
   private class ElementType implements Type<String> {
 
+    /**
+     * Gets the persistence type.
+     *
+     * @return the persistence type
+     */
     @Override
     public jakarta.persistence.metamodel.Type.PersistenceType getPersistenceType() {
       return PersistenceType.BASIC;
     }
 
+    /**
+     * Gets the java type.
+     *
+     * @return the java type
+     */
     @Override
     public Class<String> getJavaType() {
       return String.class;

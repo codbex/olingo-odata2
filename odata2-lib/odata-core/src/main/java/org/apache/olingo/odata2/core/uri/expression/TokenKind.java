@@ -18,6 +18,7 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.core.uri.expression;
 
+// TODO: Auto-generated Javadoc
 /* 1 */
 
 /**
@@ -26,24 +27,17 @@ package org.apache.olingo.odata2.core.uri.expression;
  * to build the expression tree.
  */
 public enum TokenKind {
-  /**
-   * Indicates that the token is a whitespace character
-   */
+  
+  /** Indicates that the token is a whitespace character. */
   WHITESPACE,
 
-  /**
-   * Indicates that the token is a '(' character
-   */
+  /** Indicates that the token is a '(' character. */
   OPENPAREN,
 
-  /**
-   * Indicates that the token is a ')' character
-   */
+  /** Indicates that the token is a ')' character. */
   CLOSEPAREN,
 
-  /**
-   * Indicates that the token is a ',' character
-   */
+  /** Indicates that the token is a ',' character. */
   COMMA,
 
   /**
@@ -60,10 +54,11 @@ public enum TokenKind {
    */
   SYMBOL,
 
-  /**
-   * Indicates that the token is a set of alphanumeric characters starting
-   * with a letter
-   */
-  LITERAL, TYPED_LITERAL_TODO_CHECK, UNKNOWN
+  /** Indicates that the token is a set of alphanumeric characters starting with a letter. */
+  LITERAL, 
+ /** The typed literal todo check. */
+ TYPED_LITERAL_TODO_CHECK, 
+ /** The unknown. */
+ UNKNOWN
 
 }

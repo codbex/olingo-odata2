@@ -19,13 +19,30 @@ import org.apache.olingo.odata2.jpa.processor.api.ODataJPAContext;
 import org.apache.olingo.odata2.jpa.processor.api.ODataJPAServiceFactory;
 import org.apache.olingo.odata2.jpa.processor.api.exception.ODataJPARuntimeException;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ODataJPAServiceFactoryMock.
+ */
 public class ODataJPAServiceFactoryMock extends ODataJPAServiceFactory {
+    
+    /** The context. */
     private ODataContext context = null;
 
+    /**
+     * Instantiates a new o data JPA service factory mock.
+     *
+     * @param context the context
+     */
     public ODataJPAServiceFactoryMock(final ODataContext context) {
         this.context = context;
     }
 
+    /**
+     * Initialize O data JPA context.
+     *
+     * @return the o data JPA context
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
+     */
     @Override
     public ODataJPAContext initializeODataJPAContext() throws ODataJPARuntimeException {
         ODataJPAContext oDataJPAContext = null;
@@ -34,6 +51,12 @@ public class ODataJPAServiceFactoryMock extends ODataJPAServiceFactory {
         return oDataJPAContext;
     }
 
+    /**
+     * Initialize O data JPA context X.
+     *
+     * @return the o data JPA context
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
+     */
     public ODataJPAContext initializeODataJPAContextX() throws ODataJPARuntimeException {
         ODataJPAContext oDataJPAContext = null;
         oDataJPAContext = ODataJPAContextMock.mockODataJPAContext(context);

@@ -23,14 +23,30 @@ import java.util.UUID;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class UUIDConverter.
+ */
 @Converter(autoApply = true)
 public class UUIDConverter implements AttributeConverter<UUID, String> {
 
+  /**
+   * Convert to database column.
+   *
+   * @param uuid the uuid
+   * @return the string
+   */
   @Override
   public String convertToDatabaseColumn(UUID uuid) {
     return uuid.toString();
   }
 
+  /**
+   * Convert to entity attribute.
+   *
+   * @param string the string
+   * @return the uuid
+   */
   @Override
   public UUID convertToEntityAttribute(String string) {
     return UUID.fromString(string);

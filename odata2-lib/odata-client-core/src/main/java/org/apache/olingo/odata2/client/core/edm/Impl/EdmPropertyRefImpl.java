@@ -19,16 +19,19 @@
 package org.apache.olingo.odata2.client.core.edm.Impl;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * Objects of this class represent a reference to a property via its name
- * 
- * 
+ * Objects of this class represent a reference to a property via its name.
  */
 public class EdmPropertyRefImpl extends EdmPropertyImpl {
 
+  /** The is simple. */
   protected boolean isSimple;
 
   /**
+   * Sets the checks if is simple.
+   *
+   * @param isSimple the new checks if is simple
    * @return <b>String</b> name of the {@link Property} this {@link EdmPropertyRefImpl} is referencing to
    */
 
@@ -36,10 +39,21 @@ public class EdmPropertyRefImpl extends EdmPropertyImpl {
     this.isSimple = isSimple;
   }
 
+  /**
+   * Checks if is simple.
+   *
+   * @return true, if is simple
+   */
   @Override
   public boolean isSimple() {
     return isSimple;
   }
+  
+  /**
+   * To string.
+   *
+   * @return the string
+   */
   @Override
   public String toString() {
       return String.format(name);

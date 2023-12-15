@@ -37,20 +37,45 @@ import org.apache.olingo.odata2.api.edm.provider.ComplexType;
 import org.apache.olingo.odata2.api.edm.provider.Property;
 import org.apache.olingo.odata2.api.edm.provider.SimpleProperty;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class EdmStructuralTypeImplProv.
  */
 public abstract class EdmStructuralTypeImplProv extends EdmNamedImplProv implements EdmStructuralType, EdmAnnotatable {
 
+  /** The edm base type. */
   protected EdmStructuralType edmBaseType;
+  
+  /** The structural type. */
   protected ComplexType structuralType;
+  
+  /** The edm type kind. */
   private EdmTypeKind edmTypeKind;
+  
+  /** The namespace. */
   protected String namespace;
+  
+  /** The edm properties. */
   protected Map<String, EdmTyped> edmProperties;
+  
+  /** The properties. */
   private Map<String, Property> properties;
+  
+  /** The edm property names. */
   private List<String> edmPropertyNames;
+  
+  /** The annotations. */
   private EdmAnnotations annotations;
 
+  /**
+   * Instantiates a new edm structural type impl prov.
+   *
+   * @param edm the edm
+   * @param structuralType the structural type
+   * @param edmTypeKind the edm type kind
+   * @param namespace the namespace
+   * @throws EdmException the edm exception
+   */
   public EdmStructuralTypeImplProv(final EdmImplProv edm, final ComplexType structuralType,
       final EdmTypeKind edmTypeKind, final String namespace) throws EdmException {
     super(edm, structuralType.getName());
@@ -65,6 +90,11 @@ public abstract class EdmStructuralTypeImplProv extends EdmNamedImplProv impleme
     edmProperties = new HashMap<String, EdmTyped>();
   }
 
+  /**
+   * Resolve base type.
+   *
+   * @throws EdmException the edm exception
+   */
   private void resolveBaseType() throws EdmException {
     FullQualifiedName fqName = structuralType.getBaseType();
     if (fqName != null) {
@@ -79,6 +109,11 @@ public abstract class EdmStructuralTypeImplProv extends EdmNamedImplProv impleme
     }
   }
 
+  /**
+   * Builds the properties internal.
+   *
+   * @throws EdmException the edm exception
+   */
   private void buildPropertiesInternal() throws EdmException {
     properties = new HashMap<String, Property>();
 
@@ -89,11 +124,24 @@ public abstract class EdmStructuralTypeImplProv extends EdmNamedImplProv impleme
     }
   }
 
+  /**
+   * Gets the namespace.
+   *
+   * @return the namespace
+   * @throws EdmException the edm exception
+   */
   @Override
   public String getNamespace() throws EdmException {
     return namespace;
   }
 
+  /**
+   * Gets the property.
+   *
+   * @param name the name
+   * @return the property
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmTyped getProperty(final String name) throws EdmException {
     EdmTyped property = edmProperties.get(name);
@@ -106,6 +154,12 @@ public abstract class EdmStructuralTypeImplProv extends EdmNamedImplProv impleme
     return property;
   }
 
+  /**
+   * Gets the property names.
+   *
+   * @return the property names
+   * @throws EdmException the edm exception
+   */
   @Override
   public List<String> getPropertyNames() throws EdmException {
     if (edmPropertyNames == null) {
@@ -124,21 +178,45 @@ public abstract class EdmStructuralTypeImplProv extends EdmNamedImplProv impleme
     return edmPropertyNames;
   }
 
+  /**
+   * Gets the base type.
+   *
+   * @return the base type
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmStructuralType getBaseType() throws EdmException {
     return edmBaseType;
   }
 
+  /**
+   * Gets the kind.
+   *
+   * @return the kind
+   */
   @Override
   public EdmTypeKind getKind() {
     return edmTypeKind;
   }
 
+  /**
+   * Gets the mapping.
+   *
+   * @return the mapping
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmMapping getMapping() throws EdmException {
     return structuralType.getMapping();
   }
 
+  /**
+   * Gets the property internal.
+   *
+   * @param name the name
+   * @return the property internal
+   * @throws EdmException the edm exception
+   */
   protected EdmTyped getPropertyInternal(final String name) throws EdmException {
     EdmTyped edmProperty = null;
 
@@ -155,6 +233,13 @@ public abstract class EdmStructuralTypeImplProv extends EdmNamedImplProv impleme
     return edmProperty;
   }
 
+  /**
+   * Creates the property.
+   *
+   * @param property the property
+   * @return the edm typed
+   * @throws EdmException the edm exception
+   */
   protected EdmTyped createProperty(final Property property) throws EdmException {
     if (property instanceof SimpleProperty) {
       return new EdmSimplePropertyImplProv(edm, (SimpleProperty) property);
@@ -165,6 +250,11 @@ public abstract class EdmStructuralTypeImplProv extends EdmNamedImplProv impleme
     }
   }
 
+  /**
+   * To string.
+   *
+   * @return the string
+   */
   @Override
   public String toString() {
     try {
@@ -174,6 +264,12 @@ public abstract class EdmStructuralTypeImplProv extends EdmNamedImplProv impleme
     }
   }
 
+  /**
+   * Gets the annotations.
+   *
+   * @return the annotations
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmAnnotations getAnnotations() throws EdmException {
     if (annotations == null) {

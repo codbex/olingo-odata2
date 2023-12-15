@@ -22,6 +22,7 @@ import java.util.List;
 
 import org.apache.olingo.odata2.api.edm.EdmProperty;
 
+// TODO: Auto-generated Javadoc
 /**
  * An item of a $select system query option.
  * @org.apache.olingo.odata2.DoNotImplement
@@ -30,7 +31,8 @@ import org.apache.olingo.odata2.api.edm.EdmProperty;
 public interface SelectItem {
 
   /**
-   * <code>true</code> if select=*
+   * <code>true</code> if select=*.
+   *
    * @return <code>true</code> if select=*
    */
   public boolean isStar();

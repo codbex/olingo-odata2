@@ -42,6 +42,7 @@ import org.apache.olingo.odata2.api.processor.ODataResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+// TODO: Auto-generated Javadoc
 /**
  * ODataServiceFactory implemantion based on ListProcessor
  * in combination with Annotation-Support-Classes for EdmProvider, DataSource and ValueAccess.
@@ -50,11 +51,14 @@ public class AnnotationRefServiceFactory extends ODataServiceFactory {
 
   /**
    * Instance holder for all annotation relevant instances which should be used as singleton
-   * instances within the ODataApplication (ODataService)
+   * instances within the ODataApplication (ODataService).
    */
   private static class AnnotationInstances {
+    
+    /** The Constant MODEL_PACKAGE. */
     final static String MODEL_PACKAGE = "org.apache.olingo.odata2.annotation.processor.ref.model";
 
+    /** The Constant ANNOTATION_ODATA_SERVICE. */
     final static ODataService ANNOTATION_ODATA_SERVICE;
 
     static {
@@ -69,12 +73,26 @@ public class AnnotationRefServiceFactory extends ODataServiceFactory {
     }
   }
 
+  /**
+   * Creates a new AnnotationRefService object.
+   *
+   * @param context the context
+   * @return the o data service
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataService createService(final ODataContext context) throws ODataException {
     // Edm via Annotations and ListProcessor via AnnotationDS with AnnotationsValueAccess
     return AnnotationInstances.ANNOTATION_ODATA_SERVICE;
   }
 
+  /**
+   * Gets the callback.
+   *
+   * @param <T> the generic type
+   * @param callbackInterface the callback interface
+   * @return the callback
+   */
   @SuppressWarnings("unchecked")
   @Override
   public <T extends ODataCallback> T getCallback(final Class<T> callbackInterface) {
@@ -92,6 +110,11 @@ public class AnnotationRefServiceFactory extends ODataServiceFactory {
    */
   private final class ScenarioDebugCallback implements ODataDebugCallback {
 
+    /**
+     * Checks if is debug enabled.
+     *
+     * @return true, if is debug enabled
+     */
     @Override
     public boolean isDebugEnabled() {
       return true;
@@ -103,8 +126,16 @@ public class AnnotationRefServiceFactory extends ODataServiceFactory {
    */
   private class ScenarioErrorCallback implements ODataErrorCallback {
 
+    /** The log. */
     private final Logger LOG = LoggerFactory.getLogger(ScenarioErrorCallback.class);
 
+    /**
+     * Handle error.
+     *
+     * @param context the context
+     * @return the o data response
+     * @throws ODataApplicationException the o data application exception
+     */
     @Override
     public ODataResponse handleError(final ODataErrorContext context) throws ODataApplicationException {
       if (context.getHttpStatus() == HttpStatusCodes.INTERNAL_SERVER_ERROR) {
@@ -116,10 +147,23 @@ public class AnnotationRefServiceFactory extends ODataServiceFactory {
 
   }
 
+  /**
+   * Gets the data store.
+   *
+   * @param <T> the generic type
+   * @param clz the clz
+   * @return the data store
+   * @throws DataStoreException the data store exception
+   */
   private static <T> DataStore<T> getDataStore(final Class<T> clz) throws DataStoreException {
     return DataStore.createInMemory(clz, true);
   }
 
+  /**
+   * Initialize sample data.
+   *
+   * @throws ODataApplicationException the o data application exception
+   */
   private static void initializeSampleData() throws ODataApplicationException {
     DataStore<Team> teamDs = getDataStore(Team.class);
     teamDs.create(createTeam("Team Alpha", true));
@@ -162,6 +206,21 @@ public class AnnotationRefServiceFactory extends ODataServiceFactory {
         null, teamDs.read().iterator().next(), roomDs.read().iterator().next()));
   }
 
+  /**
+   * Creates a new AnnotationRefService object.
+   *
+   * @param name the name
+   * @param location the location
+   * @param age the age
+   * @param date the date
+   * @param image the image
+   * @param imageType the image type
+   * @param imageUrl the image url
+   * @param manager the manager
+   * @param team the team
+   * @param room the room
+   * @return the employee
+   */
   private static Employee createEmployee(final String name,
       final Location location, final int age, final Calendar date,
       final byte[] image, final String imageType, final String imageUrl,
@@ -180,10 +239,25 @@ public class AnnotationRefServiceFactory extends ODataServiceFactory {
     return employee;
   }
 
+  /**
+   * Creates a new AnnotationRefService object.
+   *
+   * @param teamName the team name
+   * @param isScrumTeam the is scrum team
+   * @return the team
+   */
   private static Team createTeam(final String teamName, final boolean isScrumTeam) {
     return createTeam(teamName, isScrumTeam, null);
   }
 
+  /**
+   * Creates a new AnnotationRefService object.
+   *
+   * @param teamName the team name
+   * @param isScrumTeam the is scrum team
+   * @param subTeam the sub team
+   * @return the team
+   */
   private static Team createTeam(final String teamName, final boolean isScrumTeam, Team subTeam) {
     Team team = new Team();
     team.setName(teamName);
@@ -192,12 +266,25 @@ public class AnnotationRefServiceFactory extends ODataServiceFactory {
     return team;
   }
 
+  /**
+   * Creates a new AnnotationRefService object.
+   *
+   * @param buildingName the building name
+   * @return the building
+   */
   private static Building createBuilding(final String buildingName) {
     Building b = new Building();
     b.setName(buildingName);
     return b;
   }
 
+  /**
+   * Creates a new AnnotationRefService object.
+   *
+   * @param name the name
+   * @param format the format
+   * @return the photo
+   */
   private static Photo createPhoto(final String name, final ResourceHelper.Format format) {
     Photo p = new Photo();
     p.setName(name);
@@ -208,6 +295,15 @@ public class AnnotationRefServiceFactory extends ODataServiceFactory {
     return p;
   }
 
+  /**
+   * Creates a new AnnotationRefService object.
+   *
+   * @param name the name
+   * @param seats the seats
+   * @param version the version
+   * @param building the building
+   * @return the room
+   */
   private static Room createRoom(final String name, final int seats, final int version, final Building building) {
     Room r = new Room();
     r.setName(name);

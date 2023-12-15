@@ -18,6 +18,7 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.jpa.processor.api.factory;
 
+// TODO: Auto-generated Javadoc
 /**
  * The class is an abstract factory for creating default ODataJPAFactory. The
  * class's actual implementation is responsible for creating other factory
@@ -39,14 +40,19 @@ package org.apache.olingo.odata2.jpa.processor.api.factory;
  */
 public abstract class ODataJPAFactory {
 
+  /** The implementation. */
   private static String IMPLEMENTATION =
       "org.apache.olingo.odata2.jpa.processor.core.factory.ODataJPAFactoryImpl";
+  
+  /** The factory impl. */
   private static ODataJPAFactory factoryImpl;
 
   /**
    * Method sets the implementation of the ODataJPAFactory. This makes
    * it possible to change some default implementation like JPAAccessFactory,
    * JPQLBuilderFactory, and JPQLBuilderFactory
+   *
+   * @param clazz the new implementation
    */
   public static void setImplementation(Class<?> clazz) {
       IMPLEMENTATION = clazz.getName();

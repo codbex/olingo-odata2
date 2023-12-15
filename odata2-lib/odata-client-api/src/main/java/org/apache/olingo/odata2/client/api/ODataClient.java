@@ -36,12 +36,13 @@ import org.apache.olingo.odata2.client.api.ep.ContentTypeBasedSerializer;
 import org.apache.olingo.odata2.client.api.uri.EdmURIBuilder;
 import org.apache.olingo.odata2.client.api.uri.URIBuilder;
 
+// TODO: Auto-generated Javadoc
 /**
- * This class provides an instance of odata Client
- *
+ * This class provides an instance of odata Client.
  */
 public abstract class ODataClient {
   
+  /** The Constant IMPLEMENTATION. */
   private static final String IMPLEMENTATION = "org.apache.olingo.odata2.client.core.ODataClientImpl";
 
   /**
@@ -68,38 +69,44 @@ public abstract class ODataClient {
   
   /**
    * Creates a new serializer object for rendering content in the specified format.
-   * 
+   *
    * @param contentType any format supported by Olingo (XML, JSON ...)
    * @return ContentTypeBasedSerializer
+   * @throws EntityProviderException the entity provider exception
    */
   public abstract ContentTypeBasedSerializer createSerializer(String contentType) throws EntityProviderException;
 
   /**
    * Creates a new deserializer object for reading content in the specified format.
-   * 
+   *
    * @param contentType any content type supported by Olingo (XML, JSON ...)
    * @return ContentTypeBasedDeserializer
+   * @throws EntityProviderException the entity provider exception
    */
   public abstract ContentTypeBasedDeserializer createDeserializer(String contentType) throws EntityProviderException;
   
   /**
-   * Reads the metadata file and validates it if validate parameter is set to true
+   * Reads the metadata file and validates it if validate parameter is set to true.
+   *
    * @param content inputStream
-   * @param validate
+   * @param validate the validate
    * @return EdmDataServices
-   * @throws EntityProviderException
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
    */
   public abstract EdmDataServices readMetadata(InputStream content, boolean validate) 
       throws EntityProviderException, EdmException;  //NOPMD  - suppressed
   
   /**
-   * Parses the uri and returns UriInfo
-   * @param edm
-   * @param pathSegments
-   * @param queryParameters
+   * Parses the uri and returns UriInfo.
+   *
+   * @param edm the edm
+   * @param pathSegments the path segments
+   * @param queryParameters the query parameters
    * @return UriInfo
-   * @throws EntityProviderException
-   * @throws EdmException
+   * @throws UriSyntaxException the uri syntax exception
+   * @throws UriNotMatchingException the uri not matching exception
+   * @throws EdmException the edm exception
    */
   
   public abstract UriInfo parseUri(final Edm edm, final List<PathSegment> pathSegments, 
@@ -107,14 +114,16 @@ public abstract class ODataClient {
       throws UriSyntaxException, UriNotMatchingException, EdmException; //NOPMD  - suppressed
   
   /**
-   * Parses the uri and returns UriInfo
-   * @param edm
-   * @param pathSegments
-   * @param queryParameters
-   * @param strictFilter
+   * Parses the uri and returns UriInfo.
+   *
+   * @param edm the edm
+   * @param pathSegments the path segments
+   * @param queryParameters the query parameters
+   * @param strictFilter the strict filter
    * @return UriInfo
-   * @throws EntityProviderException
-   * @throws EdmException
+   * @throws UriSyntaxException the uri syntax exception
+   * @throws UriNotMatchingException the uri not matching exception
+   * @throws EdmException the edm exception
    */
 
   public abstract UriInfo parseUri(final Edm edm, final List<PathSegment> pathSegments,
@@ -122,27 +131,29 @@ public abstract class ODataClient {
       throws UriSyntaxException, UriNotMatchingException, EdmException; //NOPMD  - suppressed
 
   /**
-   * Parses the uri and returns UriInfo
-   * @param edm
-   * @param uri
+   * Parses the uri and returns UriInfo.
+   *
+   * @param edm the edm
+   * @param uri the uri
    * @return UriInfo
-   * @throws UriSyntaxException
-   * @throws UriNotMatchingException
-   * @throws EdmException
+   * @throws UriSyntaxException the uri syntax exception
+   * @throws UriNotMatchingException the uri not matching exception
+   * @throws EdmException the edm exception
    */
 
   public abstract UriInfo parseUri(final Edm edm, final String uri)
       throws UriSyntaxException, UriNotMatchingException, EdmException; //NOPMD  - suppressed
 
   /**
-   * Parses the uri and returns UriInfo
-   * @param edm
-   * @param uri
-   * @param strictFilter
+   * Parses the uri and returns UriInfo.
+   *
+   * @param edm the edm
+   * @param uri the uri
+   * @param strictFilter the strict filter
    * @return UriInfo
-   * @throws UriSyntaxException
-   * @throws UriNotMatchingException
-   * @throws EdmException
+   * @throws UriSyntaxException the uri syntax exception
+   * @throws UriNotMatchingException the uri not matching exception
+   * @throws EdmException the edm exception
    */
 
   public abstract UriInfo parseUri(final Edm edm, final String uri, boolean strictFilter)
@@ -151,15 +162,17 @@ public abstract class ODataClient {
   
   
   /**
-   * Constructs the edm uri based on segments appended
-   * @param serviceRoot
+   * Constructs the edm uri based on segments appended.
+   *
+   * @param serviceRoot the service root
    * @return EdmURIBuilder
    */
   public abstract EdmURIBuilder edmUriBuilder(String serviceRoot);
   
   /**
-   * Constructs the uri based on segments appended
-   * @param serviceRoot
+   * Constructs the uri based on segments appended.
+   *
+   * @param serviceRoot the service root
    * @return URIBuilder
    */
   public abstract URIBuilder uriBuilder(String serviceRoot);

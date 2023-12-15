@@ -20,19 +20,30 @@ package org.apache.olingo.odata2.api.edm.provider;
 
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
 /**
- * Objects of this Class represent a referential constraint
- * 
+ * Objects of this Class represent a referential constraint.
  */
 public class ReferentialConstraint {
 
+  /** The principal. */
   private ReferentialConstraintRole principal;
+  
+  /** The dependent. */
   private ReferentialConstraintRole dependent;
+  
+  /** The documentation. */
   private Documentation documentation;
+  
+  /** The annotation attributes. */
   private List<AnnotationAttribute> annotationAttributes;
+  
+  /** The annotation elements. */
   private List<AnnotationElement> annotationElements;
 
   /**
+   * Gets the principal.
+   *
    * @return {@link ReferentialConstraintRole} the principal of this {@link ReferentialConstraint}
    */
   public ReferentialConstraintRole getPrincipal() {
@@ -40,6 +51,8 @@ public class ReferentialConstraint {
   }
 
   /**
+   * Gets the dependent.
+   *
    * @return {@link ReferentialConstraintRole} the dependent of this {@link ReferentialConstraint}
    */
   public ReferentialConstraintRole getDependent() {
@@ -47,6 +60,8 @@ public class ReferentialConstraint {
   }
 
   /**
+   * Gets the documentation.
+   *
    * @return {@link Documentation} documentation
    */
   public Documentation getDocumentation() {
@@ -54,6 +69,8 @@ public class ReferentialConstraint {
   }
 
   /**
+   * Gets the annotation attributes.
+   *
    * @return List of {@link AnnotationAttribute} annotation attributes
    */
   public List<AnnotationAttribute> getAnnotationAttributes() {
@@ -61,6 +78,8 @@ public class ReferentialConstraint {
   }
 
   /**
+   * Gets the annotation elements.
+   *
    * @return List of {@link AnnotationElement} annotation elements
    */
   public List<AnnotationElement> getAnnotationElements() {
@@ -68,8 +87,9 @@ public class ReferentialConstraint {
   }
 
   /**
-   * Sets the principal {@link ReferentialConstraintRole} for this {@link ReferentialConstraint}
-   * @param principal
+   * Sets the principal {@link ReferentialConstraintRole} for this {@link ReferentialConstraint}.
+   *
+   * @param principal the principal
    * @return {@link ReferentialConstraint} for method chaining
    */
   public ReferentialConstraint setPrincipal(final ReferentialConstraintRole principal) {
@@ -78,8 +98,9 @@ public class ReferentialConstraint {
   }
 
   /**
-   * Sets the dependent {@link ReferentialConstraintRole} for this {@link ReferentialConstraint}
-   * @param dependent
+   * Sets the dependent {@link ReferentialConstraintRole} for this {@link ReferentialConstraint}.
+   *
+   * @param dependent the dependent
    * @return {@link ReferentialConstraint} for method chaining
    */
   public ReferentialConstraint setDependent(final ReferentialConstraintRole dependent) {
@@ -88,8 +109,9 @@ public class ReferentialConstraint {
   }
 
   /**
-   * Sets the {@link Documentation} of this {@link ReferentialConstraint}
-   * @param documentation
+   * Sets the {@link Documentation} of this {@link ReferentialConstraint}.
+   *
+   * @param documentation the documentation
    * @return {@link ReferentialConstraint} for method chaining
    */
   public ReferentialConstraint setDocumentation(final Documentation documentation) {
@@ -98,8 +120,9 @@ public class ReferentialConstraint {
   }
 
   /**
-   * Sets the List of {@link AnnotationAttribute} for this {@link ReferentialConstraint}
-   * @param annotationAttributes
+   * Sets the List of {@link AnnotationAttribute} for this {@link ReferentialConstraint}.
+   *
+   * @param annotationAttributes the annotation attributes
    * @return {@link ReferentialConstraint} for method chaining
    */
   public ReferentialConstraint setAnnotationAttributes(final List<AnnotationAttribute> annotationAttributes) {
@@ -108,8 +131,9 @@ public class ReferentialConstraint {
   }
 
   /**
-   * Sets the List of {@link AnnotationElement} for this {@link ReferentialConstraint}
-   * @param annotationElements
+   * Sets the List of {@link AnnotationElement} for this {@link ReferentialConstraint}.
+   *
+   * @param annotationElements the annotation elements
    * @return {@link ReferentialConstraint} for method chaining
    */
   public ReferentialConstraint setAnnotationElements(final List<AnnotationElement> annotationElements) {

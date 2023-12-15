@@ -32,47 +32,106 @@ import java.util.Random;
 import org.apache.http.HttpEntity;
 import org.apache.olingo.odata2.testutil.TestUtilRuntimeException;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class StringHelper.
  */
 public class StringHelper {
 
+  /**
+   * The Class Stream.
+   */
   public static class Stream {
+    
+    /** The data. */
     private final byte[] data;
 
+    /**
+     * Instantiates a new stream.
+     *
+     * @param data the data
+     */
     private Stream(final byte[] data) {
       this.data = data;
     }
 
+    /**
+     * Instantiates a new stream.
+     *
+     * @param content the content
+     * @param charset the charset
+     * @throws UnsupportedEncodingException the unsupported encoding exception
+     */
     public Stream(final String content, final String charset) throws UnsupportedEncodingException {
       this(content.getBytes(charset));
     }
 
+    /**
+     * As stream.
+     *
+     * @return the input stream
+     */
     public InputStream asStream() {
       return new ByteArrayInputStream(data);
     }
 
+    /**
+     * As array.
+     *
+     * @return the byte[]
+     */
     public byte[] asArray() {
       return data;
     }
 
+    /**
+     * As string.
+     *
+     * @return the string
+     */
     public String asString() {
       return asString("UTF-8");
     }
 
+    /**
+     * As string.
+     *
+     * @param charsetName the charset name
+     * @return the string
+     */
     public String asString(final String charsetName) {
       return new String(data, Charset.forName(charsetName));
     }
 
+    /**
+     * Prints the.
+     *
+     * @param out the out
+     * @return the stream
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     public Stream print(final OutputStream out) throws IOException {
       out.write(data);
       return this;
     }
 
+    /**
+     * Prints the.
+     *
+     * @return the stream
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     public Stream print() throws IOException {
       return print(System.out);
     }
 
+    /**
+     * As string with line separation.
+     *
+     * @param separator the separator
+     * @return the string
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     public String asStringWithLineSeparation(String separator) throws IOException {
       BufferedReader br = new BufferedReader(new StringReader(asString()));
       StringBuilder sb = new StringBuilder(br.readLine());
@@ -84,6 +143,13 @@ public class StringHelper {
       return sb.toString();
     }
 
+    /**
+     * As stream with line separation.
+     *
+     * @param separator the separator
+     * @return the input stream
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     public InputStream asStreamWithLineSeparation(String separator) throws IOException {
       String asString = asStringWithLineSeparation(separator);
       return new ByteArrayInputStream(asString.getBytes("UTF-8"));
@@ -101,6 +167,13 @@ public class StringHelper {
     }
   }
 
+  /**
+   * To stream.
+   *
+   * @param stream the stream
+   * @return the stream
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   public static Stream toStream(final InputStream stream) throws IOException {
     byte[] result = new byte[0];
     byte[] tmp = new byte[8192];
@@ -116,10 +189,23 @@ public class StringHelper {
     return new Stream(result);
   }
 
+  /**
+   * To stream.
+   *
+   * @param content the content
+   * @return the stream
+   */
   public static Stream toStream(final String content) {
     return toStream(content, "utf-8");
   }
 
+  /**
+   * To stream.
+   *
+   * @param content the content
+   * @param charset the charset
+   * @return the stream
+   */
   public static Stream toStream(final String content, final String charset) {
     try {
       return new Stream(content, charset);
@@ -128,6 +214,14 @@ public class StringHelper {
     }
   }
 
+  /**
+   * Input stream to string.
+   *
+   * @param in the in
+   * @param preserveLineBreaks the preserve line breaks
+   * @return the string
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   public static String inputStreamToString(final InputStream in, final boolean preserveLineBreaks) throws IOException {
     final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(in, Charset.forName("UTF-8")));
     final StringBuilder stringBuilder = new StringBuilder();
@@ -147,6 +241,13 @@ public class StringHelper {
     return result;
   }
 
+  /**
+   * Input stream to string CRLF line breaks.
+   *
+   * @param in the in
+   * @return the string
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   public static String inputStreamToStringCRLFLineBreaks(final InputStream in) throws IOException {
     final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(in, Charset.forName("UTF-8")));
     final StringBuilder stringBuilder = new StringBuilder();
@@ -164,10 +265,23 @@ public class StringHelper {
     return result;
   }
 
+  /**
+   * Count lines.
+   *
+   * @param content the content
+   * @return the int
+   */
   public static int countLines(final String content) {
     return countLines(content, "\r\n");
   }
 
+  /**
+   * Count lines.
+   *
+   * @param content the content
+   * @param lineBreak the line break
+   * @return the int
+   */
   public static int countLines(final String content, final String lineBreak) {
     if (content == null) {
       return -1;
@@ -183,10 +297,25 @@ public class StringHelper {
     return count;
   }
 
+  /**
+   * Input stream to string.
+   *
+   * @param in the in
+   * @return the string
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   public static String inputStreamToString(final InputStream in) throws IOException {
     return inputStreamToString(in, false);
   }
 
+  /**
+   * Http entity to string.
+   *
+   * @param entity the entity
+   * @return the string
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws IllegalStateException the illegal state exception
+   */
   public static String httpEntityToString(final HttpEntity entity) throws IOException, IllegalStateException {
     return inputStreamToString(entity.getContent());
   }

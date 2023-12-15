@@ -24,24 +24,46 @@ import org.apache.olingo.odata2.api.edm.EdmFacets;
 import org.apache.olingo.odata2.api.edm.EdmLiteralKind;
 import org.apache.olingo.odata2.api.edm.EdmSimpleTypeException;
 
+// TODO: Auto-generated Javadoc
 /**
  * Implementation of the EDM simple type Guid.
  * 
  */
 public class EdmGuid extends AbstractSimpleType {
 
+  /** The Constant PATTERN. */
   private static final String PATTERN = "\\p{XDigit}{8}-\\p{XDigit}{4}-\\p{XDigit}{4}-\\p{XDigit}{4}-\\p{XDigit}{12}";
+  
+  /** The Constant instance. */
   private static final EdmGuid instance = new EdmGuid();
 
+  /**
+   * Gets the single instance of EdmGuid.
+   *
+   * @return single instance of EdmGuid
+   */
   public static EdmGuid getInstance() {
     return instance;
   }
 
+  /**
+   * Gets the default type.
+   *
+   * @return the default type
+   */
   @Override
   public Class<?> getDefaultType() {
     return UUID.class;
   }
 
+  /**
+   * Validate.
+   *
+   * @param value the value
+   * @param literalKind the literal kind
+   * @param facets the facets
+   * @return true, if successful
+   */
   @Override
   public boolean validate(final String value, final EdmLiteralKind literalKind, final EdmFacets facets) {
     return value == null ?
@@ -49,6 +71,13 @@ public class EdmGuid extends AbstractSimpleType {
         validateLiteralInternal(value, literalKind);
   }
 
+  /**
+   * Validate literal internal.
+   *
+   * @param value the value
+   * @param literalKind the literal kind
+   * @return true, if successful
+   */
   private boolean validateLiteralInternal(String value, EdmLiteralKind literalKind) {
     String cleanValue = null;
     if (literalKind == EdmLiteralKind.URI && value.toLowerCase().startsWith("guid'") && value.endsWith("'")) {
@@ -59,10 +88,27 @@ public class EdmGuid extends AbstractSimpleType {
     return validateLiteral(cleanValue);
   }
 
+  /**
+   * Validate literal.
+   *
+   * @param value the value
+   * @return true, if successful
+   */
   private boolean validateLiteral(final String value) {
     return value.matches(PATTERN);
   }
 
+  /**
+   * Internal value of string.
+   *
+   * @param <T> the generic type
+   * @param value the value
+   * @param literalKind the literal kind
+   * @param facets the facets
+   * @param returnType the return type
+   * @return the t
+   * @throws EdmSimpleTypeException the edm simple type exception
+   */
   @Override
   protected <T> T internalValueOfString(final String value, final EdmLiteralKind literalKind, final EdmFacets facets,
       final Class<T> returnType) throws EdmSimpleTypeException {
@@ -86,6 +132,16 @@ public class EdmGuid extends AbstractSimpleType {
     }
   }
 
+  /**
+   * Internal value to string.
+   *
+   * @param <T> the generic type
+   * @param value the value
+   * @param literalKind the literal kind
+   * @param facets the facets
+   * @return the string
+   * @throws EdmSimpleTypeException the edm simple type exception
+   */
   @Override
   protected <T> String internalValueToString(final T value, final EdmLiteralKind literalKind, final EdmFacets facets)
       throws EdmSimpleTypeException {
@@ -96,6 +152,12 @@ public class EdmGuid extends AbstractSimpleType {
     }
   }
 
+  /**
+   * To uri literal.
+   *
+   * @param literal the literal
+   * @return the string
+   */
   @Override
   public String toUriLiteral(final String literal) {
     return "guid'" + literal + "'";

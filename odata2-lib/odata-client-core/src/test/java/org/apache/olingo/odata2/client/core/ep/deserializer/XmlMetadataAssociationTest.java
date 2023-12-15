@@ -47,13 +47,25 @@ import org.apache.olingo.odata2.client.api.edm.EdmDataServices;
 import org.apache.olingo.odata2.client.api.edm.EdmSchema;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class XmlMetadataAssociationTest.
+ */
 public class XmlMetadataAssociationTest {
+  
+  /** The Constant NAMESPACE. */
   private static final String NAMESPACE = "RefScenario";
+  
+  /** The Constant NAMESPACE2. */
   private static final String NAMESPACE2 = "RefScenario2";
+  
+  /** The Constant ASSOCIATION. */
   private static final String ASSOCIATION = "ManagerEmployees";
   
+  /** The property names. */
   private final String[] propertyNames = { "EmployeeId", "EmployeeName", "Location" };
   
+  /** The xml with association. */
   private final String xmlWithAssociation =
       "<edmx:Edmx Version=\"1.0\" xmlns:edmx=\""
           + Edm.NAMESPACE_EDMX_2007_06
@@ -88,6 +100,8 @@ public class XmlMetadataAssociationTest {
           + ASSOCIATION + "\" Association=\"RefScenario." + ASSOCIATION + "\">"
           + "<End EntitySet=\"Managers\" Role=\"r_Manager\"/>" + "<End EntitySet=\"Employees\" Role=\"r_Employees\"/>"
           + "</AssociationSet>" + "</EntityContainer>" + "</Schema>" + "</edmx:DataServices>" + "</edmx:Edmx>";
+  
+  /** The xml with association with RC. */
   private final String xmlWithAssociationWithRC =
       "<edmx:Edmx Version=\"1.0\" xmlns:edmx=\""
           + Edm.NAMESPACE_EDMX_2007_06
@@ -127,6 +141,14 @@ public class XmlMetadataAssociationTest {
           + "<End EntitySet=\"Managers\" Role=\"r_Manager\"/>" + "<End EntitySet=\"Employees\" Role=\"r_Employees\"/>"
           + "</AssociationSet>" + "</EntityContainer>" + "</Schema>" + "</edmx:DataServices>" + "</edmx:Edmx>";
 
+    /**
+     * Test association set.
+     *
+     * @throws XMLStreamException the XML stream exception
+     * @throws EntityProviderException the entity provider exception
+     * @throws EdmException the edm exception
+     * @throws UnsupportedEncodingException the unsupported encoding exception
+     */
     @Test
   public void testAssociationSet() throws XMLStreamException, EntityProviderException,
   EdmException, UnsupportedEncodingException {
@@ -156,6 +178,14 @@ public class XmlMetadataAssociationTest {
     }
   }
     
+    /**
+     * Test association set with RC.
+     *
+     * @throws XMLStreamException the XML stream exception
+     * @throws EntityProviderException the entity provider exception
+     * @throws EdmException the edm exception
+     * @throws UnsupportedEncodingException the unsupported encoding exception
+     */
     @Test
     public void testAssociationSetWithRC() throws XMLStreamException, EntityProviderException,
     EdmException, UnsupportedEncodingException {
@@ -170,6 +200,14 @@ public class XmlMetadataAssociationTest {
       
     }
     
+    /**
+     * Test related entity set.
+     *
+     * @throws XMLStreamException the XML stream exception
+     * @throws EntityProviderException the entity provider exception
+     * @throws EdmException the edm exception
+     * @throws UnsupportedEncodingException the unsupported encoding exception
+     */
     @Test
     public void testRelatedEntitySet() throws XMLStreamException, EntityProviderException,
     EdmException, UnsupportedEncodingException {
@@ -197,6 +235,14 @@ public class XmlMetadataAssociationTest {
       }
     }
     
+  /**
+   * Test association.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   @Test
   public void testAssociation() throws XMLStreamException, EntityProviderException,
   EdmException, UnsupportedEncodingException {
@@ -219,10 +265,24 @@ public class XmlMetadataAssociationTest {
     }
   }
   
+  /**
+   * Creates the stream reader.
+   *
+   * @param xml the xml
+   * @return the input stream
+   * @throws XMLStreamException the XML stream exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   private InputStream createStreamReader(final String xml) throws XMLStreamException,
   UnsupportedEncodingException {
     return new ByteArrayInputStream(xml.getBytes("UTF-8"));
   }
+  
+  /**
+   * Test missing type at association.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void testMissingTypeAtAssociation() throws Exception {
     final String xmlWithInvalidAssociation =
@@ -262,6 +322,11 @@ public class XmlMetadataAssociationTest {
     }
   }
   
+  /**
+   * Test missing association.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void testMissingAssociation() throws Exception {
     final String xmlWithAssociation =
@@ -302,6 +367,14 @@ public class XmlMetadataAssociationTest {
     }
   }
   
+  /**
+   * Test invalid association.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   @Test(expected = EdmException.class)
   public void testInvalidAssociation() throws XMLStreamException, 
   EntityProviderException, EdmException, UnsupportedEncodingException {
@@ -344,6 +417,15 @@ public class XmlMetadataAssociationTest {
     parser.readMetadata(reader, true);
 
   }
+  
+  /**
+   * Test invalid association end.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   @Test(expected = EdmException.class)
   public void testInvalidAssociationEnd() throws XMLStreamException,
   EntityProviderException, EdmException, UnsupportedEncodingException {
@@ -376,6 +458,14 @@ public class XmlMetadataAssociationTest {
 
   }
   
+  /**
+   * Test invalid association end 2.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   @Test(expected = EdmException.class)
   public void testInvalidAssociationEnd2() throws XMLStreamException, 
   EntityProviderException, EdmException, UnsupportedEncodingException {
@@ -408,6 +498,11 @@ public class XmlMetadataAssociationTest {
 
   }
   
+  /**
+   * Test annoations on association set.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testAnnoationsOnAssociationSet() throws Exception {
     final String employees = "r_Employees";
@@ -460,6 +555,11 @@ public class XmlMetadataAssociationTest {
     
   }
   
+  /**
+   * Test related entity set with cyclic association.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testRelatedEntitySetWithCyclicAssociation() throws Exception {
     final String employees = "r_Employees";

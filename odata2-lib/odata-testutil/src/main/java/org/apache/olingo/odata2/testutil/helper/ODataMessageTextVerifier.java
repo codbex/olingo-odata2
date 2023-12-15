@@ -31,6 +31,7 @@ import java.util.ResourceBundle;
 
 import org.apache.olingo.odata2.api.exception.MessageReference;
 
+// TODO: Auto-generated Javadoc
 /**
  * This class is a helper for writing proper error messages.
  * Please use the static method {@link #TestClass(Class)} to
@@ -41,19 +42,30 @@ import org.apache.olingo.odata2.api.exception.MessageReference;
  */
 public class ODataMessageTextVerifier {
 
-  /**
-   * Same as define in {@link MessageService}
-   */
+  /** Same as define in {@link MessageService}. */
   private static final String BUNDLE_NAME = "i18n"; //$NON-NLS-1$
+  
+  /** The Constant locale. */
   private static final Locale locale = Locale.ROOT;
 
+  /** The resource bundle. */
   private ResourceBundle resourceBundle = ResourceBundle.getBundle(BUNDLE_NAME, locale);
+  
+  /** The error collector. */
   private final List<Throwable> errorCollector;
 
+  /**
+   * Instantiates a new o data message text verifier.
+   */
   public ODataMessageTextVerifier() {
     errorCollector = new ArrayList<Throwable>();
   }
 
+  /**
+   * Fail collector.
+   *
+   * @param text the text
+   */
   private void failCollector(final String text) {
     try {
       fail(text);
@@ -62,6 +74,12 @@ public class ODataMessageTextVerifier {
     }
   }
 
+  /**
+   * Gets the message.
+   *
+   * @param msgRef the msg ref
+   * @return the message
+   */
   private String getMessage(final MessageReference msgRef) {
     try {
       final String key = msgRef.getKey();
@@ -73,6 +91,11 @@ public class ODataMessageTextVerifier {
     return null;
   }
 
+  /**
+   * Assert exist message.
+   *
+   * @param msgRef the msg ref
+   */
   private void assertExistMessage(final MessageReference msgRef) {
     final String text = getMessage(msgRef);
     if (text == null) {
@@ -84,6 +107,11 @@ public class ODataMessageTextVerifier {
     }
   }
 
+  /**
+   * Check messages of class.
+   *
+   * @param exceptionClassToBeTested the exception class to be tested
+   */
   public void CheckMessagesOfClass(final Class<? extends Exception> exceptionClassToBeTested) {
     final Class<? extends Exception> testClass = exceptionClassToBeTested;
 
@@ -123,10 +151,20 @@ public class ODataMessageTextVerifier {
     }
   }
 
+  /**
+   * Gets the error collector.
+   *
+   * @return the error collector
+   */
   public List<Throwable> getErrorCollector() {
     return errorCollector;
   }
 
+  /**
+   * Test class.
+   *
+   * @param exceptionClassToBeTested the exception class to be tested
+   */
   static public void TestClass(final Class<? extends Exception> exceptionClassToBeTested) {
     final ODataMessageTextVerifier tool = new ODataMessageTextVerifier();
     tool.CheckMessagesOfClass(exceptionClassToBeTested);

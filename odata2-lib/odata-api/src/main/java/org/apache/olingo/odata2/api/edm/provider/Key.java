@@ -20,17 +20,24 @@ package org.apache.olingo.odata2.api.edm.provider;
 
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
 /**
- * Objects of this class represent a key for an entity type
- * 
+ * Objects of this class represent a key for an entity type.
  */
 public class Key {
 
+  /** The keys. */
   private List<PropertyRef> keys;
+  
+  /** The annotation attributes. */
   private List<AnnotationAttribute> annotationAttributes;
+  
+  /** The annotation elements. */
   private List<AnnotationElement> annotationElements;
 
   /**
+   * Gets the keys.
+   *
    * @return List<{@link PropertyRef}> references to the key properties
    */
   public List<PropertyRef> getKeys() {
@@ -38,6 +45,8 @@ public class Key {
   }
 
   /**
+   * Gets the annotation attributes.
+   *
    * @return List of {@link AnnotationAttribute} annotation attributes
    */
   public List<AnnotationAttribute> getAnnotationAttributes() {
@@ -45,6 +54,8 @@ public class Key {
   }
 
   /**
+   * Gets the annotation elements.
+   *
    * @return List of {@link AnnotationElement} annotation elements
    */
   public List<AnnotationElement> getAnnotationElements() {
@@ -52,8 +63,9 @@ public class Key {
   }
 
   /**
-   * Sets the {@link Property}s by their {@link PropertyRef} for this {@link Key}
-   * @param keys
+   * Sets the {@link Property}s by their {@link PropertyRef} for this {@link Key}.
+   *
+   * @param keys the keys
    * @return {@link Key} for method chaining
    */
   public Key setKeys(final List<PropertyRef> keys) {
@@ -62,8 +74,9 @@ public class Key {
   }
 
   /**
-   * Sets the List of {@link AnnotationAttribute} for this {@link Key}
-   * @param annotationAttributes
+   * Sets the List of {@link AnnotationAttribute} for this {@link Key}.
+   *
+   * @param annotationAttributes the annotation attributes
    * @return {@link Key} for method chaining
    */
   public Key setAnnotationAttributes(final List<AnnotationAttribute> annotationAttributes) {
@@ -72,8 +85,9 @@ public class Key {
   }
 
   /**
-   * Sets the List of {@link AnnotationElement} for this {@link Key}
-   * @param annotationElements
+   * Sets the List of {@link AnnotationElement} for this {@link Key}.
+   *
+   * @param annotationElements the annotation elements
    * @return {@link Key} for method chaining
    */
   public Key setAnnotationElements(final List<AnnotationElement> annotationElements) {

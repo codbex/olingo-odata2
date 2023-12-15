@@ -39,9 +39,16 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ODataServlet.
+ */
 public class ODataServlet extends HttpServlet {
 
+    /** The Constant HTTP_METHOD_OPTIONS. */
     private static final String HTTP_METHOD_OPTIONS = "OPTIONS";
+    
+    /** The Constant HTTP_METHOD_HEAD. */
     private static final String HTTP_METHOD_HEAD = "HEAD";
 
     /**
@@ -49,13 +56,22 @@ public class ODataServlet extends HttpServlet {
      */
     private static final String BUFFER_SIZE = "org.apache.olingo.odata2.core.servlet.buffer.size";
 
-    /**
-     *
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1L;
+    
+    /** The Constant DEFAULT_BUFFER_SIZE. */
     private static final int DEFAULT_BUFFER_SIZE = 32768;
+    
+    /** The Constant DEFAULT_READ_CHARSET. */
     private static final String DEFAULT_READ_CHARSET = "utf-8";
 
+    /**
+     * Service.
+     *
+     * @param req the req
+     * @param resp the resp
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @Override
     protected void service(final HttpServletRequest req, final HttpServletResponse resp) throws IOException {
         // We have to create the Service Factory here because otherwise we do not have access to the error
@@ -104,6 +120,16 @@ public class ODataServlet extends HttpServlet {
         }
     }
 
+    /**
+     * Handle.
+     *
+     * @param req the req
+     * @param resp the resp
+     * @param xHttpMethod the x http method
+     * @param xHttpMethodOverride the x http method override
+     * @param serviceFactory the service factory
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     protected void handle(final HttpServletRequest req, final HttpServletResponse resp, final String xHttpMethod,
             final String xHttpMethodOverride, ODataServiceFactory serviceFactory) throws IOException {
         String method = req.getMethod();
@@ -149,6 +175,16 @@ public class ODataServlet extends HttpServlet {
         }
     }
 
+    /**
+     * Handle http tunneling.
+     *
+     * @param req the req
+     * @param resp the resp
+     * @param xHttpMethod the x http method
+     * @param serviceFactory the service factory
+     * @return true, if successful
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     private boolean handleHttpTunneling(final HttpServletRequest req, final HttpServletResponse resp, final String xHttpMethod,
             ODataServiceFactory serviceFactory) throws IOException {
         if (ODataHttpMethod.MERGE.name()
@@ -179,6 +215,15 @@ public class ODataServlet extends HttpServlet {
         return true;
     }
 
+    /**
+     * Handle request.
+     *
+     * @param req the req
+     * @param method the method
+     * @param resp the resp
+     * @param serviceFactory the service factory
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     private void handleRequest(final HttpServletRequest req, final ODataHttpMethod method, final HttpServletResponse resp,
             ODataServiceFactory serviceFactory) throws IOException {
         try {
@@ -234,6 +279,14 @@ public class ODataServlet extends HttpServlet {
         }
     }
 
+    /**
+     * Handle redirect.
+     *
+     * @param req the req
+     * @param resp the resp
+     * @param serviceFactory the service factory
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     protected void handleRedirect(final HttpServletRequest req, final HttpServletResponse resp, ODataServiceFactory serviceFactory)
             throws IOException {
         String method = req.getMethod();
@@ -260,6 +313,12 @@ public class ODataServlet extends HttpServlet {
 
     }
 
+    /**
+     * Creates the location.
+     *
+     * @param req the req
+     * @return the string
+     */
     private String createLocation(final HttpServletRequest req) {
         StringBuilder location = new StringBuilder();
         String contextPath = req.getContextPath();
@@ -274,10 +333,25 @@ public class ODataServlet extends HttpServlet {
         return location.toString();
     }
 
+    /**
+     * Creates the response.
+     *
+     * @param resp the resp
+     * @param response the response
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     protected void createResponse(final HttpServletResponse resp, final ODataResponse response) throws IOException {
         createResponse(resp, response, false);
     }
 
+    /**
+     * Creates the response.
+     *
+     * @param resp the resp
+     * @param response the response
+     * @param omitResponseBody the omit response body
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     protected void createResponse(final HttpServletResponse resp, final ODataResponse response, final boolean omitResponseBody)
             throws IOException {
 
@@ -323,6 +397,14 @@ public class ODataServlet extends HttpServlet {
         }
     }
 
+    /**
+     * Handle stream.
+     *
+     * @param stream the stream
+     * @param out the out
+     * @return the int
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     private int handleStream(InputStream stream, ServletOutputStream out) throws IOException {
         int contentLength = 0;
         byte[] buffer = getBuffer();
@@ -339,6 +421,11 @@ public class ODataServlet extends HttpServlet {
         return contentLength;
     }
 
+    /**
+     * Gets the buffer.
+     *
+     * @return the buffer
+     */
     private byte[] getBuffer() {
         int bufferSize = DEFAULT_BUFFER_SIZE;
         String bufSizeInit = getInitParameter(BUFFER_SIZE);
@@ -356,6 +443,15 @@ public class ODataServlet extends HttpServlet {
         return new byte[bufferSize];
     }
 
+    /**
+     * Creates the not implemented response.
+     *
+     * @param req the req
+     * @param messageReference the message reference
+     * @param resp the resp
+     * @param serviceFactory the service factory
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     private void createNotImplementedResponse(final HttpServletRequest req, final MessageReference messageReference,
             final HttpServletResponse resp, ODataServiceFactory serviceFactory) throws IOException {
         // RFC 2616, 5.1.1: "An origin server SHOULD return the status code [...]
@@ -365,6 +461,15 @@ public class ODataServlet extends HttpServlet {
         createResponse(resp, response);
     }
 
+    /**
+     * Creates the method not allowed response.
+     *
+     * @param req the req
+     * @param messageReference the message reference
+     * @param resp the resp
+     * @param serviceFactory the service factory
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     private void createMethodNotAllowedResponse(final HttpServletRequest req, final MessageReference messageReference,
             final HttpServletResponse resp, ODataServiceFactory serviceFactory) throws IOException {
         ODataExceptionWrapper exceptionWrapper = new ODataExceptionWrapper(req, serviceFactory);
@@ -372,6 +477,15 @@ public class ODataServlet extends HttpServlet {
         createResponse(resp, response);
     }
 
+    /**
+     * Creates the not acceptable response.
+     *
+     * @param req the req
+     * @param messageReference the message reference
+     * @param resp the resp
+     * @param serviceFactory the service factory
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     private void createNotAcceptableResponse(final HttpServletRequest req, final MessageReference messageReference,
             final HttpServletResponse resp, ODataServiceFactory serviceFactory) throws IOException {
         ODataExceptionWrapper exceptionWrapper = new ODataExceptionWrapper(req, serviceFactory);
@@ -379,6 +493,15 @@ public class ODataServlet extends HttpServlet {
         createResponse(resp, response);
     }
 
+    /**
+     * Creates the service unavailable response.
+     *
+     * @param req the req
+     * @param messageReference the message reference
+     * @param resp the resp
+     * @param serviceFactory the service factory
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     private void createServiceUnavailableResponse(HttpServletRequest req, MessageReference messageReference, HttpServletResponse resp,
             ODataServiceFactory serviceFactory) throws IOException {
         ODataExceptionWrapper exceptionWrapper = new ODataExceptionWrapper(req, serviceFactory);
@@ -390,11 +513,13 @@ public class ODataServlet extends HttpServlet {
      * Create an instance of a ODataServiceFactory via factory class from servlet init parameter
      * ODataServiceFactory.FACTORY_LABEL and ODataServiceFactory.FACTORY_CLASSLOADER_LABEL (if set).
      *
-     * @see ODataServiceFactory#FACTORY_LABEL
-     * @see ODataServiceFactory#FACTORY_CLASSLOADER_LABEL
-     *
      * @param req http servlet request
      * @return instance of a ODataServiceFactory
+     * @throws InstantiationException the instantiation exception
+     * @throws IllegalAccessException the illegal access exception
+     * @throws ClassNotFoundException the class not found exception
+     * @see ODataServiceFactory#FACTORY_LABEL
+     * @see ODataServiceFactory#FACTORY_CLASSLOADER_LABEL
      */
     private ODataServiceFactory createODataServiceFactory(HttpServletRequest req)
             throws InstantiationException, IllegalAccessException, ClassNotFoundException {
@@ -416,10 +541,9 @@ public class ODataServlet extends HttpServlet {
      * Get an instance of a ODataServiceFactory from request attribute
      * ODataServiceFactory.FACTORY_INSTANCE_LABEL
      *
-     * @see ODataServiceFactory#FACTORY_INSTANCE_LABEL
-     *
      * @param req http servlet request
      * @return instance of a ODataServiceFactory
+     * @see ODataServiceFactory#FACTORY_INSTANCE_LABEL
      */
     private ODataServiceFactory getODataServiceFactoryInstance(HttpServletRequest req) {
         Object factory = req.getAttribute(ODataServiceFactory.FACTORY_INSTANCE_LABEL);

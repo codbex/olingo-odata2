@@ -44,17 +44,35 @@ import org.apache.olingo.odata2.api.uri.expression.UnaryExpression;
 import org.apache.olingo.odata2.api.uri.expression.UnaryOperator;
 import org.apache.olingo.odata2.core.ep.util.JsonStreamWriter;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class JsonVisitor.
  */
 public class JsonVisitor implements ExpressionVisitor {
 
+  /**
+   * Visit filter expression.
+   *
+   * @param filterExpression the filter expression
+   * @param expressionString the expression string
+   * @param expression the expression
+   * @return the object
+   */
   @Override
   public Object visitFilterExpression(final FilterExpression filterExpression, final String expressionString,
       final Object expression) {
     return expression;
   }
 
+  /**
+   * Visit binary.
+   *
+   * @param binaryExpression the binary expression
+   * @param operator the operator
+   * @param leftSide the left side
+   * @param rightSide the right side
+   * @return the object
+   */
   @Override
   public Object visitBinary(final BinaryExpression binaryExpression, final BinaryOperator operator,
       final Object leftSide, final Object rightSide) {
@@ -72,6 +90,14 @@ public class JsonVisitor implements ExpressionVisitor {
     }
   }
 
+  /**
+   * Visit order by expression.
+   *
+   * @param orderByExpression the order by expression
+   * @param expressionString the expression string
+   * @param orders the orders
+   * @return the object
+   */
   @Override
   public Object visitOrderByExpression(final OrderByExpression orderByExpression, final String expressionString,
       final List<Object> orders) {
@@ -97,6 +123,14 @@ public class JsonVisitor implements ExpressionVisitor {
     }
   }
 
+  /**
+   * Visit order.
+   *
+   * @param orderExpression the order expression
+   * @param filterResult the filter result
+   * @param sortOrder the sort order
+   * @return the object
+   */
   @Override
   public Object visitOrder(final OrderExpression orderExpression, final Object filterResult,
       final SortOrder sortOrder) {
@@ -113,6 +147,13 @@ public class JsonVisitor implements ExpressionVisitor {
     }
   }
 
+  /**
+   * Visit literal.
+   *
+   * @param literal the literal
+   * @param edmLiteral the edm literal
+   * @return the object
+   */
   @Override
   public Object visitLiteral(final LiteralExpression literal, final EdmLiteral edmLiteral) {
     try {
@@ -128,6 +169,14 @@ public class JsonVisitor implements ExpressionVisitor {
     }
   }
 
+  /**
+   * Visit method.
+   *
+   * @param methodExpression the method expression
+   * @param method the method
+   * @param parameters the parameters
+   * @return the object
+   */
   @Override
   public Object visitMethod(final MethodExpression methodExpression, final MethodOperator method,
       final List<Object> parameters) {
@@ -154,6 +203,14 @@ public class JsonVisitor implements ExpressionVisitor {
     }
   }
 
+  /**
+   * Visit member.
+   *
+   * @param memberExpression the member expression
+   * @param path the path
+   * @param property the property
+   * @return the object
+   */
   @Override
   public Object visitMember(final MemberExpression memberExpression, final Object path, final Object property) {
     try {
@@ -169,6 +226,14 @@ public class JsonVisitor implements ExpressionVisitor {
     }
   }
 
+  /**
+   * Visit property.
+   *
+   * @param propertyExpression the property expression
+   * @param uriLiteral the uri literal
+   * @param edmProperty the edm property
+   * @return the object
+   */
   @Override
   public Object visitProperty(final PropertyExpression propertyExpression, final String uriLiteral,
       final EdmTyped edmProperty) {
@@ -185,6 +250,14 @@ public class JsonVisitor implements ExpressionVisitor {
     }
   }
 
+  /**
+   * Visit unary.
+   *
+   * @param unaryExpression the unary expression
+   * @param operator the operator
+   * @param operand the operand
+   * @return the object
+   */
   @Override
   public Object visitUnary(final UnaryExpression unaryExpression, final UnaryOperator operator, final Object operand) {
     try {
@@ -200,6 +273,12 @@ public class JsonVisitor implements ExpressionVisitor {
     }
   }
 
+  /**
+   * Gets the type.
+   *
+   * @param expression the expression
+   * @return the type
+   */
   private static String getType(final CommonExpression expression) {
     try {
       final EdmType type = expression.getEdmType();

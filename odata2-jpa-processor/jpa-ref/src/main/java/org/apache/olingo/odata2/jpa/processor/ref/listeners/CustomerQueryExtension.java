@@ -34,8 +34,20 @@ import org.apache.olingo.odata2.jpa.processor.api.jpql.JPQLContext;
 import org.apache.olingo.odata2.jpa.processor.api.jpql.JPQLContextType;
 import org.apache.olingo.odata2.jpa.processor.api.jpql.JPQLStatement;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CustomerQueryExtension.
+ */
 public class CustomerQueryExtension extends ODataJPAQueryExtensionEntityListener {
 
+  /**
+   * Gets the query.
+   *
+   * @param uriInfo the uri info
+   * @param em the em
+   * @return the query
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   @Override
   public Query getQuery(GetEntitySetUriInfo uriInfo, EntityManager em) throws ODataJPARuntimeException {
     FilterExpression filter = uriInfo.getFilter();
@@ -45,6 +57,14 @@ public class CustomerQueryExtension extends ODataJPAQueryExtensionEntityListener
     return null;
   }
 
+  /**
+   * Gets the query.
+   *
+   * @param uriInfo the uri info
+   * @param em the em
+   * @return the query
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   @Override
   public Query getQuery(GetEntitySetCountUriInfo uriInfo, EntityManager em) throws ODataJPARuntimeException {
     Query query = null;
@@ -66,6 +86,13 @@ public class CustomerQueryExtension extends ODataJPAQueryExtensionEntityListener
     return query;
   }
   
+  /**
+   * Gets the query.
+   *
+   * @param uriInfo the uri info
+   * @param em the em
+   * @return the query
+   */
   @Override
   public Query getQuery(GetEntityUriInfo uriInfo, EntityManager em) {
     Query query = null;
@@ -87,6 +114,11 @@ public class CustomerQueryExtension extends ODataJPAQueryExtensionEntityListener
     return query;
   }
 
+  /**
+   * Checks if is tombstone supported.
+   *
+   * @return true, if is tombstone supported
+   */
   @Override
   public boolean isTombstoneSupported() {
     return false;

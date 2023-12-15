@@ -23,44 +23,60 @@ import java.util.Set;
 
 import org.apache.olingo.odata2.api.batch.BatchParserResult;
 
+// TODO: Auto-generated Javadoc
 /**
  * A BatchSingleResponse
  * <p> BatchSingleResponse represents a single response of a Batch Response body. It can be a response to a change
  * request of ChangeSet or a response to a retrieve request
  */
 public interface BatchSingleResponse extends BatchParserResult {
+  
   /**
+   * Gets the status code.
+   *
    * @return a result code of the attempt to understand and satisfy the request
    */
   public String getStatusCode();
 
   /**
+   * Gets the status info.
+   *
    * @return a short textual description of the status code
    */
   public String getStatusInfo();
 
   /**
+   * Gets the content id.
+   *
    * @return a value of the Content-Id header
    */
   public String getContentId();
 
   /**
+   * Gets the body.
+   *
    * @return a body part of a response message
    */
   public String getBody();
 
   /**
+   * Gets the headers.
+   *
    * @return all available headers
    */
   public Map<String, String> getHeaders();
 
   /**
+   * Gets the header.
+   *
    * @param name HTTP response header name
    * @return a header value or null if not set
    */
   public String getHeader(final String name);
 
   /**
+   * Gets the header names.
+   *
    * @return a set of all available header names
    */
   public Set<String> getHeaderNames();

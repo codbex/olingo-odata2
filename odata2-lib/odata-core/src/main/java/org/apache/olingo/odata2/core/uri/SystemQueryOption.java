@@ -18,9 +18,28 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.core.uri;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Enum SystemQueryOption.
  */
 public enum SystemQueryOption {
-  $format, $filter, $inlinecount, $orderby, $skiptoken, $skip, $top, $expand, $select;
+  
+  /** The $format. */
+  $format, 
+ /** The $filter. */
+ $filter, 
+ /** The $inlinecount. */
+ $inlinecount, 
+ /** The $orderby. */
+ $orderby, 
+ /** The $skiptoken. */
+ $skiptoken, 
+ /** The $skip. */
+ $skip, 
+ /** The $top. */
+ $top, 
+ /** The $expand. */
+ $expand, 
+ /** The $select. */
+ $select;
 }

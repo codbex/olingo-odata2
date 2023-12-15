@@ -23,11 +23,15 @@ import org.apache.olingo.odata2.api.uri.expression.ExpressionKind;
 import org.apache.olingo.odata2.api.uri.expression.ExpressionParserException;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class TestParserExceptions.
  */
 public class TestParserExceptions extends TestBase {
 
+  /**
+   * Test OP mparse order by string.
+   */
   @Test
   public void testOPMparseOrderByString() {
     EdmEntityType edmEtAllTypes = edmInfo.getTypeEtAllTypes();
@@ -75,6 +79,9 @@ public class TestParserExceptions extends TestBase {
 
   }
 
+  /**
+   * Test P mvalidate edm property.
+   */
   @Test
   public void testPMvalidateEdmProperty() {
     EdmEntityType edmEtAllTypes = edmInfo.getTypeEtAllTypes();
@@ -132,6 +139,9 @@ public class TestParserExceptions extends TestBase {
 
   }
 
+  /**
+   * Test P mread parameters.
+   */
   @Test
   public void testPMreadParameters() {
 
@@ -319,6 +329,9 @@ public class TestParserExceptions extends TestBase {
 
   }
 
+  /**
+   * Test P mread parenthesis.
+   */
   @Test
   public void testPMreadParenthesis() {
     // http://services.odata.org/Northwind/Northwind.svc/Products(1)/Supplier?$filter=(123
@@ -333,6 +346,9 @@ public class TestParserExceptions extends TestBase {
 
   }
 
+  /**
+   * Test P mvalidate binary operator.
+   */
   @Test
   public void testPMvalidateBinaryOperator() {/* PM = Parsermethod */
     // http://services.odata.org/Northwind/Northwind.svc/Products(1)/Supplier?$filter=123 add 'abc'
@@ -345,6 +361,9 @@ public class TestParserExceptions extends TestBase {
                 "position 5 in \"123 add 'abc'\".");
   }
 
+  /**
+   * Test P mvalidate method types.
+   */
   @Test
   public void testPMvalidateMethodTypes() /* PM = Parsermethod */{
     // CASE 1
@@ -356,6 +375,9 @@ public class TestParserExceptions extends TestBase {
         "No applicable method found for \"year\" at position 1 in \"year(327686)\" for the specified argument types.");
   }
 
+  /**
+   * Test P mparse filter string.
+   */
   @Test
   public void testPMparseFilterString() { /* PM = Parsermethod */
 
@@ -396,6 +418,9 @@ public class TestParserExceptions extends TestBase {
         "Invalid token \"abc\" detected after parsing at position 5 in \"abc abc\".");
   }
 
+  /**
+   * Test additional stuff.
+   */
   @Test
   public void testAdditionalStuff() {
 

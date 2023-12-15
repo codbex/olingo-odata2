@@ -32,15 +32,22 @@ import org.junit.Ignore;
 import org.junit.Test;
 import com.ctc.wstx.exc.WstxParsingException;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class XmlHelperTest.
+ */
 public class XmlHelperTest {
 
+    /** The xml. */
     public static String XML = "<?xml version=\"1.0\"?>" + "<extract>" + "  <data>&rules;</data>" + "</extract>";
 
+    /** The xml xxe. */
     public static String XML_XXE = "<?xml version=\"1.0\"?>"
             + "  <!DOCTYPE foo [" + "    <!ENTITY rules SYSTEM \"" + XmlHelperTest.class.getResource("/xxe.xml")
                                                                                         .toString()
             + "\">" + "  ]>" + "<extract>" + "  <data>&rules;</data>" + "</extract>";
 
+    /** The xml lol. */
     public static String XML_LOL = "<?xml version=\"1.0\"?>" + "    <!DOCTYPE lolz [" + "        <!ENTITY lol \"lol\">"
             + "        <!ELEMENT lolz (#PCDATA)>" + "        <!ENTITY lol1 \"&lol;&lol;&lol;&lol;&lol;&lol;&lol;&lol;&lol;&lol;\">"
             + "        <!ENTITY lol2 \"&lol1;&lol1;&lol1;&lol1;&lol1;&lol1;&lol1;&lol1;&lol1;&lol1;\">"
@@ -53,12 +60,19 @@ public class XmlHelperTest {
             + "        <!ENTITY lol9 \"&lol8;&lol8;&lol8;&lol8;&lol8;&lol8;&lol8;&lol8;&lol8;&lol8;\">" + "    ]>"
             + "    <lolz>&lol9;</lolz>";
 
+    /** The xml doctype. */
     public static String XML_DOCTYPE =
             "<?xml version=\"1.0\" standalone=\"yes\"?>" + "<!DOCTYPE hallo [<!ELEMENT hallo (#PCDATA)>]>" + "<hallo>Hallo Welt!</hallo>";
 
+    /** The xml processing. */
     public static String XML_PROCESSING = "<?xml version=\"1.0\"?>" + "<?apache include file=\"somefile.html\" ?>" + "<extract>"
             + "  <data>&rules;</data>" + "</extract>";
 
+    /**
+     * Creates the reader.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void createReader() throws Exception {
         InputStream content = new ByteArrayInputStream(XML.getBytes("UTF-8"));
@@ -66,6 +80,11 @@ public class XmlHelperTest {
         assertNotNull(streamReader);
     }
 
+    /**
+     * Xxe without protection.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void xxeWithoutProtection() throws Exception {
         InputStream content = new ByteArrayInputStream(XML_XXE.getBytes("UTF-8"));
@@ -85,6 +104,11 @@ public class XmlHelperTest {
         assertTrue(foundExternalEntity);
     }
 
+    /**
+     * Xxe with protection.
+     *
+     * @throws Exception the exception
+     */
     @Test(expected = XMLStreamException.class)
     public void xxeWithProtection() throws Exception {
         InputStream content = new ByteArrayInputStream(XML_XXE.getBytes("UTF-8"));
@@ -95,6 +119,13 @@ public class XmlHelperTest {
         }
     }
 
+    /**
+     * Creates the stream reader with external entity support.
+     *
+     * @param content the content
+     * @return the XML stream reader
+     * @throws Exception the exception
+     */
     public XMLStreamReader createStreamReaderWithExternalEntitySupport(final InputStream content) throws Exception {
         XMLInputFactory factory = XMLInputFactory.newInstance();
         factory.setProperty(XMLInputFactory.IS_VALIDATING, false);
@@ -105,6 +136,11 @@ public class XmlHelperTest {
         return factory.createXMLStreamReader(content, "UTF-8");
     }
 
+    /**
+     * Lol with protection.
+     *
+     * @throws Exception the exception
+     */
     @Test(expected = XMLStreamException.class)
     public void lolWithProtection() throws Exception {
         InputStream content = new ByteArrayInputStream(XML_LOL.getBytes("UTF-8"));
@@ -115,6 +151,11 @@ public class XmlHelperTest {
         }
     }
 
+    /**
+     * Lol api with protection.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void lolApiWithProtection() throws Exception {
         try {
@@ -132,6 +173,11 @@ public class XmlHelperTest {
         }
     }
 
+    /**
+     * Xxe api with protection.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void xxeApiWithProtection() throws Exception {
         try {
@@ -150,6 +196,11 @@ public class XmlHelperTest {
         }
     }
 
+    /**
+     * Xml doctype api with protection.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void xmlDoctypeApiWithProtection() throws Exception {
         try {
@@ -168,6 +219,11 @@ public class XmlHelperTest {
         }
     }
 
+    /**
+     * Xml processing api with protection.
+     *
+     * @throws Exception the exception
+     */
     @Test
     @Ignore("not way to disable in parser")
     public void xmlProcessingApiWithProtection() throws Exception {

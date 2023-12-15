@@ -25,21 +25,45 @@ import java.util.List;
 import org.apache.olingo.odata2.api.client.batch.BatchChangeSet;
 import org.apache.olingo.odata2.api.client.batch.BatchChangeSetPart;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BatchChangeSetImpl.
+ */
 public class BatchChangeSetImpl extends BatchChangeSet {
+  
+  /** The requests. */
   private List<BatchChangeSetPart> requests = new ArrayList<BatchChangeSetPart>();
 
+  /**
+   * Adds the.
+   *
+   * @param request the request
+   */
   @Override
   public void add(final BatchChangeSetPart request) {
     requests.add(request);
   }
 
+  /**
+   * Gets the change set parts.
+   *
+   * @return the change set parts
+   */
   @Override
   public List<BatchChangeSetPart> getChangeSetParts() {
     return Collections.unmodifiableList(requests);
   }
 
+  /**
+   * The Class BatchChangeSetBuilderImpl.
+   */
   public class BatchChangeSetBuilderImpl extends BatchChangeSetBuilder {
 
+    /**
+     * Builds the.
+     *
+     * @return the batch change set
+     */
     @Override
     public BatchChangeSet build() {
       return BatchChangeSetImpl.this;

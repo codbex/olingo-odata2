@@ -61,8 +61,20 @@ import org.apache.olingo.odata2.core.ep.EntityProviderProducerException;
 import org.apache.olingo.odata2.core.ep.util.XmlMetadataConstants;
 import org.apache.olingo.odata2.core.exception.ODataRuntimeException;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class XmlMetadataProducer.
+ */
 public class XmlMetadataProducer {
 
+  /**
+   * Write metadata.
+   *
+   * @param metadata the metadata
+   * @param xmlStreamWriter the xml stream writer
+   * @param predefinedNamespaces the predefined namespaces
+   * @throws EntityProviderException the entity provider exception
+   */
   public static void writeMetadata(final DataServices metadata, final XMLStreamWriter xmlStreamWriter,
       Map<String, String> predefinedNamespaces) throws EntityProviderException {
 
@@ -447,6 +459,13 @@ public class XmlMetadataProducer {
     }
   }
 
+  /**
+   * Write customizable feed mappings.
+   *
+   * @param customizableFeedMappings the customizable feed mappings
+   * @param xmlStreamWriter the xml stream writer
+   * @throws XMLStreamException the XML stream exception
+   */
   private static void writeCustomizableFeedMappings(final CustomizableFeedMappings customizableFeedMappings,
       final XMLStreamWriter xmlStreamWriter) throws XMLStreamException {
     if (customizableFeedMappings != null) {
@@ -478,6 +497,14 @@ public class XmlMetadataProducer {
     }
   }
 
+  /**
+   * Write properties.
+   *
+   * @param properties the properties
+   * @param predefinedNamespaces the predefined namespaces
+   * @param xmlStreamWriter the xml stream writer
+   * @throws XMLStreamException the XML stream exception
+   */
   private static void writeProperties(final Collection<Property> properties,
       final Map<String, String> predefinedNamespaces, final XMLStreamWriter xmlStreamWriter) throws XMLStreamException {
     for (Property property : properties) {
@@ -512,6 +539,13 @@ public class XmlMetadataProducer {
     }
   }
 
+  /**
+   * Write facets.
+   *
+   * @param xmlStreamWriter the xml stream writer
+   * @param facets the facets
+   * @throws XMLStreamException the XML stream exception
+   */
   private static void writeFacets(final XMLStreamWriter xmlStreamWriter, final EdmFacets facets)
       throws XMLStreamException {
     if (facets != null) {
@@ -548,6 +582,14 @@ public class XmlMetadataProducer {
     }
   }
 
+  /**
+   * Write association end.
+   *
+   * @param end the end
+   * @param predefinedNamespaces the predefined namespaces
+   * @param xmlStreamWriter the xml stream writer
+   * @throws XMLStreamException the XML stream exception
+   */
   private static void writeAssociationEnd(final AssociationEnd end, final Map<String, String> predefinedNamespaces,
       final XMLStreamWriter xmlStreamWriter) throws XMLStreamException {
     xmlStreamWriter.writeStartElement(XmlMetadataConstants.EDM_ASSOCIATION_END);
@@ -576,6 +618,14 @@ public class XmlMetadataProducer {
     xmlStreamWriter.writeEndElement();
   }
 
+  /**
+   * Write association set end.
+   *
+   * @param end the end
+   * @param predefinedNamespaces the predefined namespaces
+   * @param xmlStreamWriter the xml stream writer
+   * @throws XMLStreamException the XML stream exception
+   */
   private static void writeAssociationSetEnd(final AssociationSetEnd end,
       final Map<String, String> predefinedNamespaces, final XMLStreamWriter xmlStreamWriter) throws XMLStreamException {
     xmlStreamWriter.writeStartElement(XmlMetadataConstants.EDM_ASSOCIATION_END);
@@ -589,6 +639,14 @@ public class XmlMetadataProducer {
     xmlStreamWriter.writeEndElement();
   }
 
+  /**
+   * Write documentation.
+   *
+   * @param documentation the documentation
+   * @param predefinedNamespaces the predefined namespaces
+   * @param xmlStreamWriter the xml stream writer
+   * @throws XMLStreamException the XML stream exception
+   */
   private static void writeDocumentation(final Documentation documentation,
       final Map<String, String> predefinedNamespaces, final XMLStreamWriter xmlStreamWriter) throws XMLStreamException {
     if (documentation != null) {
@@ -612,6 +670,15 @@ public class XmlMetadataProducer {
     }
   }
 
+  /**
+   * Write annotation attributes.
+   *
+   * @param annotationAttributes the annotation attributes
+   * @param predefinedNamespaces the predefined namespaces
+   * @param setNamespaces the set namespaces
+   * @param xmlStreamWriter the xml stream writer
+   * @throws XMLStreamException the XML stream exception
+   */
   private static void writeAnnotationAttributes(final Collection<AnnotationAttribute> annotationAttributes,
       final Map<String, String> predefinedNamespaces, ArrayList<String> setNamespaces,
       final XMLStreamWriter xmlStreamWriter) throws XMLStreamException {
@@ -635,6 +702,14 @@ public class XmlMetadataProducer {
     }
   }
 
+  /**
+   * Write annotation elements.
+   *
+   * @param annotationElements the annotation elements
+   * @param predefinedNamespaces the predefined namespaces
+   * @param xmlStreamWriter the xml stream writer
+   * @throws XMLStreamException the XML stream exception
+   */
   private static void writeAnnotationElements(final Collection<AnnotationElement> annotationElements,
       final Map<String, String> predefinedNamespaces, final XMLStreamWriter xmlStreamWriter) throws XMLStreamException {
     if (annotationElements != null) {

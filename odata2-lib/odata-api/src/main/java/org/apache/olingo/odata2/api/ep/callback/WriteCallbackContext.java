@@ -28,20 +28,32 @@ import org.apache.olingo.odata2.api.ep.EntityProviderException;
 import org.apache.olingo.odata2.api.ep.EntityProviderWriteProperties;
 import org.apache.olingo.odata2.api.uri.ExpandSelectTreeNode;
 
+// TODO: Auto-generated Javadoc
 /**
  * Wrapper for {@link WriteEntryCallbackContext} and {@link WriteFeedCallbackContext}.
  * @org.apache.olingo.odata2.DoNotImplement
  * 
  */
 public abstract class WriteCallbackContext {
+  
+  /** The source entity set. */
   private EdmEntitySet sourceEntitySet;
+  
+  /** The navigation property. */
   private EdmNavigationProperty navigationProperty;
+  
+  /** The entry data. */
   private Map<String, Object> entryData;
+  
+  /** The current node. */
   private ExpandSelectTreeNode currentNode;
+  
+  /** The current write properties. */
   private EntityProviderWriteProperties currentWriteProperties;
 
   /**
-   * Current means the node pointing to the target entity set
+   * Current means the node pointing to the target entity set.
+   *
    * @return the current node of the expand select tree
    */
   public ExpandSelectTreeNode getCurrentExpandSelectTreeNode() {
@@ -49,15 +61,17 @@ public abstract class WriteCallbackContext {
   }
 
   /**
-   * Do Not Call This Method!
-   * @param currentNode
+   * Do Not Call This Method!.
+   *
+   * @param currentNode the new current expand select tree node
    */
   public void setCurrentExpandSelectTreeNode(final ExpandSelectTreeNode currentNode) {
     this.currentNode = currentNode;
   }
 
   /**
-   * Returns entity set which contains an entry that should be expanded
+   * Returns entity set which contains an entry that should be expanded.
+   *
    * @return source entity set
    */
   public EdmEntitySet getSourceEntitySet() {
@@ -65,8 +79,9 @@ public abstract class WriteCallbackContext {
   }
 
   /**
-   * Do Not Call This Method!
-   * @param entitySet
+   * Do Not Call This Method!.
+   *
+   * @param entitySet the new source entity set
    */
   public void setSourceEntitySet(final EdmEntitySet entitySet) {
     sourceEntitySet = entitySet;
@@ -81,8 +96,9 @@ public abstract class WriteCallbackContext {
   }
 
   /**
-   * Do Not Call This Method!
-   * @param navigationProperty
+   * Do Not Call This Method!.
+   *
+   * @param navigationProperty the new navigation property
    */
   public void setNavigationProperty(final EdmNavigationProperty navigationProperty) {
     this.navigationProperty = navigationProperty;
@@ -97,14 +113,17 @@ public abstract class WriteCallbackContext {
   }
 
   /**
-   * Do Not Call This Method!
-   * @param entryData
+   * Do Not Call This Method!.
+   *
+   * @param entryData the entry data
    */
   public void setEntryData(final Map<String, Object> entryData) {
     this.entryData = entryData;
   }
 
   /**
+   * Extract key from entry data.
+   *
    * @return the key of the current entry as a Map<String,Object>
    * @throws EntityProviderException in case of an {@link EdmException}
    */

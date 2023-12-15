@@ -31,15 +31,26 @@ import org.junit.Test;
 
 import com.google.gson.internal.LinkedTreeMap;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class EntryJsonCreateTest.
  */
 public class EntryJsonCreateTest extends AbstractRefJsonTest {
 
+  /**
+   * Instantiates a new entry json create test.
+   *
+   * @param servletType the servlet type
+   */
   public EntryJsonCreateTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /**
+   * Creates the entry room.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void createEntryRoom() throws Exception {
     String content = "{\"d\":{\"__metadata\":{\"id\":\"" + getEndpoint() + "Rooms('1')\","
@@ -70,6 +81,11 @@ public class EntryJsonCreateTest extends AbstractRefJsonTest {
     assertEquals("4", body);
   }
 
+  /**
+   * Creates the entry room with link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void createEntryRoomWithLink() throws Exception {
     String content = "{\"d\":{\"__metadata\":{\"id\":\"" + getEndpoint() + "Rooms('1')\","
@@ -97,6 +113,11 @@ public class EntryJsonCreateTest extends AbstractRefJsonTest {
     assertEquals(getEndpoint() + "Rooms('104')/nr_Employees", deferredMap.get("uri"));
   }
 
+  /**
+   * Creates the entry employee.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void createEntryEmployee() throws Exception {
     String content = "{iVBORw0KGgoAAAANSUhEUgAAAB4AAAAwCAIAAACJ9F2zAAAAA}";

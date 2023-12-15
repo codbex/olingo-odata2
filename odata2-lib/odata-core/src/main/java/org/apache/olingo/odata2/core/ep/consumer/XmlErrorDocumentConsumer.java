@@ -34,6 +34,7 @@ import org.apache.olingo.odata2.core.commons.ContentType;
 import org.apache.olingo.odata2.core.commons.XmlHelper;
 import org.apache.olingo.odata2.core.ep.util.FormatXml;
 
+// TODO: Auto-generated Javadoc
 /**
  * Consuming (read / deserialization) for OData error document in XML format.
  */
@@ -88,6 +89,14 @@ public class XmlErrorDocumentConsumer {
     }
   }
 
+  /**
+   * Parser error.
+   *
+   * @param reader the reader
+   * @return the o data error context
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   private ODataErrorContext parserError(final XMLStreamReader reader)
       throws XMLStreamException, EntityProviderException {
     // read xml tag
@@ -125,6 +134,13 @@ public class XmlErrorDocumentConsumer {
     return errorContext;
   }
 
+  /**
+   * Validate.
+   *
+   * @param codeFound the code found
+   * @param messageFound the message found
+   * @throws EntityProviderException the entity provider exception
+   */
   private void validate(final boolean codeFound, final boolean messageFound) throws EntityProviderException {
     if (!codeFound) {
       throw new EntityProviderException(
@@ -135,15 +151,37 @@ public class XmlErrorDocumentConsumer {
     }
   }
 
+  /**
+   * Not finished.
+   *
+   * @param reader the reader
+   * @return true, if successful
+   * @throws XMLStreamException the XML stream exception
+   */
   private boolean notFinished(final XMLStreamReader reader) throws XMLStreamException {
     return notFinished(reader, FormatXml.M_ERROR);
   }
 
+  /**
+   * Not finished.
+   *
+   * @param reader the reader
+   * @param tagName the tag name
+   * @return true, if successful
+   * @throws XMLStreamException the XML stream exception
+   */
   private boolean notFinished(final XMLStreamReader reader, final String tagName) throws XMLStreamException {
     boolean finished = reader.isEndElement() && tagName.equals(reader.getLocalName());
     return !finished && reader.hasNext();
   }
 
+  /**
+   * Handle inner error.
+   *
+   * @param reader the reader
+   * @param errorContext the error context
+   * @throws XMLStreamException the XML stream exception
+   */
   private void handleInnerError(final XMLStreamReader reader, final ODataErrorContext errorContext)
       throws XMLStreamException {
 
@@ -164,6 +202,13 @@ public class XmlErrorDocumentConsumer {
     errorContext.setInnerError(sb.toString());
   }
 
+  /**
+   * Handle message.
+   *
+   * @param reader the reader
+   * @param errorContext the error context
+   * @throws XMLStreamException the XML stream exception
+   */
   private void handleMessage(final XMLStreamReader reader, final ODataErrorContext errorContext)
       throws XMLStreamException {
     String lang = reader.getAttributeValue(Edm.NAMESPACE_XML_1998, FormatXml.XML_LANG);
@@ -172,12 +217,25 @@ public class XmlErrorDocumentConsumer {
     errorContext.setMessage(message);
   }
 
+  /**
+   * Handle code.
+   *
+   * @param reader the reader
+   * @param errorContext the error context
+   * @throws XMLStreamException the XML stream exception
+   */
   private void handleCode(final XMLStreamReader reader, final ODataErrorContext errorContext)
       throws XMLStreamException {
     String code = reader.getElementText();
     errorContext.setErrorCode(code);
   }
 
+  /**
+   * Gets the locale.
+   *
+   * @param langValue the lang value
+   * @return the locale
+   */
   private Locale getLocale(final String langValue) {
     return AVAILABLE_LOCALES.get(langValue);
   }

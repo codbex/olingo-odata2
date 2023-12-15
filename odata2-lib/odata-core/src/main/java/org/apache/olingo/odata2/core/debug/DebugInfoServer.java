@@ -27,13 +27,20 @@ import jakarta.servlet.http.HttpServletRequest;
 
 import org.apache.olingo.odata2.core.ep.util.JsonStreamWriter;
 
+// TODO: Auto-generated Javadoc
 /**
  * Server debug information.
  */
 public class DebugInfoServer implements DebugInfo {
 
+  /** The environment. */
   private final Map<String, String> environment;
 
+  /**
+   * Instantiates a new debug info server.
+   *
+   * @param httpServletRequest the http servlet request
+   */
   public DebugInfoServer(final HttpServletRequest httpServletRequest) {
     environment = new TreeMap<String, String>();
     environment.put("authType", httpServletRequest.getAuthType());
@@ -52,16 +59,33 @@ public class DebugInfoServer implements DebugInfo {
     environment.put("servletPath", httpServletRequest.getServletPath());
   }
 
+  /**
+   * Gets the name.
+   *
+   * @return the name
+   */
   @Override
   public String getName() {
     return "Environment";
   }
 
+  /**
+   * Append json.
+   *
+   * @param jsonStreamWriter the json stream writer
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Override
   public void appendJson(final JsonStreamWriter jsonStreamWriter) throws IOException {
     ODataDebugResponseWrapper.appendJsonTable(jsonStreamWriter, environment);
   }
 
+  /**
+   * Append html.
+   *
+   * @param writer the writer
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Override
   public void appendHtml(final Writer writer) throws IOException {
     final Package pack = ODataDebugResponseWrapper.class.getPackage();
@@ -72,6 +96,12 @@ public class DebugInfoServer implements DebugInfo {
     ODataDebugResponseWrapper.appendHtmlTable(writer, environment);
   }
 
+  /**
+   * Adds the int.
+   *
+   * @param name the name
+   * @param number the number
+   */
   private void addInt(final String name, final int number) {
     environment.put(name, number == 0 ? null : Integer.toString(number));
   }

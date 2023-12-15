@@ -20,6 +20,7 @@ package org.apache.olingo.odata2.api.ep.callback;
 
 import java.net.URI;
 
+// TODO: Auto-generated Javadoc
 /**
  * Context given if the target of an expand is a feed. It contains the source entity set, the navigation property
  * pointing to the entry which has to be expanded, the current expand select tree node and the data of the source entry.
@@ -28,11 +29,13 @@ import java.net.URI;
  */
 public class WriteFeedCallbackContext extends WriteCallbackContext {
 
+  /** The self link. */
   private URI selfLink;
 
   /**
    * Sets the self Link for this feed.
-   * @param selfLink
+   *
+   * @param selfLink the new self link
    */
   public void setSelfLink(final URI selfLink) {
     this.selfLink = selfLink;

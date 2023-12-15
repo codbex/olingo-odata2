@@ -36,32 +36,78 @@ import org.apache.olingo.odata2.jpa.processor.api.access.JPAProcessor;
 import org.apache.olingo.odata2.jpa.processor.api.exception.ODataJPAModelException;
 import org.apache.olingo.odata2.jpa.processor.api.exception.ODataJPARuntimeException;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAProcessorMockAbstract.
+ */
 public abstract class JPAProcessorMockAbstract implements JPAProcessor {
 
+  /**
+   * Process.
+   *
+   * @param <T> the generic type
+   * @param requestView the request view
+   * @return the list
+   * @throws ODataJPAModelException the o data JPA model exception
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   @Override
   public <T> List<T> process(GetEntitySetUriInfo requestView) throws ODataJPAModelException, ODataJPARuntimeException {
     // TODO Auto-generated method stub
     return null;
   }
 
+  /**
+   * Process.
+   *
+   * @param <T> the generic type
+   * @param requestView the request view
+   * @return the object
+   * @throws ODataJPAModelException the o data JPA model exception
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   @Override
   public <T> Object process(GetEntityUriInfo requestView) throws ODataJPAModelException, ODataJPARuntimeException {
     // TODO Auto-generated method stub
     return null;
   }
 
+  /**
+   * Process.
+   *
+   * @param requestView the request view
+   * @return the long
+   * @throws ODataJPAModelException the o data JPA model exception
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   @Override
   public long process(GetEntitySetCountUriInfo requestView) throws ODataJPAModelException, ODataJPARuntimeException {
     // TODO Auto-generated method stub
     return 0;
   }
 
+  /**
+   * Process.
+   *
+   * @param resultsView the results view
+   * @return the long
+   * @throws ODataJPAModelException the o data JPA model exception
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   @Override
   public long process(GetEntityCountUriInfo resultsView) throws ODataJPAModelException, ODataJPARuntimeException {
     // TODO Auto-generated method stub
     return 0;
   }
 
+  /**
+   * Process.
+   *
+   * @param requestView the request view
+   * @return the list
+   * @throws ODataJPAModelException the o data JPA model exception
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   @Override
   public List<Object> process(GetFunctionImportUriInfo requestView) throws ODataJPAModelException,
       ODataJPARuntimeException {
@@ -69,6 +115,14 @@ public abstract class JPAProcessorMockAbstract implements JPAProcessor {
     return null;
   }
 
+  /**
+   * Process.
+   *
+   * @param uriParserResultView the uri parser result view
+   * @return the object
+   * @throws ODataJPAModelException the o data JPA model exception
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   @Override
   public Object process(GetEntityLinkUriInfo uriParserResultView) throws ODataJPAModelException,
       ODataJPARuntimeException {
@@ -76,6 +130,15 @@ public abstract class JPAProcessorMockAbstract implements JPAProcessor {
     return null;
   }
 
+  /**
+   * Process.
+   *
+   * @param <T> the generic type
+   * @param uriParserResultView the uri parser result view
+   * @return the list
+   * @throws ODataJPAModelException the o data JPA model exception
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   @Override
   public <T> List<T> process(GetEntitySetLinksUriInfo uriParserResultView) throws ODataJPAModelException,
       ODataJPARuntimeException {
@@ -83,6 +146,16 @@ public abstract class JPAProcessorMockAbstract implements JPAProcessor {
     return null;
   }
 
+  /**
+   * Process.
+   *
+   * @param createView the create view
+   * @param content the content
+   * @param requestContentType the request content type
+   * @return the object
+   * @throws ODataJPAModelException the o data JPA model exception
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   @Override
   public Object process(PostUriInfo createView, InputStream content, String requestContentType)
       throws ODataJPAModelException, ODataJPARuntimeException {
@@ -90,6 +163,15 @@ public abstract class JPAProcessorMockAbstract implements JPAProcessor {
     return null;
   }
 
+  /**
+   * Process.
+   *
+   * @param createView the create view
+   * @param content the content
+   * @return the object
+   * @throws ODataJPAModelException the o data JPA model exception
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   @Override
   public Object process(PostUriInfo createView, Map<String, Object> content) throws ODataJPAModelException,
       ODataJPARuntimeException {
@@ -97,6 +179,16 @@ public abstract class JPAProcessorMockAbstract implements JPAProcessor {
     return null;
   }
 
+  /**
+   * Process.
+   *
+   * @param updateView the update view
+   * @param content the content
+   * @param requestContentType the request content type
+   * @return the object
+   * @throws ODataJPAModelException the o data JPA model exception
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   @Override
   public Object process(PutMergePatchUriInfo updateView, InputStream content, String requestContentType)
       throws ODataJPAModelException, ODataJPARuntimeException {
@@ -104,6 +196,15 @@ public abstract class JPAProcessorMockAbstract implements JPAProcessor {
     return null;
   }
 
+  /**
+   * Process.
+   *
+   * @param updateView the update view
+   * @param content the content
+   * @return the object
+   * @throws ODataJPAModelException the o data JPA model exception
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   @Override
   public Object process(PutMergePatchUriInfo updateView, Map<String, Object> content) throws ODataJPAModelException,
       ODataJPARuntimeException {
@@ -111,6 +212,15 @@ public abstract class JPAProcessorMockAbstract implements JPAProcessor {
     return null;
   }
 
+  /**
+   * Process.
+   *
+   * @param deleteuriInfo the deleteuri info
+   * @param contentType the content type
+   * @return the object
+   * @throws ODataJPAModelException the o data JPA model exception
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   @Override
   public Object process(DeleteUriInfo deleteuriInfo, String contentType) throws ODataJPAModelException,
       ODataJPARuntimeException {
@@ -118,6 +228,16 @@ public abstract class JPAProcessorMockAbstract implements JPAProcessor {
     return null;
   }
 
+  /**
+   * Process.
+   *
+   * @param uriParserResultView the uri parser result view
+   * @param content the content
+   * @param requestContentType the request content type
+   * @param contentType the content type
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   * @throws ODataJPAModelException the o data JPA model exception
+   */
   @Override
   public void process(PostUriInfo uriParserResultView, InputStream content, String requestContentType,
       String contentType) throws ODataJPARuntimeException, ODataJPAModelException {
@@ -125,6 +245,16 @@ public abstract class JPAProcessorMockAbstract implements JPAProcessor {
 
   }
 
+  /**
+   * Process.
+   *
+   * @param uriParserResultView the uri parser result view
+   * @param content the content
+   * @param requestContentType the request content type
+   * @param contentType the content type
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   * @throws ODataJPAModelException the o data JPA model exception
+   */
   @Override
   public void process(PutMergePatchUriInfo uriParserResultView, InputStream content, String requestContentType,
       String contentType) throws ODataJPARuntimeException, ODataJPAModelException {

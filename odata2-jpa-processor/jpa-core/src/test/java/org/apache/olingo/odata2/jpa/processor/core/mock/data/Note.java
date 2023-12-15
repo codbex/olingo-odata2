@@ -18,22 +18,50 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.jpa.processor.core.mock.data;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Note.
+ */
 public class Note {
+  
+  /** The id. */
   private String id;
+  
+  /** The sales order header. */
   private SalesOrderHeader salesOrderHeader;
 
+  /**
+   * Gets the id.
+   *
+   * @return the id
+   */
   public String getId() {
     return id;
   }
 
+  /**
+   * Sets the id.
+   *
+   * @param id the new id
+   */
   public void setId(String id) {
     this.id = id;
   }
 
+  /**
+   * Gets the sales order header.
+   *
+   * @return the sales order header
+   */
   public SalesOrderHeader getSalesOrderHeader() {
     return salesOrderHeader;
   }
 
+  /**
+   * Sets the sales order header.
+   *
+   * @param salesOrderHeader the new sales order header
+   */
   public void setSalesOrderHeader(SalesOrderHeader salesOrderHeader) {
     this.salesOrderHeader = salesOrderHeader;
   }

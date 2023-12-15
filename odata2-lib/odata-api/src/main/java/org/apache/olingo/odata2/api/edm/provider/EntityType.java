@@ -22,18 +22,27 @@ import java.util.List;
 
 import org.apache.olingo.odata2.api.edm.FullQualifiedName;
 
+// TODO: Auto-generated Javadoc
 /**
- * Objects of this class represent an entity type
- * 
+ * Objects of this class represent an entity type.
  */
 public class EntityType extends ComplexType {
 
+  /** The has stream. */
   private boolean hasStream;
+  
+  /** The customizable feed mappings. */
   private CustomizableFeedMappings customizableFeedMappings;
+  
+  /** The key. */
   private Key key;
+  
+  /** The navigation properties. */
   private List<NavigationProperty> navigationProperties;
 
   /**
+   * Checks if is checks for stream.
+   *
    * @return <b>boolean</b> if this EntityType is a media resource
    */
   public boolean isHasStream() {
@@ -41,6 +50,8 @@ public class EntityType extends ComplexType {
   }
 
   /**
+   * Gets the customizable feed mappings.
+   *
    * @return {@link CustomizableFeedMappings} of this entity type
    */
   public CustomizableFeedMappings getCustomizableFeedMappings() {
@@ -48,6 +59,8 @@ public class EntityType extends ComplexType {
   }
 
   /**
+   * Gets the key.
+   *
    * @return {@link Key} of this entity type
    */
   public Key getKey() {
@@ -55,6 +68,8 @@ public class EntityType extends ComplexType {
   }
 
   /**
+   * Gets the navigation properties.
+   *
    * @return List<{@link NavigationProperty}> of this entity type
    */
   public List<NavigationProperty> getNavigationProperties() {
@@ -62,8 +77,9 @@ public class EntityType extends ComplexType {
   }
 
   /**
-   * Sets if this {@link EntityType} is a media resource
-   * @param hasStream
+   * Sets if this {@link EntityType} is a media resource.
+   *
+   * @param hasStream the has stream
    * @return {@link EntityType} for method chaining,
    */
   public EntityType setHasStream(final boolean hasStream) {
@@ -72,8 +88,9 @@ public class EntityType extends ComplexType {
   }
 
   /**
-   * Sets the {@link CustomizableFeedMappings} for this {@link EntityType}
-   * @param customizableFeedMappings
+   * Sets the {@link CustomizableFeedMappings} for this {@link EntityType}.
+   *
+   * @param customizableFeedMappings the customizable feed mappings
    * @return {@link EntityType} for method chaining
    */
   public EntityType setCustomizableFeedMappings(final CustomizableFeedMappings customizableFeedMappings) {
@@ -82,8 +99,9 @@ public class EntityType extends ComplexType {
   }
 
   /**
-   * Sets the {@link Key} for this {@link EntityType}
-   * @param key
+   * Sets the {@link Key} for this {@link EntityType}.
+   *
+   * @param key the key
    * @return {@link EntityType} for method chaining
    */
   public EntityType setKey(final Key key) {
@@ -92,8 +110,9 @@ public class EntityType extends ComplexType {
   }
 
   /**
-   * Sets the {@link NavigationProperty}s for this {@link EntityType}
-   * @param navigationProperties
+   * Sets the {@link NavigationProperty}s for this {@link EntityType}.
+   *
+   * @param navigationProperties the navigation properties
    * @return {@link EntityType} for method chaining
    */
   public EntityType setNavigationProperties(final List<NavigationProperty> navigationProperties) {
@@ -102,7 +121,9 @@ public class EntityType extends ComplexType {
   }
 
   /**
-   * @param name
+   * Sets the name.
+   *
+   * @param name the name
    * @return {@link EntityType} for method chaining
    */
   @Override
@@ -112,7 +133,9 @@ public class EntityType extends ComplexType {
   }
 
   /**
-   * @param baseType
+   * Sets the base type.
+   *
+   * @param baseType the base type
    * @return {@link EntityType} for method chaining
    */
   @Override
@@ -122,7 +145,9 @@ public class EntityType extends ComplexType {
   }
 
   /**
-   * @param isAbstract
+   * Sets the abstract.
+   *
+   * @param isAbstract the is abstract
    * @return {@link EntityType} for method chaining
    */
   @Override
@@ -132,7 +157,9 @@ public class EntityType extends ComplexType {
   }
 
   /**
-   * @param properties
+   * Sets the properties.
+   *
+   * @param properties the properties
    * @return {@link EntityType} for method chaining
    */
   @Override
@@ -142,7 +169,9 @@ public class EntityType extends ComplexType {
   }
 
   /**
-   * @param mapping
+   * Sets the mapping.
+   *
+   * @param mapping the mapping
    * @return {@link EntityType} for method chaining
    */
   @Override
@@ -152,7 +181,9 @@ public class EntityType extends ComplexType {
   }
 
   /**
-   * @param documentation
+   * Sets the documentation.
+   *
+   * @param documentation the documentation
    * @return {@link EntityType} for method chaining
    */
   @Override
@@ -162,8 +193,9 @@ public class EntityType extends ComplexType {
   }
 
   /**
-   * Sets the collection of {@link AnnotationAttribute} for this {@link EntityType}
-   * @param annotationAttributes
+   * Sets the collection of {@link AnnotationAttribute} for this {@link EntityType}.
+   *
+   * @param annotationAttributes the annotation attributes
    * @return {@link EntityType} for method chaining
    */
   @Override
@@ -173,8 +205,9 @@ public class EntityType extends ComplexType {
   }
 
   /**
-   * Sets the collection of {@link AnnotationElement} for this {@link EntityType}
-   * @param annotationElements
+   * Sets the collection of {@link AnnotationElement} for this {@link EntityType}.
+   *
+   * @param annotationElements the annotation elements
    * @return {@link EntityType} for method chaining
    */
   @Override

@@ -36,16 +36,27 @@ import org.apache.olingo.odata2.testutil.helper.StringHelper;
 import org.apache.olingo.odata2.testutil.server.ServletType;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
  * Tests employing the reference scenario changing entities in JSON format.
  * 
  */
 public class EntryJsonChangeTest extends AbstractRefTest {
 
+  /**
+   * Instantiates a new entry json change test.
+   *
+   * @param servletType the servlet type
+   */
   public EntryJsonChangeTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /**
+   * Creates the entry.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void createEntry() throws Exception {
     final String requestBody = "{\"Id\":\"99\",\"Name\":\"Building 4\",\"Image\":\"" + PHOTO_DEFAULT_IMAGE + "\","
@@ -60,6 +71,11 @@ public class EntryJsonChangeTest extends AbstractRefTest {
     postUri("Buildings()", requestBody, HttpContentType.APPLICATION_ATOM_XML_ENTRY, HttpStatusCodes.BAD_REQUEST);
   }
 
+  /**
+   * Creates the entry minimal.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void createEntryMinimal() throws Exception {
     final String requestBody = "{\"Id\":\"99\"}";
@@ -69,6 +85,11 @@ public class EntryJsonChangeTest extends AbstractRefTest {
     checkUri("Teams('4')?$format=json");
   }
 
+  /**
+   * Creates the entry with navigation.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void createEntryWithNavigation() throws Exception {
     final String requestBody = "{\"Id\":\"199\",\"Name\":\"Room 199\"}";
@@ -80,6 +101,11 @@ public class EntryJsonChangeTest extends AbstractRefTest {
     checkUri("Buildings('1')/nb_Rooms('104')?$format=json");
   }
 
+  /**
+   * Creates the entry with link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void createEntryWithLink() throws Exception {
     HttpResponse response = callUri("$metadata");
@@ -105,6 +131,11 @@ public class EntryJsonChangeTest extends AbstractRefTest {
     assertEquals("{\"d\":{\"Name\":\"Building 1\"}}", getBody(callUri("Rooms('104')/nr_Building/Name?$format=json")));
   }
 
+  /**
+   * Creates the entry with inline entry.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void createEntryWithInlineEntry() throws Exception {
     final String requestBody = "{\"Id\":\"99\",\"Name\":\"new room\",\"Seats\":19,\"Version\":42,"
@@ -116,6 +147,11 @@ public class EntryJsonChangeTest extends AbstractRefTest {
     assertEquals("{\"d\":{\"Name\":\"new building\"}}", getBody(callUri("Rooms('104')/nr_Building/Name?$format=json")));
   }
 
+  /**
+   * Creates the entry with inline feed.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void createEntryWithInlineFeed() throws Exception {
     final String requestBody = "{\"Id\":\"99\",\"Name\":\"Building 4\",\"Image\":\"\","
@@ -137,6 +173,11 @@ public class EntryJsonChangeTest extends AbstractRefTest {
         getBody(callUri("Buildings('4')/nb_Rooms('105')/nr_Employees('6')/Age?$format=json")));
   }
 
+  /**
+   * Creates the entry three levels.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void createEntryThreeLevels() throws Exception {
     final String requestBody = "{\"Id\":\"99\",\"Name\":\"Building 4\",\"Image\":null,"
@@ -156,6 +197,11 @@ public class EntryJsonChangeTest extends AbstractRefTest {
         getBody(callUri("Buildings('4')/nb_Rooms('104')/nr_Employees('7')/ne_Manager/EmployeeName/$value")));
   }
 
+  /**
+   * Update entry.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void updateEntry() throws Exception {
     final String requestBody = "{\"EmployeeId\":\"2\",\"EmployeeName\":\"Mister X\",\"ManagerId\":\"1\","
@@ -169,6 +215,11 @@ public class EntryJsonChangeTest extends AbstractRefTest {
     assertEquals("{\"d\":{\"EntryDate\":null}}", getBody(callUri("Employees('2')/EntryDate?$format=json")));
   }
 
+  /**
+   * Patch entry.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void patchEntry() throws Exception {
     final String requestBody = "{\"Location\":"

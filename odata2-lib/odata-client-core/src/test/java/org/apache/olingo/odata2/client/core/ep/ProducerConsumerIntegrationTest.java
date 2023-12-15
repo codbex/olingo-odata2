@@ -61,10 +61,22 @@ import org.apache.olingo.odata2.core.batch.v2.Line;
 import org.apache.olingo.odata2.testutil.mock.MockFacade;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ProducerConsumerIntegrationTest.
+ */
 public class ProducerConsumerIntegrationTest {
+  
+  /** The Constant BASE_URI. */
   protected static final URI BASE_URI;
+  
+  /** The Constant PUT. */
   private static final String PUT = "PUT";
+  
+  /** The Constant BOUNDARY. */
   private static final String BOUNDARY = "batch_123";
+  
+  /** The Constant CRLF. */
   private static final Object CRLF = "\r\n";
 
   static {
@@ -74,16 +86,29 @@ public class ProducerConsumerIntegrationTest {
       throw new RuntimeException(e);
     }
   }
+  
+  /** The Constant DEFAULT_READ_PROPERTIES. */
   private static final DeserializerProperties DEFAULT_READ_PROPERTIES 
   = DeserializerProperties.init()
       .build();
+  
+  /** The Constant DEFAULT_WRITE_PROPERTIES. */
   private static final EntitySerializerProperties DEFAULT_WRITE_PROPERTIES 
   = EntitySerializerProperties
       .serviceRoot(
           BASE_URI).build();
+  
+  /** The Constant XML. */
   private static final String XML = "application/xml";
+  
+  /** The Constant JSON. */
   private static final String JSON = "application/json";
 
+  /**
+   * Produce room and then consume it.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void produceRoomAndThenConsumeIt() throws Exception {
     EdmEntitySet roomSet = MockFacade.getMockEdm()
@@ -101,6 +126,11 @@ public class ProducerConsumerIntegrationTest {
     assertEquals("Neu \n Schwanstein蝴蝶", properties2.get("Name"));
   }
 
+  /**
+   * Produce room feed and then consume it.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void produceRoomFeedAndThenConsumeIt() throws Exception {
     EdmEntitySet roomSet = MockFacade.getMockEdm()
@@ -123,6 +153,11 @@ public class ProducerConsumerIntegrationTest {
     validateResults(entries);
   }
   
+  /**
+   * Negative tests.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected=EntityProviderException.class)
   public void negativeTests() throws Exception {
     EdmEntitySet roomSet = MockFacade.getMockEdm()
@@ -136,6 +171,11 @@ public class ProducerConsumerIntegrationTest {
     assertEquals("Neu \n Schwanstein蝴蝶", properties.get("Name"));   
   }
   
+  /**
+   * Negative tests deserializer.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected=EntityProviderException.class)
   public void negativeTestsDeserializer() throws Exception {
     EdmEntitySet roomSet = MockFacade.getMockEdm()
@@ -150,7 +190,9 @@ public class ProducerConsumerIntegrationTest {
   }
 
   /**
-   * @param entries
+   * Validate results.
+   *
+   * @param entries the entries
    */
   private void validateResults(List<Map<String, Object>> entries) {
     for (Map<String, Object> entryProperties : entries) {
@@ -166,6 +208,15 @@ public class ProducerConsumerIntegrationTest {
     }
   }
   
+  /**
+   * Execute.
+   *
+   * @param localRoomData the local room data
+   * @param roomSet the room set
+   * @param contentType the content type
+   * @return the map
+   * @throws ODataException the o data exception
+   */
   private Map<String, Object> execute(final Entity localRoomData, final EdmEntitySet roomSet,
       final String contentType)
       throws ODataException {
@@ -182,6 +233,15 @@ public class ProducerConsumerIntegrationTest {
     return properties;
   }
   
+  /**
+   * Execute fail.
+   *
+   * @param localRoomData the local room data
+   * @param roomSet the room set
+   * @param contentType the content type
+   * @return the map
+   * @throws ODataException the o data exception
+   */
   private Map<String, Object> executeFail(final Entity localRoomData, final EdmEntitySet roomSet,
       final String contentType)
       throws ODataException {
@@ -198,6 +258,15 @@ public class ProducerConsumerIntegrationTest {
     return properties;
   }
 
+  /**
+   * Execute 1.
+   *
+   * @param localRoomData the local room data
+   * @param roomSet the room set
+   * @param contentType the content type
+   * @return the list
+   * @throws ODataException the o data exception
+   */
   private List<Map<String, Object>> execute1(final EntityCollection localRoomData, final EdmEntitySet roomSet,
       final String contentType)
       throws ODataException {
@@ -219,6 +288,14 @@ public class ProducerConsumerIntegrationTest {
   }
   
   
+  /**
+   * Execute write batch request JSON.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws EntityProviderException the entity provider exception
+   * @throws BatchException the batch exception
+   * @throws URISyntaxException the URI syntax exception
+   */
   @Test
   public void executeWriteBatchRequestJSON() throws IOException, 
   EntityProviderException, BatchException, URISyntaxException {
@@ -240,6 +317,12 @@ public class ProducerConsumerIntegrationTest {
     validateBatchRequest(batchRequest);
   }
   
+  /**
+   * Validate batch request.
+   *
+   * @param batchRequest the batch request
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private void validateBatchRequest(InputStream batchRequest) throws IOException {
     BatchLineReader reader =
         new BatchLineReader(batchRequest);
@@ -264,6 +347,12 @@ public class ProducerConsumerIntegrationTest {
     assertTrue(lines.get(index++).toString().startsWith("--batch"));
   }
   
+  /**
+   * Execute write batch response JSON.
+   *
+   * @throws BatchException the batch exception
+   * @throws EntityProviderException the entity provider exception
+   */
   @Test
   public void executeWriteBatchResponseJSON() throws BatchException, EntityProviderException {
     List<BatchResponsePart> parts = new ArrayList<BatchResponsePart>();
@@ -300,6 +389,11 @@ public class ProducerConsumerIntegrationTest {
     assertEquals(2, result.size());
   }
   
+  /**
+   * Read function import JOSN simple property 1.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readFunctionImportJOSNSimpleProperty1() throws Exception {
     final EdmFunctionImport functionImport = MockFacade.getMockEdm().getDefaultEntityContainer()
@@ -313,6 +407,11 @@ public class ProducerConsumerIntegrationTest {
     assertEquals((short) 42, result);
   }
   
+  /**
+   * Read function import XML simple property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readFunctionImportXMLSimpleProperty() throws Exception {
     final EdmFunctionImport functionImport = MockFacade.getMockEdm().getDefaultEntityContainer()
@@ -330,6 +429,11 @@ public class ProducerConsumerIntegrationTest {
     assertEquals((short) 42, result);
   }
   
+  /**
+   * Read function import JOSN simple property 2.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readFunctionImportJOSNSimpleProperty2() throws Exception {
     final EdmFunctionImport functionImport = MockFacade.getMockEdm().getDefaultEntityContainer()
@@ -343,6 +447,11 @@ public class ProducerConsumerIntegrationTest {
     assertEquals((short) 42, result);
   }
   
+  /**
+   * Read function import JSON collection of complex property 1.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void readFunctionImportJSONCollectionOfComplexProperty1() throws Exception {
@@ -362,6 +471,11 @@ public class ProducerConsumerIntegrationTest {
     assertEquals(2, ((Map<String, Object>)((Map<String, Object>)res.get(0)).get("City")).size());
   }
   
+  /**
+   * Read function import JSON collection of complex property 2.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void readFunctionImportJSONCollectionOfComplexProperty2() throws Exception {
@@ -381,6 +495,11 @@ public class ProducerConsumerIntegrationTest {
     assertEquals(2, ((Map<String, Object>)((Map<String, Object>)res.get(0)).get("City")).size());
   }
   
+  /**
+   * Read function import XML collection of complex property.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void readFunctionImportXMLCollectionOfComplexProperty() throws Exception {
@@ -416,6 +535,11 @@ public class ProducerConsumerIntegrationTest {
     assertEquals(2, ((Map<String, Object>)((Map<String, Object>)res.get(0)).get("City")).size());
   }
   
+  /**
+   * Read function import JSON single entity 1.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readFunctionImportJSONSingleEntity1() throws Exception {
     final EdmFunctionImport functionImport = MockFacade.getMockEdm().getDefaultEntityContainer()
@@ -476,6 +600,11 @@ public class ProducerConsumerIntegrationTest {
     assertEquals("3", entry.getProperties().get("EmployeeId"));
   }
   
+  /**
+   * Read function import XML single entity.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readFunctionImportXMLSingleEntity() throws Exception {
     final EdmFunctionImport functionImport = MockFacade.getMockEdm().getDefaultEntityContainer()
@@ -527,6 +656,11 @@ public class ProducerConsumerIntegrationTest {
         + "ReferenceScenarioNonJaxrs.svc/Employees('3')", entry.getMetadata().getId());
   }
   
+  /**
+   * Read function import JSON single entity 2.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readFunctionImportJSONSingleEntity2() throws Exception {
     final EdmFunctionImport functionImport = MockFacade.getMockEdm().getDefaultEntityContainer()
@@ -586,6 +720,11 @@ public class ProducerConsumerIntegrationTest {
     assertEquals("3", entry.getProperties().get("EmployeeId"));
   }
   
+  /**
+   * Read multiple entity JSON function import 1.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readMultipleEntityJSONFunctionImport1() throws Exception {
     final EdmFunctionImport functionImport = MockFacade.getMockEdm().getDefaultEntityContainer()
@@ -650,6 +789,11 @@ public class ProducerConsumerIntegrationTest {
     assertEquals("3", id);
   }
   
+  /**
+   * Read multiple entity JSON function import 2.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readMultipleEntityJSONFunctionImport2() throws Exception {
     final EdmFunctionImport functionImport = MockFacade.getMockEdm().getDefaultEntityContainer()
@@ -713,6 +857,11 @@ public class ProducerConsumerIntegrationTest {
     assertEquals("3", id);
   }
   
+  /**
+   * Read multiple entity XML function import.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void readMultipleEntityXMLFunctionImport() throws Exception {
@@ -797,10 +946,13 @@ public class ProducerConsumerIntegrationTest {
   }
 
   /**
-   * @param functionImport
-   * @param entityStream
-   * @return
-   * @throws EntityProviderException
+   * Execute function import.
+   *
+   * @param functionImport the function import
+   * @param entityStream the entity stream
+   * @param contentType the content type
+   * @return the object
+   * @throws EntityProviderException the entity provider exception
    */
   private Object executeFunctionImport(final EdmFunctionImport functionImport, 
       EntityStream entityStream, String contentType)

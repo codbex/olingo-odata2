@@ -24,8 +24,15 @@ import java.net.URL;
 
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Log4JConfigurationTest.
+ */
 public class Log4JConfigurationTest {
 
+  /**
+   * Test configuration.
+   */
   @Test
   public void testConfiguration() {
     final URL url = Log4JConfigurationTest.class.getResource("/log4j.xml");

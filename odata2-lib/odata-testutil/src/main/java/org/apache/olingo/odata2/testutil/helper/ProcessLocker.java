@@ -28,6 +28,7 @@ import org.apache.olingo.odata2.testutil.TestUtilRuntimeException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+// TODO: Auto-generated Javadoc
 /**
  * Interprocess synchronization to enable parallel test executions.
  * 
@@ -35,9 +36,16 @@ import org.slf4j.LoggerFactory;
  */
 public class ProcessLocker {
 
+  /** The Constant log. */
   @SuppressWarnings("unused")
   private static final Logger log = LoggerFactory.getLogger(ProcessLocker.class);
 
+  /**
+   * Cross process lock acquire.
+   *
+   * @param c the c
+   * @param waitMS the wait MS
+   */
   // Acquire
   public static void crossProcessLockAcquire(final Class<?> c, final long waitMS) {
     RandomAccessFile randomAccessFile = null;
@@ -65,6 +73,9 @@ public class ProcessLocker {
     }
   }
 
+  /**
+   * Cross process lock release.
+   */
   // Release
   public static void crossProcessLockRelease() {
     if (fileLock != null) {
@@ -77,10 +88,13 @@ public class ProcessLocker {
     }
   }
 
+  /** The lock temp dir. */
   private static File lockTempDir = new File(System.getProperty("java.io.tmpdir") + File.separator + "locks");
   static {
     lockTempDir.mkdirs();
   }
+  
+  /** The file lock. */
   private static FileLock fileLock = null;
 
   static {

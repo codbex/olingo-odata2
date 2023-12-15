@@ -38,14 +38,23 @@ import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class EdmNavigationPropertyImplProvTest.
  */
 public class EdmNavigationPropertyImplProvTest extends BaseTest {
 
+  /** The edm provider. */
   private static EdmProvider edmProvider;
+  
+  /** The nav property provider. */
   private static EdmNavigationPropertyImplProv navPropertyProvider;
 
+  /**
+   * Setup.
+   *
+   * @throws Exception the exception
+   */
   @BeforeClass
   public static void setup() throws Exception {
 
@@ -71,6 +80,11 @@ public class EdmNavigationPropertyImplProvTest extends BaseTest {
     navPropertyProvider = new EdmNavigationPropertyImplProv(edmImplProv, navProperty);
   }
 
+  /**
+   * Test navigation property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testNavigationProperty() throws Exception {
     assertNotNull(navPropertyProvider);
@@ -85,6 +99,12 @@ public class EdmNavigationPropertyImplProvTest extends BaseTest {
     assertEquals("associationName", association.getName());
   }
 
+  /**
+   * Gets the annotations.
+   *
+   * @return the annotations
+   * @throws Exception the exception
+   */
   @Test
   public void getAnnotations() throws Exception {
     EdmAnnotatable annotatable = navPropertyProvider;

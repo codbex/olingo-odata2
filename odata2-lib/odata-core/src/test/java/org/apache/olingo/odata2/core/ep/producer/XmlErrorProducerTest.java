@@ -49,18 +49,32 @@ import org.custommonkey.xmlunit.XMLUnit;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class XmlErrorProducerTest.
  */
 public class XmlErrorProducerTest extends AbstractXmlProducerTestHelper {
 
+  /** The Constant contentType. */
   private static final String contentType = ContentType.APPLICATION_XML.toContentTypeString();
+  
+  /** The Constant expectedStatus. */
   private static final HttpStatusCodes expectedStatus = HttpStatusCodes.INTERNAL_SERVER_ERROR;
 
+  /**
+   * Instantiates a new xml error producer test.
+   *
+   * @param type the type
+   */
   public XmlErrorProducerTest(final StreamWriterImplType type) {
     super(type);
   }
 
+  /**
+   * Setup.
+   *
+   * @throws Exception the exception
+   */
   @BeforeClass
   public static void setup() throws Exception {
     Map<String, String> prefixMap = new HashMap<String, String>();
@@ -68,6 +82,11 @@ public class XmlErrorProducerTest extends AbstractXmlProducerTestHelper {
     XMLUnit.setXpathNamespaceContext(new SimpleNamespaceContext(prefixMap));
   }
 
+  /**
+   * Via runtime delegate.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void viaRuntimeDelegate() throws Exception {
     ODataErrorContext context = new ODataErrorContext();
@@ -96,6 +115,11 @@ public class XmlErrorProducerTest extends AbstractXmlProducerTestHelper {
     verifyXml(null, "a", Locale.GERMAN, null, errorXml);
   }
 
+  /**
+   * Via provider facade impl.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void viaProviderFacadeImpl() throws Exception {
     String errorCode = null;
@@ -149,6 +173,11 @@ public class XmlErrorProducerTest extends AbstractXmlProducerTestHelper {
     verifyXml(errorCode, message, locale, innerError, errorXml);
   }
 
+  /**
+   * With error details.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void withErrorDetails() throws Exception {
     String errorCode = "500";
@@ -181,6 +210,11 @@ public class XmlErrorProducerTest extends AbstractXmlProducerTestHelper {
     verifyDetailsXml(errorCode, detailedMessage, severity, target, errorXml);
   }
 
+  /**
+   * Normal.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void normal() throws Exception {
     serializeError(null, "Message", null, Locale.GERMAN);
@@ -190,48 +224,93 @@ public class XmlErrorProducerTest extends AbstractXmlProducerTestHelper {
     serializeError(null, "Message", null, Locale.CHINA);
   }
 
+  /**
+   * None.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void none() throws Exception {
     serializeError(null, null, null, null);
   }
 
+  /**
+   * Only error code.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void onlyErrorCode() throws Exception {
     serializeError("ErrorCode", null, null, null);
   }
 
+  /**
+   * Only message.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void onlyMessage() throws Exception {
     serializeError(null, "message", null, null);
   }
 
+  /**
+   * Only inner error.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void onlyInnerError() throws Exception {
     serializeError(null, null, "InnerError", null);
   }
 
+  /**
+   * Only locale.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void onlyLocale() throws Exception {
     serializeError(null, null, null, Locale.GERMANY);
   }
 
+  /**
+   * Without message.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void withoutMessage() throws Exception {
     serializeError("ErrorCode", null, null, Locale.GERMAN);
   }
 
+  /**
+   * Normal with error code variation.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void normalWithErrorCodeVariation() throws Exception {
     serializeError("", "Message", null, Locale.GERMAN);
     serializeError("  ", "Message", null, Locale.GERMAN);
   }
 
+  /**
+   * Normal with inner error variation.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void normalWithInnerErrorVariation() throws Exception {
     serializeError(null, "Message", "", Locale.GERMAN);
     serializeError(null, "Message", "  ", Locale.GERMAN);
   }
 
+  /**
+   * All.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void all() throws Exception {
     serializeError("ErrorCode", "Message", "InnerError", Locale.GERMAN);
@@ -241,6 +320,12 @@ public class XmlErrorProducerTest extends AbstractXmlProducerTestHelper {
     serializeError("ErrorCode", "Message", "InnerError", Locale.CHINA);
   }
 
+  /**
+   * Gets the lang.
+   *
+   * @param locale the locale
+   * @return the lang
+   */
   private String getLang(final Locale locale) {
     if (locale == null) {
       return "";
@@ -252,6 +337,15 @@ public class XmlErrorProducerTest extends AbstractXmlProducerTestHelper {
     }
   }
 
+  /**
+   * Serialize error.
+   *
+   * @param errorCode the error code
+   * @param message the message
+   * @param innerError the inner error
+   * @param locale the locale
+   * @throws Exception the exception
+   */
   private void
       serializeError(final String errorCode, final String message, final String innerError, final Locale locale)
           throws Exception {
@@ -267,6 +361,13 @@ public class XmlErrorProducerTest extends AbstractXmlProducerTestHelper {
     verifyXml(errorCode, message, locale, innerError, errorXml);
   }
 
+  /**
+   * Verify response.
+   *
+   * @param response the response
+   * @return the string
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private String verifyResponse(final ODataResponse response) throws IOException {
     assertNotNull(response);
     assertNotNull(response.getEntity());
@@ -279,6 +380,16 @@ public class XmlErrorProducerTest extends AbstractXmlProducerTestHelper {
     return xmlString;
   }
 
+  /**
+   * Verify xml.
+   *
+   * @param errorCode the error code
+   * @param message the message
+   * @param locale the locale
+   * @param innerError the inner error
+   * @param errorXml the error xml
+   * @throws Exception the exception
+   */
   private void verifyXml(final String errorCode, final String message, final Locale locale, final String innerError,
       final String errorXml) throws Exception {
 
@@ -307,6 +418,16 @@ public class XmlErrorProducerTest extends AbstractXmlProducerTestHelper {
     }
   }
 
+  /**
+   * Verify details xml.
+   *
+   * @param errorCode the error code
+   * @param message the message
+   * @param severity the severity
+   * @param target the target
+   * @param errorXml the error xml
+   * @throws Exception the exception
+   */
   private void verifyDetailsXml(final String errorCode, final String message, 
           String severity, String target, final String errorXml) throws Exception {
     assertXpathExists("/a:error/a:innererror/a:errordetails/a:errordetail", errorXml);

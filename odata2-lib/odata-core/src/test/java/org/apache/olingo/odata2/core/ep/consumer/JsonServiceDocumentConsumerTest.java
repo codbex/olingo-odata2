@@ -24,8 +24,17 @@ import org.apache.olingo.odata2.api.ep.EntityProviderException;
 import org.apache.olingo.odata2.api.servicedocument.ServiceDocument;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JsonServiceDocumentConsumerTest.
+ */
 public class JsonServiceDocumentConsumerTest {
 
+    /**
+     * Test.
+     *
+     * @throws EntityProviderException the entity provider exception
+     */
     @Test
     public void test() throws EntityProviderException {
         JsonServiceDocumentConsumer parser = new JsonServiceDocumentConsumer();
@@ -47,6 +56,11 @@ public class JsonServiceDocumentConsumerTest {
         }
     }
 
+    /**
+     * Check decoding of entity set names.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void checkDecodingOfEntitySetNames() throws Exception {
         JsonServiceDocumentConsumer parser = new JsonServiceDocumentConsumer();
@@ -59,6 +73,11 @@ public class JsonServiceDocumentConsumerTest {
                                                     .toASCIIString());
     }
 
+    /**
+     * Test invalid service document.
+     *
+     * @throws EntityProviderException the entity provider exception
+     */
     @Test(expected = EntityProviderException.class)
     public void testInvalidServiceDocument() throws EntityProviderException {
         JsonServiceDocumentConsumer parser = new JsonServiceDocumentConsumer();
@@ -66,6 +85,11 @@ public class JsonServiceDocumentConsumerTest {
         parser.parseJson(in);
     }
 
+    /**
+     * Test service document with invalid structure.
+     *
+     * @throws EntityProviderException the entity provider exception
+     */
     @Test(expected = EntityProviderException.class)
     public void testServiceDocumentWithInvalidStructure() throws EntityProviderException {
         JsonServiceDocumentConsumer parser = new JsonServiceDocumentConsumer();

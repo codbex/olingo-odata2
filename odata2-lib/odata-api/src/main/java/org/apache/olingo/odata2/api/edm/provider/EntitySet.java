@@ -22,20 +22,33 @@ import java.util.List;
 
 import org.apache.olingo.odata2.api.edm.FullQualifiedName;
 
+// TODO: Auto-generated Javadoc
 /**
- * Objects of this class represent an entity set
- * 
+ * Objects of this class represent an entity set.
  */
 public class EntitySet {
 
+  /** The name. */
   private String name;
+  
+  /** The entity type. */
   private FullQualifiedName entityType;
+  
+  /** The mapping. */
   private Mapping mapping;
+  
+  /** The documentation. */
   private Documentation documentation;
+  
+  /** The annotation attributes. */
   private List<AnnotationAttribute> annotationAttributes;
+  
+  /** The annotation elements. */
   private List<AnnotationElement> annotationElements;
 
   /**
+   * Gets the name.
+   *
    * @return <b>String> name of this entity set
    */
   public String getName() {
@@ -43,6 +56,8 @@ public class EntitySet {
   }
 
   /**
+   * Gets the entity type.
+   *
    * @return {@link FullQualifiedName} of the entity type of this entity set
    */
   public FullQualifiedName getEntityType() {
@@ -50,6 +65,8 @@ public class EntitySet {
   }
 
   /**
+   * Gets the mapping.
+   *
    * @return {@link Mapping} for this type
    */
   public Mapping getMapping() {
@@ -57,6 +74,8 @@ public class EntitySet {
   }
 
   /**
+   * Gets the documentation.
+   *
    * @return {@link Documentation} documentation
    */
   public Documentation getDocumentation() {
@@ -64,6 +83,8 @@ public class EntitySet {
   }
 
   /**
+   * Gets the annotation attributes.
+   *
    * @return collection of {@link AnnotationAttribute} annotation attributes
    */
   public List<AnnotationAttribute> getAnnotationAttributes() {
@@ -71,6 +92,8 @@ public class EntitySet {
   }
 
   /**
+   * Gets the annotation elements.
+   *
    * @return collection of {@link AnnotationElement} annotation elements
    */
   public List<AnnotationElement> getAnnotationElements() {
@@ -78,8 +101,9 @@ public class EntitySet {
   }
 
   /**
-   * Sets the name of this {@link EntitySet}
-   * @param name
+   * Sets the name of this {@link EntitySet}.
+   *
+   * @param name the name
    * @return {@link EntitySet} for method chaining
    */
   public EntitySet setName(final String name) {
@@ -88,8 +112,9 @@ public class EntitySet {
   }
 
   /**
-   * Sets the {@link FullQualifiedName} of the {@link EntityType} of this {@link EntitySet}
-   * @param entityType
+   * Sets the {@link FullQualifiedName} of the {@link EntityType} of this {@link EntitySet}.
+   *
+   * @param entityType the entity type
    * @return {@link EntitySet} for method chaining
    */
   public EntitySet setEntityType(final FullQualifiedName entityType) {
@@ -98,8 +123,9 @@ public class EntitySet {
   }
 
   /**
-   * Sets the {@link Mapping}
-   * @param mapping
+   * Sets the {@link Mapping}.
+   *
+   * @param mapping the mapping
    * @return {@link EntitySet} for method chaining
    */
   public EntitySet setMapping(final Mapping mapping) {
@@ -108,8 +134,9 @@ public class EntitySet {
   }
 
   /**
-   * Sets the {@link Documentation}
-   * @param documentation
+   * Sets the {@link Documentation}.
+   *
+   * @param documentation the documentation
    * @return {@link EntitySet} for method chaining
    */
   public EntitySet setDocumentation(final Documentation documentation) {
@@ -118,8 +145,9 @@ public class EntitySet {
   }
 
   /**
-   * Sets the collection of {@link AnnotationAttribute} for this {@link EntitySet}
-   * @param annotationAttributes
+   * Sets the collection of {@link AnnotationAttribute} for this {@link EntitySet}.
+   *
+   * @param annotationAttributes the annotation attributes
    * @return {@link EntitySet} for method chaining
    */
   public EntitySet setAnnotationAttributes(final List<AnnotationAttribute> annotationAttributes) {
@@ -128,8 +156,9 @@ public class EntitySet {
   }
 
   /**
-   * Sets the collection of {@link AnnotationElement} for this {@link EntitySet}
-   * @param annotationElements
+   * Sets the collection of {@link AnnotationElement} for this {@link EntitySet}.
+   *
+   * @param annotationElements the annotation elements
    * @return {@link EntitySet} for method chaining
    */
   public EntitySet setAnnotationElements(final List<AnnotationElement> annotationElements) {

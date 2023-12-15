@@ -18,52 +18,53 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.edm;
 
+// TODO: Auto-generated Javadoc
 /**
- * @org.apache.olingo.odata2.DoNotImplement
- * <p>A Facet is an element defined in CSDL that provides information
+ * The Interface EdmFacets.
+ *
+ * @org.apache.olingo.odata2.DoNotImplement <p>A Facet is an element defined in CSDL that provides information
  * that specializes the usage of a type.</p>
- * 
  */
 public interface EdmFacets {
 
   /**
-   * Get the information if the type in use is nullable
-   * 
+   * Get the information if the type in use is nullable.
+   *
    * @return <code>true</code> if the type in use is nullable
    */
   Boolean isNullable();
 
   /**
-   * Get the default value of the type in use
-   * 
+   * Get the default value of the type in use.
+   *
    * @return a default value of the type in use as String
    */
   String getDefaultValue();
 
   /**
-   * Get the maximum length of the type in use
-   * 
+   * Get the maximum length of the type in use.
+   *
    * @return the maximum length of the type in use as Integer
    */
   Integer getMaxLength();
 
   /**
-   * Get the information if the type in has a fixed length
-   * 
+   * Get the information if the type in has a fixed length.
+   *
    * @return <code>true</code> if the type in use has a fixed length
    */
   Boolean isFixedLength();
 
   /**
-   * Get the precision of the type in use
-   * 
+   * Get the precision of the type in use.
+   *
    * @return the precision of the type in use as Integer
    */
   Integer getPrecision();
 
   /**
-   * Get the scale of the type in use
-   * 
+   * Get the scale of the type in use.
+   *
    * @return the scale of the type in use as Integer
    */
   Integer getScale();

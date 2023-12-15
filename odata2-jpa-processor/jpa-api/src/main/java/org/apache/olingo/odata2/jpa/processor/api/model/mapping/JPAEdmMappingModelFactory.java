@@ -16,6 +16,7 @@ package org.apache.olingo.odata2.jpa.processor.api.model.mapping;
 
 import jakarta.xml.bind.annotation.XmlRegistry;
 
+// TODO: Auto-generated Javadoc
 /**
  * This object contains factory methods for each Java content interface and Java element interface
  * generated in the org.apache.olingo.odata2.processor.api.jpa.model.mapping package.
@@ -39,7 +40,8 @@ public class JPAEdmMappingModelFactory {
     /**
      * Create an instance of
      * {@link org.apache.olingo.odata2.jpa.processor.api.model.mapping.JPARelationshipMapType }
-     * 
+     *
+     * @return the JPA relationship map type
      */
     public JPARelationshipMapType createJPARelationshipMapType() {
         return new JPARelationshipMapType();
@@ -48,7 +50,8 @@ public class JPAEdmMappingModelFactory {
     /**
      * Create an instance of
      * {@link org.apache.olingo.odata2.jpa.processor.api.model.mapping.JPAAttributeMapType }
-     * 
+     *
+     * @return the JPA attribute map type
      */
     public JPAAttributeMapType createJPAAttributeMapType() {
         return new JPAAttributeMapType();
@@ -57,7 +60,8 @@ public class JPAEdmMappingModelFactory {
     /**
      * Create an instance of
      * {@link org.apache.olingo.odata2.jpa.processor.api.model.mapping.JPAEdmMappingModel }
-     * 
+     *
+     * @return the JPA edm mapping model
      */
     public JPAEdmMappingModel createJPAEDMMappingModel() {
         return new JPAEdmMappingModel();
@@ -66,7 +70,8 @@ public class JPAEdmMappingModelFactory {
     /**
      * Create an instance of
      * {@link org.apache.olingo.odata2.jpa.processor.api.model.mapping.JPAPersistenceUnitMapType }
-     * 
+     *
+     * @return the JPA persistence unit map type
      */
     public JPAPersistenceUnitMapType createJPAPersistenceUnitMapType() {
         return new JPAPersistenceUnitMapType();
@@ -75,7 +80,8 @@ public class JPAEdmMappingModelFactory {
     /**
      * Create an instance of
      * {@link org.apache.olingo.odata2.jpa.processor.api.model.mapping.JPAEmbeddableTypeMapType }
-     * 
+     *
+     * @return the JPA embeddable type map type
      */
     public JPAEmbeddableTypeMapType createJPAEmbeddableTypeMapType() {
         return new JPAEmbeddableTypeMapType();

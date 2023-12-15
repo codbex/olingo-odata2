@@ -24,17 +24,23 @@ import org.apache.olingo.odata2.api.edm.EdmProperty;
 import org.apache.olingo.odata2.api.exception.ODataException;
 import org.apache.olingo.odata2.api.exception.ODataNotImplementedException;
 
+// TODO: Auto-generated Javadoc
 /**
- *
+ * The Class AnnotationValueAccess.
  */
 public class AnnotationValueAccess implements ValueAccess {
+  
+  /** The annotation helper. */
   private final AnnotationHelper annotationHelper = new AnnotationHelper();
 
   /**
    * Retrieves the value of an EDM property for the given data object.
+   *
+   * @param <T> the generic type
    * @param data the Java data object
    * @param property the requested {@link EdmProperty}
    * @return the requested property value
+   * @throws ODataException the o data exception
    */
   @Override
   public <T> Object getPropertyValue(final T data, final EdmProperty property) throws ODataException {
@@ -48,9 +54,13 @@ public class AnnotationValueAccess implements ValueAccess {
 
   /**
    * Sets the value of an EDM property for the given data object.
+   *
+   * @param <T> the generic type
+   * @param <V> the value type
    * @param data the Java data object
    * @param property the {@link EdmProperty}
    * @param value the new value of the property
+   * @throws ODataException the o data exception
    */
   @Override
   public <T, V> void setPropertyValue(final T data, final EdmProperty property, final V value) throws ODataException {
@@ -65,9 +75,12 @@ public class AnnotationValueAccess implements ValueAccess {
 
   /**
    * Retrieves the Java type of an EDM property for the given data object.
+   *
+   * @param <T> the generic type
    * @param data the Java data object
    * @param property the requested {@link EdmProperty}
    * @return the requested Java type
+   * @throws ODataException the o data exception
    */
   @Override
   public <T> Class<?> getPropertyType(final T data, final EdmProperty property) throws ODataException {
@@ -85,9 +98,12 @@ public class AnnotationValueAccess implements ValueAccess {
 
   /**
    * Retrieves the value defined by a mapping object for the given data object.
+   *
+   * @param <T> the generic type
    * @param data the Java data object
    * @param mapping the requested {@link EdmMapping}
    * @return the requested value
+   * @throws ODataException the o data exception
    */
   @Override
   public <T> Object getMappingValue(final T data, final EdmMapping mapping) throws ODataException {
@@ -99,9 +115,13 @@ public class AnnotationValueAccess implements ValueAccess {
 
   /**
    * Sets the value defined by a mapping object for the given data object.
+   *
+   * @param <T> the generic type
+   * @param <V> the value type
    * @param data the Java data object
    * @param mapping the {@link EdmMapping}
    * @param value the new value
+   * @throws ODataException the o data exception
    */
   @Override
   public <T, V> void setMappingValue(final T data, final EdmMapping mapping, final V value) throws ODataException {

@@ -39,17 +39,41 @@ import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmReferentialConstra
 import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmSchemaView;
 import org.apache.olingo.odata2.jpa.processor.core.access.model.JPAEdmNameBuilder;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAEdmAssociation.
+ */
 public class JPAEdmAssociation extends JPAEdmBaseViewImpl implements JPAEdmAssociationView {
 
+  /** The association end view. */
   private JPAEdmAssociationEndView associationEndView;
 
+  /** The current association. */
   private Association currentAssociation;
+  
+  /** The consistent associaton list. */
   private List<Association> consistentAssociatonList;
+  
+  /** The association map. */
   private HashMap<String, Association> associationMap;
+  
+  /** The association end map. */
   private HashMap<String, JPAEdmAssociationEndView> associationEndMap;
+  
+  /** The inconsistent ref constraint view list. */
   private List<JPAEdmReferentialConstraintView> inconsistentRefConstraintViewList;
+  
+  /** The number of similar end points. */
   private int numberOfSimilarEndPoints;
 
+  /**
+   * Instantiates a new JPA edm association.
+   *
+   * @param associationEndview the association endview
+   * @param entityTypeView the entity type view
+   * @param propertyView the property view
+   * @param value the value
+   */
   public JPAEdmAssociation(final JPAEdmAssociationEndView associationEndview,
       final JPAEdmEntityTypeView entityTypeView, final JPAEdmPropertyView propertyView, final int value) {
     super(associationEndview);
@@ -58,11 +82,19 @@ public class JPAEdmAssociation extends JPAEdmBaseViewImpl implements JPAEdmAssoc
     init();
   }
 
+  /**
+   * Instantiates a new JPA edm association.
+   *
+   * @param view the view
+   */
   public JPAEdmAssociation(final JPAEdmSchemaView view) {
     super(view);
     init();
   }
 
+  /**
+   * Inits the.
+   */
   private void init() {
     isConsistent = false;
     consistentAssociatonList = new ArrayList<Association>();
@@ -71,6 +103,11 @@ public class JPAEdmAssociation extends JPAEdmBaseViewImpl implements JPAEdmAssoc
     associationEndMap = new HashMap<String, JPAEdmAssociationEndView>();
   }
 
+  /**
+   * Gets the builder.
+   *
+   * @return the builder
+   */
   @Override
   public JPAEdmBuilder getBuilder() {
     if (builder == null) {
@@ -79,16 +116,32 @@ public class JPAEdmAssociation extends JPAEdmBaseViewImpl implements JPAEdmAssoc
     return builder;
   }
 
+  /**
+   * Gets the edm association.
+   *
+   * @return the edm association
+   */
   @Override
   public Association getEdmAssociation() {
     return currentAssociation;
   }
 
+  /**
+   * Gets the consistent edm association list.
+   *
+   * @return the consistent edm association list
+   */
   @Override
   public List<Association> getConsistentEdmAssociationList() {
     return consistentAssociatonList;
   }
 
+  /**
+   * Search association.
+   *
+   * @param view the view
+   * @return the association
+   */
   @Override
   public Association searchAssociation(final JPAEdmAssociationEndView view) {
     if (view != null) {
@@ -129,6 +182,12 @@ public class JPAEdmAssociation extends JPAEdmBaseViewImpl implements JPAEdmAssoc
     return null;
   }
 
+  /**
+   * Update association end multiplicity.
+   *
+   * @param view the view
+   * @param association the association
+   */
   private void updateAssociationEndMultiplicity(JPAEdmAssociationEndView view, Association association) {
     if (view.getEdmAssociationEnd1().getMultiplicity() == EdmMultiplicity.ZERO_TO_ONE
         && association.getEnd1().getMultiplicity() == EdmMultiplicity.ONE) {
@@ -145,6 +204,12 @@ public class JPAEdmAssociation extends JPAEdmBaseViewImpl implements JPAEdmAssoc
     }
   }
 
+  /**
+   * Adds the JPA edm association view.
+   *
+   * @param associationView the association view
+   * @param associationEndView the association end view
+   */
   @Override
   public void addJPAEdmAssociationView(final JPAEdmAssociationView associationView,
       final JPAEdmAssociationEndView associationEndView) {
@@ -156,6 +221,11 @@ public class JPAEdmAssociation extends JPAEdmBaseViewImpl implements JPAEdmAssoc
     }
   }
 
+  /**
+   * Adds the JPA edm ref constraint view.
+   *
+   * @param refView the ref view
+   */
   @Override
   public void addJPAEdmRefConstraintView(final JPAEdmReferentialConstraintView refView) {
     if (refView != null && refView.isExists()) {
@@ -163,6 +233,11 @@ public class JPAEdmAssociation extends JPAEdmBaseViewImpl implements JPAEdmAssoc
     }
   }
 
+  /**
+   * Gets the JPA edm referential constraint view.
+   *
+   * @return the JPA edm referential constraint view
+   */
   @Override
   public JPAEdmReferentialConstraintView getJPAEdmReferentialConstraintView() {
     if (inconsistentRefConstraintViewList.isEmpty()) {
@@ -171,8 +246,17 @@ public class JPAEdmAssociation extends JPAEdmBaseViewImpl implements JPAEdmAssoc
     return inconsistentRefConstraintViewList.get(0);
   }
 
+  /**
+   * The Class JPAEdmAssociationBuilder.
+   */
   private class JPAEdmAssociationBuilder implements JPAEdmBuilder {
 
+    /**
+     * Builds the.
+     *
+     * @throws ODataJPAModelException the o data JPA model exception
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
+     */
     @Override
     public void build() throws ODataJPAModelException, ODataJPARuntimeException {
 
@@ -222,6 +306,12 @@ public class JPAEdmAssociation extends JPAEdmBaseViewImpl implements JPAEdmAssoc
 
     }
 
+    /**
+     * Copy association.
+     *
+     * @param copyToAssociation the copy to association
+     * @param copyFromAssociation the copy from association
+     */
     private void copyAssociation(final Association copyToAssociation, final Association copyFromAssociation) {
       copyToAssociation.setEnd1(copyFromAssociation.getEnd1());
       copyToAssociation.setEnd2(copyFromAssociation.getEnd2());
@@ -233,6 +323,12 @@ public class JPAEdmAssociation extends JPAEdmBaseViewImpl implements JPAEdmAssoc
     }
   }
 
+  /**
+   * Gets the number of associations with similar end points.
+   *
+   * @param view the view
+   * @return the number of associations with similar end points
+   */
   @Override
   public int getNumberOfAssociationsWithSimilarEndPoints(final JPAEdmAssociationEndView view) {
     int count = 0;

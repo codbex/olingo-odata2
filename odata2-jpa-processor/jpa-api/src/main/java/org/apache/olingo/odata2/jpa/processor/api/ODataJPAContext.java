@@ -27,6 +27,7 @@ import org.apache.olingo.odata2.api.processor.ODataProcessor;
 import org.apache.olingo.odata2.jpa.processor.api.access.JPAPaging;
 import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmExtension;
 
+// TODO: Auto-generated Javadoc
 /**
  * This class does the compilation of context objects required for OData JPA
  * Runtime. The context object should be properly initialized with values else
@@ -39,10 +40,10 @@ import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmExtension;
  * </ol>
  * 
  * <br>
- * @org.apache.olingo.odata2.DoNotImplement
+ *
  * @see org.apache.olingo.odata2.jpa.processor.api.factory.ODataJPAFactory
  * @see org.apache.olingo.odata2.jpa.processor.api.factory.ODataJPAAccessFactory
- * 
+ * @org.apache.olingo.odata2.DoNotImplement 
  */
 public interface ODataJPAContext {
 
@@ -86,12 +87,10 @@ public interface ODataJPAContext {
   public EdmProvider getEdmProvider();
 
   /**
-   * The method sets EDM provider into the context
-   * 
-   * @param edmProvider
-   * is the specific implementation of {@link org.apache.olingo.odata2.api.edm.provider.EdmProvider} for
+   * The method sets EDM provider into the context.
+   *
+   * @param edmProvider is the specific implementation of {@link org.apache.olingo.odata2.api.edm.provider.EdmProvider} for
    * transforming Java persistence models to Entity Data Model
-   * 
    */
   public void setEdmProvider(EdmProvider edmProvider);
 
@@ -148,8 +147,9 @@ public interface ODataJPAContext {
   public String getJPAEdmMappingModel();
 
   /**
-   * The method sets the Entity Manager into the Context
-   * @param em
+   * The method sets the Entity Manager into the Context.
+   *
+   * @param em the new entity manager
    */
   public void setEntityManager(EntityManager em);
 
@@ -186,8 +186,8 @@ public interface ODataJPAContext {
    * The method sets into the context whether the library should consider default naming for
    * <ul><li>EdmProperty</li>
    * <li>EdmComplexProperty</li>
-   * <li>EdmNavigationProperty</li></ul>
-   * 
+   * <li>EdmNavigationProperty</li></ul>.
+   *
    * @param defaultNaming is a boolean value that indicates if set to
    * <ul><li>true - default naming is considered in case no mapping is provided.</li>
    * <li>false - default naming is not considered in case no mapping is provided. The
@@ -200,10 +200,9 @@ public interface ODataJPAContext {
    * The method returns whether the library should consider default naming for
    * <ul><li>EdmProperty</li>
    * <li>EdmComplexProperty</li>
-   * <li>EdmNavigationProperty</li></ul>
-   * 
-   * @return
-   * <ul><li>true - default naming is considered in case no mapping is provided.</li>
+   * <li>EdmNavigationProperty</li></ul>.
+   *
+   * @return <ul><li>true - default naming is considered in case no mapping is provided.</li>
    * <li>false - default naming is not considered in case no mapping is provided. The
    * name provided in JPA Entity Model is considered.</li>
    * </ul>
@@ -211,25 +210,29 @@ public interface ODataJPAContext {
   public boolean getDefaultNaming();
 
   /**
-   * The method gets the server side page size to the context
+   * The method gets the server side page size to the context.
+   *
    * @return the page size
    */
   public int getPageSize();
 
   /**
-   * The method sets the server side page size to the context
-   * @param size
+   * The method sets the server side page size to the context.
+   *
+   * @param size the new page size
    */
   public void setPageSize(int size);
 
   /**
-   * The method sets the server side paging object
+   * The method sets the server side paging object.
+   *
    * @param paging an instance of type {@link org.apache.olingo.odata2.jpa.processor.api.access.JPAPaging}
    */
   public void setPaging(JPAPaging paging);
 
   /**
-   * The method returns the server side paging object
+   * The method returns the server side paging object.
+   *
    * @return an instance of type {@link org.apache.olingo.odata2.jpa.processor.api.access.JPAPaging}
    */
   public JPAPaging getPaging();

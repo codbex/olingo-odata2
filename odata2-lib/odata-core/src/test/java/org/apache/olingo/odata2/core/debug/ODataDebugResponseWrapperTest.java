@@ -59,16 +59,25 @@ import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.apache.olingo.odata2.testutil.helper.StringHelper;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
  * Tests for the debug information output.
  */
 public class ODataDebugResponseWrapperTest extends BaseTest {
 
+  /** The Constant EXPECTED. */
   private static final String EXPECTED = "{"
       + "\"request\":{\"method\":\"GET\",\"uri\":\"http://test/entity\",\"protocol\":null},"
       + "\"response\":{\"status\":{\"code\":200,\"info\":\"OK\"}},"
       + "\"server\":{\"version\":null}}";
 
+  /**
+   * Mock context.
+   *
+   * @param method the method
+   * @return the o data context
+   * @throws ODataException the o data exception
+   */
   private ODataContext mockContext(final ODataHttpMethod method) throws ODataException {
     ODataContext context = mock(ODataContext.class);
     when(context.getHttpMethod()).thenReturn(method.name());
@@ -80,6 +89,14 @@ public class ODataDebugResponseWrapperTest extends BaseTest {
     return context;
   }
 
+  /**
+   * Mock response.
+   *
+   * @param status the status
+   * @param body the body
+   * @param contentType the content type
+   * @return the o data response
+   */
   private ODataResponse mockResponse(final HttpStatusCodes status, final String body, final String contentType) {
     ODataResponse response = mock(ODataResponse.class);
     when(response.getStatus()).thenReturn(status);
@@ -92,6 +109,14 @@ public class ODataDebugResponseWrapperTest extends BaseTest {
     return response;
   }
 
+  /**
+   * Mock runtime measurement.
+   *
+   * @param method the method
+   * @param startTime the start time
+   * @param stopTime the stop time
+   * @return the runtime measurement
+   */
   private RuntimeMeasurement mockRuntimeMeasurement(final String method, final long startTime, final long stopTime) {
     RuntimeMeasurement measurement = mock(RuntimeMeasurement.class);
     when(measurement.getClassName()).thenReturn("class");
@@ -101,6 +126,11 @@ public class ODataDebugResponseWrapperTest extends BaseTest {
     return measurement;
   }
 
+  /**
+   * Minimal.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void minimal() throws Exception {
     final ODataContext context = mockContext(ODataHttpMethod.PUT);
@@ -121,6 +151,11 @@ public class ODataDebugResponseWrapperTest extends BaseTest {
     assertTrue(html.contains(HttpStatusCodes.NO_CONTENT.getInfo()));
   }
 
+  /**
+   * Body.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void body() throws Exception {
     final ODataContext context = mockContext(ODataHttpMethod.GET);
@@ -160,6 +195,11 @@ public class ODataDebugResponseWrapperTest extends BaseTest {
     assertTrue(entity.contains("<img src=\"data:image/png;base64,dGVzdA==\" />"));
   }
 
+  /**
+   * Headers.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void headers() throws Exception {
     ODataContext context = mockContext(ODataHttpMethod.GET);
@@ -185,6 +225,11 @@ public class ODataDebugResponseWrapperTest extends BaseTest {
     assertTrue(entity.contains("<td class=\"name\">Content-Type</td><td class=\"value\">application/json</td>"));
   }
 
+  /**
+   * Server.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void server() throws Exception {
     ODataContext context = mockContext(ODataHttpMethod.GET);
@@ -205,6 +250,11 @@ public class ODataDebugResponseWrapperTest extends BaseTest {
     assertTrue(entity.contains("<td class=\"name\">serverPort</td><td class=\"value\">12345</td>"));
   }
 
+  /**
+   * Uri.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void uri() throws Exception {
     final ODataContext context = mockContext(ODataHttpMethod.GET);
@@ -252,6 +302,11 @@ public class ODataDebugResponseWrapperTest extends BaseTest {
     assertTrue(entity.contains("asc"));
   }
 
+  /**
+   * Uri with exception.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void uriWithException() throws Exception {
     final ODataContext context = mockContext(ODataHttpMethod.GET);
@@ -284,6 +339,11 @@ public class ODataDebugResponseWrapperTest extends BaseTest {
     assertTrue(entity.contains("42"));
   }
 
+  /**
+   * Runtime.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void runtime() throws Exception {
     ODataContext context = mockContext(ODataHttpMethod.GET);
@@ -317,6 +377,11 @@ public class ODataDebugResponseWrapperTest extends BaseTest {
     assertTrue(entity.contains("54&nbsp;&micro;s"));
   }
 
+  /**
+   * Exception.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void exception() throws Exception {
     final ODataContext context = mockContext(ODataHttpMethod.GET);

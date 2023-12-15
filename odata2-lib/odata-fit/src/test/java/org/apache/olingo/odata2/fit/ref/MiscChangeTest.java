@@ -28,16 +28,27 @@ import org.apache.olingo.odata2.api.commons.ODataHttpMethod;
 import org.apache.olingo.odata2.testutil.server.ServletType;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
  * Tests employing the reference scenario that use neither XML nor JSON
  * and that change data in some way.
  */
 public class MiscChangeTest extends AbstractRefTest {
 
+  /**
+   * Instantiates a new misc change test.
+   *
+   * @param servletType the servlet type
+   */
   public MiscChangeTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /**
+   * Delete entry.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void deleteEntry() throws Exception {
     deleteUriOk("Employees('2')");
@@ -54,6 +65,11 @@ public class MiscChangeTest extends AbstractRefTest {
     deleteUri("Employees('2')/ne_Manager", HttpStatusCodes.BAD_REQUEST);
   }
 
+  /**
+   * Delete property value.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void deletePropertyValue() throws Exception {
     deleteUriOk("Employees('2')/Age/$value");
@@ -66,6 +82,11 @@ public class MiscChangeTest extends AbstractRefTest {
     deleteUri("Employees('2')/ne_Manager/Age/$value", HttpStatusCodes.BAD_REQUEST);
   }
 
+  /**
+   * Delete link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void deleteLink() throws Exception {
     deleteUriOk("Employees('6')/$links/ne_Room");
@@ -76,6 +97,11 @@ public class MiscChangeTest extends AbstractRefTest {
     deleteUri("Employees('2')/ne_Team/$links/nt_Employees('1')", HttpStatusCodes.BAD_REQUEST);
   }
 
+  /**
+   * Delete media resource.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void deleteMediaResource() throws Exception {
     deleteUriOk("Managers('1')/$value");
@@ -83,6 +109,11 @@ public class MiscChangeTest extends AbstractRefTest {
     deleteUri("Teams('2')/$value", HttpStatusCodes.BAD_REQUEST);
   }
 
+  /**
+   * Update media resource.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void updateMediaResource() throws Exception {
     final String url = "Managers('1')/$value";
@@ -103,6 +134,11 @@ public class MiscChangeTest extends AbstractRefTest {
     response.getEntity().getContent().close();
   }
 
+  /**
+   * Update property value.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void updatePropertyValue() throws Exception {
     putUri("Employees('2')/Age/$value", "42", HttpContentType.TEXT_PLAIN, HttpStatusCodes.NO_CONTENT);

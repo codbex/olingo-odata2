@@ -24,65 +24,139 @@ import java.util.Set;
 
 import org.apache.olingo.odata2.api.client.batch.BatchSingleResponse;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BatchSingleResponseImpl.
+ */
 public class BatchSingleResponseImpl implements BatchSingleResponse {
 
+  /** The status code. */
   private String statusCode;
+  
+  /** The status info. */
   private String statusInfo;
+  
+  /** The body. */
   private String body;
+  
+  /** The headers. */
   private Map<String, String> headers = new HashMap<String, String>();
+  
+  /** The content id. */
   private String contentId;
 
+  /**
+   * Gets the status code.
+   *
+   * @return the status code
+   */
   @Override
   public String getStatusCode() {
     return statusCode;
   }
 
+  /**
+   * Gets the status info.
+   *
+   * @return the status info
+   */
   @Override
   public String getStatusInfo() {
     return statusInfo;
   }
 
+  /**
+   * Gets the body.
+   *
+   * @return the body
+   */
   @Override
   public String getBody() {
     return body;
   }
 
+  /**
+   * Gets the headers.
+   *
+   * @return the headers
+   */
   @Override
   public Map<String, String> getHeaders() {
     return headers;
   }
 
+  /**
+   * Gets the content id.
+   *
+   * @return the content id
+   */
   @Override
   public String getContentId() {
     return contentId;
   }
 
+  /**
+   * Gets the header.
+   *
+   * @param name the name
+   * @return the header
+   */
   @Override
   public String getHeader(final String name) {
     return headers.get(name);
   }
 
+  /**
+   * Gets the header names.
+   *
+   * @return the header names
+   */
   @Override
   public Set<String> getHeaderNames() {
     return headers.keySet();
   }
 
+  /**
+   * Sets the status code.
+   *
+   * @param statusCode the new status code
+   */
   public void setStatusCode(final String statusCode) {
     this.statusCode = statusCode;
   }
 
+  /**
+   * Sets the status info.
+   *
+   * @param statusInfo the new status info
+   */
   public void setStatusInfo(final String statusInfo) {
     this.statusInfo = statusInfo;
   }
 
+  /**
+   * Sets the body.
+   *
+   * @param body the new body
+   */
   public void setBody(final String body) {
     this.body = body;
   }
 
+  /**
+   * Sets the headers.
+   *
+   * @param headers the headers
+   */
   public void setHeaders(final Map<String, String> headers) {
     this.headers = headers;
   }
 
+  /**
+   * Sets the content id.
+   *
+   * @param contentId the new content id
+   */
   public void setContentId(final String contentId) {
     this.contentId = contentId;
   }

@@ -18,30 +18,41 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.edm;
 
+// TODO: Auto-generated Javadoc
 /**
- * @org.apache.olingo.odata2.DoNotImplement
- * <p>EdmMultiplicity indicates the number of entity type instances
+ * The Enum EdmMultiplicity.
+ *
+ * @org.apache.olingo.odata2.DoNotImplement <p>EdmMultiplicity indicates the number of entity type instances
  * an association end can relate to:
  * <dl>
  * <dt>0..1</dt><dd>one or none</dd>
  * <dt> 1</dt><dd>exactly one</dd>
  * <dt> *</dt><dd>many</dd>
  * </dl></p>
- * 
  */
 public enum EdmMultiplicity {
 
-  ZERO_TO_ONE("0..1"), MANY("*"), ONE("1");
+  /** The zero to one. */
+  ZERO_TO_ONE("0..1"), /** The many. */
+ MANY("*"), /** The one. */
+ ONE("1");
 
+  /** The literal. */
   private final String literal;
 
+  /**
+   * Instantiates a new edm multiplicity.
+   *
+   * @param literal the literal
+   */
   private EdmMultiplicity(final String literal) {
     this.literal = literal;
   }
 
   /**
    * Gets the multiplicity for a given name.
-   * @param literal
+   *
+   * @param literal the literal
    * @return {@link EdmMultiplicity}
    */
   public static EdmMultiplicity fromLiteral(final String literal) {

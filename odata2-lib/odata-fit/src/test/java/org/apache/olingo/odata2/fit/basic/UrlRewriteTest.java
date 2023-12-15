@@ -45,15 +45,27 @@ import org.apache.olingo.odata2.testutil.server.ServletType;
 import org.junit.Ignore;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *
+ * The Class UrlRewriteTest.
  */
 public class UrlRewriteTest extends AbstractBasicTest {
 
+    /**
+     * Instantiates a new url rewrite test.
+     *
+     * @param servletType the servlet type
+     */
     public UrlRewriteTest(final ServletType servletType) {
         super(servletType);
     }
 
+    /**
+     * Creates the processor.
+     *
+     * @return the o data single processor
+     * @throws ODataException the o data exception
+     */
     @Override
     protected ODataSingleProcessor createProcessor() throws ODataException {
         final ODataSingleProcessor processor = mock(ODataSingleProcessor.class);
@@ -68,6 +80,11 @@ public class UrlRewriteTest extends AbstractBasicTest {
         return processor;
     }
 
+    /**
+     * Test get service document redirect.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testGetServiceDocumentRedirect() throws Exception {
         final HttpRequestBase httpMethod = createRedirectRequest(HttpGet.class);
@@ -76,6 +93,11 @@ public class UrlRewriteTest extends AbstractBasicTest {
                                                                                  .getStatusCode());
     }
 
+    /**
+     * Test put service document redirect.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testPutServiceDocumentRedirect() throws Exception {
         final HttpRequestBase httpMethod = createRedirectRequest(HttpPut.class);
@@ -84,6 +106,11 @@ public class UrlRewriteTest extends AbstractBasicTest {
                                                                                  .getStatusCode());
     }
 
+    /**
+     * Test post service document redirect.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testPostServiceDocumentRedirect() throws Exception {
         final HttpRequestBase httpMethod = createRedirectRequest(HttpPost.class);
@@ -92,6 +119,11 @@ public class UrlRewriteTest extends AbstractBasicTest {
                                                                                  .getStatusCode());
     }
 
+    /**
+     * Test delete service document redirect.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testDeleteServiceDocumentRedirect() throws Exception {
         final HttpRequestBase httpMethod = createRedirectRequest(HttpDelete.class);
@@ -100,6 +132,11 @@ public class UrlRewriteTest extends AbstractBasicTest {
                                                                                  .getStatusCode());
     }
 
+    /**
+     * Test options service document redirect.
+     *
+     * @throws Exception the exception
+     */
     @Ignore("CXF OPTIONS requests are not handled for some reason and in this case the response is 404")
     @Test
     public void testOptionsServiceDocumentRedirect() throws Exception {
@@ -109,6 +146,11 @@ public class UrlRewriteTest extends AbstractBasicTest {
                                                                                  .getStatusCode());
     }
 
+    /**
+     * Test head service document redirect.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testHeadServiceDocumentRedirect() throws Exception {
         final HttpRequestBase httpMethod = createRedirectRequest(HttpHead.class);
@@ -117,6 +159,11 @@ public class UrlRewriteTest extends AbstractBasicTest {
                                                                                  .getStatusCode());
     }
 
+    /**
+     * Test merge service document redirect.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testMergeServiceDocumentRedirect() throws Exception {
         final HttpRequestBase httpMethod = createRedirectRequest(HttpMerge.class);
@@ -125,6 +172,11 @@ public class UrlRewriteTest extends AbstractBasicTest {
                                                                                  .getStatusCode());
     }
 
+    /**
+     * Test patch service document redirect.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testPatchServiceDocumentRedirect() throws Exception {
         final HttpRequestBase httpMethod = createRedirectRequest(HttpPatch.class);
@@ -133,6 +185,11 @@ public class UrlRewriteTest extends AbstractBasicTest {
                                                                                  .getStatusCode());
     }
 
+    /**
+     * Test something unsupported service document redirect.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testSomethingUnsupportedServiceDocumentRedirect() throws Exception {
         final HttpRequestBase httpMethod = createRedirectRequest(HttpSomethingUnsupported.class);
@@ -141,6 +198,13 @@ public class UrlRewriteTest extends AbstractBasicTest {
                                                                               .getStatusCode());
     }
 
+    /**
+     * Creates the redirect request.
+     *
+     * @param clazz the clazz
+     * @return the http request base
+     * @throws Exception the exception
+     */
     private HttpRequestBase createRedirectRequest(final Class<? extends HttpRequestBase> clazz) throws Exception {
         String endpoint = getEndpoint().toASCIIString();
         endpoint = endpoint.substring(0, endpoint.length() - 1);
@@ -154,6 +218,11 @@ public class UrlRewriteTest extends AbstractBasicTest {
         return httpMethod;
     }
 
+    /**
+     * Test get service document with slash.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testGetServiceDocumentWithSlash() throws Exception {
         final HttpGet get = new HttpGet(URI.create(getEndpoint().toString()));
@@ -170,6 +239,11 @@ public class UrlRewriteTest extends AbstractBasicTest {
                                                                  .getStatusCode());
     }
 
+    /**
+     * Test get metadata.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testGetMetadata() throws Exception {
         final HttpGet get = new HttpGet(URI.create(getEndpoint().toString() + "$metadata"));

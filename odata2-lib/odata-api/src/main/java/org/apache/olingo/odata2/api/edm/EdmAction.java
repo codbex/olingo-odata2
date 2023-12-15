@@ -18,14 +18,17 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.edm;
 
+// TODO: Auto-generated Javadoc
 /**
- * @org.apache.olingo.odata2.DoNotImplement
- * A CSDL Action Element
+ * The Enum EdmAction.
+ *
+ * @org.apache.olingo.odata2.DoNotImplement A CSDL Action Element
  * <p>EdmAction can either be Cascade or None. Cascade implies that a delete operation on an entity also should delete
  * the relationship instances.
- * 
  */
 public enum EdmAction {
 
-  Cascade, None;
+  /** The Cascade. */
+  Cascade, /** The None. */
+ None;
 }

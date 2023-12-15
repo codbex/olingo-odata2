@@ -35,6 +35,7 @@ import org.eclipse.persistence.queries.DataModifyQuery;
 import org.eclipse.persistence.queries.SQLCall;
 import org.eclipse.persistence.sessions.Session;
 
+// TODO: Auto-generated Javadoc
 /**
  * This is a utility class for generating and cleaning data. The generated data would be used by the application.
  * 
@@ -42,11 +43,10 @@ import org.eclipse.persistence.sessions.Session;
  */
 public class DataGenerator {
 
+  /** The entity manager. */
   private EntityManager entityManager;
 
-  /**
-   * This is configuration property to hold comma separated names of Insert Files
-   */
+  /** This is configuration property to hold comma separated names of Insert Files. */
   private static final String SQL_INSERT_CONFIG = "SQL_Insert_Config";
 
   /**
@@ -54,9 +54,17 @@ public class DataGenerator {
    */
   private static final String SQL_INSERT_FILE_NAMES_KEY = "insert_file_names";
 
+  /** The Constant SQL_DELETE_CONFIG. */
   private static final String SQL_DELETE_CONFIG = "SQL_Cleanup";
+  
+  /** The Constant SQL_DELETE_STATEMENTS_KEY. */
   private static final String SQL_DELETE_STATEMENTS_KEY = "delete_queries";
 
+  /**
+   * Instantiates a new data generator.
+   *
+   * @param entityManager the entity manager
+   */
   public DataGenerator(final EntityManager entityManager) {
     this.entityManager = entityManager;
   }
@@ -100,6 +108,9 @@ public class DataGenerator {
 
   }
 
+  /**
+   * Sets the material in store.
+   */
   @SuppressWarnings("unchecked")
   private void setMaterialInStore() {
     Query query = entityManager.createQuery("SELECT e FROM Material e");
@@ -122,12 +133,22 @@ public class DataGenerator {
     entityManager.flush();
   }
 
+  /**
+   * Gets the SQL insert file names.
+   *
+   * @return the SQL insert file names
+   */
   private String[] getSQLInsertFileNames() {
     ResourceBundle resourceBundle = ResourceBundle.getBundle(SQL_INSERT_CONFIG);// File names from properties
     String namesStr = resourceBundle.getString(SQL_INSERT_FILE_NAMES_KEY);
     return namesStr.split(",");
   }
 
+  /**
+   * Gets the SQL delete statements.
+   *
+   * @return the SQL delete statements
+   */
   private String[] getSQLDeleteStatements() {
     ResourceBundle resourceBundle = ResourceBundle.getBundle(SQL_DELETE_CONFIG);// File names from properties
     String deleteStatements = resourceBundle.getString(SQL_DELETE_STATEMENTS_KEY);

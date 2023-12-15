@@ -20,15 +20,34 @@ package org.apache.olingo.odata2.api.edm;
 
 import org.apache.olingo.odata2.api.rt.RuntimeDelegate;
 
+// TODO: Auto-generated Javadoc
 /**
- * @org.apache.olingo.odata2.DoNotImplement
- * EdmSimpleTypeKind holds all EdmSimpleTypes defined as primitive type in the Entity Data Model (EDM).
- * 
+ * The Enum EdmSimpleTypeKind.
+ *
+ * @org.apache.olingo.odata2.DoNotImplement EdmSimpleTypeKind holds all EdmSimpleTypes defined as primitive type in the Entity Data Model (EDM).
  */
 public enum EdmSimpleTypeKind {
 
-  Binary, Boolean, Byte, DateTime, DateTimeOffset, Decimal, Double, Guid, Int16, Int32, Int64, SByte, Single, String,
-  Time, Null;
+  /** The Binary. */
+  Binary, /** The Boolean. */
+ Boolean, /** The Byte. */
+ Byte, /** The Date time. */
+ DateTime, /** The Date time offset. */
+ DateTimeOffset, /** The Decimal. */
+ Decimal, /** The Double. */
+ Double, /** The Guid. */
+ Guid, /** The Int 16. */
+ Int16, /** The Int 32. */
+ Int32, /** The Int 64. */
+ Int64, /** The S byte. */
+ SByte, /** The Single. */
+ Single, /** The String. */
+ String,
+  
+  /** The Time. */
+  Time, 
+ /** The Null. */
+ Null;
 
   /**
    * Returns the {@link FullQualifiedName} for this SimpleTypeKind.
@@ -86,7 +105,12 @@ public enum EdmSimpleTypeKind {
    */
   private static class SimpleTypeFacadeHolder {
     
+    /** The Constant instance. */
     static final EdmSimpleTypeFacade instance = RuntimeDelegate.getSimpleTypeFacade();
+    
+    /**
+     * Instantiates a new simple type facade holder.
+     */
     private SimpleTypeFacadeHolder() {
       
     }

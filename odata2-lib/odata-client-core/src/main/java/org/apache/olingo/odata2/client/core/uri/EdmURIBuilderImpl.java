@@ -41,12 +41,16 @@ import org.apache.olingo.odata2.client.api.uri.SegmentType;
 import org.apache.olingo.odata2.client.core.uri.util.UriUtil;
 import org.apache.olingo.odata2.core.commons.Encoder;
 
+// TODO: Auto-generated Javadoc
 /**
- * This is a builder class that constructs URI with edm validations
- *
+ * This is a builder class that constructs URI with edm validations.
  */
 public class EdmURIBuilderImpl implements EdmURIBuilder{
+  
+  /** The segments. */
   protected final List<Segment> segments = new ArrayList<Segment>();
+  
+  /** The state. */
   private SegmentType state = SegmentType.INITIAL;
   
   /**
@@ -75,6 +79,11 @@ public class EdmURIBuilderImpl implements EdmURIBuilder{
     segments.add(new Segment(SegmentType.INITIAL, serviceRoot));
   }
   
+  /**
+   * Append count segment.
+   *
+   * @return the edm URI builder
+   */
   @Override
   public EdmURIBuilder appendCountSegment() {
     switch (state) {
@@ -101,11 +110,19 @@ public class EdmURIBuilderImpl implements EdmURIBuilder{
     return this;
   }
 
+  /**
+   * Append count.
+   */
   private void appendCount() {
     segments.add(new Segment(SegmentType.COUNT, SegmentType.COUNT.getValue()));
     state = SegmentType.COUNT;
   }
 
+  /**
+   * Append value segment.
+   *
+   * @return the edm URI builder
+   */
   @Override
   public EdmURIBuilder appendValueSegment() {
     switch (state) {
@@ -126,16 +143,30 @@ public class EdmURIBuilderImpl implements EdmURIBuilder{
     return this;
   }
   
+  /**
+   * Adds the value segment.
+   */
   private void addValueSegment() {
     segments.add(new Segment(SegmentType.VALUE, SegmentType.VALUE.getValue()));
   }
 
+  /**
+   * Append metadata segment.
+   *
+   * @return the edm URI builder
+   */
   @Override
   public EdmURIBuilder appendMetadataSegment() {
     segments.add(new Segment(SegmentType.METADATA, SegmentType.METADATA.getValue()));
     return this;
   }
 
+  /**
+   * Format.
+   *
+   * @param format the format
+   * @return the edm URI builder
+   */
   @Override
   public EdmURIBuilder format(String format) { //NOSONAR
     switch (state) {
@@ -158,10 +189,21 @@ public class EdmURIBuilderImpl implements EdmURIBuilder{
     return this;
   }
 
+  /**
+   * Adds the format.
+   *
+   * @param format the format
+   */
   private void addFormat(String format) {
     addQueryOption(QueryOption.FORMAT.toString(), format, true);
   }
 
+  /**
+   * Append entity set segment.
+   *
+   * @param entitySet the entity set
+   * @return the edm URI builder
+   */
   @Override
   public EdmURIBuilder appendEntitySetSegment(EdmEntitySet entitySet) {
     state = SegmentType.ENTITYSET;
@@ -173,6 +215,12 @@ public class EdmURIBuilderImpl implements EdmURIBuilder{
     return this;
   }
 
+  /**
+   * Append navigation segment.
+   *
+   * @param property the property
+   * @return the edm URI builder
+   */
   @Override
   public EdmURIBuilder appendNavigationSegment(EdmNavigationProperty property) {
     switch (state) {
@@ -197,6 +245,11 @@ public class EdmURIBuilderImpl implements EdmURIBuilder{
     return this;
   }
   
+  /**
+   * Adds the navigation segment.
+   *
+   * @param property the property
+   */
   private void addNavigationSegment(EdmNavigationProperty property) {
     try {
       state = property.getMultiplicity() == EdmMultiplicity.MANY? SegmentType.NAVIGATION_TO_MANY: 
@@ -207,6 +260,13 @@ public class EdmURIBuilderImpl implements EdmURIBuilder{
     }
   }
 
+  /**
+   * Append key segment.
+   *
+   * @param property the property
+   * @param value the value
+   * @return the edm URI builder
+   */
   @Override
   public EdmURIBuilder appendKeySegment(EdmProperty property, Object value) {
     switch (state) {
@@ -237,6 +297,12 @@ public class EdmURIBuilderImpl implements EdmURIBuilder{
     return this;
   }
 
+  /**
+   * Append key.
+   *
+   * @param property the property
+   * @param value the value
+   */
   private void appendKey(EdmProperty property, Object value) {
     String key = "";
     try {
@@ -250,11 +316,13 @@ public class EdmURIBuilderImpl implements EdmURIBuilder{
   }
 
   /**
-   * @param property
-   * @param value
-   * @return
-   * @throws EdmException
-   * @throws EdmSimpleTypeException
+   * Gets the key.
+   *
+   * @param property the property
+   * @param value the value
+   * @param isSegment the is segment
+   * @return the key
+   * @throws EdmException the edm exception
    */
   private String getKey(EdmProperty property, Object value, boolean isSegment) 
       throws EdmException {
@@ -271,6 +339,12 @@ public class EdmURIBuilderImpl implements EdmURIBuilder{
     return key;
   }
 
+  /**
+   * Append key segment.
+   *
+   * @param segmentValues the segment values
+   * @return the edm URI builder
+   */
   @Override
   public EdmURIBuilder appendKeySegment(Map<EdmProperty, Object> segmentValues) {
     switch (state) {
@@ -301,6 +375,11 @@ public class EdmURIBuilderImpl implements EdmURIBuilder{
     return this;
   }
   
+  /**
+   * Append key.
+   *
+   * @param segmentValues the segment values
+   */
   private void appendKey(Map<EdmProperty, Object> segmentValues) {
     String key = "";
     try {
@@ -313,6 +392,14 @@ public class EdmURIBuilderImpl implements EdmURIBuilder{
     segments.add(new Segment(SegmentType.KEY, key));    
   }
 
+  /**
+   * Builds the multi key segment.
+   *
+   * @param segmentValues the segment values
+   * @param separator the separator
+   * @return the string
+   * @throws EdmException the edm exception
+   */
   protected String buildMultiKeySegment(final Map<EdmProperty, Object> segmentValues,
       final char separator) throws EdmException {
     final StringBuilder keyBuilder = new StringBuilder().append('(');
@@ -326,45 +413,102 @@ public class EdmURIBuilderImpl implements EdmURIBuilder{
     return keyBuilder.toString();
   }
   
+  /**
+   * Filter.
+   *
+   * @param filter the filter
+   * @return the edm URI builder
+   */
   @Override
   public EdmURIBuilder filter(String filter) {
     return replaceQueryOption(QueryOption.FILTER, filter);
   }
 
+  /**
+   * Select.
+   *
+   * @param selectItems the select items
+   * @return the edm URI builder
+   */
   @Override
   public EdmURIBuilder select(String... selectItems) {
     return addQueryOption(QueryOption.SELECT, UriUtil.join(selectItems, ","));
   }
 
+  /**
+   * Order by.
+   *
+   * @param property the property
+   * @return the edm URI builder
+   */
   @Override
   public EdmURIBuilder orderBy(String property) {
     return addQueryOption(QueryOption.ORDERBY, property);
   }
 
+  /**
+   * Top.
+   *
+   * @param top the top
+   * @return the edm URI builder
+   */
   @Override
   public EdmURIBuilder top(int top) {
     return replaceQueryOption(QueryOption.TOP, String.valueOf(top));
   }
 
+  /**
+   * Skip.
+   *
+   * @param skip the skip
+   * @return the edm URI builder
+   */
   @Override
   public EdmURIBuilder skip(int skip) {
     return replaceQueryOption(QueryOption.SKIP, String.valueOf(skip));
   }
   
+  /**
+   * Builds the.
+   *
+   * @return the uri
+   */
   @Override
   public URI build() {
     return UriUtil.getUri(segments, queryOptions, customQueryOptions, functionImportParameters);
   }
 
+  /**
+   * Adds the query option.
+   *
+   * @param option the option
+   * @param value the value
+   * @return the edm URI builder
+   */
   @Override
   public EdmURIBuilder addQueryOption(QueryOption option, String value) {
     return addQueryOption(option.toString(), value, false);
   }
 
+  /**
+   * Replace query option.
+   *
+   * @param option the option
+   * @param value the value
+   * @return the edm URI builder
+   */
   public EdmURIBuilder replaceQueryOption(QueryOption option, String value) {
     return addQueryOption(option.toString(), value, true);
   }
 
+  /**
+   * Adds the query option.
+   *
+   * @param option the option
+   * @param value the value
+   * @param replace the replace
+   * @return the edm URI builder
+   */
   public EdmURIBuilder addQueryOption(String option, String value, boolean replace) { //NOSONAR
     if (option.equalsIgnoreCase(QueryOption.EXPAND.toString())) {
       if (state == SegmentType.COUNT) {
@@ -398,9 +542,11 @@ public class EdmURIBuilderImpl implements EdmURIBuilder{
   }
 
   /**
-   * @param option
-   * @param value
-   * @param replace
+   * Count query option.
+   *
+   * @param option the option
+   * @param value the value
+   * @param replace the replace
    */
   private void countQueryOption(String option, String value, boolean replace) {
     if (option.equalsIgnoreCase(QueryOption.SELECT.toString())) {
@@ -411,9 +557,11 @@ public class EdmURIBuilderImpl implements EdmURIBuilder{
   }
 
   /**
-   * @param option
-   * @param value
-   * @param replace
+   * Entity query option.
+   *
+   * @param option the option
+   * @param value the value
+   * @param replace the replace
    */
   private void entityQueryOption(String option, String value, boolean replace) {
     if (option.equalsIgnoreCase(QueryOption.SELECT.toString())) {
@@ -423,6 +571,13 @@ public class EdmURIBuilderImpl implements EdmURIBuilder{
     }
   }
   
+  /**
+   * Append property segment.
+   *
+   * @param property the property
+   * @param segmentValue the segment value
+   * @return the edm URI builder
+   */
   @Override
   public EdmURIBuilder appendPropertySegment(EdmProperty property, String segmentValue) {
     switch (state) {
@@ -450,6 +605,12 @@ public class EdmURIBuilderImpl implements EdmURIBuilder{
     return this;
   }
 
+  /**
+   * Append property.
+   *
+   * @param property the property
+   * @param segmentValue the segment value
+   */
   private void appendProperty(EdmProperty property, String segmentValue) {
     try {
       state = property.getType().getKind() == EdmTypeKind.SIMPLE? SegmentType.SIMPLEPROPERTY : 
@@ -460,11 +621,24 @@ public class EdmURIBuilderImpl implements EdmURIBuilder{
     segments.add(new Segment(state, segmentValue));
   }
 
+  /**
+   * Expand.
+   *
+   * @param expandItems the expand items
+   * @return the edm URI builder
+   */
   @Override
   public EdmURIBuilder expand(String... expandItems) {
     return addQueryOption(QueryOption.EXPAND, UriUtil.join(expandItems, ","));
   }
 
+  /**
+   * Adds the custom query option.
+   *
+   * @param paramName the param name
+   * @param paramValue the param value
+   * @return the edm URI builder
+   */
   @Override
   public EdmURIBuilder addCustomQueryOption(String paramName, Object paramValue) {
     UriUtil.appendQueryOption(paramName, paramValue.toString(), 
@@ -472,6 +646,12 @@ public class EdmURIBuilderImpl implements EdmURIBuilder{
     return this;
   }
 
+  /**
+   * Append function import segment.
+   *
+   * @param functionImport the function import
+   * @return the edm URI builder
+   */
   @Override
   public EdmURIBuilder appendFunctionImportSegment(EdmFunctionImport functionImport) {
     try {
@@ -486,6 +666,12 @@ public class EdmURIBuilderImpl implements EdmURIBuilder{
     return this;
   }
 
+  /**
+   * Append function import parameters.
+   *
+   * @param functionImportParams the function import params
+   * @return the edm URI builder
+   */
   @Override
   public EdmURIBuilder appendFunctionImportParameters(Map<EdmParameter, Object> functionImportParams) {
     try {

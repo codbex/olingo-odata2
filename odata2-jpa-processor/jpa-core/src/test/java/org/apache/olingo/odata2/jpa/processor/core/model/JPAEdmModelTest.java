@@ -37,10 +37,18 @@ import org.apache.olingo.odata2.jpa.processor.core.mock.model.JPASingularAttribu
 import org.junit.Before;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAEdmModelTest.
+ */
 public class JPAEdmModelTest extends JPAEdmTestModelView {
 
+  /** The obj JPA edm model. */
   private JPAEdmModel objJPAEdmModel;
 
+  /**
+   * Sets the up.
+   */
   @Before
   public void setUp() {
     objJPAEdmModel = new JPAEdmModel(getJPAMetaModel(), "salesorderprocessing");
@@ -53,28 +61,52 @@ public class JPAEdmModelTest extends JPAEdmTestModelView {
     }
   }
 
+  /**
+   * Test get edm schema view.
+   */
   @Test
   public void testGetEdmSchemaView() {
     assertNotNull(objJPAEdmModel.getEdmSchemaView());
   }
 
+  /**
+   * Test get builder.
+   */
   @Test
   public void testGetBuilder() {
     assertNotNull(objJPAEdmModel.getBuilder());
   }
 
+  /**
+   * Gets the JPA meta model.
+   *
+   * @return the JPA meta model
+   */
   @Override
   public Metamodel getJPAMetaModel() {
     return new JPAEdmMetaModel();
   }
 
+  /**
+   * The Class JPAEdmMetaModel.
+   */
   private class JPAEdmMetaModel extends JPAMetaModelMock {
+    
+    /** The embeddable set. */
     Set<EmbeddableType<?>> embeddableSet;
 
+    /**
+     * Instantiates a new JPA edm meta model.
+     */
     public JPAEdmMetaModel() {
       embeddableSet = new HashSet<EmbeddableType<?>>();
     }
 
+    /**
+     * Gets the embeddables.
+     *
+     * @return the embeddables
+     */
     @Override
     public Set<EmbeddableType<?>> getEmbeddables() {
       embeddableSet.add(new JPAEdmEmbeddable<String>());
@@ -83,23 +115,42 @@ public class JPAEdmModelTest extends JPAEdmTestModelView {
 
   }
 
+  /**
+   * The Class JPAEdmEmbeddable.
+   *
+   * @param <String> the generic type
+   */
   @SuppressWarnings("hiding")
   private class JPAEdmEmbeddable<String> extends JPAEmbeddableMock<String> {
 
+    /** The attribute set. */
     Set<Attribute<? super String, ?>> attributeSet = new HashSet<Attribute<? super String, ?>>();
 
+    /**
+     * Sets the values to set.
+     */
     @SuppressWarnings({ "unchecked", "rawtypes" })
     private void setValuesToSet() {
       attributeSet.add((Attribute<? super String, String>) new JPAEdmAttribute(java.lang.String.class, "SOID"));
       attributeSet.add((Attribute<? super String, String>) new JPAEdmAttribute(java.lang.String.class, "SONAME"));
     }
 
+    /**
+     * Gets the attributes.
+     *
+     * @return the attributes
+     */
     @Override
     public Set<Attribute<? super String, ?>> getAttributes() {
       setValuesToSet();
       return attributeSet;
     }
 
+    /**
+     * Gets the java type.
+     *
+     * @return the java type
+     */
     @SuppressWarnings("unchecked")
     @Override
     public Class<String> getJavaType() {
@@ -108,33 +159,68 @@ public class JPAEdmModelTest extends JPAEdmTestModelView {
 
   }
 
+  /**
+   * The Class JPAEdmAttribute.
+   *
+   * @param <Object> the generic type
+   * @param <String> the generic type
+   */
   @SuppressWarnings("hiding")
   private class JPAEdmAttribute<Object, String> extends JPASingularAttributeMock<Object, String> {
 
+    /**
+     * Gets the persistent attribute type.
+     *
+     * @return the persistent attribute type
+     */
     @Override
     public PersistentAttributeType getPersistentAttributeType() {
       return PersistentAttributeType.BASIC;
     }
 
+    /** The clazz. */
     Class<String> clazz;
+    
+    /** The attribute name. */
     java.lang.String attributeName;
 
+    /**
+     * Instantiates a new JPA edm attribute.
+     *
+     * @param javaType the java type
+     * @param name the name
+     */
     public JPAEdmAttribute(final Class<String> javaType, final java.lang.String name) {
       this.clazz = javaType;
       this.attributeName = name;
 
     }
 
+    /**
+     * Gets the java type.
+     *
+     * @return the java type
+     */
     @Override
     public Class<String> getJavaType() {
       return clazz;
     }
 
+    /**
+     * Gets the name.
+     *
+     * @return the name
+     */
     @Override
     public java.lang.String getName() {
       return this.attributeName;
     }
 
+    /**
+     * Checks if is id.
+     *
+     * @return true, if is id
+     */
     @Override
     public boolean isId() {
       return false;

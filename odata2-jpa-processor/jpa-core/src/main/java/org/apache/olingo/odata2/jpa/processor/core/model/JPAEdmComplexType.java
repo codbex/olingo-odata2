@@ -43,17 +43,41 @@ import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmPropertyView;
 import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmSchemaView;
 import org.apache.olingo.odata2.jpa.processor.core.access.model.JPAEdmNameBuilder;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAEdmComplexType.
+ */
 public class JPAEdmComplexType extends JPAEdmBaseViewImpl implements JPAEdmComplexTypeView {
 
+  /** The schema view. */
   private JPAEdmSchemaView schemaView;
+  
+  /** The current complex type. */
   private ComplexType currentComplexType = null;
+  
+  /** The current embeddable type. */
   private EmbeddableType<?> currentEmbeddableType = null;
+  
+  /** The search map. */
   private HashMap<String, ComplexType> searchMap = null;
+  
+  /** The consistent complext types. */
   private List<ComplexType> consistentComplextTypes = null;
+  
+  /** The direct build. */
   private boolean directBuild;
+  
+  /** The nested complex type. */
   private EmbeddableType<?> nestedComplexType = null;
+  
+  /** The non key complex list. */
   private List<String> nonKeyComplexList = null;
 
+  /**
+   * Instantiates a new JPA edm complex type.
+   *
+   * @param view the view
+   */
   public JPAEdmComplexType(final JPAEdmSchemaView view) {
     super(view);
     schemaView = view;
@@ -63,6 +87,12 @@ public class JPAEdmComplexType extends JPAEdmBaseViewImpl implements JPAEdmCompl
     }
   }
 
+  /**
+   * Instantiates a new JPA edm complex type.
+   *
+   * @param view the view
+   * @param complexAttribute the complex attribute
+   */
   public JPAEdmComplexType(final JPAEdmSchemaView view, final Attribute<?, ?> complexAttribute) {
     super(view);
     schemaView = view;
@@ -78,16 +108,32 @@ public class JPAEdmComplexType extends JPAEdmBaseViewImpl implements JPAEdmCompl
     }
   }
 
+  /**
+   * Checks if is referenced in key.
+   *
+   * @param complexTypeName the complex type name
+   * @return true, if is referenced in key
+   */
   @Override
   public boolean isReferencedInKey(final String complexTypeName) {
     return nonKeyComplexList.contains(complexTypeName);
   }
 
+  /**
+   * Sets the referenced in key.
+   *
+   * @param complexTypeName the new referenced in key
+   */
   @Override
   public void setReferencedInKey(final String complexTypeName) {
     nonKeyComplexList.add(complexTypeName);
   }
 
+  /**
+   * Gets the builder.
+   *
+   * @return the builder
+   */
   @Override
   public JPAEdmBuilder getBuilder() {
     if (builder == null) {
@@ -97,26 +143,53 @@ public class JPAEdmComplexType extends JPAEdmBaseViewImpl implements JPAEdmCompl
     return builder;
   }
 
+  /**
+   * Gets the edm complex type.
+   *
+   * @return the edm complex type
+   */
   @Override
   public ComplexType getEdmComplexType() {
     return currentComplexType;
   }
 
+  /**
+   * Search edm complex type.
+   *
+   * @param embeddableTypeName the embeddable type name
+   * @return the complex type
+   */
   @Override
   public ComplexType searchEdmComplexType(final String embeddableTypeName) {
     return searchMap.get(embeddableTypeName);
   }
 
+  /**
+   * Gets the JPA embeddable type.
+   *
+   * @return the JPA embeddable type
+   */
   @Override
   public EmbeddableType<?> getJPAEmbeddableType() {
     return currentEmbeddableType;
   }
 
+  /**
+   * Gets the consistent edm complex types.
+   *
+   * @return the consistent edm complex types
+   */
   @Override
   public List<ComplexType> getConsistentEdmComplexTypes() {
     return consistentComplextTypes;
   }
 
+  /**
+   * Search edm complex type.
+   *
+   * @param type the type
+   * @return the complex type
+   */
   @Override
   public ComplexType searchEdmComplexType(final FullQualifiedName type) {
     String name = type.getName();
@@ -124,6 +197,12 @@ public class JPAEdmComplexType extends JPAEdmBaseViewImpl implements JPAEdmCompl
 
   }
 
+  /**
+   * Search complex type by name.
+   *
+   * @param name the name
+   * @return the complex type
+   */
   private ComplexType searchComplexTypeByName(final String name) {
     for (ComplexType complexType : consistentComplextTypes) {
       if (null != complexType && null != complexType.getName() && complexType.getName().equals(name)) {
@@ -134,6 +213,11 @@ public class JPAEdmComplexType extends JPAEdmBaseViewImpl implements JPAEdmCompl
     return null;
   }
 
+  /**
+   * Adds the JPA edm comple type view.
+   *
+   * @param view the view
+   */
   @Override
   public void addJPAEdmCompleTypeView(final JPAEdmComplexTypeView view) {
     String searchKey = view.getJPAEmbeddableType().getJavaType().getName();
@@ -144,6 +228,13 @@ public class JPAEdmComplexType extends JPAEdmBaseViewImpl implements JPAEdmCompl
     }
   }
 
+  /**
+   * Expand edm complex type.
+   *
+   * @param complexType the complex type
+   * @param expandedList the expanded list
+   * @param embeddablePropertyName the embeddable property name
+   */
   @Override
   public void expandEdmComplexType(final ComplexType complexType, List<Property> expandedList,
       final String embeddablePropertyName) {
@@ -181,7 +272,17 @@ public class JPAEdmComplexType extends JPAEdmBaseViewImpl implements JPAEdmCompl
 
   }
 
+  /**
+   * The Class JPAEdmComplexTypeBuilder.
+   */
   private class JPAEdmComplexTypeBuilder implements JPAEdmBuilder {
+    
+    /**
+     * Builds the.
+     *
+     * @throws ODataJPAModelException the o data JPA model exception
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
+     */
     /*
      * 
      * Each call to build method creates a new Complex Type.
@@ -254,6 +355,12 @@ public class JPAEdmComplexType extends JPAEdmBaseViewImpl implements JPAEdmCompl
 
     }
 
+    /**
+     * Checks if is excluded.
+     *
+     * @param jpaEdmComplexType the jpa edm complex type
+     * @return true, if is excluded
+     */
     private boolean isExcluded(final JPAEdmComplexType jpaEdmComplexType) {
 
       JPAEdmMappingModelAccess mappingModelAccess = jpaEdmComplexType.getJPAEdmMappingModelAccess();

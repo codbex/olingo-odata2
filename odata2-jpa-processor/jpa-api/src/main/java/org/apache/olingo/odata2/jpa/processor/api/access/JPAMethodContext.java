@@ -26,6 +26,7 @@ import org.apache.olingo.odata2.jpa.processor.api.exception.ODataJPARuntimeExcep
 import org.apache.olingo.odata2.jpa.processor.api.factory.ODataJPAFactory;
 import org.apache.olingo.odata2.jpa.processor.api.jpql.JPQLContextType;
 
+// TODO: Auto-generated Javadoc
 /**
  * The abstract class is a compilation of objects required for building specific
  * instances of JPA Method Context. Extend this class to implement specific
@@ -44,9 +45,17 @@ import org.apache.olingo.odata2.jpa.processor.api.jpql.JPQLContextType;
 
 public abstract class JPAMethodContext implements JPAMethodContextView {
 
+  /** The enclosing object. */
   protected Object enclosingObject;
+  
+  /** The jpa function. */
   protected ArrayList<JPAFunction> jpaFunction;
 
+  /**
+   * Gets the enclosing object.
+   *
+   * @return the enclosing object
+   */
   @Override
   /**
    * The method returns list of JPA functions that can be executed on the
@@ -58,6 +67,11 @@ public abstract class JPAMethodContext implements JPAMethodContextView {
     return enclosingObject;
   }
 
+  /**
+   * Gets the JPA function list.
+   *
+   * @return the JPA function list
+   */
   @Override
   /**
    * The method returns list of JPA functions that can be executed on the
@@ -69,24 +83,31 @@ public abstract class JPAMethodContext implements JPAMethodContextView {
     return jpaFunction;
   }
 
+  /**
+   * Sets the enclosing object.
+   *
+   * @param enclosingObject the new enclosing object
+   */
   protected void setEnclosingObject(final Object enclosingObject) {
     this.enclosingObject = enclosingObject;
   }
 
+  /**
+   * Sets the jpa function.
+   *
+   * @param jpaFunctionList the new jpa function
+   */
   protected void setJpaFunction(final List<JPAFunction> jpaFunctionList) {
     jpaFunction = (ArrayList<JPAFunction>) jpaFunctionList;
   }
 
   /**
    * the method instantiates an instance of type JPAMethodContextBuilder.
-   * 
-   * @param contextType
-   * indicates the type of JPQLContextBuilder to instantiate.
-   * @param resultsView
-   * is the OData request view
+   *
+   * @param contextType indicates the type of JPQLContextBuilder to instantiate.
+   * @param resultsView is the OData request view
    * @return {@link org.apache.olingo.odata2.jpa.processor.api.access.JPAMethodContext.JPAMethodContextBuilder}
-   * 
-   * @throws ODataJPARuntimeException
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
    */
   public final static JPAMethodContextBuilder
       createBuilder(final JPQLContextType contextType, final Object resultsView) throws ODataJPARuntimeException {
@@ -103,16 +124,27 @@ public abstract class JPAMethodContext implements JPAMethodContextView {
   public static abstract class JPAMethodContextBuilder {
 
     /**
-     * Implement this method to build JPAMethodContext
-     * 
+     * Implement this method to build JPAMethodContext.
+     *
      * @return an instance of type JPAMethodContext
-     * @throws ODataJPAModelException
-     * @throws ODataJPARuntimeException
+     * @throws ODataJPAModelException the o data JPA model exception
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
      */
     public abstract JPAMethodContext build() throws ODataJPAModelException, ODataJPARuntimeException;
 
+    /**
+     * Instantiates a new JPA method context builder.
+     */
     protected JPAMethodContextBuilder() {}
 
+    /**
+     * Creates the.
+     *
+     * @param contextType the context type
+     * @param resultsView the results view
+     * @return the JPA method context builder
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
+     */
     private static JPAMethodContextBuilder create(final JPQLContextType contextType, final Object resultsView)
         throws ODataJPARuntimeException {
       JPAMethodContextBuilder contextBuilder =
@@ -125,6 +157,11 @@ public abstract class JPAMethodContext implements JPAMethodContextView {
       return contextBuilder;
     }
 
+    /**
+     * Sets the results view.
+     *
+     * @param resultsView the new results view
+     */
     protected abstract void setResultsView(Object resultsView);
   }
 }

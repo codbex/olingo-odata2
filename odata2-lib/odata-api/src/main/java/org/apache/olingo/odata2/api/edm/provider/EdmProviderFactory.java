@@ -23,6 +23,7 @@ import java.io.InputStream;
 import org.apache.olingo.odata2.api.ep.EntityProviderException;
 import org.apache.olingo.odata2.api.rt.RuntimeDelegate;
 
+// TODO: Auto-generated Javadoc
 /**
  * EDM Provider Factory which can be used to create an edm provider (e.g. from a metadata document)
  * 
@@ -30,14 +31,20 @@ import org.apache.olingo.odata2.api.rt.RuntimeDelegate;
  */
 public class EdmProviderFactory {
 
+  /**
+   * Instantiates a new edm provider factory.
+   */
   private EdmProviderFactory() {
     
   }
+  
   /**
    * Creates and returns an edm provider.
+   *
    * @param metadataXml a metadata xml input stream (means the metadata document)
    * @param validate true if semantic checks for metadata document input stream shall be done
    * @return an instance of EdmProvider
+   * @throws EntityProviderException the entity provider exception
    */
   public static EdmProvider getEdmProvider(final InputStream metadataXml, final boolean validate)
       throws EntityProviderException {

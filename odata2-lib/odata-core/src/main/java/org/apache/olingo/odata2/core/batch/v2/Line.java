@@ -18,24 +18,53 @@
  */
 package org.apache.olingo.odata2.core.batch.v2;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Line.
+ */
 public class Line {
+  
+  /** The line number. */
   private final int lineNumber;
+  
+  /** The content. */
   private final String content;
 
+  /**
+   * Instantiates a new line.
+   *
+   * @param content the content
+   * @param lineNumber the line number
+   */
   public Line(final String content, final int lineNumber) {
     this.content = content;
     this.lineNumber = lineNumber;
   }
 
+  /**
+   * Gets the line number.
+   *
+   * @return the line number
+   */
   public int getLineNumber() {
     return lineNumber;
   }
 
+  /**
+   * To string.
+   *
+   * @return the string
+   */
   @Override
   public String toString() {
     return content;
   }
 
+  /**
+   * Hash code.
+   *
+   * @return the int
+   */
   @Override
   public int hashCode() {
     final int prime = 31;
@@ -45,6 +74,12 @@ public class Line {
     return result;
   }
 
+  /**
+   * Equals.
+   *
+   * @param obj the obj
+   * @return true, if successful
+   */
   @Override
   public boolean equals(final Object obj) {
     if (this == obj) {

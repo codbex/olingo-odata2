@@ -24,26 +24,54 @@ import org.apache.olingo.odata2.api.edm.EdmMapping;
 import org.apache.olingo.odata2.api.edm.EdmTypeKind;
 import org.apache.olingo.odata2.api.edm.FullQualifiedName;
 
+// TODO: Auto-generated Javadoc
 /**
- * Objects of this class represent ComplexType
- *
+ * Objects of this class represent ComplexType.
  */
 public class EdmComplexTypeImpl extends EdmStructuralTypeImpl implements EdmComplexType{
 
+  /** The is abstract. */
   private boolean isAbstract;
 
+  /** The base type. */
   private FullQualifiedName baseType;
+  
+  /** The mapping. */
   private EdmMapping mapping;
   
+  /**
+   * Gets the mapping.
+   *
+   * @return the mapping
+   */
   public EdmMapping getMapping() {
     return mapping;
   }
+  
+  /**
+   * Sets the mapping.
+   *
+   * @param mapping the new mapping
+   */
   public void setMapping(EdmMapping mapping) {
     this.mapping = mapping;
   }
+  
+  /**
+   * Sets the abstract.
+   *
+   * @param isAbstract the new abstract
+   */
   public void setAbstract(boolean isAbstract) {
     this.isAbstract = isAbstract;
   }
+  
+  /**
+   * Gets the base type.
+   *
+   * @return the base type
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmComplexType getBaseType() throws EdmException {
     if(edmBaseType!=null){
@@ -52,22 +80,49 @@ public class EdmComplexTypeImpl extends EdmStructuralTypeImpl implements EdmComp
       return null;
     }
   }
+  
+  /**
+   * Gets the edm base type name.
+   *
+   * @return the edm base type name
+   */
   public FullQualifiedName getEdmBaseTypeName() {
     return baseType;
   }
+  
+  /**
+   * Sets the base type name.
+   *
+   * @param baseType the new base type name
+   */
   public void setBaseTypeName(FullQualifiedName baseType) {
     this.baseType = baseType;
   }
   
+  /**
+   * Checks if is abstract.
+   *
+   * @return true, if is abstract
+   */
   public boolean isAbstract() {
     return isAbstract;
   }
   
+  /**
+   * To string.
+   *
+   * @return the string
+   */
   @Override
   public String toString() {
     return name;
   }
   
+  /**
+   * Gets the kind.
+   *
+   * @return the kind
+   */
   @Override
   public EdmTypeKind getKind() {
     return EdmTypeKind.COMPLEX;

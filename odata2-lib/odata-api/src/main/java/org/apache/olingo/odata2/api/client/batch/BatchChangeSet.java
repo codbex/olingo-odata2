@@ -22,40 +22,60 @@ import java.util.List;
 
 import org.apache.olingo.odata2.api.rt.RuntimeDelegate;
 
+// TODO: Auto-generated Javadoc
 /**
  * A BatchChangeSet
- * <p> BatchChangeSet represents a Change Set, that consists of change requests
+ * <p> BatchChangeSet represents a Change Set, that consists of change requests.
  */
 public abstract class BatchChangeSet implements BatchPart {
 
   /**
-   * Add a new change request to the ChangeSet
+   * Add a new change request to the ChangeSet.
+   *
    * @param request {@link BatchChangeSetPart}
    */
   public abstract void add(BatchChangeSetPart request);
 
   /**
-   * Get change requests
+   * Get change requests.
+   *
    * @return a list of {@link BatchChangeSetPart}
    */
   public abstract List<BatchChangeSetPart> getChangeSetParts();
 
   /**
-   * Get new builder instance
+   * Get new builder instance.
+   *
    * @return {@link BatchChangeSetBuilder}
    */
   public static BatchChangeSetBuilder newBuilder() {
     return BatchChangeSetBuilder.newInstance();
   }
 
+  /**
+   * The Class BatchChangeSetBuilder.
+   */
   public static abstract class BatchChangeSetBuilder {
 
+    /**
+     * Instantiates a new batch change set builder.
+     */
     protected BatchChangeSetBuilder() {}
 
+    /**
+     * New instance.
+     *
+     * @return the batch change set builder
+     */
     private static BatchChangeSetBuilder newInstance() {
       return RuntimeDelegate.createBatchChangeSetBuilder();
     }
 
+    /**
+     * Builds the.
+     *
+     * @return the batch change set
+     */
     public abstract BatchChangeSet build();
   }
 }

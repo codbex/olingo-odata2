@@ -63,17 +63,39 @@ import org.apache.olingo.odata2.jpa.processor.core.ODataEntityParser;
 import org.apache.olingo.odata2.jpa.processor.core.access.data.JPAPage.JPAPageBuilder;
 import org.apache.olingo.odata2.jpa.processor.core.access.data.JPAQueryBuilder.JPAQueryInfo;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAProcessorImpl.
+ */
 public class JPAProcessorImpl implements JPAProcessor {
 
+  /** The Constant DELTATOKEN. */
   private static final String DELTATOKEN = "!deltatoken";
+  
+  /** The o data JPA context. */
   ODataJPAContext oDataJPAContext;
+  
+  /** The em. */
   EntityManager em;
 
+  /**
+   * Instantiates a new JPA processor impl.
+   *
+   * @param oDataJPAContext the o data JPA context
+   */
   public JPAProcessorImpl(final ODataJPAContext oDataJPAContext) {
     this.oDataJPAContext = oDataJPAContext;
     em = oDataJPAContext.getEntityManager();
   }
 
+  /**
+   * Process.
+   *
+   * @param uriParserResultView the uri parser result view
+   * @return the list
+   * @throws ODataJPAModelException the o data JPA model exception
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   /* Process Function Import Request */
   @SuppressWarnings("unchecked")
   @Override
@@ -125,6 +147,14 @@ public class JPAProcessorImpl implements JPAProcessor {
     return resultObj;
   }
 
+  /**
+   * Process.
+   *
+   * @param uriParserResultView the uri parser result view
+   * @return the list
+   * @throws ODataJPAModelException the o data JPA model exception
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   /* Process Get Entity Set Request (Query) */
   @Override
   public List<Object> process(final GetEntitySetUriInfo uriParserResultView)
@@ -184,6 +214,15 @@ public class JPAProcessorImpl implements JPAProcessor {
     }
   }
 
+  /**
+   * Process.
+   *
+   * @param <T> the generic type
+   * @param uriParserResultView the uri parser result view
+   * @return the object
+   * @throws ODataJPAModelException the o data JPA model exception
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   /* Process Get Entity Request (Read) */
   @Override
   public <T> Object process(GetEntityUriInfo uriParserResultView)
@@ -191,6 +230,14 @@ public class JPAProcessorImpl implements JPAProcessor {
     return readEntity(new JPAQueryBuilder(oDataJPAContext).build(uriParserResultView));
   }
 
+  /**
+   * Process.
+   *
+   * @param resultsView the results view
+   * @return the long
+   * @throws ODataJPAModelException the o data JPA model exception
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   /* Process $count for Get Entity Set Request */
   @Override
   public long process(final GetEntitySetCountUriInfo resultsView)
@@ -206,6 +253,14 @@ public class JPAProcessorImpl implements JPAProcessor {
     return 0;
   }
 
+  /**
+   * Process.
+   *
+   * @param resultsView the results view
+   * @return the long
+   * @throws ODataJPAModelException the o data JPA model exception
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   /* Process $count for Get Entity Request */
   @Override
   public long process(final GetEntityCountUriInfo resultsView) throws ODataJPAModelException, ODataJPARuntimeException {
@@ -219,6 +274,16 @@ public class JPAProcessorImpl implements JPAProcessor {
     return 0;
   }
 
+  /**
+   * Process.
+   *
+   * @param createView the create view
+   * @param content the content
+   * @param requestedContentType the requested content type
+   * @return the object
+   * @throws ODataJPAModelException the o data JPA model exception
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   /* Process Create Entity Request */
   @Override
   public Object process(final PostUriInfo createView, final InputStream content,
@@ -227,12 +292,31 @@ public class JPAProcessorImpl implements JPAProcessor {
     return processCreate(createView, content, null, requestedContentType);
   }
 
+  /**
+   * Process.
+   *
+   * @param createView the create view
+   * @param content the content
+   * @return the object
+   * @throws ODataJPAModelException the o data JPA model exception
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   @Override
   public Object process(final PostUriInfo createView, final Map<String, Object> content)
       throws ODataJPAModelException, ODataJPARuntimeException {
     return processCreate(createView, null, content, null);
   }
 
+  /**
+   * Process.
+   *
+   * @param updateView the update view
+   * @param content the content
+   * @param requestContentType the request content type
+   * @return the object
+   * @throws ODataJPAModelException the o data JPA model exception
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   /* Process Update Entity Request */
   @Override
   public Object process(final PutMergePatchUriInfo updateView,
@@ -241,12 +325,30 @@ public class JPAProcessorImpl implements JPAProcessor {
     return processUpdate(updateView, content, null, requestContentType);
   }
 
+  /**
+   * Process.
+   *
+   * @param updateView the update view
+   * @param content the content
+   * @return the object
+   * @throws ODataJPAModelException the o data JPA model exception
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   @Override
   public Object process(final PutMergePatchUriInfo updateView, final Map<String, Object> content)
       throws ODataJPAModelException, ODataJPARuntimeException {
     return processUpdate(updateView, null, content, null);
   }
 
+  /**
+   * Process.
+   *
+   * @param uriParserResultView the uri parser result view
+   * @param contentType the content type
+   * @return the object
+   * @throws ODataJPAModelException the o data JPA model exception
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   /* Process Delete Entity Request */
   @Override
   public Object process(DeleteUriInfo uriParserResultView, final String contentType)
@@ -274,6 +376,14 @@ public class JPAProcessorImpl implements JPAProcessor {
     return selectedObject;
   }
 
+  /**
+   * Process.
+   *
+   * @param uriParserResultView the uri parser result view
+   * @return the object
+   * @throws ODataJPAModelException the o data JPA model exception
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   /* Process Get Entity Link Request */
   @Override
   public Object process(final GetEntityLinkUriInfo uriParserResultView)
@@ -282,6 +392,14 @@ public class JPAProcessorImpl implements JPAProcessor {
     return this.process((GetEntityUriInfo) uriParserResultView);
   }
 
+  /**
+   * Process.
+   *
+   * @param uriParserResultView the uri parser result view
+   * @return the list
+   * @throws ODataJPAModelException the o data JPA model exception
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   /* Process Get Entity Set Link Request */
   @Override
   public List<Object> process(final GetEntitySetLinksUriInfo uriParserResultView)
@@ -289,6 +407,16 @@ public class JPAProcessorImpl implements JPAProcessor {
     return this.process((GetEntitySetUriInfo) uriParserResultView);
   }
 
+  /**
+   * Process.
+   *
+   * @param uriInfo the uri info
+   * @param content the content
+   * @param requestContentType the request content type
+   * @param contentType the content type
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   * @throws ODataJPAModelException the o data JPA model exception
+   */
   @Override
   public void process(final PostUriInfo uriInfo,
       final InputStream content, final String requestContentType, final String contentType)
@@ -298,6 +426,16 @@ public class JPAProcessorImpl implements JPAProcessor {
     link.save();
   }
 
+  /**
+   * Process.
+   *
+   * @param putUriInfo the put uri info
+   * @param content the content
+   * @param requestContentType the request content type
+   * @param contentType the content type
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   * @throws ODataJPAModelException the o data JPA model exception
+   */
   @Override
   public void process(final PutMergePatchUriInfo putUriInfo,
       final InputStream content, final String requestContentType, final String contentType)
@@ -309,6 +447,13 @@ public class JPAProcessorImpl implements JPAProcessor {
 
   }
 
+  /**
+   * Read entity.
+   *
+   * @param query the query
+   * @return the object
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   /* Common method for Read and Delete */
   private Object readEntity(final Query query) throws ODataJPARuntimeException {
     Object selectedObject = null;
@@ -320,6 +465,17 @@ public class JPAProcessorImpl implements JPAProcessor {
     return selectedObject;
   }
 
+  /**
+   * Process create.
+   *
+   * @param createView the create view
+   * @param content the content
+   * @param properties the properties
+   * @param requestedContentType the requested content type
+   * @return the object
+   * @throws ODataJPAModelException the o data JPA model exception
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   private Object processCreate(final PostUriInfo createView, final InputStream content,
       final Map<String, Object> properties,
       final String requestedContentType) throws ODataJPAModelException,
@@ -361,6 +517,18 @@ public class JPAProcessorImpl implements JPAProcessor {
     return null;
   }
 
+  /**
+   * Process update.
+   *
+   * @param <T> the generic type
+   * @param updateView the update view
+   * @param content the content
+   * @param properties the properties
+   * @param requestContentType the request content type
+   * @return the object
+   * @throws ODataJPAModelException the o data JPA model exception
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   private <T> Object processUpdate(PutMergePatchUriInfo updateView,
       final InputStream content, final Map<String, Object> properties, final String requestContentType)
       throws ODataJPAModelException, ODataJPARuntimeException {
@@ -411,6 +579,13 @@ public class JPAProcessorImpl implements JPAProcessor {
     return jpaEntity;
   }
 
+  /**
+   * Delete link.
+   *
+   * @param uriParserResultView the uri parser result view
+   * @return the object
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   private Object deleteLink(final DeleteUriInfo uriParserResultView) throws ODataJPARuntimeException {
     JPALink link = new JPALink(oDataJPAContext);
     link.delete(uriParserResultView);
@@ -418,6 +593,13 @@ public class JPAProcessorImpl implements JPAProcessor {
     return link.getTargetJPAEntity();
   }
 
+  /**
+   * Handle paging.
+   *
+   * @param result the result
+   * @param uriParserResultView the uri parser result view
+   * @return the list
+   */
   private List<Object> handlePaging(final List<Object> result, final GetEntitySetUriInfo uriParserResultView) {
     if (result == null) {
       return null;
@@ -442,6 +624,13 @@ public class JPAProcessorImpl implements JPAProcessor {
     return page.getPagedEntities();
   }
 
+  /**
+   * Handle paging.
+   *
+   * @param query the query
+   * @param uriParserResultView the uri parser result view
+   * @return the list
+   */
   private List<Object> handlePaging(final Query query, final GetEntitySetUriInfo uriParserResultView) {
 
     JPAPageBuilder pageBuilder = new JPAPageBuilder();
@@ -465,6 +654,11 @@ public class JPAProcessorImpl implements JPAProcessor {
 
   }
 
+  /**
+   * Sets the transaction.
+   *
+   * @return true, if successful
+   */
   private boolean setTransaction() {
     ODataJPATransaction transaction = oDataJPAContext.getODataJPATransaction();
     if (!transaction.isActive()) {

@@ -25,29 +25,64 @@ import org.apache.olingo.odata2.api.edm.EdmEntitySet;
 import org.apache.olingo.odata2.api.edm.EdmException;
 import org.apache.olingo.odata2.api.edm.provider.AssociationSetEnd;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EdmAssociationSetEndImplProv.
+ */
 public class EdmAssociationSetEndImplProv implements EdmAssociationSetEnd, EdmAnnotatable {
 
+  /** The entity set. */
   private EdmEntitySet entitySet;
+  
+  /** The role. */
   private String role;
+  
+  /** The end. */
   private AssociationSetEnd end;
+  
+  /** The annotations. */
   private EdmAnnotations annotations;
 
+  /**
+   * Instantiates a new edm association set end impl prov.
+   *
+   * @param end the end
+   * @param entitySet the entity set
+   * @throws EdmException the edm exception
+   */
   public EdmAssociationSetEndImplProv(final AssociationSetEnd end, final EdmEntitySet entitySet) throws EdmException {
     this.end = end;
     this.entitySet = entitySet;
     role = end.getRole();
   }
 
+  /**
+   * Gets the entity set.
+   *
+   * @return the entity set
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmEntitySet getEntitySet() throws EdmException {
     return entitySet;
   }
 
+  /**
+   * Gets the role.
+   *
+   * @return the role
+   */
   @Override
   public String getRole() {
     return role;
   }
 
+  /**
+   * Gets the annotations.
+   *
+   * @return the annotations
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmAnnotations getAnnotations() throws EdmException {
     if (annotations == null) {

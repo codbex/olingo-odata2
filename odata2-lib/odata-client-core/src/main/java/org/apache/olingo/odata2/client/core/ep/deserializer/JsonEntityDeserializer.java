@@ -36,20 +36,22 @@ import org.apache.olingo.odata2.core.ep.aggregator.EntityPropertyInfo;
 
 import com.google.gson.stream.JsonReader;
 
+// TODO: Auto-generated Javadoc
 /**
- *  This class includes method for deserialization of feed and entry data
+ *  This class includes method for deserialization of feed and entry data.
  */
 public class JsonEntityDeserializer {
 
-  /** Default used charset for reader */
+  /**  Default used charset for reader. */
   private static final String DEFAULT_CHARSET = "UTF-8";
 
   /**
-   * Returns an ODataEntry deserializing EntityStream
-   * @param entitySet
-   * @param entityStream
+   * Returns an ODataEntry deserializing EntityStream.
+   *
+   * @param entitySet the entity set
+   * @param entityStream the entity stream
    * @return ODataEntry
-   * @throws EntityProviderException
+   * @throws EntityProviderException the entity provider exception
    */
   public ODataEntry readEntry(final EdmEntitySet entitySet, final EntityStream entityStream) 
       throws EntityProviderException {
@@ -84,11 +86,12 @@ public class JsonEntityDeserializer {
   }
 
   /**
-   * Returns an ODataFeed deserializing EntityStream
-   * @param entitySet
-   * @param entityStream
+   * Returns an ODataFeed deserializing EntityStream.
+   *
+   * @param entitySet the entity set
+   * @param entityStream the entity stream
    * @return ODataFeed
-   * @throws EntityProviderException
+   * @throws EntityProviderException the entity provider exception
    */
   public ODataFeed readFeed(final EdmEntitySet entitySet, final EntityStream entityStream) 
       throws EntityProviderException {
@@ -96,11 +99,12 @@ public class JsonEntityDeserializer {
   }
 
   /**
-   * Returns an ODataDeltaFeed deserializing EntityStream
-   * @param entitySet
-   * @param entityStream
+   * Returns an ODataDeltaFeed deserializing EntityStream.
+   *
+   * @param entitySet the entity set
+   * @param entityStream the entity stream
    * @return ODataDeltaFeed
-   * @throws EntityProviderException
+   * @throws EntityProviderException the entity provider exception
    */
   public ODataDeltaFeed readDeltaFeed(final EdmEntitySet entitySet, final EntityStream entityStream) 
       throws EntityProviderException {
@@ -137,11 +141,12 @@ public class JsonEntityDeserializer {
   }
 
 /**
- * 
- * @param content
+ * Creates the json reader.
+ *
+ * @param content the content
  * @return JsonReader
- * @throws EntityProviderException
- * @throws UnsupportedEncodingException
+ * @throws EntityProviderException the entity provider exception
+ * @throws UnsupportedEncodingException the unsupported encoding exception
  */
   private JsonReader createJsonReader(final Object content) throws EntityProviderException,
       UnsupportedEncodingException {
@@ -158,6 +163,14 @@ public class JsonEntityDeserializer {
         .addContent("Found not supported content of class '" + content.getClass() + "' to de-serialize."));
   }
   
+  /**
+   * Read collection.
+   *
+   * @param info the info
+   * @param entityStream the entity stream
+   * @return the list
+   * @throws EntityProviderException the entity provider exception
+   */
   public List<?> readCollection(final EntityPropertyInfo info, final EntityStream entityStream) 
       throws EntityProviderException {
     JsonReader reader = null;
@@ -186,6 +199,14 @@ public class JsonEntityDeserializer {
     }
   }
   
+  /**
+   * Read property.
+   *
+   * @param propertyInfo the property info
+   * @param entityStream the entity stream
+   * @return the map
+   * @throws EntityProviderException the entity provider exception
+   */
   public Map<String, Object> readProperty(final EntityPropertyInfo propertyInfo, final EntityStream entityStream) 
       throws EntityProviderException {
     JsonReader reader = null;

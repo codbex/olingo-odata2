@@ -38,6 +38,7 @@ import org.apache.olingo.odata2.core.commons.XmlHelper;
 import org.apache.olingo.odata2.core.ep.aggregator.EntityInfoAggregator;
 import org.apache.olingo.odata2.core.ep.aggregator.EntityPropertyInfo;
 
+// TODO: Auto-generated Javadoc
 /**
  * Xml entity (content type dependent) consumer for reading input (from <code>content</code>).
  * 
@@ -45,10 +46,24 @@ import org.apache.olingo.odata2.core.ep.aggregator.EntityPropertyInfo;
  */
 public class XmlEntityConsumer {
 
+  /**
+   * Instantiates a new xml entity consumer.
+   *
+   * @throws EntityProviderException the entity provider exception
+   */
   public XmlEntityConsumer() throws EntityProviderException {
     super();
   }
 
+  /**
+   * Read feed.
+   *
+   * @param entitySet the entity set
+   * @param content the content
+   * @param properties the properties
+   * @return the o data delta feed
+   * @throws EntityProviderException the entity provider exception
+   */
   public ODataDeltaFeed readFeed(final EdmEntitySet entitySet, final InputStream content,
       final EntityProviderReadProperties properties) throws EntityProviderException {
     XMLStreamReader reader = null;
@@ -79,6 +94,15 @@ public class XmlEntityConsumer {
     }
   }
 
+  /**
+   * Read entry.
+   *
+   * @param entitySet the entity set
+   * @param content the content
+   * @param properties the properties
+   * @return the o data entry
+   * @throws EntityProviderException the entity provider exception
+   */
   public ODataEntry readEntry(final EdmEntitySet entitySet, final InputStream content,
       final EntityProviderReadProperties properties) throws EntityProviderException {
     XMLStreamReader reader = null;
@@ -108,11 +132,29 @@ public class XmlEntityConsumer {
     }
   }
 
+  /**
+   * Read property.
+   *
+   * @param edmProperty the edm property
+   * @param content the content
+   * @param properties the properties
+   * @return the map
+   * @throws EntityProviderException the entity provider exception
+   */
   public Map<String, Object> readProperty(final EdmProperty edmProperty, final InputStream content,
       final EntityProviderReadProperties properties) throws EntityProviderException {
     return readProperty(EntityInfoAggregator.create(edmProperty), content, properties);
   }
 
+  /**
+   * Read property.
+   *
+   * @param propertyInfo the property info
+   * @param content the content
+   * @param readProperties the read properties
+   * @return the map
+   * @throws EntityProviderException the entity provider exception
+   */
   public Map<String, Object> readProperty(final EntityPropertyInfo propertyInfo, final InputStream content,
       final EntityProviderReadProperties readProperties) throws EntityProviderException {
     XMLStreamReader reader = null;
@@ -139,11 +181,28 @@ public class XmlEntityConsumer {
     }
   }
 
+  /**
+   * Read property value.
+   *
+   * @param edmProperty the edm property
+   * @param content the content
+   * @return the object
+   * @throws EntityProviderException the entity provider exception
+   */
   public Object readPropertyValue(final EdmProperty edmProperty, final InputStream content)
       throws EntityProviderException {
     return readPropertyValue(edmProperty, content, null);
   }
 
+  /**
+   * Read property value.
+   *
+   * @param edmProperty the edm property
+   * @param content the content
+   * @param typeMapping the type mapping
+   * @return the object
+   * @throws EntityProviderException the entity provider exception
+   */
   public Object readPropertyValue(final EdmProperty edmProperty, final InputStream content, final Class<?> typeMapping)
       throws EntityProviderException {
     try {
@@ -164,6 +223,15 @@ public class XmlEntityConsumer {
   }
 
 
+  /**
+   * Read collection.
+   *
+   * @param info the info
+   * @param content the content
+   * @param properties the properties
+   * @return the object
+   * @throws EntityProviderException the entity provider exception
+   */
   public Object readCollection(final EntityPropertyInfo info, InputStream content,
       final EntityProviderReadProperties properties) throws EntityProviderException {
     XMLStreamReader reader = null;
@@ -190,6 +258,14 @@ public class XmlEntityConsumer {
     }
   }
 
+  /**
+   * Read link.
+   *
+   * @param entitySet the entity set
+   * @param content the content
+   * @return the string
+   * @throws EntityProviderException the entity provider exception
+   */
   public String readLink(final EdmEntitySet entitySet, final Object content) throws EntityProviderException {
     XMLStreamReader reader = null;
     EntityProviderException cachedException = null;
@@ -217,6 +293,14 @@ public class XmlEntityConsumer {
     }
   }
 
+  /**
+   * Read links.
+   *
+   * @param entitySet the entity set
+   * @param content the content
+   * @return the list
+   * @throws EntityProviderException the entity provider exception
+   */
   public List<String> readLinks(final EdmEntitySet entitySet, final Object content) throws EntityProviderException {
     XMLStreamReader reader = null;
     EntityProviderException cachedException = null;

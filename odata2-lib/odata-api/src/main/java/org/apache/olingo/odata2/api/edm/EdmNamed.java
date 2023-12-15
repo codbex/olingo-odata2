@@ -18,16 +18,19 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.edm;
 
+// TODO: Auto-generated Javadoc
 /**
- * @org.apache.olingo.odata2.DoNotImplement
- * EdmName is the base interface for nearly all CSDL constructs.
- * 
+ * The Interface EdmNamed.
+ *
+ * @org.apache.olingo.odata2.DoNotImplement EdmName is the base interface for nearly all CSDL constructs.
  */
 public interface EdmNamed {
 
   /**
+   * Gets the name.
+   *
    * @return name as String
-   * @throws EdmException
+   * @throws EdmException the edm exception
    */
   String getName() throws EdmException;
 }

@@ -27,12 +27,30 @@ import org.apache.olingo.odata2.api.uri.expression.ExpressionKind;
 import org.apache.olingo.odata2.api.uri.expression.ExpressionVisitor;
 import org.apache.olingo.odata2.api.uri.expression.PropertyExpression;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PropertyExpressionImpl.
+ */
 public class PropertyExpressionImpl implements PropertyExpression {
+  
+  /** The uri literal. */
   private String uriLiteral;
+  
+  /** The edm type. */
   private EdmType edmType;
+  
+  /** The edm property. */
   private EdmTyped edmProperty;
+  
+  /** The edm literal. */
   private EdmLiteral edmLiteral;
 
+  /**
+   * Instantiates a new property expression impl.
+   *
+   * @param uriLiteral the uri literal
+   * @param edmLiteral the edm literal
+   */
   public PropertyExpressionImpl(final String uriLiteral, final EdmLiteral edmLiteral) {
     this.uriLiteral = uriLiteral;
 
@@ -42,18 +60,35 @@ public class PropertyExpressionImpl implements PropertyExpression {
     }
   }
 
+  /**
+   * Sets the edm property.
+   *
+   * @param edmProperty the edm property
+   * @return the common expression
+   */
   public CommonExpression setEdmProperty(final EdmTyped edmProperty) {
     // used EdmTyped because it may be a EdmProperty or a EdmNavigationProperty
     this.edmProperty = edmProperty;
     return this;
   }
 
+  /**
+   * Sets the edm type.
+   *
+   * @param edmType the edm type
+   * @return the common expression
+   */
   @Override
   public CommonExpression setEdmType(final EdmType edmType) {
     this.edmType = edmType;
     return this;
   }
 
+  /**
+   * Gets the property name.
+   *
+   * @return the property name
+   */
   @Override
   public String getPropertyName() {
     if (edmProperty == null) {
@@ -67,30 +102,61 @@ public class PropertyExpressionImpl implements PropertyExpression {
     }
   }
 
+  /**
+   * Gets the edm literal.
+   *
+   * @return the edm literal
+   */
   public EdmLiteral getEdmLiteral() {
     return edmLiteral;
   }
 
+  /**
+   * Gets the edm property.
+   *
+   * @return the edm property
+   */
   @Override
   public EdmTyped getEdmProperty() {
     return edmProperty;
   }
 
+  /**
+   * Gets the kind.
+   *
+   * @return the kind
+   */
   @Override
   public ExpressionKind getKind() {
     return ExpressionKind.PROPERTY;
   }
 
+  /**
+   * Gets the uri literal.
+   *
+   * @return the uri literal
+   */
   @Override
   public String getUriLiteral() {
     return uriLiteral;
   }
 
+  /**
+   * Gets the edm type.
+   *
+   * @return the edm type
+   */
   @Override
   public EdmType getEdmType() {
     return edmType;
   }
 
+  /**
+   * Accept.
+   *
+   * @param visitor the visitor
+   * @return the object
+   */
   @Override
   public Object accept(final ExpressionVisitor visitor) {
     Object ret = visitor.visitProperty(this, uriLiteral, edmProperty);

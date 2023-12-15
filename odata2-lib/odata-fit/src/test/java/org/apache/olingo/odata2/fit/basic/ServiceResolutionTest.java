@@ -48,16 +48,27 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *
+ * The Class ServiceResolutionTest.
  */
 public class ServiceResolutionTest extends BaseTest {
 
+    /** The http client. */
     private final HttpClient httpClient = new DefaultHttpClient();
+    
+    /** The server. */
     private final TestServer server = new TestServer(ServletType.JAXRS_SERVLET);
+    
+    /** The context. */
     private ODataContext context;
+    
+    /** The service. */
     private ODataSingleProcessorService service;
 
+    /**
+     * Before.
+     */
     @Before
     public void before() {
         try {
@@ -91,10 +102,16 @@ public class ServiceResolutionTest extends BaseTest {
         }
     }
 
+    /**
+     * Start server.
+     */
     private void startServer() {
         server.startServer(service);
     }
 
+    /**
+     * After.
+     */
     @After
     public void after() {
         if (server != null) {
@@ -102,6 +119,12 @@ public class ServiceResolutionTest extends BaseTest {
         }
     }
 
+    /**
+     * Test split 0.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws ODataException the o data exception
+     */
     @Test
     public void testSplit0() throws IOException, ODataException {
         server.setPathSplit(0);
@@ -128,6 +151,12 @@ public class ServiceResolutionTest extends BaseTest {
                                      .getPath());
     }
 
+    /**
+     * Test split 1.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws ODataException the o data exception
+     */
     @Test
     public void testSplit1() throws IOException, ODataException {
         server.setPathSplit(1);
@@ -155,6 +184,12 @@ public class ServiceResolutionTest extends BaseTest {
                                      .getPath());
     }
 
+    /**
+     * Test split 2.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws ODataException the o data exception
+     */
     @Test
     public void testSplit2() throws IOException, ODataException {
         server.setPathSplit(2);
@@ -186,6 +221,12 @@ public class ServiceResolutionTest extends BaseTest {
                                      .getPath());
     }
 
+    /**
+     * Test split url to short.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws ODataException the o data exception
+     */
     @Test
     public void testSplitUrlToShort() throws IOException, ODataException {
         server.setPathSplit(3);
@@ -200,6 +241,12 @@ public class ServiceResolutionTest extends BaseTest {
                                                                           .getStatusCode());
     }
 
+    /**
+     * Test split url service document.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws ODataException the o data exception
+     */
     @Test
     public void testSplitUrlServiceDocument() throws IOException, ODataException {
         server.setPathSplit(1);
@@ -227,6 +274,12 @@ public class ServiceResolutionTest extends BaseTest {
                                .getPath());
     }
 
+    /**
+     * Test matrix parameter in non O data path.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws ODataException the o data exception
+     */
     @Test
     public void testMatrixParameterInNonODataPath() throws IOException, ODataException {
         server.setPathSplit(1);
@@ -276,6 +329,12 @@ public class ServiceResolutionTest extends BaseTest {
         assertEquals("2", value);
     }
 
+    /**
+     * Test no matrix parameter in O data path.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws ODataException the o data exception
+     */
     @Test
     public void testNoMatrixParameterInODataPath() throws IOException, ODataException {
         server.setPathSplit(0);
@@ -296,6 +355,13 @@ public class ServiceResolutionTest extends BaseTest {
                                                                         .getStatusCode());
     }
 
+    /**
+     * Test base uri with matrix parameter.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws ODataException the o data exception
+     * @throws URISyntaxException the URI syntax exception
+     */
     @Test
     public void testBaseUriWithMatrixParameter() throws IOException, ODataException, URISyntaxException {
         server.setPathSplit(3);
@@ -318,6 +384,13 @@ public class ServiceResolutionTest extends BaseTest {
                 endpoint + "aaa/bbb;", "/ccc/", "n=2,3", "m=1");
     }
 
+    /**
+     * Test metadata uri with matrix parameter.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws ODataException the o data exception
+     * @throws URISyntaxException the URI syntax exception
+     */
     @Test
     public void testMetadataUriWithMatrixParameter() throws IOException, ODataException, URISyntaxException {
         server.setPathSplit(3);
@@ -344,6 +417,13 @@ public class ServiceResolutionTest extends BaseTest {
                                      .getPath());
     }
 
+    /**
+     * Test base uri with encoding.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws ODataException the o data exception
+     * @throws URISyntaxException the URI syntax exception
+     */
     @Test
     public void testBaseUriWithEncoding() throws IOException, ODataException, URISyntaxException {
         server.setPathSplit(3);
@@ -374,6 +454,14 @@ public class ServiceResolutionTest extends BaseTest {
         validateServiceRoot(asciiServiceRoot, server.getEndpoint() + "aaa/%C3%A4%D0%B4%D0%B5%D1%80%D0%B6b;", "/c%20c/", "n=2,%203", "m=1");
     }
 
+    /**
+     * Validate service root.
+     *
+     * @param serviceRoot the service root
+     * @param prefix the prefix
+     * @param postfix the postfix
+     * @param matrixParameter the matrix parameter
+     */
     private void validateServiceRoot(String serviceRoot, String prefix, String postfix, String... matrixParameter) {
         assertTrue("Service root '" + serviceRoot + "' does not start with '" + prefix + "'.", serviceRoot.startsWith(prefix));
         assertTrue("Service root '" + serviceRoot + "' does not end with '" + postfix + "'.", serviceRoot.endsWith(postfix));

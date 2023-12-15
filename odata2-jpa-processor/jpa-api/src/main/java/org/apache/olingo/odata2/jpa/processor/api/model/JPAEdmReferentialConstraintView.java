@@ -20,6 +20,7 @@ package org.apache.olingo.odata2.jpa.processor.api.model;
 
 import org.apache.olingo.odata2.api.edm.provider.ReferentialConstraint;
 
+// TODO: Auto-generated Javadoc
 /**
  * <p>
  * A view on Java Persistence Entity Join Columns and Entity Data Model
@@ -34,10 +35,9 @@ import org.apache.olingo.odata2.api.edm.provider.ReferentialConstraint;
  * </p>
  * 
  * <br>
- * @org.apache.olingo.odata2.DoNotImplement
- * <br>
+ *
  * @see org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmReferentialConstraintRoleView
- * 
+ * @org.apache.olingo.odata2.DoNotImplement <br>
  */
 public interface JPAEdmReferentialConstraintView extends JPAEdmBaseView {
 

@@ -20,28 +20,54 @@ package org.apache.olingo.odata2.api.exception;
 
 import org.apache.olingo.odata2.api.commons.HttpStatusCodes;
 
+// TODO: Auto-generated Javadoc
 /**
- * Exceptions of this class will result in a HTTP status 403 forbidden
- * 
+ * Exceptions of this class will result in a HTTP status 403 forbidden.
  */
 public class ODataForbiddenException extends ODataHttpException {
 
+  /** The Constant serialVersionUID. */
   private static final long serialVersionUID = 1L;
 
+  /** The Constant COMMON. */
   public static final MessageReference COMMON = createMessageReference(ODataForbiddenException.class, "COMMON");
 
+  /**
+   * Instantiates a new o data forbidden exception.
+   *
+   * @param context the context
+   */
   public ODataForbiddenException(final MessageReference context) {
     super(context, HttpStatusCodes.FORBIDDEN);
   }
 
+  /**
+   * Instantiates a new o data forbidden exception.
+   *
+   * @param context the context
+   * @param cause the cause
+   */
   public ODataForbiddenException(final MessageReference context, final Throwable cause) {
     super(context, cause, HttpStatusCodes.FORBIDDEN);
   }
 
+  /**
+   * Instantiates a new o data forbidden exception.
+   *
+   * @param context the context
+   * @param errorCode the error code
+   */
   public ODataForbiddenException(final MessageReference context, final String errorCode) {
     super(context, HttpStatusCodes.FORBIDDEN, errorCode);
   }
 
+  /**
+   * Instantiates a new o data forbidden exception.
+   *
+   * @param context the context
+   * @param cause the cause
+   * @param errorCode the error code
+   */
   public ODataForbiddenException(final MessageReference context, final Throwable cause, final String errorCode) {
     super(context, cause, HttpStatusCodes.FORBIDDEN, errorCode);
   }

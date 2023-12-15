@@ -27,16 +27,30 @@ import org.apache.olingo.odata2.api.commons.HttpStatusCodes;
 import org.apache.olingo.odata2.api.processor.ODataResponse;
 import org.apache.olingo.odata2.core.ep.util.JsonStreamWriter;
 
+// TODO: Auto-generated Javadoc
 /**
  * Response debug information.
  */
 public class DebugInfoResponse implements DebugInfo {
 
+  /** The response. */
   private final ODataResponse response;
+  
+  /** The service root. */
   private final String serviceRoot;
+  
+  /** The status. */
   private final HttpStatusCodes status;
+  
+  /** The headers. */
   private final Map<String, String> headers;
 
+  /**
+   * Instantiates a new debug info response.
+   *
+   * @param response the response
+   * @param serviceRoot the service root
+   */
   public DebugInfoResponse(final ODataResponse response, final String serviceRoot) {
     this.response = response;
     this.serviceRoot = serviceRoot;
@@ -47,11 +61,22 @@ public class DebugInfoResponse implements DebugInfo {
     }
   }
 
+  /**
+   * Gets the name.
+   *
+   * @return the name
+   */
   @Override
   public String getName() {
     return "Response";
   }
 
+  /**
+   * Append json.
+   *
+   * @param jsonStreamWriter the json stream writer
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Override
   public void appendJson(final JsonStreamWriter jsonStreamWriter) throws IOException {
     jsonStreamWriter.beginObject();
@@ -83,6 +108,12 @@ public class DebugInfoResponse implements DebugInfo {
     jsonStreamWriter.endObject();
   }
 
+  /**
+   * Append html.
+   *
+   * @param writer the writer
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Override
   public void appendHtml(final Writer writer) throws IOException {
     writer.append("<h2>Status Code</h2>\n")

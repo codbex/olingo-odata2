@@ -37,18 +37,39 @@ import org.apache.olingo.odata2.jpa.processor.api.jpql.JPQLContextType;
 import org.apache.olingo.odata2.jpa.processor.api.jpql.JPQLJoinSelectSingleContextView;
 import org.apache.olingo.odata2.jpa.processor.core.ODataExpressionParser;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPQLJoinSelectSingleContext.
+ */
 public class JPQLJoinSelectSingleContext extends JPQLSelectSingleContext implements JPQLJoinSelectSingleContextView {
 
+  /** The jpa join clauses. */
   private List<JPAJoinClause> jpaJoinClauses = null;
 
+  /**
+   * Sets the JPA join clause.
+   *
+   * @param jpaJoinClauses the new JPA join clause
+   */
   protected void setJPAJoinClause(final List<JPAJoinClause> jpaJoinClauses) {
     this.jpaJoinClauses = jpaJoinClauses;
   }
 
+  /**
+   * The Class JPQLJoinSelectSingleContextBuilder.
+   */
   public class JPQLJoinSelectSingleContextBuilder extends JPQLSelectSingleContextBuilder {
 
+    /** The relation ship alias counter. */
     protected int relationShipAliasCounter = 0;
 
+    /**
+     * Builds the.
+     *
+     * @return the JPQL context
+     * @throws ODataJPAModelException the o data JPA model exception
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
+     */
     @Override
     public JPQLContext build() throws ODataJPAModelException, ODataJPARuntimeException {
       try {
@@ -74,6 +95,13 @@ public class JPQLJoinSelectSingleContext extends JPQLSelectSingleContext impleme
       return JPQLJoinSelectSingleContext.this;
     }
 
+    /**
+     * Generate join clauses.
+     *
+     * @return the list
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
+     * @throws EdmException the edm exception
+     */
     protected List<JPAJoinClause> generateJoinClauses() throws ODataJPARuntimeException, EdmException {
 
       List<JPAJoinClause> jpaOuterJoinClauses = new ArrayList<JPAJoinClause>();
@@ -128,6 +156,13 @@ public class JPQLJoinSelectSingleContext extends JPQLSelectSingleContext impleme
       return jpaOuterJoinClauses;
     }
 
+    /**
+     * Gets the from entity name.
+     *
+     * @param navigationProperty the navigation property
+     * @return the from entity name
+     * @throws EdmException the edm exception
+     */
     private String getFromEntityName(final EdmNavigationProperty navigationProperty) throws EdmException {
 
       String fromRole = navigationProperty.getFromRole();
@@ -147,6 +182,13 @@ public class JPQLJoinSelectSingleContext extends JPQLSelectSingleContext impleme
 
     }
 
+    /**
+     * Gets the relation ship name.
+     *
+     * @param navigationProperty the navigation property
+     * @return the relation ship name
+     * @throws EdmException the edm exception
+     */
     private String getRelationShipName(final EdmNavigationProperty navigationProperty) throws EdmException {
 
       EdmMapping mapping = navigationProperty.getMapping();
@@ -161,11 +203,21 @@ public class JPQLJoinSelectSingleContext extends JPQLSelectSingleContext impleme
       return relationShipName;
     }
 
+    /**
+     * Generate relation ship alias.
+     *
+     * @return the string
+     */
     private String generateRelationShipAlias() {
       return new String("R" + ++relationShipAliasCounter);
     }
   }
 
+  /**
+   * Gets the JPA join clauses.
+   *
+   * @return the JPA join clauses
+   */
   @Override
   public List<JPAJoinClause> getJPAJoinClauses() {
     return jpaJoinClauses;

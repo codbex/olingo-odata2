@@ -32,18 +32,39 @@ import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmEntityTypeView;
 import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmSchemaView;
 import org.apache.olingo.odata2.jpa.processor.core.access.model.JPAEdmNameBuilder;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAEdmEntitySet.
+ */
 public class JPAEdmEntitySet extends JPAEdmBaseViewImpl implements JPAEdmEntitySetView {
 
+  /** The current entity set. */
   private EntitySet currentEntitySet = null;
+  
+  /** The consistent entity set list. */
   private List<EntitySet> consistentEntitySetList = null;
+  
+  /** The entity type view. */
   private JPAEdmEntityTypeView entityTypeView = null;
+  
+  /** The schema view. */
   private JPAEdmSchemaView schemaView;
 
+  /**
+   * Instantiates a new JPA edm entity set.
+   *
+   * @param view the view
+   */
   public JPAEdmEntitySet(final JPAEdmSchemaView view) {
     super(view);
     schemaView = view;
   }
 
+  /**
+   * Gets the builder.
+   *
+   * @return the builder
+   */
   @Override
   public JPAEdmBuilder getBuilder() {
     if (builder == null) {
@@ -53,21 +74,39 @@ public class JPAEdmEntitySet extends JPAEdmBaseViewImpl implements JPAEdmEntityS
     return builder;
   }
 
+  /**
+   * Gets the edm entity set.
+   *
+   * @return the edm entity set
+   */
   @Override
   public EntitySet getEdmEntitySet() {
     return currentEntitySet;
   }
 
+  /**
+   * Gets the consistent edm entity set list.
+   *
+   * @return the consistent edm entity set list
+   */
   @Override
   public List<EntitySet> getConsistentEdmEntitySetList() {
     return consistentEntitySetList;
   }
 
+  /**
+   * Gets the JPA edm entity type view.
+   *
+   * @return the JPA edm entity type view
+   */
   @Override
   public JPAEdmEntityTypeView getJPAEdmEntityTypeView() {
     return entityTypeView;
   }
 
+  /**
+   * Clean.
+   */
   @Override
   public void clean() {
     currentEntitySet = null;
@@ -76,8 +115,17 @@ public class JPAEdmEntitySet extends JPAEdmBaseViewImpl implements JPAEdmEntityS
     isConsistent = false;
   }
 
+  /**
+   * The Class JPAEdmEntitySetBuilder.
+   */
   private class JPAEdmEntitySetBuilder implements JPAEdmBuilder {
 
+    /**
+     * Builds the.
+     *
+     * @throws ODataJPAModelException the o data JPA model exception
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
+     */
     @Override
     public void build() throws ODataJPAModelException, ODataJPARuntimeException {
 

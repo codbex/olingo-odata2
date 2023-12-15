@@ -21,6 +21,7 @@ package org.apache.olingo.odata2.api.uri;
 import java.util.List;
 import java.util.Map;
 
+// TODO: Auto-generated Javadoc
 /**
  * <p>URI path segment consisting of an URI path element and URI matrix parameters.</p>
  * <p>Example URI:

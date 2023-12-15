@@ -23,6 +23,7 @@ import java.util.List;
 import org.apache.olingo.odata2.api.edm.provider.Association;
 import org.apache.olingo.odata2.api.edm.provider.AssociationSet;
 
+// TODO: Auto-generated Javadoc
 /**
  * <p>
  * A view on Java Persistence Entity Relationship and Entity Data Model
@@ -36,8 +37,9 @@ import org.apache.olingo.odata2.api.edm.provider.AssociationSet;
  * 
  * 
  * <p>
- * @org.apache.olingo.odata2.DoNotImplement
+ *
  * @see org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmAssociationView
+ * @org.apache.olingo.odata2.DoNotImplement 
  */
 public interface JPAEdmAssociationSetView extends JPAEdmBaseView {
 

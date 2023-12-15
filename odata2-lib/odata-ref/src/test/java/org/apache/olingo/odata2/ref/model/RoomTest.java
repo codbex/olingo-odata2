@@ -27,21 +27,33 @@ import java.util.List;
 import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class RoomTest.
  */
 public class RoomTest extends BaseTest {
 
+  /** The Constant VALUE_VERSION_NR. */
   private static final int VALUE_VERSION_NR = 1;
+  
+  /** The Constant VALUE_4. */
   private static final int VALUE_4 = 4;
+  
+  /** The Constant NAME. */
   private static final String NAME = "Room 100";
 
+  /**
+   * Test id.
+   */
   @Test
   public void testId() {
     Room room1 = new Room(1, NAME);
     assertNotNull(room1.getId());
   }
 
+  /**
+   * Test seats.
+   */
   @Test
   public void testSeats() {
     Room room1 = new Room(1, null);
@@ -49,6 +61,9 @@ public class RoomTest extends BaseTest {
     assertEquals(VALUE_4, room1.getSeats());
   }
 
+  /**
+   * Test version.
+   */
   @Test
   public void testVersion() {
     Room room1 = new Room(1, null);
@@ -56,6 +71,9 @@ public class RoomTest extends BaseTest {
     assertEquals(VALUE_VERSION_NR, room1.getVersion());
   }
 
+  /**
+   * Test building.
+   */
   @Test
   public void testBuilding() {
     Room room1 = new Room(1, null);
@@ -66,6 +84,9 @@ public class RoomTest extends BaseTest {
     assertEquals(room1, build1.getRooms().get(0));
   }
 
+  /**
+   * Test employees.
+   */
   @Test
   public void testEmployees() {
     Employee employee1 = new Employee(1, null);

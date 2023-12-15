@@ -25,23 +25,43 @@ import org.apache.olingo.odata2.api.edm.EdmFacets;
 import org.apache.olingo.odata2.api.edm.EdmLiteralKind;
 import org.apache.olingo.odata2.api.edm.EdmSimpleTypeException;
 
+// TODO: Auto-generated Javadoc
 /**
  * Implementation of the EDM simple type Binary.
  * 
  */
 public class EdmBinary extends AbstractSimpleType {
 
+  /** The Constant instance. */
   private static final EdmBinary instance = new EdmBinary();
 
+  /**
+   * Gets the single instance of EdmBinary.
+   *
+   * @return single instance of EdmBinary
+   */
   public static EdmBinary getInstance() {
     return instance;
   }
 
+  /**
+   * Gets the default type.
+   *
+   * @return the default type
+   */
   @Override
   public Class<?> getDefaultType() {
     return byte[].class;
   }
 
+  /**
+   * Validate.
+   *
+   * @param value the value
+   * @param literalKind the literal kind
+   * @param facets the facets
+   * @return true, if successful
+   */
   @Override
   public boolean validate(final String value, final EdmLiteralKind literalKind, final EdmFacets facets) {
     if (value == null) {
@@ -55,11 +75,26 @@ public class EdmBinary extends AbstractSimpleType {
     return validateLiteral(value, literalKind) && validateMaxLength(value, literalKind, facets);
   }
 
+  /**
+   * Validate literal.
+   *
+   * @param value the value
+   * @param literalKind the literal kind
+   * @return true, if successful
+   */
   private static boolean validateLiteral(final String value, final EdmLiteralKind literalKind) {
     return literalKind == EdmLiteralKind.URI ?
         value.matches("(?:X|binary)'(?:\\p{XDigit}{2})*'") : Base64.isBase64(value);
   }
 
+  /**
+   * Validate max length.
+   *
+   * @param value the value
+   * @param literalKind the literal kind
+   * @param facets the facets
+   * @return true, if successful
+   */
   private static boolean
       validateMaxLength(final String value, final EdmLiteralKind literalKind, final EdmFacets facets) {
     return facets == null || facets.getMaxLength() == null ? true :
@@ -75,6 +110,12 @@ public class EdmBinary extends AbstractSimpleType {
                 - (value.contains("==") ? 2 : value.contains("=") ? 1 : 0) * 4L;
   }
 
+  /**
+   * Crlf length.
+   *
+   * @param value the value
+   * @return the int
+   */
   private static int crlfLength(final String value) {
     int result = 0;
     int index = 0;
@@ -85,6 +126,17 @@ public class EdmBinary extends AbstractSimpleType {
     return result;
   }
 
+  /**
+   * Internal value of string.
+   *
+   * @param <T> the generic type
+   * @param value the value
+   * @param literalKind the literal kind
+   * @param facets the facets
+   * @param returnType the return type
+   * @return the t
+   * @throws EdmSimpleTypeException the edm simple type exception
+   */
   @Override
   protected <T> T internalValueOfString(final String value, final EdmLiteralKind literalKind, final EdmFacets facets,
       final Class<T> returnType) throws EdmSimpleTypeException {
@@ -119,6 +171,16 @@ public class EdmBinary extends AbstractSimpleType {
     }
   }
 
+  /**
+   * Internal value to string.
+   *
+   * @param <T> the generic type
+   * @param value the value
+   * @param literalKind the literal kind
+   * @param facets the facets
+   * @return the string
+   * @throws EdmSimpleTypeException the edm simple type exception
+   */
   @Override
   protected <T> String internalValueToString(final T value, final EdmLiteralKind literalKind, final EdmFacets facets)
       throws EdmSimpleTypeException {
@@ -142,6 +204,13 @@ public class EdmBinary extends AbstractSimpleType {
     return Base64.encodeBase64String(byteArrayValue);
   }
 
+  /**
+   * To uri literal.
+   *
+   * @param literal the literal
+   * @return the string
+   * @throws EdmSimpleTypeException the edm simple type exception
+   */
   @Override
   public String toUriLiteral(final String literal) throws EdmSimpleTypeException {
     return "binary'" + String.valueOf(Hex.encodeHex(Base64.decodeBase64(literal), false)) + "'";

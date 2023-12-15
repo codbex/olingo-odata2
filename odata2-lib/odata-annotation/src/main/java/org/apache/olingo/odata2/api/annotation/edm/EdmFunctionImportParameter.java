@@ -23,6 +23,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+// TODO: Auto-generated Javadoc
 /**
  * <p>Annotation for definition of an EdmFunctionImportParameter for an EdmFunctionImport
  * which contains the EdmFunctionImportParameter as a parameter.</p>

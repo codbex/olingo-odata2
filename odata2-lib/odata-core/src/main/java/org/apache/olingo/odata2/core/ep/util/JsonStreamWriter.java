@@ -21,47 +21,100 @@ package org.apache.olingo.odata2.core.ep.util;
 import java.io.IOException;
 import java.io.Writer;
 
+// TODO: Auto-generated Javadoc
 /**
  * Writes JSON output.
  * 
  */
 public class JsonStreamWriter {
+  
+  /** The writer. */
   private final Writer writer;
 
+  /**
+   * Instantiates a new json stream writer.
+   *
+   * @param writer the writer
+   */
   public JsonStreamWriter(final Writer writer) {
     this.writer = writer;
   }
 
+  /**
+   * Begin object.
+   *
+   * @return the json stream writer
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   public JsonStreamWriter beginObject() throws IOException {
     writer.append('{');
     return this;
   }
 
+  /**
+   * End object.
+   *
+   * @return the json stream writer
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   public JsonStreamWriter endObject() throws IOException {
     writer.append('}');
     return this;
   }
 
+  /**
+   * Begin array.
+   *
+   * @return the json stream writer
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   public JsonStreamWriter beginArray() throws IOException {
     writer.append('[');
     return this;
   }
 
+  /**
+   * End array.
+   *
+   * @return the json stream writer
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   public JsonStreamWriter endArray() throws IOException {
     writer.append(']');
     return this;
   }
 
+  /**
+   * Name.
+   *
+   * @param name the name
+   * @return the json stream writer
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   public JsonStreamWriter name(final String name) throws IOException {
     writer.append('"').append(name).append('"').append(':');
     return this;
   }
 
+  /**
+   * Unquoted value.
+   *
+   * @param value the value
+   * @return the json stream writer
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   public JsonStreamWriter unquotedValue(final String value) throws IOException {
     writer.append(value == null ? FormatJson.NULL : value);
     return this;
   }
 
+  /**
+   * String value raw.
+   *
+   * @param value the value
+   * @return the json stream writer
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   public JsonStreamWriter stringValueRaw(final String value) throws IOException {
     if (value == null) {
       writer.append(FormatJson.NULL);
@@ -71,6 +124,13 @@ public class JsonStreamWriter {
     return this;
   }
 
+  /**
+   * String value.
+   *
+   * @param value the value
+   * @return the json stream writer
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   public JsonStreamWriter stringValue(final String value) throws IOException {
     if (value == null) {
       writer.append(FormatJson.NULL);
@@ -82,18 +142,40 @@ public class JsonStreamWriter {
     return this;
   }
 
+  /**
+   * Named string value raw.
+   *
+   * @param name the name
+   * @param value the value
+   * @return the json stream writer
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   public JsonStreamWriter namedStringValueRaw(final String name, final String value) throws IOException {
     name(name);
     stringValueRaw(value);
     return this;
   }
 
+  /**
+   * Named string value.
+   *
+   * @param name the name
+   * @param value the value
+   * @return the json stream writer
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   public JsonStreamWriter namedStringValue(final String name, final String value) throws IOException {
     name(name);
     stringValue(value);
     return this;
   }
 
+  /**
+   * Separator.
+   *
+   * @return the json stream writer
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   public JsonStreamWriter separator() throws IOException {
     writer.append(',');
     return this;

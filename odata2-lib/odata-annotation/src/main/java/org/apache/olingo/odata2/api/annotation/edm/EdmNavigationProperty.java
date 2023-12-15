@@ -23,6 +23,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+// TODO: Auto-generated Javadoc
 /**
  * <p>Annotation for definition of an EdmNavigationProperty for an EdmEntityType
  * which contains the navigation property as a field.</p>
@@ -42,7 +43,13 @@ public @interface EdmNavigationProperty {
    * </p>
    */
   public enum Multiplicity {
-    ZERO_OR_ONE, ONE, MANY;
+    
+    /** The zero or one. */
+    ZERO_OR_ONE, 
+ /** The one. */
+ ONE, 
+ /** The many. */
+ MANY;
   }
 
   /**

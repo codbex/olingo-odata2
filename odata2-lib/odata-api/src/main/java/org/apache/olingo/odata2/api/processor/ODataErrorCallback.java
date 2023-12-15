@@ -21,12 +21,14 @@ package org.apache.olingo.odata2.api.processor;
 import org.apache.olingo.odata2.api.ODataCallback;
 import org.apache.olingo.odata2.api.exception.ODataApplicationException;
 
+// TODO: Auto-generated Javadoc
 /**
  * This interface is called if an error occurred and is process inside the exception mapper.
  * 
  * 
  */
 public interface ODataErrorCallback extends ODataCallback {
+  
   /**
    * This method can be used to handle an error differently than the exception mapper would.
    * <br>Any returned Response will be directly transported to the client.
@@ -35,9 +37,10 @@ public interface ODataErrorCallback extends ODataCallback {
    * "Exception during error handling occurred!" No OData formatting will be applied.
    * <br>To serialize an error into the OData format the {@link org.apache.olingo.odata2.api.ep.EntityProvider}
    * writeErrorDocument can be used.
+   *
    * @param context of this error
    * @return the response which will be propagated to the client
-   * @throws ODataApplicationException
+   * @throws ODataApplicationException the o data application exception
    */
   ODataResponse handleError(ODataErrorContext context) throws ODataApplicationException;
 }

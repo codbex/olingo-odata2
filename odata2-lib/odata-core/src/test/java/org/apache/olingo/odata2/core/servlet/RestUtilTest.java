@@ -30,8 +30,17 @@ import java.util.Map;
 
 import jakarta.servlet.http.HttpServletRequest;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class RestUtilTest.
+ */
 public class RestUtilTest {
 
+  /**
+   * Test extract query parameters.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testExtractQueryParameters() throws Exception {
     Map<String, String> result = RestUtil.extractQueryParameters("some=value");
@@ -45,6 +54,11 @@ public class RestUtilTest {
     Assert.assertTrue(result.isEmpty());
   }
 
+  /**
+   * Test extract all query parameters.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testExtractAllQueryParameters() throws Exception {
     Map<String, List<String>> result = RestUtil.extractAllQueryParameters("some=value", "false");
@@ -63,6 +77,11 @@ public class RestUtilTest {
     Assert.assertEquals("v", result.get("another").get(0));
   }
 
+  /**
+   * Test extract accept headers.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testExtractAcceptHeaders() throws Exception {
     // NuGet 4.0 client under .NET
@@ -88,6 +107,11 @@ public class RestUtilTest {
     Assert.assertEquals("*/*", result.get(4));
   }
   
+  /**
+   * Test build O data path info.
+   *
+   * @throws ODataException the o data exception
+   */
   @Test
   public void testBuildODataPathInfo() throws ODataException {
 	  HttpServletRequest req = Mockito.mock(HttpServletRequest.class);

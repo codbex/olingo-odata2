@@ -26,17 +26,28 @@ import org.apache.olingo.odata2.api.exception.ODataNotFoundException;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+// TODO: Auto-generated Javadoc
 /**
- *
+ * The Class BeanPropertyAccessTest.
  */
 public class BeanPropertyAccessTest {
 
+  /** The ava. */
   private final BeanPropertyAccess ava;
 
+  /**
+   * Instantiates a new bean property access test.
+   */
   public BeanPropertyAccessTest() {
     ava = new BeanPropertyAccess();
   }
 
+  /**
+   * Gets the property type.
+   *
+   * @return the property type
+   * @throws ODataException the o data exception
+   */
   @Test
   public void getPropertyType() throws ODataException {
     SimpleEntity data = new SimpleEntity();
@@ -48,6 +59,12 @@ public class BeanPropertyAccessTest {
     Assert.assertEquals(String.class, type);
   }
 
+  /**
+   * Gets the property type invalid property name.
+   *
+   * @return the property type invalid property name
+   * @throws ODataException the o data exception
+   */
   @Test(expected = ODataNotFoundException.class)
   public void getPropertyTypeInvalidPropertyName() throws ODataException {
     SimpleEntity data = new SimpleEntity();
@@ -58,6 +75,12 @@ public class BeanPropertyAccessTest {
     Assert.assertNull(value);
   }
 
+  /**
+   * Gets the property value.
+   *
+   * @return the property value
+   * @throws ODataException the o data exception
+   */
   @Test
   public void getPropertyValue() throws ODataException {
 
@@ -71,6 +94,12 @@ public class BeanPropertyAccessTest {
     Assert.assertEquals("A Name", value);
   }
 
+  /**
+   * Gets the property value boolean.
+   *
+   * @return the property value boolean
+   * @throws ODataException the o data exception
+   */
   @Test
   public void getPropertyValueBoolean() throws ODataException {
 
@@ -83,6 +112,12 @@ public class BeanPropertyAccessTest {
     Assert.assertEquals(true, value);
   }
 
+  /**
+   * Gets the property value null.
+   *
+   * @return the property value null
+   * @throws ODataException the o data exception
+   */
   @Test
   public void getPropertyValueNull() throws ODataException {
 
@@ -94,6 +129,12 @@ public class BeanPropertyAccessTest {
     Assert.assertNull(value);
   }
 
+  /**
+   * Gets the property value null data.
+   *
+   * @return the property value null data
+   * @throws ODataException the o data exception
+   */
   @Test
   public void getPropertyValueNullData() throws ODataException {
 
@@ -105,6 +146,11 @@ public class BeanPropertyAccessTest {
     Assert.assertNull(value);
   }
 
+  /**
+   * Sets the property value.
+   *
+   * @throws ODataException the o data exception
+   */
   @Test
   public void setPropertyValue() throws ODataException {
 
@@ -118,6 +164,11 @@ public class BeanPropertyAccessTest {
     Assert.assertEquals("Another Name", data.name);
   }
 
+  /**
+   * Sets the property value null.
+   *
+   * @throws ODataException the o data exception
+   */
   @Test
   public void setPropertyValueNull() throws ODataException {
 
@@ -130,6 +181,12 @@ public class BeanPropertyAccessTest {
     Assert.assertNull(null, data.name);
   }
 
+  /**
+   * Gets the mapping value.
+   *
+   * @return the mapping value
+   * @throws Exception the exception
+   */
   @Test
   public void getMappingValue() throws Exception {
 
@@ -143,6 +200,12 @@ public class BeanPropertyAccessTest {
     Assert.assertEquals("mapped property value", value);
   }
 
+  /**
+   * Gets the mapping value null mapping.
+   *
+   * @return the mapping value null mapping
+   * @throws Exception the exception
+   */
   @Test
   public void getMappingValueNullMapping() throws Exception {
 
@@ -155,6 +218,12 @@ public class BeanPropertyAccessTest {
     Assert.assertNull(value);
   }
 
+  /**
+   * Gets the mapping value null value.
+   *
+   * @return the mapping value null value
+   * @throws Exception the exception
+   */
   @Test
   public void getMappingValueNullValue() throws Exception {
 
@@ -167,6 +236,11 @@ public class BeanPropertyAccessTest {
     Assert.assertNull(value);
   }
 
+  /**
+   * Sets the mapping value.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void setMappingValue() throws Exception {
 
@@ -180,6 +254,11 @@ public class BeanPropertyAccessTest {
     Assert.assertEquals("Changed mapped property value", data.myMappedProperty);
   }
 
+  /**
+   * Sets the mapping value null value.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void setMappingValueNullValue() throws Exception {
 
@@ -193,6 +272,11 @@ public class BeanPropertyAccessTest {
     Assert.assertNull(data.myMappedProperty);
   }
 
+  /**
+   * Sets the mapping value null mapping.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void setMappingValueNullMapping() throws Exception {
 
@@ -206,6 +290,11 @@ public class BeanPropertyAccessTest {
     Assert.assertEquals("mapped property value", data.myMappedProperty);
   }
 
+  /**
+   * Invalid method name.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = ODataNotFoundException.class)
   public void invalidMethodName() throws Exception {
 
@@ -218,10 +307,25 @@ public class BeanPropertyAccessTest {
     Assert.assertNull(value);
   }
 
+  /**
+   * Mock property.
+   *
+   * @param name the name
+   * @return the edm property
+   * @throws EdmException the edm exception
+   */
   private EdmProperty mockProperty(final String name) throws EdmException {
     return mockProperty(name, false);
   }
 
+  /**
+   * Mock property.
+   *
+   * @param name the name
+   * @param isBoolean the is boolean
+   * @return the edm property
+   * @throws EdmException the edm exception
+   */
   private EdmProperty mockProperty(final String name, final boolean isBoolean) throws EdmException {
     EdmProperty property = Mockito.mock(EdmProperty.class);
     Mockito.when(property.getName()).thenReturn(name);
@@ -232,32 +336,71 @@ public class BeanPropertyAccessTest {
     return property;
   }
 
+  /**
+   * Mock mapping.
+   *
+   * @param mimeTypeKey the mime type key
+   * @return the edm mapping
+   * @throws EdmException the edm exception
+   */
   private EdmMapping mockMapping(final String mimeTypeKey) throws EdmException {
     EdmMapping mapping = Mockito.mock(EdmMapping.class);
     Mockito.when(mapping.getMediaResourceMimeTypeKey()).thenReturn(mimeTypeKey);
     return mapping;
   }
 
+  /**
+   * The Class SimpleEntity.
+   */
   protected class SimpleEntity {
+    
+    /** The name. */
     private String name;
+    
+    /** The my mapped property. */
     private String myMappedProperty;
 
+    /**
+     * Gets the name.
+     *
+     * @return the name
+     */
     public final String getName() {
       return name;
     }
 
+    /**
+     * Sets the name.
+     *
+     * @param name the new name
+     */
     public final void setName(final String name) {
       this.name = name;
     }
 
+    /**
+     * Gets the my mapped property.
+     *
+     * @return the my mapped property
+     */
     public final String getMyMappedProperty() {
       return myMappedProperty;
     }
 
+    /**
+     * Sets the my mapped property.
+     *
+     * @param myMappedProperty the new my mapped property
+     */
     public final void setMyMappedProperty(final String myMappedProperty) {
       this.myMappedProperty = myMappedProperty;
     }
 
+    /**
+     * Checks if is boolean property.
+     *
+     * @return true, if is boolean property
+     */
     public final boolean isBooleanProperty() {
       return true;
     }

@@ -54,56 +54,126 @@ import org.apache.olingo.odata2.api.edm.provider.Schema;
 import org.apache.olingo.odata2.api.edm.provider.SimpleProperty;
 import org.apache.olingo.odata2.api.exception.ODataException;
 
+// TODO: Auto-generated Javadoc
 /**
- * Provider for the entity data model used in the reference scenario
- * 
+ * Provider for the entity data model used in the reference scenario.
  */
 public class ScenarioEdmProvider extends EdmProvider {
 
+  /** The Constant NAMESPACE_1. */
   public static final String NAMESPACE_1 = "RefScenario";
+  
+  /** The Constant NAMESPACE_2. */
   public static final String NAMESPACE_2 = "RefScenario2";
 
+  /** The Constant ENTITY_TYPE_1_1. */
   private static final FullQualifiedName ENTITY_TYPE_1_1 = new FullQualifiedName(NAMESPACE_1, "Employee");
+  
+  /** The Constant ENTITY_TYPE_1_BASE. */
   private static final FullQualifiedName ENTITY_TYPE_1_BASE = new FullQualifiedName(NAMESPACE_1, "Base");
+  
+  /** The Constant ENTITY_TYPE_1_2. */
   private static final FullQualifiedName ENTITY_TYPE_1_2 = new FullQualifiedName(NAMESPACE_1, "Team");
+  
+  /** The Constant ENTITY_TYPE_1_3. */
   private static final FullQualifiedName ENTITY_TYPE_1_3 = new FullQualifiedName(NAMESPACE_1, "Room");
+  
+  /** The Constant ENTITY_TYPE_1_4. */
   private static final FullQualifiedName ENTITY_TYPE_1_4 = new FullQualifiedName(NAMESPACE_1, "Manager");
+  
+  /** The Constant ENTITY_TYPE_1_5. */
   private static final FullQualifiedName ENTITY_TYPE_1_5 = new FullQualifiedName(NAMESPACE_1, "Building");
+  
+  /** The Constant ENTITY_TYPE_2_1. */
   private static final FullQualifiedName ENTITY_TYPE_2_1 = new FullQualifiedName(NAMESPACE_2, "Photo");
 
+  /** The Constant COMPLEX_TYPE_1. */
   private static final FullQualifiedName COMPLEX_TYPE_1 = new FullQualifiedName(NAMESPACE_1, "c_Location");
+  
+  /** The Constant COMPLEX_TYPE_2. */
   private static final FullQualifiedName COMPLEX_TYPE_2 = new FullQualifiedName(NAMESPACE_1, "c_City");
 
+  /** The Constant ASSOCIATION_1_1. */
   private static final FullQualifiedName ASSOCIATION_1_1 = new FullQualifiedName(NAMESPACE_1, "ManagerEmployees");
+  
+  /** The Constant ASSOCIATION_1_2. */
   private static final FullQualifiedName ASSOCIATION_1_2 = new FullQualifiedName(NAMESPACE_1, "TeamEmployees");
+  
+  /** The Constant ASSOCIATION_1_3. */
   private static final FullQualifiedName ASSOCIATION_1_3 = new FullQualifiedName(NAMESPACE_1, "RoomEmployees");
+  
+  /** The Constant ASSOCIATION_1_4. */
   private static final FullQualifiedName ASSOCIATION_1_4 = new FullQualifiedName(NAMESPACE_1, "BuildingRooms");
 
+  /** The Constant ROLE_1_1. */
   private static final String ROLE_1_1 = "r_Employees";
+  
+  /** The Constant ROLE_1_2. */
   private static final String ROLE_1_2 = "r_Team";
+  
+  /** The Constant ROLE_1_3. */
   private static final String ROLE_1_3 = "r_Room";
+  
+  /** The Constant ROLE_1_4. */
   private static final String ROLE_1_4 = "r_Manager";
+  
+  /** The Constant ROLE_1_5. */
   private static final String ROLE_1_5 = "r_Building";
 
+  /** The Constant ENTITY_CONTAINER_1. */
   private static final String ENTITY_CONTAINER_1 = "Container1";
+  
+  /** The Constant ENTITY_CONTAINER_2. */
   private static final String ENTITY_CONTAINER_2 = "Container2";
 
+  /** The Constant ENTITY_SET_1_1. */
   private static final String ENTITY_SET_1_1 = "Employees";
+  
+  /** The Constant ENTITY_SET_1_2. */
   private static final String ENTITY_SET_1_2 = "Teams";
+  
+  /** The Constant ENTITY_SET_1_3. */
   private static final String ENTITY_SET_1_3 = "Rooms";
+  
+  /** The Constant ENTITY_SET_1_4. */
   private static final String ENTITY_SET_1_4 = "Managers";
+  
+  /** The Constant ENTITY_SET_1_5. */
   private static final String ENTITY_SET_1_5 = "Buildings";
+  
+  /** The Constant ENTITY_SET_2_1. */
   private static final String ENTITY_SET_2_1 = "Photos";
 
+  /** The Constant FUNCTION_IMPORT_1. */
   private static final String FUNCTION_IMPORT_1 = "EmployeeSearch";
+  
+  /** The Constant FUNCTION_IMPORT_2. */
   private static final String FUNCTION_IMPORT_2 = "AllLocations";
+  
+  /** The Constant FUNCTION_IMPORT_3. */
   private static final String FUNCTION_IMPORT_3 = "AllUsedRoomIds";
+  
+  /** The Constant FUNCTION_IMPORT_4. */
   private static final String FUNCTION_IMPORT_4 = "MaximalAge";
+  
+  /** The Constant FUNCTION_IMPORT_5. */
   private static final String FUNCTION_IMPORT_5 = "MostCommonLocation";
+  
+  /** The Constant FUNCTION_IMPORT_6. */
   private static final String FUNCTION_IMPORT_6 = "ManagerPhoto";
+  
+  /** The Constant FUNCTION_IMPORT_7. */
   private static final String FUNCTION_IMPORT_7 = "OldestEmployee";
+  
+  /** The Constant ACTION_IMPORT_1. */
   private static final String ACTION_IMPORT_1   = "AddEmployee";
 
+  /**
+   * Gets the schemas.
+   *
+   * @return the schemas
+   * @throws ODataException the o data exception
+   */
   @Override
   public List<Schema> getSchemas() throws ODataException {
     List<Schema> schemas = new ArrayList<Schema>();
@@ -180,6 +250,13 @@ public class ScenarioEdmProvider extends EdmProvider {
     return schemas;
   }
 
+  /**
+   * Gets the entity type.
+   *
+   * @param edmFQName the edm FQ name
+   * @return the entity type
+   * @throws ODataException the o data exception
+   */
   @Override
   public EntityType getEntityType(final FullQualifiedName edmFQName) throws ODataException {
     if (NAMESPACE_1.equals(edmFQName.getNamespace())) {
@@ -333,6 +410,13 @@ public class ScenarioEdmProvider extends EdmProvider {
     return null;
   }
 
+  /**
+   * Gets the complex type.
+   *
+   * @param edmFQName the edm FQ name
+   * @return the complex type
+   * @throws ODataException the o data exception
+   */
   @Override
   public ComplexType getComplexType(final FullQualifiedName edmFQName) throws ODataException {
     if (NAMESPACE_1.equals(edmFQName.getNamespace())) {
@@ -354,6 +438,13 @@ public class ScenarioEdmProvider extends EdmProvider {
     return null;
   }
 
+  /**
+   * Gets the association.
+   *
+   * @param edmFQName the edm FQ name
+   * @return the association
+   * @throws ODataException the o data exception
+   */
   @Override
   public Association getAssociation(final FullQualifiedName edmFQName) throws ODataException {
     if (NAMESPACE_1.equals(edmFQName.getNamespace())) {
@@ -388,6 +479,13 @@ public class ScenarioEdmProvider extends EdmProvider {
     return null;
   }
 
+  /**
+   * Gets the entity container info.
+   *
+   * @param name the name
+   * @return the entity container info
+   * @throws ODataException the o data exception
+   */
   @Override
   public EntityContainerInfo getEntityContainerInfo(final String name) throws ODataException {
     if (name == null || ENTITY_CONTAINER_1.equals(name)) {
@@ -399,6 +497,14 @@ public class ScenarioEdmProvider extends EdmProvider {
     return null;
   }
 
+  /**
+   * Gets the entity set.
+   *
+   * @param entityContainer the entity container
+   * @param name the name
+   * @return the entity set
+   * @throws ODataException the o data exception
+   */
   @Override
   public EntitySet getEntitySet(final String entityContainer, final String name) throws ODataException {
     if (ENTITY_CONTAINER_1.equals(entityContainer)) {
@@ -423,6 +529,14 @@ public class ScenarioEdmProvider extends EdmProvider {
     return null;
   }
 
+  /**
+   * Gets the function import.
+   *
+   * @param entityContainer the entity container
+   * @param name the name
+   * @return the function import
+   * @throws ODataException the o data exception
+   */
   @Override
   public FunctionImport getFunctionImport(final String entityContainer, final String name) throws ODataException {
     if (ENTITY_CONTAINER_1.equals(entityContainer)) {
@@ -486,6 +600,16 @@ public class ScenarioEdmProvider extends EdmProvider {
     return null;
   }
 
+  /**
+   * Gets the association set.
+   *
+   * @param entityContainer the entity container
+   * @param association the association
+   * @param sourceEntitySetName the source entity set name
+   * @param sourceEntitySetRole the source entity set role
+   * @return the association set
+   * @throws ODataException the o data exception
+   */
   @Override
   public AssociationSet getAssociationSet(final String entityContainer, final FullQualifiedName association,
       final String sourceEntitySetName, final String sourceEntitySetRole) throws ODataException {
@@ -516,6 +640,12 @@ public class ScenarioEdmProvider extends EdmProvider {
     return null;
   }
 
+  /**
+   * Gets the key.
+   *
+   * @param keyNames the key names
+   * @return the key
+   */
   private Key getKey(final String... keyNames) {
     List<PropertyRef> keyProperties = new ArrayList<PropertyRef>();
     for (final String keyName : keyNames) {

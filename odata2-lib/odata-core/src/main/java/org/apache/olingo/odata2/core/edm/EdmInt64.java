@@ -25,18 +25,31 @@ import org.apache.olingo.odata2.api.edm.EdmLiteralKind;
 import org.apache.olingo.odata2.api.edm.EdmSimpleType;
 import org.apache.olingo.odata2.api.edm.EdmSimpleTypeException;
 
+// TODO: Auto-generated Javadoc
 /**
  * Implementation of the EDM simple type Int64.
  * 
  */
 public class EdmInt64 extends AbstractSimpleType {
 
+  /** The Constant instance. */
   private static final EdmInt64 instance = new EdmInt64();
 
+  /**
+   * Gets the single instance of EdmInt64.
+   *
+   * @return single instance of EdmInt64
+   */
   public static EdmInt64 getInstance() {
     return instance;
   }
 
+  /**
+   * Checks if is compatible.
+   *
+   * @param simpleType the simple type
+   * @return true, if is compatible
+   */
   @Override
   public boolean isCompatible(final EdmSimpleType simpleType) {
     return simpleType instanceof Bit
@@ -48,11 +61,27 @@ public class EdmInt64 extends AbstractSimpleType {
         || simpleType instanceof EdmInt64;
   }
 
+  /**
+   * Gets the default type.
+   *
+   * @return the default type
+   */
   @Override
   public Class<?> getDefaultType() {
     return Long.class;
   }
 
+  /**
+   * Internal value of string.
+   *
+   * @param <T> the generic type
+   * @param value the value
+   * @param literalKind the literal kind
+   * @param facets the facets
+   * @param returnType the return type
+   * @return the t
+   * @throws EdmSimpleTypeException the edm simple type exception
+   */
   @Override
   protected <T> T internalValueOfString(final String value, final EdmLiteralKind literalKind, final EdmFacets facets,
       final Class<T> returnType) throws EdmSimpleTypeException {
@@ -101,6 +130,16 @@ public class EdmInt64 extends AbstractSimpleType {
     }
   }
 
+  /**
+   * Internal value to string.
+   *
+   * @param <T> the generic type
+   * @param value the value
+   * @param literalKind the literal kind
+   * @param facets the facets
+   * @return the string
+   * @throws EdmSimpleTypeException the edm simple type exception
+   */
   @Override
   protected <T> String internalValueToString(final T value, final EdmLiteralKind literalKind, final EdmFacets facets)
       throws EdmSimpleTypeException {
@@ -117,6 +156,12 @@ public class EdmInt64 extends AbstractSimpleType {
     }
   }
 
+  /**
+   * To uri literal.
+   *
+   * @param literal the literal
+   * @return the string
+   */
   @Override
   public String toUriLiteral(final String literal) {
     return literal + "L";

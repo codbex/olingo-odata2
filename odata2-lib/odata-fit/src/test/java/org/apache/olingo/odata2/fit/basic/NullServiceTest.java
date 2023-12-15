@@ -35,17 +35,37 @@ import org.apache.olingo.odata2.testutil.fit.AbstractFitTest;
 import org.apache.olingo.odata2.testutil.server.ServletType;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class NullServiceTest.
+ */
 public class NullServiceTest extends AbstractFitTest {
 
+  /**
+   * Instantiates a new null service test.
+   *
+   * @param servletType the servlet type
+   */
   public NullServiceTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /**
+   * Creates the service.
+   *
+   * @return the o data service
+   * @throws ODataException the o data exception
+   */
   @Override
   protected ODataService createService() throws ODataException {
     return null;
   }
 
+  /**
+   * Null service must result in O data response.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void nullServiceMustResultInODataResponse() throws Exception {
     disableLogging();
@@ -57,6 +77,14 @@ public class NullServiceTest extends AbstractFitTest {
     assertEquals("Service unavailable.", error.getMessage());
   }
   
+  /**
+   * Execute get request.
+   *
+   * @param request the request
+   * @return the http response
+   * @throws ClientProtocolException the client protocol exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private HttpResponse executeGetRequest(final String request) throws ClientProtocolException, IOException {
     final HttpGet get = new HttpGet(URI.create(getEndpoint().toString() + request));
     return getHttpClient().execute(get);

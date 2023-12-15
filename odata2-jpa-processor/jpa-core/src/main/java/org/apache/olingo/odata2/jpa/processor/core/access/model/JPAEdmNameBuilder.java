@@ -52,19 +52,47 @@ import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmSchemaView;
 import org.apache.olingo.odata2.jpa.processor.core.model.JPAEdmComplexType;
 import org.apache.olingo.odata2.jpa.processor.core.model.JPAEdmMappingImpl;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAEdmNameBuilder.
+ */
 public class JPAEdmNameBuilder {
+  
+  /** The Constant ENTITY_CONTAINER_SUFFIX. */
   private static final String ENTITY_CONTAINER_SUFFIX = "Container";
+  
+  /** The Constant ENTITY_SET_SUFFIX. */
   private static final String ENTITY_SET_SUFFIX = "s";
+  
+  /** The Constant ASSOCIATIONSET_SUFFIX. */
   private static final String ASSOCIATIONSET_SUFFIX = "Set";
+  
+  /** The Constant NAVIGATION_NAME. */
   private static final String NAVIGATION_NAME = "Details";
+  
+  /** The Constant UNDERSCORE. */
   private static final String UNDERSCORE = "_";
+  
+  /** The Constant FK_PREFIX. */
   private static final String FK_PREFIX = "FK";
 
+  /**
+   * Builds the.
+   *
+   * @param view the view
+   * @param name the name
+   * @return the full qualified name
+   */
   public static FullQualifiedName build(final JPAEdmBaseView view, final String name) {
     FullQualifiedName fqName = new FullQualifiedName(buildNamespace(view), name);
     return fqName;
   }
 
+  /**
+   * Builds the.
+   *
+   * @param view the view
+   */
   /*
    * ************************************************************************
    * EDM EntityType Name - RULES
@@ -98,6 +126,12 @@ public class JPAEdmNameBuilder {
 
   }
 
+  /**
+   * Builds the.
+   *
+   * @param view the view
+   * @throws ODataJPAModelException the o data JPA model exception
+   */
   /*
    * ************************************************************************
    * EDM Schema Name - RULES
@@ -111,6 +145,14 @@ public class JPAEdmNameBuilder {
     view.getEdmSchema().setNamespace(buildNamespace(view));
   }
 
+  /**
+   * Builds the.
+   *
+   * @param view the view
+   * @param isComplexMode the is complex mode
+   * @param skipDefaultNaming the skip default naming
+   * @param isForeignKey the is foreign key
+   */
   /*
    * ************************************************************************
    * EDM Property Name - RULES
@@ -203,6 +245,11 @@ public class JPAEdmNameBuilder {
     view.getEdmSimpleProperty().setMapping((Mapping) mapping);
   }
 
+  /**
+   * Builds the.
+   *
+   * @param view the view
+   */
   /*
    * ************************************************************************
    * EDM EntityContainer Name - RULES
@@ -216,6 +263,12 @@ public class JPAEdmNameBuilder {
     view.getEdmEntityContainer().setName(buildEntityContainerName(view));
   }
 
+  /**
+   * Builds the.
+   *
+   * @param view the view
+   * @param entityTypeView the entity type view
+   */
   /*
    * ************************************************************************
    * EDM EntitySet Name - RULES
@@ -243,6 +296,11 @@ public class JPAEdmNameBuilder {
     view.getEdmEntitySet().setName(entitySetName);
   }
 
+  /**
+   * Builds the.
+   *
+   * @param view the view
+   */
   /*
    * ************************************************************************
    * EDM Complex Type Name - RULES
@@ -274,6 +332,13 @@ public class JPAEdmNameBuilder {
 
   }
 
+  /**
+   * Builds the.
+   *
+   * @param complexView the complex view
+   * @param propertyView the property view
+   * @param skipDefaultNaming the skip default naming
+   */
   /*
    * ************************************************************************
    * EDM Complex Property Name - RULES
@@ -317,6 +382,13 @@ public class JPAEdmNameBuilder {
 
   }
 
+  /**
+   * Builds the.
+   *
+   * @param complexView the complex view
+   * @param parentComplexTypeName the parent complex type name
+   * @param skipDefaultNaming the skip default naming
+   */
   public static void build(final JPAEdmComplexPropertyView complexView,
       final String parentComplexTypeName, final boolean skipDefaultNaming) {
     ComplexProperty complexProperty = complexView.getEdmComplexProperty();
@@ -342,6 +414,13 @@ public class JPAEdmNameBuilder {
 
   }
 
+  /**
+   * Builds the.
+   *
+   * @param assocaitionEndView the assocaition end view
+   * @param entityTypeView the entity type view
+   * @param propertyView the property view
+   */
   /*
    * ************************************************************************
    * EDM Association End Name - RULES
@@ -396,6 +475,12 @@ public class JPAEdmNameBuilder {
    * ************************************************************************
    */
 
+  /**
+   * Builds the.
+   *
+   * @param view the view
+   * @param count the count
+   */
   public static void build(final JPAEdmAssociationView view, final int count) {
     Association association = view.getEdmAssociation();
     String associationName = null;
@@ -409,6 +494,11 @@ public class JPAEdmNameBuilder {
     association.setName(associationName);
   }
 
+  /**
+   * Builds the.
+   *
+   * @param view the view
+   */
   /*
    * ************************************************************************
    * EDM Association Set Name - RULES
@@ -426,6 +516,15 @@ public class JPAEdmNameBuilder {
 
   }
 
+  /**
+   * Builds the.
+   *
+   * @param associationView the association view
+   * @param propertyView the property view
+   * @param navPropertyView the nav property view
+   * @param skipDefaultNaming the skip default naming
+   * @param count the count
+   */
   public static void build(final JPAEdmAssociationView associationView,
       final JPAEdmPropertyView propertyView,
       final JPAEdmNavigationPropertyView navPropertyView, final boolean skipDefaultNaming, final int count) {
@@ -529,6 +628,12 @@ public class JPAEdmNameBuilder {
     }
   }
 
+  /**
+   * Multiplicity to string.
+   *
+   * @param multiplicity the multiplicity
+   * @return the string
+   */
   private static String multiplicityToString(EdmMultiplicity multiplicity) {
     if(multiplicity == null) {
       return "";
@@ -546,6 +651,12 @@ public class JPAEdmNameBuilder {
     }
   }
 
+  /**
+   * Builds the namespace.
+   *
+   * @param view the view
+   * @return the string
+   */
   private static String buildNamespace(final JPAEdmBaseView view) {
     JPAEdmMappingModelAccess mappingModelAccess = view.getJPAEdmMappingModelAccess();
     String namespace = null;
@@ -559,6 +670,12 @@ public class JPAEdmNameBuilder {
     return namespace;
   }
 
+  /**
+   * Builds the entity container name.
+   *
+   * @param view the view
+   * @return the string
+   */
   private static String buildEntityContainerName(final JPAEdmBaseView view) {
     JPAEdmMappingModelAccess mappingModelAccess = view.getJPAEdmMappingModelAccess();
     String name = null;
@@ -573,8 +690,9 @@ public class JPAEdmNameBuilder {
 
   /**
    * Replace `.` with `_` as
-   * @param name
-   * @return
+   *
+   * @param name the name
+   * @return the string
    */
   private static String normalizeName(String name) {
     return name.replace('.', '_');

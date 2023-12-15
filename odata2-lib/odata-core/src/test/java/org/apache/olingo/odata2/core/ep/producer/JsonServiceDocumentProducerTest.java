@@ -38,11 +38,17 @@ import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.apache.olingo.odata2.testutil.helper.StringHelper;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class JsonServiceDocumentProducerTest.
  */
 public class JsonServiceDocumentProducerTest extends BaseTest {
 
+  /**
+   * Service document empty.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serviceDocumentEmpty() throws Exception {
     Edm edm = mock(Edm.class);
@@ -59,6 +65,11 @@ public class JsonServiceDocumentProducerTest extends BaseTest {
     assertEquals("{\"d\":{\"EntitySets\":[]}}", json);
   }
 
+  /**
+   * Service document.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serviceDocument() throws Exception {
     Edm edm = mock(Edm.class);

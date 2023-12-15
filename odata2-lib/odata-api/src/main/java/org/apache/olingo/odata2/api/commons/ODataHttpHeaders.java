@@ -18,14 +18,18 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.commons;
 
+// TODO: Auto-generated Javadoc
 /**
- * HTTP header constants as used in the OData protocol
- * 
+ * HTTP header constants as used in the OData protocol.
  */
 public class ODataHttpHeaders {
 
+  /** The Constant DATASERVICEVERSION. */
   public static final String DATASERVICEVERSION = "DataServiceVersion";
 
+  /**
+   * Instantiates a new o data http headers.
+   */
   private ODataHttpHeaders() {
     
   }

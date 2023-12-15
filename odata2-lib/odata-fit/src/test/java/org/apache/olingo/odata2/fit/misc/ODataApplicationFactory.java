@@ -25,13 +25,31 @@ import org.apache.olingo.odata2.api.exception.ODataException;
 import org.apache.olingo.odata2.api.processor.ODataContext;
 import org.apache.olingo.odata2.ref.processor.ScenarioServiceFactory;
 
+// TODO: Auto-generated Javadoc
+/**
+ * A factory for creating ODataApplication objects.
+ */
 public class ODataApplicationFactory extends ODataServiceFactory {
 
+  /**
+   * Creates a new ODataApplication object.
+   *
+   * @param ctx the ctx
+   * @return the o data service
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataService createService(final ODataContext ctx) throws ODataException {
     return new ScenarioServiceFactory().createService(ctx);
   }
 
+  /**
+   * Gets the callback.
+   *
+   * @param <T> the generic type
+   * @param callbackInterface the callback interface
+   * @return the callback
+   */
   @Override
   public <T extends ODataCallback> T getCallback(final Class<T> callbackInterface) {
     return new ScenarioServiceFactory().getCallback(callbackInterface);

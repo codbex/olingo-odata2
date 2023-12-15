@@ -18,29 +18,32 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.edm;
 
+// TODO: Auto-generated Javadoc
 /**
- * @org.apache.olingo.odata2.DoNotImplement
- * This facade is used as a hook into the core implementation.
- * 
+ * The Interface EdmSimpleTypeFacade.
+ *
+ * @org.apache.olingo.odata2.DoNotImplement This facade is used as a hook into the core implementation.
  */
 public interface EdmSimpleTypeFacade {
 
   /**
    * IMPORTANT: Use {@link EdmSimpleTypeKind} parseUriLiteral for the implementation.
    * <p>This method definition is used only inside the core of this library.
-   * @param uriLiteral
+   *
+   * @param uriLiteral the uri literal
    * @return the parsed literal
-   * @throws EdmLiteralException
+   * @throws EdmLiteralException the edm literal exception
    */
   public EdmLiteral parseUriLiteral(final String uriLiteral) throws EdmLiteralException;
 
   /**
    * IMPORTANT: Use {@link EdmSimpleTypeKind} parseUriLiteral for the implementation.
    * <p>This method definition is used only inside the core of this library.
-   * @param uriLiteral
-   * @param facets
+   *
+   * @param uriLiteral the uri literal
+   * @param facets the facets
    * @return the parsed literal
-   * @throws EdmLiteralException
+   * @throws EdmLiteralException the edm literal exception
    */
   public EdmLiteral parseUriLiteral(final String uriLiteral, final EdmFacets facets) throws EdmLiteralException;
   

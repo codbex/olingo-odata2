@@ -29,24 +29,49 @@ import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmReferentialConstra
 import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmReferentialConstraintRoleView.RoleType;
 import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmReferentialConstraintView;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAEdmReferentialConstraint.
+ */
 public class JPAEdmReferentialConstraint extends JPAEdmBaseViewImpl implements JPAEdmReferentialConstraintView {
 
+  /** The builder. */
   private JPAEdmRefConstraintBuilder builder = null;
 
+  /** The exists. */
   private boolean exists = false;
+  
+  /** The first build. */
   private boolean firstBuild = true;
 
+  /** The association view. */
   private JPAEdmAssociationView associationView;
+  
+  /** The property view. */
   private JPAEdmPropertyView propertyView;
+  
+  /** The entity type view. */
   private JPAEdmEntityTypeView entityTypeView;
 
+  /** The referential constraint. */
   private ReferentialConstraint referentialConstraint;
 
+  /** The principal role view. */
   private JPAEdmReferentialConstraintRoleView principalRoleView;
+  
+  /** The dependent role view. */
   private JPAEdmReferentialConstraintRoleView dependentRoleView;
 
+  /** The relation ship name. */
   private String relationShipName;
 
+  /**
+   * Instantiates a new JPA edm referential constraint.
+   *
+   * @param associationView the association view
+   * @param entityTypeView the entity type view
+   * @param propertyView the property view
+   */
   public JPAEdmReferentialConstraint(final JPAEdmAssociationView associationView,
       final JPAEdmEntityTypeView entityTypeView, final JPAEdmPropertyView propertyView) {
     super(associationView);
@@ -57,6 +82,11 @@ public class JPAEdmReferentialConstraint extends JPAEdmBaseViewImpl implements J
     relationShipName = associationView.getEdmAssociation().getName();
   }
 
+  /**
+   * Gets the builder.
+   *
+   * @return the builder
+   */
   @Override
   public JPAEdmBuilder getBuilder() {
     if (builder == null) {
@@ -66,22 +96,47 @@ public class JPAEdmReferentialConstraint extends JPAEdmBaseViewImpl implements J
     return builder;
   }
 
+  /**
+   * Gets the edm referential constraint.
+   *
+   * @return the edm referential constraint
+   */
   @Override
   public ReferentialConstraint getEdmReferentialConstraint() {
     return referentialConstraint;
   }
 
+  /**
+   * Checks if is exists.
+   *
+   * @return true, if is exists
+   */
   @Override
   public boolean isExists() {
     return exists;
   }
 
+  /**
+   * Gets the edm relation ship name.
+   *
+   * @return the edm relation ship name
+   */
   @Override
   public String getEdmRelationShipName() {
     return relationShipName;
   }
 
+  /**
+   * The Class JPAEdmRefConstraintBuilder.
+   */
   private class JPAEdmRefConstraintBuilder implements JPAEdmBuilder {
+    
+    /**
+     * Builds the.
+     *
+     * @throws ODataJPAModelException the o data JPA model exception
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
+     */
     /*
      * Check if Ref Constraint was already Built. If Ref constraint was
      * already built consistently then do not build referential constraint.
@@ -124,6 +179,12 @@ public class JPAEdmReferentialConstraint extends JPAEdmBaseViewImpl implements J
 
     }
 
+    /**
+     * First build.
+     *
+     * @throws ODataJPAModelException the o data JPA model exception
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
+     */
     private void firstBuild() throws ODataJPAModelException, ODataJPARuntimeException {
       firstBuild = false;
       if (principalRoleView == null && dependentRoleView == null) {

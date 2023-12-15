@@ -27,54 +27,72 @@ import org.apache.olingo.odata2.api.edm.EdmComplexType;
 import org.apache.olingo.odata2.api.edm.EdmAnnotationAttribute;
 import org.apache.olingo.odata2.api.edm.EdmAnnotationElement;
 
+// TODO: Auto-generated Javadoc
 /**
- * Impl Objects of this class represent a client schema
- * 
+ * Impl Objects of this class represent a client schema.
  */
 public interface EdmSchema { 
 
   /**
+   * Gets the namespace.
+   *
    * @return <b>String</b> namespace of this {@link EdmSchema}
    */
   public String getNamespace() ;
 
   /**
+   * Gets the alias.
+   *
    * @return <b>String</b> alias of this {@link EdmSchema}
    */
   public String getAlias() ;
 
   /**
+   * Gets the usings.
+   *
    * @return List<{@link Using}> of this {@link EdmSchema}
    */
   public List<EdmUsing> getUsings() ;
 
   /**
+   * Gets the entity types.
+   *
    * @return List<{@link EntityType}> of this {@link EdmSchema}
    */
   public List<EdmEntityType> getEntityTypes() ;
   
 
   /**
+   * Gets the complex types.
+   *
    * @return List<{@link ComplexType}> of this {@link EdmSchema}
    */
   public List<EdmComplexType> getComplexTypes() ;
 
   /**
+   * Gets the associations.
+   *
    * @return List<{@link Association}> of this {@link EdmSchema}
    */
   public List<EdmAssociation> getAssociations() ;
 
   /**
+   * Gets the entity containers.
+   *
    * @return List<{@link EntityContainer}> of this {@link EdmSchema}
    */
   public List<EdmEntityContainer> getEntityContainers(); 
 
   /**
+   * Gets the annotation attributes.
+   *
    * @return List of {@link AnnotationAttribute} annotation attributes
    */
   public List<EdmAnnotationAttribute> getAnnotationAttributes();
 
   /**
+   * Gets the annotation elements.
+   *
    * @return List of {@link AnnotationElement} annotation elements
    */
   public List<EdmAnnotationElement> getAnnotationElements() ;

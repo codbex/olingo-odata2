@@ -35,27 +35,48 @@ import org.apache.olingo.odata2.core.ep.ProviderFacadeImpl;
 import org.apache.olingo.odata2.testutil.helper.StringHelper;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class JsonErrorProducerTest.
  */
 public class JsonErrorProducerTest {
 
+  /**
+   * Json serialization.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void jsonSerialization() throws Exception {
     testSerializeJSON("ErrorCode", "Message", Locale.GERMANY);
     testSerializeJSON("ErrorCode", "Message", Locale.GERMAN);
   }
 
+  /**
+   * Json serialization without locale.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void jsonSerializationWithoutLocale() throws Exception {
     testSerializeJSON("ErrorCode", "Message", null);
   }
 
+  /**
+   * Json serialization empty.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void jsonSerializationEmpty() throws Exception {
     testSerializeJSON(null, null, null);
   }
 
+  /**
+   * Json serialization with details.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void jsonSerializationWithDetails() throws Exception {
     String errorCode = "500";
@@ -94,6 +115,14 @@ public class JsonErrorProducerTest {
         + "{\"code\":\"404\",\"message\":\"Detailed message 2\",\"target\":\"element2\",\"severity\":\"warn\"}]}}}");
   }
 
+  /**
+   * Test serialize JSON.
+   *
+   * @param errorCode the error code
+   * @param message the message
+   * @param locale the locale
+   * @throws Exception the exception
+   */
   // helper method
   private void testSerializeJSON(final String errorCode, final String message, final Locale locale) throws Exception {
     ODataErrorContext ctx = new ODataErrorContext();

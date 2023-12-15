@@ -26,40 +26,71 @@ import org.apache.olingo.odata2.testutil.helper.LocaleAsserter;
 import org.apache.olingo.odata2.testutil.helper.StringHelper;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *
+ * The Class JsonErrorDocumentDeserializerTest.
  */
 public class JsonErrorDocumentDeserializerTest extends AbstractDeserializerTest {
 
+    /** The Constant JSON_ERROR_DOCUMENT_SIMPLE. */
     private static final String JSON_ERROR_DOCUMENT_SIMPLE =
             "{\"error\":{\"code\":\"ErrorCode\"," + "\"message\":{\"lang\":\"en-US\",\"value\":\"Message\"}}}";
+    
+    /** The Constant JSON_ERROR_DOCUMENT_NULL_LOCALE. */
     private static final String JSON_ERROR_DOCUMENT_NULL_LOCALE =
             "{\"error\":{\"code\":\"ErrorCode\"," + "\"message\":{\"lang\":null,\"value\":\"Message\"}}}";
+    
+    /** The Constant JSON_ERROR_DOCUMENT_INNER_ERROR. */
     private static final String JSON_ERROR_DOCUMENT_INNER_ERROR = "{\"error\":{\"code\":\"ErrorCode\","
             + "\"message\":{\"lang\":\"en-US\",\"value\":\"Message\"}, \"innererror\":\"Some InnerError\"}}";
+    
+    /** The Constant JSON_ERROR_DOCUMENT_INNER_ERROR_COMPLEX. */
     private static final String JSON_ERROR_DOCUMENT_INNER_ERROR_COMPLEX = "{\"error\":{\"code\":\"ErrorCode\","
             + "\"message\":{\"lang\":\"en-US\",\"value\":\"Message\"}, " + "\"innererror\":{\"moreInner\":\"More Inner Error\"}}}";
+    
+    /** The Constant JSON_ERROR_DOCUMENT_INNER_ERROR_COMPLEX_OBJECT. */
     private static final String JSON_ERROR_DOCUMENT_INNER_ERROR_COMPLEX_OBJECT =
             "{\"error\":{\"code\":\"ErrorCode\"," + "\"message\":{\"lang\":\"en-US\",\"value\":\"Message\"}, "
                     + "\"innererror\":{\"moreInner\":\"More Inner Error\",\"secondInner\":\"Second\"}}}";
+    
+    /** The Constant JSON_ERROR_DOCUMENT_INNER_ERROR_COMPLEX_ARRAY. */
     private static final String JSON_ERROR_DOCUMENT_INNER_ERROR_COMPLEX_ARRAY =
             "{\"error\":{\"code\":\"ErrorCode\"," + "\"message\":{\"lang\":\"en-US\",\"value\":\"Message\"}, "
                     + "\"innererror\":{\"innerArray\":[\"More Inner Error\",\"Second\"]}}}";
+    
+    /** The Constant JSON_ERROR_DOCUMENT_INVALID_JSON. */
     private static final String JSON_ERROR_DOCUMENT_INVALID_JSON =
             "\"error\":{\"code\":\"ErrorCode\"," + "\"message\":{\"lang\":\"en-US\",\"value\":\"Message\"}}}";
+    
+    /** The Constant JSON_ERROR_DOCUMENT_UNKNOWN_CONTENT. */
     /* error document with name 'locale' instead of 'lang' for message object */
     private static final String JSON_ERROR_DOCUMENT_UNKNOWN_CONTENT =
             "{\"error\":{\"code\":\"ErrorCode\"," + "\"message\":{\"locale\":\"en-US\",\"value\":\"Message\"}}}";
+    
+    /** The Constant JSON_ERROR_DOCUMENT_INVALID_CONTENT. */
     /* error document without value for message object */
     private static final String JSON_ERROR_DOCUMENT_INVALID_CONTENT =
             "{\"error\":{\"code\":\"ErrorCode\"," + "\"message\":{\"lang\":\"en-US\"}}}";
+    
+    /** The Constant JSON_ERROR_DOCUMENT_MISSING_MESSAGE. */
     private static final String JSON_ERROR_DOCUMENT_MISSING_MESSAGE = "{\"error\":{\"code\":\"ErrorCode\"}}";
+    
+    /** The Constant JSON_ERROR_DOCUMENT_MISSING_CODE. */
     private static final String JSON_ERROR_DOCUMENT_MISSING_CODE =
             "{\"error\":{" + "\"message\":{\"lang\":\"en-US\",\"value\":\"Message\"}}}";
+    
+    /** The Constant JSON_ERROR_DOCUMENT_MISSING_ERROR. */
     private static final String JSON_ERROR_DOCUMENT_MISSING_ERROR =
             "{\"code\":\"ErrorCode\"," + "\"message\":{\"lang\":\"en-US\",\"value\":\"Message\"}}";
+    
+    /** The jedc. */
     private final JsonErrorDocumentDeserializer jedc = new JsonErrorDocumentDeserializer();
 
+    /**
+     * Simple error document.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void simpleErrorDocument() throws Exception {
         InputStream in = StringHelper.encapsulate(JSON_ERROR_DOCUMENT_SIMPLE);
@@ -71,6 +102,11 @@ public class JsonErrorDocumentDeserializerTest extends AbstractDeserializerTest 
         LocaleAsserter.assertLocale("Wrong locale for lang", error.getLocale(), Locale.US);
     }
 
+    /**
+     * Locale null.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void localeNull() throws Exception {
         InputStream in = StringHelper.encapsulate(JSON_ERROR_DOCUMENT_NULL_LOCALE);
@@ -82,6 +118,11 @@ public class JsonErrorDocumentDeserializerTest extends AbstractDeserializerTest 
         assertNull("Expected NULL for locale", error.getLocale());
     }
 
+    /**
+     * Inner error.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void innerError() throws Exception {
         InputStream in = StringHelper.encapsulate(JSON_ERROR_DOCUMENT_INNER_ERROR);
@@ -93,6 +134,11 @@ public class JsonErrorDocumentDeserializerTest extends AbstractDeserializerTest 
         assertEquals("Wrong inner error", "Some InnerError", error.getInnerError());
     }
 
+    /**
+     * Inner error complex.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void innerErrorComplex() throws Exception {
         InputStream in = StringHelper.encapsulate(JSON_ERROR_DOCUMENT_INNER_ERROR_COMPLEX);
@@ -104,6 +150,11 @@ public class JsonErrorDocumentDeserializerTest extends AbstractDeserializerTest 
         assertEquals("Wrong inner error", "{\"moreInner\":\"More Inner Error\"}", error.getInnerError());
     }
 
+    /**
+     * Inner error complex object.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void innerErrorComplexObject() throws Exception {
         InputStream in = StringHelper.encapsulate(JSON_ERROR_DOCUMENT_INNER_ERROR_COMPLEX_OBJECT);
@@ -115,6 +166,11 @@ public class JsonErrorDocumentDeserializerTest extends AbstractDeserializerTest 
         assertEquals("Wrong inner error", "{\"moreInner\":\"More Inner Error\",\"secondInner\":\"Second\"}", error.getInnerError());
     }
 
+    /**
+     * Inner error complex array.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void innerErrorComplexArray() throws Exception {
         InputStream in = StringHelper.encapsulate(JSON_ERROR_DOCUMENT_INNER_ERROR_COMPLEX_ARRAY);
@@ -126,6 +182,11 @@ public class JsonErrorDocumentDeserializerTest extends AbstractDeserializerTest 
         assertEquals("Wrong inner error", "{\"innerArray\":[\"More Inner Error\"\"Second\"]}", error.getInnerError());
     }
 
+    /**
+     * Invalid json.
+     *
+     * @throws EntityProviderException the entity provider exception
+     */
     @Test(expected = EntityProviderException.class)
     public void invalidJson() throws EntityProviderException {
         InputStream in = StringHelper.encapsulate(JSON_ERROR_DOCUMENT_INVALID_JSON);
@@ -138,6 +199,11 @@ public class JsonErrorDocumentDeserializerTest extends AbstractDeserializerTest 
         }
     }
 
+    /**
+     * Invalid empty document.
+     *
+     * @throws EntityProviderException the entity provider exception
+     */
     @Test(expected = EntityProviderException.class)
     public void invalidEmptyDocument() throws EntityProviderException {
         InputStream in = StringHelper.encapsulate("");
@@ -150,6 +216,11 @@ public class JsonErrorDocumentDeserializerTest extends AbstractDeserializerTest 
         }
     }
 
+    /**
+     * Null parameter.
+     *
+     * @throws EntityProviderException the entity provider exception
+     */
     @Test(expected = EntityProviderException.class)
     public void nullParameter() throws EntityProviderException {
         try {
@@ -161,6 +232,11 @@ public class JsonErrorDocumentDeserializerTest extends AbstractDeserializerTest 
         }
     }
 
+    /**
+     * Invalid error document unknown.
+     *
+     * @throws EntityProviderException the entity provider exception
+     */
     @Test(expected = EntityProviderException.class)
     public void invalidErrorDocumentUnknown() throws EntityProviderException {
         InputStream in = StringHelper.encapsulate(JSON_ERROR_DOCUMENT_UNKNOWN_CONTENT);
@@ -173,6 +249,11 @@ public class JsonErrorDocumentDeserializerTest extends AbstractDeserializerTest 
         }
     }
 
+    /**
+     * Invalid error document.
+     *
+     * @throws EntityProviderException the entity provider exception
+     */
     @Test(expected = EntityProviderException.class)
     public void invalidErrorDocument() throws EntityProviderException {
         InputStream in = StringHelper.encapsulate(JSON_ERROR_DOCUMENT_INVALID_CONTENT);
@@ -185,6 +266,11 @@ public class JsonErrorDocumentDeserializerTest extends AbstractDeserializerTest 
         }
     }
 
+    /**
+     * Invalid error document missing error.
+     *
+     * @throws EntityProviderException the entity provider exception
+     */
     @Test(expected = EntityProviderException.class)
     public void invalidErrorDocumentMissingError() throws EntityProviderException {
         InputStream in = StringHelper.encapsulate(JSON_ERROR_DOCUMENT_MISSING_ERROR);
@@ -197,6 +283,11 @@ public class JsonErrorDocumentDeserializerTest extends AbstractDeserializerTest 
         }
     }
 
+    /**
+     * Invalid error document missing code.
+     *
+     * @throws EntityProviderException the entity provider exception
+     */
     @Test(expected = EntityProviderException.class)
     public void invalidErrorDocumentMissingCode() throws EntityProviderException {
         InputStream in = StringHelper.encapsulate(JSON_ERROR_DOCUMENT_MISSING_CODE);
@@ -211,6 +302,11 @@ public class JsonErrorDocumentDeserializerTest extends AbstractDeserializerTest 
         }
     }
 
+    /**
+     * Invalid error document missing message.
+     *
+     * @throws EntityProviderException the entity provider exception
+     */
     @Test(expected = EntityProviderException.class)
     public void invalidErrorDocumentMissingMessage() throws EntityProviderException {
         InputStream in = StringHelper.encapsulate(JSON_ERROR_DOCUMENT_MISSING_MESSAGE);

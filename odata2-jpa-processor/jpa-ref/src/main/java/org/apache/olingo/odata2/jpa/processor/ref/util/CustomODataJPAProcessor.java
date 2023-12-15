@@ -29,15 +29,35 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CustomODataJPAProcessor.
+ */
 public class CustomODataJPAProcessor extends ODataJPADefaultProcessor {
 
+  /** The Constant LOG. */
   private static final Logger LOG = Logger.getLogger(CustomODataJPAProcessor.class.getName());
+  
+  /** The Constant READ_COUNT. */
   private static final AtomicInteger READ_COUNT = new AtomicInteger(0);
 
+  /**
+   * Instantiates a new custom O data JPA processor.
+   *
+   * @param oDataJPAContext the o data JPA context
+   */
   public CustomODataJPAProcessor(ODataJPAContext oDataJPAContext) {
     super(oDataJPAContext);
   }
 
+  /**
+   * Read entity set.
+   *
+   * @param uriParserResultView the uri parser result view
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse readEntitySet(final GetEntitySetUriInfo uriParserResultView, final String contentType)
       throws ODataException {

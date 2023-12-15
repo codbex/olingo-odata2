@@ -28,32 +28,47 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class ClassHelper.
  */
 public class ClassHelper {
+  
+  /** The Constant JAVA_FILE_FILTER. */
   public static final FileFilter JAVA_FILE_FILTER = new FileFilter() {
     @Override
     public boolean accept(final File path) {
       return path.isFile() && path.getName().toLowerCase(Locale.ROOT).endsWith("class");
     }
   };
+  
+  /** The Constant CLASS_FILE_ENDING. */
   public static final String CLASS_FILE_ENDING = ".class";
+  
+  /** The Constant EMPTY_CLASS_ARRAY. */
   private static final Class<?>[] EMPTY_CLASS_ARRAY = new Class<?>[0];
+  
+  /** The Constant EMPTY_OBJECT_ARRAY. */
   private static final Object[] EMPTY_OBJECT_ARRAY = new Object[0];
 
   /**
-   * 
-   * @param exClasses
+   * Gets the class instances.
+   *
+   * @param <T> the generic type
+   * @param exClasses the ex classes
+   * @return the class instances
    */
   public static <T> List<T> getClassInstances(final List<Class<T>> exClasses) {
     return getClassInstances(exClasses, EMPTY_CLASS_ARRAY, EMPTY_OBJECT_ARRAY);
   }
 
   /**
-   * 
-   * @param exClasses
-   * @param ctorParameters
+   * Gets the class instances.
+   *
+   * @param <T> the generic type
+   * @param exClasses the ex classes
+   * @param ctorParameters the ctor parameters
+   * @return the class instances
    */
   public static <T> List<T> getClassInstances(final List<Class<T>> exClasses, final Object... ctorParameters) {
     final List<Class<?>> ctorParameterClasses = new ArrayList<Class<?>>();
@@ -65,9 +80,13 @@ public class ClassHelper {
   }
 
   /**
-   * @param exClasses
-   * @param ctorParameterClasses
-   * @param ctorParameters
+   * Gets the class instances.
+   *
+   * @param <T> the generic type
+   * @param exClasses the ex classes
+   * @param ctorParameterClasses the ctor parameter classes
+   * @param ctorParameters the ctor parameters
+   * @return the class instances
    */
   public static <T> List<T> getClassInstances(final List<Class<T>> exClasses, final Class<?>[] ctorParameterClasses,
       final Object[] ctorParameters) {
@@ -99,15 +118,22 @@ public class ClassHelper {
   }
 
   /**
-   * @param clazz
+   * Checks if is not abstract or interface.
+   *
+   * @param clazz the clazz
+   * @return true, if is not abstract or interface
    */
   public static boolean isNotAbstractOrInterface(final Class<?> clazz) {
     return !Modifier.isAbstract(clazz.getModifiers()) && !Modifier.isInterface(clazz.getModifiers());
   }
 
   /**
-   * @param packageName
-   * @param assignableToClass
+   * Gets the assignable classes.
+   *
+   * @param <T> the generic type
+   * @param packageName the package name
+   * @param assignableToClass the assignable to class
+   * @return the assignable classes
    */
   public static <T> List<Class<T>> getAssignableClasses(final String packageName, final Class<T> assignableToClass) {
     final List<Class<T>> foundClasses = new ArrayList<Class<T>>();
@@ -128,9 +154,13 @@ public class ClassHelper {
   }
 
   /**
-   * @param file
-   * @param packageName
-   * @param clazz
+   * Gets the class.
+   *
+   * @param <T> the generic type
+   * @param file the file
+   * @param packageName the package name
+   * @param clazz the clazz
+   * @return the class
    */
   public static <T> Class<T> getClass(final File file, final String packageName, final Class<T> clazz) {
     String className = file.getName();
@@ -142,8 +172,12 @@ public class ClassHelper {
   }
 
   /**
-   * @param className
-   * @param clazz
+   * Gets the class.
+   *
+   * @param <T> the generic type
+   * @param className the class name
+   * @param clazz the clazz
+   * @return the class
    */
   @SuppressWarnings("unchecked")
   public static <T> Class<T> getClass(final String className, final Class<T> clazz) {

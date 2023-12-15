@@ -22,6 +22,7 @@ import org.apache.olingo.odata2.annotation.processor.core.datasource.DataSource;
 import org.apache.olingo.odata2.annotation.processor.core.datasource.ValueAccess;
 import org.apache.olingo.odata2.api.processor.ODataSingleProcessor;
 
+// TODO: Auto-generated Javadoc
 /**
  * Abstract class for implementation of the centralized parts of OData processing,
  * allowing to use the simplified {@link DataSource} and {@link ValueAccess} for the
@@ -32,7 +33,10 @@ import org.apache.olingo.odata2.api.processor.ODataSingleProcessor;
  */
 public abstract class DataSourceProcessor extends ODataSingleProcessor {
 
+  /** The data source. */
   protected final DataSource dataSource;
+  
+  /** The value access. */
   protected final ValueAccess valueAccess;
 
   /**

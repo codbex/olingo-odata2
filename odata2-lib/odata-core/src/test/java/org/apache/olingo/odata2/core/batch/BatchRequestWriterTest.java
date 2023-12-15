@@ -37,14 +37,33 @@ import org.apache.olingo.odata2.core.batch.v2.BatchLineReader;
 import org.apache.olingo.odata2.core.batch.v2.Line;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BatchRequestWriterTest.
+ */
 public class BatchRequestWriterTest {
 
+  /** The Constant POST. */
   private static final String POST = "POST";
+  
+  /** The Constant GET. */
   private static final String GET = "GET";
+  
+  /** The Constant PUT. */
   private static final String PUT = "PUT";
+  
+  /** The Constant BOUNDARY. */
   private static final String BOUNDARY = "batch_123";
+  
+  /** The Constant CRLF. */
   private static final Object CRLF = "\r\n";
 
+  /**
+   * Test batch query part.
+   *
+   * @throws BatchException the batch exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Test
   public void testBatchQueryPart() throws BatchException, IOException {
     List<BatchPart> batch = new ArrayList<BatchPart>();
@@ -73,6 +92,12 @@ public class BatchRequestWriterTest {
     assertTrue(lines.get(index++).toString().startsWith("--batch"));
   }
 
+  /**
+   * Test batch change set.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws BatchException the batch exception
+   */
   @Test
   public void testBatchChangeSet() throws IOException, BatchException {
     List<BatchPart> batch = new ArrayList<BatchPart>();
@@ -114,6 +139,12 @@ public class BatchRequestWriterTest {
     assertTrue(lines.get(index++).toString().startsWith("--batch"));
   }
 
+  /**
+   * Test batch change set utf 8.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws BatchException the batch exception
+   */
   @Test
   public void testBatchChangeSetUtf8() throws IOException, BatchException {
     List<BatchPart> batch = new ArrayList<BatchPart>();
@@ -155,6 +186,12 @@ public class BatchRequestWriterTest {
     assertTrue(lines.get(index++).toString().startsWith("--batch"));
   }
 
+  /**
+   * Test batch change set iso.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws BatchException the batch exception
+   */
   @Test
   public void testBatchChangeSetIso() throws IOException, BatchException {
     List<BatchPart> batch = new ArrayList<BatchPart>();
@@ -196,6 +233,12 @@ public class BatchRequestWriterTest {
     assertTrue(lines.get(index++).toString().startsWith("--batch"));
   }
 
+  /**
+   * Test batch with get and post.
+   *
+   * @throws BatchException the batch exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Test
   public void testBatchWithGetAndPost() throws BatchException, IOException {
     List<BatchPart> batch = new ArrayList<BatchPart>();
@@ -252,6 +295,11 @@ public class BatchRequestWriterTest {
     assertTrue(lines.get(index++).toString().startsWith("--batch"));
   }
 
+  /**
+   * Test get request.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Test
   public void testGetRequest() throws IOException {
     List<BatchPart> batch = new ArrayList<BatchPart>();
@@ -296,6 +344,12 @@ public class BatchRequestWriterTest {
     assertEquals(19, lines.size());
   }
 
+  /**
+   * Test change set with content id referencing.
+   *
+   * @throws BatchException the batch exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Test
   public void testChangeSetWithContentIdReferencing() throws BatchException, IOException {
     List<BatchPart> batch = new ArrayList<BatchPart>();
@@ -361,6 +415,12 @@ public class BatchRequestWriterTest {
     assertTrue(lines.get(index++).toString().startsWith("--batch"));
   }
 
+  /**
+   * Test batch with two change sets.
+   *
+   * @throws BatchException the batch exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Test
   public void testBatchWithTwoChangeSets() throws BatchException, IOException {
     List<BatchPart> batch = new ArrayList<BatchPart>();
@@ -431,12 +491,24 @@ public class BatchRequestWriterTest {
     assertTrue(lines.get(index++).toString().startsWith("--batch"));
   }
 
+  /**
+   * Test batch query part with invalid method.
+   *
+   * @throws BatchException the batch exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Test(expected = IllegalArgumentException.class)
   public void testBatchQueryPartWithInvalidMethod() throws BatchException, IOException {
     BatchQueryPart.method(PUT).uri("Employees").build();
 
   }
 
+  /**
+   * Test batch change set part with invalid method.
+   *
+   * @throws BatchException the batch exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Test(expected = IllegalArgumentException.class)
   public void testBatchChangeSetPartWithInvalidMethod() throws BatchException, IOException {
     BatchChangeSetPart.method(GET).uri("Employees('2')").build();

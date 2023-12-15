@@ -71,14 +71,24 @@ import org.mockito.Mockito;
 import com.google.gson.Gson;
 import com.google.gson.internal.LinkedTreeMap;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class JsonEntryEntityProducerTest.
  */
 public class JsonEntryEntityProducerTest extends BaseTest {
+  
+  /** The Constant BASE_URI. */
   protected static final String BASE_URI = "http://host:80/service/";
+  
+  /** The Constant DEFAULT_PROPERTIES. */
   protected static final EntityProviderWriteProperties DEFAULT_PROPERTIES =
       EntityProviderWriteProperties.serviceRoot(URI.create(BASE_URI)).build();
 
+  /**
+   * Entry.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entry() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -95,6 +105,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
         json);
   }
 
+  /**
+   * Omit E tag test property present.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void omitETagTestPropertyPresent() throws Exception {
@@ -116,6 +131,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     assertFalse(room.containsKey("etag"));
   }
 
+  /**
+   * Omit E tag test property NOT present must not result in exception.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void omitETagTestPropertyNOTPresentMustNotResultInException() throws Exception {
@@ -136,6 +156,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     assertFalse(room.containsKey("etag"));
   }
 
+  /**
+   * Omit E tag test non nullable property NOT present must not result in exception.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void omitETagTestNonNullablePropertyNOTPresentMustNotResultInException() throws Exception {
@@ -164,6 +189,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     assertFalse(room.containsKey("etag"));
   }
 
+  /**
+   * Include metadata without content only must make no difference.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void includeMetadataWithoutContentOnlyMustMakeNoDifference() throws Exception {
@@ -200,6 +230,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     assertNotNull(employee.get("ne_Room"));
   }
 
+  /**
+   * Content only with metadata.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void contentOnlyWithMetadata() throws Exception {
@@ -236,6 +271,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     assertNull(employee.get("ne_Room"));
   }
 
+  /**
+   * Content only.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void contentOnly() throws Exception {
@@ -272,6 +312,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     assertNull(employee.get("ne_Room"));
   }
 
+  /**
+   * Content only without key.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void contentOnlyWithoutKey() throws Exception {
@@ -307,6 +352,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     assertEquals(new Double(52), employee.get("Age"));
   }
 
+  /**
+   * Content only selected or expanded links must be ignored.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void contentOnlySelectedOrExpandedLinksMustBeIgnored() throws Exception {
@@ -340,6 +390,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     assertEquals("1", employee.get("ManagerId"));
   }
 
+  /**
+   * Content only with additinal link.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void contentOnlyWithAdditinalLink() throws Exception {
@@ -375,6 +430,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     assertEquals("http://host:80/service/Managers('1')", map.get("uri"));
   }
 
+  /**
+   * Omit json wrapper.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void omitJsonWrapper() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -393,6 +453,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
         json);
   }
 
+  /**
+   * Serialize with facets validation.
+   *
+   * @throws Throwable the throwable
+   */
   @Test(expected = EdmSimpleTypeException.class)
   public void serializeWithFacetsValidation() throws Throwable {
     Edm edm = MockFacade.getMockEdm();
@@ -422,6 +487,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     }
   }
 
+  /**
+   * Serialize without facets validation.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serializeWithoutFacetsValidation() throws Exception {
     Edm edm = MockFacade.getMockEdm();
@@ -448,6 +518,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
         json);
   }
 
+  /**
+   * Entry with null data.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void entryWithNullData() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -455,6 +530,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     new JsonEntityProvider().writeEntry(entitySet, null, DEFAULT_PROPERTIES);
   }
 
+  /**
+   * Entry with empty data.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void entryWithEmptyData() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -462,6 +542,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     new JsonEntityProvider().writeEntry(entitySet, new HashMap<String, Object>(), DEFAULT_PROPERTIES);
   }
 
+  /**
+   * Entry with select.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entryWithSelect() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Buildings");
@@ -482,6 +567,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
         json);
   }
 
+  /**
+   * Media link entry.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void mediaLinkEntry() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getEntityContainer("Container2").getEntitySet("Photos");
@@ -504,6 +594,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
         json);
   }
 
+  /**
+   * Media link entry with select.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void mediaLinkEntryWithSelect() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Employees");
@@ -533,6 +628,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
         json);
   }
 
+  /**
+   * Entry with expanded entry but null data.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entryWithExpandedEntryButNullData() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");
@@ -557,7 +657,18 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     assertNull(roomEntry.get("nr_Building"));
   }
   
+  /**
+   * The Class NullEntryCallback.
+   */
   class NullEntryCallback implements OnWriteEntryContent {
+    
+    /**
+     * Retrieve entry result.
+     *
+     * @param context the context
+     * @return the write entry callback result
+     * @throws ODataApplicationException the o data application exception
+     */
     @Override
     public WriteEntryCallbackResult retrieveEntryResult(final WriteEntryCallbackContext context)
         throws ODataApplicationException {
@@ -568,6 +679,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     }
   }
 
+  /**
+   * Creates the room node.
+   *
+   * @return the expand select tree node
+   */
   private ExpandSelectTreeNode createRoomNode() {
     ExpandSelectTreeNode node2 = Mockito.mock(ExpandSelectTreeNode.class);
     Map<String, ExpandSelectTreeNode> links = new HashMap<String, ExpandSelectTreeNode>();
@@ -577,6 +693,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     return node1;
   }
 
+  /**
+   * Entry with expanded entry but null data omit data.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void entryWithExpandedEntryButNullDataOmitData() throws Exception {
@@ -604,6 +725,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     assertTrue(((Map<String, Object>) roomEntry.get("nr_Building")).containsKey("__deferred"));
   }
 
+  /**
+   * Entry with expanded entry but empty data.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entryWithExpandedEntryButEmptyData() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");
@@ -629,7 +755,18 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     assertNull(roomEntry.get("nr_Building"));
   }
 
+  /**
+   * The Class EmptyEntryCallback.
+   */
   class EmptyEntryCallback implements OnWriteEntryContent {
+    
+    /**
+     * Retrieve entry result.
+     *
+     * @param context the context
+     * @return the write entry callback result
+     * @throws ODataApplicationException the o data application exception
+     */
     @Override
     public WriteEntryCallbackResult retrieveEntryResult(final WriteEntryCallbackContext context)
         throws ODataApplicationException {
@@ -640,6 +777,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     }
   }
 
+  /**
+   * Entry with expanded entry but empty data omit inline.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void entryWithExpandedEntryButEmptyDataOmitInline() throws Exception {
@@ -668,6 +810,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     assertTrue(((Map<String, Object>) roomEntry.get("nr_Building")).containsKey("__deferred"));
   }
 
+  /**
+   * Entry with expanded entry.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entryWithExpandedEntry() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");
@@ -707,6 +854,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
         json);
   }
 
+  /**
+   * Entry with expanded entry with facets.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void entryWithExpandedEntryWithFacets() throws Exception {
     Edm edm = MockFacade.getMockEdm();
@@ -753,6 +905,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     assertNotNull(response);
   }
 
+  /**
+   * Entry with expanded entry ignore facets.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entryWithExpandedEntryIgnoreFacets() throws Exception {
     Edm edm = MockFacade.getMockEdm();
@@ -820,6 +977,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
         json);
   }
 
+  /**
+   * Entry with expanded entry but no registered callback.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entryWithExpandedEntryButNoRegisteredCallback() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");
@@ -838,6 +1000,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
         json);
   }
 
+  /**
+   * Entry with expanded entry with registered null callback.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void entryWithExpandedEntryWithRegisteredNullCallback() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");
@@ -856,6 +1023,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
 
   }
 
+  /**
+   * Entry with expanded feed.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entryWithExpandedFeed() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Buildings");
@@ -891,7 +1063,18 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     assertEquals(json, jsonWithNavigation);
   }
 
+  /**
+   * The Class DataFeedCallback.
+   */
   class DataFeedCallback implements OnWriteFeedContent {
+    
+    /**
+     * Retrieve feed result.
+     *
+     * @param context the context
+     * @return the write feed callback result
+     * @throws ODataApplicationException the o data application exception
+     */
     @Override
     public WriteFeedCallbackResult retrieveFeedResult(final WriteFeedCallbackContext context)
         throws ODataApplicationException {
@@ -908,6 +1091,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
   }
 
 
+  /**
+   * Entry with expanded feed in client use case.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entryWithExpandedFeedInClientUseCase() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Buildings");
@@ -935,6 +1123,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
         json);
   }
 
+  /**
+   * Entry with expanded feed but null data.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void entryWithExpandedFeedButNullData() throws Exception {
@@ -962,7 +1155,19 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     List<Object> roomsFeedEntries = (List<Object>) roomsFeed.get("results");
     assertEquals(0, roomsFeedEntries.size());
   }
+  
+  /**
+   * The Class NullFeedCallback.
+   */
   public class NullFeedCallback implements OnWriteFeedContent {
+    
+    /**
+     * Retrieve feed result.
+     *
+     * @param context the context
+     * @return the write feed callback result
+     * @throws ODataApplicationException the o data application exception
+     */
     @Override
     public WriteFeedCallbackResult retrieveFeedResult(final WriteFeedCallbackContext context)
         throws ODataApplicationException {
@@ -973,6 +1178,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     }
   }
 
+  /**
+   * Entry with expanded feed but null data omit inline.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void entryWithExpandedFeedButNullDataOmitInline() throws Exception {
@@ -1001,6 +1211,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     assertTrue(navContent.containsKey("__deferred"));
   }
   
+  /**
+   * Entry with expanded feed but null data client use case.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void entryWithExpandedFeedButNullDataClientUseCase() throws Exception {
@@ -1029,6 +1244,12 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     assertEquals(0, roomsFeed.size());
   }
 
+  /**
+   * Check room.
+   *
+   * @param response the response
+   * @return the map
+   */
   @SuppressWarnings("unchecked")
   private Map<String, Object> checkRoom(final ODataResponse response) {
     Map<String, Object> buildingEntry =
@@ -1039,6 +1260,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     return buildingEntry;
   }
   
+  /**
+   * Entry with expanded feed but null data client use case omit inline.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void entryWithExpandedFeedButNullDataClientUseCaseOmitInline() throws Exception {
@@ -1067,6 +1293,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     assertTrue(((Map<String, Object>) buildingEntry.get("nb_Rooms")).containsKey("__deferred"));
   }
 
+  /**
+   * Entry with expanded feed but empty data.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void entryWithExpandedFeedButEmptyData() throws Exception {
@@ -1095,6 +1326,12 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     List<Object> roomsFeedEntries = (List<Object>) roomsFeed.get("results");
     assertEquals(0, roomsFeedEntries.size());
   }
+  
+  /**
+   * Creates the building node.
+   *
+   * @return the expand select tree node
+   */
   private ExpandSelectTreeNode createBuildingNode() {
     ExpandSelectTreeNode node2 = Mockito.mock(ExpandSelectTreeNode.class);
     Map<String, ExpandSelectTreeNode> links = new HashMap<String, ExpandSelectTreeNode>();
@@ -1104,7 +1341,18 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     return node1;
   }
   
+  /**
+   * The Class EmptyFeedCallback.
+   */
   class EmptyFeedCallback implements OnWriteFeedContent {
+    
+    /**
+     * Retrieve feed result.
+     *
+     * @param context the context
+     * @return the write feed callback result
+     * @throws ODataApplicationException the o data application exception
+     */
     @Override
     public WriteFeedCallbackResult retrieveFeedResult(final WriteFeedCallbackContext context)
         throws ODataApplicationException {
@@ -1115,6 +1363,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     }
   }
 
+  /**
+   * Entry with expanded feed but empty data omit inline.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void entryWithExpandedFeedButEmptyDataOmitInline() throws Exception {
@@ -1142,6 +1395,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     assertTrue(((Map<String, Object>) buildingEntry.get("nb_Rooms")).containsKey("__deferred"));
   }
   
+  /**
+   * Entry with expanded feed but empty data client case.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void entryWithExpandedFeedButEmptyDataClientCase() throws Exception {
@@ -1171,6 +1429,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     assertEquals(0, roomsFeed.size());
   }
   
+  /**
+   * Entry with expanded feed but empty data client case omit inline.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void entryWithExpandedFeedButEmptyDataClientCaseOmitInline() throws Exception {
@@ -1199,6 +1462,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     assertTrue(((Map<String, Object>) buildingEntry.get("nb_Rooms")).containsKey("__deferred"));
   }
 
+  /**
+   * Entry with expanded feed but no registered callback.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entryWithExpandedFeedButNoRegisteredCallback() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Buildings");
@@ -1216,6 +1484,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
         json);
   }
 
+  /**
+   * Entry with expanded feed with registered null callback.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void entryWithExpandedFeedWithRegisteredNullCallback() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Buildings");
@@ -1232,6 +1505,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
             .build());
   }
 
+  /**
+   * Serialize with custom src attribute on employee.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void serializeWithCustomSrcAttributeOnEmployee() throws Exception {
@@ -1278,6 +1556,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     assertEquals("http://host:80/service/Employees('1')/$value", jsonMap.get("edit_media"));
   }
 
+  /**
+   * Serialize with custom src and type attribute on employee.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void serializeWithCustomSrcAndTypeAttributeOnEmployee() throws Exception {
@@ -1327,6 +1610,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     assertEquals("http://host:80/service/Employees('1')/$value", jsonMap.get("edit_media"));
   }
 
+  /**
+   * Serialize with custom src attribute on room.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void serializeWithCustomSrcAttributeOnRoom() throws Exception {
@@ -1357,6 +1645,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     assertNull(jsonMap.get("edit_media"));
   }
 
+  /**
+   * Serialize with custom src and type attribute on room.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void serializeWithCustomSrcAndTypeAttributeOnRoom() throws Exception {
@@ -1438,7 +1731,12 @@ public class JsonEntryEntityProducerTest extends BaseTest {
 //    assertEquals("right", jsonMap.get("content_type"));
 //  }
 
-  @Test
+  /**
+ * Additional link.
+ *
+ * @throws Exception the exception
+ */
+@Test
   public void additionalLink() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");
     Map<String, Object> data = new HashMap<String, Object>();
@@ -1462,6 +1760,13 @@ public class JsonEntryEntityProducerTest extends BaseTest {
         json);
   }
 
+  /**
+   * Verify response.
+   *
+   * @param response the response
+   * @return the string
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private String verifyResponse(final ODataResponse response) throws IOException {
     assertNotNull(response);
     assertNotNull(response.getEntity());
@@ -1472,6 +1777,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     return json;
   }
   
+  /**
+   * Unbalanced property entry with inline entry.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void unbalancedPropertyEntryWithInlineEntry() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");
@@ -1515,6 +1825,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
         + "\"Id\":\"1\",\"Name\":\"Building1\"}}}", json);
   }
   
+  /**
+   * Content only without key without selected properties.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void contentOnlyWithoutKeyWithoutSelectedProperties() throws Exception {
     HashMap<String, Object> employeeData = new HashMap<String, Object>();
@@ -1540,6 +1855,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     }
   }
   
+  /**
+   * Test without key.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testWithoutKey() throws Exception {
     EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Employees");
@@ -1562,6 +1882,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     }
   }
   
+  /**
+   * Test without composite key.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testWithoutCompositeKey() throws Exception {
     EdmEntitySet entitySet = MockFacade.getMockEdm().getEntityContainer("Container2").getEntitySet("Photos");
@@ -1580,6 +1905,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     }
   }
   
+  /**
+   * Test without composite key with one key null.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testWithoutCompositeKeyWithOneKeyNull() throws Exception {
     Edm edm = MockFacade.getMockEdm();
@@ -1608,6 +1938,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
   }
   
   
+  /**
+   * Test exception with non nullable property is null.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testExceptionWithNonNullablePropertyIsNull() throws Exception {
     EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Organizations");
@@ -1627,6 +1962,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     }
   }
   
+  /**
+   * Test exception with non nullable property is null 1.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testExceptionWithNonNullablePropertyIsNull1() throws Exception {
     EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Organizations");
@@ -1650,6 +1990,11 @@ public class JsonEntryEntityProducerTest extends BaseTest {
     }
   }
   
+  /**
+   * Test exception with non nullable property is null 2.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testExceptionWithNonNullablePropertyIsNull2() throws Exception {
     EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Organizations");

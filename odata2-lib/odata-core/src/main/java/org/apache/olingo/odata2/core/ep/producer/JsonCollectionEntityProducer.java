@@ -30,12 +30,21 @@ import org.apache.olingo.odata2.core.ep.aggregator.EntityPropertyInfo;
 import org.apache.olingo.odata2.core.ep.util.FormatJson;
 import org.apache.olingo.odata2.core.ep.util.JsonStreamWriter;
 
+// TODO: Auto-generated Javadoc
 /**
  * Provider for writing a collection of simple-type or complex-type instances in JSON.
  * 
  */
 public class JsonCollectionEntityProducer {
 
+  /**
+   * Append.
+   *
+   * @param writer the writer
+   * @param propertyInfo the property info
+   * @param data the data
+   * @throws EntityProviderException the entity provider exception
+   */
   public void append(final Writer writer, final EntityPropertyInfo propertyInfo, final List<?> data)
       throws EntityProviderException {
     JsonStreamWriter jsonStreamWriter = new JsonStreamWriter(writer);

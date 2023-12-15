@@ -34,18 +34,40 @@ import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmComplexTypeView;
 import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmKeyView;
 import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmPropertyView;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAEdmKey.
+ */
 public class JPAEdmKey extends JPAEdmBaseViewImpl implements JPAEdmKeyView {
 
+  /** The property view. */
   private JPAEdmPropertyView propertyView;
+  
+  /** The complex type view. */
   private JPAEdmComplexTypeView complexTypeView = null;
+  
+  /** The is build mode complex type. */
   private boolean isBuildModeComplexType = false;
+  
+  /** The key. */
   private Key key;
 
+  /**
+   * Instantiates a new JPA edm key.
+   *
+   * @param view the view
+   */
   public JPAEdmKey(final JPAEdmProperty view) {
     super(view);
     propertyView = view;
   }
 
+  /**
+   * Instantiates a new JPA edm key.
+   *
+   * @param complexTypeView the complex type view
+   * @param propertyView the property view
+   */
   public JPAEdmKey(final JPAEdmComplexTypeView complexTypeView, final JPAEdmPropertyView propertyView) {
     super(complexTypeView);
     this.propertyView = propertyView;
@@ -53,6 +75,11 @@ public class JPAEdmKey extends JPAEdmBaseViewImpl implements JPAEdmKeyView {
     isBuildModeComplexType = true;
   }
 
+  /**
+   * Gets the builder.
+   *
+   * @return the builder
+   */
   @Override
   public JPAEdmBuilder getBuilder() {
     if (builder == null) {
@@ -62,13 +89,26 @@ public class JPAEdmKey extends JPAEdmBaseViewImpl implements JPAEdmKeyView {
     return builder;
   }
 
+  /**
+   * Gets the edm key.
+   *
+   * @return the edm key
+   */
   @Override
   public Key getEdmKey() {
     return key;
   }
 
+  /**
+   * The Class JPAEdmKeyBuider.
+   */
   private class JPAEdmKeyBuider implements JPAEdmBuilder {
 
+    /**
+     * Builds the.
+     *
+     * @throws ODataJPAModelException the o data JPA model exception
+     */
     @Override
     public void build() throws ODataJPAModelException {
 
@@ -102,6 +142,12 @@ public class JPAEdmKey extends JPAEdmBaseViewImpl implements JPAEdmKeyView {
 
     }
 
+    /**
+     * Normalize complex key.
+     *
+     * @param complexType the complex type
+     * @param propertyRefList the property ref list
+     */
     // TODO think how to stop the recursion if A includes B and B includes A!!!!!!
     public void normalizeComplexKey(final ComplexType complexType, final List<PropertyRef> propertyRefList) {
       for (Property property : complexType.getProperties()) {

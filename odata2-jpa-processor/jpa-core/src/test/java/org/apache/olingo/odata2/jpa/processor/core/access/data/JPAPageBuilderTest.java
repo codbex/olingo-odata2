@@ -38,10 +38,18 @@ import jakarta.persistence.TemporalType;
 import org.apache.olingo.odata2.jpa.processor.core.access.data.JPAPage.JPAPageBuilder;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAPageBuilderTest.
+ */
 public class JPAPageBuilderTest {
 
+  /** The Constant PAGE_SIZE. */
   private static final int PAGE_SIZE = 10;
 
+  /**
+   * Test build default.
+   */
   @Test
   public void testBuildDefault() {
     JPAPageBuilder pageBuilder = new JPAPageBuilder();
@@ -62,6 +70,9 @@ public class JPAPageBuilderTest {
     assertEquals(10, query.getMaxResults());
   }
 
+  /**
+   * Test build default zero page.
+   */
   @Test
   public void testBuildDefaultZeroPage() {
     JPAPageBuilder pageBuilder = new JPAPageBuilder();
@@ -82,6 +93,9 @@ public class JPAPageBuilderTest {
     assertEquals(0, query.getMaxResults());
   }
 
+  /**
+   * Test build with no skip token.
+   */
   @Test
   public void testBuildWithNoSkipToken() {
     JPAPageBuilder pageBuilder = new JPAPageBuilder();
@@ -102,6 +116,9 @@ public class JPAPageBuilderTest {
     assertEquals(10, query.getMaxResults());
   }
 
+  /**
+   * Test build with null skip token.
+   */
   @Test
   public void testBuildWithNullSkipToken() {
     JPAPageBuilder pageBuilder = new JPAPageBuilder();
@@ -121,6 +138,9 @@ public class JPAPageBuilderTest {
     assertEquals(10, query.getMaxResults());
   }
 
+  /**
+   * Test build with invalid skip token.
+   */
   @Test
   public void testBuildWithInvalidSkipToken() {
     JPAPageBuilder pageBuilder = new JPAPageBuilder();
@@ -135,6 +155,9 @@ public class JPAPageBuilderTest {
     fail("Exception Expected");
   }
 
+  /**
+   * Test build with top.
+   */
   @Test
   public void testBuildWithTop() {
     JPAPageBuilder pageBuilder = new JPAPageBuilder();
@@ -155,6 +178,9 @@ public class JPAPageBuilderTest {
     assertEquals(5, query.getMaxResults());
   }
 
+  /**
+   * Test build with top zero page.
+   */
   @Test
   public void testBuildWithTopZeroPage() {
     JPAPageBuilder pageBuilder = new JPAPageBuilder();
@@ -175,6 +201,9 @@ public class JPAPageBuilderTest {
     assertEquals(5, query.getMaxResults());
   }
 
+  /**
+   * Test build with skip zero page.
+   */
   @Test
   public void testBuildWithSkipZeroPage() {
     JPAPageBuilder pageBuilder = new JPAPageBuilder();
@@ -195,6 +224,9 @@ public class JPAPageBuilderTest {
     assertEquals(0, query.getMaxResults());
   }
 
+  /**
+   * Test build with top skip zero page.
+   */
   @Test
   public void testBuildWithTopSkipZeroPage() {
     JPAPageBuilder pageBuilder = new JPAPageBuilder();
@@ -216,6 +248,9 @@ public class JPAPageBuilderTest {
     assertEquals(5, query.getMaxResults());
   }
 
+  /**
+   * Test build with top exceeds.
+   */
   @Test
   public void testBuildWithTopExceeds() {
     JPAPageBuilder pageBuilder = new JPAPageBuilder();
@@ -236,6 +271,9 @@ public class JPAPageBuilderTest {
     assertEquals(10, query.getMaxResults());
   }
 
+  /**
+   * Test build with top skip exceeds.
+   */
   @Test
   public void testBuildWithTopSkipExceeds() {
     JPAPageBuilder pageBuilder = new JPAPageBuilder();
@@ -257,6 +295,9 @@ public class JPAPageBuilderTest {
     assertEquals(0, query.getMaxResults());
   }
 
+  /**
+   * Test build with top skip more.
+   */
   @Test
   public void testBuildWithTopSkipMore() {
     JPAPageBuilder pageBuilder = new JPAPageBuilder();
@@ -278,6 +319,9 @@ public class JPAPageBuilderTest {
     assertEquals(1, query.getMaxResults());
   }
 
+  /**
+   * Test build with top more skip.
+   */
   @Test
   public void testBuildWithTopMoreSkip() {
     JPAPageBuilder pageBuilder = new JPAPageBuilder();
@@ -299,6 +343,9 @@ public class JPAPageBuilderTest {
     assertEquals(1, query.getMaxResults());
   }
 
+  /**
+   * Test build with top X skip X.
+   */
   @Test
   public void testBuildWithTopXSkipX() {
     JPAPageBuilder pageBuilder = new JPAPageBuilder();
@@ -320,6 +367,9 @@ public class JPAPageBuilderTest {
     assertEquals(0, query.getMaxResults());
   }
 
+  /**
+   * Test build with negative top.
+   */
   @Test
   public void testBuildWithNegativeTop() {
     JPAPageBuilder pageBuilder = new JPAPageBuilder();
@@ -340,6 +390,9 @@ public class JPAPageBuilderTest {
     assertEquals(10, query.getMaxResults());
   }
 
+  /**
+   * Test build with negative top skip token.
+   */
   @Test
   public void testBuildWithNegativeTopSkipToken() {
     JPAPageBuilder pageBuilder = new JPAPageBuilder();
@@ -361,6 +414,9 @@ public class JPAPageBuilderTest {
     assertEquals(10, query.getMaxResults());
   }
 
+  /**
+   * Test build with no records.
+   */
   @Test
   public void testBuildWithNoRecords() {
     JPAPageBuilder pageBuilder = new JPAPageBuilder();
@@ -382,6 +438,12 @@ public class JPAPageBuilderTest {
     assertEquals(1, query.getMaxResults());
   }
 
+  /**
+   * Mock query.
+   *
+   * @param setNoRecords the set no records
+   * @return the query
+   */
   private Query mockQuery(final boolean setNoRecords) {
 
     return new Query() {

@@ -37,23 +37,53 @@ import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Array;
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAEdmAssociationEnd.
+ */
 public class JPAEdmAssociationEnd extends JPAEdmBaseViewImpl implements JPAEdmAssociationEndView {
 
+  /** The entity type view. */
   private JPAEdmEntityTypeView entityTypeView = null;
+  
+  /** The property view. */
   private JPAEdmPropertyView propertyView = null;
+  
+  /** The current association end 1. */
   private AssociationEnd currentAssociationEnd1 = null;
+  
+  /** The current association end 2. */
   private AssociationEnd currentAssociationEnd2 = null;
+  
+  /** The column names. */
   private String[] columnNames;
+  
+  /** The referenced column names. */
   private String[] referencedColumnNames;
+  
+  /** The mapped by. */
   private String mappedBy;
+  
+  /** The owner property name. */
   private String ownerPropertyName;
 
+  /**
+   * Instantiates a new JPA edm association end.
+   *
+   * @param entityTypeView the entity type view
+   * @param propertyView the property view
+   */
   public JPAEdmAssociationEnd(final JPAEdmEntityTypeView entityTypeView, final JPAEdmPropertyView propertyView) {
     super(entityTypeView);
     this.entityTypeView = entityTypeView;
     this.propertyView = propertyView;
   }
 
+  /**
+   * Gets the builder.
+   *
+   * @return the builder
+   */
   @Override
   public JPAEdmBuilder getBuilder() {
     if (builder == null) {
@@ -63,18 +93,36 @@ public class JPAEdmAssociationEnd extends JPAEdmBaseViewImpl implements JPAEdmAs
     return builder;
   }
 
+  /**
+   * Gets the edm association end 1.
+   *
+   * @return the edm association end 1
+   */
   @Override
   public AssociationEnd getEdmAssociationEnd1() {
     return currentAssociationEnd1;
   }
 
+  /**
+   * Gets the edm association end 2.
+   *
+   * @return the edm association end 2
+   */
   @Override
   public AssociationEnd getEdmAssociationEnd2() {
     return currentAssociationEnd2;
   }
 
+  /**
+   * The Class JPAEdmAssociationEndBuilder.
+   */
   private class JPAEdmAssociationEndBuilder implements JPAEdmBuilder {
 
+    /**
+     * Builds the.
+     *
+     * @throws ODataJPAModelException the o data JPA model exception
+     */
     @Override
     public void build() throws ODataJPAModelException {
 
@@ -105,6 +153,11 @@ public class JPAEdmAssociationEnd extends JPAEdmBaseViewImpl implements JPAEdmAs
       ownerPropertyName = propertyView.getJPAAttribute().getName();
     }
 
+    /**
+     * Sets the edm multiplicity.
+     *
+     * @param type the new edm multiplicity
+     */
     private void setEdmMultiplicity(final PersistentAttributeType type) {
       AnnotatedElement annotatedElement = (AnnotatedElement) propertyView.getJPAAttribute().getJavaMember();
       switch (type) {
@@ -157,6 +210,13 @@ public class JPAEdmAssociationEnd extends JPAEdmBaseViewImpl implements JPAEdmAs
     }
   }
 
+  /**
+   * Compare.
+   *
+   * @param end1 the end 1
+   * @param end2 the end 2
+   * @return true, if successful
+   */
   @Override
   public boolean compare(final AssociationEnd end1, final AssociationEnd end2) {
     FullQualifiedName end1Type = end1.getType();
@@ -219,21 +279,41 @@ public class JPAEdmAssociationEnd extends JPAEdmBaseViewImpl implements JPAEdmAs
     return false;
   }
 
+  /**
+   * Gets the join column names.
+   *
+   * @return the join column names
+   */
   @Override
   public String[] getJoinColumnNames() {
     return columnNames;
   }
 
+  /**
+   * Gets the join column reference column names.
+   *
+   * @return the join column reference column names
+   */
   @Override
   public String[] getJoinColumnReferenceColumnNames() {
     return referencedColumnNames;
   }
 
+  /**
+   * Gets the mapped by name.
+   *
+   * @return the mapped by name
+   */
   @Override
   public String getMappedByName() {
     return mappedBy;
   }
 
+  /**
+   * Gets the owning property name.
+   *
+   * @return the owning property name
+   */
   @Override
   public String getOwningPropertyName() {
     return ownerPropertyName;

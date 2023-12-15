@@ -37,6 +37,7 @@ import org.apache.olingo.odata2.api.processor.part.FunctionImportValueProcessor;
 import org.apache.olingo.odata2.api.processor.part.MetadataProcessor;
 import org.apache.olingo.odata2.api.processor.part.ServiceDocumentProcessor;
 
+// TODO: Auto-generated Javadoc
 /**
  * Root interface for a custom OData service.
  * 
@@ -46,121 +47,155 @@ import org.apache.olingo.odata2.api.processor.part.ServiceDocumentProcessor;
 public interface ODataService {
 
   /**
+   * Gets the version.
+   *
    * @return implemented OData version of this service
-   * @throws ODataException
+   * @throws ODataException the o data exception
    * @see ODataServiceVersion
    */
   String getVersion() throws ODataException;
 
   /**
+   * Gets the entity data model.
+   *
    * @return entity data model of this service
+   * @throws ODataException the o data exception
    * @see Edm
-   * @throws ODataException
    */
   Edm getEntityDataModel() throws ODataException;
 
   /**
+   * Gets the metadata processor.
+   *
    * @return a processor which handles this request
-   * @throws ODataException
+   * @throws ODataException the o data exception
    * @see MetadataProcessor
    */
   MetadataProcessor getMetadataProcessor() throws ODataException;
 
   /**
+   * Gets the service document processor.
+   *
    * @return a processor which handles this request
-   * @throws ODataException
+   * @throws ODataException the o data exception
    * @see ServiceDocumentProcessor
    */
   ServiceDocumentProcessor getServiceDocumentProcessor() throws ODataException;
 
   /**
+   * Gets the entity processor.
+   *
    * @return a processor which handles this request
-   * @throws ODataException
+   * @throws ODataException the o data exception
    * @see EntityProcessor
    */
   EntityProcessor getEntityProcessor() throws ODataException;
 
   /**
+   * Gets the entity set processor.
+   *
    * @return a processor which handles this request
-   * @throws ODataException
+   * @throws ODataException the o data exception
    * @see EntitySetProcessor
    */
   EntitySetProcessor getEntitySetProcessor() throws ODataException;
 
   /**
+   * Gets the entity complex property processor.
+   *
    * @return a processor which handles this request
-   * @throws ODataException
+   * @throws ODataException the o data exception
    * @see EntityComplexPropertyProcessor
    */
   EntityComplexPropertyProcessor getEntityComplexPropertyProcessor() throws ODataException;
 
   /**
+   * Gets the entity link processor.
+   *
    * @return a processor which handles this request
-   * @throws ODataException
+   * @throws ODataException the o data exception
    * @see EntityLinkProcessor
    */
   EntityLinkProcessor getEntityLinkProcessor() throws ODataException;
 
   /**
+   * Gets the entity links processor.
+   *
    * @return a processor which handles this request
-   * @throws ODataException
+   * @throws ODataException the o data exception
    * @see EntityLinksProcessor
    */
   EntityLinksProcessor getEntityLinksProcessor() throws ODataException;
 
   /**
+   * Gets the entity media processor.
+   *
    * @return a processor which handles this request
-   * @throws ODataException
+   * @throws ODataException the o data exception
    * @see EntityMediaProcessor
    */
   EntityMediaProcessor getEntityMediaProcessor() throws ODataException;
 
   /**
+   * Gets the entity simple property processor.
+   *
    * @return a processor which handles this request
-   * @throws ODataException
+   * @throws ODataException the o data exception
    * @see EntitySimplePropertyProcessor
    */
   EntitySimplePropertyProcessor getEntitySimplePropertyProcessor() throws ODataException;
 
   /**
+   * Gets the entity simple property value processor.
+   *
    * @return a processor which handles this request
-   * @throws ODataException
+   * @throws ODataException the o data exception
    * @see EntitySimplePropertyValueProcessor
    */
   EntitySimplePropertyValueProcessor getEntitySimplePropertyValueProcessor() throws ODataException;
 
   /**
+   * Gets the function import processor.
+   *
    * @return a processor which handles this request
-   * @throws ODataException
+   * @throws ODataException the o data exception
    * @see FunctionImportProcessor
    */
   FunctionImportProcessor getFunctionImportProcessor() throws ODataException;
 
   /**
+   * Gets the function import value processor.
+   *
    * @return a processor which handles this request
-   * @throws ODataException
+   * @throws ODataException the o data exception
    * @see FunctionImportValueProcessor
    */
   FunctionImportValueProcessor getFunctionImportValueProcessor() throws ODataException;
 
   /**
+   * Gets the batch processor.
+   *
    * @return a processor which handles this request
-   * @throws ODataException
+   * @throws ODataException the o data exception
    * @see BatchProcessor
    */
   BatchProcessor getBatchProcessor() throws ODataException;
 
   /**
+   * Gets the processor.
+   *
    * @return root processor interface
-   * @throws ODataException
+   * @throws ODataException the o data exception
    * @see ODataProcessor
    */
   ODataProcessor getProcessor() throws ODataException;
 
   /**
-   * @param processorFeature
+   * Gets the supported content types.
+   *
+   * @param processorFeature the processor feature
    * @return ordered list of all <code>content types</code> this service supports
-   * @throws ODataException
+   * @throws ODataException the o data exception
    */
   List<String> getSupportedContentTypes(Class<? extends ODataProcessor> processorFeature) throws ODataException;
 }

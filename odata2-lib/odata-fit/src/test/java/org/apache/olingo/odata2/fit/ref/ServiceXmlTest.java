@@ -32,16 +32,26 @@ import org.custommonkey.xmlunit.exceptions.XpathException;
 import org.junit.Test;
 import org.xml.sax.SAXException;
 
+// TODO: Auto-generated Javadoc
 /**
- * Tests employing the reference scenario reading the service document in XML format
- * 
+ * Tests employing the reference scenario reading the service document in XML format.
  */
 public class ServiceXmlTest extends AbstractRefXmlTest {
 
+  /**
+   * Instantiates a new service xml test.
+   *
+   * @param servletType the servlet type
+   */
   public ServiceXmlTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /**
+   * Service document.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serviceDocument() throws Exception {
     final HttpResponse response = callUri("/");
@@ -57,6 +67,11 @@ public class ServiceXmlTest extends AbstractRefXmlTest {
     notFound("invalid.svc");
   }
 
+  /**
+   * Service document default.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serviceDocumentDefault() throws Exception {
     final HttpResponse response = callUri("");
@@ -64,6 +79,11 @@ public class ServiceXmlTest extends AbstractRefXmlTest {
     validateXmlServiceDocument(getBody(response));
   }
 
+  /**
+   * Service document dollar format atom.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serviceDocumentDollarFormatAtom() throws Exception {
     HttpResponse response = callUri("?$format=atom");
@@ -71,6 +91,11 @@ public class ServiceXmlTest extends AbstractRefXmlTest {
     validateXmlServiceDocument(getBody(response));
   }
 
+  /**
+   * Service document dollar format xml.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serviceDocumentDollarFormatXml() throws Exception {
     HttpResponse response = callUri("?$format=xml");
@@ -78,6 +103,11 @@ public class ServiceXmlTest extends AbstractRefXmlTest {
     validateXmlServiceDocument(getBody(response));
   }
 
+  /**
+   * Service document accept header atom.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serviceDocumentAcceptHeaderAtom() throws Exception {
     final HttpResponse response =
@@ -86,6 +116,11 @@ public class ServiceXmlTest extends AbstractRefXmlTest {
     validateXmlError(getBody(response));
   }
 
+  /**
+   * Service document accept header utf 8 atom.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serviceDocumentAcceptHeaderUtf8Atom() throws Exception {
     final HttpResponse response =
@@ -94,6 +129,11 @@ public class ServiceXmlTest extends AbstractRefXmlTest {
     validateXmlError(getBody(response));
   }
 
+  /**
+   * Service document accept header xml.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serviceDocumentAcceptHeaderXml() throws Exception {
     HttpResponse response = callUri("", HttpHeaders.ACCEPT, HttpContentType.APPLICATION_XML);
@@ -101,6 +141,11 @@ public class ServiceXmlTest extends AbstractRefXmlTest {
     validateXmlServiceDocument(getBody(response));
   }
 
+  /**
+   * Service document accept header utf 8 xml.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serviceDocumentAcceptHeaderUtf8Xml() throws Exception {
     HttpResponse response = callUri("", HttpHeaders.ACCEPT, HttpContentType.APPLICATION_XML_UTF8);
@@ -108,6 +153,14 @@ public class ServiceXmlTest extends AbstractRefXmlTest {
     validateXmlServiceDocument(getBody(response));
   }
 
+  /**
+   * Validate xml service document.
+   *
+   * @param payload the payload
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws SAXException the SAX exception
+   * @throws XpathException the xpath exception
+   */
   private void validateXmlServiceDocument(final String payload) throws IOException, SAXException, XpathException {
     assertXpathExists("/app:service", payload);
     assertXpathExists("/app:service/app:workspace", payload);

@@ -18,14 +18,47 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.annotation.edm;
 
+// TODO: Auto-generated Javadoc
 /**
  * <p>The EdmTypes which can be used for property definition in the EDM.</p>
  * The available values are based on <code>EdmSimpleTypeKind</code> values with the additional type
  * <code>COMPLEX</code> which can be used to explicit define a EdmProperty as complex.
  */
 public enum EdmType {
-  BINARY, BOOLEAN, BYTE, DATE_TIME, DATE_TIME_OFFSET, DECIMAL, DOUBLE,
-  GUID, INT16, INT32, INT64, SBYTE, SINGLE, STRING, TIME, NULL,
+  
+  /** The binary. */
+  BINARY, 
+ /** The boolean. */
+ BOOLEAN, 
+ /** The byte. */
+ BYTE, 
+ /** The date time. */
+ DATE_TIME, 
+ /** The date time offset. */
+ DATE_TIME_OFFSET, 
+ /** The decimal. */
+ DECIMAL, 
+ /** The double. */
+ DOUBLE,
+  
+  /** The guid. */
+  GUID, 
+ /** The int16. */
+ INT16, 
+ /** The int32. */
+ INT32, 
+ /** The int64. */
+ INT64, 
+ /** The sbyte. */
+ SBYTE, 
+ /** The single. */
+ SINGLE, 
+ /** The string. */
+ STRING, 
+ /** The time. */
+ TIME, 
+ /** The null. */
+ NULL,
   /** Only for explicit definition of a complex property. Not mappable to <code>EdmSimpleTypeKind</code> */
   COMPLEX;
 }

@@ -28,6 +28,7 @@ import org.apache.olingo.odata2.api.edm.EdmLiteral;
 import org.apache.olingo.odata2.api.uri.NavigationPropertySegment;
 import org.apache.olingo.odata2.api.uri.SelectItem;
 
+// TODO: Auto-generated Javadoc
 /**
  * Access to the parts of the request URI that are relevant for requests
  * of function imports.

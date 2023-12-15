@@ -21,20 +21,31 @@ package org.apache.olingo.odata2.api.edm.provider;
 import java.util.Collection;
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class Using.
  */
 public class Using {
 
+  /** The namespace. */
   private String namespace;
+  
+  /** The alias. */
   private String alias;
+  
+  /** The documentation. */
   private Documentation documentation;
+  
+  /** The annotation attributes. */
   private List<AnnotationAttribute> annotationAttributes;
+  
+  /** The annotation elements. */
   private List<AnnotationElement> annotationElements;
 
   /**
-   * Sets the namespace for this {@link Using}
-   * @param namespace
+   * Sets the namespace for this {@link Using}.
+   *
+   * @param namespace the namespace
    * @return {@link Using} for method chaining
    */
   public Using setNamespace(final String namespace) {
@@ -43,8 +54,9 @@ public class Using {
   }
 
   /**
-   * Sets the alias for this {@link Using}
-   * @param alias
+   * Sets the alias for this {@link Using}.
+   *
+   * @param alias the alias
    * @return {@link Using} for method chaining
    */
   public Using setAlias(final String alias) {
@@ -53,8 +65,9 @@ public class Using {
   }
 
   /**
-   * Sets the {@link Documentation} for this {@link Using}
-   * @param documentation
+   * Sets the {@link Documentation} for this {@link Using}.
+   *
+   * @param documentation the documentation
    * @return {@link Using} for method chaining
    */
   public Using setDocumentation(final Documentation documentation) {
@@ -63,8 +76,9 @@ public class Using {
   }
 
   /**
-   * Sets the collection of {@link AnnotationAttribute} for this {@link Using}
-   * @param annotationAttributes
+   * Sets the collection of {@link AnnotationAttribute} for this {@link Using}.
+   *
+   * @param annotationAttributes the annotation attributes
    * @return {@link Using} for method chaining
    */
   public Using setAnnotationAttributes(final List<AnnotationAttribute> annotationAttributes) {
@@ -73,8 +87,9 @@ public class Using {
   }
 
   /**
-   * Sets the collection of {@link AnnotationElement} for this {@link Using}
-   * @param annotationElements
+   * Sets the collection of {@link AnnotationElement} for this {@link Using}.
+   *
+   * @param annotationElements the annotation elements
    * @return {@link Using} for method chaining
    */
   public Using setAnnotationElements(final List<AnnotationElement> annotationElements) {
@@ -83,6 +98,8 @@ public class Using {
   }
 
   /**
+   * Gets the namespace.
+   *
    * @return <b>String</b> namespace
    */
   public String getNamespace() {
@@ -90,6 +107,8 @@ public class Using {
   }
 
   /**
+   * Gets the alias.
+   *
    * @return <b>String</b> alias
    */
   public String getAlias() {
@@ -97,6 +116,8 @@ public class Using {
   }
 
   /**
+   * Gets the documentation.
+   *
    * @return {@link Documentation} documentation
    */
   public Documentation getDocumentation() {
@@ -104,6 +125,8 @@ public class Using {
   }
 
   /**
+   * Gets the annotation attributes.
+   *
    * @return collection of {@link AnnotationAttribute} annotation attributes
    */
   public Collection<AnnotationAttribute> getAnnotationAttributes() {
@@ -111,6 +134,8 @@ public class Using {
   }
 
   /**
+   * Gets the annotation elements.
+   *
    * @return collection of {@link AnnotationElement} annotation elements
    */
   public Collection<AnnotationElement> getAnnotationElements() {

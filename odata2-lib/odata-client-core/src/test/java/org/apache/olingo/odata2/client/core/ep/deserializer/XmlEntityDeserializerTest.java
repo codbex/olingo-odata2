@@ -54,20 +54,28 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class XmlEntityDeserializerTest.
  */
 public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
 
+  /**
+   * Instantiates a new xml entity deserializer test.
+   *
+   * @param type the type
+   */
   public XmlEntityDeserializerTest(final StreamWriterImplType type) {
     super(type);
   }
 
+  /** The Constant LOG. */
   private static final Logger LOG = Logger.getLogger(XmlEntityDeserializerTest.class.getName());
   static {
     LOG.setLevel(Level.OFF);
   }
 
+  /** The Constant EMPLOYEE_1_XML. */
   public static final String EMPLOYEE_1_XML =
       "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
           +
@@ -122,6 +130,7 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
           "  </m:properties>" +
           "</entry>";
 
+  /** The Constant EMPLOYEE_1_ROOM_XML. */
   public static final String EMPLOYEE_1_ROOM_XML =
       "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
           +
@@ -175,6 +184,7 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
           "  </m:properties>" +
           "</entry>";
 
+  /** The Constant EMPLOYEE_1_NULL_ROOM_XML. */
   public static final String EMPLOYEE_1_NULL_ROOM_XML =
       "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
           +
@@ -209,6 +219,7 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
           "  </m:properties>" +
           "</entry>";
 
+  /** The Constant ROOM_1_XML. */
   private static final String ROOM_1_XML =
       "<?xml version='1.0' encoding='UTF-8'?>"
           +
@@ -243,6 +254,7 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
           "  </content>" +
           "</entry>";
 
+  /** The Constant ROOM_1_NULL_EMPLOYEE_XML. */
   private static final String ROOM_1_NULL_EMPLOYEE_XML =
       "<?xml version='1.0' encoding='UTF-8'?>"
           +
@@ -280,6 +292,7 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
           "  </content>" +
           "</entry>";
 
+  /** The Constant PHOTO_XML. */
   private static final String PHOTO_XML =
       "<?xml version=\"1.0\" encoding=\"utf-8\"?>"
           +
@@ -309,6 +322,7 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
           "  </m:properties>" +
           "</entry>";
 
+  /** The Constant PHOTO_XML_INVALID_MAPPING. */
   private static final String PHOTO_XML_INVALID_MAPPING =
       "<?xml version=\"1.0\" encoding=\"utf-8\"?>"
           +
@@ -339,6 +353,11 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
           "  </m:properties>" +
           "</entry>";
 
+  /**
+   * Read content only employee.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readContentOnlyEmployee() throws Exception {
     // prepare
@@ -357,6 +376,11 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
     assertEquals(9, result.getProperties().size());
   }
 
+  /**
+   * Read delta link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readDeltaLink() throws Exception {
     // prepare
@@ -386,6 +410,11 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
     assertEquals("http://thisisadeltalink", deltaLink);
   }
 
+  /**
+   * Test read skip tag.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testReadSkipTag() throws Exception {
     // prepare
@@ -406,6 +435,11 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
     assertEquals(9, properties.size());
   }
 
+  /**
+   * Read content only room.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readContentOnlyRoom() throws Exception {
     // prepare
@@ -425,6 +459,11 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
     assertEquals(4, result.getProperties().size());
   }
 
+  /**
+   * Read content only employee with navigation link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readContentOnlyEmployeeWithNavigationLink() throws Exception {
     // prepare
@@ -447,6 +486,11 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
     assertEquals("Managers('1')", associationUris.get(0));
   }
 
+  /**
+   * Read content only room with navigation link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readContentOnlyRoomWithNavigationLink() throws Exception {
     // prepare
@@ -469,7 +513,11 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
     assertEquals("Buildings('1')", associationUris.get(0));
   }
 
-  /** Teams('1')?$expand=nt_Employees */
+  /**
+   *  Teams('1')?$expand=nt_Employees.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void readTeamWithInlineContent() throws Exception {
@@ -512,6 +560,11 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
     assertEquals("Walldorf", emp2City.get("CityName"));
   }
 
+  /**
+   * Read expanded team.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readExpandedTeam() throws Exception {
     // prepare
@@ -555,6 +608,11 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
     assertEquals("Walldorf", emp2City.get("CityName"));
   }
 
+  /**
+   * Read inline building entry.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readInlineBuildingEntry() throws Exception {
     // prepare
@@ -594,7 +652,11 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
     assertEquals("Rooms('1')/nr_Building", entry.getMetadata().getAssociationUris("nr_Building").get(0));
   }
 
-  /** Teams('1')?$expand=nt_Employees */
+  /**
+   *  Teams('1')?$expand=nt_Employees.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void readWithInlineContent() throws Exception {
@@ -637,7 +699,11 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
     assertEquals("Walldorf", emp2City.get("CityName"));
   }
 
-  /** Teams('1')?$expand=nt_Employees,nt_Employees/ne_Team */
+  /**
+   *  Teams('1')?$expand=nt_Employees,nt_Employees/ne_Team.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readWithDoubleInlineContent() throws Exception {
     // prepare
@@ -683,7 +749,11 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
     assertEquals("Team 1", inlinedTeam.getProperties().get("Name"));
   }
 
-  /** Teams('1')?$expand=nt_Employees,nt_Employees/ne_Team */
+  /**
+   *  Teams('1')?$expand=nt_Employees,nt_Employees/ne_Team.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readWithDoubleInlineContentAndResend() throws Exception {
     // prepare
@@ -729,7 +799,11 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
     assertEquals("Team 1", inlinedTeam.getProperties().get("Name"));
   }
 
-  /** Teams('1')?$expand=nt_Employees,nt_Employees/ne_Team */
+  /**
+   *  Teams('1')?$expand=nt_Employees,nt_Employees/ne_Team.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void readWithDoubleInlineContents() throws Exception {
@@ -774,6 +848,11 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
     assertEquals("Team 1", inlinedTeam.getProperties().get("Name"));
   }
 
+  /**
+   * Read with inline content ignored.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readWithInlineContentIgnored() throws Exception {
     // prepare
@@ -799,9 +878,9 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
   }
 
   /**
-   * Read an inline Room at an Employee
-   * 
-   * @throws Exception
+   * Read an inline Room at an Employee.
+   *
+   * @throws Exception the exception
    */
   @Test
   public void readWithInlineContentEmployeeRoomEntry() throws Exception {
@@ -840,6 +919,8 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
 
   /**
    * Reads an inline Room at an Employee with specially formatted XML (see issue ODATAFORSAP-92).
+   *
+   * @throws Exception the exception
    */
   @Test
   public void readWithInlineContentEmployeeRoomEntrySpecialXml() throws Exception {
@@ -871,6 +952,8 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
   /**
    * Reads an employee with inlined but <code>NULL</code> room navigation property
    * (which has {@link com.sap.core.odata.api.edm.EdmMultiplicity#ONE EdmMultiplicity#ONE}).
+   *
+   * @throws Exception the exception
    */
   @Test
   public void readWithInlineContentEmployeeNullRoomEntry() throws Exception {
@@ -897,6 +980,8 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
   /**
    * Reads an employee with inlined but <code>NULL</code> room navigation property
    * (which has {@link com.sap.core.odata.api.edm.EdmMultiplicity#ONE EdmMultiplicity#ONE}).
+   *
+   * @throws Exception the exception
    */
   @Test
   public void readWithInlineContentEmployeeNullRoomEntrySpecialXmlFormat() throws Exception {
@@ -923,6 +1008,8 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
   /**
    * Reads a room with inlined but <code>NULL</code> employees navigation property
    * (which has {@link com.sap.core.odata.api.edm.EdmMultiplicity#MANY EdmMultiplicity#MANY}).
+   *
+   * @throws Exception the exception
    */
   @Test
   public void readWithInlineContentRoomNullEmployeesEntry() throws Exception {
@@ -947,9 +1034,9 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
 
   /**
    * Teams('1')?$expand=nt_Employees
-   * -> Remove 'feed' start and end tags around expanded/inlined employees
-   * 
-   * @throws Exception
+   * -> Remove 'feed' start and end tags around expanded/inlined employees.
+   *
+   * @throws Exception the exception
    */
   @Test(expected = EntityProviderException.class)
   public void validateFeedForInlineContent() throws Exception {
@@ -969,9 +1056,9 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
 
   /**
    * Teams('1')?$expand=nt_Employees
-   * -> Remove 'type' attribute at expanded/inlined employees link tag
-   * 
-   * @throws Exception
+   * -> Remove 'type' attribute at expanded/inlined employees link tag.
+   *
+   * @throws Exception the exception
    */
   @Test(expected = EntityProviderException.class)
   public void validateMissingTypeAttributeForInlineContent() throws Exception {
@@ -990,9 +1077,9 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
 
   /**
    * Teams('1')?$expand=nt_Employees
-   * -> Replaced parameter 'type=feed' with 'type=entry' attribute at expanded/inlined employees link tag
-   * 
-   * @throws Exception
+   * -> Replaced parameter 'type=feed' with 'type=entry' attribute at expanded/inlined employees link tag.
+   *
+   * @throws Exception the exception
    */
   @Test(expected = EntityProviderException.class)
   public void validateWrongTypeAttributeForInlineContent() throws Exception {
@@ -1010,9 +1097,9 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
 
   /**
    * Teams('1')?$expand=nt_Employees
-   * -> Replaced parameter 'type=feed' with 'type=entry' attribute at expanded/inlined employees link tag
-   * 
-   * @throws Exception
+   * -> Replaced parameter 'type=feed' with 'type=entry' attribute at expanded/inlined employees link tag.
+   *
+   * @throws Exception the exception
    */
   @Test(expected = EntityProviderException.class)
   public void validateWrongTypeAttributeForInlineContentMany() throws Exception {
@@ -1030,8 +1117,8 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
 
   /**
    * We only support <code>UTF-8</code> as character encoding.
-   * 
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test(expected = EntityProviderException.class)
   public void validationOfWrongXmlEncodingUtf32() throws Exception {
@@ -1053,8 +1140,8 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
 
   /**
    * We only support <code>UTF-8</code> as character encoding.
-   * 
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test(expected = EntityProviderException.class)
   public void validationOfWrongXmlEncodingIso8859_1() throws Exception {
@@ -1077,8 +1164,8 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
   /**
    * Character encodings are case insensitive.
    * Hence <code>uTf-8</code> should work as well as <code>UTF-8</code>.
-   * 
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test
   public void validationCaseInsensitiveXmlEncodingUtf8() throws Exception {
@@ -1119,8 +1206,8 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
    * exception.
    * 
    * OData specification v2: 2.2.6.2.2 Entity Type (as an Atom Entry Element)
-   * 
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test(expected = EntityProviderException.class)
   public void validationOfWrongPropertiesTagPositionForNoneMediaLinkEntry() throws Exception {
@@ -1152,8 +1239,8 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
    * 
    * OData specification v2: 2.2.6.2.2 Entity Type (as an Atom Entry Element)
    * And RFC5023 [section 4.2]
-   * 
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test(expected = EntityProviderException.class)
   public void validationOfWrongPropertiesTagPositionForMediaLinkEntry() throws Exception {
@@ -1181,6 +1268,11 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
         .addContent("content"));
   }
 
+  /**
+   * Validation of namespaces success.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void validationOfNamespacesSuccess() throws Exception {
     String roomWithValidNamespaces =
@@ -1213,6 +1305,11 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
     assertNotNull(result);
   }
 
+  /**
+   * Validation of namespace at properties success.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void validationOfNamespaceAtPropertiesSuccess() throws Exception {
     String roomWithValidNamespaces =
@@ -1240,6 +1337,11 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
     assertNotNull(result);
   }
 
+  /**
+   * Validation of namespace at tags missing.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void validationOfNamespaceAtTagsMissing() throws Exception {
     String roomWithValidNamespaces =
@@ -1263,8 +1365,8 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
 
   /**
    * Use different namespace prefixes for <code>metadata (m)</code> and <code>data (d)</code>.
-   * 
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test
   public void validationOfDifferentNamespacesPrefixSuccess() throws Exception {
@@ -1303,8 +1405,8 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
 
   /**
    * Add <code>unknown property</code> in own namespace which is defined in entry tag.
-   * 
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test
   public void validationOfUnknownPropertyOwnNamespaceSuccess() throws Exception {
@@ -1345,8 +1447,8 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
 
   /**
    * Is allowed because <code>Id</code> is in default namespace (<code>xmlns=\"http://www.w3.org/2005/Atom\"</code>)
-   * 
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test
   public void validationOfUnknownPropertyDefaultNamespaceSuccess() throws Exception {
@@ -1383,8 +1485,8 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
 
   /**
    * Add <code>unknown property</code> in own namespace which is defined directly in unknown tag.
-   * 
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test
   public void validationOfUnknownPropertyInlineNamespaceSuccess() throws Exception {
@@ -1437,6 +1539,11 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
     assertNotNull(result);
   }
 
+  /**
+   * Validation of namespaces missing xmlns.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void validationOfNamespacesMissingXmlns() throws Exception {
     String roomWithValidNamespaces =
@@ -1458,8 +1565,8 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
 
   /**
    * Double occurrence of <code>d:Name</code> tag must result in an exception.
-   * 
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test(expected = EntityProviderException.class)
   public void validationOfDuplicatedPropertyException() throws Exception {
@@ -1492,8 +1599,8 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
 
   /**
    * Double occurrence of <code>Name</code> tag within different namespace is allowed.
-   * 
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test
   public void validationOfDoublePropertyDifferentNamespace() throws Exception {
@@ -1533,8 +1640,8 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
 
   /**
    * Double occurrence of <code>Name</code> tag within ignored/unknown property AND different namespace is allowed.
-   * 
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test
   public void validationOfDoublePropertyDifferentTagHierachy() throws Exception {
@@ -1576,8 +1683,8 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
 
   /**
    * Double occurrence of <code>d:Name</code> tag within an unknown (and hence ignored) property is allowed.
-   * 
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test
   public void validationOfDoublePropertyDifferentTagHierachyD_Namespace() throws Exception {
@@ -1617,6 +1724,11 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
     assertNotNull(result);
   }
 
+  /**
+   * Validation of namespaces missing M namespace at properties.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void validationOfNamespacesMissingM_NamespaceAtProperties() throws Exception {
     String roomWithValidNamespaces =
@@ -1645,8 +1757,8 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
 
   /**
    * Missing _d_ namespace at key property/tag (_id_) is allowed.
-   * 
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test
   public void validationOfNamespacesMissingD_NamespaceAtKeyPropertyTag() throws Exception {
@@ -1685,7 +1797,8 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
 
   /**
    * Missing _d_ namespace at non-nullable property/tag (_Version_) is allowed.
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   public void validationOfNamespacesMissingD_NamespaceAtNonNullableTag() throws Exception {
     String roomWithValidNamespaces =
@@ -1724,11 +1837,28 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
     assertNotNull(result);
   }
 
+  /**
+   * Read and expect exception.
+   *
+   * @param entitySet the entity set
+   * @param reqContent the req content
+   * @param messageReference the message reference
+   * @throws ODataMessageException the o data message exception
+   */
   private void readAndExpectException(final EdmEntitySet entitySet, final InputStream reqContent,
       final MessageReference messageReference) throws ODataMessageException {
     readAndExpectException(entitySet, reqContent, true, messageReference);
   }
 
+  /**
+   * Read and expect exception.
+   *
+   * @param entitySet the entity set
+   * @param reqContent the req content
+   * @param merge the merge
+   * @param messageReference the message reference
+   * @throws ODataMessageException the o data message exception
+   */
   private void readAndExpectException(final EdmEntitySet entitySet, final InputStream reqContent, final boolean merge,
       final MessageReference messageReference) throws ODataMessageException {
     try {
@@ -1749,6 +1879,11 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
     }
   }
 
+  /**
+   * Read entry atom properties.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readEntryAtomProperties() throws Exception {
     // prepare
@@ -1793,6 +1928,11 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
     assertEquals("1", data.get("TeamId"));
   }
 
+  /**
+   * Read entry links.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readEntryLinks() throws Exception {
     // prepare
@@ -1818,6 +1958,11 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
     assertEquals("Employees('1')/ne_Team", associationUris.get(0));
   }
 
+  /**
+   * Test read feed.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void testReadFeed() throws Exception {
@@ -1865,6 +2010,11 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
     assertEquals("Employees('1')/$value", properties.get("ImageUrl"));
   }
 
+  /**
+   * Test read feed with inline count and next link.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void testReadFeedWithInlineCountAndNextLink() throws Exception {
@@ -1912,6 +2062,11 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
     assertEquals("Employees('1')/$value", properties.get("ImageUrl"));
   }
 
+  /**
+   * Test read entry.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void testReadEntry() throws Exception {
@@ -1948,6 +2103,11 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
     assertEquals("/SAP/PUBLIC/BC/NWDEMO_MODEL/IMAGES/Employee_1.png", properties.get("ImageUrl"));
   }
 
+  /**
+   * Test read entry with large property.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void testReadEntryWithLargeProperty() throws Exception {
@@ -1987,7 +2147,8 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
 
   /**
    * Missing 'key' properties are allowed for validation against Edm model.
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test
   @SuppressWarnings("unchecked")
@@ -2025,6 +2186,11 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
     assertEquals("/SAP/PUBLIC/BC/NWDEMO_MODEL/IMAGES/Employee_1.png", properties.get("ImageUrl"));
   }
 
+  /**
+   * Read entry null property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readEntryNullProperty() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Employees");
@@ -2045,6 +2211,11 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
     assertNull(properties.get("EntryDate"));
   }
 
+  /**
+   * Read entry too many values.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void readEntryTooManyValues() throws Exception {
     // prepare
@@ -2070,6 +2241,11 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
     }
   }
 
+  /**
+   * Test read entry with merge.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void testReadEntryWithMerge() throws Exception {
@@ -2110,6 +2286,11 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
     assertEquals("/SAP/PUBLIC/BC/NWDEMO_MODEL/IMAGES/Employee_1.png", properties.get("ImageUrl"));
   }
 
+  /**
+   * Test read entry with merge and mappings.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void testReadEntryWithMergeAndMappings() throws Exception {
@@ -2154,6 +2335,11 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
     assertEquals("/SAP/PUBLIC/BC/NWDEMO_MODEL/IMAGES/Employee_1.png", properties.get("ImageUrl"));
   }
 
+  /**
+   * Test read entry request.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void testReadEntryRequest() throws Exception {
@@ -2190,6 +2376,11 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
     assertEquals("/SAP/PUBLIC/BC/NWDEMO_MODEL/IMAGES/Employee_1.png", properties.get("ImageUrl"));
   }
 
+  /**
+   * Test read entry request null mapping.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void testReadEntryRequestNullMapping() throws Exception {
@@ -2226,6 +2417,11 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
     assertEquals("/SAP/PUBLIC/BC/NWDEMO_MODEL/IMAGES/Employee_1.png", properties.get("ImageUrl"));
   }
 
+  /**
+   * Test read entry request empty mapping.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void testReadEntryRequestEmptyMapping() throws Exception {
@@ -2262,6 +2458,11 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
     assertEquals("/SAP/PUBLIC/BC/NWDEMO_MODEL/IMAGES/Employee_1.png", properties.get("ImageUrl"));
   }
 
+  /**
+   * Test read entry request invalid mapping.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void testReadEntryRequestInvalidMapping() throws Exception {
     XmlEntityDeserializer xec = new XmlEntityDeserializer();
@@ -2281,6 +2482,11 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
     assertEquals(9, properties.size());
   }
 
+  /**
+   * Test read entry request object mapping.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testReadEntryRequestObjectMapping() throws Exception {
     XmlEntityDeserializer xec = new XmlEntityDeserializer();
@@ -2306,6 +2512,11 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
     assertEquals("1", properties.get("TeamId"));
   }
 
+  /**
+   * Test read entry request with mapping.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void testReadEntryRequestWithMapping() throws Exception {
@@ -2342,6 +2553,11 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
     assertEquals("/SAP/PUBLIC/BC/NWDEMO_MODEL/IMAGES/Employee_1.png", properties.get("ImageUrl"));
   }
 
+  /**
+   * Read customizable feed mappings.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readCustomizableFeedMappings() throws Exception {
     XmlEntityDeserializer xec = new XmlEntityDeserializer();
@@ -2365,6 +2581,11 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
     assertNull(data.get("ignore"));
   }
 
+  /**
+   * Read customizable feed mappings with merge semantic.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readCustomizableFeedMappingsWithMergeSemantic() throws Exception {
     XmlEntityDeserializer xec = new XmlEntityDeserializer();
@@ -2389,6 +2610,11 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
     assertNull(data.get("ignore"));
   }
 
+  /**
+   * Read customizable feed mappings bad request.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void readCustomizableFeedMappingsBadRequest() throws Exception {
     EdmEntitySet entitySet = MockFacade.getMockEdm().getEntityContainer("Container2").getEntitySet("Photos");
@@ -2398,6 +2624,11 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
         EntityProviderException.INVALID_PROPERTY.addContent("ignore"));
   }
 
+  /**
+   * Read incomplete entry.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readIncompleteEntry() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");
@@ -2426,6 +2657,11 @@ public class XmlEntityDeserializerTest extends AbstractXmlDeserializerTest {
     assertFalse(properties.containsKey("Seats"));
   }
 
+  /**
+   * Read incomplete entry merge.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readIncompleteEntryMerge() throws Exception {
     XmlEntityDeserializer xec = new XmlEntityDeserializer();

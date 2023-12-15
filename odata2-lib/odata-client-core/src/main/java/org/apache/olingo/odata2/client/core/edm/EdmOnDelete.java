@@ -25,27 +25,36 @@ import org.apache.olingo.odata2.api.edm.EdmAnnotationAttribute;
 import org.apache.olingo.odata2.api.edm.EdmAnnotationElement;
 import org.apache.olingo.odata2.client.api.edm.EdmDocumentation;
 
+// TODO: Auto-generated Javadoc
 /**
- * Objects of this class represent an OnDelete Action
- * 
+ * Objects of this class represent an OnDelete Action.
  */
 public interface EdmOnDelete {
+  
   /**
+   * Gets the action.
+   *
    * @return {@link EdmAction} action
    */
   public EdmAction getAction() ;
 
   /**
+   * Gets the documentation.
+   *
    * @return {@link Documentation} documentation
    */
   public EdmDocumentation getDocumentation() ;
 
   /**
+   * Gets the annotation attributes.
+   *
    * @return List of {@link AnnotationAttribute} annotation attributes
    */
   public List<EdmAnnotationAttribute> getAnnotationAttributes();
 
   /**
+   * Gets the annotation elements.
+   *
    * @return List of {@link AnnotationElement} annotation elements
    */
   public List<EdmAnnotationElement> getAnnotationElements() ;

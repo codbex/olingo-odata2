@@ -21,6 +21,7 @@ package org.apache.olingo.odata2.api.uri;
 import java.net.URI;
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
 /**
  * Object to keep OData URI information.
  * @org.apache.olingo.odata2.DoNotImplement

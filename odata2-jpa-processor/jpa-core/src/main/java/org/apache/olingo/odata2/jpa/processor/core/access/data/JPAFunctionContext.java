@@ -42,14 +42,33 @@ import org.apache.olingo.odata2.jpa.processor.api.exception.ODataJPAModelExcepti
 import org.apache.olingo.odata2.jpa.processor.api.exception.ODataJPARuntimeException;
 import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmMapping;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAFunctionContext.
+ */
 public class JPAFunctionContext extends JPAMethodContext {
 
+  /**
+   * The Class JPAFunctionContextBuilder.
+   */
   public class JPAFunctionContextBuilder extends JPAMethodContextBuilder {
 
+    /** The function view. */
     protected GetFunctionImportUriInfo functionView;
+    
+    /** The function import. */
     private EdmFunctionImport functionImport;
+    
+    /** The mapping. */
     private EdmMapping mapping;
 
+    /**
+     * Builds the.
+     *
+     * @return the JPA method context
+     * @throws ODataJPAModelException the o data JPA model exception
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
+     */
     @Override
     public JPAMethodContext build() throws ODataJPAModelException, ODataJPARuntimeException {
       if (functionView != null) {
@@ -82,6 +101,11 @@ public class JPAFunctionContext extends JPAMethodContext {
       return JPAFunctionContext.this;
     }
 
+    /**
+     * Sets the results view.
+     *
+     * @param resultsView the new results view
+     */
     @Override
     protected void setResultsView(final Object resultsView) {
       if (resultsView instanceof GetFunctionImportUriInfo) {
@@ -90,6 +114,16 @@ public class JPAFunctionContext extends JPAMethodContext {
     
     }
 
+    /**
+     * Generate JPA function.
+     *
+     * @return the JPA function
+     * @throws EdmException the edm exception
+     * @throws NoSuchMethodException the no such method exception
+     * @throws SecurityException the security exception
+     * @throws ODataJPAModelException the o data JPA model exception
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
+     */
     private JPAFunction generateJPAFunction() throws EdmException, NoSuchMethodException, SecurityException,
         ODataJPAModelException, ODataJPARuntimeException {
 
@@ -101,6 +135,12 @@ public class JPAFunctionContext extends JPAMethodContext {
       return new JPAFunction(method, parameterTypes, returnType, args);
     }
 
+    /**
+     * Gets the arguments.
+     *
+     * @return the arguments
+     * @throws EdmException the edm exception
+     */
     private Object[] getArguments() throws EdmException {
       Map<String, EdmLiteral> edmArguments = functionView.getFunctionImportParameters();
 
@@ -121,6 +161,15 @@ public class JPAFunctionContext extends JPAMethodContext {
 
     }
 
+    /**
+     * Convert argument.
+     *
+     * @param edmLiteral the edm literal
+     * @param facets the facets
+     * @param targetType the target type
+     * @return the object
+     * @throws EdmSimpleTypeException the edm simple type exception
+     */
     private Object convertArgument(final EdmLiteral edmLiteral, final EdmFacets facets, final Class<?> targetType)
         throws EdmSimpleTypeException {
       Object value = null;
@@ -131,6 +180,12 @@ public class JPAFunctionContext extends JPAMethodContext {
       return value;
     }
 
+    /**
+     * Gets the parameter types.
+     *
+     * @return the parameter types
+     * @throws EdmException the edm exception
+     */
     private Class<?>[] getParameterTypes() throws EdmException {
 
       Class<?>[] parameterTypes = new Class<?>[functionImport.getParameterNames().size()];
@@ -143,6 +198,14 @@ public class JPAFunctionContext extends JPAMethodContext {
       return parameterTypes;
     }
 
+    /**
+     * Gets the method.
+     *
+     * @param parameterTypes the parameter types
+     * @return the method
+     * @throws NoSuchMethodException the no such method exception
+     * @throws SecurityException the security exception
+     */
     private Method getMethod(final Class<?>[] parameterTypes) throws NoSuchMethodException, SecurityException {
 
       Class<?> type = ((JPAEdmMapping) mapping).getJPAType();
@@ -152,10 +215,29 @@ public class JPAFunctionContext extends JPAMethodContext {
       return method;
     }
 
+    /**
+     * Gets the return type.
+     *
+     * @return the return type
+     * @throws ODataJPAModelException the o data JPA model exception
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
+     * @throws EdmException the edm exception
+     */
     private Type getReturnType() throws ODataJPAModelException, ODataJPARuntimeException, EdmException {
       return null;
     }
 
+    /**
+     * Generate enclosing object.
+     *
+     * @return the object
+     * @throws InstantiationException the instantiation exception
+     * @throws IllegalAccessException the illegal access exception
+     * @throws IllegalArgumentException the illegal argument exception
+     * @throws InvocationTargetException the invocation target exception
+     * @throws NoSuchMethodException the no such method exception
+     * @throws SecurityException the security exception
+     */
     private Object generateEnclosingObject() throws InstantiationException, IllegalAccessException,
         IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 

@@ -20,6 +20,9 @@ package org.apache.olingo.odata2.testutil.mock;
 
 import org.apache.olingo.odata2.api.annotation.edm.EdmEntityType;
 
+/**
+ * The Class AnnotatedEntity.
+ */
 @EdmEntityType
 public class AnnotatedEntity {
 

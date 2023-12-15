@@ -18,76 +18,87 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.client.api.uri;
 
+// TODO: Auto-generated Javadoc
 /**
  * URI Segment types.
  */
 public enum SegmentType {
 
-  /**
-   * Initial will be the builder state to begin with a service root url
-   */
+  /** Initial will be the builder state to begin with a service root url. */
   INITIAL,
-  /**
-   * When we append entity set state is changed to ENTITYSET
-   */
+  
+  /** When we append entity set state is changed to ENTITYSET. */
   ENTITYSET,
-  /**
-   * 
-   */
+  
+  /** The entity. */
   ENTITY,
-  /**
-   * When we append simple property state is changed to SIMPLEPROPERTY
-   */
+  
+  /** When we append simple property state is changed to SIMPLEPROPERTY. */
   SIMPLEPROPERTY,
-  /**
-   * When there is a key in segment
-   */
+  
+  /** When there is a key in segment. */
   KEY,
-  /**
-   * When we append simple complex state is changed to COMPLEXPROPERTY
-   */
+  
+  /** When we append simple complex state is changed to COMPLEXPROPERTY. */
   COMPLEXPROPERTY,
-  /**
-   * When there is navigation to many then the state is NAVIGATION_TO_MANY
-   */
+  
+  /** When there is navigation to many then the state is NAVIGATION_TO_MANY. */
   NAVIGATION_TO_MANY,
-  /**
-   * When there is navigation to many with a key then the state is
-   * NAVIGATION_TO_MANY_WITH_KEY
-   */
+  
+  /** When there is navigation to many with a key then the state is NAVIGATION_TO_MANY_WITH_KEY. */
   NAVIGATION_TO_MANY_WITH_KEY,
-  /**
-   * When there is navigation to one then the state is NAVIGATION_TO_ONE
-   */
+  
+  /** When there is navigation to one then the state is NAVIGATION_TO_ONE. */
   NAVIGATION_TO_ONE,
-  /**
-   * When there is count query option
-   */
+  
+  /** When there is count query option. */
   COUNT("$count"),
-  /**
-   * When there is a value query option
-   */
+  
+  /** When there is a value query option. */
   VALUE("$value"),
-  /**
-   * When there is a metadata uri segment
-   */
+  
+  /** When there is a metadata uri segment. */
   METADATA("$metadata"),
+  
+  /** The property. */
   PROPERTY,
+  
+  /** The navigation. */
   NAVIGATION,
+  
+  /** The functionimport. */
   FUNCTIONIMPORT,
+  
+  /** The functionimport with key. */
   FUNCTIONIMPORT_WITH_KEY,
+  
+  /** The functionimport many. */
   FUNCTIONIMPORT_MANY;
 
+  /** The value. */
   private final String value;
 
+  /**
+   * Instantiates a new segment type.
+   */
   private SegmentType() {
     this.value = "";
   }
 
+  /**
+   * Instantiates a new segment type.
+   *
+   * @param value the value
+   */
   private SegmentType(final String value) {
     this.value = value;
   }
 
+  /**
+   * Gets the value.
+   *
+   * @return the value
+   */
   public String getValue() {
     return value;
   }

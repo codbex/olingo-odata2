@@ -40,26 +40,61 @@ import org.apache.olingo.odata2.api.exception.ODataException;
 import org.apache.olingo.odata2.api.exception.ODataNotFoundException;
 import org.apache.olingo.odata2.api.exception.ODataNotImplementedException;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AnnotationInMemoryDs.
+ */
 public class AnnotationInMemoryDs implements DataSource {
 
+  /** The Constant ANNOTATION_HELPER. */
   private static final AnnotationHelper ANNOTATION_HELPER = new AnnotationHelper();
+  
+  /** The data stores. */
   private final Map<String, DataStore<Object>> dataStores = new HashMap<String, DataStore<Object>>();
+  
+  /** The persist in memory. */
   private final boolean persistInMemory;
 
+  /**
+   * Instantiates a new annotation in memory ds.
+   *
+   * @param annotatedClasses the annotated classes
+   * @throws ODataException the o data exception
+   */
   public AnnotationInMemoryDs(final Collection<Class<?>> annotatedClasses) throws ODataException {
     this(annotatedClasses, true);
   }
 
+  /**
+   * Instantiates a new annotation in memory ds.
+   *
+   * @param annotatedClasses the annotated classes
+   * @param persistInMemory the persist in memory
+   * @throws ODataException the o data exception
+   */
   public AnnotationInMemoryDs(final Collection<Class<?>> annotatedClasses, final boolean persistInMemory)
       throws ODataException {
     this.persistInMemory = persistInMemory;
     init(annotatedClasses);
   }
 
+  /**
+   * Instantiates a new annotation in memory ds.
+   *
+   * @param packageToScan the package to scan
+   * @throws ODataException the o data exception
+   */
   public AnnotationInMemoryDs(final String packageToScan) throws ODataException {
     this(packageToScan, true);
   }
 
+  /**
+   * Instantiates a new annotation in memory ds.
+   *
+   * @param packageToScan the package to scan
+   * @param persistInMemory the persist in memory
+   * @throws ODataException the o data exception
+   */
   public AnnotationInMemoryDs(final String packageToScan, final boolean persistInMemory) throws ODataException {
     this.persistInMemory = persistInMemory;
     List<Class<?>> foundClasses = ClassHelper.loadClasses(packageToScan, new ClassHelper.ClassValidator() {
@@ -72,6 +107,12 @@ public class AnnotationInMemoryDs implements DataSource {
     init(foundClasses);
   }
 
+  /**
+   * Inits the.
+   *
+   * @param annotatedClasses the annotated classes
+   * @throws ODataException the o data exception
+   */
   @SuppressWarnings("unchecked")
   private void init(final Collection<Class<?>> annotatedClasses) throws ODataException {
     try {
@@ -90,12 +131,29 @@ public class AnnotationInMemoryDs implements DataSource {
     }
   }
 
+  /**
+   * Gets the data store.
+   *
+   * @param <T> the generic type
+   * @param clazz the clazz
+   * @return the data store
+   */
   @SuppressWarnings("unchecked")
   public <T> DataStore<T> getDataStore(final Class<T> clazz) {
     String entitySetName = ANNOTATION_HELPER.extractEntitySetName(clazz);
     return (DataStore<T>) dataStores.get(entitySetName);
   }
 
+  /**
+   * Read data.
+   *
+   * @param entitySet the entity set
+   * @return the list
+   * @throws ODataNotImplementedException the o data not implemented exception
+   * @throws ODataNotFoundException the o data not found exception
+   * @throws EdmException the edm exception
+   * @throws ODataApplicationException the o data application exception
+   */
   @Override
   public List<?> readData(final EdmEntitySet entitySet) throws ODataNotImplementedException,
       ODataNotFoundException, EdmException, ODataApplicationException {
@@ -108,6 +166,16 @@ public class AnnotationInMemoryDs implements DataSource {
     throw new ODataNotFoundException(ODataNotFoundException.ENTITY);
   }
 
+  /**
+   * Read data.
+   *
+   * @param entitySet the entity set
+   * @param keys the keys
+   * @return the object
+   * @throws ODataNotFoundException the o data not found exception
+   * @throws EdmException the edm exception
+   * @throws ODataApplicationException the o data application exception
+   */
   @Override
   public Object readData(final EdmEntitySet entitySet, final Map<String, Object> keys)
       throws ODataNotFoundException, EdmException, ODataApplicationException {
@@ -126,6 +194,18 @@ public class AnnotationInMemoryDs implements DataSource {
     throw new ODataNotFoundException(ODataNotFoundException.ENTITY);
   }
 
+  /**
+   * Read data.
+   *
+   * @param function the function
+   * @param parameters the parameters
+   * @param keys the keys
+   * @return the object
+   * @throws ODataNotImplementedException the o data not implemented exception
+   * @throws ODataNotFoundException the o data not found exception
+   * @throws EdmException the edm exception
+   * @throws ODataApplicationException the o data application exception
+   */
   @Override
   public Object readData(final EdmFunctionImport function, final Map<String, Object> parameters,
       final Map<String, Object> keys)
@@ -133,6 +213,19 @@ public class AnnotationInMemoryDs implements DataSource {
     throw new ODataNotImplementedException(ODataNotImplementedException.COMMON);
   }
 
+  /**
+   * Read related data.
+   *
+   * @param sourceEntitySet the source entity set
+   * @param sourceData the source data
+   * @param targetEntitySet the target entity set
+   * @param targetKeys the target keys
+   * @return the object
+   * @throws ODataNotImplementedException the o data not implemented exception
+   * @throws ODataNotFoundException the o data not found exception
+   * @throws EdmException the edm exception
+   * @throws ODataApplicationException the o data application exception
+   */
   @Override
   public Object readRelatedData(final EdmEntitySet sourceEntitySet, final Object sourceData,
       final EdmEntitySet targetEntitySet,
@@ -160,13 +253,13 @@ public class AnnotationInMemoryDs implements DataSource {
   }
 
   /**
-   * Read the result data from the target store based on <code>sourceData</code> and <code>sourceField</code>
-   * 
-   * @param targetStore
-   * @param sourceData
-   * @param sourceField
-   * @return
-   * @throws DataStoreException
+   * Read the result data from the target store based on <code>sourceData</code> and <code>sourceField</code>.
+   *
+   * @param targetStore the target store
+   * @param sourceData the source data
+   * @param sourceField the source field
+   * @return the list
+   * @throws DataStoreException the data store exception
    */
   private List<Object> readResultData(final DataStore<?> targetStore, final Object sourceData, final Field sourceField)
       throws DataStoreException {
@@ -193,13 +286,13 @@ public class AnnotationInMemoryDs implements DataSource {
   /**
    * Extract the <code>result data</code> from the <code>resultData</code> list based on
    * <code>navigation information</code> and <code>targetKeys</code>.
-   * 
-   * @param targetStore
-   * @param targetKeys
-   * @param navInfo
-   * @param resultData
-   * @return
-   * @throws DataStoreException
+   *
+   * @param targetStore the target store
+   * @param targetKeys the target keys
+   * @param navInfo the nav info
+   * @param resultData the result data
+   * @return the object
+   * @throws DataStoreException the data store exception
    */
   private Object extractResultData(final DataStore<?> targetStore, final Map<String, Object> targetKeys,
       final AnnotatedNavInfo navInfo, final List<Object> resultData) throws DataStoreException {
@@ -224,6 +317,17 @@ public class AnnotationInMemoryDs implements DataSource {
     }
   }
 
+  /**
+   * Read binary data.
+   *
+   * @param entitySet the entity set
+   * @param mediaLinkEntryData the media link entry data
+   * @return the binary data
+   * @throws ODataNotImplementedException the o data not implemented exception
+   * @throws ODataNotFoundException the o data not found exception
+   * @throws EdmException the edm exception
+   * @throws ODataApplicationException the o data application exception
+   */
   @Override
   public BinaryData readBinaryData(final EdmEntitySet entitySet, final Object mediaLinkEntryData)
       throws ODataNotImplementedException, ODataNotFoundException, EdmException, ODataApplicationException {
@@ -243,6 +347,15 @@ public class AnnotationInMemoryDs implements DataSource {
     return new BinaryData((byte[]) data, String.valueOf(mimeType));
   }
 
+  /**
+   * New data object.
+   *
+   * @param entitySet the entity set
+   * @return the object
+   * @throws ODataNotImplementedException the o data not implemented exception
+   * @throws EdmException the edm exception
+   * @throws ODataApplicationException the o data application exception
+   */
   @Override
   public Object newDataObject(final EdmEntitySet entitySet)
       throws ODataNotImplementedException, EdmException, ODataApplicationException {
@@ -255,6 +368,17 @@ public class AnnotationInMemoryDs implements DataSource {
     throw new AnnotationRuntimeException("No DataStore found for entitySet with name: " + entitySet.getName());
   }
 
+  /**
+   * Write binary data.
+   *
+   * @param entitySet the entity set
+   * @param mediaEntityInstance the media entity instance
+   * @param binaryData the binary data
+   * @throws ODataNotImplementedException the o data not implemented exception
+   * @throws ODataNotFoundException the o data not found exception
+   * @throws EdmException the edm exception
+   * @throws ODataApplicationException the o data application exception
+   */
   @Override
   public void writeBinaryData(final EdmEntitySet entitySet, final Object mediaEntityInstance,
       final BinaryData binaryData)
@@ -280,12 +404,13 @@ public class AnnotationInMemoryDs implements DataSource {
   /**
    * <p>Updates a single data object identified by the specified entity set and key fields of
    * the data object.</p>
+   *
    * @param entitySet the {@link EdmEntitySet} the object must correspond to
    * @param data the data object of the new entity
    * @return updated data object instance
-   * @throws org.apache.olingo.odata2.api.exception.ODataNotImplementedException
-   * @throws org.apache.olingo.odata2.api.edm.EdmException
-   * @throws org.apache.olingo.odata2.api.exception.ODataApplicationException
+   * @throws ODataNotImplementedException the o data not implemented exception
+   * @throws EdmException the edm exception
+   * @throws ODataApplicationException the o data application exception
    */
   public Object updateData(final EdmEntitySet entitySet, final Object data)
       throws ODataNotImplementedException, EdmException, ODataApplicationException {
@@ -294,6 +419,16 @@ public class AnnotationInMemoryDs implements DataSource {
     return dataStore.update(data);
   }
 
+  /**
+   * Delete data.
+   *
+   * @param entitySet the entity set
+   * @param keys the keys
+   * @throws ODataNotImplementedException the o data not implemented exception
+   * @throws ODataNotFoundException the o data not found exception
+   * @throws EdmException the edm exception
+   * @throws ODataApplicationException the o data application exception
+   */
   @Override
   public void deleteData(final EdmEntitySet entitySet, final Map<String, Object> keys)
       throws ODataNotImplementedException, ODataNotFoundException, EdmException, ODataApplicationException {
@@ -303,6 +438,15 @@ public class AnnotationInMemoryDs implements DataSource {
     dataStore.delete(keyInstance);
   }
 
+  /**
+   * Creates the data.
+   *
+   * @param entitySet the entity set
+   * @param data the data
+   * @throws ODataNotImplementedException the o data not implemented exception
+   * @throws EdmException the edm exception
+   * @throws ODataApplicationException the o data application exception
+   */
   @Override
   public void createData(final EdmEntitySet entitySet, final Object data)
       throws ODataNotImplementedException, EdmException, ODataApplicationException {
@@ -311,6 +455,18 @@ public class AnnotationInMemoryDs implements DataSource {
     dataStore.create(data);
   }
 
+  /**
+   * Delete relation.
+   *
+   * @param sourceEntitySet the source entity set
+   * @param sourceData the source data
+   * @param targetEntitySet the target entity set
+   * @param targetKeys the target keys
+   * @throws ODataNotImplementedException the o data not implemented exception
+   * @throws ODataNotFoundException the o data not found exception
+   * @throws EdmException the edm exception
+   * @throws ODataApplicationException the o data application exception
+   */
   @Override
   public void deleteRelation(final EdmEntitySet sourceEntitySet, final Object sourceData,
       final EdmEntitySet targetEntitySet,
@@ -319,6 +475,18 @@ public class AnnotationInMemoryDs implements DataSource {
     throw new ODataNotImplementedException(ODataNotImplementedException.COMMON);
   }
 
+  /**
+   * Write relation.
+   *
+   * @param sourceEntitySet the source entity set
+   * @param sourceEntity the source entity
+   * @param targetEntitySet the target entity set
+   * @param targetEntityValues the target entity values
+   * @throws ODataNotImplementedException the o data not implemented exception
+   * @throws ODataNotFoundException the o data not found exception
+   * @throws EdmException the edm exception
+   * @throws ODataApplicationException the o data application exception
+   */
   @Override
   public void writeRelation(final EdmEntitySet sourceEntitySet, final Object sourceEntity,
       final EdmEntitySet targetEntitySet,
@@ -355,11 +523,11 @@ public class AnnotationInMemoryDs implements DataSource {
   /**
    * Set (Multiplicity != *) or add (Multiplicity == *) <code>value</code> at <code>field</code>
    * of <code>instance</code>.
-   * 
-   * @param instance
-   * @param field
-   * @param value
-   * @throws EdmException
+   *
+   * @param instance the instance
+   * @param field the field
+   * @param value the value
+   * @throws EdmException the edm exception
    */
   private void setValueAtNavigationField(final Object instance, final Field field, final Object value)
       throws EdmException {
@@ -384,10 +552,10 @@ public class AnnotationInMemoryDs implements DataSource {
    * Returns corresponding DataStore for EdmEntitySet or if no data store is registered an
    * AnnotationRuntimeException is thrown.
    * Never returns NULL.
-   * 
+   *
    * @param entitySet for which the corresponding DataStore is returned
    * @return a DataStore object
-   * @throws EdmException
+   * @throws EdmException the edm exception
    * @throws AnnotationRuntimeException if no DataStore is found
    */
   private DataStore<Object> getDataStore(final EdmEntitySet entitySet) throws EdmException {
@@ -399,6 +567,13 @@ public class AnnotationInMemoryDs implements DataSource {
     return dataStore;
   }
 
+  /**
+   * Gets the value.
+   *
+   * @param field the field
+   * @param instance the instance
+   * @return the value
+   */
   private Object getValue(final Field field, final Object instance) {
     try {
       boolean access = field.isAccessible();
@@ -415,6 +590,13 @@ public class AnnotationInMemoryDs implements DataSource {
     }
   }
 
+  /**
+   * Sets the value.
+   *
+   * @param instance the instance
+   * @param field the field
+   * @param value the value
+   */
   private void setValue(final Object instance, final Field field, final Object value) {
     try {
       boolean access = field.isAccessible();

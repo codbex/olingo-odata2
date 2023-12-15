@@ -37,15 +37,32 @@ import org.apache.olingo.odata2.core.processor.ODataSingleProcessorService;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
+// TODO: Auto-generated Javadoc
+/**
+ * A factory for creating CxfCacheUriInfoIssueService1 objects.
+ */
 public class CxfCacheUriInfoIssueService1Factory extends ODataServiceFactory {
 
+  /** The context. */
   public static ODataContext context;
+  
+  /** The service. */
   public static ODataService service;
 
+  /**
+   * Instantiates a new cxf cache uri info issue service 1 factory.
+   */
   public CxfCacheUriInfoIssueService1Factory() {
     super();
   }
 
+  /**
+   * Creates a new CxfCacheUriInfoIssueService1 object.
+   *
+   * @param ctx the ctx
+   * @return the o data service
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataService createService(final ODataContext ctx) throws ODataException {
     final EdmProvider provider = mock(EdmProvider.class);

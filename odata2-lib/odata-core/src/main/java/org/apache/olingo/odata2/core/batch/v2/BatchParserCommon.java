@@ -39,14 +39,20 @@ import org.apache.olingo.odata2.core.batch.BatchHelper;
 import org.apache.olingo.odata2.core.commons.ContentType;
 import org.apache.olingo.odata2.core.commons.Decoder;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BatchParserCommon.
+ */
 public class BatchParserCommon {
 
+  /** The Constant PATTERN_LAST_CRLF. */
   private static final Pattern PATTERN_LAST_CRLF = Pattern.compile("(.*)(\r\n){1}( *)", Pattern.DOTALL);
 
   // Multipart boundaries are defined in RFC 2046:
   //     boundary      := 0*69<bchars> bcharsnospace
   //     bchars        := bcharsnospace / " "
   //     bcharsnospace := DIGIT / ALPHA / "'" / "(" / ")" / "+" / "_" / "," / "-" / "." / "/" / ":" / "=" / "?"
+  /** The Constant PATTERN_BOUNDARY. */
   // The first alternative is for the case that only characters are used that don't need quoting.
   private static final Pattern PATTERN_BOUNDARY = Pattern.compile(
       "((?:\\w|[-.'+]){1,70})|"
@@ -63,19 +69,35 @@ public class BatchParserCommon {
   //     tchar          = "!" / "#" / "$" / "%" / "&" / "'" / "*" / "+" / "-" / "." / "^" / "_" / "`" / "|" / "~"
   //                      / DIGIT / ALPHA
   // For the field-name the specification is followed strictly,
+  /** The Constant PATTERN_HEADER_LINE. */
   // but for the field-value the pattern currently accepts more than specified.
   protected static final Pattern PATTERN_HEADER_LINE = Pattern.compile("((?:\\w|[!#$%\\&'*+\\-.^`|~])+):\\s?(.*)\\s*");
 
+  /** The Constant PATTERN_MULTIPART_MIXED. */
   public static final Pattern PATTERN_MULTIPART_MIXED = Pattern.compile("multipart/mixed(.*)",
       Pattern.CASE_INSENSITIVE);
+  
+  /** The Constant PATTERN_CONTENT_TYPE_APPLICATION_HTTP. */
   public static final Pattern PATTERN_CONTENT_TYPE_APPLICATION_HTTP = Pattern.compile("application/http",
       Pattern.CASE_INSENSITIVE);
+  
+  /** The Constant PATTERN_RELATIVE_URI. */
   public static final Pattern PATTERN_RELATIVE_URI = Pattern.compile("([^/][^?]*)(\\?.*)?");
 
+  /**
+   * Instantiates a new batch parser common.
+   */
   private BatchParserCommon() {
     
   }
   
+  /**
+   * Trim line list to length.
+   *
+   * @param list the list
+   * @param length the length
+   * @return the string
+   */
   public static String trimLineListToLength(final List<Line> list, final int length) {
     final String message = lineListToString(list);
     final int lastIndex = Math.min(length, message.length());
@@ -83,6 +105,12 @@ public class BatchParserCommon {
     return (lastIndex > 0) ? message.substring(0, lastIndex) : "";
   }
 
+  /**
+   * Line list to string.
+   *
+   * @param list the list
+   * @return the string
+   */
   public static String lineListToString(final List<Line> list) {
     StringBuilder builder = new StringBuilder();
 
@@ -122,6 +150,14 @@ public class BatchParserCommon {
     return new ByteArrayInputStream(message.getBytes(charset));
   }
 
+  /**
+   * Split message by boundary.
+   *
+   * @param message the message
+   * @param boundary the boundary
+   * @return the list
+   * @throws BatchException the batch exception
+   */
   static List<List<Line>> splitMessageByBoundary(final List<Line> message, final String boundary)
       throws BatchException {
     final List<List<Line>> messageParts = new LinkedList<List<Line>>();
@@ -171,6 +207,11 @@ public class BatchParserCommon {
     return messageParts;
   }
 
+  /**
+   * Removes the ending CRLF from list.
+   *
+   * @param list the list
+   */
   private static void removeEndingCRLFFromList(final List<Line> list) {
     if (!list.isEmpty()) {
       Line lastLine = list.remove(list.size() - 1);
@@ -178,6 +219,12 @@ public class BatchParserCommon {
     }
   }
 
+  /**
+   * Removes the ending CRLF.
+   *
+   * @param line the line
+   * @return the line
+   */
   public static Line removeEndingCRLF(final Line line) {
     Pattern pattern = PATTERN_LAST_CRLF;
     Matcher matcher = pattern.matcher(line.toString());
@@ -189,6 +236,13 @@ public class BatchParserCommon {
     }
   }
 
+  /**
+   * Consume headers.
+   *
+   * @param remainingMessage the remaining message
+   * @return the header
+   * @throws BatchException the batch exception
+   */
   public static Header consumeHeaders(final List<Line> remainingMessage) throws BatchException {
     final int headerLineNumber = !remainingMessage.isEmpty() ? remainingMessage.get(0).getLineNumber() : 0;
     final Header headers = new Header(headerLineNumber);
@@ -229,6 +283,13 @@ public class BatchParserCommon {
     return headers;
   }
 
+  /**
+   * Consume blank line.
+   *
+   * @param remainingMessage the remaining message
+   * @param isStrict the is strict
+   * @throws BatchException the batch exception
+   */
   public static void consumeBlankLine(final List<Line> remainingMessage, final boolean isStrict)
       throws BatchException {
     if (!remainingMessage.isEmpty() && remainingMessage.get(0).toString().matches("\\s*\r\n\\s*")) {
@@ -241,6 +302,14 @@ public class BatchParserCommon {
     }
   }
 
+  /**
+   * Gets the boundary.
+   *
+   * @param contentType the content type
+   * @param line the line
+   * @return the boundary
+   * @throws BatchException the batch exception
+   */
   public static String getBoundary(final String contentType, final int line) throws BatchException {
     if (contentType.toLowerCase(Locale.ENGLISH).startsWith("multipart/mixed")) {
       final String[] parameter = contentType.split(";");
@@ -261,6 +330,12 @@ public class BatchParserCommon {
     throw new BatchException(BatchException.INVALID_CONTENT_TYPE.addContent(HttpContentType.MULTIPART_MIXED));
   }
 
+  /**
+   * Trim quota.
+   *
+   * @param boundary the boundary
+   * @return the string
+   */
   private static String trimQuota(String boundary) {
     if (boundary.matches("\".*\"")) {
       boundary = boundary.replace("\"", "");
@@ -269,6 +344,12 @@ public class BatchParserCommon {
     return boundary;
   }
 
+  /**
+   * Parses the query parameter.
+   *
+   * @param httpRequest the http request
+   * @return the map
+   */
   public static Map<String, List<String>> parseQueryParameter(final Line httpRequest) {
     Map<String, List<String>> queryParameter = new HashMap<String, List<String>>();
 

@@ -25,19 +25,42 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+// TODO: Auto-generated Javadoc
 /**
- *
+ * The Class ResourceHelper.
  */
 public class ResourceHelper {
 
+  /**
+   * The Enum Format.
+   */
   public enum Format {
-    BMP, JPEG, PNG, GIF
+    
+    /** The bmp. */
+    BMP, 
+ /** The jpeg. */
+ JPEG, 
+ /** The png. */
+ PNG, 
+ /** The gif. */
+ GIF
   };
 
+  /**
+   * Generate image.
+   *
+   * @return the byte[]
+   */
   public static byte[] generateImage() {
     return generateImage(Format.PNG);
   }
 
+  /**
+   * Generate image.
+   *
+   * @param format the format
+   * @return the byte[]
+   */
   public static byte[] generateImage(final Format format) {
     try {
       int width = 320;

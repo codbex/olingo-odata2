@@ -54,24 +54,49 @@ import org.apache.olingo.odata2.core.uri.ExpandSelectTreeNodeImpl;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class JsonEntryConsumer.
  */
 public class JsonEntryConsumer {
 
+  /** The type mappings. */
   private final Map<String, Object> typeMappings;
+  
+  /** The eia. */
   private final EntityInfoAggregator eia;
+  
+  /** The reader. */
   private final JsonReader reader;
+  
+  /** The read properties. */
   private final EntityProviderReadProperties readProperties;
 
+  /** The result entry. */
   private ODataEntryImpl resultEntry;
+  
+  /** The properties. */
   private Map<String, Object> properties;
+  
+  /** The media metadata. */
   private MediaMetadataImpl mediaMetadata;
+  
+  /** The entry metadata. */
   private EntryMetadataImpl entryMetadata;
+  
+  /** The expand select tree. */
   private ExpandSelectTreeNodeImpl expandSelectTree;
 
+  /** The result deleted entry. */
   private DeletedEntryMetadataImpl resultDeletedEntry;
 
+  /**
+   * Instantiates a new json entry consumer.
+   *
+   * @param reader the reader
+   * @param eia the eia
+   * @param readProperties the read properties
+   */
   public JsonEntryConsumer(final JsonReader reader, final EntityInfoAggregator eia,
       final EntityProviderReadProperties readProperties) {
     typeMappings = readProperties.getTypeMappings();
@@ -80,6 +105,12 @@ public class JsonEntryConsumer {
     this.reader = reader;
   }
 
+  /**
+   * Read single entry.
+   *
+   * @return the o data entry
+   * @throws EntityProviderException the entity provider exception
+   */
   public ODataEntry readSingleEntry() throws EntityProviderException {
     try {
       reader.beginObject();
@@ -112,6 +143,14 @@ public class JsonEntryConsumer {
     return resultEntry;
   }
 
+  /**
+   * Read feed entry.
+   *
+   * @return the json feed entry
+   * @throws EdmException the edm exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   public JsonFeedEntry readFeedEntry() throws EdmException, EntityProviderException, IOException {
     reader.beginObject();
     readEntryContent();
@@ -124,6 +163,13 @@ public class JsonEntryConsumer {
     }
   }
 
+  /**
+   * Read entry content.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws EdmException the edm exception
+   * @throws EntityProviderException the entity provider exception
+   */
   private void readEntryContent() throws IOException, EdmException, EntityProviderException {
     while (reader.hasNext()) {
       final String name = reader.nextName();
@@ -157,6 +203,14 @@ public class JsonEntryConsumer {
     }
   }
 
+  /**
+   * Handle name.
+   *
+   * @param name the name
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws EdmException the edm exception
+   * @throws EntityProviderException the entity provider exception
+   */
   private void handleName(final String name) throws IOException, EdmException, EntityProviderException {
     if (FormatJson.METADATA.equals(name)) {
       ensureODataEntryExists();
@@ -180,6 +234,12 @@ public class JsonEntryConsumer {
     }
   }
 
+  /**
+   * Read O data context.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws EntityProviderException the entity provider exception
+   */
   private void readODataContext() throws IOException, EntityProviderException {
     String contextValue = reader.nextString();
     if (contextValue == null) {
@@ -203,6 +263,13 @@ public class JsonEntryConsumer {
     }
   }
 
+  /**
+   * Parses the when.
+   *
+   * @param value the value
+   * @return the date
+   * @throws EntityProviderException the entity provider exception
+   */
   private Date parseWhen(final String value) throws EntityProviderException {
     try {
       return EdmDateTimeOffset.getInstance().valueOfString(value, EdmLiteralKind.JSON, null, Date.class);
@@ -212,6 +279,13 @@ public class JsonEntryConsumer {
     }
   }
 
+  /**
+   * Read metadata.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws EdmException the edm exception
+   * @throws EntityProviderException the entity provider exception
+   */
   private void readMetadata() throws IOException, EdmException, EntityProviderException {
     String name = null;
     String value = null;
@@ -254,6 +328,12 @@ public class JsonEntryConsumer {
     reader.endObject();
   }
 
+  /**
+   * Validate metadata.
+   *
+   * @throws EdmException the edm exception
+   * @throws EntityProviderException the entity provider exception
+   */
   private void validateMetadata() throws EdmException, EntityProviderException {
     if (eia.getEntityType().hasStream()) {
       if (mediaMetadata.getSourceLink() == null) {
@@ -272,6 +352,14 @@ public class JsonEntryConsumer {
     }
   }
 
+  /**
+   * Read navigation property.
+   *
+   * @param navigationPropertyName the navigation property name
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   */
   private void readNavigationProperty(final String navigationPropertyName) throws IOException, EntityProviderException,
       EdmException {
     NavigationPropertyInfo navigationPropertyInfo = eia.getNavigationPropertyInfo(navigationPropertyName);
@@ -386,11 +474,12 @@ public class JsonEntryConsumer {
   }
 
   /**
-   * 
-   * @param eia
-   * @param resultEntry
-   * @return
-   * @throws EdmException
+   * Fetch parent id info.
+   *
+   * @param eia the eia
+   * @param resultEntry the result entry
+   * @return the string
+   * @throws EdmException the edm exception
    */
   private String fetchParentIdInfo(EntityInfoAggregator eia, ODataEntryImpl resultEntry) throws EdmException {
     String keyInfo = "";
@@ -410,6 +499,12 @@ public class JsonEntryConsumer {
     return keyInfo;
   }
   
+  /**
+   * Update expand select tree.
+   *
+   * @param navigationPropertyName the navigation property name
+   * @param feed the feed
+   */
   private void updateExpandSelectTree(final String navigationPropertyName, final ODataFeed feed) {
     List<ODataEntry> entries = feed.getEntries();
     if (!entries.isEmpty()) {
@@ -429,12 +524,27 @@ public class JsonEntryConsumer {
     }
   }
 
+  /**
+   * Update expand select tree.
+   *
+   * @param navigationPropertyName the navigation property name
+   * @param entry the entry
+   */
   private void updateExpandSelectTree(final String navigationPropertyName, final ODataEntry entry) {
     expandSelectTree.setExpanded();
     expandSelectTree.setExplicitlySelected();
     expandSelectTree.putLink(navigationPropertyName, (ExpandSelectTreeNodeImpl) entry.getExpandSelectTree());
   }
 
+  /**
+   * Read inline entry.
+   *
+   * @param name the name
+   * @return the o data entry
+   * @throws EdmException the edm exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private ODataEntry readInlineEntry(final String name) throws EdmException, EntityProviderException, IOException {
     // consume the already started content
     handleName(name);

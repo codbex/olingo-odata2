@@ -51,12 +51,24 @@ import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAEdmReferentialConstraintRoleTest.
+ */
 public class JPAEdmReferentialConstraintRoleTest extends JPAEdmTestModelView {
 
+  /** The obj JPA edm referential constraint role. */
   private static JPAEdmReferentialConstraintRole objJPAEdmReferentialConstraintRole = null;
+  
+  /** The obj JPA edm referential constraint role test. */
   private static JPAEdmReferentialConstraintRoleTest objJPAEdmReferentialConstraintRoleTest = null;
+  
+  /** The join column names. */
   private List<String[]> joinColumnNames = null;
 
+  /**
+   * Sets the up.
+   */
   @Before
   public void setUp() {
     objJPAEdmReferentialConstraintRoleTest = new JPAEdmReferentialConstraintRoleTest();
@@ -74,16 +86,25 @@ public class JPAEdmReferentialConstraintRoleTest extends JPAEdmTestModelView {
     }
   }
 
+  /**
+   * Test is exists.
+   */
   @Test
   public void testIsExists() {
     assertTrue(objJPAEdmReferentialConstraintRole.isExists());// Default
   }
 
+  /**
+   * Test get builder.
+   */
   @Test
   public void testGetBuilder() {
     assertNotNull(objJPAEdmReferentialConstraintRole.getBuilder());
   }
 
+  /**
+   * Test get builder idempotent.
+   */
   @Test
   public void testGetBuilderIdempotent() {
     JPAEdmBuilder builder1 = objJPAEdmReferentialConstraintRole.getBuilder();
@@ -92,11 +113,17 @@ public class JPAEdmReferentialConstraintRoleTest extends JPAEdmTestModelView {
     assertEquals(builder1.hashCode(), builder2.hashCode());
   }
 
+  /**
+   * Test get role type principal.
+   */
   @Test
   public void testGetRoleTypePrincipal() {
     assertEquals(objJPAEdmReferentialConstraintRole.getRoleType(), RoleType.PRINCIPAL);
   }
 
+  /**
+   * Test get role type dependent.
+   */
   @Test
   public void testGetRoleTypeDependent() {
     objJPAEdmReferentialConstraintRoleTest = new JPAEdmReferentialConstraintRoleTest();
@@ -115,6 +142,9 @@ public class JPAEdmReferentialConstraintRoleTest extends JPAEdmTestModelView {
     assertEquals(objJPAEdmReferentialConstraintRole.getRoleType(), RoleType.DEPENDENT);
   }
 
+  /**
+   * Test get edm referential constraint role.
+   */
   @Test
   public void testGetEdmReferentialConstraintRole() {
     try {
@@ -127,26 +157,45 @@ public class JPAEdmReferentialConstraintRoleTest extends JPAEdmTestModelView {
     assertNotNull(objJPAEdmReferentialConstraintRole.getEdmReferentialConstraintRole());
   }
 
+  /**
+   * Test get JPA column name.
+   */
   @Test
   public void testGetJPAColumnName() {
     assertNull(objJPAEdmReferentialConstraintRole.getJPAColumnName());
   }
 
+  /**
+   * Test get edm entity type name.
+   */
   @Test
   public void testGetEdmEntityTypeName() {
     assertNull(objJPAEdmReferentialConstraintRole.getEdmEntityTypeName());
   }
 
+  /**
+   * Test get edm association name.
+   */
   @Test
   public void testGetEdmAssociationName() {
     assertNull(objJPAEdmReferentialConstraintRole.getEdmAssociationName());
   }
 
+  /**
+   * Gets the JPA attribute.
+   *
+   * @return the JPA attribute
+   */
   @Override
   public Attribute<?, ?> getJPAAttribute() {
     return getJPAAttributeLocal();
   }
 
+  /**
+   * Gets the JPA join columns.
+   *
+   * @return the JPA join columns
+   */
   @Override
   public List<String[]> getJPAJoinColumns() {
     if (joinColumnNames == null) {
@@ -158,6 +207,11 @@ public class JPAEdmReferentialConstraintRoleTest extends JPAEdmTestModelView {
     return joinColumnNames;
   }
 
+  /**
+   * Gets the edm association.
+   *
+   * @return the edm association
+   */
   @Override
   public Association getEdmAssociation() {
     Association association = new Association();
@@ -169,6 +223,12 @@ public class JPAEdmReferentialConstraintRoleTest extends JPAEdmTestModelView {
     return association;
   }
 
+  /**
+   * Search edm entity type.
+   *
+   * @param arg0 the arg 0
+   * @return the entity type
+   */
   @Override
   public EntityType searchEdmEntityType(final String arg0) {
 
@@ -189,40 +249,81 @@ public class JPAEdmReferentialConstraintRoleTest extends JPAEdmTestModelView {
     return entityType;
   }
 
+  /**
+   * Gets the JPA attribute local.
+   *
+   * @return the JPA attribute local
+   */
   private Attribute<?, ?> getJPAAttributeLocal() {
     AttributeMock<Object, String> attr = new AttributeMock<Object, String>();
     return attr;
   }
 
+  /**
+   * The Class AttributeMock.
+   *
+   * @param <Object> the generic type
+   * @param <String> the generic type
+   */
   @SuppressWarnings("hiding")
   private class AttributeMock<Object, String> extends JPAAttributeMock<Object, String> {
 
+    /**
+     * Gets the java member.
+     *
+     * @return the java member
+     */
     @Override
     public Member getJavaMember() {
       return new JavaMemberMock();
     }
 
+    /**
+     * Gets the java type.
+     *
+     * @return the java type
+     */
     @SuppressWarnings("unchecked")
     @Override
     public Class<String> getJavaType() {
       return (Class<String>) java.lang.String.class;
     }
 
+    /**
+     * Gets the declaring type.
+     *
+     * @return the declaring type
+     */
     @SuppressWarnings("unchecked")
     @Override
     public ManagedType<Object> getDeclaringType() {
       return (ManagedType<Object>) getManagedTypeLocal();
     }
 
+    /**
+     * Gets the managed type local.
+     *
+     * @return the managed type local
+     */
     private ManagedType<?> getManagedTypeLocal() {
       ManagedTypeMock<String> managedTypeMock = new ManagedTypeMock<String>();
       return managedTypeMock;
     }
   }
 
+  /**
+   * The Class ManagedTypeMock.
+   *
+   * @param <String> the generic type
+   */
   @SuppressWarnings("hiding")
   private class ManagedTypeMock<String> extends JPAManagedTypeMock<String> {
 
+    /**
+     * Gets the java type.
+     *
+     * @return the java type
+     */
     @SuppressWarnings("unchecked")
     @Override
     public Class<String> getJavaType() {
@@ -230,7 +331,18 @@ public class JPAEdmReferentialConstraintRoleTest extends JPAEdmTestModelView {
     }
   }
 
+  /**
+   * The Class JavaMemberMock.
+   */
   private class JavaMemberMock extends JPAJavaMemberMock {
+    
+    /**
+     * Gets the annotation.
+     *
+     * @param <T> the generic type
+     * @param annotationClass the annotation class
+     * @return the annotation
+     */
     @SuppressWarnings("unchecked")
     @Override
     public <T extends Annotation> T getAnnotation(final Class<T> annotationClass) {

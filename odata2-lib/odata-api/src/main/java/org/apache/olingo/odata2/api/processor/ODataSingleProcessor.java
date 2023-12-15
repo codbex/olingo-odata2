@@ -64,6 +64,7 @@ import org.apache.olingo.odata2.api.uri.info.GetSimplePropertyUriInfo;
 import org.apache.olingo.odata2.api.uri.info.PostUriInfo;
 import org.apache.olingo.odata2.api.uri.info.PutMergePatchUriInfo;
 
+// TODO: Auto-generated Javadoc
 /**
  * <p>A default {@link ODataProcessor} that implements all processor features in a single class.</p>
  * <p>It is recommended to derive from this class and it is required by the
@@ -87,6 +88,9 @@ public abstract class ODataSingleProcessor implements MetadataProcessor, Service
   private ODataContext context;
 
   /**
+   * Sets the context.
+   *
+   * @param context the new context
    * @see ODataProcessor
    */
   @Override
@@ -95,6 +99,9 @@ public abstract class ODataSingleProcessor implements MetadataProcessor, Service
   }
 
   /**
+   * Gets the context.
+   *
+   * @return the context
    * @see ODataProcessor
    */
   @Override
@@ -103,6 +110,13 @@ public abstract class ODataSingleProcessor implements MetadataProcessor, Service
   }
 
   /**
+   * Execute batch.
+   *
+   * @param handler the handler
+   * @param contentType the content type
+   * @param content the content
+   * @return the o data response
+   * @throws ODataException the o data exception
    * @see BatchProcessor
    */
   @Override
@@ -112,7 +126,12 @@ public abstract class ODataSingleProcessor implements MetadataProcessor, Service
   }
 
   /**
-   * @throws ODataNotImplementedException
+   * Execute change set.
+   *
+   * @param handler the handler
+   * @param requests the requests
+   * @return the batch response part
+   * @throws ODataException the o data exception
    * @see BatchProcessor
    */
   @Override
@@ -122,6 +141,12 @@ public abstract class ODataSingleProcessor implements MetadataProcessor, Service
   }
 
   /**
+   * Execute function import.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
    * @see FunctionImportProcessor
    */
   @Override
@@ -131,6 +156,12 @@ public abstract class ODataSingleProcessor implements MetadataProcessor, Service
   }
 
   /**
+   * Execute function import value.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
    * @see FunctionImportValueProcessor
    */
   @Override
@@ -140,6 +171,12 @@ public abstract class ODataSingleProcessor implements MetadataProcessor, Service
   }
 
   /**
+   * Read entity simple property value.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
    * @see EntitySimplePropertyValueProcessor
    */
   @Override
@@ -149,6 +186,14 @@ public abstract class ODataSingleProcessor implements MetadataProcessor, Service
   }
 
   /**
+   * Update entity simple property value.
+   *
+   * @param uriInfo the uri info
+   * @param content the content
+   * @param requestContentType the request content type
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
    * @see EntitySimplePropertyValueProcessor
    */
   @Override
@@ -158,6 +203,12 @@ public abstract class ODataSingleProcessor implements MetadataProcessor, Service
   }
 
   /**
+   * Delete entity simple property value.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
    * @see EntitySimplePropertyValueProcessor
    */
   @Override
@@ -167,6 +218,12 @@ public abstract class ODataSingleProcessor implements MetadataProcessor, Service
   }
 
   /**
+   * Read entity simple property.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
    * @see EntitySimplePropertyProcessor
    */
   @Override
@@ -176,6 +233,14 @@ public abstract class ODataSingleProcessor implements MetadataProcessor, Service
   }
 
   /**
+   * Update entity simple property.
+   *
+   * @param uriInfo the uri info
+   * @param content the content
+   * @param requestContentType the request content type
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
    * @see EntitySimplePropertyProcessor
    */
   @Override
@@ -185,6 +250,12 @@ public abstract class ODataSingleProcessor implements MetadataProcessor, Service
   }
 
   /**
+   * Read entity media.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
    * @see EntityMediaProcessor
    */
   @Override
@@ -194,6 +265,14 @@ public abstract class ODataSingleProcessor implements MetadataProcessor, Service
   }
 
   /**
+   * Update entity media.
+   *
+   * @param uriInfo the uri info
+   * @param content the content
+   * @param requestContentType the request content type
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
    * @see EntityMediaProcessor
    */
   @Override
@@ -203,6 +282,12 @@ public abstract class ODataSingleProcessor implements MetadataProcessor, Service
   }
 
   /**
+   * Delete entity media.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
    * @see EntityMediaProcessor
    */
   @Override
@@ -211,6 +296,12 @@ public abstract class ODataSingleProcessor implements MetadataProcessor, Service
   }
 
   /**
+   * Read entity links.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
    * @see EntityLinksProcessor
    */
   @Override
@@ -220,6 +311,12 @@ public abstract class ODataSingleProcessor implements MetadataProcessor, Service
   }
 
   /**
+   * Count entity links.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
    * @see EntityLinksProcessor
    */
   @Override
@@ -229,6 +326,14 @@ public abstract class ODataSingleProcessor implements MetadataProcessor, Service
   }
 
   /**
+   * Creates the entity link.
+   *
+   * @param uriInfo the uri info
+   * @param content the content
+   * @param requestContentType the request content type
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
    * @see EntityLinkProcessor
    */
   @Override
@@ -238,6 +343,12 @@ public abstract class ODataSingleProcessor implements MetadataProcessor, Service
   }
 
   /**
+   * Read entity link.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
    * @see EntityLinkProcessor
    */
   @Override
@@ -247,6 +358,12 @@ public abstract class ODataSingleProcessor implements MetadataProcessor, Service
   }
 
   /**
+   * Exists entity link.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
    * @see EntityLinkProcessor
    */
   @Override
@@ -256,6 +373,14 @@ public abstract class ODataSingleProcessor implements MetadataProcessor, Service
   }
 
   /**
+   * Update entity link.
+   *
+   * @param uriInfo the uri info
+   * @param content the content
+   * @param requestContentType the request content type
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
    * @see EntityLinkProcessor
    */
   @Override
@@ -265,6 +390,12 @@ public abstract class ODataSingleProcessor implements MetadataProcessor, Service
   }
 
   /**
+   * Delete entity link.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
    * @see EntityLinkProcessor
    */
   @Override
@@ -273,6 +404,12 @@ public abstract class ODataSingleProcessor implements MetadataProcessor, Service
   }
 
   /**
+   * Read entity complex property.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
    * @see EntityComplexPropertyProcessor
    */
   @Override
@@ -282,6 +419,15 @@ public abstract class ODataSingleProcessor implements MetadataProcessor, Service
   }
 
   /**
+   * Update entity complex property.
+   *
+   * @param uriInfo the uri info
+   * @param content the content
+   * @param requestContentType the request content type
+   * @param merge the merge
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
    * @see EntityComplexPropertyProcessor
    */
   @Override
@@ -291,6 +437,12 @@ public abstract class ODataSingleProcessor implements MetadataProcessor, Service
   }
 
   /**
+   * Read entity set.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
    * @see EntitySetProcessor
    */
   @Override
@@ -300,6 +452,12 @@ public abstract class ODataSingleProcessor implements MetadataProcessor, Service
   }
 
   /**
+   * Count entity set.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
    * @see EntitySetProcessor
    */
   @Override
@@ -309,6 +467,14 @@ public abstract class ODataSingleProcessor implements MetadataProcessor, Service
   }
 
   /**
+   * Creates the entity.
+   *
+   * @param uriInfo the uri info
+   * @param content the content
+   * @param requestContentType the request content type
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
    * @see EntitySetProcessor
    */
   @Override
@@ -318,6 +484,12 @@ public abstract class ODataSingleProcessor implements MetadataProcessor, Service
   }
 
   /**
+   * Read entity.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
    * @see EntityProcessor
    */
   @Override
@@ -326,6 +498,12 @@ public abstract class ODataSingleProcessor implements MetadataProcessor, Service
   }
 
   /**
+   * Exists entity.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
    * @see EntityProcessor
    */
   @Override
@@ -335,6 +513,15 @@ public abstract class ODataSingleProcessor implements MetadataProcessor, Service
   }
 
   /**
+   * Update entity.
+   *
+   * @param uriInfo the uri info
+   * @param content the content
+   * @param requestContentType the request content type
+   * @param merge the merge
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
    * @see EntityProcessor
    */
   @Override
@@ -344,6 +531,12 @@ public abstract class ODataSingleProcessor implements MetadataProcessor, Service
   }
 
   /**
+   * Delete entity.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
    * @see EntityProcessor
    */
   @Override
@@ -352,6 +545,12 @@ public abstract class ODataSingleProcessor implements MetadataProcessor, Service
   }
 
   /**
+   * Read service document.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
    * @see ServiceDocumentProcessor
    */
   @Override
@@ -371,6 +570,12 @@ public abstract class ODataSingleProcessor implements MetadataProcessor, Service
   }
 
   /**
+   * Read metadata.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
    * @see MetadataProcessor
    */
   @Override
@@ -383,6 +588,11 @@ public abstract class ODataSingleProcessor implements MetadataProcessor, Service
   }
 
   /**
+   * Gets the custom content types.
+   *
+   * @param processorFeature the processor feature
+   * @return the custom content types
+   * @throws ODataException the o data exception
    * @see CustomContentType
    */
   @Override

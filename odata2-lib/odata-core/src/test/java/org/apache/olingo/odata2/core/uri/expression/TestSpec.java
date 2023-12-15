@@ -46,46 +46,117 @@ import org.apache.olingo.odata2.core.edm.Uint7;
 import org.apache.olingo.odata2.core.edm.provider.EdmComplexPropertyImplProv;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class TestSpec.
  */
 public class TestSpec extends TestBase {
+  
+  /** The Constant aBoolean. */
   final static String aBoolean = "true";
+  
+  /** The Constant aBinary. */
   final static String aBinary = "binary'FA12AAA1'";
+  
+  /** The Constant aBit. */
   final static String aBit = "1";
+  
+  /** The Constant aByte. */
   final static String aByte = "255";
+  
+  /** The Constant aUint7. */
   final static String aUint7 = "123";
+  
+  /** The Constant aDatetime. */
   final static String aDatetime = "datetime'2009-12-26T21:23:38'";
+  
+  /** The Constant aDatetimeOffset. */
   final static String aDatetimeOffset = "datetimeoffset'2009-12-26T21:23:38Z'";
+  
+  /** The Constant aDecimal. */
   final static String aDecimal = "4.5m";
+  
+  /** The Constant aDouble. */
   final static String aDouble = "4.5d";
+  
+  /** The Constant aGuid. */
   final static String aGuid = "guid'1225c695-cfb8-4ebb-aaaa-80da344efa6a'";
+  
+  /** The Constant aInt16. */
   final static String aInt16 = "-32768";
+  
+  /** The Constant aInt32. */
   final static String aInt32 = "327686";
+  
+  /** The Constant aInt64. */
   final static String aInt64 = "64L";
+  
+  /** The Constant aIntSByte. */
   final static String aIntSByte = "-123";
+  
+  /** The Constant aSingle. */
   final static String aSingle = "4.5f";
+  
+  /** The Constant aString. */
   final static String aString = "'abc'";
+  
+  /** The Constant aTime. */
   final static String aTime = "time'PT120S'";
 
+  /** The bool inst. */
   final EdmBoolean boolInst = EdmBoolean.getInstance();
+  
+  /** The binary inst. */
   final EdmBinary binaryInst = EdmBinary.getInstance();
+  
+  /** The bit inst. */
   final Bit bitInst = Bit.getInstance();
+  
+  /** The byte inst. */
   final EdmByte byteInst = EdmByte.getInstance();
+  
+  /** The Uint 7 inst. */
   final Uint7 Uint7Inst = Uint7.getInstance();
+  
+  /** The datetime inst. */
   final EdmDateTime datetimeInst = EdmDateTime.getInstance();
+  
+  /** The datetime offset inst. */
   final EdmDateTimeOffset datetimeOffsetInst = EdmDateTimeOffset.getInstance();
+  
+  /** The decimal inst. */
   final EdmDecimal decimalInst = EdmDecimal.getInstance();
+  
+  /** The double inst. */
   final EdmDouble doubleInst = EdmDouble.getInstance();
+  
+  /** The guid inst. */
   final EdmGuid guidInst = EdmGuid.getInstance();
+  
+  /** The int 16 inst. */
   final EdmInt16 int16Inst = EdmInt16.getInstance();
+  
+  /** The int 32 inst. */
   final EdmInt32 int32Inst = EdmInt32.getInstance();
+  
+  /** The int 64 inst. */
   final EdmInt64 int64Inst = EdmInt64.getInstance();
+  
+  /** The int S byte. */
   final EdmSByte intSByte = EdmSByte.getInstance();
+  
+  /** The single inst. */
   final EdmSingle singleInst = EdmSingle.getInstance();
+  
+  /** The string inst. */
   final EdmString stringInst = EdmString.getInstance();
+  
+  /** The time inst. */
   final EdmTime timeInst = EdmTime.getInstance();
 
+  /**
+   * Test minimum spec req.
+   */
   @Test
   public void testMinimumSpecReq() {
 
@@ -280,6 +351,9 @@ public class TestSpec extends TestBase {
 
   }
 
+  /**
+   * Test properties with edm.
+   */
   @Test
   public void testPropertiesWithEdm() {
     try {
@@ -321,6 +395,9 @@ public class TestSpec extends TestBase {
     }
   }
 
+  /**
+   * Test deep parenthesis.
+   */
   @Test
   public void testDeepParenthesis() {
     GetPTF("2d").aSerialized("2d");

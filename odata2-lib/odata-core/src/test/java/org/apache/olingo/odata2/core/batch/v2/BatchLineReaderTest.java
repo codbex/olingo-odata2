@@ -36,8 +36,13 @@ import org.apache.olingo.odata2.core.batch.v2.Line;
 import org.apache.olingo.odata2.testutil.helper.StringHelper;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BatchLineReaderTest.
+ */
 public class BatchLineReaderTest {
 
+  /** The Constant TEXT_COMBINED. */
   private static final String TEXT_COMBINED = "Test\r" +
       "Test2\r\n" +
       "Test3\n" +
@@ -50,8 +55,14 @@ public class BatchLineReaderTest {
       "Test7\n" +
       "\n";
 
+  /** The Constant TEXT_EMPTY. */
   private static final String TEXT_EMPTY = "";
 
+  /**
+   * Test simple text.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Test
   public void testSimpleText() throws IOException {
     final String TEXT = "Test";
@@ -63,6 +74,11 @@ public class BatchLineReaderTest {
     reader.close();
   }
 
+  /**
+   * Test no text.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Test
   public void testNoText() throws IOException {
     final String TEXT = "";
@@ -73,6 +89,11 @@ public class BatchLineReaderTest {
     reader.close();
   }
 
+  /**
+   * Test no bytes.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Test
   public void testNoBytes() throws IOException {
     BatchLineReader reader =
@@ -83,6 +104,11 @@ public class BatchLineReaderTest {
     reader.close();
   }
 
+  /**
+   * Test CRLF.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Test
   public void testCRLF() throws IOException {
     final String TEXT = "Test\r\n" +
@@ -97,6 +123,11 @@ public class BatchLineReaderTest {
     reader.close();
   }
 
+  /**
+   * Test LF.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Test
   public void testLF() throws IOException {
     final String TEXT = "Test\n" +
@@ -113,6 +144,8 @@ public class BatchLineReaderTest {
 
   /**
    * Test for special case (described in https://issues.apache.org/jira/browse/OLINGO-1053 )
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   @Test
   public void testSpecialCRLF() throws IOException {
@@ -128,6 +161,11 @@ public class BatchLineReaderTest {
     reader.close();
   }
 
+  /**
+   * Test CR.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Test
   public void testCR() throws IOException {
     final String TEXT = "Test\r" +
@@ -142,6 +180,11 @@ public class BatchLineReaderTest {
     reader.close();
   }
 
+  /**
+   * Test combined.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Test
   public void testCombined() throws IOException {
     BatchLineReader reader = create(TEXT_COMBINED);
@@ -162,6 +205,11 @@ public class BatchLineReaderTest {
     reader.close();
   }
 
+  /**
+   * Test combined buffer size two.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Test
   public void testCombinedBufferSizeTwo() throws IOException {
     BatchLineReader reader = create(TEXT_COMBINED, 2);
@@ -182,6 +230,11 @@ public class BatchLineReaderTest {
     reader.close();
   }
 
+  /**
+   * Test combined buffer size one.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Test
   public void testCombinedBufferSizeOne() throws IOException {
     final String TEXT = "Test\r" +
@@ -215,6 +268,11 @@ public class BatchLineReaderTest {
     reader.close();
   }
 
+  /**
+   * Test double LF.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Test
   public void testDoubleLF() throws IOException {
     final String TEXT = "Test\r" +
@@ -227,6 +285,11 @@ public class BatchLineReaderTest {
     reader.close();
   }
 
+  /**
+   * Special characters.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void specialCharacters() throws Exception {
     final String text = "\r\n"
@@ -248,6 +311,11 @@ public class BatchLineReaderTest {
     reader.close();
   }
 
+  /**
+   * Special characters in json with newline.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void specialCharactersInJsonWithNewline() throws Exception {
     final String text = "\n"
@@ -263,12 +331,22 @@ public class BatchLineReaderTest {
     reader.close();
   }
 
+  /**
+   * Test fail buffer size zero.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Test(expected = IllegalArgumentException.class)
   public void testFailBufferSizeZero() throws IOException {
     BatchLineReader reader = create(TEXT_EMPTY, 0);
     reader.close();
   }
 
+  /**
+   * Test input stream is null.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Test(expected = NullPointerException.class)
   public void testInputStreamIsNull() throws IOException {
     // Same behaviour like BufferedReader
@@ -276,12 +354,22 @@ public class BatchLineReaderTest {
     reader.close();
   }
 
+  /**
+   * Test fail buffer size negative.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Test(expected = IllegalArgumentException.class)
   public void testFailBufferSizeNegative() throws IOException {
     BatchLineReader reader = create(TEXT_EMPTY, -1);
     reader.close();
   }
 
+  /**
+   * Test to list.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Test
   public void testToList() throws IOException {
     BatchLineReader reader = create(TEXT_COMBINED);
@@ -302,15 +390,35 @@ public class BatchLineReaderTest {
     reader.close();
   }
 
+  /**
+   * Creates the.
+   *
+   * @param inputString the input string
+   * @return the batch line reader
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   private BatchLineReader create(final String inputString) throws UnsupportedEncodingException {
     return new BatchLineReader(new ByteArrayInputStream(inputString.getBytes("UTF-8")));
   }
 
+  /**
+   * Creates the.
+   *
+   * @param inputString the input string
+   * @param bufferSize the buffer size
+   * @return the batch line reader
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   private BatchLineReader create(final String inputString, int bufferSize)
       throws UnsupportedEncodingException {
     return new BatchLineReader(new ByteArrayInputStream(inputString.getBytes("UTF-8")), bufferSize);
   }
 
+  /**
+   * Raw bytes.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void rawBytes() throws Exception {
     byte[] content = new byte[Byte.MAX_VALUE - Byte.MIN_VALUE + 1];
@@ -327,6 +435,11 @@ public class BatchLineReaderTest {
     reader.close();
   }
 
+  /**
+   * Image test.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void imageTest() throws Exception {
     byte[] data = getImageData("/Employee_1.png");
@@ -341,6 +454,13 @@ public class BatchLineReaderTest {
     reader.close();
   }
 
+  /**
+   * Gets the image data.
+   *
+   * @param imageUrl the image url
+   * @return the image data
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private byte[] getImageData(String imageUrl) throws IOException {
     byte[] data = null;
     try {

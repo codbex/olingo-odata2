@@ -23,21 +23,36 @@ import java.util.List;
 import org.apache.olingo.odata2.api.edm.EdmMultiplicity;
 import org.apache.olingo.odata2.api.edm.FullQualifiedName;
 
+// TODO: Auto-generated Javadoc
 /**
- * Objects of this class represent an association end
- * 
+ * Objects of this class represent an association end.
  */
 public class AssociationEnd {
 
+  /** The type. */
   private FullQualifiedName type;
+  
+  /** The role. */
   private String role;
+  
+  /** The multiplicity. */
   private EdmMultiplicity multiplicity;
+  
+  /** The on delete. */
   private OnDelete onDelete;
+  
+  /** The documentation. */
   private Documentation documentation;
+  
+  /** The annotation attributes. */
   private List<AnnotationAttribute> annotationAttributes;
+  
+  /** The annotation elements. */
   private List<AnnotationElement> annotationElements;
 
   /**
+   * Gets the type.
+   *
    * @return {@link FullQualifiedName} full qualified name (namespace and name)
    */
   public FullQualifiedName getType() {
@@ -45,6 +60,8 @@ public class AssociationEnd {
   }
 
   /**
+   * Gets the role.
+   *
    * @return <b>String</b> role
    */
   public String getRole() {
@@ -52,6 +69,8 @@ public class AssociationEnd {
   }
 
   /**
+   * Gets the multiplicity.
+   *
    * @return {@link EdmMultiplicity} multiplicity of this end
    */
   public EdmMultiplicity getMultiplicity() {
@@ -59,6 +78,8 @@ public class AssociationEnd {
   }
 
   /**
+   * Gets the on delete.
+   *
    * @return {@link OnDelete} on delete
    */
   public OnDelete getOnDelete() {
@@ -66,6 +87,8 @@ public class AssociationEnd {
   }
 
   /**
+   * Gets the documentation.
+   *
    * @return {@link Documentation} documentation
    */
   public Documentation getDocumentation() {
@@ -73,6 +96,8 @@ public class AssociationEnd {
   }
 
   /**
+   * Gets the annotation attributes.
+   *
    * @return collection of {@link AnnotationAttribute} annotation attributes
    */
   public List<AnnotationAttribute> getAnnotationAttributes() {
@@ -80,6 +105,8 @@ public class AssociationEnd {
   }
 
   /**
+   * Gets the annotation elements.
+   *
    * @return collection of {@link AnnotationElement} annotation elements
    */
   public List<AnnotationElement> getAnnotationElements() {
@@ -87,8 +114,9 @@ public class AssociationEnd {
   }
 
   /**
-   * Sets the {@link FullQualifiedName} for this {@link AssociationEnd}
-   * @param type
+   * Sets the {@link FullQualifiedName} for this {@link AssociationEnd}.
+   *
+   * @param type the type
    * @return {@link AssociationEnd} for method chaining
    */
   public AssociationEnd setType(final FullQualifiedName type) {
@@ -97,8 +125,9 @@ public class AssociationEnd {
   }
 
   /**
-   * Sets the role for this {@link AssociationEnd}
-   * @param role
+   * Sets the role for this {@link AssociationEnd}.
+   *
+   * @param role the role
    * @return {@link AssociationEnd} for method chaining
    */
   public AssociationEnd setRole(final String role) {
@@ -107,8 +136,9 @@ public class AssociationEnd {
   }
 
   /**
-   * Sets the {@link EdmMultiplicity} for this {@link AssociationEnd}
-   * @param multiplicity
+   * Sets the {@link EdmMultiplicity} for this {@link AssociationEnd}.
+   *
+   * @param multiplicity the multiplicity
    * @return {@link AssociationEnd} for method chaining
    */
   public AssociationEnd setMultiplicity(final EdmMultiplicity multiplicity) {
@@ -117,8 +147,9 @@ public class AssociationEnd {
   }
 
   /**
-   * Sets {@link OnDelete} for this {@link AssociationEnd}
-   * @param onDelete
+   * Sets {@link OnDelete} for this {@link AssociationEnd}.
+   *
+   * @param onDelete the on delete
    * @return {@link AssociationEnd} for method chaining
    */
   public AssociationEnd setOnDelete(final OnDelete onDelete) {
@@ -127,8 +158,9 @@ public class AssociationEnd {
   }
 
   /**
-   * Sets the {@link Documentation} for this {@link AssociationEnd}
-   * @param documentation
+   * Sets the {@link Documentation} for this {@link AssociationEnd}.
+   *
+   * @param documentation the documentation
    * @return {@link AssociationEnd} for method chaining
    */
   public AssociationEnd setDocumentation(final Documentation documentation) {
@@ -137,8 +169,9 @@ public class AssociationEnd {
   }
 
   /**
-   * Sets the collection of {@link AnnotationAttribute} for this {@link AssociationEnd}
-   * @param annotationAttributes
+   * Sets the collection of {@link AnnotationAttribute} for this {@link AssociationEnd}.
+   *
+   * @param annotationAttributes the annotation attributes
    * @return {@link AssociationEnd} for method chaining
    */
   public AssociationEnd setAnnotationAttributes(final List<AnnotationAttribute> annotationAttributes) {
@@ -147,8 +180,9 @@ public class AssociationEnd {
   }
 
   /**
-   * Sets the collection of {@link AnnotationElement} for this {@link AssociationEnd}
-   * @param annotationElements
+   * Sets the collection of {@link AnnotationElement} for this {@link AssociationEnd}.
+   *
+   * @param annotationElements the annotation elements
    * @return {@link AssociationEnd} for method chaining
    */
   public AssociationEnd setAnnotationElements(final List<AnnotationElement> annotationElements) {

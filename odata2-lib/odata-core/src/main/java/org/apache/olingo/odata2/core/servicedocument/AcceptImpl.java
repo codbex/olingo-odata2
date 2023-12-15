@@ -21,28 +21,55 @@ package org.apache.olingo.odata2.core.servicedocument;
 import org.apache.olingo.odata2.api.servicedocument.Accept;
 import org.apache.olingo.odata2.api.servicedocument.CommonAttributes;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class AcceptImpl.
  */
 public class AcceptImpl implements Accept {
+  
+  /** The value. */
   private String value;
+  
+  /** The common attributes. */
   private CommonAttributes commonAttributes;
 
+  /**
+   * Gets the value.
+   *
+   * @return the value
+   */
   @Override
   public String getValue() {
     return value;
   }
 
+  /**
+   * Gets the common attributes.
+   *
+   * @return the common attributes
+   */
   @Override
   public CommonAttributes getCommonAttributes() {
     return commonAttributes;
   }
 
+  /**
+   * Sets the text.
+   *
+   * @param text the text
+   * @return the accept impl
+   */
   public AcceptImpl setText(final String text) {
     value = text;
     return this;
   }
 
+  /**
+   * Sets the common attributes.
+   *
+   * @param commonAttributes the common attributes
+   * @return the accept impl
+   */
   public AcceptImpl setCommonAttributes(final CommonAttributes commonAttributes) {
     this.commonAttributes = commonAttributes;
     return this;

@@ -21,50 +21,94 @@ package org.apache.olingo.odata2.client.core.edm.Impl;
 import org.apache.olingo.odata2.api.edm.EdmContentKind;
 import org.apache.olingo.odata2.api.edm.EdmCustomizableFeedMappings;
 
+// TODO: Auto-generated Javadoc
 /**
  * Objects of this class represent customizable feed mappings.
  * 
  */
 public class EdmCustomizableFeedMappingsImpl implements EdmCustomizableFeedMappings {
 
+  /** The fc keep in content. */
   private Boolean fcKeepInContent;
+  
+  /** The fc content kind. */
   private EdmContentKind fcContentKind;
+  
+  /** The fc ns prefix. */
   private String fcNsPrefix;
+  
+  /** The fc ns uri. */
   private String fcNsUri;
+  
+  /** The fc source path. */
   private String fcSourcePath;
+  
+  /** The fc target path. */
   private String fcTargetPath;
 
+  /**
+   * Checks if is fc keep in content.
+   *
+   * @return the boolean
+   */
   @Override
   public Boolean isFcKeepInContent() {
     return fcKeepInContent;
   }
 
+  /**
+   * Gets the fc content kind.
+   *
+   * @return the fc content kind
+   */
   @Override
   public EdmContentKind getFcContentKind() {
     return fcContentKind;
   }
 
+  /**
+   * Gets the fc ns prefix.
+   *
+   * @return the fc ns prefix
+   */
   @Override
   public String getFcNsPrefix() {
     return fcNsPrefix;
   }
 
+  /**
+   * Gets the fc ns uri.
+   *
+   * @return the fc ns uri
+   */
   @Override
   public String getFcNsUri() {
     return fcNsUri;
   }
 
+  /**
+   * Gets the fc source path.
+   *
+   * @return the fc source path
+   */
   @Override
   public String getFcSourcePath() {
     return fcSourcePath;
   }
 
+  /**
+   * Gets the fc target path.
+   *
+   * @return the fc target path
+   */
   @Override
   public String getFcTargetPath() {
     return fcTargetPath;
   }
 
   /**
+   * Gets the fc keep in content.
+   *
    * @return <b>boolean</b>
    */
   public Boolean getFcKeepInContent() {
@@ -73,7 +117,8 @@ public class EdmCustomizableFeedMappingsImpl implements EdmCustomizableFeedMappi
 
   /**
    * Sets if this is kept in content.
-   * @param fcKeepInContent
+   *
+   * @param fcKeepInContent the fc keep in content
    * @return {@link EdmCustomizableFeedMappingsImpl} for method chaining
    */
   public EdmCustomizableFeedMappingsImpl setFcKeepInContent(final Boolean fcKeepInContent) {
@@ -83,7 +128,8 @@ public class EdmCustomizableFeedMappingsImpl implements EdmCustomizableFeedMappi
 
   /**
    * Sets the {@link EdmContentKind}.
-   * @param fcContentKind
+   *
+   * @param fcContentKind the fc content kind
    * @return {@link EdmCustomizableFeedMappingsImpl} for method chaining
    */
   public EdmCustomizableFeedMappingsImpl setFcContentKind(final EdmContentKind fcContentKind) {
@@ -93,7 +139,8 @@ public class EdmCustomizableFeedMappingsImpl implements EdmCustomizableFeedMappi
 
   /**
    * Sets the prefix.
-   * @param fcNsPrefix
+   *
+   * @param fcNsPrefix the fc ns prefix
    * @return {@link EdmCustomizableFeedMappingsImpl} for method chaining
    */
   public EdmCustomizableFeedMappingsImpl setFcNsPrefix(final String fcNsPrefix) {
@@ -103,7 +150,8 @@ public class EdmCustomizableFeedMappingsImpl implements EdmCustomizableFeedMappi
 
   /**
    * Sets the Uri.
-   * @param fcNsUri
+   *
+   * @param fcNsUri the fc ns uri
    * @return {@link EdmCustomizableFeedMappingsImpl} for method chaining
    */
   public EdmCustomizableFeedMappingsImpl setFcNsUri(final String fcNsUri) {
@@ -113,7 +161,8 @@ public class EdmCustomizableFeedMappingsImpl implements EdmCustomizableFeedMappi
 
   /**
    * Sets the source path.
-   * @param fcSourcePath
+   *
+   * @param fcSourcePath the fc source path
    * @return {@link EdmCustomizableFeedMappingsImpl} for method chaining
    */
   public EdmCustomizableFeedMappingsImpl setFcSourcePath(final String fcSourcePath) {
@@ -125,7 +174,8 @@ public class EdmCustomizableFeedMappingsImpl implements EdmCustomizableFeedMappi
    * <p>Sets the target path.</p>
    * <p>For standard Atom elements, constants are available in {@link org.apache.olingo.odata2.api.edm.EdmTargetPath
    * EdmTargetPath}.</p>
-   * @param fcTargetPath
+   *
+   * @param fcTargetPath the fc target path
    * @return {@link EdmCustomizableFeedMappingsImpl} for method chaining
    */
   public EdmCustomizableFeedMappingsImpl setFcTargetPath(final String fcTargetPath) {
@@ -133,6 +183,11 @@ public class EdmCustomizableFeedMappingsImpl implements EdmCustomizableFeedMappi
     return this;
   }
   
+  /**
+   * To string.
+   *
+   * @return the string
+   */
   @Override
   public String toString() {
       return String.format(fcNsPrefix + " " + fcNsUri);

@@ -27,55 +27,101 @@ import org.apache.olingo.odata2.api.commons.HttpStatusCodes;
 import org.apache.olingo.odata2.testutil.server.ServletType;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class ContentNegotiationTest.
  */
 public class ContentNegotiationTest extends AbstractRefTest {
 
+  /**
+   * Instantiates a new content negotiation test.
+   *
+   * @param servletType the servlet type
+   */
   public ContentNegotiationTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /**
+   * Format overwrite accept header.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void formatOverwriteAcceptHeader() throws Exception {
     final HttpResponse response = callUri("?$format=xml", HttpHeaders.ACCEPT, IMAGE_GIF, HttpStatusCodes.OK);
     checkMediaType(response, HttpContentType.APPLICATION_XML_UTF8);
   }
 
+  /**
+   * Format xml.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void formatXml() throws Exception {
     final HttpResponse response = callUri("?$format=xml");
     checkMediaType(response, HttpContentType.APPLICATION_XML_UTF8);
   }
 
+  /**
+   * Format json.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void formatJson() throws Exception {
     final HttpResponse response = callUri("?$format=json");
     checkMediaType(response, HttpContentType.APPLICATION_JSON);
   }
 
+  /**
+   * Format atom.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void formatAtom() throws Exception {
     final HttpResponse response = callUri("Rooms('1')?$format=atom");
     checkMediaType(response, HttpContentType.APPLICATION_ATOM_XML_UTF8 + ";type=entry");
   }
 
+  /**
+   * Format not supported.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void formatNotSupported() throws Exception {
     callUri("?$format=XXXML", HttpStatusCodes.NOT_ACCEPTABLE);
   }
 
+  /**
+   * Content type metadata.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void contentTypeMetadata() throws Exception {
     final HttpResponse response = callUri("$metadata");
     checkMediaType(response, HttpContentType.APPLICATION_XML_UTF8);
   }
 
+  /**
+   * Content type metadata not accepted.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void contentTypeMetadataNotAccepted() throws Exception {
     callUri("$metadata", HttpHeaders.ACCEPT, IMAGE_GIF, HttpStatusCodes.NOT_ACCEPTABLE);
   }
 
+  /**
+   * Browser accept header.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void browserAcceptHeader() throws Exception {
     final HttpResponse response = callUri("$metadata",
@@ -84,6 +130,11 @@ public class ContentNegotiationTest extends AbstractRefTest {
     checkMediaType(response, HttpContentType.APPLICATION_XML_UTF8);
   }
 
+  /**
+   * Browser issue 95.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void browserIssue95() throws Exception {
     final HttpResponse response = callUri("Employees",
@@ -92,6 +143,11 @@ public class ContentNegotiationTest extends AbstractRefTest {
     checkMediaType(response, HttpContentType.APPLICATION_JSON);
   }
 
+  /**
+   * Content type service document wo accept header.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void contentTypeServiceDocumentWoAcceptHeader() throws Exception {
     final HttpResponse response = callUri("");
@@ -99,6 +155,11 @@ public class ContentNegotiationTest extends AbstractRefTest {
     assertTrue(getBody(response).length() > 100);
   }
 
+  /**
+   * Content type service document atom xml not accept.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void contentTypeServiceDocumentAtomXmlNotAccept() throws Exception {
     final HttpResponse response =
@@ -109,6 +170,11 @@ public class ContentNegotiationTest extends AbstractRefTest {
     assertTrue(body.contains("error"));
   }
 
+  /**
+   * Content type service document xml.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void contentTypeServiceDocumentXml() throws Exception {
     final HttpResponse response = callUri("", HttpHeaders.ACCEPT, HttpContentType.APPLICATION_XML, HttpStatusCodes.OK);
@@ -116,6 +182,11 @@ public class ContentNegotiationTest extends AbstractRefTest {
     assertTrue(getBody(response).length() > 100);
   }
 
+  /**
+   * Content type service document atom svc xml.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void contentTypeServiceDocumentAtomSvcXml() throws Exception {
     final HttpResponse response =
@@ -124,6 +195,11 @@ public class ContentNegotiationTest extends AbstractRefTest {
     assertTrue(getBody(response).length() > 100);
   }
 
+  /**
+   * Content type service document accept headers.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void contentTypeServiceDocumentAcceptHeaders() throws Exception {
     final HttpResponse response = callUri("",
@@ -133,6 +209,11 @@ public class ContentNegotiationTest extends AbstractRefTest {
     assertTrue(getBody(response).length() > 100);
   }
 
+  /**
+   * Request content type different.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void requestContentTypeDifferent() throws Exception {
     String body = getBody(callUri("Rooms('1')"));
@@ -142,6 +223,11 @@ public class ContentNegotiationTest extends AbstractRefTest {
     assertTrue(getBody(response).length() > 100);
   }
 
+  /**
+   * Post with unsupported content type feed.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void postWithUnsupportedContentTypeFeed() throws Exception {
     String body = getBody(callUri("Rooms('1')"));

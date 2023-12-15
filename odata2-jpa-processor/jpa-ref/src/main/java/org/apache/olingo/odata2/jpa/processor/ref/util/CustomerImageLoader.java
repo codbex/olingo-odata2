@@ -22,7 +22,18 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CustomerImageLoader.
+ */
 public class CustomerImageLoader {
+  
+  /**
+   * Load image.
+   *
+   * @param customerId the customer id
+   * @return the byte[]
+   */
   public static byte[] loadImage(Long customerId) {
     String name = null;
     if (customerId == 1L) {

@@ -31,14 +31,21 @@ import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.junit.Before;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class PathSegmentTest.
  */
 public class PathSegmentTest extends BaseTest {
 
+  /** The segment. */
   PathSegment segment;
+  
+  /** The segment no matrix. */
   PathSegment segmentNoMatrix;
 
+  /**
+   * Before.
+   */
   @Before
   public void before() {
     Map<String, List<String>> map = new HashMap<String, List<String>>();
@@ -51,6 +58,9 @@ public class PathSegmentTest extends BaseTest {
     segmentNoMatrix = new ODataPathSegmentImpl("segment", null);
   }
 
+  /**
+   * Test path segement.
+   */
   @Test
   public void testPathSegement() {
     assertEquals("segment", segment.getPath());
@@ -64,11 +74,17 @@ public class PathSegmentTest extends BaseTest {
     assertEquals("z", segment.getMatrixParameters().get("m").get(2));
   }
 
+  /**
+   * Readonly matrix parameter.
+   */
   @Test(expected = UnsupportedOperationException.class)
   public void readonlyMatrixParameter() {
     segment.getMatrixParameters().get("m").clear();
   }
 
+  /**
+   * No matrix parameter.
+   */
   @Test
   public void noMatrixParameter() {
     assertEquals("segment", segmentNoMatrix.getPath());

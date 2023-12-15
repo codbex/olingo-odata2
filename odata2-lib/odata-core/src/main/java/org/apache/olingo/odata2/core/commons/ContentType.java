@@ -33,6 +33,7 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.regex.Pattern;
 
+// TODO: Auto-generated Javadoc
 /**
  * Internally used {@link ContentType} for OData library.
  * 
@@ -76,10 +77,24 @@ import java.util.regex.Pattern;
  */
 public class ContentType {
 
+  /**
+   * The Enum ODataFormat.
+   */
   public enum ODataFormat {
-    ATOM, XML, JSON, MIME, CUSTOM
+    
+    /** The atom. */
+    ATOM, 
+ /** The xml. */
+ XML, 
+ /** The json. */
+ JSON, 
+ /** The mime. */
+ MIME, 
+ /** The custom. */
+ CUSTOM
   }
 
+  /** The Constant KNOWN_MIME_TYPES. */
   private static final Set<String> KNOWN_MIME_TYPES = new HashSet<String>();
   static {
     KNOWN_MIME_TYPES.add("audio");
@@ -89,6 +104,7 @@ public class ContentType {
     KNOWN_MIME_TYPES.add("text");
   }
 
+  /** The Constant Q_PARAMETER_COMPARATOR. */
   private static final Comparator<String> Q_PARAMETER_COMPARATOR = new Comparator<String>() {
     @Override
     public int compare(final String o1, final String o2) {
@@ -98,57 +114,124 @@ public class ContentType {
     }
   };
 
+  /** The Constant WHITESPACE_CHAR. */
   private static final char WHITESPACE_CHAR = ' ';
+  
+  /** The Constant PARAMETER_SEPARATOR. */
   private static final String PARAMETER_SEPARATOR = ";";
+  
+  /** The Constant PARAMETER_KEY_VALUE_SEPARATOR. */
   private static final String PARAMETER_KEY_VALUE_SEPARATOR = "=";
+  
+  /** The Constant TYPE_SUBTYPE_SEPARATOR. */
   private static final String TYPE_SUBTYPE_SEPARATOR = "/";
+  
+  /** The Constant MEDIA_TYPE_WILDCARD. */
   private static final String MEDIA_TYPE_WILDCARD = "*";
+  
+  /** The Constant VERBOSE. */
   private static final String VERBOSE = "verbose";
 
+  /** The Constant PARAMETER_CHARSET. */
   public static final String PARAMETER_CHARSET = "charset";
+  
+  /** The Constant PARAMETER_ODATA. */
   public static final String PARAMETER_ODATA = "odata";
+  
+  /** The Constant PARAMETER_Q. */
   public static final String PARAMETER_Q = "q";
+  
+  /** The Constant PARAMETER_TYPE. */
   public static final String PARAMETER_TYPE = "type";
+  
+  /** The Constant CHARSET_UTF_8. */
   public static final String CHARSET_UTF_8 = "utf-8";
 
+  /** The Constant Q_PARAMETER_VALUE_PATTERN. */
   private static final Pattern Q_PARAMETER_VALUE_PATTERN = Pattern.compile("1|0|1\\.0{1,3}|0\\.\\d{1,3}");
 
+  /** The Constant WILDCARD. */
   public static final ContentType WILDCARD = new ContentType(MEDIA_TYPE_WILDCARD, MEDIA_TYPE_WILDCARD);
 
+  /** The Constant APPLICATION_XML. */
   public static final ContentType APPLICATION_XML = new ContentType("application", "xml", ODataFormat.XML);
+  
+  /** The Constant APPLICATION_XML_CS_UTF_8. */
   public static final ContentType APPLICATION_XML_CS_UTF_8 = ContentType.create(APPLICATION_XML, PARAMETER_CHARSET,
       CHARSET_UTF_8);
+  
+  /** The Constant APPLICATION_ATOM_XML. */
   public static final ContentType APPLICATION_ATOM_XML = new ContentType("application", "atom+xml", ODataFormat.ATOM);
+  
+  /** The Constant APPLICATION_ATOM_XML_CS_UTF_8. */
   public static final ContentType APPLICATION_ATOM_XML_CS_UTF_8 = ContentType.create(APPLICATION_ATOM_XML,
       PARAMETER_CHARSET, CHARSET_UTF_8);
+  
+  /** The Constant APPLICATION_ATOM_XML_ENTRY. */
   public static final ContentType APPLICATION_ATOM_XML_ENTRY = new ContentType("application", "atom+xml",
       ODataFormat.ATOM, parameterMap(PARAMETER_TYPE, "entry"));
+  
+  /** The Constant APPLICATION_ATOM_XML_ENTRY_CS_UTF_8. */
   public static final ContentType APPLICATION_ATOM_XML_ENTRY_CS_UTF_8 = ContentType.create(APPLICATION_ATOM_XML_ENTRY,
       PARAMETER_CHARSET, CHARSET_UTF_8);
+  
+  /** The Constant APPLICATION_ATOM_XML_FEED. */
   public static final ContentType APPLICATION_ATOM_XML_FEED = new ContentType("application", "atom+xml",
       ODataFormat.ATOM, parameterMap(PARAMETER_TYPE, "feed"));
+  
+  /** The Constant APPLICATION_ATOM_XML_FEED_CS_UTF_8. */
   public static final ContentType APPLICATION_ATOM_XML_FEED_CS_UTF_8 = ContentType.create(APPLICATION_ATOM_XML_FEED,
       PARAMETER_CHARSET, CHARSET_UTF_8);
+  
+  /** The Constant APPLICATION_ATOM_SVC. */
   public static final ContentType APPLICATION_ATOM_SVC =
       new ContentType("application", "atomsvc+xml", ODataFormat.ATOM);
+  
+  /** The Constant APPLICATION_ATOM_SVC_CS_UTF_8. */
   public static final ContentType APPLICATION_ATOM_SVC_CS_UTF_8 = ContentType.create(APPLICATION_ATOM_SVC,
       PARAMETER_CHARSET, CHARSET_UTF_8);
+  
+  /** The Constant APPLICATION_JSON. */
   public static final ContentType APPLICATION_JSON = new ContentType("application", "json", ODataFormat.JSON);
+  
+  /** The Constant APPLICATION_JSON_ODATA_VERBOSE. */
   public static final ContentType APPLICATION_JSON_ODATA_VERBOSE = ContentType.create(APPLICATION_JSON,
       PARAMETER_ODATA, VERBOSE);
+  
+  /** The Constant APPLICATION_JSON_CS_UTF_8. */
   public static final ContentType APPLICATION_JSON_CS_UTF_8 = ContentType.create(APPLICATION_JSON, PARAMETER_CHARSET,
       CHARSET_UTF_8);
+  
+  /** The Constant APPLICATION_OCTET_STREAM. */
   public static final ContentType APPLICATION_OCTET_STREAM = new ContentType("application", "octet-stream");
+  
+  /** The Constant TEXT_PLAIN. */
   public static final ContentType TEXT_PLAIN = new ContentType("text", "plain");
+  
+  /** The Constant TEXT_PLAIN_CS_UTF_8. */
   public static final ContentType TEXT_PLAIN_CS_UTF_8 = ContentType
       .create(TEXT_PLAIN, PARAMETER_CHARSET, CHARSET_UTF_8);
+  
+  /** The Constant MULTIPART_MIXED. */
   public static final ContentType MULTIPART_MIXED = new ContentType("multipart", "mixed");
 
+  /** The type. */
   private final String type;
+  
+  /** The subtype. */
   private final String subtype;
+  
+  /** The parameters. */
   private final Map<String, String> parameters;
+  
+  /** The odata format. */
   private final ODataFormat odataFormat;
 
+  /**
+   * Instantiates a new content type.
+   *
+   * @param type the type
+   */
   private ContentType(final String type) {
     if (type == null) {
       throw new IllegalArgumentException("Type parameter MUST NOT be null.");
@@ -159,14 +242,35 @@ public class ContentType {
     parameters = Collections.emptyMap();
   }
 
+  /**
+   * Instantiates a new content type.
+   *
+   * @param type the type
+   * @param subtype the subtype
+   */
   private ContentType(final String type, final String subtype) {
     this(type, subtype, ODataFormat.CUSTOM, null);
   }
 
+  /**
+   * Instantiates a new content type.
+   *
+   * @param type the type
+   * @param subtype the subtype
+   * @param odataFormat the odata format
+   */
   private ContentType(final String type, final String subtype, final ODataFormat odataFormat) {
     this(type, subtype, odataFormat, null);
   }
 
+  /**
+   * Instantiates a new content type.
+   *
+   * @param type the type
+   * @param subtype the subtype
+   * @param odataFormat the odata format
+   * @param parameters the parameters
+   */
   private ContentType(final String type, final String subtype, final ODataFormat odataFormat,
       final Map<String, String> parameters) {
     if ((type == null || MEDIA_TYPE_WILDCARD.equals(type)) && !MEDIA_TYPE_WILDCARD.equals(subtype)) {
@@ -190,6 +294,12 @@ public class ContentType {
     }
   }
 
+  /**
+   * Validate type.
+   *
+   * @param type the type
+   * @return the string
+   */
   private String validateType(final String type) {
     if (type == null || type.isEmpty()) {
       return MEDIA_TYPE_WILDCARD;
@@ -230,9 +340,10 @@ public class ContentType {
   }
 
   /**
-   * Creates a content type from type and subtype
-   * @param type
-   * @param subtype
+   * Creates a content type from type and subtype.
+   *
+   * @param type the type
+   * @param subtype the subtype
    * @return a new <code>ContentType</code> object
    */
   public static ContentType create(final String type, final String subtype) {
@@ -240,10 +351,11 @@ public class ContentType {
   }
 
   /**
-   * 
-   * @param type
-   * @param subtype
-   * @param parameters
+   * Creates the.
+   *
+   * @param type the type
+   * @param subtype the subtype
+   * @param parameters the parameters
    * @return a new <code>ContentType</code> object
    */
   public static ContentType create(final String type, final String subtype, final Map<String, String> parameters) {
@@ -251,10 +363,11 @@ public class ContentType {
   }
 
   /**
-   * 
-   * @param contentType
-   * @param parameterKey
-   * @param parameterValue
+   * Creates the.
+   *
+   * @param contentType the content type
+   * @param parameterKey the parameter key
+   * @param parameterValue the parameter value
    * @return a new <code>ContentType</code> object
    */
   public static ContentType
@@ -475,8 +588,8 @@ public class ContentType {
    * semantics of the parameter name. <b>Linear white space (LWS) MUST NOT be used
    * between the type and subtype, nor between an attribute and its value</b>.
    * </p>
-   * 
-   * @param parameters
+   *
+   * @param parameters the parameters
    * @return Map with keys mapped to values
    */
   private static Map<String, String> parseParameters(final String parameters) {
@@ -533,9 +646,9 @@ public class ContentType {
 
   /**
    * Check if parameter with key value is a allowed parameter.
-   * 
-   * @param key
-   * @return
+   *
+   * @param key the key
+   * @return true, if is parameter allowed
    */
   private static boolean isParameterAllowed(final String key) {
     return key != null && !PARAMETER_Q.equals(key.toLowerCase(Locale.US));
@@ -567,8 +680,8 @@ public class ContentType {
    * If <code>this</code> {@link ContentType} has no charset parameter set a new {@link ContentType} with given
    * <code>defaultCharset</code> is created.
    * Otherwise if charset parameter is already set nothing is done.
-   * 
-   * @param defaultCharset
+   *
+   * @param defaultCharset the default charset
    * @return ContentType
    */
   public ContentType receiveWithCharsetParameter(final String defaultCharset) {
@@ -581,7 +694,8 @@ public class ContentType {
   }
 
   /**
-   * 
+   * Checks if is content type O data text related.
+   *
    * @return <code>true</code> if this {@link ContentType} is text related (in the view of OData)
    */
   public boolean isContentTypeODataTextRelated() {
@@ -591,22 +705,38 @@ public class ContentType {
         || (getODataFormat() == ODataFormat.JSON));
   }
 
+  /**
+   * Gets the type.
+   *
+   * @return the type
+   */
   public String getType() {
     return type;
   }
 
+  /**
+   * Gets the subtype.
+   *
+   * @return the subtype
+   */
   public String getSubtype() {
     return subtype;
   }
 
   /**
-   * 
+   * Gets the parameters.
+   *
    * @return parameters of this {@link ContentType} as unmodifiable map.
    */
   public Map<String, String> getParameters() {
     return Collections.unmodifiableMap(parameters);
   }
 
+  /**
+   * Hash code.
+   *
+   * @return the int
+   */
   @Override
   public int hashCode() {
     return 1;
@@ -619,7 +749,8 @@ public class ContentType {
    * <li>if <code>type</code> and/or <code>subtype</code> is set to "*" (in such a case the <code>parameters</code> are
    * ignored).</li>
    * </ul>
-   * 
+   *
+   * @param obj the obj
    * @return <code>true</code> if both instances are equal (see definition above), otherwise <code>false</code>.
    */
   @Override
@@ -667,7 +798,8 @@ public class ContentType {
    * </ul>
    * The set <code>parameters</code> are <b>always</b> ignored (for compare with parameters see {@link #equals(Object)}
    * ).
-   * 
+   *
+   * @param obj the obj
    * @return <code>true</code> if both instances are equal (see definition above), otherwise <code>false</code>.
    */
   public boolean isCompatible(final ContentType obj) {
@@ -777,11 +909,21 @@ public class ContentType {
     return sb.toString();
   }
 
+  /**
+   * To string.
+   *
+   * @return the string
+   */
   @Override
   public String toString() {
     return toContentTypeString();
   }
 
+  /**
+   * Gets the o data format.
+   *
+   * @return the o data format
+   */
   public ODataFormat getODataFormat() {
     return odataFormat;
   }
@@ -877,6 +1019,11 @@ public class ContentType {
     return countWildcards() - otherContentType.countWildcards();
   }
 
+  /**
+   * Count wildcards.
+   *
+   * @return the int
+   */
   private int countWildcards() {
     int count = 0;
     if (MEDIA_TYPE_WILDCARD.equals(type)) {
@@ -889,7 +1036,8 @@ public class ContentType {
   }
 
   /**
-   * 
+   * Checks for wildcard.
+   *
    * @return <code>true</code> if <code>type</code> or <code>subtype</code> of this instance is a "*".
    */
   public boolean hasWildcard() {
@@ -897,13 +1045,20 @@ public class ContentType {
   }
 
   /**
-   * 
+   * Checks if is wildcard.
+   *
    * @return <code>true</code> if both <code>type</code> and <code>subtype</code> of this instance are a "*".
    */
   public boolean isWildcard() {
     return (MEDIA_TYPE_WILDCARD.equals(type) && MEDIA_TYPE_WILDCARD.equals(subtype));
   }
 
+  /**
+   * Convert.
+   *
+   * @param types the types
+   * @return the list
+   */
   public static List<ContentType> convert(final List<String> types) {
     List<ContentType> results = new ArrayList<ContentType>();
     for (String contentType : types) {

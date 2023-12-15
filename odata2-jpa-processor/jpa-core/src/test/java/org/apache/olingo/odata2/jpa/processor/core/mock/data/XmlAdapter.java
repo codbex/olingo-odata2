@@ -14,13 +14,31 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.jpa.processor.core.mock.data;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class XmlAdapter.
+ */
 public class XmlAdapter extends jakarta.xml.bind.annotation.adapters.XmlAdapter<String, EntityWithXmlAdapterOnProperty> {
 
+    /**
+     * Marshal.
+     *
+     * @param arg0 the arg 0
+     * @return the string
+     * @throws Exception the exception
+     */
     @Override
     public String marshal(EntityWithXmlAdapterOnProperty arg0) throws Exception {
         return "self";
     }
 
+    /**
+     * Unmarshal.
+     *
+     * @param arg0 the arg 0
+     * @return the entity with xml adapter on property
+     * @throws Exception the exception
+     */
     @Override
     public EntityWithXmlAdapterOnProperty unmarshal(String arg0) throws Exception {
         return new EntityWithXmlAdapterOnProperty();

@@ -18,22 +18,39 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.annotation.processor.core.util;
 
+// TODO: Auto-generated Javadoc
 /**
  * Uncatched exception for cases where an unexpected or unrecoverable error occurs.
  */
 public class AnnotationRuntimeException extends RuntimeException {
 
-  /** Manual generated */
+  /**  Manual generated. */
   private static final long serialVersionUID = 42L;
 
+  /**
+   * Instantiates a new annotation runtime exception.
+   *
+   * @param message the message
+   */
   public AnnotationRuntimeException(final String message) {
     super(message);
   }
 
+  /**
+   * Instantiates a new annotation runtime exception.
+   *
+   * @param cause the cause
+   */
   public AnnotationRuntimeException(final Throwable cause) {
     super(cause);
   }
 
+  /**
+   * Instantiates a new annotation runtime exception.
+   *
+   * @param message the message
+   * @param cause the cause
+   */
   public AnnotationRuntimeException(final String message, final Throwable cause) {
     super(message, cause);
   }

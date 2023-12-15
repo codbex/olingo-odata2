@@ -36,17 +36,24 @@ import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.apache.olingo.odata2.testutil.helper.StringHelper;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class ODataResponseTest.
  */
 public class ODataResponseTest extends BaseTest {
 
+  /**
+   * Builds the status response test.
+   */
   @Test
   public void buildStatusResponseTest() {
     ODataResponse response = ODataResponse.status(HttpStatusCodes.FOUND).build();
     assertEquals(HttpStatusCodes.FOUND, response.getStatus());
   }
 
+  /**
+   * Builds the entity response test.
+   */
   @Test
   public void buildEntityResponseTest() {
     ODataResponse response = ODataResponse.entity("abc").build();
@@ -54,6 +61,11 @@ public class ODataResponseTest extends BaseTest {
     assertEquals("abc", response.getEntity());
   }
 
+  /**
+   * Builds the entity as stream response test.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void buildEntityAsStreamResponseTest() throws Exception {
     ODataResponse response = ODataResponse.entity("abc").build();
@@ -63,6 +75,11 @@ public class ODataResponseTest extends BaseTest {
     assertEquals("abc", StringHelper.inputStreamToString(entityAsStream));
   }
 
+  /**
+   * Builds the entity as stream response test charset.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void buildEntityAsStreamResponseTestCharset() throws Exception {
     ODataResponse response = ODataResponse.entity("äbc")
@@ -73,6 +90,11 @@ public class ODataResponseTest extends BaseTest {
     assertEquals("äbc", StringHelper.inputStreamToString(entityAsStream));
   }
 
+  /**
+   * Builds the entity as stream response test charset iso.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void buildEntityAsStreamResponseTestCharsetIso() throws Exception {
     ODataResponse response = ODataResponse.entity("äbc")
@@ -84,6 +106,9 @@ public class ODataResponseTest extends BaseTest {
     assertEquals("äbc", s.asString("iso-8859-1"));
   }
 
+  /**
+   * Builds the header response test.
+   */
   @Test
   public void buildHeaderResponseTest() {
     ODataResponse response = ODataResponse
@@ -97,6 +122,9 @@ public class ODataResponseTest extends BaseTest {
     assertNull(response.getHeader("ghi"));
   }
 
+  /**
+   * Content header.
+   */
   @Test
   public void contentHeader() {
     final ODataResponse response = ODataResponse.contentHeader(HttpContentType.APPLICATION_OCTET_STREAM).build();
@@ -108,6 +136,9 @@ public class ODataResponseTest extends BaseTest {
     assertEquals(new HashSet<String>(Arrays.asList(HttpHeaders.CONTENT_TYPE)), response.getHeaderNames());
   }
 
+  /**
+   * Complete response.
+   */
   @Test
   public void completeResponse() {
     final ODataResponse response = ODataResponse.newBuilder()
@@ -135,6 +166,9 @@ public class ODataResponseTest extends BaseTest {
     assertEquals("body", responseCopy.getEntity());
   }
   
+  /**
+   * Builds the response with status code 420.
+   */
   @Test
   public void buildResponseWithStatusCode420() {
     ODataResponse response = ODataResponse.entity("NOT OK").status(HttpStatusCodes.METHOD_FAILED).build();

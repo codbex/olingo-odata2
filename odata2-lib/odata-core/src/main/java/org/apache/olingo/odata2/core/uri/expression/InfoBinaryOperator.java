@@ -23,17 +23,35 @@ import java.util.List;
 import org.apache.olingo.odata2.api.edm.EdmType;
 import org.apache.olingo.odata2.api.uri.expression.BinaryOperator;
 
+// TODO: Auto-generated Javadoc
 /**
- * Describes a binary operator which is allowed in OData expressions
- * 
+ * Describes a binary operator which is allowed in OData expressions.
  */
 class InfoBinaryOperator {
+  
+  /** The operator. */
   private BinaryOperator operator;
+  
+  /** The category. */
   private String category;
+  
+  /** The syntax. */
   private String syntax;
+  
+  /** The priority. */
   private int priority;
+  
+  /** The combination. */
   ParameterSetCombination combination;
 
+  /**
+   * Instantiates a new info binary operator.
+   *
+   * @param operator the operator
+   * @param category the category
+   * @param priority the priority
+   * @param combination the combination
+   */
   public InfoBinaryOperator(final BinaryOperator operator, final String category, final int priority,
       final ParameterSetCombination combination) {
     this.operator = operator;
@@ -43,22 +61,49 @@ class InfoBinaryOperator {
     this.combination = combination;
   }
 
+  /**
+   * Gets the category.
+   *
+   * @return the category
+   */
   public String getCategory() {
     return category;
   }
 
+  /**
+   * Gets the syntax.
+   *
+   * @return the syntax
+   */
   public String getSyntax() {
     return syntax;
   }
 
+  /**
+   * Gets the operator.
+   *
+   * @return the operator
+   */
   public BinaryOperator getOperator() {
     return operator;
   }
 
+  /**
+   * Gets the priority.
+   *
+   * @return the priority
+   */
   public int getPriority() {
     return priority;
   }
 
+  /**
+   * Validate parameter set.
+   *
+   * @param actualParameterTypes the actual parameter types
+   * @return the parameter set
+   * @throws ExpressionParserInternalError the expression parser internal error
+   */
   public ParameterSet validateParameterSet(final List<EdmType> actualParameterTypes)
       throws ExpressionParserInternalError {
     return combination.validate(actualParameterTypes);

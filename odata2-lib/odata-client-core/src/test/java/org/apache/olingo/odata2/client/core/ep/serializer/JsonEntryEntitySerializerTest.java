@@ -67,17 +67,31 @@ import org.junit.Test;
 import com.google.gson.Gson;
 import com.google.gson.internal.LinkedTreeMap;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class JsonEntryEntitySerializerTest.
  */
 public class JsonEntryEntitySerializerTest extends BaseTest { 
+  
+  /** The Constant BASE_URI. */
   protected static final String BASE_URI = "http://host:80/service/";
+  
+  /** The Constant DEFAULT_PROPERTIES. */
   protected static final EntitySerializerProperties DEFAULT_PROPERTIES =
       EntitySerializerProperties.serviceRoot(URI.create(BASE_URI)).build();
+  
+  /** The Constant ERROR_MSG. */
   protected static final String ERROR_MSG = "Entity or expanded entity cannot have null value.";
+  
+  /** The Constant ERROR_MSG1. */
   protected static final String ERROR_MSG1 = "Navigation has to be either an Entity or a Map.";
   
 
+  /**
+   * Entry.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entry() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -91,6 +105,11 @@ public class JsonEntryEntitySerializerTest extends BaseTest {
     assertEquals("{\"Id\":\"1\",\"isScrumTeam\":true}", json);
   }
 
+  /**
+   * Entry without key.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entryWithoutKey() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -104,6 +123,11 @@ public class JsonEntryEntitySerializerTest extends BaseTest {
     assertEquals("{\"isScrumTeam\":true}", json);
   }
   
+  /**
+   * Include metadata.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void includeMetadata() throws Exception {
@@ -140,6 +164,11 @@ public class JsonEntryEntitySerializerTest extends BaseTest {
     assertNull(employee.get("ne_Room"));
   }
 
+  /**
+   * Include metadata without key.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void includeMetadataWithoutKey() throws Exception {
     Entity employeeData = new Entity();
@@ -166,6 +195,11 @@ public class JsonEntryEntitySerializerTest extends BaseTest {
     }
   }
 
+  /**
+   * Test navigation link.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void testNavigationLink() throws Exception {
@@ -193,6 +227,11 @@ public class JsonEntryEntitySerializerTest extends BaseTest {
     assertEquals("http://host:80/service/Managers('1')", map.get("uri"));
   }
 
+  /**
+   * Adds the entity to navigation.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void addEntityToNavigation() throws Exception {
@@ -219,6 +258,11 @@ public class JsonEntryEntitySerializerTest extends BaseTest {
     assertEquals(map.get("EmployeeId"), "1");
   }
   
+  /**
+   * Adds the entity and map to navigation.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void addEntityAndMapToNavigation() throws Exception {
@@ -253,6 +297,11 @@ public class JsonEntryEntitySerializerTest extends BaseTest {
         "http://host:80/service/Rooms('1')");
   }
   
+  /**
+   * Adds the null to navigation.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void addNullToNavigation() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Employees");
@@ -270,6 +319,11 @@ public class JsonEntryEntitySerializerTest extends BaseTest {
     }
   }
   
+  /**
+   * Adds the empty entity to navigation.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void addEmptyEntityToNavigation() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Employees");
@@ -293,6 +347,11 @@ public class JsonEntryEntitySerializerTest extends BaseTest {
     assertNotNull(employee.get("ne_Manager"));
   }
   
+  /**
+   * Adds the empty map to navigation.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void addEmptyMapToNavigation() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Employees");
@@ -316,6 +375,11 @@ public class JsonEntryEntitySerializerTest extends BaseTest {
     assertNull(employee.get("ne_Manager"));
   }
   
+  /**
+   * Adds the incorrect type to navigation.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void addIncorrectTypeToNavigation() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Employees");
@@ -334,6 +398,11 @@ public class JsonEntryEntitySerializerTest extends BaseTest {
     }
   }
   
+  /**
+   * Serialize with facets validation.
+   *
+   * @throws Throwable the throwable
+   */
   @Test(expected = EdmSimpleTypeException.class)
   public void serializeWithFacetsValidation() throws Throwable {
     Edm edm = MockFacade.getMockEdm();
@@ -360,6 +429,11 @@ public class JsonEntryEntitySerializerTest extends BaseTest {
     }
   }
 
+  /**
+   * Serialize without facets validation.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serializeWithoutFacetsValidation() throws Exception {
     Edm edm = MockFacade.getMockEdm();
@@ -382,6 +456,11 @@ public class JsonEntryEntitySerializerTest extends BaseTest {
     assertEquals("{\"Id\":\"4711\",\"Name\":\"1234567890\"}", json);
   }
 
+  /**
+   * Entry with null data.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entryWithNullData() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -392,6 +471,11 @@ public class JsonEntryEntitySerializerTest extends BaseTest {
     }
   }
   
+  /**
+   * Entry with empty data.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entryWithEmptyData() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -403,6 +487,11 @@ public class JsonEntryEntitySerializerTest extends BaseTest {
     assertEquals("{}", json);
   }
 
+  /**
+   * Media link entry.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void mediaLinkEntry() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getEntityContainer("Container2").getEntitySet("Photos");
@@ -419,6 +508,11 @@ public class JsonEntryEntitySerializerTest extends BaseTest {
         json);
   }
 
+  /**
+   * Entry with expanded entry but null data.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entryWithExpandedEntryButNullData() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");
@@ -435,6 +529,11 @@ public class JsonEntryEntitySerializerTest extends BaseTest {
     }
   }
  
+  /**
+   * Entry with expanded entry but empty data.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void entryWithExpandedEntryButEmptyData() throws Exception {
@@ -460,6 +559,11 @@ public class JsonEntryEntitySerializerTest extends BaseTest {
     assertTrue(((Map<String, Object>) roomEntry.get("nr_Building")).size() == 0);
   }
 
+  /**
+   * Entry with expanded entry.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entryWithExpandedEntry() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");
@@ -482,6 +586,11 @@ public class JsonEntryEntitySerializerTest extends BaseTest {
         json);
   }
 
+  /**
+   * Entry with expanded entry with facets.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void entryWithExpandedEntryWithFacets() throws Exception {
     Edm edm = MockFacade.getMockEdm();
@@ -511,6 +620,11 @@ public class JsonEntryEntitySerializerTest extends BaseTest {
     assertNotNull(response);
   }
 
+  /**
+   * Entry with expanded entry ignore facets.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entryWithExpandedEntryIgnoreFacets() throws Exception {
     Edm edm = MockFacade.getMockEdm();
@@ -544,6 +658,11 @@ public class JsonEntryEntitySerializerTest extends BaseTest {
         json);
   }
 
+  /**
+   * Serialize with custom src attribute on employee.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void serializeWithCustomSrcAttributeOnEmployee() throws Exception {
@@ -591,6 +710,11 @@ public class JsonEntryEntitySerializerTest extends BaseTest {
     assertEquals("http://host:80/service/Employees('1')/$value", jsonMap.get("edit_media"));
   }
 
+  /**
+   * Serialize with custom src and type attribute on employee.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void serializeWithCustomSrcAndTypeAttributeOnEmployee() throws Exception {
@@ -641,6 +765,11 @@ public class JsonEntryEntitySerializerTest extends BaseTest {
     assertEquals("http://host:80/service/Employees('1')/$value", jsonMap.get("edit_media"));
   }
   
+  /**
+   * Serialize with custom src attribute on room.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void serializeWithCustomSrcAttributeOnRoom() throws Exception {
@@ -672,6 +801,11 @@ public class JsonEntryEntitySerializerTest extends BaseTest {
     assertNull(jsonMap.get("edit_media"));
   }
 
+  /**
+   * Serialize with custom src and type attribute on room.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void serializeWithCustomSrcAndTypeAttributeOnRoom() throws Exception {
@@ -706,6 +840,13 @@ public class JsonEntryEntitySerializerTest extends BaseTest {
     assertNull(jsonMap.get("edit_media"));
   }
   
+  /**
+   * Verify response.
+   *
+   * @param response the response
+   * @return the string
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private String verifyResponse(final ODataResponse response) throws IOException {
     assertNotNull(response);
     assertNotNull(response.getEntity());
@@ -716,6 +857,11 @@ public class JsonEntryEntitySerializerTest extends BaseTest {
     return json;
   }
   
+  /**
+   * Unbalanced property entry with inline entry.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void unbalancedPropertyEntryWithInlineEntry() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");
@@ -740,6 +886,11 @@ public class JsonEntryEntitySerializerTest extends BaseTest {
     assertEquals("{\"Id\":\"1\",\"Version\":1,\"nr_Building\":{\"Id\":\"1\",\"Name\":\"Building1\"}}", json);
   }
   
+  /**
+   * Unbalanced property entry with multiple inline entry.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void unbalancedPropertyEntryWithMultipleInlineEntry() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");
@@ -784,6 +935,11 @@ public class JsonEntryEntitySerializerTest extends BaseTest {
         "\"nr_Building\":{\"nb_Rooms\":[{\"Id\":\"1\",\"Version\":1}]}}", json);
   }
   
+  /**
+   * Entry with empty inline entry.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entryWithEmptyInlineEntry() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");
@@ -807,6 +963,11 @@ public class JsonEntryEntitySerializerTest extends BaseTest {
         + "{}}", json);
   }
   
+  /**
+   * Entry with empty inline entry with key auto gen flag.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entryWithEmptyInlineEntryWithKeyAutoGenFlag() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");
@@ -831,6 +992,11 @@ public class JsonEntryEntitySerializerTest extends BaseTest {
         + "{}}", json);
   }
   
+  /**
+   * Entry with inline entry without key.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entryWithInlineEntryWithoutKey() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");
@@ -854,6 +1020,11 @@ public class JsonEntryEntitySerializerTest extends BaseTest {
     assertEquals("{\"Version\":1,\"nr_Building\":{\"Name\":\"Building1\"}}", json);
   }
   
+  /**
+   * Entry with inline entry without key with metadata.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entryWithInlineEntryWithoutKeyWithMetadata() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");
@@ -879,6 +1050,11 @@ public class JsonEntryEntitySerializerTest extends BaseTest {
         + "\"Version\":1,\"nr_Building\":{\"Name\":\"Building1\"}}", json);
   }
   
+  /**
+   * Content only without key without selected properties.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void contentOnlyWithoutKeyWithoutSelectedProperties() throws Exception {
     Entity employeeData = new Entity();
@@ -899,6 +1075,11 @@ public class JsonEntryEntitySerializerTest extends BaseTest {
     }
   }
   
+  /**
+   * Test without composite key.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testWithoutCompositeKey() throws Exception {
     EdmEntitySet entitySet = MockFacade.getMockEdm().getEntityContainer("Container2").getEntitySet("Photos");
@@ -915,6 +1096,11 @@ public class JsonEntryEntitySerializerTest extends BaseTest {
     }
   }
   
+  /**
+   * Test without composite key with one key null.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testWithoutCompositeKeyWithOneKeyNull() throws Exception {
     Edm edm = MockFacade.getMockEdm();
@@ -940,6 +1126,11 @@ public class JsonEntryEntitySerializerTest extends BaseTest {
     }
   }
   
+  /**
+   * Test exception with non nullable property is null.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testExceptionWithNonNullablePropertyIsNull() throws Exception {
     EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Organizations");
@@ -958,11 +1149,24 @@ public class JsonEntryEntitySerializerTest extends BaseTest {
     }
   }
   
+  /**
+   * Creates the stream reader.
+   *
+   * @param xml the xml
+   * @return the input stream
+   * @throws XMLStreamException the XML stream exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   private InputStream createStreamReader(final String xml) throws
   XMLStreamException, UnsupportedEncodingException {
     return new ByteArrayInputStream(xml.getBytes("UTF-8"));
   }
   
+  /**
+   * Deep insert end to end.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void deepInsertEndToEnd() throws Exception {
     XmlMetadataDeserializer parser = new XmlMetadataDeserializer();
@@ -1004,6 +1208,13 @@ public class JsonEntryEntitySerializerTest extends BaseTest {
  
   }
   
+  /**
+   * Read file.
+   *
+   * @param filename the filename
+   * @return the string
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   protected String readFile(final String filename) throws IOException {
     InputStream in = getFileAsStream(filename);
 
@@ -1017,6 +1228,14 @@ public class JsonEntryEntitySerializerTest extends BaseTest {
 
     return b.toString();
   }
+  
+  /**
+   * Gets the file as stream.
+   *
+   * @param filename the filename
+   * @return the file as stream
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   protected InputStream getFileAsStream(final String filename) throws IOException {
     InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream(filename);
     if (in == null) {
@@ -1025,6 +1244,11 @@ public class JsonEntryEntitySerializerTest extends BaseTest {
     return in;
   }
   
+  /**
+   * Test exception with non nullable property is null 1.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testExceptionWithNonNullablePropertyIsNull1() throws Exception {
     EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Organizations");
@@ -1047,6 +1271,11 @@ public class JsonEntryEntitySerializerTest extends BaseTest {
     }
   }
   
+  /**
+   * Test exception with non nullable property is null 2.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testExceptionWithNonNullablePropertyIsNull2() throws Exception {
     EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Organizations");

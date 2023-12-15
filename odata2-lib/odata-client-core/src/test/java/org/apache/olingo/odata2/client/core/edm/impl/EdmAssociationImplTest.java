@@ -33,8 +33,17 @@ import org.apache.olingo.odata2.client.core.edm.Impl.EdmImpl;
 import org.apache.olingo.odata2.client.core.edm.Impl.EdmReferentialConstraintImpl;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EdmAssociationImplTest.
+ */
 public class EdmAssociationImplTest {
 
+  /**
+   * Association test.
+   *
+   * @throws EdmException the edm exception
+   */
   @Test
   public void associationTest() throws EdmException {
     EdmAssociationImpl association= new EdmAssociationImpl();

@@ -31,12 +31,26 @@ import jakarta.persistence.TemporalType;
 import jakarta.persistence.metamodel.EntityType;
 import jakarta.persistence.metamodel.Metamodel;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ODataJPAContextMock.
+ */
 public abstract class ODataJPAContextMock {
 
+    /** The Constant NAMESPACE. */
     public static final String NAMESPACE = "salesorderprocessing";
+    
+    /** The Constant MAPPING_MODEL. */
     public static final String MAPPING_MODEL = "SalesOrderProcessingMappingModel";
+    
+    /** The Constant PERSISTENCE_UNIT_NAME. */
     public static final String PERSISTENCE_UNIT_NAME = "salesorderprocessing";
 
+    /**
+     * Mock O data JPA context.
+     *
+     * @return the o data JPA context
+     */
     public static ODataJPAContext mockODataJPAContext() {
         ODataJPAContext odataJPAContext = EasyMock.createMock(ODataJPAContext.class);
         EasyMock.expect(odataJPAContext.getPersistenceUnitName())
@@ -56,6 +70,12 @@ public abstract class ODataJPAContextMock {
         return odataJPAContext;
     }
 
+    /**
+     * Mock O data JPA context.
+     *
+     * @param context the context
+     * @return the o data JPA context
+     */
     public static ODataJPAContext mockODataJPAContext(final ODataContext context) {
         ODataJPAContext odataJPAContext = EasyMock.createMock(ODataJPAContext.class);
         EasyMock.expect(odataJPAContext.getPersistenceUnitName())
@@ -80,6 +100,11 @@ public abstract class ODataJPAContextMock {
         return odataJPAContext;
     }
 
+    /**
+     * Mock entity manager.
+     *
+     * @return the entity manager
+     */
     private static EntityManager mockEntityManager() {
         EntityManager em = EasyMock.createMock(EntityManager.class);
         Metamodel mm = EasyMock.createMock(Metamodel.class);
@@ -119,6 +144,11 @@ public abstract class ODataJPAContextMock {
 
     }
 
+    /**
+     * Mock entity manager factory.
+     *
+     * @return the entity manager factory
+     */
     private static EntityManagerFactory mockEntityManagerFactory() {
         EntityManagerFactory emf = EasyMock.createMock(EntityManagerFactory.class);
         EasyMock.expect(emf.getMetamodel())
@@ -127,6 +157,11 @@ public abstract class ODataJPAContextMock {
         return emf;
     }
 
+    /**
+     * Mock meta model.
+     *
+     * @return the metamodel
+     */
     private static Metamodel mockMetaModel() {
         Metamodel metaModel = EasyMock.createMock(Metamodel.class);
         EasyMock.replay(metaModel);

@@ -32,8 +32,15 @@ import org.apache.olingo.odata2.client.core.edm.Impl.EdmAnnotationElementImpl;
 import org.apache.olingo.odata2.client.core.edm.Impl.EdmAnnotationsImpl;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EdmAnnotationImplTest.
+ */
 public class EdmAnnotationImplTest {
 
+  /**
+   * Annotation attribute test.
+   */
   @Test
   public void annotationAttributeTest(){
     EdmAnnotationAttributeImpl annotation = new EdmAnnotationAttributeImpl();
@@ -47,6 +54,9 @@ public class EdmAnnotationImplTest {
     assertEquals("text", annotation.getText());
   }
   
+  /**
+   * Annotation element test.
+   */
   @Test
   public void annotationElementTest(){
     EdmAnnotationElementImpl annotation = new EdmAnnotationElementImpl();
@@ -64,6 +74,9 @@ public class EdmAnnotationImplTest {
     assertNull(annotation.getChildElements());
   }
   
+  /**
+   * Annotation test.
+   */
   @Test
   public void annotationTest(){
     EdmAnnotationsImpl annotation = new EdmAnnotationsImpl();

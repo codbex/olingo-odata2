@@ -22,13 +22,20 @@ import org.apache.olingo.odata2.api.edm.Edm;
 import org.apache.olingo.odata2.api.edm.EdmException;
 import org.apache.olingo.odata2.api.edm.EdmType;
 
+// TODO: Auto-generated Javadoc
 /**
- *  Objects of this class represent ComplexProperty
+ *  Objects of this class represent ComplexProperty.
  */
 public class EdmComplexPropertyImpl extends EdmPropertyImpl {
 
 
 
+  /**
+   * Gets the type.
+   *
+   * @return the type
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmType getType() throws EdmException {
     if (edmType == null) {
@@ -41,10 +48,20 @@ public class EdmComplexPropertyImpl extends EdmPropertyImpl {
   }
 
 
+  /**
+   * Checks if is simple.
+   *
+   * @return true, if is simple
+   */
   public boolean isSimple() {
     return false;
   }
   
+  /**
+   * To string.
+   *
+   * @return the string
+   */
   @Override
   public String toString() {
     try {

@@ -64,17 +64,38 @@ import org.custommonkey.xmlunit.exceptions.XpathException;
 import org.junit.Test;
 import org.xml.sax.SAXException;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class XmlExpandProducerTest.
+ */
 public class XmlExpandProducerTest extends AbstractProviderTest {
 
+  /** The Constant T. */
   private static final boolean T = true;
+  
+  /** The Constant F. */
   private static final boolean F = false;
+  
+  /** The inline base uri. */
   private final URI inlineBaseUri;
 
+  /** The employee X path string. */
   private String employeeXPathString = "/a:entry/a:link[@href=\"Rooms('1')/nr_Employees\" and @title='nr_Employees']";
+  
+  /** The room X path string. */
   private String roomXPathString = "/a:entry/a:link[@href=\"Employees('1')/ne_Room\" and @title='ne_Room']";
+  
+  /** The team X path string. */
   private String teamXPathString = "/a:entry/a:link[@href=\"Employees('1')/ne_Team\" and @title='ne_Team']";
+  
+  /** The building X path string. */
   private String buildingXPathString = "/a:entry/a:link[@href=\"Buildings('1')/nb_Rooms\" and @title='nb_Rooms']";
 
+  /**
+   * Instantiates a new xml expand producer test.
+   *
+   * @param type the type
+   */
   public XmlExpandProducerTest(final StreamWriterImplType type) {
     super(type);
 
@@ -85,6 +106,11 @@ public class XmlExpandProducerTest extends AbstractProviderTest {
     }
   }
 
+  /**
+   * Expand selected team null omit inline.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void expandSelectedTeamNullOmitInline() throws Exception {
     ExpandSelectTreeNode selectTree = getSelectExpandTree("Employees('1')", "ne_Team", "ne_Team");
@@ -106,6 +132,11 @@ public class XmlExpandProducerTest extends AbstractProviderTest {
     assertXpathNotExists(teamXPathString +  "/m:inline/a:entry", xmlString);
   }
   
+  /**
+   * Expand selected rooms null omit inline.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void expandSelectedRoomsNullOmitInline() throws Exception {
     ExpandSelectTreeNode selectTree = getSelectExpandTree("Buildings('1')", "nb_Rooms", "nb_Rooms");
@@ -133,6 +164,12 @@ public class XmlExpandProducerTest extends AbstractProviderTest {
     assertXpathNotExists(buildingXPathString + "/m:inline/a:feed/a:link[@href=\"Buildings('1')/nb_Rooms\"]", xmlString);
     assertXpathNotExists(buildingXPathString + "/m:inline/a:feed/a:entry", xmlString);
   }
+  
+  /**
+   * Expand selected employees.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void expandSelectedEmployees() throws Exception {
     ExpandSelectTreeNode selectTree = getSelectExpandTree("Rooms('1')", "nr_Employees", "nr_Employees");
@@ -152,6 +189,11 @@ public class XmlExpandProducerTest extends AbstractProviderTest {
     verifyEmployees(employeeXPathString, xmlString);
   }
 
+  /**
+   * Expand selected employees with facets.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void expandSelectedEmployeesWithFacets() throws Exception {
     Edm edm = MockFacade.getMockEdm();
@@ -178,6 +220,11 @@ public class XmlExpandProducerTest extends AbstractProviderTest {
     verifyEmployees(employeeXPathString, xmlString);
   }
 
+  /**
+   * Expand selected employees ignore facets.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void expandSelectedEmployeesIgnoreFacets() throws Exception {
     Edm edm = MockFacade.getMockEdm();
@@ -205,6 +252,11 @@ public class XmlExpandProducerTest extends AbstractProviderTest {
   }
 
 
+  /**
+   * Expand selected employees with builder.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void expandSelectedEmployeesWithBuilder() throws Exception {
     EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");
@@ -228,6 +280,11 @@ public class XmlExpandProducerTest extends AbstractProviderTest {
     verifyEmployees(employeeXPathString, xmlString);
   }
 
+  /**
+   * Expand selected employees null.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void expandSelectedEmployeesNull() throws Exception {
     ExpandSelectTreeNode selectTree = getSelectExpandTree("Rooms('1')", "nr_Employees", "nr_Employees");
@@ -261,6 +318,11 @@ public class XmlExpandProducerTest extends AbstractProviderTest {
     assertXpathNotExists(employeeXPathString + "/m:inline/a:feed/a:entry", xmlString);
   }
 
+  /**
+   * Expand selected employees empty.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void expandSelectedEmployeesEmpty() throws Exception {
     ExpandSelectTreeNode selectTree = getSelectExpandTree("Rooms('1')", "nr_Employees", "nr_Employees");
@@ -293,6 +355,11 @@ public class XmlExpandProducerTest extends AbstractProviderTest {
     assertXpathExists(employeeXPathString + "/m:inline/a:feed", xmlString);
   }
 
+  /**
+   * Expand selected employees with self link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void expandSelectedEmployeesWithSelfLink() throws Exception {
     ExpandSelectTreeNode selectTree = getSelectExpandTree("Rooms('1')", "nr_Employees", "nr_Employees");
@@ -313,6 +380,11 @@ public class XmlExpandProducerTest extends AbstractProviderTest {
     assertXpathExists(employeeXPathString + "/m:inline/a:feed/a:link[@href=\"Rooms('1')/nr_Employees\"]", xmlString);
   }
 
+  /**
+   * Deep expand selected employees.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void deepExpandSelectedEmployees() throws Exception {
     ExpandSelectTreeNode selectTree = getSelectExpandTree("Rooms('1')", "nr_Employees/ne_Room", "nr_Employees/ne_Room");
@@ -334,6 +406,11 @@ public class XmlExpandProducerTest extends AbstractProviderTest {
         + "/m:inline/a:entry/a:content/m:properties", xmlString);
   }
 
+  /**
+   * Deep expand selected employees with room id.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void deepExpandSelectedEmployeesWithRoomId() throws Exception {
     ExpandSelectTreeNode selectTree =
@@ -358,6 +435,11 @@ public class XmlExpandProducerTest extends AbstractProviderTest {
         + "/m:inline/a:entry/a:content/m:properties/d:Id", xmlString);
   }
 
+  /**
+   * Expand selected room.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void expandSelectedRoom() throws Exception {
     ExpandSelectTreeNode selectTree = getSelectExpandTree("Employees('1')", "ne_Room", "ne_Room");
@@ -377,6 +459,11 @@ public class XmlExpandProducerTest extends AbstractProviderTest {
     verifyRoom(roomXPathString, xmlString);
   }
 
+  /**
+   * Expand selected team null.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void expandSelectedTeamNull() throws Exception {
     ExpandSelectTreeNode selectTree = getSelectExpandTree("Employees('1')", "ne_Team", "ne_Team");
@@ -397,6 +484,11 @@ public class XmlExpandProducerTest extends AbstractProviderTest {
     assertXpathNotExists(teamXPathString + "/m:inline/a:entry", xmlString);
   }
 
+  /**
+   * Expand selected team empty data map.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void expandSelectedTeamEmptyDataMap() throws Exception {
     ExpandSelectTreeNode selectTree = getSelectExpandTree("Employees('1')", "ne_Team", "ne_Team");
@@ -429,6 +521,11 @@ public class XmlExpandProducerTest extends AbstractProviderTest {
     assertXpathNotExists(teamXPathString + "/m:inline/a:entry", xmlString);
   }
 
+  /**
+   * Expand selected rooms null.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void expandSelectedRoomsNull() throws Exception {
     ExpandSelectTreeNode selectTree = getSelectExpandTree("Buildings('1')", "nb_Rooms", "nb_Rooms");
@@ -456,6 +553,11 @@ public class XmlExpandProducerTest extends AbstractProviderTest {
     assertXpathNotExists(buildingXPathString + "/m:inline/a:feed/a:entry", xmlString);
   }
 
+  /**
+   * Expand selected rooms with null callback.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void expandSelectedRoomsWithNullCallback() throws Exception {
     ExpandSelectTreeNode selectTree = getSelectExpandTree("Buildings('1')", "nb_Rooms", "nb_Rooms");
@@ -470,6 +572,14 @@ public class XmlExpandProducerTest extends AbstractProviderTest {
         properties);
   }
 
+  /**
+   * Creates the callbacks.
+   *
+   * @param entitySetName the entity set name
+   * @return the hash map
+   * @throws EdmException the edm exception
+   * @throws ODataException the o data exception
+   */
   private HashMap<String, ODataCallback> createCallbacks(final String entitySetName) throws EdmException,
       ODataException {
     HashMap<String, ODataCallback> callbacksEmployee = new HashMap<String, ODataCallback>();
@@ -481,6 +591,11 @@ public class XmlExpandProducerTest extends AbstractProviderTest {
     return callbacksEmployee;
   }
 
+  /**
+   * Expand selected room without callback.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void expandSelectedRoomWithoutCallback() throws Exception {
     ExpandSelectTreeNode selectTree = getSelectExpandTree("Employees('1')", "ne_Room", "ne_Room");
@@ -498,6 +613,11 @@ public class XmlExpandProducerTest extends AbstractProviderTest {
     assertXpathNotExists(roomXPathString + "/m:inline", xmlString);
   }
 
+  /**
+   * Expand selected room with null callback.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void expandSelectedRoomWithNullCallback() throws Exception {
     ExpandSelectTreeNode selectTree = getSelectExpandTree("Employees('1')", "ne_Room", "ne_Room");
@@ -512,6 +632,15 @@ public class XmlExpandProducerTest extends AbstractProviderTest {
         properties);
   }
 
+  /**
+   * Verify employees.
+   *
+   * @param path the path
+   * @param xmlString the xml string
+   * @throws XpathException the xpath exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws SAXException the SAX exception
+   */
   private void verifyEmployees(final String path, final String xmlString) throws XpathException, IOException,
       SAXException {
     assertXpathExists(path, xmlString);
@@ -539,6 +668,15 @@ public class XmlExpandProducerTest extends AbstractProviderTest {
 
   }
 
+  /**
+   * Verify room.
+   *
+   * @param path the path
+   * @param xmlString the xml string
+   * @throws XpathException the xpath exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws SAXException the SAX exception
+   */
   private void verifyRoom(final String path, final String xmlString) throws XpathException, IOException, SAXException {
     assertXpathExists(path, xmlString);
     assertXpathExists(path + "/m:inline", xmlString);
@@ -560,6 +698,17 @@ public class XmlExpandProducerTest extends AbstractProviderTest {
     assertXpathExists(path + "/m:inline/a:entry/a:content/m:properties/d:Version", xmlString);
   }
 
+  /**
+   * Verify navigation properties.
+   *
+   * @param xmlString the xml string
+   * @param neManager the ne manager
+   * @param neRoom the ne room
+   * @param neTeam the ne team
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws SAXException the SAX exception
+   * @throws XpathException the xpath exception
+   */
   private void verifyNavigationProperties(final String xmlString, final boolean neManager, final boolean neRoom,
       final boolean neTeam) throws IOException, SAXException, XpathException {
     if (neManager) {
@@ -579,6 +728,13 @@ public class XmlExpandProducerTest extends AbstractProviderTest {
     }
   }
 
+  /**
+   * Verify response.
+   *
+   * @param response the response
+   * @return the string
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private String verifyResponse(final ODataResponse response) throws IOException {
     assertNotNull(response);
     assertNotNull(response.getEntity());
@@ -587,6 +743,15 @@ public class XmlExpandProducerTest extends AbstractProviderTest {
     return xmlString;
   }
 
+  /**
+   * Gets the select expand tree.
+   *
+   * @param pathSegment the path segment
+   * @param selectString the select string
+   * @param expandString the expand string
+   * @return the select expand tree
+   * @throws Exception the exception
+   */
   private ExpandSelectTreeNode getSelectExpandTree(final String pathSegment, final String selectString,
       final String expandString) throws Exception {
 

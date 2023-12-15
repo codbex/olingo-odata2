@@ -22,6 +22,7 @@ import java.util.Map;
 
 import org.apache.olingo.odata2.api.uri.ExpandSelectTreeNode;
 
+// TODO: Auto-generated Javadoc
 /**
  * An {@link ODataEntry} contains all <b>properties</b> (in form of a {@link Map}) and possible <b>metadata</b>
  * (in form of {@link MediaMetadata} and/or {@link EntryMetadata}) for an entry.

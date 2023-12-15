@@ -43,11 +43,24 @@ import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EdmAssociationSetImplProvTest.
+ */
 public class EdmAssociationSetImplProvTest extends BaseTest {
 
+  /** The edm association set. */
   private static EdmAssociationSet edmAssociationSet;
+  
+  /** The edm provider. */
   private static EdmProvider edmProvider;
 
+  /**
+   * Gets the edm entity container impl.
+   *
+   * @return the edm entity container impl
+   * @throws Exception the exception
+   */
   @BeforeClass
   public static void getEdmEntityContainerImpl() throws Exception {
 
@@ -77,6 +90,11 @@ public class EdmAssociationSetImplProvTest extends BaseTest {
     edmAssociationSet = new EdmAssociationSetImplProv(edmImplProv, associationSet, edmEntityContainer);
   }
 
+  /**
+   * Test association set.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testAssociationSet() throws Exception {
     EdmAssociationSet associationSet = edmAssociationSet;
@@ -87,24 +105,45 @@ public class EdmAssociationSetImplProvTest extends BaseTest {
     assertEquals(null, associationSet.getEnd("endWrongRole"));
   }
 
+  /**
+   * Test association set no entity.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EdmException.class)
   public void testAssociationSetNoEntity() throws Exception {
     EdmAssociationSet associationSet = edmAssociationSet;
     associationSet.getEnd("end2Role");
   }
 
+  /**
+   * Test association exists.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testAssociationExists() throws Exception {
     EdmAssociationSet associationSet = edmAssociationSet;
     assertNotNull(associationSet.getAssociation());
   }
 
+  /**
+   * Test entity container.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testEntityContainer() throws Exception {
     EdmAssociationSet associationSet = edmAssociationSet;
     assertNotNull(associationSet.getEntityContainer());
   }
 
+  /**
+   * Gets the annotations.
+   *
+   * @return the annotations
+   * @throws Exception the exception
+   */
   @Test
   public void getAnnotations() throws Exception {
     EdmAnnotatable annotatable = (EdmAnnotatable) edmAssociationSet;

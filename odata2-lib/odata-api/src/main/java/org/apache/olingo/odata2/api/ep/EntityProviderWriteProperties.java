@@ -26,6 +26,7 @@ import org.apache.olingo.odata2.api.ODataCallback;
 import org.apache.olingo.odata2.api.commons.InlineCount;
 import org.apache.olingo.odata2.api.uri.ExpandSelectTreeNode;
 
+// TODO: Auto-generated Javadoc
 /**
  * {@link EntityProviderWriteProperties} contains all additional properties which are necessary to <b>write
  * (serialize)</b> an {@link org.apache.olingo.odata2.api.ep.entry.ODataEntry} into an specific format (e.g.
@@ -33,47 +34,103 @@ import org.apache.olingo.odata2.api.uri.ExpandSelectTreeNode;
  */
 public class EntityProviderWriteProperties {
 
+  /** The service root. */
   private URI serviceRoot;
+  
+  /** The inline count type. */
   private InlineCount inlineCountType;
+  
+  /** The inline count. */
   private Integer inlineCount;
+  
+  /** The next link. */
   private String nextLink;
+  
+  /** The expand select tree. */
   private ExpandSelectTreeNode expandSelectTree;
+  
+  /** The callbacks. */
   private Map<String, ODataCallback> callbacks = Collections.emptyMap();
+  
+  /** The self link. */
   private URI selfLink;
+  
+  /** The include simple property type. */
   private boolean includeSimplePropertyType;
+  
+  /** The additional links. */
   private Map<String, Map<String, Object>> additionalLinks;
+  
+  /** The omit json wrapper. */
   private boolean omitJsonWrapper;
+  
+  /** The content only. */
   private boolean contentOnly;
+  
+  /** The omit E tag. */
   private boolean omitETag;
+  
+  /** The validating facets. */
   private boolean validatingFacets = true;
 
+  /** The is response payload. */
   private boolean isResponsePayload = true;
+  
+  /** The include metadata in content only. */
   private boolean includeMetadataInContentOnly = false;
+  
+  /** The is data based property serialization. */
   private boolean isDataBasedPropertySerialization = false;
+  
+  /** The omit inline for null data. */
   private boolean omitInlineForNullData = false;
 
+  /**
+   * Instantiates a new entity provider write properties.
+   */
   private EntityProviderWriteProperties() {}
   
+  /**
+   * Checks if is omit inline for null data.
+   *
+   * @return true, if is omit inline for null data
+   */
   public final boolean isOmitInlineForNullData() {
     return omitInlineForNullData;
   }
 
   /**
    * Returns true if the payload has dynamic properties i.e. every entry has different property list
-   * @return
+   *
+   * @return true, if is data based property serialization
    */
   public final boolean isDataBasedPropertySerialization() {
     return isDataBasedPropertySerialization;
   }
   
+  /**
+   * Checks if is omit E tag.
+   *
+   * @return true, if is omit E tag
+   */
   public final boolean isOmitETag() {
     return omitETag;
   }
 
+  /**
+   * Checks if is content only.
+   *
+   * @return true, if is content only
+   */
   public final boolean isContentOnly() {
     return contentOnly;
   }
 
+  /**
+   * Checks if is omit json wrapper.
+   *
+   * @return true, if is omit json wrapper
+   */
   public final boolean isOmitJsonWrapper() {
     return omitJsonWrapper;
   }
@@ -110,6 +167,11 @@ public class EntityProviderWriteProperties {
     return inlineCountType;
   }
 
+  /**
+   * Gets the callbacks.
+   *
+   * @return the callbacks
+   */
   public final Map<String, ODataCallback> getCallbacks() {
     return callbacks;
   }
@@ -149,31 +211,67 @@ public class EntityProviderWriteProperties {
     return additionalLinks;
   }
 
+  /**
+   * Service root.
+   *
+   * @param serviceRoot the service root
+   * @return the o data entity provider properties builder
+   */
   public static ODataEntityProviderPropertiesBuilder serviceRoot(final URI serviceRoot) {
     return new ODataEntityProviderPropertiesBuilder().serviceRoot(serviceRoot);
   }
 
+  /**
+   * Checks if is validating facets.
+   *
+   * @return true, if is validating facets
+   */
   public boolean isValidatingFacets() {
     return validatingFacets;
   }
 
+  /**
+   * Checks if is response payload.
+   *
+   * @return true, if is response payload
+   */
   public boolean isResponsePayload() {
     return isResponsePayload;
   }
 
+  /**
+   * Checks if is include metadata in content only.
+   *
+   * @return true, if is include metadata in content only
+   */
   public boolean isIncludeMetadataInContentOnly() {
     return includeMetadataInContentOnly;
   }
 
+  /**
+   * The Class ODataEntityProviderPropertiesBuilder.
+   */
   public static class ODataEntityProviderPropertiesBuilder {
+    
+    /** The properties. */
     private final EntityProviderWriteProperties properties = new EntityProviderWriteProperties();
 
+    /**
+     * Omit inline for null data.
+     *
+     * @param omitInlineForNullData the omit inline for null data
+     * @return the o data entity provider properties builder
+     */
     public final ODataEntityProviderPropertiesBuilder omitInlineForNullData(boolean omitInlineForNullData) {
       properties.omitInlineForNullData = omitInlineForNullData;
       return this;
     }
+    
     /**
-     * @param setting if payload has dynamic property
+     * Checks if is data based property serialization.
+     *
+     * @param isDataBasedPropertySerialization the is data based property serialization
+     * @return the o data entity provider properties builder
      */
     public final ODataEntityProviderPropertiesBuilder isDataBasedPropertySerialization
     (boolean isDataBasedPropertySerialization) {
@@ -182,7 +280,10 @@ public class EntityProviderWriteProperties {
     }
     
     /**
+     * Include simple property type.
+     *
      * @param includeSimplePropertyType true to include simple property type information in the payload
+     * @return the o data entity provider properties builder
      */
     public final ODataEntityProviderPropertiesBuilder includeSimplePropertyType(
         final boolean includeSimplePropertyType) {
@@ -191,7 +292,10 @@ public class EntityProviderWriteProperties {
     }
 
     /**
+     * Inline count type.
+     *
      * @param inlineCountType the inlineCountType to set
+     * @return the o data entity provider properties builder
      */
     public final ODataEntityProviderPropertiesBuilder inlineCountType(final InlineCount inlineCountType) {
       properties.inlineCountType = inlineCountType;
@@ -199,7 +303,10 @@ public class EntityProviderWriteProperties {
     }
 
     /**
+     * Inline count.
+     *
      * @param inlineCount the inlineCount to set
+     * @return the o data entity provider properties builder
      */
     public final ODataEntityProviderPropertiesBuilder inlineCount(final Integer inlineCount) {
       properties.inlineCount = inlineCount;
@@ -207,7 +314,10 @@ public class EntityProviderWriteProperties {
     }
 
     /**
-     * @param serviceRoot
+     * Service root.
+     *
+     * @param serviceRoot the service root
+     * @return the o data entity provider properties builder
      */
     public final ODataEntityProviderPropertiesBuilder serviceRoot(final URI serviceRoot) {
       properties.serviceRoot = serviceRoot;
@@ -215,7 +325,10 @@ public class EntityProviderWriteProperties {
     }
 
     /**
+     * Next link.
+     *
      * @param nextLink Next link to render feeds with server side paging. Should usually contain a skiptoken.
+     * @return the o data entity provider properties builder
      */
     public ODataEntityProviderPropertiesBuilder nextLink(final String nextLink) {
       properties.nextLink = nextLink;
@@ -241,11 +354,23 @@ public class EntityProviderWriteProperties {
       return this;
     }
 
+    /**
+     * Callbacks.
+     *
+     * @param callbacks the callbacks
+     * @return the o data entity provider properties builder
+     */
     public ODataEntityProviderPropertiesBuilder callbacks(final Map<String, ODataCallback> callbacks) {
       properties.callbacks = callbacks;
       return this;
     }
 
+    /**
+     * Self link.
+     *
+     * @param selfLink the self link
+     * @return the o data entity provider properties builder
+     */
     public ODataEntityProviderPropertiesBuilder selfLink(final URI selfLink) {
       properties.selfLink = selfLink;
       return this;
@@ -263,21 +388,45 @@ public class EntityProviderWriteProperties {
       return this;
     }
 
+    /**
+     * Omit json wrapper.
+     *
+     * @param omitJsonWrapper the omit json wrapper
+     * @return the o data entity provider properties builder
+     */
     public ODataEntityProviderPropertiesBuilder omitJsonWrapper(final boolean omitJsonWrapper) {
       properties.omitJsonWrapper = omitJsonWrapper;
       return this;
     }
 
+    /**
+     * Content only.
+     *
+     * @param contentOnly the content only
+     * @return the o data entity provider properties builder
+     */
     public ODataEntityProviderPropertiesBuilder contentOnly(final boolean contentOnly) {
       properties.contentOnly = contentOnly;
       return this;
     }
 
+    /**
+     * Omit E tag.
+     *
+     * @param omitETag the omit E tag
+     * @return the o data entity provider properties builder
+     */
     public ODataEntityProviderPropertiesBuilder omitETag(final boolean omitETag) {
       properties.omitETag = omitETag;
       return this;
     }
 
+    /**
+     * Validating facets.
+     *
+     * @param validatingFacets the validating facets
+     * @return the o data entity provider properties builder
+     */
     public ODataEntityProviderPropertiesBuilder validatingFacets(final boolean validatingFacets) {
       properties.validatingFacets = validatingFacets;
       return this;
@@ -299,12 +448,24 @@ public class EntityProviderWriteProperties {
       return this;
     }
 
+    /**
+     * Include metadata in content only.
+     *
+     * @param includeMetadataInContentOnly the include metadata in content only
+     * @return the o data entity provider properties builder
+     */
     public ODataEntityProviderPropertiesBuilder
         includeMetadataInContentOnly(final boolean includeMetadataInContentOnly) {
       properties.includeMetadataInContentOnly = includeMetadataInContentOnly;
       return this;
     }
 
+    /**
+     * From properties.
+     *
+     * @param properties the properties
+     * @return the o data entity provider properties builder
+     */
     public ODataEntityProviderPropertiesBuilder fromProperties(final EntityProviderWriteProperties properties) {
       this.properties.inlineCountType = properties.getInlineCountType();
       this.properties.inlineCount = properties.getInlineCount();
@@ -327,6 +488,12 @@ public class EntityProviderWriteProperties {
 
   }
 
+  /**
+   * From properties.
+   *
+   * @param properties the properties
+   * @return the o data entity provider properties builder
+   */
   public static ODataEntityProviderPropertiesBuilder fromProperties(final EntityProviderWriteProperties properties) {
     final ODataEntityProviderPropertiesBuilder builder =
         EntityProviderWriteProperties.serviceRoot(properties.getServiceRoot());

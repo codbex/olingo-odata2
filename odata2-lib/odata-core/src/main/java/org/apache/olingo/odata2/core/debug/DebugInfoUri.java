@@ -42,17 +42,33 @@ import org.apache.olingo.odata2.core.uri.ExpandSelectTreeCreator;
 import org.apache.olingo.odata2.core.uri.ExpandSelectTreeNodeImpl;
 import org.apache.olingo.odata2.core.uri.expression.JsonVisitor;
 
+// TODO: Auto-generated Javadoc
 /**
  * URI parser debug information.
  */
 public class DebugInfoUri implements DebugInfo {
 
+  /** The uri info. */
   private final UriInfo uriInfo;
+  
+  /** The filter. */
   private final FilterExpression filter;
+  
+  /** The order by. */
   private final OrderByExpression orderBy;
+  
+  /** The expand select tree. */
   private final ExpandSelectTreeNodeImpl expandSelectTree;
+  
+  /** The exception. */
   private final ExpressionParserException exception;
 
+  /**
+   * Instantiates a new debug info uri.
+   *
+   * @param uriInfo the uri info
+   * @param exception the exception
+   */
   public DebugInfoUri(final UriInfo uriInfo, final ExpressionParserException exception) {
     this.uriInfo = uriInfo;
     filter = uriInfo == null ? null : uriInfo.getFilter();
@@ -61,6 +77,11 @@ public class DebugInfoUri implements DebugInfo {
     this.exception = exception;
   }
 
+  /**
+   * Gets the expand select.
+   *
+   * @return the expand select
+   */
   private ExpandSelectTreeNodeImpl getExpandSelect() {
     try {
       return uriInfo.getExpand().isEmpty() && uriInfo.getSelect().isEmpty() ? null :
@@ -70,11 +91,22 @@ public class DebugInfoUri implements DebugInfo {
     }
   }
 
+  /**
+   * Gets the name.
+   *
+   * @return the name
+   */
   @Override
   public String getName() {
     return "URI";
   }
 
+  /**
+   * Append json.
+   *
+   * @param jsonStreamWriter the json stream writer
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Override
   public void appendJson(final JsonStreamWriter jsonStreamWriter) throws IOException {
     jsonStreamWriter.beginObject();
@@ -126,6 +158,12 @@ public class DebugInfoUri implements DebugInfo {
     jsonStreamWriter.endObject();
   }
 
+  /**
+   * Append html.
+   *
+   * @param writer the writer
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Override
   public void appendHtml(final Writer writer) throws IOException {
     if (exception != null && exception.getFilterTree() != null) {
@@ -162,6 +200,13 @@ public class DebugInfoUri implements DebugInfo {
     }
   }
 
+  /**
+   * Append expression.
+   *
+   * @param expression the expression
+   * @param writer the writer
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private void appendExpression(final CommonExpression expression, final Writer writer) throws IOException {
     final ExpressionKind kind = expression.getKind();
     writer.append("<span class=\"kind\">")
@@ -200,6 +245,13 @@ public class DebugInfoUri implements DebugInfo {
     }
   }
 
+  /**
+   * Append expand select.
+   *
+   * @param expandSelect the expand select
+   * @param writer the writer
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private void appendExpandSelect(final ExpandSelectTreeNode expandSelect, final Writer writer) throws IOException {
     writer.append("<ul class=\"expand\">\n")
         .append("<li>");

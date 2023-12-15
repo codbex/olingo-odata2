@@ -29,8 +29,15 @@ import org.apache.olingo.odata2.api.edm.EdmAnnotationElement;
 import org.apache.olingo.odata2.client.core.edm.Impl.EdmDocumentationImpl;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EdmDocumentationImplTest.
+ */
 public class EdmDocumentationImplTest {
 
+  /**
+   * Test documentation.
+   */
   @Test
   public void testDocumentation(){
     EdmDocumentationImpl doc = new EdmDocumentationImpl();

@@ -33,15 +33,26 @@ import org.apache.olingo.odata2.testutil.helper.StringHelper;
 import org.apache.olingo.odata2.testutil.mock.MockFacade;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class XmlLinksEntityProducerTest.
  */
 public class XmlLinksEntityProducerTest extends AbstractProviderTest {
 
+  /**
+   * Instantiates a new xml links entity producer test.
+   *
+   * @param type the type
+   */
   public XmlLinksEntityProducerTest(final StreamWriterImplType type) {
     super(type);
   }
 
+  /**
+   * Serialize room links.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serializeRoomLinks() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");
@@ -60,6 +71,11 @@ public class XmlLinksEntityProducerTest extends AbstractProviderTest {
     assertXpathEvaluatesTo(BASE_URI.toString() + "Rooms('2')", "/d:links/d:uri[2]/text()", xml);
   }
 
+  /**
+   * Links with inline count.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void linksWithInlineCount() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");

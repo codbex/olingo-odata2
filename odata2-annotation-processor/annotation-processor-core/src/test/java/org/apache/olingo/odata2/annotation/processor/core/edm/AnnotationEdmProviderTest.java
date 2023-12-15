@@ -62,29 +62,50 @@ import org.apache.olingo.odata2.api.edm.provider.Schema;
 import org.apache.olingo.odata2.api.exception.ODataException;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *
+ * The Class AnnotationEdmProviderTest.
  */
 public class AnnotationEdmProviderTest {
 
+  /** The Constant TEST_MODEL_PACKAGE. */
   private static final String TEST_MODEL_PACKAGE = "org.apache.olingo.odata2.annotation.processor.core.model";
 
+  /**
+   * The Class GeneratedNamesTestClass.
+   */
   @EdmEntityType
   @EdmEntitySet
   private static final class GeneratedNamesTestClass {
+    
+    /** The my complex property. */
     @EdmProperty GeneratedNamesComplexTestClass myComplexProperty;
   }
 
+  /**
+   * The Class GeneratedNamesComplexTestClass.
+   */
   @EdmComplexType
   private static final class GeneratedNamesComplexTestClass {}
 
+  /**
+   * The Class DefinedNamesTestClass.
+   */
   @EdmEntityType(namespace = "MyTestNamespace")
   @EdmEntitySet(container = "MyTestContainer")
   private static final class DefinedNamesTestClass {}
 
+  /** The aep. */
   private final AnnotationEdmProvider aep;
+  
+  /** The annotated classes. */
   private final Collection<Class<?>> annotatedClasses = new ArrayList<Class<?>>();
 
+  /**
+   * Instantiates a new annotation edm provider test.
+   *
+   * @throws ODataException the o data exception
+   */
   public AnnotationEdmProviderTest() throws ODataException {
     annotatedClasses.add(RefBase.class);
     annotatedClasses.add(Building.class);
@@ -99,6 +120,11 @@ public class AnnotationEdmProviderTest {
     aep = new AnnotationEdmProvider(annotatedClasses);
   }
 
+  /**
+   * Default name and namespace generation.
+   *
+   * @throws ODataException the o data exception
+   */
   @Test
   public void defaultNameAndNamespaceGeneration() throws ODataException {
     Collection<Class<?>> localAnnotatedClasses = new ArrayList<Class<?>>();
@@ -128,6 +154,11 @@ public class AnnotationEdmProviderTest {
     assertNull("This should not have a base type", testComplexType.getBaseType());
   }
 
+  /**
+   * Default namespace generation complex type.
+   *
+   * @throws ODataException the o data exception
+   */
   @Test
   public void defaultNamespaceGenerationComplexType() throws ODataException {
     Collection<Class<?>> localAnnotatedClasses = new ArrayList<Class<?>>();
@@ -142,6 +173,11 @@ public class AnnotationEdmProviderTest {
     assertNull("This should not have a base type", testType.getBaseType());
   }
 
+  /**
+   * Default container name generation.
+   *
+   * @throws ODataException the o data exception
+   */
   @Test
   public void defaultContainerNameGeneration() throws ODataException {
     @SuppressWarnings({ "unchecked", "rawtypes" })
@@ -153,6 +189,11 @@ public class AnnotationEdmProviderTest {
     assertEquals("DefaultContainer", containerInfo.getName());
   }
 
+  /**
+   * Default namespace defined.
+   *
+   * @throws ODataException the o data exception
+   */
   @Test
   public void defaultNamespaceDefined() throws ODataException {
     Collection<Class<?>> localAnnotatedClasses = new ArrayList<Class<?>>();
@@ -166,6 +207,11 @@ public class AnnotationEdmProviderTest {
     assertNull("This should not have a base type", testClass.getBaseType());
   }
 
+  /**
+   * Default container name defined.
+   *
+   * @throws ODataException the o data exception
+   */
   @Test
   public void defaultContainerNameDefined() throws ODataException {
     @SuppressWarnings({ "unchecked", "rawtypes" })
@@ -176,6 +222,11 @@ public class AnnotationEdmProviderTest {
     assertEquals("MyTestContainer", containerInfo.getName());
   }
 
+  /**
+   * Load annotated classes from package.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void loadAnnotatedClassesFromPackage() throws Exception {
     AnnotationEdmProvider localAep = new AnnotationEdmProvider(TEST_MODEL_PACKAGE);
@@ -195,6 +246,11 @@ public class AnnotationEdmProviderTest {
     assertTrue(info.isDefaultEntityContainer());
   }
 
+  /**
+   * Annotation provider basic.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void annotationProviderBasic() throws Exception {
     assertNotNull(aep);
@@ -225,6 +281,11 @@ public class AnnotationEdmProviderTest {
     assertEquals("r_Rooms", asBuildingRooms.getEnd2().getRole());
   }
 
+  /**
+   * Annotation provider get default container.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void annotationProviderGetDefaultContainer() throws Exception {
     assertNotNull(aep);
@@ -236,6 +297,11 @@ public class AnnotationEdmProviderTest {
     assertEquals(ModelSharedConstants.CONTAINER_1, info.getName());
   }
 
+  /**
+   * Schema basic.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void schemaBasic() throws Exception {
     assertNotNull(aep);
@@ -259,10 +325,21 @@ public class AnnotationEdmProviderTest {
     }
   }
 
+  /**
+   * Default fqn.
+   *
+   * @param name the name
+   * @return the full qualified name
+   */
   private FullQualifiedName defaultFqn(final String name) {
     return new FullQualifiedName(ModelSharedConstants.NAMESPACE_1, name);
   }
 
+  /**
+   * Validate association.
+   *
+   * @param association the association
+   */
   private void validateAssociation(final Association association) {
     String name = association.getName();
     if (name.equals("r_Employees_2_r_Room")) {
@@ -290,6 +367,17 @@ public class AnnotationEdmProviderTest {
     }
   }
 
+  /**
+   * Validate association.
+   *
+   * @param association the association
+   * @param fromRole the from role
+   * @param fromMulti the from multi
+   * @param fromType the from type
+   * @param toRole the to role
+   * @param toMulti the to multi
+   * @param toType the to type
+   */
   private void validateAssociation(final Association association,
       final String fromRole, final EdmMultiplicity fromMulti, final FullQualifiedName fromType,
       final String toRole, final EdmMultiplicity toMulti, final FullQualifiedName toType) {
@@ -307,6 +395,14 @@ public class AnnotationEdmProviderTest {
     }
   }
 
+  /**
+   * Validate association end.
+   *
+   * @param associationEnd the association end
+   * @param role the role
+   * @param multiplicity the multiplicity
+   * @param type the type
+   */
   private void validateAssociationEnd(final AssociationEnd associationEnd,
       final String role, final EdmMultiplicity multiplicity, final FullQualifiedName type) {
     assertEquals(role, associationEnd.getRole());
@@ -314,6 +410,11 @@ public class AnnotationEdmProviderTest {
     assertEquals(type, associationEnd.getType());
   }
 
+  /**
+   * Entity set teams.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entitySetTeams() throws Exception {
     // validate teams
@@ -322,6 +423,11 @@ public class AnnotationEdmProviderTest {
     assertEquals("Team", teams.getEntityType().getName());
   }
 
+  /**
+   * Entity type employee.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entityTypeEmployee() throws Exception {
     // validate employee
@@ -349,6 +455,11 @@ public class AnnotationEdmProviderTest {
   }
 
 
+  /**
+   * Facets test.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void facetsTest() throws Exception {
     EntityType employee = aep.getEntityType(new FullQualifiedName(ModelSharedConstants.NAMESPACE_1, "Employee"));
@@ -371,6 +482,11 @@ public class AnnotationEdmProviderTest {
     assertEquals(EdmConcurrencyMode.Fixed, version.getFacets().getConcurrencyMode());
   }
 
+  /**
+   * Entity type team.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entityTypeTeam() throws Exception {
     // validate team
@@ -387,6 +503,11 @@ public class AnnotationEdmProviderTest {
     validateNavProperty(navPropTeamTeam, "Team_2_r_SubTeam", "Team", "r_SubTeam");
   }
 
+  /**
+   * Entity type photo with two key properties.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entityTypePhotoWithTwoKeyProperties() throws Exception {
     // validate team
@@ -416,6 +537,11 @@ public class AnnotationEdmProviderTest {
     assertNull(photo.getNavigationProperties());
   }
 
+  /**
+   * Entity type abstract base type.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entityTypeAbstractBaseType() throws Exception {
     // validate employee
@@ -434,6 +560,11 @@ public class AnnotationEdmProviderTest {
     assertEquals(ModelSharedConstants.NAMESPACE_1, team.getBaseType().getNamespace());
   }
 
+  /**
+   * Complex type location.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void complexTypeLocation() throws Exception {
     // validate employee
@@ -456,6 +587,11 @@ public class AnnotationEdmProviderTest {
     assertEquals(false, location.getFacets().isNullable());
   }
 
+  /**
+   * Entity type room with navigation.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entityTypeRoomWithNavigation() throws Exception {
     // validate employee
@@ -477,6 +613,15 @@ public class AnnotationEdmProviderTest {
     }
   }
 
+  /**
+   * Validate nav property.
+   *
+   * @param navigationProperty the navigation property
+   * @param name the name
+   * @param relationship the relationship
+   * @param fromRole the from role
+   * @param toRole the to role
+   */
   private void validateNavProperty(final NavigationProperty navigationProperty, final String name,
       final String relationship, final String fromRole, final String toRole) {
     if (name != null) {
@@ -488,19 +633,48 @@ public class AnnotationEdmProviderTest {
     assertEquals("Wrong toRole for navigation property.", toRole, navigationProperty.getToRole());
   }
 
+  /**
+   * Validate nav property.
+   *
+   * @param navigationProperty the navigation property
+   * @param relationship the relationship
+   * @param fromRole the from role
+   * @param toRole the to role
+   */
   private void validateNavProperty(final NavigationProperty navigationProperty,
       final String relationship, final String fromRole, final String toRole) {
     validateNavProperty(navigationProperty, null, relationship, fromRole, toRole);
   }
 
+  /**
+   * Contains property.
+   *
+   * @param properties the properties
+   * @param propertyName the property name
+   * @return true, if successful
+   */
   private boolean containsProperty(final List<Property> properties, final String propertyName) {
     return getProperty(properties, propertyName) != null;
   }
 
+  /**
+   * Gets the property.
+   *
+   * @param entity the entity
+   * @param propertyName the property name
+   * @return the property
+   */
   private Property getProperty(EntityType entity, String propertyName) {
     return getProperty(entity.getProperties(), propertyName);
   }
 
+  /**
+   * Gets the property.
+   *
+   * @param properties the properties
+   * @param name the name
+   * @return the property
+   */
   private Property getProperty(final List<Property> properties, final String name) {
     for (Property property : properties) {
       if (name.equals(property.getName())) {
@@ -511,6 +685,13 @@ public class AnnotationEdmProviderTest {
     return null;
   }
 
+  /**
+   * Gets the property ref.
+   *
+   * @param properties the properties
+   * @param name the name
+   * @return the property ref
+   */
   private PropertyRef getPropertyRef(final List<PropertyRef> properties, final String name) {
     for (PropertyRef property : properties) {
       if (name.equals(property.getName())) {

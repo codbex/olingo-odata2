@@ -84,14 +84,29 @@ import org.custommonkey.xmlunit.exceptions.XpathException;
 import org.junit.Test;
 import org.xml.sax.SAXException;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AtomEntryProducerTest.
+ */
 public class AtomEntryProducerTest extends AbstractProviderTest {
 
+  /** The building X path string. */
   private String buildingXPathString = "/a:entry/a:link[@href=\"Rooms('1')/nr_Building\" and @title='nr_Building']";
   
+  /**
+   * Instantiates a new atom entry producer test.
+   *
+   * @param type the type
+   */
   public AtomEntryProducerTest(final StreamWriterImplType type) {
     super(type);
   }
 
+  /**
+   * Omit E tag test property present.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void omitETagTestPropertyPresent() throws Exception {
     final EntityProviderWriteProperties properties =
@@ -110,6 +125,11 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     assertXpathNotExists("/a:entry[@m:etag]", xmlString);
   }
 
+  /**
+   * Omit E tag test property NOT present must not result in exception.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void omitETagTestPropertyNOTPresentMustNotResultInException() throws Exception {
     final EntityProviderWriteProperties properties =
@@ -127,6 +147,11 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     assertXpathNotExists("/a:entry[@m:etag]", xmlString);
   }
 
+  /**
+   * Omit E tag test non nullable property NOT present must not result in exception.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void omitETagTestNonNullablePropertyNOTPresentMustNotResultInException() throws Exception {
     EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");
@@ -152,6 +177,11 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     assertXpathNotExists("/a:entry[@m:etag]", xmlString);
   }
 
+  /**
+   * Content only.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void contentOnly() throws Exception {
     final EntityProviderWriteProperties properties =
@@ -178,6 +208,11 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     assertXpathExists("/a:entry/m:properties", xmlString);
   }
 
+  /**
+   * Content only room.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void contentOnlyRoom() throws Exception {
     EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");
@@ -209,6 +244,11 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     assertXpathExists("/a:entry/a:content/m:properties/d:Name", xmlString);
   }
 
+  /**
+   * Content only room selected or expanded links must be ignored.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void contentOnlyRoomSelectedOrExpandedLinksMustBeIgnored() throws Exception {
     EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");
@@ -244,6 +284,11 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     assertXpathExists("/a:entry/a:content/m:properties/d:Name", xmlString);
   }
 
+  /**
+   * Content only room with additional link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void contentOnlyRoomWithAdditionalLink() throws Exception {
     EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");
@@ -279,6 +324,11 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     assertXpathExists("/a:entry/a:link[@title=\"nr_Building\"and @href=\"Buildings('1')\"]", xmlString);
   }
 
+  /**
+   * Content only without key.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void contentOnlyWithoutKey() throws Exception {
     EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Employees");
@@ -315,6 +365,11 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     assertXpathExists("/a:entry/m:properties/d:ManagerId", xmlString);
   }
 
+  /**
+   * Content only selected or expanded links must be ignored.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void contentOnlySelectedOrExpandedLinksMustBeIgnored() throws Exception {
     EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Employees");
@@ -359,6 +414,11 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     assertXpathExists("/a:entry/m:properties/d:ManagerId", xmlString);
   }
 
+  /**
+   * Content only with additinal link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void contentOnlyWithAdditinalLink() throws Exception {
     EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Employees");
@@ -402,6 +462,11 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     assertXpathExists("/a:entry/a:link[@href=\"Managers('1')\" and @title=\"ne_Manager\"]", xmlString);
   }
 
+  /**
+   * None syndication keep in content false must not show in properties.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void noneSyndicationKeepInContentFalseMustNotShowInProperties() throws Exception {
     // prepare Mock
@@ -430,6 +495,11 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     assertXpathNotExists("/a:entry/m:properties/d:EmployeeName", xmlString);
   }
 
+  /**
+   * None syndication keep in content true must show in properties.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void noneSyndicationKeepInContentTrueMustShowInProperties() throws Exception {
     // prepare Mock
@@ -458,6 +528,11 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     assertXpathExists("/a:entry/m:properties/d:EmployeeName", xmlString);
   }
 
+  /**
+   * None syndication with null prefix.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void noneSyndicationWithNullPrefix() throws Exception {
     // prepare Mock
@@ -490,6 +565,11 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     }
   }
 
+  /**
+   * None syndication with null uri.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void noneSyndicationWithNullUri() throws Exception {
     // prepare Mock
@@ -522,6 +602,11 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     }
   }
 
+  /**
+   * None syndication with null uri and null prefix.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void noneSyndicationWithNullUriAndNullPrefix() throws Exception {
     // prepare Mock
@@ -553,6 +638,11 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     }
   }
 
+  /**
+   * Syndication with complex property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void syndicationWithComplexProperty() throws Exception {
     // prepare Mock
@@ -581,6 +671,13 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     assertXpathExists("/a:entry/m:properties/d:Location", xmlString);
   }
 
+  /**
+   * Verify root cause.
+   *
+   * @param class1 the class 1
+   * @param key the key
+   * @param e the e
+   */
   private void verifyRootCause(final Class<?> class1, final String key, final ODataMessageException e) {
 
     Throwable thrownException = e;
@@ -604,6 +701,16 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     }
   }
 
+  /**
+   * Serialize atom media resource.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws XpathException the xpath exception
+   * @throws SAXException the SAX exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws FactoryConfigurationError the factory configuration error
+   * @throws ODataException the o data exception
+   */
   @Test
   public void serializeAtomMediaResource() throws IOException, XpathException, SAXException, XMLStreamException,
       FactoryConfigurationError, ODataException {
@@ -639,6 +746,13 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
         "link((?:(?!link).)*?)ne_Room");
   }
 
+  /**
+   * Verify response.
+   *
+   * @param response the response
+   * @return the string
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private String verifyResponse(final ODataResponse response) throws IOException {
     assertNotNull(response);
     assertNotNull(response.getEntity());
@@ -647,6 +761,16 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     return xmlString;
   }
 
+  /**
+   * Serialize atom media resource with mime type.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws XpathException the xpath exception
+   * @throws SAXException the SAX exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws FactoryConfigurationError the factory configuration error
+   * @throws ODataException the o data exception
+   */
   @Test
   public void serializeAtomMediaResourceWithMimeType() throws IOException, XpathException, SAXException,
       XMLStreamException, FactoryConfigurationError, ODataException {
@@ -695,6 +819,13 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
    * Test serialization of empty syndication title property. EmployeeName is set to NULL after the update (which is
    * allowed because EmployeeName has default Nullable behavior which is true).
    * Write of an empty atom title tag is allowed within RFC4287 (http://tools.ietf.org/html/rfc4287#section-4.2.14).
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws XpathException the xpath exception
+   * @throws SAXException the SAX exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws FactoryConfigurationError the factory configuration error
+   * @throws ODataException the o data exception
    */
   @Test
   public void serializeEmployeeWithNullSyndicationTitleProperty() throws IOException, XpathException, SAXException,
@@ -718,6 +849,16 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     assertXpathExists("/a:entry/m:properties", xmlString);
   }
 
+  /**
+   * Serialize employee and check order of tags.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws XpathException the xpath exception
+   * @throws SAXException the SAX exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws FactoryConfigurationError the factory configuration error
+   * @throws ODataException the o data exception
+   */
   @Test
   public void serializeEmployeeAndCheckOrderOfTags() throws IOException, XpathException, SAXException,
       XMLStreamException, FactoryConfigurationError, ODataException {
@@ -776,6 +917,16 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
         "content", "properties");
   }
 
+  /**
+   * Serialize employee and check order of property tags.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws XpathException the xpath exception
+   * @throws SAXException the SAX exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws FactoryConfigurationError the factory configuration error
+   * @throws ODataException the o data exception
+   */
   @Test
   public void serializeEmployeeAndCheckOrderOfPropertyTags() throws IOException, XpathException, SAXException,
       XMLStreamException, FactoryConfigurationError, ODataException {
@@ -799,6 +950,16 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     verifyTagOrdering(xmlString, expectedPropertyNamesFromEdm.toArray(new String[0]));
   }
 
+  /**
+   * Serialize employee and check keep in content false.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws XpathException the xpath exception
+   * @throws SAXException the SAX exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws FactoryConfigurationError the factory configuration error
+   * @throws ODataException the o data exception
+   */
   @Test
   public void serializeEmployeeAndCheckKeepInContentFalse() throws IOException, XpathException, SAXException,
       XMLStreamException, FactoryConfigurationError, ODataException {
@@ -832,6 +993,16 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     verifyTagOrdering(xmlString, expectedPropertyNamesFromEdm.toArray(new String[0]));
   }
 
+  /**
+   * Serialize atom entry with null data.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws XpathException the xpath exception
+   * @throws SAXException the SAX exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws FactoryConfigurationError the factory configuration error
+   * @throws ODataException the o data exception
+   */
   @Test(expected = EntityProviderException.class)
   public void serializeAtomEntryWithNullData() throws IOException, XpathException, SAXException, XMLStreamException,
       FactoryConfigurationError, ODataException {
@@ -840,6 +1011,16 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     ser.writeEntry(MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms"), null, properties);
   }
 
+  /**
+   * Serialize atom entry with empty hash map.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws XpathException the xpath exception
+   * @throws SAXException the SAX exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws FactoryConfigurationError the factory configuration error
+   * @throws ODataException the o data exception
+   */
   @Test(expected = EntityProviderException.class)
   public void serializeAtomEntryWithEmptyHashMap() throws IOException, XpathException, SAXException,
       XMLStreamException, FactoryConfigurationError, ODataException {
@@ -849,6 +1030,16 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
         new HashMap<String, Object>(), properties);
   }
 
+  /**
+   * Serialize atom entry.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws XpathException the xpath exception
+   * @throws SAXException the SAX exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws FactoryConfigurationError the factory configuration error
+   * @throws ODataException the o data exception
+   */
   @Test
   public void serializeAtomEntry() throws IOException, XpathException, SAXException, XMLStreamException,
       FactoryConfigurationError, ODataException {
@@ -867,6 +1058,11 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     assertXpathExists("/a:entry/a:content/m:properties", xmlString);
   }
 
+  /**
+   * Serialize atom entry with simple property type information.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serializeAtomEntryWithSimplePropertyTypeInformation() throws Exception {
     final EntityProviderWriteProperties properties =
@@ -883,6 +1079,16 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     assertXpathExists("/a:entry/a:content/m:properties/d:Version[@m:type=\"Edm.Int16\"]", xmlString);
   }
 
+  /**
+   * Serialize entry id.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws XpathException the xpath exception
+   * @throws SAXException the SAX exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws FactoryConfigurationError the factory configuration error
+   * @throws ODataException the o data exception
+   */
   @Test
   public void serializeEntryId() throws IOException, XpathException, SAXException, XMLStreamException,
       FactoryConfigurationError, ODataException {
@@ -898,6 +1104,11 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     assertXpathEvaluatesTo(BASE_URI.toASCIIString() + "Employees('1')", "/a:entry/a:id/text()", xmlString);
   }
 
+  /**
+   * Serialize entry title.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serializeEntryTitle() throws Exception {
     AtomEntityProvider ser = createAtomEntityProvider();
@@ -911,6 +1122,11 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     assertXpathEvaluatesTo((String) employeeData.get("EmployeeName"), "/a:entry/a:title/text()", xmlString);
   }
 
+  /**
+   * Serialize entry updated.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serializeEntryUpdated() throws Exception {
     AtomEntityProvider ser = createAtomEntityProvider();
@@ -923,6 +1139,16 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     assertXpathEvaluatesTo("1999-01-01T00:00:00Z", "/a:entry/a:updated/text()", xmlString);
   }
 
+  /**
+   * Serialize ids.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws XpathException the xpath exception
+   * @throws SAXException the SAX exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws FactoryConfigurationError the factory configuration error
+   * @throws ODataException the o data exception
+   */
   @Test
   public void serializeIds() throws IOException, XpathException, SAXException, XMLStreamException,
       FactoryConfigurationError, ODataException {
@@ -939,6 +1165,16 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
         "/a:entry/a:id/text()", xmlString);
   }
 
+  /**
+   * Serialize properties.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws XpathException the xpath exception
+   * @throws SAXException the SAX exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws FactoryConfigurationError the factory configuration error
+   * @throws ODataException the o data exception
+   */
   @Test
   public void serializeProperties() throws IOException, XpathException, SAXException, XMLStreamException,
       FactoryConfigurationError, ODataException {
@@ -953,6 +1189,16 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     assertXpathEvaluatesTo((String) employeeData.get("TeamId"), "/a:entry/m:properties/d:TeamId/text()", xmlString);
   }
 
+  /**
+   * Serialize with value encoding.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws XpathException the xpath exception
+   * @throws SAXException the SAX exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws FactoryConfigurationError the factory configuration error
+   * @throws ODataException the o data exception
+   */
   @Test
   public void serializeWithValueEncoding() throws IOException, XpathException, SAXException, XMLStreamException,
       FactoryConfigurationError, ODataException {
@@ -972,6 +1218,16 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     assertXpathEvaluatesTo("Container2.Photos(Id=1,Type='%3C%20%C3%96%20%3E')", "/a:entry/a:link/@href", xmlString);
   }
 
+  /**
+   * Serialize category.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws XpathException the xpath exception
+   * @throws SAXException the SAX exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws FactoryConfigurationError the factory configuration error
+   * @throws ODataException the o data exception
+   */
   @Test
   public void serializeCategory() throws IOException, XpathException, SAXException, XMLStreamException,
       FactoryConfigurationError, ODataException {
@@ -988,6 +1244,16 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     assertXpathEvaluatesTo(Edm.NAMESPACE_SCHEME_2007_08, "/a:entry/a:category/@scheme", xmlString);
   }
 
+  /**
+   * Serialize E tag.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws XpathException the xpath exception
+   * @throws SAXException the SAX exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws FactoryConfigurationError the factory configuration error
+   * @throws ODataException the o data exception
+   */
   @Test
   public void serializeETag() throws IOException, XpathException, SAXException, XMLStreamException,
       FactoryConfigurationError, ODataException {
@@ -1003,6 +1269,16 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     assertEquals("W/\"1\"", response.getETag());
   }
 
+  /**
+   * Serialize E tag encoding.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws XpathException the xpath exception
+   * @throws SAXException the SAX exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws FactoryConfigurationError the factory configuration error
+   * @throws ODataException the o data exception
+   */
   @Test
   public void serializeETagEncoding() throws IOException, XpathException, SAXException, XMLStreamException,
       FactoryConfigurationError, ODataException {
@@ -1030,6 +1306,11 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     assertXpathEvaluatesTo("W/\"<\">.3\"", "/a:entry/@m:etag", xmlString);
   }
 
+  /**
+   * Serialize with facets validation.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void serializeWithFacetsValidation() throws Exception {
     Edm edm = MockFacade.getMockEdm();
@@ -1045,6 +1326,11 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     Assert.assertNotNull(response);
   }
 
+  /**
+   * Serialize without facets validation.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serializeWithoutFacetsValidation() throws Exception {
     Edm edm = MockFacade.getMockEdm();
@@ -1069,6 +1355,16 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     assertXpathEvaluatesTo(name, "/a:entry/a:content/m:properties/d:Name/text()", xmlString);
   }
 
+  /**
+   * Serialize custom mapping.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws XpathException the xpath exception
+   * @throws SAXException the SAX exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws FactoryConfigurationError the factory configuration error
+   * @throws ODataException the o data exception
+   */
   @Test
   public void serializeCustomMapping() throws IOException, XpathException, SAXException, XMLStreamException,
       FactoryConfigurationError, ODataException {
@@ -1084,6 +1380,11 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     verifyTagOrdering(xmlString, "category", "Содержание", "content", "properties");
   }
 
+  /**
+   * Test custom properties.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testCustomProperties() throws Exception {
     AtomEntityProvider ser = createAtomEntityProvider();
@@ -1099,6 +1400,11 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     verifyTagOrdering(xmlString, "category", "Содержание", "CustomProperty", "content", "properties");
   }
 
+  /**
+   * Test keep in content null.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testKeepInContentNull() throws Exception {
     AtomEntityProvider ser = createAtomEntityProvider();
@@ -1118,6 +1424,16 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     verifyTagOrdering(xmlString, "category", "Содержание", "CustomProperty", "content", "properties");
   }
 
+  /**
+   * Serialize atom media resource links.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws XpathException the xpath exception
+   * @throws SAXException the SAX exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws FactoryConfigurationError the factory configuration error
+   * @throws ODataException the o data exception
+   */
   @Test
   public void serializeAtomMediaResourceLinks() throws IOException, XpathException, SAXException, XMLStreamException,
       FactoryConfigurationError, ODataException {
@@ -1135,6 +1451,11 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     assertXpathExists("/a:entry/a:link[@title='ne_Manager']", xmlString);
   }
 
+  /**
+   * Additional link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void additionalLink() throws Exception {
     Map<String, Map<String, Object>> links = new HashMap<String, Map<String, Object>>();
@@ -1150,6 +1471,11 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     assertXpathExists("/a:entry/a:link[@type='application/atom+xml;type=entry']", xmlString);
   }
 
+  /**
+   * Additional link to one of many.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void additionalLinkToOneOfMany() throws Exception {
     Map<String, Map<String, Object>> links = new HashMap<String, Map<String, Object>>();
@@ -1165,6 +1491,11 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     assertXpathExists("/a:entry/a:link[@type='application/atom+xml;type=feed']", xmlString);
   }
 
+  /**
+   * Serialize with custom src attribute on employee.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serializeWithCustomSrcAttributeOnEmployee() throws Exception {
     AtomEntityProvider ser = createAtomEntityProvider();
@@ -1185,6 +1516,11 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     assertXpathExists("/a:entry/a:content[@src=\"http://localhost:8080/images/image1\"]", xmlString);
   }
 
+  /**
+   * Serialize with custom src and type attribute on employee.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serializeWithCustomSrcAndTypeAttributeOnEmployee() throws Exception {
     AtomEntityProvider ser = createAtomEntityProvider();
@@ -1207,6 +1543,11 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     assertXpathExists("/a:entry/a:content[@src=\"http://localhost:8080/images/image1\"]", xmlString);
   }
 
+  /**
+   * Serialize with custom src attribute on room.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serializeWithCustomSrcAttributeOnRoom() throws Exception {
     AtomEntityProvider ser = createAtomEntityProvider();
@@ -1229,6 +1570,11 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     assertXpathNotExists("/a:entry/a:content[@src=\"http://localhost:8080/images/image1\"]", xmlString);
   }
 
+  /**
+   * Serialize with custom src and type attribute on room.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serializeWithCustomSrcAndTypeAttributeOnRoom() throws Exception {
     AtomEntityProvider ser = createAtomEntityProvider();
@@ -1274,10 +1620,21 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
 //    assertXpathNotExists("/a:entry/a:content[@type=\"wrong\"]", xmlString);
 //  }
 
-  private void verifyTagOrdering(final String xmlString, final String... toCheckTags) {
+  /**
+ * Verify tag ordering.
+ *
+ * @param xmlString the xml string
+ * @param toCheckTags the to check tags
+ */
+private void verifyTagOrdering(final String xmlString, final String... toCheckTags) {
     XMLUnitHelper.verifyTagOrdering(xmlString, toCheckTags);
   }
   
+  /**
+   * Unbalanced property entry with inline entry.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void unbalancedPropertyEntryWithInlineEntry() throws Exception {
     ExpandSelectTreeNode selectTree = getSelectExpandTree("Rooms('1')", "nr_Building", "nr_Building");
@@ -1338,6 +1695,15 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     verifyBuilding(buildingXPathString, xmlString);
   }
   
+  /**
+   * Gets the select expand tree.
+   *
+   * @param pathSegment the path segment
+   * @param selectString the select string
+   * @param expandString the expand string
+   * @return the select expand tree
+   * @throws Exception the exception
+   */
   private ExpandSelectTreeNode getSelectExpandTree(final String pathSegment, final String selectString,
       final String expandString) throws Exception {
 
@@ -1363,6 +1729,15 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     return expandSelectTree;
   }
   
+  /**
+   * Verify building.
+   *
+   * @param path the path
+   * @param xmlString the xml string
+   * @throws XpathException the xpath exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws SAXException the SAX exception
+   */
   private void verifyBuilding(final String path, final String xmlString) throws XpathException, IOException,
   SAXException {
   assertXpathExists(path, xmlString);
@@ -1388,6 +1763,11 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
   
   }
   
+  /**
+   * Content only without key without selected properties.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void contentOnlyWithoutKeyWithoutSelectedProperties() throws Exception {
     HashMap<String, Object> employeeData = new HashMap<String, Object>();
@@ -1413,6 +1793,11 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     }
   }
   
+  /**
+   * Test without key.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testWithoutKey() throws Exception {
     EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Employees");
@@ -1435,6 +1820,11 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     }
   }
   
+  /**
+   * Test without composite key.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testWithoutCompositeKey() throws Exception {
     EdmEntitySet entitySet = MockFacade.getMockEdm().getEntityContainer("Container2").getEntitySet("Photos");
@@ -1453,6 +1843,11 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     }
   }
   
+  /**
+   * Test without composite key with one key null.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testWithoutCompositeKeyWithOneKeyNull() throws Exception {
     Edm edm = MockFacade.getMockEdm();
@@ -1481,6 +1876,11 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
   }
 
   
+  /**
+   * Test exception with non nullable property is null.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testExceptionWithNonNullablePropertyIsNull() throws Exception {
     EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Organizations");
@@ -1501,6 +1901,11 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     }
   }
   
+  /**
+   * Test exception with non nullable property is null 1.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testExceptionWithNonNullablePropertyIsNull1() throws Exception {
     EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Organizations");
@@ -1525,6 +1930,11 @@ public class AtomEntryProducerTest extends AbstractProviderTest {
     }
   }
   
+  /**
+   * Test exception with non nullable property is null 2.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testExceptionWithNonNullablePropertyIsNull2() throws Exception {
     EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Organizations");

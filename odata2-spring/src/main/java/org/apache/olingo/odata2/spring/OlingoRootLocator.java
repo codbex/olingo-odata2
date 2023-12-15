@@ -23,6 +23,7 @@ import org.apache.olingo.odata2.core.rest.ODataRootLocator;
 
 import jakarta.ws.rs.Path;
 
+// TODO: Auto-generated Javadoc
 /**
  * Default OData root locator responsible to handle the whole path and delegate all calls to a sub locator:<p>
  * <code>/{odata path} e.g. http://host:port/webapp/odata.svc/$metadata</code><br>
@@ -38,24 +39,47 @@ import jakarta.ws.rs.Path;
 @Path("/")
 public class OlingoRootLocator extends ODataRootLocator {
 
+  /** The service factory. */
   // These next two members are exposed so that they can be injected with Spring
   private ODataServiceFactory serviceFactory;
+  
+  /** The path split. */
   private int pathSplit = 0;
 
+  /**
+   * Gets the service factory.
+   *
+   * @return the service factory
+   */
   @Override
   public ODataServiceFactory getServiceFactory() {
     return serviceFactory;
   }
 
+  /**
+   * Sets the service factory.
+   *
+   * @param serviceFactory the new service factory
+   */
   public void setServiceFactory(ODataServiceFactory serviceFactory) {
     this.serviceFactory = serviceFactory;
   }
 
+  /**
+   * Gets the path split.
+   *
+   * @return the path split
+   */
   @Override
   public int getPathSplit() {
     return pathSplit;
   }
 
+  /**
+   * Sets the path split.
+   *
+   * @param pathSplit the new path split
+   */
   public void setPathSplit(int pathSplit) {
     this.pathSplit = pathSplit;
   }

@@ -20,118 +20,109 @@ package org.apache.olingo.odata2.core.uri;
 
 import java.util.ArrayList;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Enum UriType.
  */
 public enum UriType {
-  /**
-   * Service document
-   */
+  
+  /** Service document. */
   URI0(SystemQueryOption.$format),
-  /**
-   * Entity set
-   */
+  
+  /** Entity set. */
   URI1(SystemQueryOption.$format, SystemQueryOption.$filter, SystemQueryOption.$inlinecount,
       SystemQueryOption.$orderby, SystemQueryOption.$skiptoken, SystemQueryOption.$skip, SystemQueryOption.$top,
       SystemQueryOption.$expand, SystemQueryOption.$select),
-  /**
-   * Entity set with key predicate
-   */
+  
+  /** Entity set with key predicate. */
   URI2(SystemQueryOption.$format, SystemQueryOption.$filter, SystemQueryOption.$expand, SystemQueryOption.$select),
-  /**
-   * Complex property of an entity
-   */
+  
+  /** Complex property of an entity. */
   URI3(SystemQueryOption.$format),
-  /**
-   * Simple property of a complex property of an entity
-   */
+  
+  /** Simple property of a complex property of an entity. */
   URI4(SystemQueryOption.$format),
-  /**
-   * Simple property of an entity
-   */
+  
+  /** Simple property of an entity. */
   URI5(SystemQueryOption.$format),
   /**
    * Navigation property of an entity with target multiplicity '1' or '0..1'
    */
   URI6A(SystemQueryOption.$format, SystemQueryOption.$filter, SystemQueryOption.$expand, SystemQueryOption.$select),
-  /**
-   * Navigation property of an entity with target multiplicity '*'
-   */
+  
+  /** Navigation property of an entity with target multiplicity '*'. */
   URI6B(SystemQueryOption.$format, SystemQueryOption.$filter, SystemQueryOption.$inlinecount,
       SystemQueryOption.$orderby, SystemQueryOption.$skiptoken, SystemQueryOption.$skip, SystemQueryOption.$top,
       SystemQueryOption.$expand, SystemQueryOption.$select),
-  /**
-   * Link to a single entity
-   */
+  
+  /** Link to a single entity. */
   URI7A(SystemQueryOption.$format, SystemQueryOption.$filter),
-  /**
-   * Link to multiple entities
-   */
+  
+  /** Link to multiple entities. */
   URI7B(SystemQueryOption.$format, SystemQueryOption.$filter, SystemQueryOption.$inlinecount,
       SystemQueryOption.$orderby, SystemQueryOption.$skiptoken, SystemQueryOption.$skip, SystemQueryOption.$top),
-  /**
-   * Metadata document
-   */
+  
+  /** Metadata document. */
   URI8(),
-  /**
-   * Batch request
-   */
+  
+  /** Batch request. */
   URI9(),
-  /**
-   * Function import returning a single instance of an entity type
-   */
+  
+  /** Function import returning a single instance of an entity type. */
   URI10(SystemQueryOption.$format),
-  /**
-   * Function import returning an entity set
-   */
+  
+  /** Function import returning an entity set. */
   URI10a(SystemQueryOption.$format, SystemQueryOption.$filter, SystemQueryOption.$inlinecount,
 	      SystemQueryOption.$orderby, SystemQueryOption.$skiptoken, SystemQueryOption.$skip, SystemQueryOption.$top,
 	      SystemQueryOption.$expand, SystemQueryOption.$select),
-  /**
-   * Function import returning a collection of complex-type instances
-   */
+  
+  /** Function import returning a collection of complex-type instances. */
   URI11(SystemQueryOption.$format),
-  /**
-   * Function import returning a single instance of a complex type
-   */
+  
+  /** Function import returning a single instance of a complex type. */
   URI12(SystemQueryOption.$format),
-  /**
-   * Function import returning a collection of primitive-type instances
-   */
+  
+  /** Function import returning a collection of primitive-type instances. */
   URI13(SystemQueryOption.$format),
-  /**
-   * Function import returning a single instance of a primitive type
-   */
+  
+  /** Function import returning a single instance of a primitive type. */
   URI14(SystemQueryOption.$format),
-  /**
-   * Count of an entity set
-   */
+  
+  /** Count of an entity set. */
   URI15(SystemQueryOption.$filter, SystemQueryOption.$orderby, SystemQueryOption.$skip, SystemQueryOption.$top),
-  /**
-   * Count of a single entity
-   */
+  
+  /** Count of a single entity. */
   URI16(SystemQueryOption.$filter),
-  /**
-   * Media resource of an entity
-   */
+  
+  /** Media resource of an entity. */
   URI17(SystemQueryOption.$format, SystemQueryOption.$filter),
-  /**
-   * Count of link to a single entity
-   */
+  
+  /** Count of link to a single entity. */
   URI50A(SystemQueryOption.$filter),
-  /**
-   * Count of links to multiple entities
-   */
+  
+  /** Count of links to multiple entities. */
   URI50B(SystemQueryOption.$filter, SystemQueryOption.$orderby, SystemQueryOption.$skip, SystemQueryOption.$top);
 
+  /** The white list. */
   private ArrayList<SystemQueryOption> whiteList = new ArrayList<SystemQueryOption>();
 
+  /**
+   * Instantiates a new uri type.
+   *
+   * @param compatibleQueryOptions the compatible query options
+   */
   private UriType(final SystemQueryOption... compatibleQueryOptions) {
     for (SystemQueryOption queryOption : compatibleQueryOptions) {
       whiteList.add(queryOption);
     }
   }
 
+  /**
+   * Checks if is compatible.
+   *
+   * @param queryOption the query option
+   * @return true, if is compatible
+   */
   public boolean isCompatible(final SystemQueryOption queryOption) {
     return whiteList.contains(queryOption);
   }

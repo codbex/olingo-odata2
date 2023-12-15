@@ -27,13 +27,31 @@ import org.apache.olingo.odata2.api.edm.provider.EntityContainerInfo;
 import org.apache.olingo.odata2.api.edm.provider.EntitySet;
 import org.apache.olingo.odata2.core.commons.Encoder;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EdmEntitySetInfoImplProv.
+ */
 public class EdmEntitySetInfoImplProv implements EdmEntitySetInfo {
 
+  /** The entity set name. */
   private final String entitySetName;
+  
+  /** The entity set uri. */
   private final URI entitySetUri;
+  
+  /** The entity container name. */
   private final String entityContainerName;
+  
+  /** The is default entity container. */
   private final boolean isDefaultEntityContainer;
 
+  /**
+   * Instantiates a new edm entity set info impl prov.
+   *
+   * @param entitySet the entity set
+   * @param entityContainerInfo the entity container info
+   * @throws EdmException the edm exception
+   */
   public EdmEntitySetInfoImplProv(final EntitySet entitySet, final EntityContainerInfo entityContainerInfo)
       throws EdmException {
     entityContainerName = entityContainerInfo.getName();
@@ -53,24 +71,44 @@ public class EdmEntitySetInfoImplProv implements EdmEntitySetInfo {
 
   }
 
+  /**
+   * Gets the entity container name.
+   *
+   * @return the entity container name
+   */
   @Override
   public String getEntityContainerName() {
     return entityContainerName;
 
   }
 
+  /**
+   * Gets the entity set name.
+   *
+   * @return the entity set name
+   */
   @Override
   public String getEntitySetName() {
     return entitySetName;
 
   }
 
+  /**
+   * Checks if is default entity container.
+   *
+   * @return true, if is default entity container
+   */
   @Override
   public boolean isDefaultEntityContainer() {
     return isDefaultEntityContainer;
 
   }
 
+  /**
+   * Gets the entity set uri.
+   *
+   * @return the entity set uri
+   */
   @Override
   public URI getEntitySetUri() {
     return entitySetUri;

@@ -24,6 +24,7 @@ import java.util.regex.Pattern;
 import org.apache.olingo.odata2.api.edm.EdmException;
 import org.apache.olingo.odata2.api.edm.EdmNamed;
 
+// TODO: Auto-generated Javadoc
 /**
  * See in ABNF
  * <p>
@@ -50,21 +51,46 @@ import org.apache.olingo.odata2.api.edm.EdmNamed;
  */
 public abstract class EdmNamedImplProv implements EdmNamed {
 
+  /** The Constant PATTERN_VALID_NAME. */
   private static final Pattern PATTERN_VALID_NAME = Pattern.compile(
       "\\A[_\\p{L}\\p{Nl}][_\\p{L}\\p{Nl}\\p{Nd}\\p{Mn}\\p{Mc}\\p{Pc}\\p{Cf}]{0,}\\Z");
+  
+  /** The edm. */
   protected EdmImplProv edm;
+  
+  /** The name. */
   private String name;
 
+  /**
+   * Instantiates a new edm named impl prov.
+   *
+   * @param edm the edm
+   * @param name the name
+   * @throws EdmException the edm exception
+   */
   public EdmNamedImplProv(final EdmImplProv edm, final String name) throws EdmException {
     this.edm = edm;
     this.name = getValidatedName(name);
   }
 
+  /**
+   * Gets the name.
+   *
+   * @return the name
+   * @throws EdmException the edm exception
+   */
   @Override
   public String getName() throws EdmException {
     return name;
   }
 
+  /**
+   * Gets the validated name.
+   *
+   * @param name the name
+   * @return the validated name
+   * @throws EdmException the edm exception
+   */
   private String getValidatedName(final String name) throws EdmException {
     Matcher matcher = PATTERN_VALID_NAME.matcher(name);
     if (matcher.matches()) {

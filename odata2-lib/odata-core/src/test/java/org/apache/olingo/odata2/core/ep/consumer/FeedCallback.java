@@ -32,12 +32,21 @@ import org.apache.olingo.odata2.api.ep.entry.ODataEntry;
 import org.apache.olingo.odata2.api.ep.feed.ODataFeed;
 import org.apache.olingo.odata2.api.exception.ODataApplicationException;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class FeedCallback.
+ */
 public class FeedCallback implements OnReadInlineContent{
 
+  /** The navigation prop. */
   private static Map<String, Object> navigationProp = new HashMap<String, Object>();
+  
+  /** The id. */
   private String id = "";
   
   /**
+   * Gets the id.
+   *
    * @return the id
    */
   public String getId() {
@@ -45,12 +54,22 @@ public class FeedCallback implements OnReadInlineContent{
   }
 
   /**
+   * Gets the navigation properties.
+   *
    * @return the navigationPropFeed
    */
   public Map<String, Object> getNavigationProperties() {
     return navigationProp;
   }
 
+  /**
+   * Receive read properties.
+   *
+   * @param readProperties the read properties
+   * @param navigationProperty the navigation property
+   * @return the entity provider read properties
+   * @throws ODataApplicationException the o data application exception
+   */
   @Override
   public EntityProviderReadProperties receiveReadProperties(EntityProviderReadProperties readProperties,
       EdmNavigationProperty navigationProperty) throws ODataApplicationException {
@@ -58,6 +77,12 @@ public class FeedCallback implements OnReadInlineContent{
     return EntityProviderReadProperties.init().addTypeMappings(typeMappings).callback(new FeedCallback()).build();
   }
 
+  /**
+   * Handle read entry.
+   *
+   * @param context the context
+   * @throws ODataApplicationException the o data application exception
+   */
   @Override
   public void handleReadEntry(ReadEntryResult context) throws ODataApplicationException {
     this.id = context.getParentEntryId();
@@ -65,6 +90,12 @@ public class FeedCallback implements OnReadInlineContent{
     
   }
 
+  /**
+   * Handle read feed.
+   *
+   * @param context the context
+   * @throws ODataApplicationException the o data application exception
+   */
   @Override
   public void handleReadFeed(ReadFeedResult context) throws ODataApplicationException {
     this.id = context.getParentEntryId();
@@ -72,6 +103,11 @@ public class FeedCallback implements OnReadInlineContent{
     
   }
   
+  /**
+   * Handle entry.
+   *
+   * @param context the context
+   */
   private void handleEntry(final ReadResult context) {
     try {
       String navigationPropertyName = context.getNavigationProperty().getName();
@@ -85,6 +121,11 @@ public class FeedCallback implements OnReadInlineContent{
     }
   }
 
+  /**
+   * Handle feed.
+   *
+   * @param context the context
+   */
   private void handleFeed(final ReadFeedResult context) {
     try {
       String navigationPropertyName = context.getNavigationProperty().getName();

@@ -74,20 +74,36 @@ import org.apache.olingo.odata2.api.edm.provider.SimpleProperty;
 import org.apache.olingo.odata2.api.edm.provider.Using;
 import org.apache.olingo.odata2.api.exception.ODataException;
 
+// TODO: Auto-generated Javadoc
 /**
- * Provider for the entity data model used in the reference scenario
- * 
+ * Provider for the entity data model used in the reference scenario.
  */
 public class AnnotationEdmProvider extends EdmProvider {
 
+  /** The Constant ANNOTATION_HELPER. */
   private static final AnnotationHelper ANNOTATION_HELPER = new AnnotationHelper();
 
+  /** The annotated classes. */
   private final List<Class<?>> annotatedClasses;
+  
+  /** The name 2 container. */
   private final Map<String, EntityContainer> name2Container = new HashMap<String, EntityContainer>();
+  
+  /** The container name 2 container builder. */
   private final Map<String, ContainerBuilder> containerName2ContainerBuilder = new HashMap<String, ContainerBuilder>();
+  
+  /** The namespace 2 schema. */
   private final Map<String, Schema> namespace2Schema = new HashMap<String, Schema>();
+  
+  /** The default container. */
   private EntityContainer defaultContainer;
 
+  /**
+   * Instantiates a new annotation edm provider.
+   *
+   * @param annotatedClasses the annotated classes
+   * @throws ODataException the o data exception
+   */
   public AnnotationEdmProvider(final Collection<Class<?>> annotatedClasses) throws ODataException {
 
     this.annotatedClasses = new ArrayList<Class<?>>(annotatedClasses.size());
@@ -100,6 +116,12 @@ public class AnnotationEdmProvider extends EdmProvider {
     init();
   }
 
+  /**
+   * Instantiates a new annotation edm provider.
+   *
+   * @param packageToScan the package to scan
+   * @throws ODataException the o data exception
+   */
   public AnnotationEdmProvider(final String packageToScan) throws ODataException {
     annotatedClasses = ClassHelper.loadClasses(packageToScan, new ClassHelper.ClassValidator() {
       @Override
@@ -111,6 +133,11 @@ public class AnnotationEdmProvider extends EdmProvider {
     init();
   }
 
+  /**
+   * Inits the.
+   *
+   * @throws ODataException the o data exception
+   */
   private void init() throws ODataException {
     for (Class<?> aClass : annotatedClasses) {
       updateSchema(aClass);
@@ -120,6 +147,13 @@ public class AnnotationEdmProvider extends EdmProvider {
     finish();
   }
 
+  /**
+   * Gets the association.
+   *
+   * @param edmFQName the edm FQ name
+   * @return the association
+   * @throws ODataException the o data exception
+   */
   @Override
   public Association getAssociation(final FullQualifiedName edmFQName) throws ODataException {
     Schema schema = namespace2Schema.get(edmFQName.getNamespace());
@@ -134,6 +168,16 @@ public class AnnotationEdmProvider extends EdmProvider {
     return null;
   }
 
+  /**
+   * Gets the association set.
+   *
+   * @param entityContainer the entity container
+   * @param association the association
+   * @param sourceEntitySetName the source entity set name
+   * @param sourceEntitySetRole the source entity set role
+   * @return the association set
+   * @throws ODataException the o data exception
+   */
   @Override
   public AssociationSet getAssociationSet(final String entityContainer, final FullQualifiedName association,
       final String sourceEntitySetName, final String sourceEntitySetRole) throws ODataException {
@@ -158,6 +202,13 @@ public class AnnotationEdmProvider extends EdmProvider {
     return null;
   }
 
+  /**
+   * Gets the complex type.
+   *
+   * @param edmFQName the edm FQ name
+   * @return the complex type
+   * @throws ODataException the o data exception
+   */
   @Override
   public ComplexType getComplexType(final FullQualifiedName edmFQName) throws ODataException {
     Schema schema = namespace2Schema.get(edmFQName.getNamespace());
@@ -172,6 +223,13 @@ public class AnnotationEdmProvider extends EdmProvider {
     return null;
   }
 
+  /**
+   * Gets the entity container info.
+   *
+   * @param name the name
+   * @return the entity container info
+   * @throws ODataException the o data exception
+   */
   @Override
   public EntityContainerInfo getEntityContainerInfo(final String name) throws ODataException {
     EntityContainer container = name2Container.get(name);
@@ -193,6 +251,14 @@ public class AnnotationEdmProvider extends EdmProvider {
     return null;
   }
 
+  /**
+   * Gets the entity set.
+   *
+   * @param entityContainer the entity container
+   * @param name the name
+   * @return the entity set
+   * @throws ODataException the o data exception
+   */
   @Override
   public EntitySet getEntitySet(final String entityContainer, final String name) throws ODataException {
     EntityContainer container = name2Container.get(entityContainer);
@@ -208,6 +274,13 @@ public class AnnotationEdmProvider extends EdmProvider {
     return null;
   }
 
+  /**
+   * Gets the entity type.
+   *
+   * @param edmFQName the edm FQ name
+   * @return the entity type
+   * @throws ODataException the o data exception
+   */
   @Override
   public EntityType getEntityType(final FullQualifiedName edmFQName) throws ODataException {
     Schema schema = namespace2Schema.get(edmFQName.getNamespace());
@@ -222,6 +295,14 @@ public class AnnotationEdmProvider extends EdmProvider {
     return null;
   }
 
+  /**
+   * Gets the function import.
+   *
+   * @param entityContainer the entity container
+   * @param name the name
+   * @return the function import
+   * @throws ODataException the o data exception
+   */
   @Override
   public FunctionImport getFunctionImport(final String entityContainer, final String name) throws ODataException {
     EntityContainer container = name2Container.get(entityContainer);
@@ -236,6 +317,12 @@ public class AnnotationEdmProvider extends EdmProvider {
     return null;
   }
 
+  /**
+   * Gets the schemas.
+   *
+   * @return the schemas
+   * @throws ODataException the o data exception
+   */
   @Override
   public List<Schema> getSchemas() throws ODataException {
     return new ArrayList<Schema>(namespace2Schema.values());
@@ -243,9 +330,15 @@ public class AnnotationEdmProvider extends EdmProvider {
 
   //
   //
+  /** The namespace 2 schema builder. */
   //
   private Map<String, SchemaBuilder> namespace2SchemaBuilder = new HashMap<String, SchemaBuilder>();
 
+  /**
+   * Update schema.
+   *
+   * @param aClass the a class
+   */
   private void updateSchema(final Class<?> aClass) {
     EdmEntityType et = aClass.getAnnotation(EdmEntityType.class);
     if (et != null) {
@@ -257,6 +350,12 @@ public class AnnotationEdmProvider extends EdmProvider {
     }
   }
 
+  /**
+   * Update schema.
+   *
+   * @param aClass the a class
+   * @param et the et
+   */
   private void updateSchema(final Class<?> aClass, final EdmEntityType et) {
     SchemaBuilder b = getSchemaBuilder(et.namespace(), aClass);
     TypeBuilder typeBuilder = TypeBuilder.init(et, aClass);
@@ -264,6 +363,13 @@ public class AnnotationEdmProvider extends EdmProvider {
     b.addAssociations(typeBuilder.buildAssociations());
   }
 
+  /**
+   * Gets the schema builder.
+   *
+   * @param namespace the namespace
+   * @param aClass the a class
+   * @return the schema builder
+   */
   private SchemaBuilder getSchemaBuilder(final String namespace, final Class<?> aClass) {
     String usedNamespace = namespace;
     if (usedNamespace.isEmpty()) {
@@ -277,12 +383,23 @@ public class AnnotationEdmProvider extends EdmProvider {
     return builder;
   }
 
+  /**
+   * Update schema.
+   *
+   * @param aClass the a class
+   * @param et the et
+   */
   private void updateSchema(final Class<?> aClass, final EdmComplexType et) {
     SchemaBuilder b = getSchemaBuilder(et.namespace(), aClass);
     TypeBuilder typeBuilder = TypeBuilder.init(et, aClass);
     b.addComplexType(typeBuilder.buildComplexType());
   }
 
+  /**
+   * Handle entity container.
+   *
+   * @param aClass the a class
+   */
   private void handleEntityContainer(final Class<?> aClass) {
     EdmEntityType entityType = aClass.getAnnotation(EdmEntityType.class);
     if (entityType != null) {
@@ -300,15 +417,33 @@ public class AnnotationEdmProvider extends EdmProvider {
     }
   }
 
+  /**
+   * Creates the entity set.
+   *
+   * @param typeName the type name
+   * @param entitySetClass the entity set class
+   * @return the entity set
+   */
   private EntitySet createEntitySet(final FullQualifiedName typeName, final Class<?> entitySetClass) {
     String entitySetName = ANNOTATION_HELPER.extractEntitySetName(entitySetClass);
     return new EntitySet().setName(entitySetName).setEntityType(typeName);
   }
 
+  /**
+   * Creates the fqn for entity type.
+   *
+   * @param annotatedClass the annotated class
+   * @return the full qualified name
+   */
   private FullQualifiedName createFqnForEntityType(final Class<?> annotatedClass) {
     return ANNOTATION_HELPER.extractEntityTypeFqn(annotatedClass);
   }
 
+  /**
+   * Finish.
+   *
+   * @throws ODataException the o data exception
+   */
   private void finish() throws ODataException {
     //
     Collection<ContainerBuilder> containers = containerName2ContainerBuilder.values();
@@ -332,34 +467,83 @@ public class AnnotationEdmProvider extends EdmProvider {
 
   //
   //
+  /**
+   * The Class TypeBuilder.
+   */
   //
   static class TypeBuilder {
 
+    /** The namespace. */
     final private String namespace;
+    
+    /** The name. */
     final private String name;
+    
+    /** The is abstract. */
     private boolean isAbstract = false;
+    
+    /** The is media resource. */
     private boolean isMediaResource = false;
+    
+    /** The media resource mime type key. */
     private String mediaResourceMimeTypeKey;
+    
+    /** The media resource source key. */
     private String mediaResourceSourceKey;
+    
+    /** The base entity type. */
     private FullQualifiedName baseEntityType = null;
+    
+    /** The key properties. */
     private final List<PropertyRef> keyProperties = new ArrayList<PropertyRef>();
+    
+    /** The properties. */
     private final List<Property> properties = new ArrayList<Property>();
+    
+    /** The nav properties. */
     private final List<NavigationProperty> navProperties = new ArrayList<NavigationProperty>();
+    
+    /** The associations. */
     private final List<Association> associations = new ArrayList<Association>();
 
+    /**
+     * Instantiates a new type builder.
+     *
+     * @param fqn the fqn
+     */
     public TypeBuilder(final FullQualifiedName fqn) {
       namespace = fqn.getNamespace();
       name = fqn.getName();
     }
 
+    /**
+     * Inits the.
+     *
+     * @param entity the entity
+     * @param aClass the a class
+     * @return the type builder
+     */
     public static TypeBuilder init(final EdmEntityType entity, final Class<?> aClass) {
       return new TypeBuilder(ANNOTATION_HELPER.extractEntityTypeFqn(entity, aClass)).withClass(aClass);
     }
 
+    /**
+     * Inits the.
+     *
+     * @param entity the entity
+     * @param aClass the a class
+     * @return the type builder
+     */
     public static TypeBuilder init(final EdmComplexType entity, final Class<?> aClass) {
       return new TypeBuilder(ANNOTATION_HELPER.extractComplexTypeFqn(entity, aClass)).withClass(aClass);
     }
 
+    /**
+     * With class.
+     *
+     * @param aClass the a class
+     * @return the type builder
+     */
     private TypeBuilder withClass(final Class<?> aClass) {
       baseEntityType = createBaseEntityFqn(aClass);
 
@@ -406,26 +590,55 @@ public class AnnotationEdmProvider extends EdmProvider {
       return this;
     }
 
+    /**
+     * Adds the property.
+     *
+     * @param property the property
+     * @return the type builder
+     */
     public TypeBuilder addProperty(final PropertyRef property) {
       keyProperties.add(property);
       return this;
     }
 
+    /**
+     * Adds the property.
+     *
+     * @param property the property
+     * @return the type builder
+     */
     public TypeBuilder addProperty(final Property property) {
       properties.add(property);
       return this;
     }
 
+    /**
+     * Adds the navigation property.
+     *
+     * @param property the property
+     * @return the type builder
+     */
     public TypeBuilder addNavigationProperty(final NavigationProperty property) {
       navProperties.add(property);
       return this;
     }
 
+    /**
+     * Sets the abstract.
+     *
+     * @param isAbstract the is abstract
+     * @return the type builder
+     */
     public TypeBuilder setAbstract(final boolean isAbstract) {
       this.isAbstract = isAbstract;
       return this;
     }
 
+    /**
+     * Builds the complex type.
+     *
+     * @return the complex type
+     */
     public ComplexType buildComplexType() {
       ComplexType complexType = new ComplexType();
       if (baseEntityType != null) {
@@ -434,6 +647,11 @@ public class AnnotationEdmProvider extends EdmProvider {
       return complexType.setName(name).setProperties(properties);
     }
 
+    /**
+     * Builds the entity type.
+     *
+     * @return the entity type
+     */
     public EntityType buildEntityType() {
       EntityType entityType = new EntityType();
       if (baseEntityType != null) {
@@ -453,10 +671,22 @@ public class AnnotationEdmProvider extends EdmProvider {
                                     .setMediaResourceSourceKey(mediaResourceSourceKey));
     }
 
+    /**
+     * Builds the associations.
+     *
+     * @return the collection
+     */
     public Collection<Association> buildAssociations() {
       return Collections.unmodifiableCollection(associations);
     }
 
+    /**
+     * Creates the key property.
+     *
+     * @param et the et
+     * @param field the field
+     * @return the property ref
+     */
     private PropertyRef createKeyProperty(final EdmProperty et, final Field field) {
       PropertyRef keyProperty = new PropertyRef();
       String entityName = et.name();
@@ -466,6 +696,13 @@ public class AnnotationEdmProvider extends EdmProvider {
       return keyProperty.setName(entityName);
     }
 
+    /**
+     * Creates the property.
+     *
+     * @param ep the ep
+     * @param field the field
+     * @return the property
+     */
     private Property createProperty(final EdmProperty ep, final Field field) {
       if (isAnnotatedEntity(field.getType())) {
         return createComplexProperty(ep, field);
@@ -474,6 +711,13 @@ public class AnnotationEdmProvider extends EdmProvider {
       }
     }
 
+    /**
+     * Creates the simple property.
+     *
+     * @param ep the ep
+     * @param field the field
+     * @return the property
+     */
     private Property createSimpleProperty(final EdmProperty ep, final Field field) {
       SimpleProperty sp = new SimpleProperty();
       String entityName = ANNOTATION_HELPER.getPropertyName(field);
@@ -488,6 +732,13 @@ public class AnnotationEdmProvider extends EdmProvider {
       return sp;
     }
 
+    /**
+     * Creates the facets.
+     *
+     * @param facets the facets
+     * @param concurrencyControl the concurrency control
+     * @return the facets
+     */
     private Facets createFacets(final EdmFacets facets, final EdmConcurrencyControl concurrencyControl) {
       Facets resultFacets = new Facets().setNullable(facets.nullable());
       if(facets.maxLength() > -1) {
@@ -505,6 +756,13 @@ public class AnnotationEdmProvider extends EdmProvider {
       return resultFacets;
     }
 
+    /**
+     * Creates the complex property.
+     *
+     * @param ep the ep
+     * @param field the field
+     * @return the property
+     */
     private Property createComplexProperty(EdmProperty ep, final Field field) {
       ComplexProperty cp = new ComplexProperty();
       // settings from property
@@ -520,6 +778,14 @@ public class AnnotationEdmProvider extends EdmProvider {
       return cp;
     }
 
+    /**
+     * Creates the navigation property.
+     *
+     * @param namespace the namespace
+     * @param field the field
+     * @param navInfo the nav info
+     * @return the navigation property
+     */
     private NavigationProperty createNavigationProperty(final String namespace, Field field,
                                                         AnnotationHelper.AnnotatedNavInfo navInfo) {
       NavigationProperty navProp = new NavigationProperty();
@@ -534,6 +800,12 @@ public class AnnotationEdmProvider extends EdmProvider {
       return navProp;
     }
 
+    /**
+     * Gets the edm type.
+     *
+     * @param type the type
+     * @return the edm type
+     */
     private EdmType getEdmType(final Class<?> type) {
       if (type == String.class) {
         return EdmType.STRING;
@@ -566,6 +838,12 @@ public class AnnotationEdmProvider extends EdmProvider {
       }
     }
 
+    /**
+     * Check for base entity class.
+     *
+     * @param aClass the a class
+     * @return the class
+     */
     private Class<?> checkForBaseEntityClass(final Class<?> aClass) {
       Class<?> superClass = aClass.getSuperclass();
       if (superClass == Object.class) {
@@ -580,6 +858,12 @@ public class AnnotationEdmProvider extends EdmProvider {
       }
     }
 
+    /**
+     * Creates the base entity fqn.
+     *
+     * @param aClass the a class
+     * @return the full qualified name
+     */
     private FullQualifiedName createBaseEntityFqn(final Class<?> aClass) {
       Class<?> baseEntityClass = checkForBaseEntityClass(aClass);
       if (baseEntityClass == null) {
@@ -588,6 +872,12 @@ public class AnnotationEdmProvider extends EdmProvider {
       return ANNOTATION_HELPER.extractEntityTypeFqn(baseEntityClass);
     }
 
+    /**
+     * Creates the association.
+     *
+     * @param info the info
+     * @return the association
+     */
     private Association createAssociation(final AnnotationHelper.AnnotatedNavInfo info) {
       Association association = new Association();
 
@@ -608,49 +898,113 @@ public class AnnotationEdmProvider extends EdmProvider {
       return association;
     }
 
+    /**
+     * Gets the canonical name.
+     *
+     * @param field the field
+     * @return the canonical name
+     */
     private String getCanonicalName(final Field field) {
       return ANNOTATION_HELPER.getCanonicalName(field);
     }
 
+    /**
+     * Checks if is annotated entity.
+     *
+     * @param clazz the clazz
+     * @return true, if is annotated entity
+     */
     private boolean isAnnotatedEntity(final Class<?> clazz) {
       return ANNOTATION_HELPER.isEdmTypeAnnotated(clazz);
     }
   }
 
+  /**
+   * The Class SchemaBuilder.
+   */
   static class SchemaBuilder {
 
+    /** The namespace. */
     final private String namespace;
+    
+    /** The usings. */
     private final List<Using> usings = new ArrayList<Using>();
+    
+    /** The entity types. */
     private final List<EntityType> entityTypes = new ArrayList<EntityType>();
+    
+    /** The complex types. */
     private final List<ComplexType> complexTypes = new ArrayList<ComplexType>();
+    
+    /** The name 2 associations. */
     private final Map<String, Association> name2Associations = new HashMap<String, Association>();
+    
+    /** The entity containers. */
     private final List<EntityContainer> entityContainers = new ArrayList<EntityContainer>();
+    
+    /** The annotation attributes. */
     private final List<AnnotationAttribute> annotationAttributes = new ArrayList<AnnotationAttribute>();
+    
+    /** The annotation elements. */
     private final List<AnnotationElement> annotationElements = new ArrayList<AnnotationElement>();
 
+    /**
+     * Instantiates a new schema builder.
+     *
+     * @param namespace the namespace
+     */
     private SchemaBuilder(final String namespace) {
       this.namespace = namespace;
     }
 
+    /**
+     * Inits the.
+     *
+     * @param namespace the namespace
+     * @return the schema builder
+     */
     public static SchemaBuilder init(final String namespace) {
       return new SchemaBuilder(namespace);
     }
 
+    /**
+     * Adds the entity type.
+     *
+     * @param type the type
+     * @return the schema builder
+     */
     public SchemaBuilder addEntityType(final EntityType type) {
       entityTypes.add(type);
       return this;
     }
 
+    /**
+     * Adds the entity container.
+     *
+     * @param container the container
+     * @return the schema builder
+     */
     public SchemaBuilder addEntityContainer(final EntityContainer container) {
       entityContainers.add(container);
       return this;
     }
 
+    /**
+     * Adds the complex type.
+     *
+     * @param createEntityType the create entity type
+     * @return the schema builder
+     */
     public SchemaBuilder addComplexType(final ComplexType createEntityType) {
       complexTypes.add(createEntityType);
       return this;
     }
 
+    /**
+     * Adds the associations.
+     *
+     * @param associations the associations
+     */
     public void addAssociations(final Collection<Association> associations) {
       for (Association association : associations) {
         final String relationshipName = association.getName();
@@ -661,6 +1015,13 @@ public class AnnotationEdmProvider extends EdmProvider {
       }
     }
 
+    /**
+     * Merge associations.
+     *
+     * @param associationOne the association one
+     * @param associationTwo the association two
+     * @return the association
+     */
     private Association mergeAssociations(final Association associationOne, final Association associationTwo) {
       AssociationEnd oneEnd1 = associationOne.getEnd1();
       AssociationEnd oneEnd2 = associationOne.getEnd2();
@@ -683,6 +1044,11 @@ public class AnnotationEdmProvider extends EdmProvider {
       return associationOne;
     }
 
+    /**
+     * Builds the.
+     *
+     * @return the schema
+     */
     public Schema build() {
       Schema s = new Schema();
       s.setUsings(usings);
@@ -697,33 +1063,77 @@ public class AnnotationEdmProvider extends EdmProvider {
     }
   }
 
+  /**
+   * The Class ContainerBuilder.
+   */
   private static class ContainerBuilder {
 
+    /** The name. */
     final private String name;
+    
+    /** The namespace. */
     final private String namespace;
+    
+    /** The default container. */
     private boolean defaultContainer = true;
+    
+    /** The entity sets. */
     private final List<EntitySet> entitySets = new ArrayList<EntitySet>();
+    
+    /** The association sets. */
     private final List<AssociationSet> associationSets = new ArrayList<AssociationSet>();
+    
+    /** The function imports. */
     private final List<FunctionImport> functionImports = new ArrayList<FunctionImport>();
 
+    /**
+     * Instantiates a new container builder.
+     *
+     * @param namespace the namespace
+     * @param containerName the container name
+     */
     private ContainerBuilder(final String namespace, final String containerName) {
       this.namespace = namespace;
       name = containerName;
     }
 
+    /**
+     * Gets the namespace.
+     *
+     * @return the namespace
+     */
     public String getNamespace() {
       return namespace;
     }
 
+    /**
+     * Inits the.
+     *
+     * @param namespace the namespace
+     * @param containerName the container name
+     * @return the container builder
+     */
     public static ContainerBuilder init(final String namespace, final String containerName) {
       return new ContainerBuilder(namespace, containerName);
     }
 
+    /**
+     * Adds the entity set.
+     *
+     * @param entitySet the entity set
+     * @return the container builder
+     */
     public ContainerBuilder addEntitySet(final EntitySet entitySet) {
       entitySets.add(entitySet);
       return this;
     }
 
+    /**
+     * Adds the association sets.
+     *
+     * @param associations the associations
+     * @throws ODataException the o data exception
+     */
     public void addAssociationSets(final Collection<Association> associations) throws ODataException {
       for (Association association : associations) {
         AssociationSet as = new AssociationSet();
@@ -745,6 +1155,11 @@ public class AnnotationEdmProvider extends EdmProvider {
       }
     }
 
+    /**
+     * Builds the.
+     *
+     * @return the entity container
+     */
     public EntityContainer build() {
       EntityContainer ec = new EntityContainer();
       ec.setName(name);
@@ -755,6 +1170,13 @@ public class AnnotationEdmProvider extends EdmProvider {
       return ec;
     }
 
+    /**
+     * Gets the entity set name.
+     *
+     * @param end the end
+     * @return the entity set name
+     * @throws ODataException the o data exception
+     */
     private String getEntitySetName(final AssociationEnd end) throws ODataException {
       for (EntitySet entitySet : entitySets) {
         if (entitySet.getEntityType().equals(end.getType())) {

@@ -18,6 +18,7 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.uri.expression;
 
+// TODO: Auto-generated Javadoc
 /**
  * Represents a binary expression node in the expression tree returned by the methods
  * <br>
@@ -28,18 +29,25 @@ package org.apache.olingo.odata2.api.uri.expression;
  * 
  */
 public interface BinaryExpression extends CommonExpression {
+  
   /**
+   * Gets the operator.
+   *
    * @return Operator object that represents the used operator
    * @see BinaryOperator
    */
   public BinaryOperator getOperator();
 
   /**
+   * Gets the left operand.
+   *
    * @return Expression sub tree of the left operand
    */
   public CommonExpression getLeftOperand();
 
   /**
+   * Gets the right operand.
+   *
    * @return Expression sub tree of the right operand
    */
   public CommonExpression getRightOperand();

@@ -45,18 +45,36 @@ import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPQLSelectSingleStatementBuilderTest.
+ */
 public class JPQLSelectSingleStatementBuilderTest {
 
   /**
-   * @throws java.lang.Exception
+   * The JPQL select single statement builder.
+   *
    */
   private JPQLSelectSingleStatementBuilder JPQLSelectSingleStatementBuilder;
 
+  /**
+   * Sets the up.
+   *
+   * @throws Exception the exception
+   */
   @Before
   public void setUp() throws Exception {
 
   }
 
+  /**
+   * Creates the select context.
+   *
+   * @param edmType the edm type
+   * @return the JPQL select single context
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   * @throws EdmException the edm exception
+   */
   private JPQLSelectSingleContext createSelectContext(EdmSimpleType edmType) throws ODataJPARuntimeException,
   EdmException {
     // Object Instantiation
@@ -109,6 +127,13 @@ public class JPQLSelectSingleStatementBuilderTest {
     return JPQLSelectSingleContextImpl;
   }
 
+  /**
+   * Sets the specific properties.
+   *
+   * @param keyPredicate the key predicate
+   * @param kpProperty the kp property
+   * @param edmType the edm type
+   */
   private void setSpecificProperties(KeyPredicate keyPredicate, EdmProperty kpProperty,  EdmSimpleType edmType) {
 
     try {
@@ -126,8 +151,9 @@ public class JPQLSelectSingleStatementBuilderTest {
 
   /**
    * Test method for {@link org.apache.olingo.odata2.processor.jpa.jpql.JPQLSelectSingleStatementBuilder#build)}.
-   * @throws EdmException
-   * @throws ODataJPARuntimeException
+   *
+   * @throws EdmException the edm exception
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
    */
 
   @Test
@@ -153,8 +179,9 @@ public class JPQLSelectSingleStatementBuilderTest {
 
   /**
    * Test method for {@link org.apache.olingo.odata2.processor.jpa.jpql.JPQLSelectSingleStatementBuilder#build)}.
-   * @throws EdmException
-   * @throws ODataJPARuntimeException
+   *
+   * @throws EdmException the edm exception
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
    */
 
   @Test

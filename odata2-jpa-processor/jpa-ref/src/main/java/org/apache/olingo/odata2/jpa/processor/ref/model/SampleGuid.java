@@ -27,24 +27,40 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SampleGuid.
+ */
 @Entity
 @Table(name = "T_SAMPLEGUID")
 public class SampleGuid {
 
+  /**
+   * Instantiates a new sample guid.
+   */
   public SampleGuid() {}
   
+  /**
+   * Instantiates a new sample guid.
+   *
+   * @param id the id
+   * @param name the name
+   */
   public SampleGuid(final int id, final String name) {
     super();
     this.id = id;
     this.name = name;
   }
   
+  /** The id. */
   @Column
   private int id;
   
+  /** The name. */
   @Column
   private String name;
   
+  /** The External recommendation UUID. */
   @Id
   @Convert(converter=org.apache.olingo.odata2.jpa.processor.ref.converter.UUIDConverter.class)
   @GeneratedValue(generator="reco-UUID")
@@ -52,6 +68,8 @@ public class SampleGuid {
   private UUID ExternalRecommendationUUID;
 
   /**
+   * Gets the id.
+   *
    * @return the id
    */
   public int getId() {
@@ -59,6 +77,8 @@ public class SampleGuid {
   }
 
   /**
+   * Sets the id.
+   *
    * @param id the id to set
    */
   public void setId(int id) {
@@ -66,6 +86,8 @@ public class SampleGuid {
   }
 
   /**
+   * Gets the name.
+   *
    * @return the name
    */
   public String getName() {
@@ -73,6 +95,8 @@ public class SampleGuid {
   }
 
   /**
+   * Sets the name.
+   *
    * @param name the name to set
    */
   public void setName(String name) {
@@ -80,6 +104,8 @@ public class SampleGuid {
   }
 
   /**
+   * Gets the external recommendation UUID.
+   *
    * @return the externalRecommendationUUID
    */
   public UUID getExternalRecommendationUUID() {
@@ -87,6 +113,8 @@ public class SampleGuid {
   }
 
   /**
+   * Sets the external recommendation UUID.
+   *
    * @param externalRecommendationUUID the externalRecommendationUUID to set
    */
   public void setExternalRecommendationUUID(UUID externalRecommendationUUID) {

@@ -58,14 +58,32 @@ import org.apache.olingo.odata2.testutil.mock.MockFacade;
 import org.junit.Before;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BatchHandlerTest.
+ */
 public class BatchHandlerTest {
 
+    /** The handler. */
     private BatchHandler handler;
+    
+    /** The Constant CONTENT_TYPE. */
     private static final String CONTENT_TYPE = HttpContentType.MULTIPART_MIXED + "; boundary=batch_123";
+    
+    /** The Constant CRLF. */
     private static final String CRLF = "\r\n";
+    
+    /** The service base. */
     private static String SERVICE_BASE = "http://localhost/odata/";
+    
+    /** The service root. */
     private static String SERVICE_ROOT = null;
 
+    /**
+     * Setup batch handler.
+     *
+     * @throws Exception the exception
+     */
     @Before
     public void setupBatchHandler() throws Exception {
         ODataProcessor processor = new LocalProcessor();
@@ -83,6 +101,11 @@ public class BatchHandlerTest {
         handler = new BatchHandlerImpl(mock(ODataServiceFactory.class), serviceMock);
     }
 
+    /**
+     * Content id referencing.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void contentIdReferencing() throws Exception {
         SERVICE_ROOT = SERVICE_BASE;
@@ -104,6 +127,11 @@ public class BatchHandlerTest {
         handler.handleBatchPart(parsedRequest.get(0));
     }
 
+    /**
+     * Content id referencing for get.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void contentIdReferencingForGet() throws Exception {
         SERVICE_ROOT = SERVICE_BASE;
@@ -127,6 +155,11 @@ public class BatchHandlerTest {
     }
 
 
+    /**
+     * Content id referencing with additional segments.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void contentIdReferencingWithAdditionalSegments() throws Exception {
         SERVICE_ROOT = SERVICE_BASE + "seg1/seg2/";
@@ -150,6 +183,11 @@ public class BatchHandlerTest {
         handler.handleBatchPart(parsedRequest.get(0));
     }
 
+    /**
+     * Content id referencing with additional segments and matrix parameter.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void contentIdReferencingWithAdditionalSegmentsAndMatrixParameter() throws Exception {
         SERVICE_ROOT = SERVICE_BASE + "seg1;v=1/seg2;v=2/";
@@ -174,6 +212,11 @@ public class BatchHandlerTest {
         handler.handleBatchPart(parsedRequest.get(0));
     }
 
+    /**
+     * Assert first.
+     *
+     * @param pathInfo the path info
+     */
     private void assertFirst(PathInfo pathInfo) {
         assertEquals(SERVICE_ROOT + "Employees", pathInfo.getRequestUri()
                                                          .toString());
@@ -181,6 +224,13 @@ public class BatchHandlerTest {
                                            .toString());
     }
 
+    /**
+     * Read file.
+     *
+     * @param fileName the file name
+     * @return the input stream
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     private InputStream readFile(String fileName) throws IOException {
         InputStream in = BatchHandlerTest.class.getResourceAsStream(fileName);
         if (in == null) {
@@ -191,20 +241,44 @@ public class BatchHandlerTest {
                            .asStreamWithLineSeparation(CRLF);
     }
 
+    /**
+     * The Class LocalProcessor.
+     */
     public class LocalProcessor implements BatchProcessor, EntitySetProcessor, EntitySimplePropertyProcessor {
 
+        /** The context. */
         private ODataContext context;
 
+        /**
+         * Sets the context.
+         *
+         * @param context the new context
+         * @throws ODataException the o data exception
+         */
         @Override
         public void setContext(ODataContext context) throws ODataException {
             this.context = context;
         }
 
+        /**
+         * Gets the context.
+         *
+         * @return the context
+         * @throws ODataException the o data exception
+         */
         @Override
         public ODataContext getContext() throws ODataException {
             return context;
         }
 
+        /**
+         * Execute change set.
+         *
+         * @param handler the handler
+         * @param requests the requests
+         * @return the batch response part
+         * @throws ODataException the o data exception
+         */
         @Override
         public BatchResponsePart executeChangeSet(BatchHandler handler, List<ODataRequest> requests) throws ODataException {
             List<ODataResponse> responses = new ArrayList<ODataResponse>();
@@ -225,6 +299,16 @@ public class BatchHandlerTest {
                                     .build();
         }
 
+        /**
+         * Creates the entity.
+         *
+         * @param uriInfo the uri info
+         * @param content the content
+         * @param requestContentType the request content type
+         * @param contentType the content type
+         * @return the o data response
+         * @throws ODataException the o data exception
+         */
         @Override
         public ODataResponse createEntity(PostUriInfo uriInfo, InputStream content, String requestContentType, String contentType)
                 throws ODataException {
@@ -238,6 +322,16 @@ public class BatchHandlerTest {
                                 .build();
         }
 
+        /**
+         * Update entity simple property.
+         *
+         * @param uriInfo the uri info
+         * @param content the content
+         * @param requestContentType the request content type
+         * @param contentType the content type
+         * @return the o data response
+         * @throws ODataException the o data exception
+         */
         @Override
         public ODataResponse updateEntitySimpleProperty(PutMergePatchUriInfo uriInfo, InputStream content, String requestContentType,
                 String contentType) throws ODataException {
@@ -253,24 +347,57 @@ public class BatchHandlerTest {
                                 .build();
         }
 
+        /**
+         * Read entity simple property.
+         *
+         * @param uriInfo the uri info
+         * @param contentType the content type
+         * @return the o data response
+         * @throws ODataException the o data exception
+         */
         @Override
         public ODataResponse readEntitySimpleProperty(GetSimplePropertyUriInfo uriInfo, String contentType) throws ODataException {
             // this method is not needed.
             return null;
         }
 
+        /**
+         * Read entity set.
+         *
+         * @param uriInfo the uri info
+         * @param contentType the content type
+         * @return the o data response
+         * @throws ODataException the o data exception
+         */
         @Override
         public ODataResponse readEntitySet(GetEntitySetUriInfo uriInfo, String contentType) throws ODataException {
             // this method is not needed.
             return null;
         }
 
+        /**
+         * Count entity set.
+         *
+         * @param uriInfo the uri info
+         * @param contentType the content type
+         * @return the o data response
+         * @throws ODataException the o data exception
+         */
         @Override
         public ODataResponse countEntitySet(GetEntitySetCountUriInfo uriInfo, String contentType) throws ODataException {
             // this method is not needed.
             return null;
         }
 
+        /**
+         * Execute batch.
+         *
+         * @param handler the handler
+         * @param contentType the content type
+         * @param content the content
+         * @return the o data response
+         * @throws ODataException the o data exception
+         */
         @Override
         public ODataResponse executeBatch(BatchHandler handler, String contentType, InputStream content) throws ODataException {
             // this method is not needed.

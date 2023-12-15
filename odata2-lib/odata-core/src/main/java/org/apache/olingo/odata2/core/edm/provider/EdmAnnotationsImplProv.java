@@ -27,11 +27,24 @@ import org.apache.olingo.odata2.api.edm.EdmAnnotations;
 import org.apache.olingo.odata2.api.edm.provider.AnnotationAttribute;
 import org.apache.olingo.odata2.api.edm.provider.AnnotationElement;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EdmAnnotationsImplProv.
+ */
 public class EdmAnnotationsImplProv implements EdmAnnotations {
 
+  /** The annotation attributes. */
   private List<EdmAnnotationAttribute> annotationAttributes;
+  
+  /** The annotation elements. */
   private List<EdmAnnotationElement> annotationElements;
 
+  /**
+   * Instantiates a new edm annotations impl prov.
+   *
+   * @param annotationAttributes the annotation attributes
+   * @param annotationElements the annotation elements
+   */
   public EdmAnnotationsImplProv(final List<AnnotationAttribute> annotationAttributes,
       final List<AnnotationElement> annotationElements) {
     if (annotationAttributes != null) {
@@ -47,11 +60,23 @@ public class EdmAnnotationsImplProv implements EdmAnnotations {
     }
   }
 
+  /**
+   * Gets the annotation elements.
+   *
+   * @return the annotation elements
+   */
   @Override
   public List<EdmAnnotationElement> getAnnotationElements() {
     return annotationElements;
   }
 
+  /**
+   * Gets the annotation element.
+   *
+   * @param name the name
+   * @param namespace the namespace
+   * @return the annotation element
+   */
   @Override
   public EdmAnnotationElement getAnnotationElement(final String name, final String namespace) {
     if (annotationElements != null) {
@@ -64,11 +89,23 @@ public class EdmAnnotationsImplProv implements EdmAnnotations {
     return null;
   }
 
+  /**
+   * Gets the annotation attributes.
+   *
+   * @return the annotation attributes
+   */
   @Override
   public List<EdmAnnotationAttribute> getAnnotationAttributes() {
     return annotationAttributes;
   }
 
+  /**
+   * Gets the annotation attribute.
+   *
+   * @param name the name
+   * @param namespace the namespace
+   * @return the annotation attribute
+   */
   @Override
   public EdmAnnotationAttribute getAnnotationAttribute(final String name, final String namespace) {
     if (annotationAttributes != null) {

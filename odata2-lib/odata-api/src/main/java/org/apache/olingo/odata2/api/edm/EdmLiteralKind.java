@@ -18,12 +18,16 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.edm;
 
+// TODO: Auto-generated Javadoc
 /**
- * @org.apache.olingo.odata2.DoNotImplement
- * EdmLiteralKind indicates the format of an EDM literal.
- * 
+ * The Enum EdmLiteralKind.
+ *
+ * @org.apache.olingo.odata2.DoNotImplement EdmLiteralKind indicates the format of an EDM literal.
  */
 public enum EdmLiteralKind {
 
-  DEFAULT, URI, JSON;
+  /** The default. */
+  DEFAULT, /** The uri. */
+ URI, /** The json. */
+ JSON;
 }

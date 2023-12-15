@@ -24,39 +24,89 @@ import java.util.Map;
 
 import org.apache.olingo.odata2.api.client.batch.BatchQueryPart;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BatchQueryPartImpl.
+ */
 public class BatchQueryPartImpl extends BatchQueryPart {
+  
+  /** The method. */
   private String method;
+  
+  /** The headers. */
   private Map<String, String> headers = new HashMap<String, String>();
+  
+  /** The uri. */
   private String uri;
+  
+  /** The content id. */
   private String contentId;
+  
+  /** The Constant GET. */
   private static final String GET = "GET";
 
+  /**
+   * Gets the headers.
+   *
+   * @return the headers
+   */
   @Override
   public Map<String, String> getHeaders() {
     return Collections.unmodifiableMap(headers);
   }
 
+  /**
+   * Gets the method.
+   *
+   * @return the method
+   */
   @Override
   public String getMethod() {
     return method;
   }
 
+  /**
+   * Gets the uri.
+   *
+   * @return the uri
+   */
   @Override
   public String getUri() {
     return uri;
   }
 
+  /**
+   * Gets the content id.
+   *
+   * @return the content id
+   */
   @Override
   public String getContentId() {
     return contentId;
   }
 
+  /**
+   * The Class BatchQueryRequestBuilderImpl.
+   */
   public class BatchQueryRequestBuilderImpl extends BatchQueryPartBuilder {
+    
+    /** The method. */
     private String method;
+    
+    /** The headers. */
     private Map<String, String> headers = new HashMap<String, String>();
+    
+    /** The uri. */
     private String uri;
+    
+    /** The content id. */
     private String contentId;
 
+    /**
+     * Builds the.
+     *
+     * @return the batch query part
+     */
     @Override
     public BatchQueryPart build() {
       if (method == null || uri == null) {
@@ -69,18 +119,36 @@ public class BatchQueryPartImpl extends BatchQueryPart {
       return BatchQueryPartImpl.this;
     }
 
+    /**
+     * Headers.
+     *
+     * @param headers the headers
+     * @return the batch query part builder
+     */
     @Override
     public BatchQueryPartBuilder headers(final Map<String, String> headers) {
       this.headers = headers;
       return this;
     }
 
+    /**
+     * Uri.
+     *
+     * @param uri the uri
+     * @return the batch query part builder
+     */
     @Override
     public BatchQueryPartBuilder uri(final String uri) {
       this.uri = uri;
       return this;
     }
 
+    /**
+     * Method.
+     *
+     * @param method the method
+     * @return the batch query part builder
+     */
     @Override
     public BatchQueryPartBuilder method(final String method) {
       if (method != null && method.matches(GET)) {
@@ -91,6 +159,12 @@ public class BatchQueryPartImpl extends BatchQueryPart {
       return this;
     }
 
+    /**
+     * Content id.
+     *
+     * @param contentId the content id
+     * @return the batch query part builder
+     */
     @Override
     public BatchQueryPartBuilder contentId(final String contentId) {
       this.contentId = contentId;

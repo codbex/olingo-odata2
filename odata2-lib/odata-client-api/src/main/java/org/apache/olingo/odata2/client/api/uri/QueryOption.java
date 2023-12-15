@@ -18,9 +18,9 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.client.api.uri;
 
+// TODO: Auto-generated Javadoc
 /**
- * This is a list of query options
- *
+ * This is a list of query options.
  */
 public enum QueryOption {
 
@@ -72,16 +72,30 @@ public enum QueryOption {
    */
   FILTER("$filter");
   
+  /** The value. */
   private final String value;
   
+  /**
+   * Instantiates a new query option.
+   */
   private QueryOption() {
     this.value = "";
   } 
   
+  /**
+   * Instantiates a new query option.
+   *
+   * @param value the value
+   */
   private QueryOption(final String value) {
     this.value = value;
   }
   
+  /**
+   * Gets the value.
+   *
+   * @return the value
+   */
   public String getValue() {
     return value;
   }

@@ -24,11 +24,15 @@ import static org.junit.Assert.assertTrue;
 import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class QueryOptionsEnumTest.
  */
 public class QueryOptionsEnumTest extends BaseTest {
 
+  /**
+   * Uri type 0.
+   */
   @Test
   public void uriType0() {
     assertTrue(UriType.URI0.isCompatible(SystemQueryOption.$format));
@@ -43,6 +47,9 @@ public class QueryOptionsEnumTest extends BaseTest {
     assertFalse(UriType.URI0.isCompatible(SystemQueryOption.$select));
   }
 
+  /**
+   * Uri type 1.
+   */
   @Test
   public void uriType1() {
     assertTrue(UriType.URI1.isCompatible(SystemQueryOption.$format));
@@ -56,6 +63,9 @@ public class QueryOptionsEnumTest extends BaseTest {
     assertTrue(UriType.URI1.isCompatible(SystemQueryOption.$select));
   }
 
+  /**
+   * Uri type 2.
+   */
   @Test
   public void uriType2() {
     assertTrue(UriType.URI2.isCompatible(SystemQueryOption.$format));
@@ -70,6 +80,9 @@ public class QueryOptionsEnumTest extends BaseTest {
     assertFalse(UriType.URI2.isCompatible(SystemQueryOption.$inlinecount));
   }
 
+  /**
+   * Uri type 3.
+   */
   @Test
   public void uriType3() {
     assertTrue(UriType.URI3.isCompatible(SystemQueryOption.$format));
@@ -84,6 +97,9 @@ public class QueryOptionsEnumTest extends BaseTest {
     assertFalse(UriType.URI3.isCompatible(SystemQueryOption.$select));
   }
 
+  /**
+   * Uri type 4.
+   */
   @Test
   public void uriType4() {
     assertTrue(UriType.URI4.isCompatible(SystemQueryOption.$format));
@@ -98,6 +114,9 @@ public class QueryOptionsEnumTest extends BaseTest {
     assertFalse(UriType.URI4.isCompatible(SystemQueryOption.$select));
   }
 
+  /**
+   * Uri type 5.
+   */
   @Test
   public void uriType5() {
     assertTrue(UriType.URI5.isCompatible(SystemQueryOption.$format));
@@ -112,6 +131,9 @@ public class QueryOptionsEnumTest extends BaseTest {
     assertFalse(UriType.URI5.isCompatible(SystemQueryOption.$select));
   }
 
+  /**
+   * Uri type 6 A.
+   */
   @Test
   public void uriType6A() {
     assertTrue(UriType.URI6A.isCompatible(SystemQueryOption.$format));
@@ -126,6 +148,9 @@ public class QueryOptionsEnumTest extends BaseTest {
     assertFalse(UriType.URI6A.isCompatible(SystemQueryOption.$inlinecount));
   }
 
+  /**
+   * Uri type 6 B.
+   */
   @Test
   public void uriType6B() {
     assertTrue(UriType.URI6B.isCompatible(SystemQueryOption.$format));
@@ -139,6 +164,9 @@ public class QueryOptionsEnumTest extends BaseTest {
     assertTrue(UriType.URI6B.isCompatible(SystemQueryOption.$select));
   }
 
+  /**
+   * Uri type 7 A.
+   */
   @Test
   public void uriType7A() {
     assertTrue(UriType.URI7A.isCompatible(SystemQueryOption.$format));
@@ -153,6 +181,9 @@ public class QueryOptionsEnumTest extends BaseTest {
     assertFalse(UriType.URI7A.isCompatible(SystemQueryOption.$select));
   }
 
+  /**
+   * Uri type 7 B.
+   */
   @Test
   public void uriType7B() {
     assertTrue(UriType.URI7B.isCompatible(SystemQueryOption.$format));
@@ -167,6 +198,9 @@ public class QueryOptionsEnumTest extends BaseTest {
     assertFalse(UriType.URI7B.isCompatible(SystemQueryOption.$select));
   }
 
+  /**
+   * Uri type 8.
+   */
   @Test
   public void uriType8() {
     assertFalse(UriType.URI8.isCompatible(SystemQueryOption.$format));
@@ -180,6 +214,9 @@ public class QueryOptionsEnumTest extends BaseTest {
     assertFalse(UriType.URI8.isCompatible(SystemQueryOption.$select));
   }
 
+  /**
+   * Uri type 9.
+   */
   @Test
   public void uriType9() {
     assertFalse(UriType.URI9.isCompatible(SystemQueryOption.$format));
@@ -193,6 +230,9 @@ public class QueryOptionsEnumTest extends BaseTest {
     assertFalse(UriType.URI9.isCompatible(SystemQueryOption.$select));
   }
 
+  /**
+   * Uri type 10.
+   */
   @Test
   public void uriType10() {
     assertTrue(UriType.URI10.isCompatible(SystemQueryOption.$format));
@@ -207,6 +247,9 @@ public class QueryOptionsEnumTest extends BaseTest {
     assertFalse(UriType.URI10.isCompatible(SystemQueryOption.$select));
   }
 
+  /**
+   * Uri type 11.
+   */
   @Test
   public void uriType11() {
     assertTrue(UriType.URI11.isCompatible(SystemQueryOption.$format));
@@ -221,6 +264,9 @@ public class QueryOptionsEnumTest extends BaseTest {
     assertFalse(UriType.URI11.isCompatible(SystemQueryOption.$select));
   }
 
+  /**
+   * Uri type 12.
+   */
   @Test
   public void uriType12() {
     assertTrue(UriType.URI12.isCompatible(SystemQueryOption.$format));
@@ -235,6 +281,9 @@ public class QueryOptionsEnumTest extends BaseTest {
     assertFalse(UriType.URI12.isCompatible(SystemQueryOption.$select));
   }
 
+  /**
+   * Uri type 13.
+   */
   @Test
   public void uriType13() {
     assertTrue(UriType.URI13.isCompatible(SystemQueryOption.$format));
@@ -249,6 +298,9 @@ public class QueryOptionsEnumTest extends BaseTest {
     assertFalse(UriType.URI13.isCompatible(SystemQueryOption.$select));
   }
 
+  /**
+   * Uri type 14.
+   */
   @Test
   public void uriType14() {
     assertTrue(UriType.URI14.isCompatible(SystemQueryOption.$format));
@@ -263,6 +315,9 @@ public class QueryOptionsEnumTest extends BaseTest {
     assertFalse(UriType.URI14.isCompatible(SystemQueryOption.$select));
   }
 
+  /**
+   * Uri type 15.
+   */
   @Test
   public void uriType15() {
     assertTrue(UriType.URI15.isCompatible(SystemQueryOption.$filter));
@@ -277,6 +332,9 @@ public class QueryOptionsEnumTest extends BaseTest {
     assertFalse(UriType.URI15.isCompatible(SystemQueryOption.$select));
   }
 
+  /**
+   * Uri type 16.
+   */
   @Test
   public void uriType16() {
     assertTrue(UriType.URI6B.isCompatible(SystemQueryOption.$expand));
@@ -291,6 +349,9 @@ public class QueryOptionsEnumTest extends BaseTest {
     assertFalse(UriType.URI16.isCompatible(SystemQueryOption.$select));
   }
 
+  /**
+   * Uri type 17.
+   */
   @Test
   public void uriType17() {
     assertTrue(UriType.URI17.isCompatible(SystemQueryOption.$format));
@@ -305,6 +366,9 @@ public class QueryOptionsEnumTest extends BaseTest {
     assertFalse(UriType.URI17.isCompatible(SystemQueryOption.$select));
   }
 
+  /**
+   * Uri type 50 A.
+   */
   @Test
   public void uriType50A() {
     assertTrue(UriType.URI50A.isCompatible(SystemQueryOption.$filter));
@@ -319,6 +383,9 @@ public class QueryOptionsEnumTest extends BaseTest {
     assertFalse(UriType.URI50A.isCompatible(SystemQueryOption.$select));
   }
 
+  /**
+   * Uri type 50 B.
+   */
   @Test
   public void uriType50B() {
     assertTrue(UriType.URI50B.isCompatible(SystemQueryOption.$filter));

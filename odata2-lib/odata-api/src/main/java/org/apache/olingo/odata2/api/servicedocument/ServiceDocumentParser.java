@@ -20,9 +20,18 @@ package org.apache.olingo.odata2.api.servicedocument;
 
 import java.io.InputStream;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Interface ServiceDocumentParser.
  */
 public interface ServiceDocumentParser {
+  
+  /**
+   * Parses the xml.
+   *
+   * @param in the in
+   * @return the service document
+   * @throws ServiceDocumentParserException the service document parser exception
+   */
   public ServiceDocument parseXml(InputStream in) throws ServiceDocumentParserException;
 }

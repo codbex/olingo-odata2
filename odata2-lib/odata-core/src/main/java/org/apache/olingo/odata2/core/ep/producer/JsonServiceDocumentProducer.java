@@ -31,12 +31,20 @@ import org.apache.olingo.odata2.core.ep.EntityProviderProducerException;
 import org.apache.olingo.odata2.core.ep.util.FormatJson;
 import org.apache.olingo.odata2.core.ep.util.JsonStreamWriter;
 
+// TODO: Auto-generated Javadoc
 /**
  * Writes the OData service document in JSON.
  * 
  */
 public class JsonServiceDocumentProducer {
 
+  /**
+   * Write service document.
+   *
+   * @param writer the writer
+   * @param edm the edm
+   * @throws EntityProviderException the entity provider exception
+   */
   public static void writeServiceDocument(final Writer writer, final Edm edm) throws EntityProviderException {
     final EdmServiceMetadata serviceMetadata = edm.getServiceMetadata();
 
@@ -73,6 +81,12 @@ public class JsonServiceDocumentProducer {
 
   }
 
+  /**
+   * Creates the entity set name.
+   *
+   * @param info the info
+   * @return the string
+   */
   private static String createEntitySetName(EdmEntitySetInfo info) {
     String entitySetName;
     if (info.isDefaultEntityContainer()) {

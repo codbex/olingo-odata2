@@ -45,10 +45,18 @@ import org.apache.olingo.odata2.jpa.processor.core.model.JPAEdmModel;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ODataJPAEdmProviderTest.
+ */
 public class ODataJPAEdmProviderTest {
 
+  /** The edm provider. */
   private static ODataJPAEdmProvider edmProvider;
 
+  /**
+   * Setup.
+   */
   @BeforeClass
   public static void setup() {
 
@@ -78,6 +86,9 @@ public class ODataJPAEdmProviderTest {
 
   }
 
+  /**
+   * Test constructor.
+   */
   @Test
   public void testConstructor() {
     try {
@@ -89,12 +100,18 @@ public class ODataJPAEdmProviderTest {
     }
   }
 
+  /**
+   * Test get O data JPA context.
+   */
   @Test
   public void testGetODataJPAContext() {
     String pUnitName = edmProvider.getODataJPAContext().getPersistenceUnitName();
     assertEquals("salesorderprocessing", pUnitName);
   }
 
+  /**
+   * Test get entity container info.
+   */
   @Test
   public void testGetEntityContainerInfo() {
     String entityContainerName = null;
@@ -110,6 +127,9 @@ public class ODataJPAEdmProviderTest {
     assertNotNull(entityContainer);
   }
 
+  /**
+   * Test default get entity container info.
+   */
   @Test
   public void testDefaultGetEntityContainerInfo() {
     String entityContainerName = null;
@@ -125,6 +145,9 @@ public class ODataJPAEdmProviderTest {
     assertNotNull(entityContainer);
   }
 
+  /**
+   * Test get entity type.
+   */
   @Test
   public void testGetEntityType() {
     FullQualifiedName entityTypeName = new FullQualifiedName("salesorderprocessing", "SalesOrderHeader");
@@ -143,6 +166,9 @@ public class ODataJPAEdmProviderTest {
 
   }
 
+  /**
+   * Test get complex type.
+   */
   @Test
   public void testGetComplexType() {
     FullQualifiedName complexTypeName = new FullQualifiedName("salesorderprocessing", "Address");
@@ -155,6 +181,9 @@ public class ODataJPAEdmProviderTest {
     assertEquals("Address", nameStr);
   }
 
+  /**
+   * Test get association full qualified name.
+   */
   @Test
   public void testGetAssociationFullQualifiedName() {
     Association association = null;
@@ -168,6 +197,9 @@ public class ODataJPAEdmProviderTest {
     assertEquals("SalesOrderHeader_SalesOrderItem", association.getName());
   }
 
+  /**
+   * Test get entity set.
+   */
   @Test
   public void testGetEntitySet() {
     String entitySetName = null;
@@ -184,6 +216,9 @@ public class ODataJPAEdmProviderTest {
     }
   }
 
+  /**
+   * Test get association set.
+   */
   @Test
   public void testGetAssociationSet() {
     AssociationSet associationSet = null;
@@ -214,6 +249,9 @@ public class ODataJPAEdmProviderTest {
     }
   }
 
+  /**
+   * Test get function import.
+   */
   @Test
   public void testGetFunctionImport() {
     String functionImportName = null;
@@ -237,6 +275,9 @@ public class ODataJPAEdmProviderTest {
     }
   }
 
+  /**
+   * Test get schemas.
+   */
   @Test
   public void testGetSchemas() {
     try {
@@ -246,6 +287,9 @@ public class ODataJPAEdmProviderTest {
     }
   }
 
+  /**
+   * Testget complex type with buffer.
+   */
   @Test
   public void testgetComplexTypeWithBuffer() {
     HashMap<String, ComplexType> compTypes = new HashMap<String, ComplexType>();
@@ -283,6 +327,9 @@ public class ODataJPAEdmProviderTest {
     }
   }
 
+  /**
+   * Test get entity container info with buffer.
+   */
   @Test
   public void testGetEntityContainerInfoWithBuffer() {
     HashMap<String, EntityContainerInfo> entityContainerInfos = new HashMap<String, EntityContainerInfo>();
@@ -312,6 +359,9 @@ public class ODataJPAEdmProviderTest {
     }
   }
 
+  /**
+   * Test get entity type with buffer.
+   */
   @Test
   public void testGetEntityTypeWithBuffer() {
     HashMap<String, EntityType> entityTypes = new HashMap<String, EntityType>();
@@ -347,6 +397,9 @@ public class ODataJPAEdmProviderTest {
     }
   }
 
+  /**
+   * Test get association with buffer.
+   */
   @Test
   public void testGetAssociationWithBuffer() {
     HashMap<String, Association> associations = new HashMap<String, Association>();

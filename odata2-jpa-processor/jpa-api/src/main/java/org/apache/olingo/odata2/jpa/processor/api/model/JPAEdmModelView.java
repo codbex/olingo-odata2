@@ -18,6 +18,7 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.jpa.processor.api.model;
 
+// TODO: Auto-generated Javadoc
 /**
  * A view on JPA meta model and EDM meta model. The view acts as the base for
  * the construction of EDM meta model from a JPA meta model.
@@ -27,10 +28,9 @@ package org.apache.olingo.odata2.jpa.processor.api.model;
  * {@link org.apache.olingo.odata2.jpa.processor.api.factory.JPAAccessFactory}. The
  * instance thus obtained can be used for constructing other elements of the
  * meta model using {@link org.apache.olingo.odata2.jpa.processor.api.access.JPAEdmBuilder}.
- * 
- * 
- * @org.apache.olingo.odata2.DoNotImplement
+ *
  * @see org.apache.olingo.odata2.jpa.processor.api.factory.JPAAccessFactory
+ * @org.apache.olingo.odata2.DoNotImplement 
  */
 public interface JPAEdmModelView extends JPAEdmBaseView {
   /**

@@ -30,15 +30,35 @@ import org.apache.olingo.odata2.api.exception.ODataException;
 import org.apache.olingo.odata2.api.exception.ODataHttpException;
 import org.apache.olingo.odata2.api.exception.ODataNotFoundException;
 
+// TODO: Auto-generated Javadoc
 /**
  * Data access.
  */
 public class BeanPropertyAccess {
 
+  /**
+   * Gets the property value.
+   *
+   * @param <T> the generic type
+   * @param data the data
+   * @param property the property
+   * @return the property value
+   * @throws ODataException the o data exception
+   */
   public <T> Object getPropertyValue(final T data, final EdmProperty property) throws ODataException {
     return getValue(data, getGetterMethodName(property));
   }
 
+  /**
+   * Sets the property value.
+   *
+   * @param <T> the generic type
+   * @param <V> the value type
+   * @param data the data
+   * @param property the property
+   * @param value the value
+   * @throws ODataException the o data exception
+   */
   public <T, V> void setPropertyValue(final T data, final EdmProperty property, final V value) throws ODataException {
     final String methodName = getSetterMethodName(getGetterMethodName(property));
     if (methodName != null) {
@@ -46,10 +66,28 @@ public class BeanPropertyAccess {
     }
   }
 
+  /**
+   * Gets the property type.
+   *
+   * @param <T> the generic type
+   * @param data the data
+   * @param property the property
+   * @return the property type
+   * @throws ODataException the o data exception
+   */
   public <T> Class<?> getPropertyType(final T data, final EdmProperty property) throws ODataException {
     return getType(data, getGetterMethodName(property));
   }
 
+  /**
+   * Gets the mapping value.
+   *
+   * @param <T> the generic type
+   * @param data the data
+   * @param mapping the mapping
+   * @return the mapping value
+   * @throws ODataException the o data exception
+   */
   public <T> Object getMappingValue(final T data, final EdmMapping mapping) throws ODataException {
     if (mapping != null && mapping.getMediaResourceMimeTypeKey() != null) {
       return getValue(data, mapping.getMediaResourceMimeTypeKey());
@@ -57,12 +95,29 @@ public class BeanPropertyAccess {
     return null;
   }
 
+  /**
+   * Sets the mapping value.
+   *
+   * @param <T> the generic type
+   * @param <V> the value type
+   * @param data the data
+   * @param mapping the mapping
+   * @param value the value
+   * @throws ODataException the o data exception
+   */
   public <T, V> void setMappingValue(final T data, final EdmMapping mapping, final V value) throws ODataException {
     if (mapping != null && mapping.getMediaResourceMimeTypeKey() != null) {
       setValue(data, getSetterMethodName(mapping.getMediaResourceMimeTypeKey()), value);
     }
   }
 
+  /**
+   * Gets the getter method name.
+   *
+   * @param property the property
+   * @return the getter method name
+   * @throws EdmException the edm exception
+   */
   private String getGetterMethodName(final EdmProperty property) throws EdmException {
     final String prefix = isBooleanProperty(property) ? "is" : "get";
     final String defaultMethodName = prefix + property.getName();
@@ -70,16 +125,38 @@ public class BeanPropertyAccess {
         defaultMethodName : property.getMapping().getInternalName();
   }
 
+  /**
+   * Checks if is boolean property.
+   *
+   * @param property the property
+   * @return true, if is boolean property
+   * @throws EdmException the edm exception
+   */
   private boolean isBooleanProperty(final EdmProperty property) throws EdmException {
     return property.isSimple()
         && property.getType() == EdmSimpleTypeKind.Boolean.getEdmSimpleTypeInstance();
   }
 
+  /**
+   * Gets the setter method name.
+   *
+   * @param getterMethodName the getter method name
+   * @return the setter method name
+   */
   private String getSetterMethodName(final String getterMethodName) {
     return getterMethodName.contains(".") ?
         null : getterMethodName.replaceFirst("^is", "set").replaceFirst("^get", "set");
   }
 
+  /**
+   * Gets the value.
+   *
+   * @param <T> the generic type
+   * @param data the data
+   * @param methodName the method name
+   * @return the value
+   * @throws ODataNotFoundException the o data not found exception
+   */
   private <T> Object getValue(final T data, final String methodName) throws ODataNotFoundException {
     Object dataObject = data;
 
@@ -104,6 +181,16 @@ public class BeanPropertyAccess {
     return dataObject;
   }
 
+  /**
+   * Sets the value.
+   *
+   * @param <T> the generic type
+   * @param <V> the value type
+   * @param data the data
+   * @param methodName the method name
+   * @param value the value
+   * @throws ODataNotFoundException the o data not found exception
+   */
   private <T, V> void setValue(final T data, final String methodName, final V value)
       throws ODataNotFoundException {
     try {
@@ -143,6 +230,15 @@ public class BeanPropertyAccess {
     }
   }
 
+  /**
+   * Gets the type.
+   *
+   * @param <T> the generic type
+   * @param data the data
+   * @param methodName the method name
+   * @return the type
+   * @throws ODataNotFoundException the o data not found exception
+   */
   private <T> Class<?> getType(final T data, final String methodName) throws ODataNotFoundException {
     if (data == null) {
       throw new ODataNotFoundException(ODataHttpException.COMMON);

@@ -20,17 +20,31 @@ package org.apache.olingo.odata2.core.servicedocument;
 
 import org.apache.olingo.odata2.api.servicedocument.Title;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class TitleImpl.
  */
 public class TitleImpl implements Title {
+  
+  /** The text. */
   private String text;
 
+  /**
+   * Gets the text.
+   *
+   * @return the text
+   */
   @Override
   public String getText() {
     return text;
   }
 
+  /**
+   * Sets the text.
+   *
+   * @param text the text
+   * @return the title impl
+   */
   public TitleImpl setText(final String text) {
     this.text = text;
     return this;

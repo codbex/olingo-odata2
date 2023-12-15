@@ -38,14 +38,24 @@ import org.apache.olingo.odata2.testutil.helper.StringHelper;
 import org.apache.olingo.odata2.testutil.mock.MockFacade;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class JsonLinksEntityProducerTest.
  */
 public class JsonLinksEntityProducerTest extends BaseTest {
+  
+  /** The Constant BASE_URI. */
   protected static final String BASE_URI = "http://host:80/service/";
+  
+  /** The Constant DEFAULT_PROPERTIES. */
   protected static final EntityProviderWriteProperties DEFAULT_PROPERTIES =
       EntityProviderWriteProperties.serviceRoot(URI.create(BASE_URI)).build();
 
+  /**
+   * Omit json wrapper single link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void omitJsonWrapperSingleLink() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Employees");
@@ -66,6 +76,11 @@ public class JsonLinksEntityProducerTest extends BaseTest {
     assertEquals("[{\"uri\":\"" + BASE_URI + "Employees('1')\"}]", json);
   }
 
+  /**
+   * Omit json wrapper single links.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void omitJsonWrapperSingleLinks() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Employees");
@@ -95,6 +110,11 @@ public class JsonLinksEntityProducerTest extends BaseTest {
         json);
   }
 
+  /**
+   * Serialize links and inline count with omit json wrapper.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serializeLinksAndInlineCountWithOmitJsonWrapper() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Employees");
@@ -122,6 +142,11 @@ public class JsonLinksEntityProducerTest extends BaseTest {
         json);
   }
 
+  /**
+   * Serialize employee link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serializeEmployeeLink() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Employees");
@@ -140,6 +165,11 @@ public class JsonLinksEntityProducerTest extends BaseTest {
     assertEquals("{\"d\":[{\"uri\":\"" + BASE_URI + "Employees('1')\"}]}", json);
   }
 
+  /**
+   * Serialize employee links.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serializeEmployeeLinks() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Employees");
@@ -167,6 +197,11 @@ public class JsonLinksEntityProducerTest extends BaseTest {
         json);
   }
 
+  /**
+   * Serialize empty list.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serializeEmptyList() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Employees");
@@ -182,6 +217,11 @@ public class JsonLinksEntityProducerTest extends BaseTest {
     assertEquals("{\"d\":[]}", json);
   }
 
+  /**
+   * Serialize links and inline count.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serializeLinksAndInlineCount() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Employees");

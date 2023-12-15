@@ -20,18 +20,27 @@ package org.apache.olingo.odata2.api.edm.provider;
 
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
 /**
- * Objects of this class represent an entity container including its child elements
- * 
+ * Objects of this class represent an entity container including its child elements.
  */
 public class EntityContainer extends EntityContainerInfo {
 
+  /** The entity sets. */
   private List<EntitySet> entitySets;
+  
+  /** The association sets. */
   private List<AssociationSet> associationSets;
+  
+  /** The function imports. */
   private List<FunctionImport> functionImports;
+  
+  /** The documentation. */
   private Documentation documentation;
 
   /**
+   * Gets the entity sets.
+   *
    * @return <b>List</b> of all entity sets of the entity container
    */
   public List<EntitySet> getEntitySets() {
@@ -39,8 +48,9 @@ public class EntityContainer extends EntityContainerInfo {
   }
 
   /**
-   * Sets the entity sets of this {@link EntityContainer}
-   * @param entitySets
+   * Sets the entity sets of this {@link EntityContainer}.
+   *
+   * @param entitySets the entity sets
    * @return {@link EntityContainerInfo} for method chaining
    */
   public EntityContainer setEntitySets(final List<EntitySet> entitySets) {
@@ -49,6 +59,8 @@ public class EntityContainer extends EntityContainerInfo {
   }
 
   /**
+   * Gets the association sets.
+   *
    * @return <b>List</b> of all association sets of the entity container
    */
   public List<AssociationSet> getAssociationSets() {
@@ -56,8 +68,9 @@ public class EntityContainer extends EntityContainerInfo {
   }
 
   /**
-   * Sets the association sets of this {@link EntityContainer}
-   * @param associationSets
+   * Sets the association sets of this {@link EntityContainer}.
+   *
+   * @param associationSets the association sets
    * @return {@link EntityContainerInfo} for method chaining
    */
   public EntityContainer setAssociationSets(final List<AssociationSet> associationSets) {
@@ -66,6 +79,8 @@ public class EntityContainer extends EntityContainerInfo {
   }
 
   /**
+   * Gets the function imports.
+   *
    * @return <b>List</b> of all function imports of the entity container
    */
   public List<FunctionImport> getFunctionImports() {
@@ -73,8 +88,9 @@ public class EntityContainer extends EntityContainerInfo {
   }
 
   /**
-   * Sets the function imports of this {@link EntityContainer}
-   * @param functionImports
+   * Sets the function imports of this {@link EntityContainer}.
+   *
+   * @param functionImports the function imports
    * @return {@link EntityContainerInfo} for method chaining
    */
   public EntityContainer setFunctionImports(final List<FunctionImport> functionImports) {
@@ -83,8 +99,9 @@ public class EntityContainer extends EntityContainerInfo {
   }
 
   /**
-   * Sets the name of this {@link EntityContainer}
-   * @param name
+   * Sets the name of this {@link EntityContainer}.
+   *
+   * @param name the name
    * @return {@link EntityContainer} for method chaining
    */
   @Override
@@ -94,8 +111,9 @@ public class EntityContainer extends EntityContainerInfo {
   }
 
   /**
-   * Sets the entity container which is the parent of this {@link EntityContainer}
-   * @param extendz
+   * Sets the entity container which is the parent of this {@link EntityContainer}.
+   *
+   * @param extendz the extendz
    * @return {@link EntityContainer} for method chaining
    */
   @Override
@@ -105,8 +123,9 @@ public class EntityContainer extends EntityContainerInfo {
   }
 
   /**
-   * Sets if this is the default {@link EntityContainer}
-   * @param isDefaultEntityContainer
+   * Sets if this is the default {@link EntityContainer}.
+   *
+   * @param isDefaultEntityContainer the is default entity container
    * @return {@link EntityContainer} for method chaining
    */
   @Override
@@ -116,6 +135,8 @@ public class EntityContainer extends EntityContainerInfo {
   }
 
   /**
+   * Gets the documentation.
+   *
    * @return {@link Documentation} documentation
    */
   public Documentation getDocumentation() {
@@ -123,8 +144,9 @@ public class EntityContainer extends EntityContainerInfo {
   }
 
   /**
-   * Sets the {@link Documentation}
-   * @param documentation
+   * Sets the {@link Documentation}.
+   *
+   * @param documentation the documentation
    * @return {@link EntityContainer} for method chaining
    */
   public EntityContainer setDocumentation(final Documentation documentation) {

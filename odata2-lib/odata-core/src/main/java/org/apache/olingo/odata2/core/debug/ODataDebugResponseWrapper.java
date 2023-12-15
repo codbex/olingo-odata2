@@ -48,24 +48,52 @@ import org.apache.olingo.odata2.core.ep.util.JsonStreamWriter;
 import org.apache.olingo.odata2.core.exception.MessageService;
 import org.apache.olingo.odata2.core.exception.ODataRuntimeException;
 
+// TODO: Auto-generated Javadoc
 /**
  * Wraps an OData response into an OData response containing additional
  * information useful for support purposes.
  */
 public class ODataDebugResponseWrapper {
 
+  /** The Constant ODATA_DEBUG_QUERY_PARAMETER. */
   public static final String ODATA_DEBUG_QUERY_PARAMETER = "odata-debug";
+  
+  /** The Constant ODATA_DEBUG_JSON. */
   public static final String ODATA_DEBUG_JSON = "json";
+  
+  /** The Constant ODATA_DEBUG_HTML. */
   public static final String ODATA_DEBUG_HTML = "html";
+  
+  /** The Constant ODATA_DEBUG_DOWNLOAD. */
   public static final String ODATA_DEBUG_DOWNLOAD = "download";
 
+  /** The context. */
   private final ODataContext context;
+  
+  /** The response. */
   private final ODataResponse response;
+  
+  /** The uri info. */
   private final UriInfo uriInfo;
+  
+  /** The exception. */
   private final Exception exception;
+  
+  /** The is json. */
   private final boolean isJson;
+  
+  /** The is download. */
   private final boolean isDownload;
 
+  /**
+   * Instantiates a new o data debug response wrapper.
+   *
+   * @param context the context
+   * @param response the response
+   * @param uriInfo the uri info
+   * @param exception the exception
+   * @param debugValue the debug value
+   */
   public ODataDebugResponseWrapper(final ODataContext context, final ODataResponse response, final UriInfo uriInfo,
       final Exception exception, final String debugValue) {
     this.context = context;
@@ -76,6 +104,11 @@ public class ODataDebugResponseWrapper {
     isDownload = ODATA_DEBUG_DOWNLOAD.equals(debugValue);
   }
 
+  /**
+   * Wrap response.
+   *
+   * @return the o data response
+   */
   public ODataResponse wrapResponse() {
     try {
       final List<DebugInfo> parts = createParts();
@@ -94,6 +127,12 @@ public class ODataDebugResponseWrapper {
     }
   }
 
+  /**
+   * Creates the parts.
+   *
+   * @return the list
+   * @throws ODataException the o data exception
+   */
   private List<DebugInfo> createParts() throws ODataException {
     List<DebugInfo> parts = new ArrayList<DebugInfo>();
 
@@ -139,6 +178,13 @@ public class ODataDebugResponseWrapper {
     return parts;
   }
 
+  /**
+   * Wrap in json.
+   *
+   * @param parts the parts
+   * @return the input stream
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private InputStream wrapInJson(final List<DebugInfo> parts) throws IOException {
     CircleStreamBuffer csb = new CircleStreamBuffer();
     BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(csb.getOutputStream(), "UTF-8"));
@@ -165,6 +211,13 @@ public class ODataDebugResponseWrapper {
     return csb.getInputStream();
   }
 
+  /**
+   * Wrap in html.
+   *
+   * @param parts the parts
+   * @return the input stream
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private InputStream wrapInHtml(final List<DebugInfo> parts) throws IOException {
     StringWriter writer = new StringWriter();
     PathInfo pathInfo = null;
@@ -235,10 +288,23 @@ public class ODataDebugResponseWrapper {
     return new ByteArrayInputStream(bytes);
   }
 
+  /**
+   * Escape html.
+   *
+   * @param value the value
+   * @return the string
+   */
   protected static String escapeHtml(final String value) {
     return value == null ? null : value.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;");
   }
 
+  /**
+   * Append json table.
+   *
+   * @param jsonStreamWriter the json stream writer
+   * @param entries the entries
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   protected static void appendJsonTable(final JsonStreamWriter jsonStreamWriter, final Map<String, String> entries)
       throws IOException {
     jsonStreamWriter.beginObject();
@@ -257,6 +323,13 @@ public class ODataDebugResponseWrapper {
     jsonStreamWriter.endObject();
   }
 
+  /**
+   * Append html table.
+   *
+   * @param writer the writer
+   * @param entries the entries
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   protected static void appendHtmlTable(final Writer writer, final Map<String, String> entries) throws IOException {
     writer.append("<table>\n<thead>\n")
         .append("<tr><th class=\"name\">Name</th><th class=\"value\">Value</th></tr>\n")

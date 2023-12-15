@@ -34,6 +34,7 @@ import org.apache.olingo.odata2.api.uri.expression.ExpressionParserException;
 import org.apache.olingo.odata2.api.uri.expression.FilterExpression;
 import org.apache.olingo.odata2.api.uri.expression.OrderByExpression;
 
+// TODO: Auto-generated Javadoc
 /**
  * Wrapper for UriParser functionality.
  * 
@@ -42,11 +43,12 @@ public abstract class UriParser {
 
   /**
    * Parses path segments and query parameters for the given EDM.
+   *
    * @param edm Entity Data Model
    * @param pathSegments list of path segments
    * @param queryParameters query parameters
    * @return {@link UriInfo} information about the parsed URI
-   * @throws ODataException
+   * @throws ODataException the o data exception
    */
   public static UriInfo parse(final Edm edm, final List<PathSegment> pathSegments,
       final Map<String, String> queryParameters) throws ODataException {
@@ -56,12 +58,13 @@ public abstract class UriParser {
   /**
    * Parses path segments and query parameters for the given EDM.
    * Will not be available in higher versions
+   *
    * @param edm Entity Data Model
    * @param pathSegments list of path segments
    * @param queryParameters query parameters
    * @param strictFilter for URI Parsing of filter parameters
    * @return {@link UriInfo} information about the parsed URI
-   * @throws ODataException
+   * @throws ODataException the o data exception
    */
   public static UriInfo parse(final Edm edm, final List<PathSegment> pathSegments,
                               final Map<String, String> queryParameters, boolean strictFilter) throws ODataException {
@@ -75,9 +78,9 @@ public abstract class UriParser {
    * @param pathSegments list of path segments
    * @param queryParameters query parameters
    * @return {@link UriInfo} information about the parsed URI
-   * @throws UriSyntaxException
-   * @throws UriNotMatchingException
-   * @throws EdmException
+   * @throws UriSyntaxException the uri syntax exception
+   * @throws UriNotMatchingException the uri not matching exception
+   * @throws EdmException the edm exception
    */
   public abstract UriInfo parse(List<PathSegment> pathSegments, Map<String, String> queryParameters)
       throws UriSyntaxException, UriNotMatchingException, EdmException;
@@ -90,9 +93,9 @@ public abstract class UriParser {
    * @param queryParameters query parameters
    * @param strictFilter for URI Parsing of filter parameters
    * @return {@link UriInfo} information about the parsed URI
-   * @throws UriSyntaxException
-   * @throws UriNotMatchingException
-   * @throws EdmException
+   * @throws UriSyntaxException the uri syntax exception
+   * @throws UriNotMatchingException the uri not matching exception
+   * @throws EdmException the edm exception
    */
   public abstract UriInfo parse(List<PathSegment> pathSegments,
                                 Map<String, String> queryParameters, boolean strictFilter)
@@ -102,13 +105,13 @@ public abstract class UriParser {
   /**
    * Parses path segments and query parameters.
    * Throws an exception if there are redundant system query parameters.
-   * 
+   *
    * @param pathSegments list of path segments
-   * @param queryParameters query parameters
+   * @param allQueryParameters the all query parameters
    * @return {@link UriInfo} information about the parsed URI
-   * @throws UriSyntaxException
-   * @throws UriNotMatchingException
-   * @throws EdmException
+   * @throws UriSyntaxException the uri syntax exception
+   * @throws UriNotMatchingException the uri not matching exception
+   * @throws EdmException the edm exception
    */
   public abstract UriInfo parseAll(List<PathSegment> pathSegments, Map<String, List<String>> allQueryParameters)
       throws UriSyntaxException, UriNotMatchingException, EdmException;
@@ -217,10 +220,11 @@ public abstract class UriParser {
 
   /**
    * Creates an optimized expression tree out of $expand and $select expressions.
+   *
    * @param select List of {@link SelectItem select items}
    * @param expand List of Lists of {@link NavigationPropertySegment navigation property segments}
    * @return expression tree of type {@link ExpandSelectTreeNode}
-   * @throws EdmException
+   * @throws EdmException the edm exception
    */
   public static ExpandSelectTreeNode createExpandSelectTree(final List<SelectItem> select,
       final List<ArrayList<NavigationPropertySegment>> expand) throws EdmException {
@@ -229,10 +233,11 @@ public abstract class UriParser {
 
   /**
    * Creates an optimized expression tree out of $expand and $select expressions.
+   *
    * @param select List of {@link SelectItem select items}
    * @param expand List of Lists of {@link NavigationPropertySegment navigation property segments}
    * @return expression tree of type {@link ExpandSelectTreeNode}
-   * @throws EdmException
+   * @throws EdmException the edm exception
    */
   public abstract ExpandSelectTreeNode buildExpandSelectTree(List<SelectItem> select,
       List<ArrayList<NavigationPropertySegment>> expand) throws EdmException;

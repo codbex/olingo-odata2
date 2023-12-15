@@ -18,12 +18,20 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.edm;
 
+// TODO: Auto-generated Javadoc
 /**
- * @org.apache.olingo.odata2.DoNotImplement
- * EdmTypeKind specifies the type of an EDM element.
- * 
+ * The Enum EdmTypeKind.
+ *
+ * @org.apache.olingo.odata2.DoNotImplement EdmTypeKind specifies the type of an EDM element.
  */
 public enum EdmTypeKind {
 
-  UNDEFINED, SIMPLE, COMPLEX, ENTITY, NAVIGATION, ASSOCIATION, SYSTEM;
+  /** The undefined. */
+  UNDEFINED, /** The simple. */
+ SIMPLE, /** The complex. */
+ COMPLEX, /** The entity. */
+ ENTITY, /** The navigation. */
+ NAVIGATION, /** The association. */
+ ASSOCIATION, /** The system. */
+ SYSTEM;
 }

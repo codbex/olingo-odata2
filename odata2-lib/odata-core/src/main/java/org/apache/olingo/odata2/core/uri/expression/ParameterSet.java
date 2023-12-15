@@ -25,31 +25,59 @@ import org.apache.olingo.odata2.api.edm.EdmSimpleType;
 import org.apache.olingo.odata2.api.edm.EdmType;
 import org.apache.olingo.odata2.api.edm.EdmTypeKind;
 
+// TODO: Auto-generated Javadoc
 /**
  * Parameter set is a vector of 1 or more EDM types, it is used to store the possible
- * input and return types of a <i>OData filter operator</i> or <i>OData filter method</i>
+ * input and return types of a <i>OData filter operator</i> or <i>OData filter method</i>.
+ *
  * @see InfoMethod
  * @see InfoBinaryOperator
  * @see InfoUnaryOperator
- * 
  */
 @SuppressWarnings("javadoc")
 public class ParameterSet {
+  
+  /** The return type. */
   private EdmType returnType = null;
+  
+  /** The types. */
   private ArrayList<EdmSimpleType> types = new ArrayList<EdmSimpleType>();
+  
+  /** The further type. */
   private EdmSimpleType furtherType = null;
 
+  /**
+   * Instantiates a new parameter set.
+   *
+   * @param returnType the return type
+   * @param type1 the type 1
+   */
   public ParameterSet(final EdmType returnType, final EdmSimpleType type1) {
     this.returnType = returnType;
     types.add(type1);
   }
 
+  /**
+   * Instantiates a new parameter set.
+   *
+   * @param returnType the return type
+   * @param type1 the type 1
+   * @param type2 the type 2
+   */
   public ParameterSet(final EdmSimpleType returnType, final EdmSimpleType type1, final EdmSimpleType type2) {
     this.returnType = returnType;
     types.add(type1);
     types.add(type2);
   }
 
+  /**
+   * Instantiates a new parameter set.
+   *
+   * @param returnType the return type
+   * @param type1 the type 1
+   * @param type2 the type 2
+   * @param type3 the type 3
+   */
   public ParameterSet(final EdmSimpleType returnType, final EdmSimpleType type1, final EdmSimpleType type2,
       final EdmSimpleType type3) {
     this.returnType = returnType;
@@ -58,14 +86,30 @@ public class ParameterSet {
     types.add(type3);
   }
 
+  /**
+   * Gets the return type.
+   *
+   * @return the return type
+   */
   public EdmType getReturnType() {
     return returnType;
   }
 
+  /**
+   * Gets the further type.
+   *
+   * @return the further type
+   */
   public EdmSimpleType getFurtherType() {
     return furtherType;
   }
 
+  /**
+   * Sets the further type.
+   *
+   * @param furtherType the further type
+   * @return the parameter set
+   */
   public ParameterSet setFurtherType(final EdmSimpleType furtherType) {
     this.furtherType = furtherType;
     return this;
@@ -78,10 +122,11 @@ public class ParameterSet {
    * <i>concat</i> method
    * which takes a variable number of input parameters), the actual parameter type is compared against the
    * {@link #furtherType}.
-   * @param actualParameterTypes
-   * @param allowPromotion
+   *
+   * @param actualParameterTypes the actual parameter types
+   * @param allowPromotion the allow promotion
    * @return true if equals
-   * @throws ExpressionParserInternalError
+   * @throws ExpressionParserInternalError the expression parser internal error
    */
   public boolean equals(final List<EdmType> actualParameterTypes, final boolean allowPromotion)
       throws ExpressionParserInternalError {

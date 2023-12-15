@@ -29,68 +29,134 @@ import org.apache.olingo.odata2.api.annotation.edm.EdmMediaResourceSource;
 import org.apache.olingo.odata2.api.annotation.edm.EdmProperty;
 import org.apache.olingo.odata2.api.annotation.edm.EdmType;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class Photo.
  */
 @EdmEntityType(name = "Photo", namespace = ModelSharedConstants.NAMESPACE_1)
 @EdmEntitySet(name = "Photos")
 public class Photo {
+  
+  /** The name. */
   @EdmProperty
   @EdmKey
   private String name;
+  
+  /** The type. */
   @EdmProperty(name = "ImageFormat")
   @EdmKey
   private String type;
+  
+  /** The mime type. */
   @EdmProperty
   @EdmMediaResourceMimeType
   private String mimeType;
+  
+  /** The image url. */
   @EdmProperty
   @EdmMediaResourceSource
   private String imageUrl = "http://localhost/someResource.png";
+  
+  /** The image. */
   @EdmProperty(type = EdmType.BINARY)
   @EdmMediaResourceContent
   private byte[] image = ResourceHelper.generateImage();
 
+  /**
+   * Gets the name.
+   *
+   * @return the name
+   */
   public String getName() {
     return name;
   }
 
+  /**
+   * Sets the name.
+   *
+   * @param name the new name
+   */
   public void setName(final String name) {
     this.name = name;
   }
 
+  /**
+   * Gets the type.
+   *
+   * @return the type
+   */
   public String getType() {
     return type;
   }
 
+  /**
+   * Sets the type.
+   *
+   * @param type the new type
+   */
   public void setType(final String type) {
     this.type = type;
   }
 
+  /**
+   * Gets the image uri.
+   *
+   * @return the image uri
+   */
   public String getImageUri() {
     return imageUrl;
   }
 
+  /**
+   * Sets the image uri.
+   *
+   * @param uri the new image uri
+   */
   public void setImageUri(final String uri) {
     imageUrl = uri;
   }
 
+  /**
+   * Gets the image.
+   *
+   * @return the image
+   */
   public byte[] getImage() {
     return image.clone();
   }
 
+  /**
+   * Sets the image.
+   *
+   * @param image the new image
+   */
   public void setImage(final byte[] image) {
     this.image = image;
   }
 
+  /**
+   * Gets the image type.
+   *
+   * @return the image type
+   */
   public String getImageType() {
     return mimeType;
   }
 
+  /**
+   * Sets the image type.
+   *
+   * @param imageType the new image type
+   */
   public void setImageType(final String imageType) {
     mimeType = imageType;
   }
 
+  /**
+   * Hash code.
+   *
+   * @return the int
+   */
   @Override
   public int hashCode() {
     int hash = 5;
@@ -99,6 +165,12 @@ public class Photo {
     return hash;
   }
 
+  /**
+   * Equals.
+   *
+   * @param obj the obj
+   * @return true, if successful
+   */
   @Override
   public boolean equals(final Object obj) {
     if (obj == null) {
@@ -117,6 +189,11 @@ public class Photo {
     return true;
   }
 
+  /**
+   * To string.
+   *
+   * @return the string
+   */
   @Override
   public String toString() {
     return "{\"Name\":\"" + name + "\","

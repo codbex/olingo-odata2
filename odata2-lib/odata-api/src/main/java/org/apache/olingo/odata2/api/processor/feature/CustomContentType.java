@@ -23,6 +23,7 @@ import java.util.List;
 import org.apache.olingo.odata2.api.exception.ODataException;
 import org.apache.olingo.odata2.api.processor.ODataProcessor;
 
+// TODO: Auto-generated Javadoc
 /**
  * Data processor feature if processor supports custom content types. By default the OData library supports
  * various types like Json (application/json), Atom (application/xml+atom) and XML (application/xml). But
@@ -34,9 +35,10 @@ public interface CustomContentType extends ODataProcessorFeature {
 
   /**
    * The OData library will consider these additional content types during negotiation of http content type header.
-   * @param processorFeature
+   *
+   * @param processorFeature the processor feature
    * @return a list of additional supported content types in the format "type/sub type"
-   * @throws ODataException
+   * @throws ODataException the o data exception
    */
   public List<String> getCustomContentTypes(Class<? extends ODataProcessor> processorFeature) throws ODataException;
 }

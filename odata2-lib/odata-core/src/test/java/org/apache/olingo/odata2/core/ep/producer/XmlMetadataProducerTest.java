@@ -51,19 +51,37 @@ import org.custommonkey.xmlunit.XMLUnit;
 import org.junit.Before;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class XmlMetadataProducerTest.
+ */
 public class XmlMetadataProducerTest extends AbstractXmlProducerTestHelper {
 
+  /** The xml stream writer factory. */
   private XMLOutputFactory xmlStreamWriterFactory;
 
+  /**
+   * Instantiates a new xml metadata producer test.
+   *
+   * @param type the type
+   */
   public XmlMetadataProducerTest(final StreamWriterImplType type) {
     super(type);
   }
 
+  /**
+   * Before.
+   */
   @Before
   public void before() {
     xmlStreamWriterFactory = XmlHelper.getXMLOutputFactory();
   }
 
+  /**
+   * Write valid metadata.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void writeValidMetadata() throws Exception {
     List<Schema> schemas = new ArrayList<Schema>();
@@ -92,6 +110,11 @@ public class XmlMetadataProducerTest extends AbstractXmlProducerTestHelper {
     assertXpathExists("/edmx:Edmx/edmx:DataServices/a:Schema/a:test", metadata);
   }
 
+  /**
+   * Write valid metadata 2.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void writeValidMetadata2() throws Exception {
     List<Schema> schemas = new ArrayList<Schema>();
@@ -149,6 +172,11 @@ public class XmlMetadataProducerTest extends AbstractXmlProducerTestHelper {
 
   }
 
+  /**
+   * Write valid metadata 3.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void writeValidMetadata3() throws Exception {
     List<Schema> schemas = new ArrayList<Schema>();
@@ -200,6 +228,11 @@ public class XmlMetadataProducerTest extends AbstractXmlProducerTestHelper {
             "a:EntityType[@Name=\"SecondTestType\"]/a:Documentation/a:Summary", metadata);
   }
 
+  /**
+   * Write valid metadata 4.
+   *
+   * @throws Exception the exception
+   */
   // Elements with namespace and attributes without namespace
   @Test
   public void writeValidMetadata4() throws Exception {
@@ -240,6 +273,11 @@ public class XmlMetadataProducerTest extends AbstractXmlProducerTestHelper {
     assertXpathExists("/edmx:Edmx/edmx:DataServices/a:Schema/atom:schemaElementTest2", metadata);
   }
 
+  /**
+   * Write valid metadata 5.
+   *
+   * @throws Exception the exception
+   */
   // Element with namespace and attributes with same namespace
   @Test
   public void writeValidMetadata5() throws Exception {
@@ -282,6 +320,11 @@ public class XmlMetadataProducerTest extends AbstractXmlProducerTestHelper {
     assertXpathExists("/edmx:Edmx/edmx:DataServices/a:Schema/atom:schemaElementTest2", metadata);
   }
 
+  /**
+   * Write valid metadata 6.
+   *
+   * @throws Exception the exception
+   */
   // Element with namespace childelements with same namespace
   @Test
   public void writeValidMetadata6() throws Exception {
@@ -331,6 +374,11 @@ public class XmlMetadataProducerTest extends AbstractXmlProducerTestHelper {
         metadata);
   }
 
+  /**
+   * Write invalid metadata.
+   *
+   * @throws Exception the exception
+   */
   // If no name for an AnnotationAttribute is set this has to result in an Exception
   @Test(expected = Exception.class)
   public void writeInvalidMetadata() throws Exception {
@@ -351,6 +399,11 @@ public class XmlMetadataProducerTest extends AbstractXmlProducerTestHelper {
     XmlMetadataProducer.writeMetadata(data, xmlStreamWriter, null);
   }
 
+  /**
+   * Write with predefined namespaces.
+   *
+   * @throws Exception the exception
+   */
   // Element with predefined namespace
   @Test
   public void writeWithPredefinedNamespaces() throws Exception {

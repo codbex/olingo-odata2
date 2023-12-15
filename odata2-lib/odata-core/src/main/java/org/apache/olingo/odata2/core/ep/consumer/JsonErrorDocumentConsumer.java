@@ -34,11 +34,13 @@ import org.apache.olingo.odata2.core.ep.util.FormatJson;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 
+// TODO: Auto-generated Javadoc
 /**
  * Consuming (read / deserialization) for OData error document in JSON format.
  */
 public class JsonErrorDocumentConsumer {
-  /** Default used charset for reader */
+  
+  /**  Default used charset for reader. */
   private static final String DEFAULT_CHARSET = "UTF-8";
   /**
    * Map containing language code (language - country) to Locale mapping
@@ -72,6 +74,14 @@ public class JsonErrorDocumentConsumer {
     }
   }
 
+  /**
+   * Parses the json.
+   *
+   * @param reader the reader
+   * @return the o data error context
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws EntityProviderException the entity provider exception
+   */
   private ODataErrorContext parseJson(final JsonReader reader) throws IOException, EntityProviderException {
     ODataErrorContext errorContext;
 
@@ -93,6 +103,14 @@ public class JsonErrorDocumentConsumer {
     return errorContext;
   }
 
+  /**
+   * Parses the error.
+   *
+   * @param reader the reader
+   * @return the o data error context
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws EntityProviderException the entity provider exception
+   */
   private ODataErrorContext parseError(final JsonReader reader) throws IOException, EntityProviderException {
     ODataErrorContext errorContext = new ODataErrorContext();
     String currentName;
@@ -129,6 +147,13 @@ public class JsonErrorDocumentConsumer {
     return errorContext;
   }
 
+  /**
+   * Parses the inner error.
+   *
+   * @param reader the reader
+   * @param errorContext the error context
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private void parseInnerError(final JsonReader reader, final ODataErrorContext errorContext) throws IOException {
     JsonToken token = reader.peek();
     if (token == JsonToken.STRING) {
@@ -143,6 +168,13 @@ public class JsonErrorDocumentConsumer {
     }
   }
 
+  /**
+   * Read json.
+   *
+   * @param reader the reader
+   * @return the string
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private String readJson(final JsonReader reader) throws IOException {
     StringBuilder sb = new StringBuilder();
 
@@ -176,6 +208,14 @@ public class JsonErrorDocumentConsumer {
     return sb.toString();
   }
 
+  /**
+   * Parses the message.
+   *
+   * @param reader the reader
+   * @param errorContext the error context
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws EntityProviderException the entity provider exception
+   */
   private void parseMessage(final JsonReader reader, final ODataErrorContext errorContext)
       throws IOException, EntityProviderException {
 
@@ -212,6 +252,12 @@ public class JsonErrorDocumentConsumer {
     reader.endObject();
   }
 
+  /**
+   * Gets the locale.
+   *
+   * @param langValue the lang value
+   * @return the locale
+   */
   private Locale getLocale(final String langValue) {
     return AVAILABLE_LOCALES.get(langValue);
   }
@@ -232,6 +278,13 @@ public class JsonErrorDocumentConsumer {
     return reader.nextString();
   }
 
+  /**
+   * Creates the json reader.
+   *
+   * @param in the in
+   * @return the json reader
+   * @throws EntityProviderException the entity provider exception
+   */
   private JsonReader createJsonReader(final InputStream in) throws EntityProviderException {
     if (in == null) {
       throw new EntityProviderException(EntityProviderException.INVALID_STATE

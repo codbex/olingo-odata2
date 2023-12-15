@@ -38,7 +38,15 @@ import org.apache.olingo.odata2.jpa.processor.core.model.JPAEdmMappingImpl;
 import org.easymock.EasyMock;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAEntityParserTest.
+ */
 public class JPAEntityParserTest {
+    
+    /**
+     * Test create.
+     */
     /*
      * TestCase - JPAResultParser is a singleton class Check if the same instance is returned when
      * create method is called
@@ -53,6 +61,9 @@ public class JPAEntityParserTest {
         }
     }
 
+    /**
+     * Testparse 2 edm property value map.
+     */
     @Test
     public void testparse2EdmPropertyValueMap() {
         JPAEntityParser resultParser = new JPAEntityParser();
@@ -122,6 +133,9 @@ public class JPAEntityParserTest {
 
     }
 
+    /**
+     * Testparse 2 edm property value map edm excep.
+     */
     @Test
     public void testparse2EdmPropertyValueMapEdmExcep() {
         JPAEntityParser resultParser = new JPAEntityParser();
@@ -196,6 +210,9 @@ public class JPAEntityParserTest {
 
     }
 
+    /**
+     * Testparse 2 edm property list map.
+     */
     @Test
     public void testparse2EdmPropertyListMap() {
         JPAEntityParser resultParser = new JPAEntityParser();
@@ -233,6 +250,9 @@ public class JPAEntityParserTest {
         }
     }
 
+    /**
+     * Testparse 2 edm property list map with virtual access.
+     */
     @Test
     public void testparse2EdmPropertyListMapWithVirtualAccess() {
         JPAEntityParser resultParser = new JPAEntityParser();
@@ -270,6 +290,9 @@ public class JPAEntityParserTest {
         }
     }
 
+    /**
+     * Testparse 2 edm property value map from list complex.
+     */
     // This unit tests when there is a complex type in the select list
     @SuppressWarnings("unchecked")
     @Test
@@ -357,6 +380,9 @@ public class JPAEntityParserTest {
 
     }
 
+    /**
+     * Test get getters with out mapping.
+     */
     /*
      * TestCase - getGetterName is a private method in JPAResultParser. The method is uses reflection to
      * derive the property access methods from EdmProperty
@@ -385,6 +411,9 @@ public class JPAEntityParserTest {
         }
     }
 
+    /**
+     * Test get getters with null propname.
+     */
     @Test
     public void testGetGettersWithNullPropname() {
         JPAEntityParser resultParser = new JPAEntityParser();
@@ -409,6 +438,9 @@ public class JPAEntityParserTest {
         }
     }
 
+    /**
+     * Test get getters with mapping.
+     */
     /*
      * TestCase - getGetterName is a private method in JPAResultParser. The method is uses reflection to
      * derive the property access methods from EdmProperty
@@ -441,6 +473,9 @@ public class JPAEntityParserTest {
         }
     }
 
+    /**
+     * Test get getters no such method exception.
+     */
     @Test
     public void testGetGettersNoSuchMethodException() {
         JPAEntityParser resultParser = new JPAEntityParser();
@@ -459,6 +494,9 @@ public class JPAEntityParserTest {
         }
     }
 
+    /**
+     * Test parse 2 edm property value map.
+     */
     @Test
     public void testParse2EdmPropertyValueMap() {
         JPAEntityParser resultParser = new JPAEntityParser();
@@ -470,6 +508,9 @@ public class JPAEntityParserTest {
         }
     }
 
+    /**
+     * Test parse 2 edm property value map with virtual access.
+     */
     @Test
     public void testParse2EdmPropertyValueMapWithVirtualAccess() {
         JPAEntityParser resultParser = new JPAEntityParser();
@@ -481,6 +522,9 @@ public class JPAEntityParserTest {
         }
     }
 
+    /**
+     * Test get getter edm exception.
+     */
     @Test
     public void testGetGetterEdmException() {
         JPAEntityParser resultParser = new JPAEntityParser();
@@ -508,6 +552,9 @@ public class JPAEntityParserTest {
         }
     }
 
+    /**
+     * Test for null JPA entity.
+     */
     @Test
     public void testForNullJPAEntity() {
         JPAEntityParser resultParser = new JPAEntityParser();
@@ -521,31 +568,75 @@ public class JPAEntityParserTest {
         }
     }
 
+    /**
+     * The Class demoItem.
+     */
     class demoItem {
+        
+        /** The id. */
         private String id;
+        
+        /** The value. */
         private int value;
+        
+        /** The related entity. */
         private DemoRelatedEntity relatedEntity;
 
+        /**
+         * Gets the id.
+         *
+         * @return the id
+         */
         public String getId() {
             return id;
         }
 
+        /**
+         * Sets the id.
+         *
+         * @param id the new id
+         */
         public void setId(final String id) {
             this.id = id;
         }
 
+        /**
+         * Gets the related entity.
+         *
+         * @return the related entity
+         */
         public DemoRelatedEntity getRelatedEntity() {
             return relatedEntity;
         }
 
+        /**
+         * Sets the related entity.
+         *
+         * @param relatedEntity the new related entity
+         */
         public void setRelatedEntity(final DemoRelatedEntity relatedEntity) {
             this.relatedEntity = relatedEntity;
         }
 
+        /**
+         * Gets the value.
+         *
+         * @return the value
+         */
         public int getValue() {
             return value;
         }
 
+        /**
+         * Sets the.
+         *
+         * @param property the property
+         * @param value the value
+         * @throws IllegalArgumentException the illegal argument exception
+         * @throws IllegalAccessException the illegal access exception
+         * @throws NoSuchFieldException the no such field exception
+         * @throws SecurityException the security exception
+         */
         public void set(String property, Object value)
                 throws IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException {
             this.getClass()
@@ -553,6 +644,16 @@ public class JPAEntityParserTest {
                 .set(this, value);
         }
 
+        /**
+         * Gets the.
+         *
+         * @param property the property
+         * @return the object
+         * @throws IllegalArgumentException the illegal argument exception
+         * @throws IllegalAccessException the illegal access exception
+         * @throws NoSuchFieldException the no such field exception
+         * @throws SecurityException the security exception
+         */
         public Object get(String property)
                 throws IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException {
             return this.getClass()
@@ -560,10 +661,21 @@ public class JPAEntityParserTest {
                        .get(this);
         }
 
+        /**
+         * Sets the value.
+         *
+         * @param value the new value
+         */
         public void setValue(final int value) {
             this.value = value;
         }
 
+        /**
+         * Instantiates a new demo item.
+         *
+         * @param id the id
+         * @param value the value
+         */
         demoItem(final String id, final int value) {
             this.id = id;
             this.value = value;
@@ -571,62 +683,129 @@ public class JPAEntityParserTest {
 
     }
 
+    /**
+     * The Class DemoRelatedEntity.
+     */
     class DemoRelatedEntity {
+        
+        /** The order. */
         String order;
 
+        /**
+         * Gets the order.
+         *
+         * @return the order
+         */
         public String getOrder() {
             return order;
         }
 
+        /**
+         * Sets the order.
+         *
+         * @param order the new order
+         */
         public void setOrder(final String order) {
             this.order = order;
         }
 
+        /**
+         * Instantiates a new demo related entity.
+         *
+         * @param order the order
+         */
         public DemoRelatedEntity(final String order) {
             this.order = order;
         }
 
     }
 
+    /**
+     * Gets the edm property list.
+     *
+     * @return the edm property list
+     */
     private List<EdmProperty> getEdmPropertyList() {
         List<EdmProperty> properties = new ArrayList<EdmProperty>();
         properties.add(getEdmProperty());
         return properties;
     }
 
+    /**
+     * Gets the edm property list with virtual access.
+     *
+     * @return the edm property list with virtual access
+     */
     private List<EdmProperty> getEdmPropertyListWithVirtualAccess() {
         List<EdmProperty> properties = new ArrayList<EdmProperty>();
         properties.add(getEdmPropertyWithVirtualAccess());
         return properties;
     }
 
+    /**
+     * The Class DemoItem2.
+     */
     class DemoItem2 {
+        
+        /** The field 1. */
         private String field1;
 
+        /**
+         * Gets the field 1.
+         *
+         * @return the field 1
+         */
         public String getField1() {
             return field1;
         }
 
+        /**
+         * Sets the field 1.
+         *
+         * @param field the new field 1
+         */
         public void setField1(final String field) {
             field1 = field;
         }
 
+        /**
+         * Gets the.
+         *
+         * @param fieldName the field name
+         * @return the string
+         */
         // Getter for Dynamic Entity
         public String get(String fieldName) {
             return field1;
         }
 
+        /**
+         * Sets the.
+         *
+         * @param fieldName the field name
+         * @param fieldValue the field value
+         */
         // Setter for Dynamic Entity
         public void set(final String fieldName, Object fieldValue) {
             field1 = (String) fieldValue;
         }
 
+        /**
+         * Instantiates a new demo item 2.
+         *
+         * @param field the field
+         */
         public DemoItem2(final String field) {
             field1 = field;
         }
 
     }
 
+    /**
+     * Gets the edm property.
+     *
+     * @return the edm property
+     */
     private EdmProperty getEdmProperty() {
         EdmProperty edmTyped = EasyMock.createMock(EdmProperty.class);
 
@@ -662,6 +841,11 @@ public class JPAEntityParserTest {
         return edmTyped;
     }
 
+    /**
+     * Gets the edm property with virtual access.
+     *
+     * @return the edm property with virtual access
+     */
     private EdmProperty getEdmPropertyWithVirtualAccess() {
         EdmProperty edmTyped = EasyMock.createMock(EdmProperty.class);
 

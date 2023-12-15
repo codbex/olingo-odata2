@@ -18,10 +18,23 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.commons;
 
+// TODO: Auto-generated Javadoc
 /**
  * The supported HTTP methods.
  * 
  */
 public enum ODataHttpMethod {
-  GET, PUT, POST, DELETE, PATCH, MERGE;
+  
+  /** The get. */
+  GET, 
+ /** The put. */
+ PUT, 
+ /** The post. */
+ POST, 
+ /** The delete. */
+ DELETE, 
+ /** The patch. */
+ PATCH, 
+ /** The merge. */
+ MERGE;
 }

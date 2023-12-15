@@ -37,15 +37,32 @@ import org.apache.olingo.odata2.api.servicedocument.ServiceDocument;
 import org.apache.olingo.odata2.api.servicedocument.Workspace;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AtomServiceDocumentConsumerTest.
+ */
 public class AtomServiceDocumentConsumerTest extends AbstractXmlConsumerTest {
 
+    /**
+     * Instantiates a new atom service document consumer test.
+     *
+     * @param type the type
+     */
     public AtomServiceDocumentConsumerTest(final StreamWriterImplType type) {
         super(type);
     }
 
+    /** The Constant NAMESPACE. */
     private static final String NAMESPACE = "http://www.foo.bar/Data";
+    
+    /** The Constant PREFIX. */
     private static final String PREFIX = "foo";
 
+    /**
+     * Check decoding of entity set names.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void checkDecodingOfEntitySetNames() throws Exception {
         AtomServiceDocumentConsumer svcDocumentParser = new AtomServiceDocumentConsumer();
@@ -59,6 +76,12 @@ public class AtomServiceDocumentConsumerTest extends AbstractXmlConsumerTest {
                                                        .toASCIIString());
     }
 
+    /**
+     * Test service document.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws EntityProviderException the entity provider exception
+     */
     @Test
     public void testServiceDocument() throws IOException, EntityProviderException {
         AtomServiceDocumentConsumer svcDocumentParser = new AtomServiceDocumentConsumer();
@@ -108,6 +131,12 @@ public class AtomServiceDocumentConsumerTest extends AbstractXmlConsumerTest {
         }
     }
 
+    /**
+     * Test extensions with attributes.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws EntityProviderException the entity provider exception
+     */
     @Test
     public void testExtensionsWithAttributes() throws IOException, EntityProviderException {
         AtomServiceDocumentConsumer svcDocumentParser = new AtomServiceDocumentConsumer();
@@ -136,6 +165,12 @@ public class AtomServiceDocumentConsumerTest extends AbstractXmlConsumerTest {
 
     }
 
+    /**
+     * Test service document 2.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws EntityProviderException the entity provider exception
+     */
     @Test
     public void testServiceDocument2() throws IOException, EntityProviderException {
         AtomServiceDocumentConsumer svcDocumentParser = new AtomServiceDocumentConsumer();
@@ -173,6 +208,12 @@ public class AtomServiceDocumentConsumerTest extends AbstractXmlConsumerTest {
 
     }
 
+    /**
+     * Test categories.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws EntityProviderException the entity provider exception
+     */
     @Test
     public void testCategories() throws IOException, EntityProviderException {
         AtomServiceDocumentConsumer svcDocumentParser = new AtomServiceDocumentConsumer();
@@ -207,6 +248,12 @@ public class AtomServiceDocumentConsumerTest extends AbstractXmlConsumerTest {
 
     }
 
+    /**
+     * Test nested extensions.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws EntityProviderException the entity provider exception
+     */
     @Test
     public void testNestedExtensions() throws IOException, EntityProviderException {
         AtomServiceDocumentConsumer svcDocumentParser = new AtomServiceDocumentConsumer();
@@ -247,18 +294,36 @@ public class AtomServiceDocumentConsumerTest extends AbstractXmlConsumerTest {
         }
     }
 
+    /**
+     * Test without title.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws EntityProviderException the entity provider exception
+     */
     @Test(expected = EntityProviderException.class)
     public void testWithoutTitle() throws IOException, EntityProviderException {
         AtomServiceDocumentConsumer svcDocumentParser = new AtomServiceDocumentConsumer();
         svcDocumentParser.readServiceDokument(createStreamReader("/svcDocWithoutTitle.xml"));
     }
 
+    /**
+     * Test svc without workspaces.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws EntityProviderException the entity provider exception
+     */
     @Test(expected = EntityProviderException.class)
     public void testSvcWithoutWorkspaces() throws IOException, EntityProviderException {
         AtomServiceDocumentConsumer svcDocumentParser = new AtomServiceDocumentConsumer();
         svcDocumentParser.readServiceDokument(createStreamReader("/invalidSvcExample.xml"));
     }
 
+    /**
+     * Test service document 3.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws EntityProviderException the entity provider exception
+     */
     @Test
     public void testServiceDocument3() throws IOException, EntityProviderException {
         AtomServiceDocumentConsumer svcDocumentParser = new AtomServiceDocumentConsumer();
@@ -339,6 +404,14 @@ public class AtomServiceDocumentConsumerTest extends AbstractXmlConsumerTest {
         }
     }
 
+    /**
+     * Creates the stream reader.
+     *
+     * @param fileName the file name
+     * @return the XML stream reader
+     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws EntityProviderException the entity provider exception
+     */
     private XMLStreamReader createStreamReader(final String fileName) throws IOException, EntityProviderException {
         XMLInputFactory factory = XMLInputFactory.newInstance();
         factory.setProperty(XMLInputFactory.IS_VALIDATING, false);

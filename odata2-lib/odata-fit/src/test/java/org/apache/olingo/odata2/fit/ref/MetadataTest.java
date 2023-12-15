@@ -27,23 +27,39 @@ import org.apache.olingo.odata2.testutil.server.ServletType;
 import org.junit.Before;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- * Tests employing the reference scenario reading the metadata document in XML format
- * 
+ * Tests employing the reference scenario reading the metadata document in XML format.
  */
 public class MetadataTest extends AbstractRefXmlTest {
 
+  /**
+   * Instantiates a new metadata test.
+   *
+   * @param servletType the servlet type
+   */
   public MetadataTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /** The payload. */
   private static String payload;
 
+  /**
+   * Prepare.
+   *
+   * @throws Exception the exception
+   */
   @Before
   public void prepare() throws Exception {
     payload = getBody(callUri("$metadata"));
   }
 
+  /**
+   * Metadata document.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void metadataDocument() throws Exception {
     final HttpResponse response = callUri("$metadata");
@@ -54,6 +70,11 @@ public class MetadataTest extends AbstractRefXmlTest {
     badRequest("$metadata?$format=atom");
   }
 
+  /**
+   * Test general.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testGeneral() throws Exception {
     assertXpathExists("/edmx:Edmx[@Version='1.0']", payload);
@@ -62,6 +83,11 @@ public class MetadataTest extends AbstractRefXmlTest {
     assertXpathExists("/edmx:Edmx/edmx:DataServices/edm:Schema[@Namespace='RefScenario2']", payload);
   }
 
+  /**
+   * Test entity types.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testEntityTypes() throws Exception {
     // Employee
@@ -224,6 +250,11 @@ public class MetadataTest extends AbstractRefXmlTest {
         payload);
   }
 
+  /**
+   * Test complex types.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testComplexTypes() throws Exception {
     // Location
@@ -249,6 +280,11 @@ public class MetadataTest extends AbstractRefXmlTest {
         payload);
   }
 
+  /**
+   * Test association.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testAssociation() throws Exception {
     // ManagerEmployees
@@ -301,6 +337,11 @@ public class MetadataTest extends AbstractRefXmlTest {
         payload);
   }
 
+  /**
+   * Test entity container.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testEntityContainer() throws Exception {
     assertXpathExists(
@@ -449,6 +490,11 @@ public class MetadataTest extends AbstractRefXmlTest {
         payload);
   }
 
+  /**
+   * Test schema 2.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testSchema2() throws Exception {
 

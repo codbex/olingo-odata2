@@ -22,10 +22,25 @@ import org.apache.olingo.odata2.api.edm.EdmException;
 import org.apache.olingo.odata2.api.edm.EdmMultiplicity;
 import org.apache.olingo.odata2.api.edm.EdmNavigationProperty;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class NavigationPropertyInfo.
+ */
 public final class NavigationPropertyInfo {
+  
+  /** The name. */
   private String name;
+  
+  /** The multiplicity. */
   private EdmMultiplicity multiplicity;
 
+  /**
+   * Creates the.
+   *
+   * @param property the property
+   * @return the navigation property info
+   * @throws EdmException the edm exception
+   */
   static NavigationPropertyInfo create(final EdmNavigationProperty property) throws EdmException {
     NavigationPropertyInfo info = new NavigationPropertyInfo();
     info.name = property.getName();
@@ -33,15 +48,30 @@ public final class NavigationPropertyInfo {
     return info;
   }
 
+  /**
+   * To string.
+   *
+   * @return the string
+   */
   @Override
   public String toString() {
     return name + "; multiplicity=" + multiplicity;
   }
 
+  /**
+   * Gets the multiplicity.
+   *
+   * @return the multiplicity
+   */
   public EdmMultiplicity getMultiplicity() {
     return multiplicity;
   }
 
+  /**
+   * Gets the name.
+   *
+   * @return the name
+   */
   public String getName() {
     return name;
   }

@@ -20,6 +20,7 @@ package org.apache.olingo.odata2.api.ep.entry;
 
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
 /**
  * {@link EntryMetadata} contains all metadata for an {@link ODataEntry}.
  */

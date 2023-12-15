@@ -37,14 +37,24 @@ import org.apache.olingo.odata2.core.ep.aggregator.EntityPropertyInfo;
 
 import com.google.gson.stream.JsonReader;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class JsonEntityConsumer.
  */
 public class JsonEntityConsumer {
 
-  /** Default used charset for reader */
+  /**  Default used charset for reader. */
   private static final String DEFAULT_CHARSET = "UTF-8";
 
+  /**
+   * Read entry.
+   *
+   * @param entitySet the entity set
+   * @param content the content
+   * @param properties the properties
+   * @return the o data entry
+   * @throws EntityProviderException the entity provider exception
+   */
   public ODataEntry readEntry(final EdmEntitySet entitySet, final InputStream content,
       final EntityProviderReadProperties properties) throws EntityProviderException {
     JsonReader reader = null;
@@ -76,11 +86,29 @@ public class JsonEntityConsumer {
     }
   }
 
+  /**
+   * Read feed.
+   *
+   * @param entitySet the entity set
+   * @param content the content
+   * @param readProperties the read properties
+   * @return the o data feed
+   * @throws EntityProviderException the entity provider exception
+   */
   public ODataFeed readFeed(final EdmEntitySet entitySet, final InputStream content,
       final EntityProviderReadProperties readProperties) throws EntityProviderException {
     return readDeltaFeed(entitySet, content, readProperties);
   }
 
+  /**
+   * Read delta feed.
+   *
+   * @param entitySet the entity set
+   * @param content the content
+   * @param readProperties the read properties
+   * @return the o data delta feed
+   * @throws EntityProviderException the entity provider exception
+   */
   public ODataDeltaFeed readDeltaFeed(final EdmEntitySet entitySet, final InputStream content,
       final EntityProviderReadProperties readProperties) throws EntityProviderException {
 
@@ -117,11 +145,29 @@ public class JsonEntityConsumer {
   }
 
 
+  /**
+   * Read property.
+   *
+   * @param edmProperty the edm property
+   * @param content the content
+   * @param properties the properties
+   * @return the map
+   * @throws EntityProviderException the entity provider exception
+   */
   public Map<String, Object> readProperty(final EdmProperty edmProperty, InputStream content,
       final EntityProviderReadProperties properties) throws EntityProviderException {
     return readProperty(EntityInfoAggregator.create(edmProperty), content, properties);
   }
 
+  /**
+   * Read property.
+   *
+   * @param propertyInfo the property info
+   * @param content the content
+   * @param readProperties the read properties
+   * @return the map
+   * @throws EntityProviderException the entity provider exception
+   */
   public Map<String, Object> readProperty(final EntityPropertyInfo propertyInfo, final InputStream content,
       final EntityProviderReadProperties readProperties) throws EntityProviderException {
     JsonReader reader = null;
@@ -151,6 +197,15 @@ public class JsonEntityConsumer {
     }
   }
 
+  /**
+   * Read collection.
+   *
+   * @param info the info
+   * @param content the content
+   * @param properties the properties
+   * @return the list
+   * @throws EntityProviderException the entity provider exception
+   */
   public List<?> readCollection(final EntityPropertyInfo info, InputStream content,
       final EntityProviderReadProperties properties) throws EntityProviderException {
     JsonReader reader = null;
@@ -179,6 +234,14 @@ public class JsonEntityConsumer {
     }
   }
 
+  /**
+   * Read link.
+   *
+   * @param entitySet the entity set
+   * @param content the content
+   * @return the string
+   * @throws EntityProviderException the entity provider exception
+   */
   public String readLink(final EdmEntitySet entitySet, final Object content) throws EntityProviderException {
     JsonReader reader = null;
     EntityProviderException cachedException = null;
@@ -207,6 +270,14 @@ public class JsonEntityConsumer {
     }
   }
 
+  /**
+   * Read links.
+   *
+   * @param entitySet the entity set
+   * @param content the content
+   * @return the list
+   * @throws EntityProviderException the entity provider exception
+   */
   public List<String> readLinks(final EdmEntitySet entitySet, final Object content) throws EntityProviderException {
     JsonReader reader = null;
     EntityProviderException cachedException = null;
@@ -235,6 +306,14 @@ public class JsonEntityConsumer {
     }
   }
 
+  /**
+   * Creates the json reader.
+   *
+   * @param content the content
+   * @return the json reader
+   * @throws EntityProviderException the entity provider exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   private JsonReader createJsonReader(final Object content) throws EntityProviderException,
       UnsupportedEncodingException {
 

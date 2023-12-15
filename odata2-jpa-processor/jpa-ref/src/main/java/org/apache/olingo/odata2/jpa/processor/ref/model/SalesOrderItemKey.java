@@ -23,24 +23,44 @@ import java.io.Serializable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SalesOrderItemKey.
+ */
 @Embeddable
 public class SalesOrderItemKey implements Serializable {
 
+  /** The Constant serialVersionUID. */
   private static final long serialVersionUID = 1L;
 
+  /**
+   * Instantiates a new sales order item key.
+   */
   public SalesOrderItemKey() {}
 
+  /**
+   * Instantiates a new sales order item key.
+   *
+   * @param liId the li id
+   */
   public SalesOrderItemKey(final long liId) {
     super();
     this.liId = liId;
   }
 
+  /** The so id. */
   @Column(name = "Sales_Order_Id", nullable = false)
   private long soId;
 
+  /** The li id. */
   @Column(name = "Sales_Order_Item_Id", unique = true)
   private long liId;
 
+  /**
+   * Hash code.
+   *
+   * @return the int
+   */
   @Override
   public int hashCode() {
     final int prime = 31;
@@ -50,6 +70,12 @@ public class SalesOrderItemKey implements Serializable {
     return result;
   }
 
+  /**
+   * Equals.
+   *
+   * @param obj the obj
+   * @return true, if successful
+   */
   @Override
   public boolean equals(final Object obj) {
     if (this == obj) {
@@ -71,18 +97,38 @@ public class SalesOrderItemKey implements Serializable {
     return true;
   }
 
+  /**
+   * Gets the so id.
+   *
+   * @return the so id
+   */
   public long getSoId() {
     return soId;
   }
 
+  /**
+   * Sets the so id.
+   *
+   * @param soId the new so id
+   */
   public void setSoId(final long soId) {
     this.soId = soId;
   }
 
+  /**
+   * Gets the li id.
+   *
+   * @return the li id
+   */
   public long getLiId() {
     return liId;
   }
 
+  /**
+   * Sets the li id.
+   *
+   * @param liId the new li id
+   */
   public void setLiId(final long liId) {
     this.liId = liId;
   }

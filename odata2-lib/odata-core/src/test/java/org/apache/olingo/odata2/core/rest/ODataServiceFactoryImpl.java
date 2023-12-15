@@ -23,12 +23,26 @@ import org.apache.olingo.odata2.api.ODataServiceFactory;
 import org.apache.olingo.odata2.api.exception.ODataException;
 import org.apache.olingo.odata2.api.processor.ODataContext;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ODataServiceFactoryImpl.
+ */
 public class ODataServiceFactoryImpl extends ODataServiceFactory {
 
+  /**
+   * Instantiates a new o data service factory impl.
+   */
   public ODataServiceFactoryImpl() {
     super();
   }
 
+  /**
+   * Creates the service.
+   *
+   * @param ctx the ctx
+   * @return the o data service
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataService createService(final ODataContext ctx) throws ODataException {
     return null;

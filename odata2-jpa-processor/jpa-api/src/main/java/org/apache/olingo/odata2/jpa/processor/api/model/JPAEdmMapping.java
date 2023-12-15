@@ -20,6 +20,7 @@ package org.apache.olingo.odata2.jpa.processor.api.model;
 
 import org.apache.olingo.odata2.jpa.processor.api.ODataJPATombstoneEntityListener;
 
+// TODO: Auto-generated Javadoc
 /**
  * The interface acts a container for storing Java persistence column name. The
  * JPA EDM mapping instance can be associated with any EDM simple, EDM complex
@@ -65,8 +66,8 @@ public interface JPAEdmMapping {
   /**
    * The method sets a stateless JPA EntityListner type. The entity listener type
    * should inherit from {@link com.sap.core.odata.processor.api.jpa.ODataJPATombstoneEntityListener}.
-   * @param entityListner
-   * is an instance of type Class<?>
+   *
+   * @param entityListener the new o data JPA tombstone entity listener
    */
   public void setODataJPATombstoneEntityListener(Class<? extends ODataJPATombstoneEntityListener> entityListener);
 
@@ -76,8 +77,18 @@ public interface JPAEdmMapping {
    */
   public Class<? extends ODataJPATombstoneEntityListener> getODataJPATombstoneEntityListener();
   
+  /**
+   * Checks if is virtual access.
+   *
+   * @return true, if is virtual access
+   */
   public boolean isVirtualAccess();
   
+  /**
+   * Sets the virtual access.
+   *
+   * @param virtualAccess the new virtual access
+   */
   public void setVirtualAccess(boolean virtualAccess);
 
 }

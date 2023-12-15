@@ -20,6 +20,7 @@ import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
 
+// TODO: Auto-generated Javadoc
 /**
  * <p>
  * Java class for anonymous complex type.
@@ -47,6 +48,7 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "JPAEDMMappingModel")
 public class JPAEdmMappingModel {
 
+    /** The persistence unit. */
     @XmlElement(name = "PersistenceUnit", required = true)
     protected JPAPersistenceUnitMapType persistenceUnit;
 

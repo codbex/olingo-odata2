@@ -25,8 +25,15 @@ import static org.junit.Assert.assertNull;
 import org.apache.olingo.odata2.client.core.edm.Impl.EdmMappingImpl;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EdmMappingImplTest.
+ */
 public class EdmMappingImplTest {
 
+  /**
+   * Map test.
+   */
   @Test
   public void mapTest() {
     EdmMappingImpl map= new EdmMappingImpl();

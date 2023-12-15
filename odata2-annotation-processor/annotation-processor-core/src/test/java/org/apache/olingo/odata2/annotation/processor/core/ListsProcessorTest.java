@@ -25,15 +25,26 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+// TODO: Auto-generated Javadoc
 /**
- *
+ * The Class ListsProcessorTest.
  */
 public class ListsProcessorTest {
 
+  /** The lists processor. */
   private ListsProcessor listsProcessor;
+  
+  /** The mocked data source. */
   private DataSource mockedDataSource = Mockito.mock(DataSource.class);
+  
+  /** The mocked value access. */
   private ValueAccess mockedValueAccess = Mockito.mock(ValueAccess.class);
 
+  /**
+   * Inits the.
+   *
+   * @throws ODataException the o data exception
+   */
   @Test
   public void init() throws ODataException {
     DataSource dataSource = new AnnotationInMemoryDs(Building.class.getPackage().getName());
@@ -43,10 +54,16 @@ public class ListsProcessorTest {
     Assert.assertNotNull(lp);
   }
 
+  /**
+   * Instantiates a new lists processor test.
+   */
   public ListsProcessorTest() {
     listsProcessor = new ListsProcessor(mockedDataSource, mockedValueAccess);
   }
 
+  /**
+   * Test skip and skiptoken.
+   */
   @Test
   public void testSkipAndSkiptoken() {
     String url1 = "Rooms?$orderby=Seats%20desc&$skiptoken=12&$skip=000000&$top=200";
@@ -62,6 +79,9 @@ public class ListsProcessorTest {
     Assert.assertEquals("Rooms", result3);
   }
 
+  /**
+   * Test skip only.
+   */
   @Test
   public void testSkipOnly() {
     String url = "Rooms?$orderby=Seats%20desc&$skip=000000&$top=200";
@@ -77,6 +97,9 @@ public class ListsProcessorTest {
     Assert.assertEquals("Rooms", result3);
   }
 
+  /**
+   * Test skiptoken only.
+   */
   @Test
   public void testSkiptokenOnly() {
     String url = "Rooms?$orderby=Seats%20desc&$skiptoken=213&$top=200";

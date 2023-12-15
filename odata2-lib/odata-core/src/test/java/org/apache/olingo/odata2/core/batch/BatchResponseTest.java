@@ -35,12 +35,19 @@ import org.apache.olingo.odata2.core.batch.v2.Line;
 import org.apache.olingo.odata2.testutil.helper.StringHelper;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
  * Test creation of a batch response with BatchResponseWriter and then parsing this response again
  * with BatchResponseParser.
  */
 public class BatchResponseTest {
 
+    /**
+     * Test batch response.
+     *
+     * @throws BatchException the batch exception
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @Test
     public void testBatchResponse() throws BatchException, IOException {
         List<BatchResponsePart> parts = new ArrayList<BatchResponsePart>();
@@ -85,6 +92,12 @@ public class BatchResponseTest {
         assertEquals(2, result.size());
     }
 
+    /**
+     * Test change set response.
+     *
+     * @throws BatchException the batch exception
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @Test
     public void testChangeSetResponse() throws BatchException, IOException {
         List<BatchResponsePart> parts = new ArrayList<BatchResponsePart>();
@@ -118,6 +131,12 @@ public class BatchResponseTest {
         assertEquals(1, result.size());
     }
 
+    /**
+     * Test two change set response.
+     *
+     * @throws BatchException the batch exception
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @Test
     public void testTwoChangeSetResponse() throws BatchException, IOException {
         List<BatchResponsePart> parts = new ArrayList<BatchResponsePart>();
@@ -156,6 +175,12 @@ public class BatchResponseTest {
         assertEquals("Failing content:\n" + content.asString(), 19, content.linesCount());
     }
 
+    /**
+     * Test batch response raw bytes.
+     *
+     * @throws BatchException the batch exception
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @Test
     public void testBatchResponseRawBytes() throws BatchException, IOException {
         List<BatchResponsePart> parts = new ArrayList<BatchResponsePart>();
@@ -192,6 +217,12 @@ public class BatchResponseTest {
                                       .getBytes("ISO-8859-1"));
     }
 
+    /**
+     * Test batch response raw bytes as stream.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws ODataException the o data exception
+     */
     @Test
     public void testBatchResponseRawBytesAsStream() throws IOException, ODataException {
         List<BatchResponsePart> parts = new ArrayList<BatchResponsePart>();
@@ -229,6 +260,11 @@ public class BatchResponseTest {
                                       .getBytes("ISO-8859-1"));
     }
 
+    /**
+     * Gets the raw bytes.
+     *
+     * @return the raw bytes
+     */
     private byte[] getRawBytes() {
         byte[] data = new byte[Byte.MAX_VALUE - Byte.MIN_VALUE + 1];
         // binary content, not a valid UTF-8 representation of a string
@@ -238,6 +274,12 @@ public class BatchResponseTest {
         return data;
     }
 
+    /**
+     * Testissue with header having umlaut chars.
+     *
+     * @throws BatchException the batch exception
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @Test
     public void testissueWithHeaderHavingUmlautChars() throws BatchException, IOException {
         List<BatchResponsePart> parts = new ArrayList<BatchResponsePart>();

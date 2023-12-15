@@ -20,6 +20,7 @@ package org.apache.olingo.odata2.api.ep.entry;
 
 import java.util.Date;
 
+// TODO: Auto-generated Javadoc
 /**
  * Metadata of a deleted feed entry as defined in Atom Tombstone extension (RFC6721) or Json proprietary format.
  */

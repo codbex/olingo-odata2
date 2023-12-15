@@ -35,10 +35,21 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BatchResponseWriterTest.
+ */
 public class BatchResponseWriterTest {
 
+  /** The Constant CRLF. */
   private static final String CRLF = "\r\n";
 
+  /**
+   * Test batch response.
+   *
+   * @throws ODataException the o data exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Test
   public void testBatchResponse() throws ODataException, IOException {
     List<BatchResponsePart> parts = new ArrayList<BatchResponsePart>();
@@ -91,6 +102,11 @@ public class BatchResponseWriterTest {
     assertTrue(lines.get(index).toString().startsWith("--batch"));
   }
 
+  /**
+   * Test response.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testResponse() throws Exception {
     List<BatchResponsePart> parts = new ArrayList<BatchResponsePart>();
@@ -124,6 +140,11 @@ public class BatchResponseWriterTest {
     assertTrue(lines.get(index).toString().startsWith("--batch"));
   }
 
+  /**
+   * Test change set response.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testChangeSetResponse() throws Exception {
     List<BatchResponsePart> parts = new ArrayList<BatchResponsePart>();
@@ -158,6 +179,11 @@ public class BatchResponseWriterTest {
     assertTrue(lines.get(index).toString().startsWith("--batch"));
   }
 
+  /**
+   * Test content id echoing.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testContentIdEchoing() throws Exception {
     List<BatchResponsePart> parts = new ArrayList<BatchResponsePart>();
@@ -196,6 +222,11 @@ public class BatchResponseWriterTest {
     assertTrue(lines.get(index).toString().startsWith("--batch"));
   }
 
+  /**
+   * Test response iso.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testResponseIso() throws Exception {
     List<BatchResponsePart> parts = new ArrayList<BatchResponsePart>();
@@ -232,6 +263,11 @@ public class BatchResponseWriterTest {
     assertTrue(lines.get(index).toString().startsWith("--batch"));
   }
 
+  /**
+   * Test response utf.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testResponseUtf() throws Exception {
     List<BatchResponsePart> parts = new ArrayList<BatchResponsePart>();

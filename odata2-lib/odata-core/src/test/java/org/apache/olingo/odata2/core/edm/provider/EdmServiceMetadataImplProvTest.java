@@ -48,13 +48,20 @@ import org.custommonkey.xmlunit.XMLUnit;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class EdmServiceMetadataImplProvTest.
  */
 public class EdmServiceMetadataImplProvTest extends BaseTest {
 
+  /** The metadata. */
   private static String metadata;
 
+  /**
+   * Setup.
+   *
+   * @throws Exception the exception
+   */
   @BeforeClass
   public static void setup() throws Exception {
     EdmImplProv edmImplProv = new EdmImplProv(new EdmTestProvider());
@@ -69,6 +76,12 @@ public class EdmServiceMetadataImplProvTest extends BaseTest {
     XMLUnit.setXpathNamespaceContext(new SimpleNamespaceContext(prefixMap));
   }
 
+  /**
+   * Gets the entity set infos for empty edm provider.
+   *
+   * @return the entity set infos for empty edm provider
+   * @throws Exception the exception
+   */
   @Test
   public void getEntitySetInfosForEmptyEdmProvider() throws Exception {
     EdmProvider edmProvider = mock(EdmProvider.class);
@@ -79,18 +92,33 @@ public class EdmServiceMetadataImplProvTest extends BaseTest {
     assertTrue(infos.isEmpty());
   }
   
+  /**
+   * Error edm provider entity set.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = ODataException.class)
   public void errorEdmProviderEntitySet() throws Exception {
     EdmServiceMetadata serviceMetadata = new EdmServiceMetadataImplProv(null);
     serviceMetadata.getEntitySetInfos();
   }
   
+  /**
+   * Error edm provider service version.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = ODataException.class)
   public void errorEdmProviderServiceVersion() throws Exception {
     EdmServiceMetadata serviceMetadata = new EdmServiceMetadataImplProv(null);
     serviceMetadata.getDataServiceVersion();
   }
   
+  /**
+   * Error edm provider.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = ODataException.class)
   public void errorEdmProvider() throws Exception {
     EdmServiceMetadata serviceMetadata = new EdmServiceMetadataImplProv(null);
@@ -98,6 +126,12 @@ public class EdmServiceMetadataImplProvTest extends BaseTest {
   }
 
 
+  /**
+   * Gets the entity set infos for empty edm provider schemas.
+   *
+   * @return the entity set infos for empty edm provider schemas
+   * @throws Exception the exception
+   */
   @Test
   public void getEntitySetInfosForEmptyEdmProviderSchemas() throws Exception {
     List<Schema> schemas = new ArrayList<Schema>();
@@ -113,9 +147,10 @@ public class EdmServiceMetadataImplProvTest extends BaseTest {
   }
 
   /**
-   * Check that no NPE can occur with a new created Schema
+   * Check that no NPE can occur with a new created Schema.
    *
-   * @throws Exception
+   * @return the entity set infos for new edm provider schemas
+   * @throws Exception the exception
    */
   @Test
   public void getEntitySetInfosForNewEdmProviderSchemas() throws Exception {
@@ -132,6 +167,11 @@ public class EdmServiceMetadataImplProvTest extends BaseTest {
     assertTrue(infos.isEmpty());
   }
 
+  /**
+   * One entity set one container for info.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void oneEntitySetOneContainerForInfo() throws Exception {
     String entitySetUriString = new URI("Employees").toASCIIString();
@@ -163,6 +203,11 @@ public class EdmServiceMetadataImplProvTest extends BaseTest {
     assertTrue(infos.get(0).isDefaultEntityContainer());
   }
 
+  /**
+   * Two entity sets one container for info.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void twoEntitySetsOneContainerForInfo() throws Exception {
     List<EntitySet> entitySets = new ArrayList<EntitySet>();
@@ -188,6 +233,11 @@ public class EdmServiceMetadataImplProvTest extends BaseTest {
     assertEquals(2, infos.size());
   }
 
+  /**
+   * Two containers with one entity set each for info.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void twoContainersWithOneEntitySetEachForInfo() throws Exception {
     String entitySetUriString = new URI("Employees").toASCIIString();
@@ -229,6 +279,11 @@ public class EdmServiceMetadataImplProvTest extends BaseTest {
     assertFalse(infos.get(1).isDefaultEntityContainer());
   }
 
+  /**
+   * One entity sets one container two schemad for info.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void oneEntitySetsOneContainerTwoSchemadForInfo() throws Exception {
     List<EntitySet> entitySets = new ArrayList<EntitySet>();
@@ -254,6 +309,11 @@ public class EdmServiceMetadataImplProvTest extends BaseTest {
     assertEquals(2, infos.size());
   }
 
+  /**
+   * Data service version.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void dataServiceVersion() throws Exception {
     EdmProvider edmProvider = mock(EdmProvider.class);
@@ -263,6 +323,11 @@ public class EdmServiceMetadataImplProvTest extends BaseTest {
     assertEquals("1.0", serviceMetadata.getDataServiceVersion());
   }
 
+  /**
+   * Test schema structure.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testSchemaStructure() throws Exception {
     assertXpathExists("/edmx:Edmx", metadata);
@@ -274,6 +339,11 @@ public class EdmServiceMetadataImplProvTest extends BaseTest {
     assertXpathExists("/edmx:Edmx/edmx:DataServices/a:Schema/a:EntityContainer", metadata);
   }
 
+  /**
+   * Test entity type structure.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testEntityTypeStructure() throws Exception {
     assertXpathExists("/edmx:Edmx/edmx:DataServices/a:Schema/a:EntityType[@Name and @m:HasStream]", metadata);
@@ -292,6 +362,11 @@ public class EdmServiceMetadataImplProvTest extends BaseTest {
         metadata);
   }
 
+  /**
+   * Test annotations.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testAnnotations() throws Exception {
     assertXpathExists(
@@ -304,12 +379,22 @@ public class EdmServiceMetadataImplProvTest extends BaseTest {
         metadata);
   }
 
+  /**
+   * Test complex type structure.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testComplexTypeStructure() throws Exception {
     assertXpathExists("/edmx:Edmx/edmx:DataServices/a:Schema/a:ComplexType[@Name]", metadata);
     assertXpathExists("/edmx:Edmx/edmx:DataServices/a:Schema/a:ComplexType/a:Property[@Name and @Type]", metadata);
   }
 
+  /**
+   * Test entity container structure.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testEntityContainerStructure() throws Exception {
     assertXpathExists("/edmx:Edmx/edmx:DataServices/a:Schema/a:EntityContainer[@Name]", metadata);
@@ -329,6 +414,11 @@ public class EdmServiceMetadataImplProvTest extends BaseTest {
         metadata);
   }
 
+  /**
+   * Test association structure.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testAssociationStructure() throws Exception {
     assertXpathExists("/edmx:Edmx/edmx:DataServices/a:Schema/a:Association[@Name]", metadata);
@@ -348,6 +438,11 @@ public class EdmServiceMetadataImplProvTest extends BaseTest {
         metadata);
   }
 
+  /**
+   * Test ref scenario content.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testRefScenarioContent() throws Exception {
     assertXpathExists("/edmx:Edmx/edmx:DataServices/a:Schema/a:EntityType[@Name='Employee']", metadata);

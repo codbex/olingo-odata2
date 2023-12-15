@@ -32,15 +32,26 @@ import org.apache.olingo.odata2.testutil.helper.StringHelper;
 import org.apache.olingo.odata2.testutil.mock.MockFacade;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class XmlLinkEntityProducerTest.
  */
 public class XmlLinkEntityProducerTest extends AbstractProviderTest {
 
+  /**
+   * Instantiates a new xml link entity producer test.
+   *
+   * @param type the type
+   */
   public XmlLinkEntityProducerTest(final StreamWriterImplType type) {
     super(type);
   }
 
+  /**
+   * Serialize employee link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serializeEmployeeLink() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Employees");
@@ -57,6 +68,11 @@ public class XmlLinkEntityProducerTest extends AbstractProviderTest {
     assertXpathEvaluatesTo(BASE_URI.toString() + "Employees('1')", "/d:uri/text()", xml);
   }
 
+  /**
+   * Serialize photo link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serializePhotoLink() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getEntityContainer("Container2").getEntitySet("Photos");

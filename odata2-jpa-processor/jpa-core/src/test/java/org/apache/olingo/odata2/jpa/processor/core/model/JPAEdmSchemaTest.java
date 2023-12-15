@@ -31,10 +31,21 @@ import org.apache.olingo.odata2.jpa.processor.core.mock.model.JPAMetaModelMock;
 import org.junit.Before;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAEdmSchemaTest.
+ */
 public class JPAEdmSchemaTest extends JPAEdmTestModelView {
+  
+  /** The obj JPA edm schema test. */
   private JPAEdmSchemaTest objJPAEdmSchemaTest;
+  
+  /** The obj JPA edm schema. */
   private JPAEdmSchema objJPAEdmSchema;
 
+  /**
+   * Sets the up.
+   */
   @Before
   public void setUp() {
     objJPAEdmSchemaTest = new JPAEdmSchemaTest();
@@ -43,6 +54,9 @@ public class JPAEdmSchemaTest extends JPAEdmTestModelView {
 
   }
 
+  /**
+   * Test clean.
+   */
   @Test
   public void testClean() {
     assertTrue(objJPAEdmSchema.isConsistent());
@@ -50,26 +64,41 @@ public class JPAEdmSchemaTest extends JPAEdmTestModelView {
     assertFalse(objJPAEdmSchema.isConsistent());
   }
 
+  /**
+   * Test get edm schema.
+   */
   @Test
   public void testGetEdmSchema() {
     assertNull(objJPAEdmSchema.getEdmSchema());
   }
 
+  /**
+   * Test get JPA edm entity container view.
+   */
   @Test
   public void testGetJPAEdmEntityContainerView() {
     assertNull(objJPAEdmSchema.getJPAEdmEntityContainerView());
   }
 
+  /**
+   * Test get JPA edm complex type view.
+   */
   @Test
   public void testGetJPAEdmComplexTypeView() {
     assertNull(objJPAEdmSchema.getJPAEdmComplexTypeView());
   }
 
+  /**
+   * Test get builder.
+   */
   @Test
   public void testGetBuilder() {
     assertNotNull(objJPAEdmSchema.getBuilder());
   }
 
+  /**
+   * Test get builder idempotent.
+   */
   @Test
   public void testGetBuilderIdempotent() {
     JPAEdmBuilder builder1 = objJPAEdmSchema.getBuilder();
@@ -78,11 +107,17 @@ public class JPAEdmSchemaTest extends JPAEdmTestModelView {
     assertEquals(builder1.hashCode(), builder2.hashCode());
   }
 
+  /**
+   * Test get JPA edm association view.
+   */
   @Test
   public void testGetJPAEdmAssociationView() {
     assertNull(objJPAEdmSchema.getJPAEdmAssociationView());
   }
 
+  /**
+   * Test is consistent.
+   */
   @Test
   public void testIsConsistent() {
     assertTrue(objJPAEdmSchema.isConsistent());
@@ -90,11 +125,21 @@ public class JPAEdmSchemaTest extends JPAEdmTestModelView {
     assertFalse(objJPAEdmSchema.isConsistent());
   }
 
+  /**
+   * Gets the JPA meta model.
+   *
+   * @return the JPA meta model
+   */
   @Override
   public Metamodel getJPAMetaModel() {
     return new JPAMetaModelMock();
   }
 
+  /**
+   * Gets the p unit name.
+   *
+   * @return the p unit name
+   */
   @Override
   public String getpUnitName() {
     return "salesorderprocessing";

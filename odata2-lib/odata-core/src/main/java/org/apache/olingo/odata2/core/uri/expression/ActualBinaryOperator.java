@@ -18,10 +18,24 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.core.uri.expression;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ActualBinaryOperator.
+ */
 public class ActualBinaryOperator {
+  
+  /** The operator. */
   final protected InfoBinaryOperator operator;
+  
+  /** The token. */
   final protected Token token;
 
+  /**
+   * Instantiates a new actual binary operator.
+   *
+   * @param operatorInfo the operator info
+   * @param token the token
+   */
   public ActualBinaryOperator(final InfoBinaryOperator operatorInfo, final Token token) {
     if (operatorInfo == null) {
       throw new IllegalArgumentException("operatorInfo parameter must not be null");
@@ -31,10 +45,20 @@ public class ActualBinaryOperator {
     this.token = token;
   }
 
+  /**
+   * Gets the token.
+   *
+   * @return the token
+   */
   public Token getToken() {
     return token;
   }
 
+  /**
+   * Gets the op.
+   *
+   * @return the op
+   */
   public InfoBinaryOperator getOP() {
     return operator;
   }

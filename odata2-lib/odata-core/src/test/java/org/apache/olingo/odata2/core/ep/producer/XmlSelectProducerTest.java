@@ -49,18 +49,32 @@ import org.custommonkey.xmlunit.exceptions.XpathException;
 import org.junit.Test;
 import org.xml.sax.SAXException;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class XmlSelectProducerTest.
  */
 public class XmlSelectProducerTest extends AbstractProviderTest {
 
+  /**
+   * Instantiates a new xml select producer test.
+   *
+   * @param type the type
+   */
   public XmlSelectProducerTest(final StreamWriterImplType type) {
     super(type);
   }
 
+  /** The Constant T. */
   private static final boolean T = true;
+  
+  /** The Constant F. */
   private static final boolean F = false;
 
+  /**
+   * All properties no select.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void allPropertiesNoSelect() throws Exception {
     AtomEntityProvider provider = createAtomEntityProvider();
@@ -77,6 +91,11 @@ public class XmlSelectProducerTest extends AbstractProviderTest {
     verifyComplexProperties(xmlString, T);
   }
 
+  /**
+   * All properties select star.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void allPropertiesSelectStar() throws Exception {
     ExpandSelectTreeNode selectTree = getSelectExpandTree("*", null);
@@ -97,6 +116,11 @@ public class XmlSelectProducerTest extends AbstractProviderTest {
     verifyComplexProperties(xmlString, T);
   }
 
+  /**
+   * Select employee id.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void selectEmployeeId() throws Exception {
     ExpandSelectTreeNode selectTree = getSelectExpandTree("EmployeeId", null);
@@ -117,6 +141,11 @@ public class XmlSelectProducerTest extends AbstractProviderTest {
     verifyComplexProperties(xmlString, F);
   }
 
+  /**
+   * Select navigation properties.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void selectNavigationProperties() throws Exception {
     ExpandSelectTreeNode selectTree = getSelectExpandTree("ne_Team, ne_Manager", null);
@@ -137,6 +166,11 @@ public class XmlSelectProducerTest extends AbstractProviderTest {
     verifyComplexProperties(xmlString, F);
   }
 
+  /**
+   * Select complex properties.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void selectComplexProperties() throws Exception {
     ExpandSelectTreeNode selectTree = getSelectExpandTree("Location", null);
@@ -157,6 +191,11 @@ public class XmlSelectProducerTest extends AbstractProviderTest {
     verifyComplexProperties(xmlString, T);
   }
 
+  /**
+   * Select complex and navigation properties.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void selectComplexAndNavigationProperties() throws Exception {
     ExpandSelectTreeNode selectTree = getSelectExpandTree("Location, ne_Room", null);
@@ -177,6 +216,11 @@ public class XmlSelectProducerTest extends AbstractProviderTest {
     verifyComplexProperties(xmlString, T);
   }
 
+  /**
+   * Select complex and navigation and key properties.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void selectComplexAndNavigationAndKeyProperties() throws Exception {
     ExpandSelectTreeNode selectTree = getSelectExpandTree("Location, ne_Room, EmployeeId, TeamId", null);
@@ -197,6 +241,11 @@ public class XmlSelectProducerTest extends AbstractProviderTest {
     verifyComplexProperties(xmlString, T);
   }
 
+  /**
+   * Select employee id employee name image url.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void selectEmployeeIdEmployeeNameImageUrl() throws Exception {
     ExpandSelectTreeNode selectTree = getSelectExpandTree("EmployeeId, EmployeeName, ImageUrl", null);
@@ -217,6 +266,11 @@ public class XmlSelectProducerTest extends AbstractProviderTest {
     verifyComplexProperties(xmlString, F);
   }
 
+  /**
+   * Select age.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void selectAge() throws Exception {
     ExpandSelectTreeNode selectTree = getSelectExpandTree("Age", null);
@@ -237,6 +291,15 @@ public class XmlSelectProducerTest extends AbstractProviderTest {
     verifyComplexProperties(xmlString, F);
   }
 
+  /**
+   * Verify complex properties.
+   *
+   * @param xmlString the xml string
+   * @param location the location
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws SAXException the SAX exception
+   * @throws XpathException the xpath exception
+   */
   private void verifyComplexProperties(final String xmlString, final boolean location) throws IOException,
       SAXException, XpathException {
     if (location) {
@@ -246,6 +309,18 @@ public class XmlSelectProducerTest extends AbstractProviderTest {
     }
   }
 
+  /**
+   * Verify single properties.
+   *
+   * @param xmlString the xml string
+   * @param employeeName the employee name
+   * @param age the age
+   * @param entryDate the entry date
+   * @param imageUrl the image url
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws SAXException the SAX exception
+   * @throws XpathException the xpath exception
+   */
   private void verifySingleProperties(final String xmlString, final boolean employeeName, final boolean age,
       final boolean entryDate, final boolean imageUrl) throws IOException, SAXException, XpathException {
     if (employeeName) {
@@ -270,6 +345,18 @@ public class XmlSelectProducerTest extends AbstractProviderTest {
     }
   }
 
+  /**
+   * Verify key properties.
+   *
+   * @param xmlString the xml string
+   * @param employeeId the employee id
+   * @param managerId the manager id
+   * @param roomId the room id
+   * @param teamId the team id
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws SAXException the SAX exception
+   * @throws XpathException the xpath exception
+   */
   private void verifyKeyProperties(final String xmlString, final boolean employeeId, final boolean managerId,
       final boolean roomId, final boolean teamId) throws IOException, SAXException, XpathException {
     if (employeeId) {
@@ -294,6 +381,17 @@ public class XmlSelectProducerTest extends AbstractProviderTest {
     }
   }
 
+  /**
+   * Verify navigation properties.
+   *
+   * @param xmlString the xml string
+   * @param neManager the ne manager
+   * @param neRoom the ne room
+   * @param neTeam the ne team
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws SAXException the SAX exception
+   * @throws XpathException the xpath exception
+   */
   private void verifyNavigationProperties(final String xmlString, final boolean neManager, final boolean neRoom,
       final boolean neTeam) throws IOException, SAXException, XpathException {
     if (neManager) {
@@ -313,6 +411,13 @@ public class XmlSelectProducerTest extends AbstractProviderTest {
     }
   }
 
+  /**
+   * Verify response.
+   *
+   * @param response the response
+   * @return the string
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private String verifyResponse(final ODataResponse response) throws IOException {
     assertNotNull(response);
     assertNotNull(response.getEntity());
@@ -321,6 +426,14 @@ public class XmlSelectProducerTest extends AbstractProviderTest {
     return xmlString;
   }
 
+  /**
+   * Gets the select expand tree.
+   *
+   * @param selectString the select string
+   * @param expandString the expand string
+   * @return the select expand tree
+   * @throws Exception the exception
+   */
   private ExpandSelectTreeNode getSelectExpandTree(final String selectString, final String expandString)
       throws Exception {
 

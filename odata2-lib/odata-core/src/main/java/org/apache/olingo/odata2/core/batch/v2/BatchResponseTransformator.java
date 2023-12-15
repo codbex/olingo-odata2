@@ -29,16 +29,39 @@ import org.apache.olingo.odata2.core.batch.BatchHelper;
 import org.apache.olingo.odata2.core.batch.BatchSingleResponseImpl;
 import org.apache.olingo.odata2.core.batch.v2.BatchTransformatorCommon.HttpResponsetStatusLine;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BatchResponseTransformator.
+ */
 public class BatchResponseTransformator implements BatchTransformator {
 
+  /**
+   * Instantiates a new batch response transformator.
+   */
   public BatchResponseTransformator() {}
 
+  /**
+   * Transform.
+   *
+   * @param bodyPart the body part
+   * @param pathInfo the path info
+   * @param baseUri the base uri
+   * @return the list
+   * @throws BatchException the batch exception
+   */
   @Override
   public List<BatchParserResult> transform(final BatchBodyPart bodyPart, final PathInfo pathInfo, final String baseUri)
       throws BatchException {
     return processQueryOperation(bodyPart);
   }
 
+  /**
+   * Process query operation.
+   *
+   * @param bodyPart the body part
+   * @return the list
+   * @throws BatchException the batch exception
+   */
   private List<BatchParserResult> processQueryOperation(final BatchBodyPart bodyPart) 
       throws BatchException {
 
@@ -50,6 +73,13 @@ public class BatchResponseTransformator implements BatchTransformator {
     return resultList;
   }
 
+  /**
+   * Handle body part.
+   *
+   * @param bodyPart the body part
+   * @return the list
+   * @throws BatchException the batch exception
+   */
   private List<BatchParserResult> handleBodyPart(final BatchBodyPart bodyPart) throws BatchException {
     List<BatchParserResult> bodyPartResult = new ArrayList<BatchParserResult>();
 
@@ -66,6 +96,13 @@ public class BatchResponseTransformator implements BatchTransformator {
     return bodyPartResult;
   }
 
+  /**
+   * Transform change set.
+   *
+   * @param changeSet the change set
+   * @return the batch single response
+   * @throws BatchException the batch exception
+   */
   private BatchSingleResponse transformChangeSet(final BatchChangeSetPart changeSet) throws BatchException {
     BatchTransformatorCommon.validateContentTransferEncoding(changeSet.getHeaders(), true);
     final String contentId = changeSet.getHeaders().getHeader(BatchHelper.HTTP_CONTENT_ID);
@@ -73,6 +110,14 @@ public class BatchResponseTransformator implements BatchTransformator {
     return transformQueryOperation(changeSet.getRequest(), contentId);
   }
 
+  /**
+   * Transform query operation.
+   *
+   * @param operation the operation
+   * @param contentId the content id
+   * @return the batch single response
+   * @throws BatchException the batch exception
+   */
   private BatchSingleResponse transformQueryOperation(final BatchQueryOperation operation, final String contentId)
       throws BatchException {
 
@@ -88,6 +133,13 @@ public class BatchResponseTransformator implements BatchTransformator {
     return response;
   }
 
+  /**
+   * Gets the body.
+   *
+   * @param operation the operation
+   * @return the body
+   * @throws BatchException the batch exception
+   */
   private String getBody(final BatchQueryOperation operation) throws BatchException {
     int contentLength = BatchTransformatorCommon.getContentLength(operation.getHeaders());
 

@@ -30,6 +30,7 @@ import java.util.Map;
 import org.apache.olingo.odata2.api.commons.HttpStatusCodes;
 import org.apache.olingo.odata2.api.uri.PathInfo;
 
+// TODO: Auto-generated Javadoc
 /**
  * Error context information bean. Usually created and in error situations.
  * @see org.apache.olingo.odata2.api.ep.EntityProvider EntityProvider
@@ -38,27 +39,50 @@ import org.apache.olingo.odata2.api.uri.PathInfo;
  */
 public class ODataErrorContext {
 
+  /** The content type. */
   // General purpose attributes
   private String contentType;
+  
+  /** The http status. */
   private HttpStatusCodes httpStatus;
+  
+  /** The exception. */
   private Exception exception;
+  
+  /** The request headers. */
   private Map<String, List<String>> requestHeaders;
+  
+  /** The path info. */
   private PathInfo pathInfo;
+  
+  /** The request uri. */
   private URI requestUri;
 
+  /** The error code. */
   // Standard OData Error Response
   private String errorCode;
+  
+  /** The locale. */
   private Locale locale;
+  
+  /** The message. */
   private String message;
+  
+  /** The inner error. */
   private String innerError;
 
+  /** The severity. */
   // Extended OData Error Response
   private String severity;
+  
+  /** The target. */
   private String target;
+  
+  /** The error details. */
   private Collection<ODataErrorContext> errorDetails = new ArrayList<ODataErrorContext>();
 
   /**
-   * create a new context object
+   * create a new context object.
    */
   public ODataErrorContext() {
     requestHeaders = new HashMap<String, List<String>>();

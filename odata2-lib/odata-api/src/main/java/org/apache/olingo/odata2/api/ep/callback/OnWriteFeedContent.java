@@ -21,6 +21,7 @@ package org.apache.olingo.odata2.api.ep.callback;
 import org.apache.olingo.odata2.api.ODataCallback;
 import org.apache.olingo.odata2.api.exception.ODataApplicationException;
 
+// TODO: Auto-generated Javadoc
 /**
  * Callback interface for the $expand query option.
  * <p>If an expand clause for a navigation property which points to a feed is found this callback will be called.
@@ -34,9 +35,10 @@ public interface OnWriteFeedContent extends ODataCallback {
   /**
    * Retrieves the data for a feed. See {@link WriteFeedCallbackContext} for details on the context and
    * {@link WriteFeedCallbackResult} for details on the result of this method.
+   *
    * @param context of this entry
    * @return result - must not be null.
-   * @throws ODataApplicationException
+   * @throws ODataApplicationException the o data application exception
    */
   WriteFeedCallbackResult retrieveFeedResult(WriteFeedCallbackContext context) throws ODataApplicationException;
 

@@ -31,8 +31,17 @@ import org.apache.olingo.odata2.core.commons.Decoder;
 import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EdmEntitySetInfoImplProvTest.
+ */
 public class EdmEntitySetInfoImplProvTest extends BaseTest {
 
+  /**
+   * Entity with default container.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entityWithDefaultContainer() throws Exception {
     String entitySetName = "Employees";
@@ -53,6 +62,11 @@ public class EdmEntitySetInfoImplProvTest extends BaseTest {
     assertTrue(info.isDefaultEntityContainer());
   }
 
+  /**
+   * Entity without default container.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entityWithoutDefaultContainer() throws Exception {
     String entitySetName = "Employees";
@@ -73,6 +87,11 @@ public class EdmEntitySetInfoImplProvTest extends BaseTest {
     assertFalse(info.isDefaultEntityContainer());
   }
 
+  /**
+   * Check valid colon name.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void checkValidColonName() throws Exception {
     String entitySetNameOriginal = "::Name";
@@ -94,6 +113,11 @@ public class EdmEntitySetInfoImplProvTest extends BaseTest {
     assertEquals(entitySetNameEscaped, infoRead.getEntitySetUri().toASCIIString());
   }
 
+  /**
+   * Check valid UTF 8 name.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void checkValidUTF8Name() throws Exception {
     String entitySetNameOriginal = "Содержание";
@@ -116,6 +140,11 @@ public class EdmEntitySetInfoImplProvTest extends BaseTest {
     assertEquals(entitySetNameEscaped, infoRead.getEntitySetUri().toASCIIString());
   }
 
+  /**
+   * Check valid name without default container.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void checkValidNameWithoutDefaultContainer() throws Exception {
     String entitySetName = "::Name";

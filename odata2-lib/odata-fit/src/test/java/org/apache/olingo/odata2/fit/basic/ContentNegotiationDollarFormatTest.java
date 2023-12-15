@@ -42,21 +42,33 @@ import org.apache.olingo.odata2.testutil.helper.StringHelper;
 import org.apache.olingo.odata2.testutil.server.ServletType;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class ContentNegotiationDollarFormatTest.
  */
 public class ContentNegotiationDollarFormatTest extends AbstractBasicTest {
 
+  /**
+   * Instantiates a new content negotiation dollar format test.
+   *
+   * @param servletType the servlet type
+   */
   public ContentNegotiationDollarFormatTest(final ServletType servletType) {
     super(servletType);
   }
 
-  /**
-   * 
-   */
+  /** The Constant CUSTOM_CONTENT_TYPE. */
   private static final String CUSTOM_CONTENT_TYPE = "application/csv";
+  
+  /** The processor. */
   ODataSingleProcessor processor = mock(ODataSingleProcessor.class);
 
+  /**
+   * Creates the processor.
+   *
+   * @return the o data single processor
+   * @throws ODataException the o data exception
+   */
   @Override
   protected ODataSingleProcessor createProcessor() throws ODataException {
     // service document
@@ -78,6 +90,11 @@ public class ContentNegotiationDollarFormatTest extends AbstractBasicTest {
     return processor;
   }
 
+  /**
+   * Atom format for service document.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void atomFormatForServiceDocument() throws Exception {
     final HttpResponse response = executeGetRequest("?$format=atom");
@@ -90,6 +107,11 @@ public class ContentNegotiationDollarFormatTest extends AbstractBasicTest {
     assertEquals(HttpContentType.APPLICATION_ATOM_SVC_UTF8, header.getValue());
   }
 
+  /**
+   * Atom format for service document encoded.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void atomFormatForServiceDocumentEncoded() throws Exception {
     final HttpResponse response = executeGetRequest("?%24format=atom");
@@ -102,6 +124,11 @@ public class ContentNegotiationDollarFormatTest extends AbstractBasicTest {
     assertEquals(HttpContentType.APPLICATION_ATOM_SVC_UTF8, header.getValue());
   }
   
+  /**
+   * Format custom.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void formatCustom() throws Exception {
     final HttpResponse response = executeGetRequest("?$format=csv");
@@ -113,6 +140,11 @@ public class ContentNegotiationDollarFormatTest extends AbstractBasicTest {
     assertEquals(CUSTOM_CONTENT_TYPE, header.getValue());
   }
 
+  /**
+   * Format custom encoded.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void formatCustomEncoded() throws Exception {
     final HttpResponse response = executeGetRequest("?%24format=csv");
@@ -124,6 +156,11 @@ public class ContentNegotiationDollarFormatTest extends AbstractBasicTest {
     assertEquals(CUSTOM_CONTENT_TYPE, header.getValue());
   }
   
+  /**
+   * Format not accepted.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void formatNotAccepted() throws Exception {
     final HttpResponse response = executeGetRequest("?$format=csvOrSomethingElse");

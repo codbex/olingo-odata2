@@ -18,12 +18,16 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.servicedocument;
 
+// TODO: Auto-generated Javadoc
 /**
  * Fixed
  * <p>Fixed indicates whether the list of categories is a fixed or an open set
- * Fixed can either be yes or no
- * 
+ * Fixed can either be yes or no.
  */
 public enum Fixed {
-  YES, NO;
+  
+  /** The yes. */
+  YES, 
+ /** The no. */
+ NO;
 }

@@ -23,6 +23,7 @@ import java.util.Map;
 
 import org.apache.olingo.odata2.api.uri.KeyPredicate;
 
+// TODO: Auto-generated Javadoc
 /**
  * The interface provide a view on JPQL select single context.The interface
  * provides methods for accessing the clause of a JPQL SELECT statement like
@@ -54,7 +55,8 @@ public interface JPQLSelectSingleContextView extends JPQLContextView {
   
   /**
    * Key in the map is the JPA query and value is a map with key being index and 
-   * value being parameter value
+   * value being parameter value.
+   *
    * @return a map of String and value is another map of Integer and Object
    */
   public Map<String, Map<Integer, Object>> getParameterizedQueryMap();

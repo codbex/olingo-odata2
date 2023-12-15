@@ -48,21 +48,45 @@ import org.apache.olingo.odata2.core.ep.ProviderFacadeImpl;
 import org.apache.olingo.odata2.core.exception.MessageService;
 import org.apache.olingo.odata2.core.exception.MessageService.Message;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class ODataExceptionWrapper.
  */
 public class ODataExceptionWrapper {
 
+  /** The Constant DOLLAR_FORMAT. */
   private static final String DOLLAR_FORMAT = "$format";
+  
+  /** The Constant DOLLAR_FORMAT_JSON. */
   private static final String DOLLAR_FORMAT_JSON = "json";
+  
+  /** The Constant DEFAULT_RESPONSE_LOCALE. */
   private static final Locale DEFAULT_RESPONSE_LOCALE = Locale.ENGLISH;
+  
+  /** The error context. */
   private final ODataErrorContext errorContext = new ODataErrorContext();
+  
+  /** The content type. */
   private final String contentType;
+  
+  /** The message locale. */
   private final Locale messageLocale;
+  
+  /** The http request headers. */
   private final Map<String, List<String>> httpRequestHeaders;
+  
+  /** The callback. */
   private final ODataErrorCallback callback;
+  
+  /** The request uri. */
   private URI requestUri;
 
+  /**
+   * Instantiates a new o data exception wrapper.
+   *
+   * @param req the req
+   * @param serviceFactory the service factory
+   */
   public ODataExceptionWrapper(final HttpServletRequest req, ODataServiceFactory serviceFactory) {
     try {
       requestUri = new URI(req.getRequestURI());
@@ -83,6 +107,12 @@ public class ODataExceptionWrapper {
     callback = serviceFactory.getCallback(ODataErrorCallback.class);
   }
 
+  /**
+   * Wrap in exception response.
+   *
+   * @param exception the exception
+   * @return the o data response
+   */
   public ODataResponse wrapInExceptionResponse(final Exception exception) {
     try {
       final Exception toHandleException = extractException(exception);
@@ -111,6 +141,13 @@ public class ODataExceptionWrapper {
     }
   }
 
+  /**
+   * Handle error callback.
+   *
+   * @param callback the callback
+   * @return the o data response
+   * @throws EntityProviderException the entity provider exception
+   */
   private ODataResponse handleErrorCallback(final ODataErrorCallback callback) throws EntityProviderException {
     ODataResponse oDataResponse;
     try {
@@ -123,6 +160,12 @@ public class ODataExceptionWrapper {
     return oDataResponse;
   }
 
+  /**
+   * Extract exception.
+   *
+   * @param exception the exception
+   * @return the exception
+   */
   private Exception extractException(final Exception exception) {
     if (exception instanceof ODataException) {
       ODataException odataException = (ODataException) exception;
@@ -137,11 +180,21 @@ public class ODataExceptionWrapper {
     return exception;
   }
 
+  /**
+   * Enhance context with application exception.
+   *
+   * @param toHandleException the to handle exception
+   */
   private void enhanceContextWithApplicationException(final ODataApplicationException toHandleException) {
     errorContext.setHttpStatus(toHandleException.getHttpStatus());
     errorContext.setErrorCode(toHandleException.getCode());
   }
 
+  /**
+   * Enhance context with message exception.
+   *
+   * @param toHandleException the to handle exception
+   */
   private void enhanceContextWithMessageException(final ODataMessageException toHandleException) {
     errorContext.setErrorCode(toHandleException.getErrorCode());
     MessageReference messageReference = toHandleException.getMessageReference();
@@ -168,10 +221,22 @@ public class ODataExceptionWrapper {
 
   }
 
+  /**
+   * Extract entity.
+   *
+   * @param context the context
+   * @return the message
+   */
   private Message extractEntity(final MessageReference context) {
     return MessageService.getMessage(messageLocale, context);
   }
 
+  /**
+   * Gets the languages.
+   *
+   * @param acceptableLanguages the acceptable languages
+   * @return the languages
+   */
   private List<Locale> getLanguages(final List<Locale> acceptableLanguages) {
     if (acceptableLanguages.isEmpty()) {
       return Arrays.asList(DEFAULT_RESPONSE_LOCALE);
@@ -180,6 +245,13 @@ public class ODataExceptionWrapper {
 
   }
 
+  /**
+   * Gets the content type.
+   *
+   * @param queryParameters the query parameters
+   * @param acceptHeaders the accept headers
+   * @return the content type
+   */
   private ContentType getContentType(final Map<String, String> queryParameters, final List<String> acceptHeaders) {
     ContentType cntType = getContentTypeByUriInfo(queryParameters);
     if (cntType == null) {
@@ -188,6 +260,12 @@ public class ODataExceptionWrapper {
     return cntType;
   }
 
+  /**
+   * Gets the content type by uri info.
+   *
+   * @param queryParameters the query parameters
+   * @return the content type by uri info
+   */
   private ContentType getContentTypeByUriInfo(final Map<String, String> queryParameters) {
     ContentType cntType = null;
     if (queryParameters != null) {
@@ -205,6 +283,12 @@ public class ODataExceptionWrapper {
     return cntType;
   }
 
+  /**
+   * Gets the content type by accept header.
+   *
+   * @param acceptHeaders the accept headers
+   * @return the content type by accept header
+   */
   private ContentType getContentTypeByAcceptHeader(final List<String> acceptHeaders) {
     for (String type : acceptHeaders) {
       if (ContentType.isParseable(type)) {
@@ -224,6 +308,11 @@ public class ODataExceptionWrapper {
     return ContentType.APPLICATION_XML;
   }
 
+  /**
+   * Fill error context.
+   *
+   * @param exception the exception
+   */
   private void fillErrorContext(final Exception exception) {
     errorContext.setContentType(contentType);
     errorContext.setException(exception);

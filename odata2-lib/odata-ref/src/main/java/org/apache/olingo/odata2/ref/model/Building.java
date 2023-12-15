@@ -22,36 +22,76 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class Building.
  */
 public class Building {
+  
+  /** The id. */
   private final int id;
+  
+  /** The name. */
   private String name;
+  
+  /** The image. */
   private byte[] image;
+  
+  /** The rooms. */
   private List<Room> rooms = new ArrayList<Room>();
 
+  /**
+   * Instantiates a new building.
+   *
+   * @param id the id
+   * @param name the name
+   */
   public Building(final int id, final String name) {
     this.id = id;
     setName(name);
   }
 
+  /**
+   * Gets the id.
+   *
+   * @return the id
+   */
   public String getId() {
     return Integer.toString(id);
   }
 
+  /**
+   * Sets the name.
+   *
+   * @param name the new name
+   */
   public void setName(final String name) {
     this.name = name;
   }
 
+  /**
+   * Gets the name.
+   *
+   * @return the name
+   */
   public String getName() {
     return name;
   }
 
+  /**
+   * Sets the image.
+   *
+   * @param byteArray the new image
+   */
   public void setImage(final byte[] byteArray) {
     image = byteArray;
   }
 
+  /**
+   * Gets the image.
+   *
+   * @return the image
+   */
   public byte[] getImage() {
     if (image == null) {
       return null;
@@ -60,21 +100,42 @@ public class Building {
     }
   }
 
+  /**
+   * Gets the rooms.
+   *
+   * @return the rooms
+   */
   public List<Room> getRooms() {
     return rooms;
   }
 
+  /**
+   * Hash code.
+   *
+   * @return the int
+   */
   @Override
   public int hashCode() {
     return id;
   }
 
+  /**
+   * Equals.
+   *
+   * @param obj the obj
+   * @return true, if successful
+   */
   @Override
   public boolean equals(final Object obj) {
     return this == obj
         || obj != null && getClass() == obj.getClass() && id == ((Building) obj).id;
   }
 
+  /**
+   * To string.
+   *
+   * @return the string
+   */
   @Override
   public String toString() {
     return "{\"Id\":\"" + id + "\",\"Name\":\"" + name + "\",\"Image\":\"" + Arrays.toString(image) + "\"}";

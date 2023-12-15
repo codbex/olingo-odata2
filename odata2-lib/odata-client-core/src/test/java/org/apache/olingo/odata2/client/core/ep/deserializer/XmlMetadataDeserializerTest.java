@@ -65,26 +65,58 @@ import org.apache.olingo.odata2.testutil.helper.StringHelper;
 import org.apache.olingo.odata2.testutil.mock.EdmTestProvider;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class XmlMetadataDeserializerTest.
+ */
 public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
 
+  /**
+   * Instantiates a new xml metadata deserializer test.
+   *
+   * @param type the type
+   */
   public XmlMetadataDeserializerTest(final StreamWriterImplType type) {
     super(type);
   }
 
+  /** The Constant DEFAULT_VALUE. */
   private static final String DEFAULT_VALUE = "Photo";
+  
+  /** The Constant FC_TARGET_PATH. */
   private static final String FC_TARGET_PATH = "Содержание";
+  
+  /** The Constant FC_NS_URI. */
   private static final String FC_NS_URI = "http://localhost";
+  
+  /** The Constant FC_NS_PREFIX. */
   private static final String FC_NS_PREFIX = "ру";
+  
+  /** The Constant FC_KEEP_IN_CONTENT. */
   private static final Boolean FC_KEEP_IN_CONTENT = Boolean.FALSE;
+  
+  /** The Constant NAMESPACE. */
   private static final String NAMESPACE = "RefScenario";
+  
+  /** The Constant NAMESPACE2. */
   private static final String NAMESPACE2 = "RefScenario2";
+  
+  /** The Constant NAMESPACE3. */
   private static final String NAMESPACE3 = "RefScenario3";
+  
+  /** The Constant MIME_TYPE. */
   private static final String MIME_TYPE = "image/jpeg";
+  
+  /** The Constant ASSOCIATION. */
   private static final String ASSOCIATION = "ManagerEmployees";
+  
+  /** The Constant MAX_LENGTH. */
   private static final int MAX_LENGTH = 4;
 
+  /** The property names. */
   private final String[] propertyNames = { "EmployeeId", "EmployeeName", "Location" };
 
+  /** The xml. */
   private final String xml = "<edmx:Edmx Version=\"1.0\" xmlns:edmx=\"" + Edm.NAMESPACE_EDMX_2007_06 + "\">"
       + "<edmx:DataServices m:DataServiceVersion=\"2.0\" xmlns:m=\"" + Edm.NAMESPACE_M_2007_08 + "\">"
       + "<Schema Namespace=\"" + NAMESPACE + "\" xmlns=\"" + Edm.NAMESPACE_EDM_2008_09 + "\">"
@@ -95,6 +127,7 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
       + "<ComplexType Name=\"c_Location\">" + "<Property Name=\"Country\" Type=\"Edm.String\"/>" + "</ComplexType>"
       + "</Schema>" + "</edmx:DataServices>" + "</edmx:Edmx>";
   
+  /** The customxml. */
   private final String customxml = "<edmx:Edmx Version=\"1.0\" xmlns:edmx=\"" + Edm.NAMESPACE_EDMX_2007_06 + "\">"
       + "<edmx:DataServices m:DataServiceVersion=\"2.0\" xmlns:m=\"" + Edm.NAMESPACE_M_2007_08 + "\">"
       + "<Schema Namespace=\"" + NAMESPACE + "\" xmlns=\"" + Edm.NAMESPACE_EDM_2008_09 + "\">"
@@ -106,6 +139,7 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
       + "<ComplexType Name=\"c_Location\">" + "<Property Name=\"Country\" Type=\"Edm.String\"/>" + "</ComplexType>"
       + "</Schema>" + "</edmx:DataServices>" + "</edmx:Edmx>";
 
+  /** The xml 2. */
   private final String xml2 = "<edmx:Edmx Version=\"1.0\" xmlns:edmx=\"" + Edm.NAMESPACE_EDMX_2007_06
       + "\" xmlns:prefix=\"namespace\">" + "<edmx:DataServices m:DataServiceVersion=\"2.0\" xmlns:m=\""
       + Edm.NAMESPACE_M_2007_08 + "\">" + "<Schema Namespace=\"" + NAMESPACE + "\" xmlns=\""
@@ -117,6 +151,7 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
       + "<ComplexType Name=\"c_Location\">" + "<Property Name=\"Country\" Type=\"Edm.String\"/>" + "</ComplexType>"
       + "</Schema>" + "</edmx:DataServices>" + "</edmx:Edmx>";
 
+  /** The xml with base type. */
   private final String xmlWithBaseType = "<edmx:Edmx Version=\"1.0\" xmlns:edmx=\"" + Edm.NAMESPACE_EDMX_2007_06
       + "\">" + "<edmx:DataServices m:DataServiceVersion=\"2.0\" xmlns:m=\"" + Edm.NAMESPACE_M_2007_08 + "\">"
       + "<Schema Namespace=\"" + NAMESPACE + "\" xmlns=\"" + Edm.NAMESPACE_EDM_2008_09 + "\">"
@@ -128,6 +163,7 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
       + "<ComplexType Name=\"c_Location\">" + "<Property Name=\"Country\" Type=\"Edm.String\"/>" + "</ComplexType>"
       + "</Schema>" + "</edmx:DataServices>" + "</edmx:Edmx>";
 
+  /** The xml with association. */
   private final String xmlWithAssociation =
       "<edmx:Edmx Version=\"1.0\" xmlns:edmx=\""
           + Edm.NAMESPACE_EDMX_2007_06
@@ -163,6 +199,7 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
           + "<End EntitySet=\"Managers\" Role=\"r_Manager\"/>" + "<End EntitySet=\"Employees\" Role=\"r_Employees\"/>"
           + "</AssociationSet>" + "</EntityContainer>" + "</Schema>" + "</edmx:DataServices>" + "</edmx:Edmx>";
 
+  /** The xml with two schemas. */
   private final String xmlWithTwoSchemas = "<edmx:Edmx Version=\"1.0\" xmlns:edmx=\"" + Edm.NAMESPACE_EDMX_2007_06
       + "\">" + "<edmx:DataServices m:DataServiceVersion=\"2.0\" xmlns:m=\"" + Edm.NAMESPACE_M_2007_08 + "\">"
       + "<Schema Namespace=\"" + NAMESPACE + "\" xmlns=\"" + Edm.NAMESPACE_EDM_2008_09 + "\">"
@@ -180,6 +217,7 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
       + FC_KEEP_IN_CONTENT + "\" m:FC_ContentKind=\"text\" >" + "</Property>" + "</EntityType>" + "</Schema>"
       + "</edmx:DataServices>" + "</edmx:Edmx>";
 
+  /** The xml with string value for max length facet. */
   private final String xmlWithStringValueForMaxLengthFacet = "<edmx:Edmx Version=\"1.0\" xmlns:edmx=\""
       + Edm.NAMESPACE_EDMX_2007_06
       + "\">" + "<edmx:DataServices m:DataServiceVersion=\"2.0\" xmlns:m=\"" + Edm.NAMESPACE_M_2007_08 + "\">"
@@ -187,6 +225,8 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
       + "<EntityType Name= \"Photo\"><Key><PropertyRef Name=\"Id\"/></Key><Property Name=\"Id\" Type=\"Edm.Int32\" " +
       "Nullable=\"false\" MaxLength=\"Max\"/><Property Name=\"Name\" Type=\"Edm.Int32\" MaxLength=\"max\"/>"
       + "</EntityType></Schema></edmx:DataServices></edmx:Edmx>";
+  
+  /** The edmx ref for 1680364709. */
   private final String edmxRefFor1680364709 = 
       "<edmx:Edmx xmlns:edmx=\"http://schemas.microsoft.com/ado/2007/06/edmx\" " +
       "xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:sap=\"" +
@@ -199,6 +239,11 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
       "</edmx:Reference>" + 
       "</edmx:Edmx>";
   
+  /**
+   * Two edmx with validation.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void twoEdmxWithValidation() throws Exception {
     InputStream reader = createStreamReader(edmxRefFor1680364709); 
@@ -207,6 +252,11 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
 
   }
   
+  /**
+   * Two edmx without validation.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void twoEdmxWithoutValidation() throws Exception {
     InputStream reader = createStreamReader(edmxRefFor1680364709); 
@@ -214,6 +264,12 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
     assertNotNull(result);
 
   }
+  
+  /**
+   * Test metadata dokument with whitepaces.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testMetadataDokumentWithWhitepaces() throws Exception {
     final String metadata = ""
@@ -251,6 +307,11 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
     assertEquals("value2", childElements.get(1).getText());
   }
 
+  /**
+   * Test metadata dokument with whitepaces multiline.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testMetadataDokumentWithWhitepacesMultiline() throws Exception {
     final String metadata = ""
@@ -292,6 +353,11 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
     assertEquals("value2", childElements.get(1).getText());
   }
 
+  /**
+   * Test metadata dokument with whitepaces 2.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testMetadataDokumentWithWhitepaces2() throws Exception {
     final String metadata = ""
@@ -329,6 +395,11 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
     assertEquals(" value1", childElements.get(0).getText());
   }
 
+  /**
+   * ODATAJAV A 77 test metadata dokument with multi level entity type.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void ODATAJAVA_77_testMetadataDokumentWithMultiLevelEntityType() throws Exception {
     final String metadata = ""
@@ -358,6 +429,11 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
 
   }
 
+  /**
+   * Test multiplebase type.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testMultiplebaseType() throws Exception {
     final String metadata = ""
@@ -417,6 +493,11 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
 
   }
   
+  /**
+   * Test using.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testUsing() throws Exception {
     final String metadata = ""
@@ -440,6 +521,11 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
 
   }
   
+  /**
+   * Test multiplebase type order change.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testMultiplebaseTypeOrderChange() throws Exception {
     final String metadata = ""
@@ -503,6 +589,11 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
 
   }
   
+  /**
+   * ODATAJAV A 77 test base type key.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void ODATAJAVA_77_testBaseTypeKey() throws Exception {
     final String metadata = ""
@@ -537,6 +628,11 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
 
   }
 
+  /**
+   * ODATAJAV A 77 test entity type key.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void ODATAJAVA_77_testEntityTypeKey() throws Exception {
     final String metadata = ""
@@ -571,6 +667,11 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
 
   }
 
+  /**
+   * ODATAJAV A 77 exception scenario.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void ODATAJAVA_77_ExceptionScenario() throws Exception {
     final String metadata = ""
@@ -592,6 +693,11 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
     parser.readMetadata(reader, true);
   }
 
+  /**
+   * String value for max legth facet.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void stringValueForMaxLegthFacet() throws Exception {
     XmlMetadataDeserializer parser = new XmlMetadataDeserializer();
@@ -611,6 +717,14 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
   }
 
 
+  /**
+   * Test.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   @Test
   public void test() throws XMLStreamException, 
   EntityProviderException, EdmException, UnsupportedEncodingException {
@@ -646,6 +760,14 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
     }
   }
 
+  /**
+   * Test custom.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   @Test
   public void testCustom() throws XMLStreamException, 
   EntityProviderException, EdmException, UnsupportedEncodingException {
@@ -658,6 +780,15 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
     assertEquals("SyndicationTitle", schema.getEntityTypes().get(0).getCustomizableFeedMappings().getFcTargetPath());
 
   }
+  
+  /**
+   * Test other edm namespace.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   @Test
   public void testOtherEdmNamespace() throws XMLStreamException, 
   EntityProviderException, EdmException, UnsupportedEncodingException {
@@ -693,6 +824,14 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
     }
   }
 
+  /**
+   * Test base type.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   @Test
   public void testBaseType() throws XMLStreamException, 
   EntityProviderException, EdmException, UnsupportedEncodingException {
@@ -716,6 +855,14 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
     }
   }
 
+  /**
+   * Test complex type with base type.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   @Test
   public void testComplexTypeWithBaseType() throws XMLStreamException, 
   EntityProviderException, EdmException, UnsupportedEncodingException {
@@ -756,6 +903,14 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
     }
   }
 
+  /**
+   * Test complex type with invalid base type.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   @Test(expected = EntityProviderException.class)
   public void testComplexTypeWithInvalidBaseType() throws XMLStreamException, 
   EntityProviderException, EdmException, UnsupportedEncodingException {
@@ -775,6 +930,14 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
     parser.readMetadata(reader, true);
   }
 
+  /**
+   * Test complex type with invalid base type 2.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   @Test(expected = EntityProviderException.class)
   public void testComplexTypeWithInvalidBaseType2() throws XMLStreamException, 
   EntityProviderException, EdmException, UnsupportedEncodingException {
@@ -794,6 +957,14 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
     parser.readMetadata(reader, true);
   }
 
+  /**
+   * Test missing edmx close tag.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   @Test(expected = EntityProviderException.class)
   public void testMissingEdmxCloseTag() throws XMLStreamException, 
   EntityProviderException, EdmException, UnsupportedEncodingException {
@@ -812,6 +983,14 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
     parser.readMetadata(reader, true);
   }
 
+  /**
+   * Test association.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   @Test
   public void testAssociation() throws XMLStreamException, 
   EntityProviderException, EdmException, UnsupportedEncodingException {
@@ -863,6 +1042,14 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
     }
   }
 
+  /**
+   * Test two schemas.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   @Test
   public void testTwoSchemas() throws XMLStreamException, EntityProviderException,
   EdmException, UnsupportedEncodingException {
@@ -881,6 +1068,14 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
     }
   }
 
+  /**
+   * Test properties.
+   *
+   * @throws EntityProviderException the entity provider exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws EdmException the edm exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   @Test
   public void testProperties() throws EntityProviderException, 
   XMLStreamException, EdmException, UnsupportedEncodingException {
@@ -934,6 +1129,14 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
     }
   }
 
+  /**
+   * Test entity set.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   @Test
   public void testEntitySet() throws XMLStreamException, 
   EntityProviderException, EdmException, UnsupportedEncodingException {
@@ -964,6 +1167,14 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
     }
   }
   
+  /**
+   * Test entity container.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   @Test
   public void testEntityContainer() throws XMLStreamException, 
   EntityProviderException, EdmException, UnsupportedEncodingException {
@@ -990,6 +1201,14 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
     }
   }
   
+  /**
+   * Test association set.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   @Test
   public void testAssociationSet() throws XMLStreamException, 
   EntityProviderException, EdmException, UnsupportedEncodingException {
@@ -1021,6 +1240,14 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
 
  
 
+  /**
+   * Test alias.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   @Test()
   public void testAlias() throws XMLStreamException, 
   EntityProviderException, EdmException, UnsupportedEncodingException {
@@ -1048,6 +1275,14 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
     }
   }
 
+  /**
+   * Test entity type without keys.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   @Test(expected = EntityProviderException.class)
   public void testEntityTypeWithoutKeys() throws XMLStreamException, 
   EntityProviderException, EdmException, UnsupportedEncodingException {
@@ -1060,6 +1295,14 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
     parser.readMetadata(reader, true);
   }
 
+  /**
+   * Test invalid base type.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   @Test(expected = EntityProviderException.class)
   public void testInvalidBaseType() throws XMLStreamException, 
   EntityProviderException, EdmException, UnsupportedEncodingException {
@@ -1072,6 +1315,14 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
     parser.readMetadata(reader, true);
   }
 
+  /**
+   * Test invalid role.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   @Test(expected = EntityProviderException.class)
   public void testInvalidRole() throws XMLStreamException, 
   EntityProviderException, EdmException, UnsupportedEncodingException {
@@ -1106,6 +1357,14 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
     parser.readMetadata(reader, true);
   }
  
+  /**
+   * Test invalid relationship.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   @Test(expected = EntityProviderException.class)
   public void testInvalidRelationship() throws XMLStreamException, 
   EntityProviderException, EdmException, UnsupportedEncodingException {
@@ -1138,6 +1397,12 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
     InputStream reader = createStreamReader(xmlWithInvalidAssociation);
     parser.readMetadata(reader, true);
   }
+  
+  /**
+   * Test missing relationship.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void testMissingRelationship() throws Exception {
     final String xmlWithInvalidAssociation =
@@ -1166,6 +1431,11 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
   }
 
   
+  /**
+   * Test missing entity type.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void testMissingEntityType() throws Exception {
     final String xmlWithInvalidAssociation =
@@ -1206,6 +1476,11 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
     }
   }
 
+  /**
+   * Test missing type.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void testMissingType() throws Exception {
     final String xmlWithInvalidAssociation =
@@ -1244,6 +1519,12 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
       throw e;
     }
   }
+  
+  /**
+   * Test missing type at association.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void testMissingTypeAtAssociation() throws Exception {
     final String xmlWithInvalidAssociation =
@@ -1283,6 +1564,11 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
     }
   }
 
+  /**
+   * Test missing type at function import.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void testMissingTypeAtFunctionImport() throws Exception {
     final String xml =
@@ -1325,6 +1611,11 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
     }
   }
 
+  /**
+   * Test missing association.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void testMissingAssociation() throws Exception {
     final String xmlWithAssociation =
@@ -1365,6 +1656,14 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
     }
   }
 
+  /**
+   * Test invalid association.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   @Test(expected = EdmException.class)
   public void testInvalidAssociation() throws XMLStreamException, 
   EntityProviderException, EdmException, UnsupportedEncodingException {
@@ -1408,6 +1707,14 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
 
   }
 
+  /**
+   * Test invalid association end.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   @Test(expected = EdmException.class)
   public void testInvalidAssociationEnd() throws XMLStreamException, 
   EntityProviderException, EdmException, UnsupportedEncodingException {
@@ -1440,6 +1747,14 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
 
   }
 
+  /**
+   * Test invalid association end 2.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   @Test(expected = EdmException.class)
   public void testInvalidAssociationEnd2() throws XMLStreamException, 
   EntityProviderException, EdmException, UnsupportedEncodingException {
@@ -1472,6 +1787,14 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
 
   }
 
+  /**
+   * Test invalid entity set.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   @Test(expected = EntityProviderException.class)
   public void testInvalidEntitySet() throws XMLStreamException, 
   EntityProviderException, EdmException, UnsupportedEncodingException {
@@ -1491,6 +1814,14 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
 
   }
 
+  /**
+   * Test entity type in other schema.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   @Test
   public void testEntityTypeInOtherSchema() throws XMLStreamException, 
   EntityProviderException, EdmException, UnsupportedEncodingException {
@@ -1522,6 +1853,14 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
     }
   }
 
+  /**
+   * Test multiple schemas.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   @Test
   public void testMultipleSchemas() throws XMLStreamException, 
   EntityProviderException, EdmException, UnsupportedEncodingException {
@@ -1592,6 +1931,14 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
     }
   }
 
+  /**
+   * Test entity type.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   @Test
   public void testEntityType() throws XMLStreamException, 
   EntityProviderException, EdmException, UnsupportedEncodingException {
@@ -1645,6 +1992,14 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
     
   }
 
+  /**
+   * Test metadata related entity set.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Test
   public void testMetadataRelatedEntitySet() throws XMLStreamException, 
   EntityProviderException, EdmException, IOException {
@@ -1688,6 +2043,14 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
     }
   }
   
+  /**
+   * Test metadata with navigatons.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Test
   public void testMetadataWithNavigatons() throws XMLStreamException, 
   EntityProviderException, EdmException, IOException {
@@ -1713,6 +2076,13 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
     }
   }
   
+  /**
+   * Read file.
+   *
+   * @param filename the filename
+   * @return the string
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   protected String readFile(final String filename) throws IOException {
     InputStream in = getFileAsStream(filename);
 
@@ -1727,6 +2097,14 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
     return b.toString();
   }
     
+  /**
+   * Scenario test.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   @Test
   public void scenarioTest() throws XMLStreamException, 
   EntityProviderException, EdmException, UnsupportedEncodingException {
@@ -1824,6 +2202,11 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
     }
   }
 
+  /**
+   * Test ref scenario.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testRefScenario() throws Exception {
     EdmProvider testProvider = new EdmTestProvider();
@@ -1836,6 +2219,14 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
     assertNotNull(result);
   }
 
+  /**
+   * Test annotations.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   @Test
   public void testAnnotations() throws XMLStreamException,
   EntityProviderException, EdmException, UnsupportedEncodingException {
@@ -1922,6 +2313,14 @@ public class XmlMetadataDeserializerTest extends AbstractXmlDeserializerTest {
   }
 
   
+  /**
+   * Creates the stream reader.
+   *
+   * @param xml the xml
+   * @return the input stream
+   * @throws XMLStreamException the XML stream exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   private InputStream createStreamReader(final String xml) throws
   XMLStreamException, UnsupportedEncodingException {
     return new ByteArrayInputStream(xml.getBytes("UTF-8"));

@@ -21,6 +21,7 @@ package org.apache.olingo.odata2.jpa.processor.api.access;
 import org.apache.olingo.odata2.jpa.processor.api.exception.ODataJPAModelException;
 import org.apache.olingo.odata2.jpa.processor.api.exception.ODataJPARuntimeException;
 
+// TODO: Auto-generated Javadoc
 /**
  * JPAEdmBuilder interface provides methods for building elements of an Entity Data Model (EDM) from
  * a Java Persistence Model.
@@ -29,6 +30,7 @@ import org.apache.olingo.odata2.jpa.processor.api.exception.ODataJPARuntimeExcep
  * 
  */
 public interface JPAEdmBuilder {
+  
   /**
    * The Method builds EDM Elements by transforming JPA MetaModel. The method
    * processes EDM JPA Containers which could be accessed using the following
@@ -50,8 +52,9 @@ public interface JPAEdmBuilder {
    * <li> {@link org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmReferentialConstraintView} </li>
    * <li> {@link org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmSchemaView}</li>
    * </ul>
-   * 
-   * @throws ODataJPARuntimeException
-   **/
+   *
+   * @throws ODataJPAModelException the o data JPA model exception
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   public void build() throws ODataJPAModelException, ODataJPARuntimeException;
 }

@@ -43,12 +43,29 @@ import org.apache.olingo.odata2.client.api.edm.EdmDataServices;
 import org.apache.olingo.odata2.client.api.edm.EdmSchema;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class XMLMetadataFunctionImportDeserializerTest.
+ */
 public class XMLMetadataFunctionImportDeserializerTest {
+  
+  /** The Constant NAMESPACE. */
   private static final String NAMESPACE = "RefScenario";
+  
+  /** The Constant NAMESPACE2. */
   private static final String NAMESPACE2 = "RefScenario2";
   
+  /** The property names. */
   private final String[] propertyNames = { "EmployeeId", "EmployeeName", "Location" };
   
+  /**
+   * Test function import.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   @Test
   public void testFunctionImport() throws XMLStreamException, 
   EntityProviderException, EdmException, UnsupportedEncodingException {
@@ -153,11 +170,27 @@ public class XMLMetadataFunctionImportDeserializerTest {
     }
   }
   
+  /**
+   * Creates the stream reader.
+   *
+   * @param xml the xml
+   * @return the input stream
+   * @throws XMLStreamException the XML stream exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   private InputStream createStreamReader(final String xml) throws 
   XMLStreamException, UnsupportedEncodingException {
     return new ByteArrayInputStream(xml.getBytes("UTF-8"));
   }
   
+  /**
+   * Test function import in 2 containers.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   @Test
   public void testFunctionImportIn2Containers() throws XMLStreamException, 
   EntityProviderException, EdmException, UnsupportedEncodingException {
@@ -233,8 +266,10 @@ public class XMLMetadataFunctionImportDeserializerTest {
   }
 
   /**
-   * @param functionImport
-   * @throws EdmException
+   * Check parameters 1.
+   *
+   * @param functionImport the function import
+   * @throws EdmException the edm exception
    */
   private void checkParameters1(EdmFunctionImport functionImport) throws EdmException {
     assertEquals("Employees", functionImport.getEntitySet().getName());
@@ -256,6 +291,14 @@ public class XMLMetadataFunctionImportDeserializerTest {
     assertEquals(Boolean.FALSE, edmParam.getFacets().isNullable());
   }
   
+  /**
+   * Test function import in 2 schemas.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   @Test
   public void testFunctionImportIn2Schemas() throws XMLStreamException,
   EntityProviderException, EdmException, UnsupportedEncodingException {
@@ -359,6 +402,11 @@ public class XMLMetadataFunctionImportDeserializerTest {
     }
   }
 
+/**
+ * Test function import entity.
+ *
+ * @throws Exception the exception
+ */
 //Function Import with return type as entity type and entityset attribute set
   @Test
   public void testFunctionImportEntity() throws Exception {
@@ -410,6 +458,11 @@ public class XMLMetadataFunctionImportDeserializerTest {
     }
   }
   
+/**
+ * Test function import entity order change.
+ *
+ * @throws Exception the exception
+ */
 //Function Import with return type as entity type and entityset attribute set
   @Test
   public void testFunctionImportEntityOrderChange() throws Exception {
@@ -462,6 +515,11 @@ public class XMLMetadataFunctionImportDeserializerTest {
   }
   
   
+/**
+ * Test function import entity without entity set.
+ *
+ * @throws Exception the exception
+ */
 //Function Import with return type as entity type and entityset attribute not set
   @Test
   public void testFunctionImportEntityWithoutEntitySet() throws Exception {
@@ -509,6 +567,11 @@ public class XMLMetadataFunctionImportDeserializerTest {
     }
   }
   
+  /**
+   * Test function import collection.
+   *
+   * @throws Exception the exception
+   */
   //Function Import with return type collection of complex type and entityset attribute not set
   @Test
   public void testFunctionImportCollection() throws Exception {
@@ -558,6 +621,12 @@ public class XMLMetadataFunctionImportDeserializerTest {
       }
     }
   }
+  
+  /**
+   * Test function import coll error.
+   *
+   * @throws Exception the exception
+   */
   //Function import returning collection of entitysets must have entityset attribute defined
   @Test(expected = EntityProviderException.class)
   public void testFunctionImportCollError() throws Exception {
@@ -595,6 +664,11 @@ public class XMLMetadataFunctionImportDeserializerTest {
     parser.readMetadata(reader, true);
   }
   
+  /**
+   * Test function import error.
+   *
+   * @throws Exception the exception
+   */
   //Function import returning complextype or edmsimpletype must not have entityset attribute
   @Test(expected = EntityProviderException.class)
   public void testFunctionImportError() throws Exception {
@@ -631,6 +705,12 @@ public class XMLMetadataFunctionImportDeserializerTest {
     InputStream reader = createStreamReader(xmWithEntityContainer);
     parser.readMetadata(reader, true);
   }
+
+/**
+ * Test function import property.
+ *
+ * @throws Exception the exception
+ */
 //Function import returning complextype or edmsimpletype must not have entityset attribute positive flow
   @Test
   public void testFunctionImportProperty() throws Exception {
@@ -673,9 +753,11 @@ public class XMLMetadataFunctionImportDeserializerTest {
   }
   
   /**
-   * @param i
-   * @param functionImport
-   * @throws EdmException
+   * Check parameters.
+   *
+   * @param i the i
+   * @param functionImport the function import
+   * @throws EdmException the edm exception
    */
   private void checkParameters(int i, EdmFunctionImport functionImport) throws EdmException {
     assertEquals("Employees", functionImport.getEntitySet().getName());
@@ -697,6 +779,11 @@ public class XMLMetadataFunctionImportDeserializerTest {
     assertEquals(Boolean.FALSE, edmParam.getFacets().isNullable());
   }
   
+  /**
+   * Test missing type at function import.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void testMissingTypeAtFunctionImport() throws Exception {
     final String xml =
@@ -739,6 +826,14 @@ public class XMLMetadataFunctionImportDeserializerTest {
     }
   }
   
+  /**
+   * Test function import with annotations.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   @Test
   public void testFunctionImportWithAnnotations() throws XMLStreamException, 
   EntityProviderException, EdmException, UnsupportedEncodingException {
@@ -793,8 +888,10 @@ public class XMLMetadataFunctionImportDeserializerTest {
   }
   
   /**
-   * @param functionImport
-   * @throws EdmException
+   * Check parameters with annotations.
+   *
+   * @param functionImport the function import
+   * @throws EdmException the edm exception
    */
   private void checkParametersWithAnnotations(EdmFunctionImport functionImport) throws EdmException {
     assertEquals("Employees", functionImport.getEntitySet().getName());
@@ -852,6 +949,14 @@ public class XMLMetadataFunctionImportDeserializerTest {
     assertEquals(Boolean.FALSE, edmParam.getFacets().isNullable());
   }
   
+  /**
+   * Test same function import in 2 containers.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   @Test
   public void testSameFunctionImportIn2Containers() throws XMLStreamException, 
   EntityProviderException, EdmException, UnsupportedEncodingException {

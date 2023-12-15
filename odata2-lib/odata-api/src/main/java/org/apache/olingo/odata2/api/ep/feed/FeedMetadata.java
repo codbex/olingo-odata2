@@ -18,6 +18,7 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.ep.feed;
 
+// TODO: Auto-generated Javadoc
 /**
  * {@link FeedMetadata} objects contain metadata information about one feed.
  * 
@@ -26,16 +27,22 @@ package org.apache.olingo.odata2.api.ep.feed;
 public interface FeedMetadata {
 
   /**
+   * Gets the inline count.
+   *
    * @return inlineCount may be null if no inlineCount is set.
    */
   public Integer getInlineCount();
 
   /**
+   * Gets the next link.
+   *
    * @return nextLink may be null if no next link is set
    */
   public String getNextLink();
 
   /**
+   * Gets the delta link.
+   *
    * @return deltaLink may be null if no delta link is set
    */
   public String getDeltaLink();

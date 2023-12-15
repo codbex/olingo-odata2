@@ -22,6 +22,7 @@ import org.apache.olingo.odata2.api.edm.EdmMapping;
 import org.apache.olingo.odata2.api.edm.EdmProperty;
 import org.apache.olingo.odata2.api.exception.ODataException;
 
+// TODO: Auto-generated Javadoc
 /**
  * This interface is intended to access values in a Java object.
  */
@@ -29,41 +30,58 @@ public interface ValueAccess {
 
   /**
    * Retrieves the value of an EDM property for the given data object.
+   *
+   * @param <T> the generic type
    * @param data the Java data object
    * @param property the requested {@link EdmProperty}
    * @return the requested property value
+   * @throws ODataException the o data exception
    */
   public <T> Object getPropertyValue(final T data, final EdmProperty property) throws ODataException;
 
   /**
    * Sets the value of an EDM property for the given data object.
+   *
+   * @param <T> the generic type
+   * @param <V> the value type
    * @param data the Java data object
    * @param property the {@link EdmProperty}
    * @param value the new value of the property
+   * @throws ODataException the o data exception
    */
   public <T, V> void setPropertyValue(T data, final EdmProperty property, final V value) throws ODataException;
 
   /**
    * Retrieves the Java type of an EDM property for the given data object.
+   *
+   * @param <T> the generic type
    * @param data the Java data object
    * @param property the requested {@link EdmProperty}
    * @return the requested Java type
+   * @throws ODataException the o data exception
    */
   public <T> Class<?> getPropertyType(final T data, final EdmProperty property) throws ODataException;
 
   /**
    * Retrieves the value defined by a mapping object for the given data object.
+   *
+   * @param <T> the generic type
    * @param data the Java data object
    * @param mapping the requested {@link EdmMapping}
    * @return the requested value
+   * @throws ODataException the o data exception
    */
   public <T> Object getMappingValue(final T data, final EdmMapping mapping) throws ODataException;
 
   /**
    * Sets the value defined by a mapping object for the given data object.
+   *
+   * @param <T> the generic type
+   * @param <V> the value type
    * @param data the Java data object
    * @param mapping the {@link EdmMapping}
    * @param value the new value
+   * @throws ODataException the o data exception
    */
   public <T, V> void setMappingValue(T data, final EdmMapping mapping, final V value) throws ODataException;
 }

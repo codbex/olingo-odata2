@@ -28,13 +28,15 @@ import org.apache.olingo.odata2.testutil.helper.ODataMessageTextVerifier;
 import org.apache.olingo.odata2.testutil.mock.SampleClassForInvalidMessageReferences;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- * This class tests the {@link ODataMessageTextVerifier}
- * 
- * 
+ * This class tests the {@link ODataMessageTextVerifier}.
  */
 public class ODataMessageTextVerifierTest extends BaseTest {
 
+  /**
+   * Test exception text.
+   */
   @Test
   public void TestExceptionText() {
     ODataMessageTextVerifier tool = new ODataMessageTextVerifier();

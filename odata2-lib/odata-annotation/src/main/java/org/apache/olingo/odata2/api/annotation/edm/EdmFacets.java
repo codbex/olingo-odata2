@@ -23,6 +23,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+// TODO: Auto-generated Javadoc
 /**
  * <p>Annotation for definition of EdmFacets on an EdmProperty (for an EdmEntityType or EdmComplexType
  * which contains the EdmProperty as a field).</p>

@@ -21,36 +21,71 @@ package org.apache.olingo.odata2.api.uri;
 import org.apache.olingo.odata2.api.exception.MessageReference;
 import org.apache.olingo.odata2.api.exception.ODataNotFoundException;
 
+// TODO: Auto-generated Javadoc
 /**
  * URI-parsing exception resulting in a 404 Not Found response.
  * 
  */
 public class UriNotMatchingException extends ODataNotFoundException {
 
+  /** The Constant serialVersionUID. */
   private static final long serialVersionUID = 1L;
 
+  /** The Constant MATCHPROBLEM. */
   public static final MessageReference MATCHPROBLEM = createMessageReference(UriNotMatchingException.class,
       "MATCHPROBLEM");
+  
+  /** The Constant NOTFOUND. */
   public static final MessageReference NOTFOUND = createMessageReference(UriNotMatchingException.class, "NOTFOUND");
+  
+  /** The Constant CONTAINERNOTFOUND. */
   public static final MessageReference CONTAINERNOTFOUND = createMessageReference(UriNotMatchingException.class,
       "CONTAINERNOTFOUND");
+  
+  /** The Constant ENTITYNOTFOUND. */
   public static final MessageReference ENTITYNOTFOUND = createMessageReference(UriNotMatchingException.class,
       "ENTITYNOTFOUND");
+  
+  /** The Constant PROPERTYNOTFOUND. */
   public static final MessageReference PROPERTYNOTFOUND = createMessageReference(UriNotMatchingException.class,
       "PROPERTYNOTFOUND");
 
+  /**
+   * Instantiates a new uri not matching exception.
+   *
+   * @param messageReference the message reference
+   */
   public UriNotMatchingException(final MessageReference messageReference) {
     super(messageReference);
   }
 
+  /**
+   * Instantiates a new uri not matching exception.
+   *
+   * @param messageReference the message reference
+   * @param cause the cause
+   */
   public UriNotMatchingException(final MessageReference messageReference, final Throwable cause) {
     super(messageReference, cause);
   }
 
+  /**
+   * Instantiates a new uri not matching exception.
+   *
+   * @param messageReference the message reference
+   * @param errorCode the error code
+   */
   public UriNotMatchingException(final MessageReference messageReference, final String errorCode) {
     super(messageReference, errorCode);
   }
 
+  /**
+   * Instantiates a new uri not matching exception.
+   *
+   * @param messageReference the message reference
+   * @param cause the cause
+   * @param errorCode the error code
+   */
   public UriNotMatchingException(final MessageReference messageReference, final Throwable cause,
       final String errorCode) {
     super(messageReference, cause, errorCode);

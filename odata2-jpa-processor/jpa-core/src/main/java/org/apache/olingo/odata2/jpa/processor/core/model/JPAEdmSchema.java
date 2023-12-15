@@ -42,33 +42,71 @@ import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmModelView;
 import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmSchemaView;
 import org.apache.olingo.odata2.jpa.processor.core.access.model.JPAEdmNameBuilder;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAEdmSchema.
+ */
 public class JPAEdmSchema extends JPAEdmBaseViewImpl implements JPAEdmSchemaView {
 
+  /** The schema. */
   private Schema schema;
+  
+  /** The complex type view. */
   private JPAEdmComplexTypeView complexTypeView;
+  
+  /** The entity container view. */
   private JPAEdmEntityContainerView entityContainerView;
+  
+  /** The association view. */
   private JPAEdmAssociationView associationView = null;
+  
+  /** The custom operations. */
   private LinkedHashMap<Class<?>, String[]> customOperations = null;
 
+  /**
+   * Instantiates a new JPA edm schema.
+   *
+   * @param modelView the model view
+   */
   public JPAEdmSchema(final JPAEdmModelView modelView) {
     super(modelView);
   }
 
+  /**
+   * Gets the edm schema.
+   *
+   * @return the edm schema
+   */
   @Override
   public Schema getEdmSchema() {
     return schema;
   }
 
+  /**
+   * Gets the JPA edm entity container view.
+   *
+   * @return the JPA edm entity container view
+   */
   @Override
   public JPAEdmEntityContainerView getJPAEdmEntityContainerView() {
     return entityContainerView;
   }
 
+  /**
+   * Gets the JPA edm complex type view.
+   *
+   * @return the JPA edm complex type view
+   */
   @Override
   public JPAEdmComplexTypeView getJPAEdmComplexTypeView() {
     return complexTypeView;
   }
 
+  /**
+   * Gets the builder.
+   *
+   * @return the builder
+   */
   @Override
   public JPAEdmBuilder getBuilder() {
     if (builder == null) {
@@ -78,13 +116,26 @@ public class JPAEdmSchema extends JPAEdmBaseViewImpl implements JPAEdmSchemaView
     return builder;
   }
 
+  /**
+   * Clean.
+   */
   @Override
   public void clean() {
     super.clean();
     schema = null;
   }
 
+  /**
+   * The Class JPAEdmSchemaBuilder.
+   */
   private class JPAEdmSchemaBuilder implements JPAEdmBuilder {
+    
+    /**
+     * Builds the.
+     *
+     * @throws ODataJPAModelException the o data JPA model exception
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
+     */
     /*
      * 
      * Each call to build method creates a new EDM Schema. The newly created
@@ -193,11 +244,22 @@ public class JPAEdmSchema extends JPAEdmBaseViewImpl implements JPAEdmSchemaView
 
   }
 
+  /**
+   * Gets the JPA edm association view.
+   *
+   * @return the JPA edm association view
+   */
   @Override
   public final JPAEdmAssociationView getJPAEdmAssociationView() {
     return associationView;
   }
 
+  /**
+   * Register operations.
+   *
+   * @param customClass the custom class
+   * @param methodNames the method names
+   */
   @Override
   public void registerOperations(final Class<?> customClass, final String[] methodNames) {
     if (customOperations == null) {
@@ -208,6 +270,11 @@ public class JPAEdmSchema extends JPAEdmBaseViewImpl implements JPAEdmSchemaView
 
   }
 
+  /**
+   * Gets the registered operations.
+   *
+   * @return the registered operations
+   */
   @Override
   public HashMap<Class<?>, String[]> getRegisteredOperations() {
     return customOperations;

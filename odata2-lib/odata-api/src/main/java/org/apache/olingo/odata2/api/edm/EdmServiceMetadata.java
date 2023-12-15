@@ -23,30 +23,36 @@ import java.util.List;
 
 import org.apache.olingo.odata2.api.exception.ODataException;
 
+// TODO: Auto-generated Javadoc
 /**
- * @org.apache.olingo.odata2.DoNotImplement
- * This interface gives access to the metadata of a service, the calculated Data Service Version and an info list of all
+ * The Interface EdmServiceMetadata.
+ *
+ * @org.apache.olingo.odata2.DoNotImplement This interface gives access to the metadata of a service, the calculated Data Service Version and an info list of all
  * entity sets inside this EntityDataModel.
- * 
- * 
  */
 public interface EdmServiceMetadata {
 
   /**
+   * Gets the metadata.
+   *
    * @return {@link InputStream} containing the metadata document
-   * @throws ODataException
+   * @throws ODataException the o data exception
    */
   InputStream getMetadata() throws ODataException;
 
   /**
+   * Gets the data service version.
+   *
    * @return <b>String</b> data service version of this service
-   * @throws ODataException
+   * @throws ODataException the o data exception
    */
   String getDataServiceVersion() throws ODataException;
 
   /**
+   * Gets the entity set infos.
+   *
    * @return a list of {@link EdmEntitySetInfo} objects of all entity sets in this data model
-   * @throws ODataException
+   * @throws ODataException the o data exception
    */
   List<EdmEntitySetInfo> getEntitySetInfos() throws ODataException;;
 }

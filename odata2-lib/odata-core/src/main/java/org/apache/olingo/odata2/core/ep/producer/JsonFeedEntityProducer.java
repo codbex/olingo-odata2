@@ -33,18 +33,35 @@ import org.apache.olingo.odata2.core.ep.aggregator.EntityInfoAggregator;
 import org.apache.olingo.odata2.core.ep.util.FormatJson;
 import org.apache.olingo.odata2.core.ep.util.JsonStreamWriter;
 
+// TODO: Auto-generated Javadoc
 /**
  * Producer for writing an entity collection (a feed) in JSON.
  * 
  */
 public class JsonFeedEntityProducer {
 
+  /** The properties. */
   private final EntityProviderWriteProperties properties;
 
+  /**
+   * Instantiates a new json feed entity producer.
+   *
+   * @param properties the properties
+   * @throws EntityProviderException the entity provider exception
+   */
   public JsonFeedEntityProducer(final EntityProviderWriteProperties properties) throws EntityProviderException {
     this.properties = properties == null ? EntityProviderWriteProperties.serviceRoot(null).build() : properties;
   }
 
+  /**
+   * Append as object.
+   *
+   * @param writer the writer
+   * @param entityInfo the entity info
+   * @param data the data
+   * @param isRootElement the is root element
+   * @throws EntityProviderException the entity provider exception
+   */
   public void appendAsObject(final Writer writer, final EntityInfoAggregator entityInfo,
                              final List<Map<String, Object>> data,
                              final boolean isRootElement) throws EntityProviderException {
@@ -90,6 +107,14 @@ public class JsonFeedEntityProducer {
     }
   }
 
+  /**
+   * Append as array.
+   *
+   * @param writer the writer
+   * @param entityInfo the entity info
+   * @param data the data
+   * @throws EntityProviderException the entity provider exception
+   */
   public void appendAsArray(final Writer writer, final EntityInfoAggregator entityInfo,
                             final List<Map<String, Object>> data) throws EntityProviderException {
     JsonStreamWriter jsonStreamWriter = new JsonStreamWriter(writer);
@@ -103,6 +128,15 @@ public class JsonFeedEntityProducer {
     }
   }
 
+  /**
+   * Append deleted entries.
+   *
+   * @param writer the writer
+   * @param entityInfo the entity info
+   * @param data the data
+   * @param callback the callback
+   * @throws EntityProviderException the entity provider exception
+   */
   private void appendDeletedEntries(final Writer writer, final EntityInfoAggregator entityInfo,
       final List<Map<String, Object>> data, TombstoneCallback callback) throws EntityProviderException {
     JsonDeletedEntryEntityProducer deletedEntryProducer = new JsonDeletedEntryEntityProducer(properties);
@@ -113,6 +147,16 @@ public class JsonFeedEntityProducer {
     }
   }
 
+  /**
+   * Append entries.
+   *
+   * @param writer the writer
+   * @param entityInfo the entity info
+   * @param data the data
+   * @param jsonStreamWriter the json stream writer
+   * @throws EntityProviderException the entity provider exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private void appendEntries(final Writer writer, final EntityInfoAggregator entityInfo,
       final List<Map<String, Object>> data, JsonStreamWriter jsonStreamWriter) throws EntityProviderException,
       IOException {
@@ -128,6 +172,11 @@ public class JsonFeedEntityProducer {
     }
   }
 
+  /**
+   * Gets the tombstone callback.
+   *
+   * @return the tombstone callback
+   */
   private TombstoneCallback getTombstoneCallback() {
     if (properties.getCallbacks() != null
         && properties.getCallbacks().containsKey(TombstoneCallback.CALLBACK_KEY_TOMBSTONE)) {
@@ -139,6 +188,12 @@ public class JsonFeedEntityProducer {
     }
   }
 
+  /**
+   * Append next link.
+   *
+   * @param jsonStreamWriter the json stream writer
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private void appendNextLink(final JsonStreamWriter jsonStreamWriter) throws IOException {
     // Write "next" link.
     // To be compatible with other implementations out there, the link is
@@ -150,6 +205,13 @@ public class JsonFeedEntityProducer {
     }
   }
 
+  /**
+   * Append delta link.
+   *
+   * @param callback the callback
+   * @param jsonStreamWriter the json stream writer
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private void appendDeltaLink(final TombstoneCallback callback, final JsonStreamWriter jsonStreamWriter)
       throws IOException {
     if (callback != null) {

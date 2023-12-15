@@ -22,6 +22,7 @@ import java.util.List;
 
 import org.apache.olingo.odata2.api.edm.provider.NavigationProperty;
 
+// TODO: Auto-generated Javadoc
 /**
  * A view on Java persistence entity relationship and EDM navigation property.
  * Java persistence entity relationships annotated as
@@ -37,11 +38,9 @@ import org.apache.olingo.odata2.api.edm.provider.NavigationProperty;
  * for a given JPA EDM entity type. The view acts as a container for consistent
  * list of EDM navigation properties of an EDM entity type. EDM navigation
  * property is consistent only if there exists a consistent EDM association.
- * 
- * 
- * @org.apache.olingo.odata2.DoNotImplement
+ *
  * @see org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmAssociationView
- * 
+ * @org.apache.olingo.odata2.DoNotImplement 
  */
 public interface JPAEdmNavigationPropertyView extends JPAEdmBaseView {
   /**

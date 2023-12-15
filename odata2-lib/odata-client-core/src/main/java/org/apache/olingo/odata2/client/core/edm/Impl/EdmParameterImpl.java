@@ -25,15 +25,25 @@ import org.apache.olingo.odata2.api.edm.EdmParameter;
 import org.apache.olingo.odata2.api.edm.EdmType;
 import org.apache.olingo.odata2.core.edm.EdmSimpleTypeFacadeImpl;
 
+// TODO: Auto-generated Javadoc
 /**
- *  Objects of this class represent EdmParameter
+ *  Objects of this class represent EdmParameter.
  */
 public class EdmParameterImpl extends EdmElementImpl implements EdmParameter, EdmAnnotatable {
 
+  /** The parameter. */
   private EdmFunctionImportParameter parameter;
+  
+  /** The annotations. */
   private EdmAnnotations annotations;
 
   
+  /**
+   * Gets the type.
+   *
+   * @return the type
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmType getType() throws EdmException {
     if (edmType == null) {
@@ -46,24 +56,39 @@ public class EdmParameterImpl extends EdmElementImpl implements EdmParameter, Ed
   }
 
   /**
+   * Sets the parameter.
+   *
    * @param parameter the parameter to set
    */
   public void setParameter(EdmFunctionImportParameter parameter) {
     this.parameter = parameter;
   }
 
+  /**
+   * Gets the annotations.
+   *
+   * @return the annotations
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmAnnotations getAnnotations() throws EdmException {
     return annotations;
   }
 
   /**
+   * Sets the annotations.
+   *
    * @param annotations the annotations to set
    */
   public void setAnnotations(EdmAnnotations annotations) {
     this.annotations = annotations;
   }
   
+  /**
+   * To string.
+   *
+   * @return the string
+   */
   @Override
   public String toString() {
       return String.format(name);

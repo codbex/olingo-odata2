@@ -37,22 +37,26 @@ import org.apache.olingo.odata2.core.ep.aggregator.EntityPropertyInfo;
 import org.apache.olingo.odata2.core.ep.aggregator.EntityTypeMapping;
 import org.apache.olingo.odata2.core.ep.util.FormatXml;
 
+// TODO: Auto-generated Javadoc
 /**
  * XML property consumer.
  */
 public class XmlPropertyDeserializer {
 
+    /** The Constant TRUE. */
     protected static final String TRUE = "true";
+    
+    /** The Constant FALSE. */
     protected static final String FALSE = "false";
 
     /**
-     * Read property of every entry in a payload
+     * Read property of every entry in a payload.
      *
-     * @param reader
-     * @param property
-     * @param readProperties
+     * @param reader the reader
+     * @param property the property
+     * @param readProperties the read properties
      * @return Map<String, Object>
-     * @throws EntityProviderException
+     * @throws EntityProviderException the entity provider exception
      */
     public Map<String, Object> readProperty(final XMLStreamReader reader, final EdmProperty property,
             final DeserializerProperties readProperties) throws EntityProviderException {
@@ -60,13 +64,13 @@ public class XmlPropertyDeserializer {
     }
 
     /**
-     * Read property of every entry in a payload
+     * Read property of every entry in a payload.
      *
-     * @param reader
-     * @param propertyInfo
-     * @param readProperties
+     * @param reader the reader
+     * @param propertyInfo the property info
+     * @param readProperties the read properties
      * @return Map<String, Object>
-     * @throws EntityProviderException
+     * @throws EntityProviderException the entity provider exception
      */
     public Map<String, Object> readProperty(final XMLStreamReader reader, final EntityPropertyInfo propertyInfo,
             final DeserializerProperties readProperties) throws EntityProviderException {
@@ -88,13 +92,13 @@ public class XmlPropertyDeserializer {
     }
 
     /**
-     * Deserializes a collection of entities
+     * Deserializes a collection of entities.
      *
-     * @param reader
-     * @param info
-     * @param properties
+     * @param reader the reader
+     * @param info the info
+     * @param properties the properties
      * @return List<Object>
-     * @throws EntityProviderException
+     * @throws EntityProviderException the entity provider exception
      */
     public List<Object> readCollection(XMLStreamReader reader, final EntityPropertyInfo info, final DeserializerProperties properties)
             throws EntityProviderException {
@@ -126,6 +130,18 @@ public class XmlPropertyDeserializer {
         }
     }
 
+    /**
+     * Read started element.
+     *
+     * @param reader the reader
+     * @param name the name
+     * @param propertyInfo the property info
+     * @param typeMappings the type mappings
+     * @param readProperties the read properties
+     * @return the object
+     * @throws EntityProviderException the entity provider exception
+     * @throws EdmException the edm exception
+     */
     protected Object readStartedElement(XMLStreamReader reader, final String name, // NOSONAR
             final EntityPropertyInfo propertyInfo, final EntityTypeMapping typeMappings, final DeserializerProperties readProperties)
             throws EntityProviderException, EdmException {
@@ -185,6 +201,16 @@ public class XmlPropertyDeserializer {
         }
     }
 
+    /**
+     * Convert.
+     *
+     * @param property the property
+     * @param value the value
+     * @param typeMapping the type mapping
+     * @param readProperties the read properties
+     * @return the object
+     * @throws EdmSimpleTypeException the edm simple type exception
+     */
     private Object convert(final EntityPropertyInfo property, final String value, Class<?> typeMapping,
             final DeserializerProperties readProperties) throws EdmSimpleTypeException {
         final EdmSimpleType type = (EdmSimpleType) property.getType();

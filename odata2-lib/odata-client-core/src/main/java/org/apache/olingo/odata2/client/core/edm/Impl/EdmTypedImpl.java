@@ -28,29 +28,58 @@ import org.apache.olingo.odata2.api.edm.EdmTyped;
 import org.apache.olingo.odata2.api.edm.FullQualifiedName;
 import org.apache.olingo.odata2.core.edm.EdmSimpleTypeFacadeImpl;
 
+// TODO: Auto-generated Javadoc
 /**
- *  Objects of this class represent type of the entity
+ *  Objects of this class represent type of the entity.
  */
 public class EdmTypedImpl extends EdmNamedImpl implements EdmTyped {
 
+  /** The edm type. */
   protected EdmType edmType;
+  
+  /** The type name. */
   protected FullQualifiedName typeName;
+  
+  /** The multiplicity. */
   protected EdmMultiplicity multiplicity;
 
+  /**
+   * Sets the edm type.
+   *
+   * @param edmType the new edm type
+   */
   public void setEdmType(EdmType edmType) {
     this.edmType = edmType;
   }
 
+  /**
+   * Sets the type name.
+   *
+   * @param typeName the type name
+   * @return the edm typed impl
+   */
   public EdmTypedImpl setTypeName(FullQualifiedName typeName) {
     this.typeName = typeName;
     return this;
   }
 
+  /**
+   * Sets the multiplicity.
+   *
+   * @param multiplicity the multiplicity
+   * @return the edm typed impl
+   */
   public EdmTypedImpl setMultiplicity(EdmMultiplicity multiplicity) {
     this.multiplicity = multiplicity;
     return this;
   }
 
+  /**
+   * Gets the type.
+   *
+   * @return the type
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmType getType() throws EdmException {
     if (edmType == null) {
@@ -72,11 +101,22 @@ public class EdmTypedImpl extends EdmNamedImpl implements EdmTyped {
     return edmType;
   }
 
+  /**
+   * Gets the multiplicity.
+   *
+   * @return the multiplicity
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmMultiplicity getMultiplicity() throws EdmException {
     return multiplicity;
   }
   
+  /**
+   * To string.
+   *
+   * @return the string
+   */
   @Override
   public String toString() {
     return typeName.getNamespace() + Edm.DELIMITER + typeName.getName();

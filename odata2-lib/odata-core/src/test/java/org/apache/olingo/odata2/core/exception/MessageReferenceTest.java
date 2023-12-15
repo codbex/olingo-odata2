@@ -26,11 +26,15 @@ import org.apache.olingo.odata2.api.uri.UriNotMatchingException;
 import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class MessageReferenceTest.
  */
 public class MessageReferenceTest extends BaseTest {
 
+  /**
+   * Test add content.
+   */
   @Test
   public void testAddContent() {
     String content = "content";
@@ -39,6 +43,9 @@ public class MessageReferenceTest extends BaseTest {
     assertEquals(1, e.getMessageReference().getContent().size());
   }
 
+  /**
+   * Test add content more than once.
+   */
   @Test
   public void testAddContentMoreThanOnce() {
     String content = "content";
@@ -50,6 +57,9 @@ public class MessageReferenceTest extends BaseTest {
     assertEquals(1, e2.getMessageReference().getContent().size());
   }
 
+  /**
+   * Test add more content.
+   */
   @Test
   public void testAddMoreContent() {
     String content = "content";

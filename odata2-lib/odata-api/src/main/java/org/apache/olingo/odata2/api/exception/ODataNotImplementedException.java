@@ -20,26 +20,45 @@ package org.apache.olingo.odata2.api.exception;
 
 import org.apache.olingo.odata2.api.commons.HttpStatusCodes;
 
+// TODO: Auto-generated Javadoc
 /**
  * Exceptions of this class will result in a HTTP status 501 (Not implemented).
  * 
  */
 public class ODataNotImplementedException extends ODataHttpException {
 
+  /** The Constant serialVersionUID. */
   private static final long serialVersionUID = 1L;
 
+  /** The Constant COMMON. */
   public static final MessageReference COMMON = createMessageReference(ODataNotImplementedException.class, "COMMON");
+  
+  /** The Constant TUNNELING. */
   public static final MessageReference TUNNELING = createMessageReference(ODataNotImplementedException.class,
       "TUNNELING");
 
+  /**
+   * Instantiates a new o data not implemented exception.
+   *
+   * @param context the context
+   */
   public ODataNotImplementedException(final MessageReference context) {
     super(context, HttpStatusCodes.NOT_IMPLEMENTED);
   }
 
+  /**
+   * Instantiates a new o data not implemented exception.
+   *
+   * @param context the context
+   * @param errorCode the error code
+   */
   public ODataNotImplementedException(final MessageReference context, final String errorCode) {
     super(context, HttpStatusCodes.NOT_IMPLEMENTED, errorCode);
   }
 
+  /**
+   * Instantiates a new o data not implemented exception.
+   */
   public ODataNotImplementedException() {
     this(COMMON);
   }

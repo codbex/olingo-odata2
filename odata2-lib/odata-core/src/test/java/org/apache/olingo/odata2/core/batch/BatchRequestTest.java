@@ -44,31 +44,58 @@ import org.apache.olingo.odata2.core.batch.v2.BatchParser;
 import org.apache.olingo.odata2.testutil.helper.StringHelper;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
  * Test creation of a batch request with BatchRequestWriter and
  * then parsing this request again with BatchRequestParser.
  */
 public class BatchRequestTest {
 
+  /** The Constant POST. */
   private static final String POST = "POST";
+  
+  /** The Constant GET. */
   private static final String GET = "GET";
+  
+  /** The Constant PUT. */
   private static final String PUT = "PUT";
+  
+  /** The Constant BOUNDARY. */
   private static final String BOUNDARY = "batch_123";
+  
+  /** The Constant SERVICE_ROOT. */
   private static final String SERVICE_ROOT = "http://localhost/odata/";
 
+  /** The parse properties. */
   private EntityProviderBatchProperties parseProperties;
 
+  /**
+   * Instantiates a new batch request test.
+   *
+   * @throws URISyntaxException the URI syntax exception
+   */
   public BatchRequestTest() throws URISyntaxException {
     PathInfoImpl pathInfo = new PathInfoImpl();
     pathInfo.setServiceRoot(new URI(SERVICE_ROOT));
     parseProperties = EntityProviderBatchProperties.init().pathInfo(pathInfo).build();
   }
 
+  /**
+   * Check mime headers.
+   *
+   * @param requestBody the request body
+   */
   private void checkMimeHeaders(final String requestBody) {
     assertTrue(requestBody.contains("Content-Type: application/http"));
     assertTrue(requestBody.contains("Content-Transfer-Encoding: binary"));
   }
 
+  /**
+   * Test batch query part.
+   *
+   * @throws BatchException the batch exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Test
   public void testBatchQueryPart() throws BatchException, IOException {
     List<BatchPart> batch = new ArrayList<BatchPart>();
@@ -95,6 +122,12 @@ public class BatchRequestTest {
     assertEquals(1, parseResult.size());
   }
 
+  /**
+   * Test batch change set.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws BatchException the batch exception
+   */
   @Test
   public void testBatchChangeSet() throws IOException, BatchException {
     List<BatchPart> batch = new ArrayList<BatchPart>();
@@ -131,6 +164,12 @@ public class BatchRequestTest {
     assertEquals(1, parseResult.size());
   }
 
+  /**
+   * Test batch change set iso.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws BatchException the batch exception
+   */
   @Test
   public void testBatchChangeSetIso() throws IOException, BatchException {
     List<BatchPart> batch = new ArrayList<BatchPart>();
@@ -169,6 +208,12 @@ public class BatchRequestTest {
   }
 
 
+  /**
+   * Test batch with get and post.
+   *
+   * @throws BatchException the batch exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Test
   public void testBatchWithGetAndPost() throws BatchException, IOException {
     List<BatchPart> batch = new ArrayList<BatchPart>();
@@ -209,6 +254,12 @@ public class BatchRequestTest {
     assertEquals(2, parseResult.size());
   }
   
+  /**
+   * Test change set with content id referencing.
+   *
+   * @throws BatchException the batch exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Test
   public void testChangeSetWithContentIdReferencing() throws BatchException, IOException {
     List<BatchPart> batch = new ArrayList<BatchPart>();
@@ -256,6 +307,12 @@ public class BatchRequestTest {
     assertEquals(1, parseResult.size());
   }
 
+  /**
+   * Test batch with two change sets.
+   *
+   * @throws BatchException the batch exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Test
   public void testBatchWithTwoChangeSets() throws BatchException, IOException {
     List<BatchPart> batch = new ArrayList<BatchPart>();
@@ -306,24 +363,48 @@ public class BatchRequestTest {
     assertEquals(2, parseResult.size());
   }
 
+  /**
+   * Check headers.
+   *
+   * @param headers the headers
+   * @param requestBody the request body
+   */
   private void checkHeaders(final Map<String, String> headers, final String requestBody) {
     for (Map.Entry<String, String> header : headers.entrySet()) {
       assertTrue(requestBody.contains(header.getKey() + ": " + header.getValue()));
     }
   }
 
+  /**
+   * Test batch query part with invalid method.
+   *
+   * @throws BatchException the batch exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Test(expected = IllegalArgumentException.class)
   public void testBatchQueryPartWithInvalidMethod() throws BatchException, IOException {
     BatchQueryPart.method(PUT).uri("Employees").build();
 
   }
 
+  /**
+   * Test batch change set part with invalid method.
+   *
+   * @throws BatchException the batch exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Test(expected = IllegalArgumentException.class)
   public void testBatchChangeSetPartWithInvalidMethod() throws BatchException, IOException {
     BatchChangeSetPart.method(GET).uri("Employees('2')").build();
 
   }  
   
+  /**
+   * Test batch change set raw bytes.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws BatchException the batch exception
+   */
   @Test
   public void testBatchChangeSetRawBytes() throws IOException, BatchException {
     List<BatchPart> batch = new ArrayList<BatchPart>();
@@ -362,6 +443,11 @@ public class BatchRequestTest {
     assertArrayEquals(data, parsedReqData.getBytes("ISO-8859-1"));
   }
 
+  /**
+   * Gets the raw bytes.
+   *
+   * @return the raw bytes
+   */
   private byte[] getRawBytes() {
     byte[] data = new byte[Byte.MAX_VALUE - Byte.MIN_VALUE + 1];
     // binary content, not a valid UTF-8 representation of a string

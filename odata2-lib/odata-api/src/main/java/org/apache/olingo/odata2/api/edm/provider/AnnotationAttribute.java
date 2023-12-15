@@ -20,32 +20,59 @@ package org.apache.olingo.odata2.api.edm.provider;
 
 import org.apache.olingo.odata2.api.edm.EdmAnnotationAttribute;
 
+// TODO: Auto-generated Javadoc
 /**
- * Objects of this class represent an annotation attribute
- * 
+ * Objects of this class represent an annotation attribute.
  */
 public class AnnotationAttribute implements EdmAnnotationAttribute {
 
+  /** The namespace. */
   private String namespace;
+  
+  /** The prefix. */
   private String prefix;
+  
+  /** The name. */
   private String name;
+  
+  /** The text. */
   private String text;
 
+  /**
+   * Gets the namespace.
+   *
+   * @return the namespace
+   */
   @Override
   public String getNamespace() {
     return namespace;
   }
 
+  /**
+   * Gets the prefix.
+   *
+   * @return the prefix
+   */
   @Override
   public String getPrefix() {
     return prefix;
   }
 
+  /**
+   * Gets the name.
+   *
+   * @return the name
+   */
   @Override
   public String getName() {
     return name;
   }
 
+  /**
+   * Gets the text.
+   *
+   * @return the text
+   */
   @Override
   public String getText() {
     return text;
@@ -53,7 +80,8 @@ public class AnnotationAttribute implements EdmAnnotationAttribute {
 
   /**
    * Sets the namespace for this {@link AnnotationAttribute}.
-   * @param namespace
+   *
+   * @param namespace the namespace
    * @return {@link AnnotationAttribute} for method chaining
    */
   public AnnotationAttribute setNamespace(final String namespace) {
@@ -63,7 +91,8 @@ public class AnnotationAttribute implements EdmAnnotationAttribute {
 
   /**
    * Sets the prefix for this {@link AnnotationAttribute}.
-   * @param prefix
+   *
+   * @param prefix the prefix
    * @return {@link AnnotationAttribute} for method chaining
    */
   public AnnotationAttribute setPrefix(final String prefix) {
@@ -73,7 +102,8 @@ public class AnnotationAttribute implements EdmAnnotationAttribute {
 
   /**
    * Sets the name for this {@link AnnotationAttribute}.
-   * @param name
+   *
+   * @param name the name
    * @return {@link AnnotationAttribute} for method chaining
    */
   public AnnotationAttribute setName(final String name) {
@@ -83,7 +113,8 @@ public class AnnotationAttribute implements EdmAnnotationAttribute {
 
   /**
    * Sets the text for this {@link AnnotationAttribute}.
-   * @param text
+   *
+   * @param text the text
    * @return {@link AnnotationAttribute} for method chaining
    */
   public AnnotationAttribute setText(final String text) {

@@ -29,16 +29,27 @@ import org.apache.olingo.odata2.api.commons.HttpStatusCodes;
 import org.apache.olingo.odata2.testutil.server.ServletType;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
  * Tests employing the reference scenario reading entity sets in XML format.
  * 
  */
 public class FeedXmlReadOnlyTest extends AbstractRefXmlTest {
 
+  /**
+   * Instantiates a new feed xml read only test.
+   *
+   * @param servletType the servlet type
+   */
   public FeedXmlReadOnlyTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /**
+   * Feed.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void feed() throws Exception {
     HttpResponse response = callUri("Employees()");
@@ -60,6 +71,11 @@ public class FeedXmlReadOnlyTest extends AbstractRefXmlTest {
     badRequest("Teams/()");
   }
 
+  /**
+   * Navigation feed.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void navigationFeed() throws Exception {
     HttpResponse response = callUri("Employees('3')/ne_Room/nr_Employees()");
@@ -84,6 +100,11 @@ public class FeedXmlReadOnlyTest extends AbstractRefXmlTest {
     assertXpathEvaluatesTo(EMPLOYEE_2_NAME, "/atom:feed/atom:entry[1]/atom:title", body);
   }
 
+  /**
+   * Skip and top.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void skipAndTop() throws Exception {
     HttpResponse response = callUri("Employees?$skip=1&$top=1");
@@ -103,6 +124,11 @@ public class FeedXmlReadOnlyTest extends AbstractRefXmlTest {
     badRequest("Teams('3')?$top=1");
   }
 
+  /**
+   * Skiptoken.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void skiptoken() throws Exception {
     HttpResponse response = callUri("Employees?$skiptoken=6");
@@ -117,6 +143,11 @@ public class FeedXmlReadOnlyTest extends AbstractRefXmlTest {
     assertXpathEvaluatesTo("1", "count(/atom:feed/atom:entry)", getBody(response));
   }
 
+  /**
+   * Order by.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void orderBy() throws Exception {
     HttpResponse response = callUri("Employees?$orderby=EmployeeId%20desc&$skip=5");
@@ -134,6 +165,11 @@ public class FeedXmlReadOnlyTest extends AbstractRefXmlTest {
     badRequest("Employees?$orderby=id");
   }
 
+  /**
+   * Inline count.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void inlineCount() throws Exception {
     HttpResponse response = callUri("Managers()?$inlinecount=allpages");
@@ -153,6 +189,11 @@ public class FeedXmlReadOnlyTest extends AbstractRefXmlTest {
     badRequest("Employees()?$top=3&$inlinecount=allpages123");
   }
 
+  /**
+   * Filter.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void filter() throws Exception {
     HttpResponse response = callUri("Employees?$filter=RoomId%20eq%20%273%27");
@@ -230,6 +271,11 @@ public class FeedXmlReadOnlyTest extends AbstractRefXmlTest {
     callUri("Employees?$filter=ne_Manager/Age%20gt%2042", HttpStatusCodes.NOT_IMPLEMENTED);
   }
 
+  /**
+   * Next link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void nextLink() throws Exception {
     HttpResponse response = callUri("Rooms()");
@@ -242,6 +288,11 @@ public class FeedXmlReadOnlyTest extends AbstractRefXmlTest {
     assertXpathEvaluatesTo("Rooms?$skiptoken=97", "/atom:feed/atom:link[@rel='next']/@href", body);
   }
 
+  /**
+   * Next link order by.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void nextLinkOrderBy() throws Exception {
     HttpResponse response = callUri("Rooms?$orderby=Name");
@@ -250,6 +301,11 @@ public class FeedXmlReadOnlyTest extends AbstractRefXmlTest {
     assertXpathEvaluatesTo("Rooms?$orderby=Name&$skiptoken=97", "/atom:feed/atom:link[@rel='next']/@href", body);
   }
 
+  /**
+   * Next link query options.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void nextLinkQueryOptions() throws Exception {
     final HttpResponse response =
@@ -263,6 +319,11 @@ public class FeedXmlReadOnlyTest extends AbstractRefXmlTest {
         "/atom:feed/atom:link[@rel='next']/@href", body);
   }
 
+  /**
+   * Next link navigation.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void nextLinkNavigation() throws Exception {
     // We have to create one entry to have one more than the paging size.

@@ -42,14 +42,27 @@ import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class EdmComplexTypeImplProvTest.
  */
 public class EdmComplexTypeImplProvTest extends BaseTest {
+  
+  /** The edm complex type. */
   private static EdmComplexTypeImplProv edmComplexType;
+  
+  /** The edm complex type with base type. */
   private static EdmComplexTypeImplProv edmComplexTypeWithBaseType;
+  
+  /** The edm provider. */
   private static EdmProvider edmProvider;
 
+  /**
+   * Gets the edm entity container impl.
+   *
+   * @return the edm entity container impl
+   * @throws Exception the exception
+   */
   @BeforeClass
   public static void getEdmEntityContainerImpl() throws Exception {
 
@@ -79,6 +92,12 @@ public class EdmComplexTypeImplProvTest extends BaseTest {
 
   }
 
+  /**
+   * Gets the properties names.
+   *
+   * @return the properties names
+   * @throws Exception the exception
+   */
   @Test
   public void getPropertiesNames() throws Exception {
     List<String> properties = edmComplexType.getPropertyNames();
@@ -87,6 +106,12 @@ public class EdmComplexTypeImplProvTest extends BaseTest {
     assertTrue(properties.contains("Address"));
   }
 
+  /**
+   * Gets the properties with base type.
+   *
+   * @return the properties with base type
+   * @throws Exception the exception
+   */
   @Test
   public void getPropertiesWithBaseType() throws Exception {
     List<String> properties = edmComplexTypeWithBaseType.getPropertyNames();
@@ -95,6 +120,12 @@ public class EdmComplexTypeImplProvTest extends BaseTest {
     assertTrue(properties.contains("Address"));
   }
 
+  /**
+   * Gets the base type.
+   *
+   * @return the base type
+   * @throws Exception the exception
+   */
   @Test
   public void getBaseType() throws Exception {
     EdmComplexType baseType = edmComplexTypeWithBaseType.getBaseType();
@@ -103,6 +134,12 @@ public class EdmComplexTypeImplProvTest extends BaseTest {
     assertEquals("namespace", baseType.getNamespace());
   }
 
+  /**
+   * Gets the property.
+   *
+   * @return the property
+   * @throws Exception the exception
+   */
   @Test
   public void getProperty() throws Exception {
     EdmTyped property = edmComplexType.getProperty("Name");
@@ -110,6 +147,12 @@ public class EdmComplexTypeImplProvTest extends BaseTest {
     assertEquals("Name", property.getName());
   }
 
+  /**
+   * Gets the annotations.
+   *
+   * @return the annotations
+   * @throws Exception the exception
+   */
   @Test
   public void getAnnotations() throws Exception {
     EdmAnnotatable annotatable = edmComplexType;

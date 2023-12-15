@@ -23,9 +23,21 @@ import java.util.HashMap;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
+// TODO: Auto-generated Javadoc
+/**
+ * A factory for creating JPAEntityManager objects.
+ */
 public class JPAEntityManagerFactory {
+  
+  /** The emf map. */
   private static HashMap<String, EntityManagerFactory> emfMap;
 
+  /**
+   * Gets the entity manager factory.
+   *
+   * @param pUnit the unit
+   * @return the entity manager factory
+   */
   public static EntityManagerFactory getEntityManagerFactory(final String pUnit) {
     if (pUnit == null) {
       return null;

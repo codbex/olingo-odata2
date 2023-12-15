@@ -68,21 +68,42 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPALinkTest.
+ */
 public class JPALinkTest {
 
+  /** The edm. */
   private static Edm edm;
+  
+  /** The header. */
   private static SalesOrderHeader header;
+  
+  /** The note. */
   private static Note note;
+  
+  /** The test case. */
   @SuppressWarnings("unused")
   private static short testCase = 0;
+  
+  /** The request payload. */
   private InputStream requestPayload = null;
 
+  /**
+   * Load edm.
+   *
+   * @throws EntityProviderException the entity provider exception
+   */
   @BeforeClass
   public static void loadEdm() throws EntityProviderException {
     edm = EntityProvider.readMetadata(JPALinkTest.class.getClassLoader().getResourceAsStream(
         "metadata.xml"), false);
   }
 
+  /**
+   * Sets the up.
+   */
   @Before
   public void setUp() {
     header = null;
@@ -91,6 +112,9 @@ public class JPALinkTest {
         "SalesOrderNotesLink.json");
   }
 
+  /**
+   * Test create link.
+   */
   @Test
   public void testCreateLink() {
     testCase = 0;
@@ -119,6 +143,9 @@ public class JPALinkTest {
     }
   }
 
+  /**
+   * Test delete link.
+   */
   @Test
   public void testDeleteLink() {
     testCase = 1;
@@ -147,6 +174,9 @@ public class JPALinkTest {
     }
   }
 
+  /**
+   * Test delete link reverse.
+   */
   @Test
   public void testDeleteLinkReverse() {
     testCase = 1;
@@ -175,6 +205,12 @@ public class JPALinkTest {
     }
   }
 
+  /**
+   * Mock O data JPA context.
+   *
+   * @param isReverse the is reverse
+   * @return the o data JPA context
+   */
   private ODataJPAContext mockODataJPAContext(boolean isReverse) {
 
     String path1 = null;
@@ -229,6 +265,17 @@ public class JPALinkTest {
     return null;
   }
 
+  /**
+   * Mock navigation segments.
+   *
+   * @param isReverse the is reverse
+   * @return the list
+   * @throws EdmException the edm exception
+   * @throws NoSuchFieldException the no such field exception
+   * @throws SecurityException the security exception
+   * @throws IllegalArgumentException the illegal argument exception
+   * @throws IllegalAccessException the illegal access exception
+   */
   private List<NavigationSegment> mockNavigationSegments(boolean isReverse) throws EdmException, NoSuchFieldException,
       SecurityException, IllegalArgumentException, IllegalAccessException {
     Class<?> type = null;
@@ -298,6 +345,18 @@ public class JPALinkTest {
     return navigationSegments;
   }
 
+  /**
+   * Mock post URI info.
+   *
+   * @param isReverse the is reverse
+   * @return the post uri info
+   * @throws ODataException the o data exception
+   * @throws NoSuchMethodException the no such method exception
+   * @throws SecurityException the security exception
+   * @throws NoSuchFieldException the no such field exception
+   * @throws IllegalArgumentException the illegal argument exception
+   * @throws IllegalAccessException the illegal access exception
+   */
   private PostUriInfo mockPostURIInfo(boolean isReverse) throws ODataException, NoSuchMethodException,
       SecurityException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
 
@@ -315,6 +374,18 @@ public class JPALinkTest {
     return uriInfo;
   }
 
+  /**
+   * Mock delete URI info.
+   *
+   * @param isReverse the is reverse
+   * @return the delete uri info
+   * @throws ODataException the o data exception
+   * @throws NoSuchMethodException the no such method exception
+   * @throws SecurityException the security exception
+   * @throws NoSuchFieldException the no such field exception
+   * @throws IllegalArgumentException the illegal argument exception
+   * @throws IllegalAccessException the illegal access exception
+   */
   private DeleteUriInfo mockDeleteURIInfo(boolean isReverse) throws ODataException, NoSuchMethodException,
       SecurityException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
 
@@ -325,8 +396,20 @@ public class JPALinkTest {
     return uriInfo;
   }
 
+  /**
+   * The Class JPAProcessorMock.
+   */
   private static class JPAProcessorMock extends JPAProcessorMockAbstract {
 
+    /**
+     * Process.
+     *
+     * @param <T> the generic type
+     * @param uriParserResultView the uri parser result view
+     * @return the object
+     * @throws ODataJPAModelException the o data JPA model exception
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
+     */
     @Override
     public <T> Object process(GetEntityUriInfo uriParserResultView) throws ODataJPAModelException,
         ODataJPARuntimeException {
@@ -355,6 +438,14 @@ public class JPALinkTest {
 
     }
 
+    /**
+     * Process.
+     *
+     * @param uriParserResultView the uri parser result view
+     * @return the list
+     * @throws ODataJPAModelException the o data JPA model exception
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
+     */
     @Override
     public List<Object> process(GetEntitySetUriInfo uriParserResultView) throws ODataJPAModelException,
         ODataJPARuntimeException {

@@ -38,15 +38,30 @@ import org.apache.olingo.odata2.testutil.mock.MockFacade;
 import org.junit.Before;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ExpandSelectTreeNodeBuilderTest.
+ */
 public class ExpandSelectTreeNodeBuilderTest extends BaseTest {
 
+  /** The edm. */
   Edm edm;
 
+  /**
+   * Setup edm.
+   *
+   * @throws Exception the exception
+   */
   @Before
   public void setupEdm() throws Exception {
     edm = MockFacade.getMockEdm();
   }
 
+  /**
+   * Initial build with only entity set.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void initialBuildWithOnlyEntitySet() throws Exception {
     ExpandSelectTreeNode node = ExpandSelectTreeNode.entitySet(mock(EdmEntitySet.class)).build();
@@ -56,6 +71,11 @@ public class ExpandSelectTreeNodeBuilderTest extends BaseTest {
     assertTrue(node.getLinks().isEmpty());
   }
 
+  /**
+   * Builds the with right selected properties only.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void buildWithRightSelectedPropertiesOnly() throws Exception {
     EdmEntitySet roomsSet = edm.getDefaultEntityContainer().getEntitySet("Rooms");
@@ -72,6 +92,11 @@ public class ExpandSelectTreeNodeBuilderTest extends BaseTest {
     assertEquals("Id", node.getProperties().get(0).getName());
   }
 
+  /**
+   * Builds the with right selected navigation properties only.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void buildWithRightSelectedNavigationPropertiesOnly() throws Exception {
     EdmEntitySet roomsSet = edm.getDefaultEntityContainer().getEntitySet("Rooms");
@@ -89,6 +114,11 @@ public class ExpandSelectTreeNodeBuilderTest extends BaseTest {
     assertNull(node.getLinks().get("nr_Employees"));
   }
 
+  /**
+   * Builds the with right expanded navigation properties only.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void buildWithRightExpandedNavigationPropertiesOnly() throws Exception {
     EdmEntitySet roomsSet = edm.getDefaultEntityContainer().getEntitySet("Rooms");
@@ -103,6 +133,11 @@ public class ExpandSelectTreeNodeBuilderTest extends BaseTest {
     assertLinksWithOneNavigationProperty(navigationPropertyName, node);
   }
 
+  /**
+   * Builds the with right custom expanded navigation property only.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void buildWithRightCustomExpandedNavigationPropertyOnly() throws Exception {
     EdmEntitySet roomsSet = edm.getDefaultEntityContainer().getEntitySet("Rooms");
@@ -116,6 +151,11 @@ public class ExpandSelectTreeNodeBuilderTest extends BaseTest {
     assertLinksWithOneNavigationProperty(navigationPropertyName, node);
   }
 
+  /**
+   * Expanded and custom expanded nav prop custom must win.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void expandedAndCustomExpandedNavPropCustomMustWin() throws Exception {
     EdmEntitySet roomsSet = edm.getDefaultEntityContainer().getEntitySet("Rooms");
@@ -132,6 +172,11 @@ public class ExpandSelectTreeNodeBuilderTest extends BaseTest {
     assertEquals(expandNode, node.getLinks().get(navigationPropertyName));
   }
 
+  /**
+   * Selected properties and expanded navigation properties.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void selectedPropertiesAndExpandedNavigationProperties() throws Exception {
     EdmEntitySet roomsSet = edm.getDefaultEntityContainer().getEntitySet("Rooms");
@@ -152,6 +197,11 @@ public class ExpandSelectTreeNodeBuilderTest extends BaseTest {
     assertLinksWithOneNavigationProperty("nr_Employees", node);
   }
 
+  /**
+   * Selected nav props and expanded nav props expanded must not be null.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void selectedNavPropsAndExpandedNavPropsExpandedMustNotBeNull() throws Exception {
     EdmEntitySet roomsSet = edm.getDefaultEntityContainer().getEntitySet("Rooms");
@@ -169,6 +219,11 @@ public class ExpandSelectTreeNodeBuilderTest extends BaseTest {
     assertLinksWithOneNavigationProperty(navigationPropertyName, node);
   }
 
+  /**
+   * Selected expanded and custom expanded.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void selectedExpandedAndCustomExpanded() throws Exception {
     EdmEntitySet roomsSet = edm.getDefaultEntityContainer().getEntitySet("Rooms");
@@ -199,6 +254,11 @@ public class ExpandSelectTreeNodeBuilderTest extends BaseTest {
     assertEquals(expandNode, node.getLinks().get("nr_Building"));
   }
 
+  /**
+   * Builds the with wrong selected properties only.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EdmException.class)
   public void buildWithWrongSelectedPropertiesOnly() throws Exception {
     EdmEntitySet roomsSet = edm.getDefaultEntityContainer().getEntitySet("Rooms");
@@ -207,6 +267,11 @@ public class ExpandSelectTreeNodeBuilderTest extends BaseTest {
     ExpandSelectTreeNode.entitySet(roomsSet).selectedProperties(selectedPropertyNames).build();
   }
 
+  /**
+   * Builds the with wrong selected navigation properties only.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EdmException.class)
   public void buildWithWrongSelectedNavigationPropertiesOnly() throws Exception {
     EdmEntitySet roomsSet = edm.getDefaultEntityContainer().getEntitySet("Rooms");
@@ -215,6 +280,11 @@ public class ExpandSelectTreeNodeBuilderTest extends BaseTest {
     ExpandSelectTreeNode.entitySet(roomsSet).selectedLinks(selectedNavigationPropertyNames).build();
   }
 
+  /**
+   * Property in navigation properties list.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EdmException.class)
   public void propertyInNavigationPropertiesList() throws Exception {
     EdmEntitySet roomsSet = edm.getDefaultEntityContainer().getEntitySet("Rooms");
@@ -223,6 +293,11 @@ public class ExpandSelectTreeNodeBuilderTest extends BaseTest {
     ExpandSelectTreeNode.entitySet(roomsSet).selectedLinks(selectedNavigationPropertyNames).build();
   }
 
+  /**
+   * Navigation property in properties list.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EdmException.class)
   public void navigationPropertyInPropertiesList() throws Exception {
     EdmEntitySet roomsSet = edm.getDefaultEntityContainer().getEntitySet("Rooms");
@@ -231,6 +306,11 @@ public class ExpandSelectTreeNodeBuilderTest extends BaseTest {
     ExpandSelectTreeNode.entitySet(roomsSet).selectedProperties(selectedPropertyNames).build();
   }
 
+  /**
+   * Property in expanded navigation property list.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EdmException.class)
   public void propertyInExpandedNavigationPropertyList() throws Exception {
     EdmEntitySet roomsSet = edm.getDefaultEntityContainer().getEntitySet("Rooms");
@@ -239,24 +319,44 @@ public class ExpandSelectTreeNodeBuilderTest extends BaseTest {
     ExpandSelectTreeNode.entitySet(roomsSet).expandedLinks(expandedNavigationPropertyNames).build();
   }
 
+  /**
+   * Property in custom expanded navigation property list.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EdmException.class)
   public void propertyInCustomExpandedNavigationPropertyList() throws Exception {
     EdmEntitySet roomsSet = edm.getDefaultEntityContainer().getEntitySet("Rooms");
     ExpandSelectTreeNode.entitySet(roomsSet).customExpandedLink("Id", mock(ExpandSelectTreeNode.class)).build();
   }
 
+  /**
+   * Null node in custom expanded property.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = ODataRuntimeException.class)
   public void nullNodeInCustomExpandedProperty() throws Exception {
     EdmEntitySet roomsSet = edm.getDefaultEntityContainer().getEntitySet("Rooms");
     ExpandSelectTreeNode.entitySet(roomsSet).customExpandedLink("nr_Building", null).build();
   }
 
+  /**
+   * Wrong navigation property in custom expand.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EdmException.class)
   public void wrongNavigationPropertyInCustomExpand() throws Exception {
     EdmEntitySet roomsSet = edm.getDefaultEntityContainer().getEntitySet("Rooms");
     ExpandSelectTreeNode.entitySet(roomsSet).customExpandedLink("Wrong", mock(ExpandSelectTreeNode.class)).build();
   }
 
+  /**
+   * Wrong navigation property in expanded list.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EdmException.class)
   public void wrongNavigationPropertyInExpandedList() throws Exception {
     EdmEntitySet roomsSet = edm.getDefaultEntityContainer().getEntitySet("Rooms");
@@ -265,6 +365,12 @@ public class ExpandSelectTreeNodeBuilderTest extends BaseTest {
     ExpandSelectTreeNode.entitySet(roomsSet).expandedLinks(expandedNavigationPropertyNames).build();
   }
 
+  /**
+   * Assert links with one navigation property.
+   *
+   * @param navigationPropertyName the navigation property name
+   * @param node the node
+   */
   private void
       assertLinksWithOneNavigationProperty(final String navigationPropertyName, final ExpandSelectTreeNode node) {
     assertEquals(1, node.getLinks().size());
@@ -272,6 +378,11 @@ public class ExpandSelectTreeNodeBuilderTest extends BaseTest {
     assertNotNull(node.getLinks().get(navigationPropertyName));
   }
 
+  /**
+   * Assert expanded node.
+   *
+   * @param node the node
+   */
   private void assertExpandedNode(final ExpandSelectTreeNode node) {
     assertNotNull(node);
     assertTrue(node.isAll());

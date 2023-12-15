@@ -28,6 +28,7 @@ import org.apache.olingo.odata2.api.uri.info.GetEntityCountUriInfo;
 import org.apache.olingo.odata2.api.uri.info.GetEntityUriInfo;
 import org.apache.olingo.odata2.api.uri.info.PutMergePatchUriInfo;
 
+// TODO: Auto-generated Javadoc
 /**
  * Execute a OData entity request.
  * 
@@ -37,22 +38,27 @@ public interface EntityProcessor extends ODataProcessor {
 
   /**
    * Reads an entity.
+   *
+   * @param uriInfo the uri info
    * @param contentType the content type of the response
    * @return an {@link ODataResponse} object
-   * @throws ODataException
+   * @throws ODataException the o data exception
    */
   ODataResponse readEntity(GetEntityUriInfo uriInfo, String contentType) throws ODataException;
 
   /**
    * Checks whether an entity exists.
+   *
+   * @param uriInfo the uri info
    * @param contentType the content type of the response
    * @return an {@link ODataResponse} object
-   * @throws ODataException
+   * @throws ODataException the o data exception
    */
   ODataResponse existsEntity(GetEntityCountUriInfo uriInfo, String contentType) throws ODataException;
 
   /**
    * Updates an entity.
+   *
    * @param uriInfo information about the request URI
    * @param content the content of the request, containing the updated entity data
    * @param requestContentType the content type of the request body
@@ -60,17 +66,18 @@ public interface EntityProcessor extends ODataProcessor {
    * if <code>false</code>, they are reset
    * @param contentType the content type of the response
    * @return an {@link ODataResponse} object
-   * @throws ODataException
+   * @throws ODataException the o data exception
    */
   ODataResponse updateEntity(PutMergePatchUriInfo uriInfo, InputStream content, String requestContentType,
       boolean merge, String contentType) throws ODataException;
 
   /**
    * Deletes an entity.
+   *
    * @param uriInfo a {@link DeleteUriInfo} object with information from the URI parser
    * @param contentType the content type of the response
    * @return an {@link ODataResponse} object
-   * @throws ODataException
+   * @throws ODataException the o data exception
    */
   ODataResponse deleteEntity(DeleteUriInfo uriInfo, String contentType) throws ODataException;
 

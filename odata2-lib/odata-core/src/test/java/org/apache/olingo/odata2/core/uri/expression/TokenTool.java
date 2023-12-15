@@ -31,17 +31,42 @@ import org.apache.olingo.odata2.core.exception.MessageService.Message;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TokenTool.
+ */
 public class TokenTool {
+  
+  /** The token. */
   protected Token token;
+  
+  /** The tokens. */
   protected TokenList tokens = null;
+  
+  /** The cur exception. */
   private Exception curException;
+  
+  /** The exception. */
   private Exception exception;
+  
+  /** The expression. */
   private String expression;
+  
+  /** The debug. */
   private static boolean debug = false;
 
+  /** The Constant log. */
   private static final Logger log = LoggerFactory.getLogger(ParserTool.class);
+  
+  /** The Constant DEFAULT_LANGUAGE. */
   private static final Locale DEFAULT_LANGUAGE = new Locale("test", "foo");
 
+  /**
+   * Instantiates a new token tool.
+   *
+   * @param expression the expression
+   * @param wsp the wsp
+   */
   public TokenTool(final String expression, final boolean wsp) {
     dout("TokenTool - Testing: " + expression);
     this.expression = expression;
@@ -60,11 +85,10 @@ public class TokenTool {
   }
 
   /**
-   * Set the token to be check to the token at position <code>index</code>
-   * 
+   * Set the token to be check to the token at position <code>index</code>.
+   *
    * @param index Index of the token to be checked
    * @return Returns <code>this</code>
-   * @throws AssertionError
    */
   public TokenTool at(final int index) {
     token = tokens.elementAt(index);
@@ -72,11 +96,10 @@ public class TokenTool {
   }
 
   /**
-   * Checks that the Type of the token matches the <code>kind</code>
-   * 
+   * Checks that the Type of the token matches the <code>kind</code>.
+   *
    * @param kind Kind to be compared with the token type
    * @return Returns <code>this</code>
-   * @throws AssertionError
    */
   public TokenTool aKind(final TokenKind kind) {
     assertEquals(kind, token.getKind());
@@ -84,11 +107,10 @@ public class TokenTool {
   }
 
   /**
-   * Checks that the EDM Type of the token matches the <code>edmType</code>
-   * 
+   * Checks that the EDM Type of the token matches the <code>edmType</code>.
+   *
    * @param edmType EDM Type to be compared with the token type
    * @return Returns <code>this</code>
-   * @throws AssertionError
    */
   public TokenTool aEdmType(final int edmType) {
     assertEquals(edmType, token.getEdmType());
@@ -96,34 +118,50 @@ public class TokenTool {
   }
 
   /**
-   * Checks that the Value of the token matches the <code>stringValue</code>
-   * 
+   * Checks that the Value of the token matches the <code>stringValue</code>.
+   *
    * @param stringValue Value to be compared with the token value
    * @return Returns <code>this</code>
-   * @throws AssertionError
    */
   public TokenTool aUriLiteral(final String stringValue) {
     assertEquals(stringValue, token.getUriLiteral());
     return this;
   }
 
+  /**
+   * A position.
+   *
+   * @param position the position
+   * @return the token tool
+   */
   public TokenTool aPosition(final int position) {
     assertEquals(position, token.getPosition());
     return this;
   }
 
+  /**
+   * Dout.
+   *
+   * @param out the out
+   */
   public static void dout(final String out) {
     if (debug) {
       log.debug(out);
     }
   }
 
+  /**
+   * Out.
+   *
+   * @param out the out
+   */
   public static void out(final String out) {
     log.debug(out);
   }
 
   /**
-   * Verifies that all place holders in the message text definition of the thrown exception are provided with content
+   * Verifies that all place holders in the message text definition of the thrown exception are provided with content.
+   *
    * @return TokenTool
    */
   public TokenTool aExMsgContentAllSet() {
@@ -153,7 +191,8 @@ public class TokenTool {
   }
 
   /**
-   * Verifies that the message text of the thrown exception is not empty
+   * Verifies that the message text of the thrown exception is not empty.
+   *
    * @return TokenTool
    */
   public TokenTool aExMsgNotEmpty() {
@@ -181,6 +220,12 @@ public class TokenTool {
     return this;
   }
 
+  /**
+   * A ex key.
+   *
+   * @param expressionExpectedAtPos the expression expected at pos
+   * @return the token tool
+   */
   public TokenTool aExKey(final MessageReference expressionExpectedAtPos) {
     String expectedKey = expressionExpectedAtPos.getKey();
     ODataMessageException messageException;
@@ -207,6 +252,11 @@ public class TokenTool {
     return this;
   }
 
+  /**
+   * Prints the ex message.
+   *
+   * @return the token tool
+   */
   public TokenTool printExMessage() {
     ODataMessageException messageException;
 
@@ -230,9 +280,9 @@ public class TokenTool {
   }
 
   /**
-   * Verifies that the message text of the thrown exception serialized is {@paramref messageText}
-   * @param messageText
-   * Expected message text
+   * Verifies that the message text of the thrown exception serialized is {@paramref messageText}.
+   *
+   * @param messageText Expected message text
    * @return this
    */
   public TokenTool aExMsgText(final String messageText) {

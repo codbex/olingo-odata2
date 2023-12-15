@@ -46,35 +46,69 @@ import org.apache.olingo.odata2.api.edm.provider.Schema;
 import org.apache.olingo.odata2.api.edm.provider.SimpleProperty;
 import org.apache.olingo.odata2.api.exception.ODataMessageException;
 
+// TODO: Auto-generated Javadoc
 /**
- * Provider for the entity data model used as technical reference scenario
- * 
+ * Provider for the entity data model used as technical reference scenario.
  */
 public class TechnicalScenarioEdmProvider extends EdmProvider {
 
+  /** The Constant NAMESPACE_1. */
   public static final String NAMESPACE_1 = "TecRefScenario";
 
+  /** The Constant ET_KEY_IS_STRING. */
   public static final FullQualifiedName ET_KEY_IS_STRING = new FullQualifiedName(NAMESPACE_1, "EtKeyTypeString");
+  
+  /** The Constant ET_KEY_IS_INTEGER. */
   public static final FullQualifiedName ET_KEY_IS_INTEGER = new FullQualifiedName(NAMESPACE_1, "EtKeyTypeInteger");
+  
+  /** The Constant ET_COMPLEX_KEY. */
   public static final FullQualifiedName ET_COMPLEX_KEY = new FullQualifiedName(NAMESPACE_1, "EtComplexKey");
+  
+  /** The Constant ET_ALL_TYPES. */
   public static final FullQualifiedName ET_ALL_TYPES = new FullQualifiedName(NAMESPACE_1, "EtAllTypes");
+  
+  /** The Constant ET_STRING_FACETS. */
   public static final FullQualifiedName ET_STRING_FACETS = new FullQualifiedName(NAMESPACE_1, "EtStringFacets");
 
+  /** The Constant CT_ADDRESS. */
   public static final FullQualifiedName CT_ADDRESS = new FullQualifiedName(NAMESPACE_1, "CtAdress");
+  
+  /** The Constant CT_ALL_TYPES. */
   public static final FullQualifiedName CT_ALL_TYPES = new FullQualifiedName(NAMESPACE_1, "CtAllTypes");
 
+  /** The Constant ASSOCIATION_ET1_ET2. */
   public static final FullQualifiedName ASSOCIATION_ET1_ET2 = new FullQualifiedName(NAMESPACE_1, "Association");
+  
+  /** The Constant ROLE_1. */
   public static final String ROLE_1 = "Role1";
+  
+  /** The Constant ROLE_2. */
   public static final String ROLE_2 = "Role2";
 
+  /** The Constant ENTITY_CONTAINER_1. */
   public static final String ENTITY_CONTAINER_1 = "Container1";
 
+  /** The Constant ES_KEY_IS_STRING. */
   public static final String ES_KEY_IS_STRING = "KeyTypeString";
+  
+  /** The Constant ES_KEY_IS_INTEGER. */
   public static final String ES_KEY_IS_INTEGER = "KeyTypeInteger";
+  
+  /** The Constant ES_COMPLEX_KEY. */
   public static final String ES_COMPLEX_KEY = "ComplexKey";
+  
+  /** The Constant ES_ALL_TYPES. */
   public static final String ES_ALL_TYPES = "AllTypes";
+  
+  /** The Constant ES_STRING_FACETS. */
   public static final String ES_STRING_FACETS = "StringFacets";
 
+  /**
+   * Gets the schemas.
+   *
+   * @return the schemas
+   * @throws ODataMessageException the o data message exception
+   */
   @Override
   public List<Schema> getSchemas() throws ODataMessageException {
     final Schema schema = new Schema();
@@ -102,6 +136,13 @@ public class TechnicalScenarioEdmProvider extends EdmProvider {
     return Arrays.asList(schema);
   }
 
+  /**
+   * Gets the entity type.
+   *
+   * @param edmFQName the edm FQ name
+   * @return the entity type
+   * @throws ODataMessageException the o data message exception
+   */
   @Override
   public EntityType getEntityType(final FullQualifiedName edmFQName) throws ODataMessageException {
     if (NAMESPACE_1.equals(edmFQName.getNamespace())) {
@@ -189,6 +230,13 @@ public class TechnicalScenarioEdmProvider extends EdmProvider {
     return null;
   }
 
+  /**
+   * Gets the complex type.
+   *
+   * @param edmFQName the edm FQ name
+   * @return the complex type
+   * @throws ODataMessageException the o data message exception
+   */
   @Override
   public ComplexType getComplexType(final FullQualifiedName edmFQName) throws ODataMessageException {
     if (NAMESPACE_1.equals(edmFQName.getNamespace())) {
@@ -222,6 +270,13 @@ public class TechnicalScenarioEdmProvider extends EdmProvider {
     return null;
   }
 
+  /**
+   * Gets the association.
+   *
+   * @param association the association
+   * @return the association
+   * @throws ODataMessageException the o data message exception
+   */
   @Override
   public Association getAssociation(final FullQualifiedName association) throws ODataMessageException {
     if (ASSOCIATION_ET1_ET2.equals(association)) {
@@ -238,6 +293,13 @@ public class TechnicalScenarioEdmProvider extends EdmProvider {
     return null;
   }
 
+  /**
+   * Gets the entity container info.
+   *
+   * @param name the name
+   * @return the entity container info
+   * @throws ODataMessageException the o data message exception
+   */
   @Override
   public EntityContainerInfo getEntityContainerInfo(final String name) throws ODataMessageException {
     if ((name == null) || ENTITY_CONTAINER_1.equals(name)) {
@@ -247,6 +309,14 @@ public class TechnicalScenarioEdmProvider extends EdmProvider {
     return null;
   }
 
+  /**
+   * Gets the entity set.
+   *
+   * @param entityContainer the entity container
+   * @param name the name
+   * @return the entity set
+   * @throws ODataMessageException the o data message exception
+   */
   @Override
   public EntitySet getEntitySet(final String entityContainer, final String name) throws ODataMessageException {
     if (ENTITY_CONTAINER_1.equals(entityContainer)) {
@@ -266,12 +336,30 @@ public class TechnicalScenarioEdmProvider extends EdmProvider {
     return null;
   }
 
+  /**
+   * Gets the function import.
+   *
+   * @param entityContainer the entity container
+   * @param name the name
+   * @return the function import
+   * @throws ODataMessageException the o data message exception
+   */
   @Override
   public FunctionImport getFunctionImport(final String entityContainer, final String name)
       throws ODataMessageException {
     return null;
   }
 
+  /**
+   * Gets the association set.
+   *
+   * @param entityContainer the entity container
+   * @param association the association
+   * @param sourceEntitySetName the source entity set name
+   * @param sourceEntitySetRole the source entity set role
+   * @return the association set
+   * @throws ODataMessageException the o data message exception
+   */
   @Override
   public AssociationSet getAssociationSet(final String entityContainer, final FullQualifiedName association,
       final String sourceEntitySetName, final String sourceEntitySetRole) throws ODataMessageException {
@@ -286,6 +374,12 @@ public class TechnicalScenarioEdmProvider extends EdmProvider {
     return null;
   }
 
+  /**
+   * Creates the key.
+   *
+   * @param keyNames the key names
+   * @return the key
+   */
   private Key createKey(final String... keyNames) {
     final List<PropertyRef> keyProperties = new ArrayList<PropertyRef>();
     for (final String keyName : keyNames) {

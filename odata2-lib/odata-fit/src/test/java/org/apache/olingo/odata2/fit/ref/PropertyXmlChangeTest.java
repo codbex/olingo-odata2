@@ -29,15 +29,26 @@ import org.apache.olingo.odata2.api.edm.Edm;
 import org.apache.olingo.odata2.testutil.server.ServletType;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
  * Tests employing the reference scenario changing properties in XML format.
  */
 public class PropertyXmlChangeTest extends AbstractRefXmlTest {
 
+  /**
+   * Instantiates a new property xml change test.
+   *
+   * @param servletType the servlet type
+   */
   public PropertyXmlChangeTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /**
+   * Simple property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void simpleProperty() throws Exception {
     final String url1 = "Employees('2')/Age";
@@ -66,6 +77,11 @@ public class PropertyXmlChangeTest extends AbstractRefXmlTest {
     putUri(url5, requestBody, HttpContentType.APPLICATION_XML, HttpStatusCodes.METHOD_NOT_ALLOWED);
   }
 
+  /**
+   * Complex property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void complexProperty() throws Exception {
     final String url1 = "Employees('2')/Location";

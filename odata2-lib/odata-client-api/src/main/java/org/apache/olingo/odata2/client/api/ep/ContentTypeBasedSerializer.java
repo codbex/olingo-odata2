@@ -26,6 +26,7 @@ import org.apache.olingo.odata2.api.edm.EdmEntitySet;
 import org.apache.olingo.odata2.api.ep.EntityProviderException;
 import org.apache.olingo.odata2.api.processor.ODataResponse;
 
+// TODO: Auto-generated Javadoc
 /**
  * Interface for all none basic (content type <b>dependent</b>) serializer methods.
  * 
@@ -34,29 +35,32 @@ import org.apache.olingo.odata2.api.processor.ODataResponse;
 public interface ContentTypeBasedSerializer {
 
   /**
-   * Returns an OData Response for a given entry
-   * @param entitySet
-   * @param data
+   * Returns an OData Response for a given entry.
+   *
+   * @param entitySet the entity set
+   * @param data the data
    * @return ODataResponse
-   * @throws EntityProviderException
+   * @throws EntityProviderException the entity provider exception
    */
   ODataResponse writeEntry(EdmEntitySet entitySet, Entity data)
       throws EntityProviderException;
   
   /**
-   * Returns an OData Response for a given feed
-   * @param entitySet
-   * @param data
+   * Returns an OData Response for a given feed.
+   *
+   * @param entitySet the entity set
+   * @param data the data
    * @return ODataResponse
-   * @throws EntityProviderException
+   * @throws EntityProviderException the entity provider exception
    */
   ODataResponse writeFeed(EdmEntitySet entitySet, EntityCollection data)
       throws EntityProviderException;
   
   /**
-   * Reads Batch Request Parts and returns an input Stream
-   * @param batchParts
-   * @param boundary
+   * Reads Batch Request Parts and returns an input Stream.
+   *
+   * @param batchParts the batch parts
+   * @param boundary the boundary
    * @return InputStream
    */
   InputStream readBatchRequest(final List<BatchPart> batchParts, final String boundary);

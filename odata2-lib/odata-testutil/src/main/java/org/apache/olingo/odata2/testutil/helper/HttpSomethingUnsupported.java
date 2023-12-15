@@ -22,20 +22,36 @@ import java.net.URI;
 
 import org.apache.http.client.methods.HttpRequestBase;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class HttpSomethingUnsupported.
+ */
 public class HttpSomethingUnsupported extends HttpRequestBase {
 
+  /** The Constant METHOD_NAME. */
   public final static String METHOD_NAME = "SOMETHING_UNSUPPORTED";
 
+  /**
+   * Instantiates a new http something unsupported.
+   */
   public HttpSomethingUnsupported() {
     super();
   }
 
+  /**
+   * Instantiates a new http something unsupported.
+   *
+   * @param uri the uri
+   */
   public HttpSomethingUnsupported(final URI uri) {
     super();
     setURI(uri);
   }
 
   /**
+   * Instantiates a new http something unsupported.
+   *
+   * @param uri the uri
    * @throws IllegalArgumentException if the uri is invalid.
    */
   public HttpSomethingUnsupported(final String uri) {
@@ -43,6 +59,11 @@ public class HttpSomethingUnsupported extends HttpRequestBase {
     setURI(URI.create(uri));
   }
 
+  /**
+   * Gets the method.
+   *
+   * @return the method
+   */
   @Override
   public String getMethod() {
     return METHOD_NAME;

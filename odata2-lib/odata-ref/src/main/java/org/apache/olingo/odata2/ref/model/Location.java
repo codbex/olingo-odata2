@@ -18,34 +18,71 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.ref.model;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class Location.
  */
 public class Location {
+  
+  /** The country. */
   private String country;
+  
+  /** The city. */
   private City city;
 
+  /**
+   * Instantiates a new location.
+   *
+   * @param country the country
+   * @param postalCode the postal code
+   * @param cityName the city name
+   */
   public Location(final String country, final String postalCode, final String cityName) {
     this.country = country;
     city = new City(postalCode, cityName);
   }
 
+  /**
+   * Sets the country.
+   *
+   * @param country the new country
+   */
   public void setCountry(final String country) {
     this.country = country;
   }
 
+  /**
+   * Gets the country.
+   *
+   * @return the country
+   */
   public String getCountry() {
     return country;
   }
 
+  /**
+   * Sets the city.
+   *
+   * @param city the new city
+   */
   public void setCity(final City city) {
     this.city = city;
   }
 
+  /**
+   * Gets the city.
+   *
+   * @return the city
+   */
   public City getCity() {
     return city;
   }
 
+  /**
+   * To string.
+   *
+   * @return the string
+   */
   @Override
   public String toString() {
     return String.format("%s, %s", country, city.toString());

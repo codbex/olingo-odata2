@@ -67,23 +67,62 @@ import org.apache.olingo.odata2.api.edm.provider.Using;
 import org.apache.olingo.odata2.api.ep.EntityProviderException;
 import org.apache.olingo.odata2.core.ep.util.XmlMetadataConstants;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class XmlMetadataConsumer.
+ */
 public class XmlMetadataConsumer {
 
+  /** The inscope map. */
   private Map<String, Set<String>> inscopeMap = new HashMap<String, Set<String>>();
+  
+  /** The alias namespace map. */
   private Map<String, String> aliasNamespaceMap = new HashMap<String, String>();
+  
+  /** The xml namespace map. */
   private Map<String, String> xmlNamespaceMap;
+  
+  /** The mandatory namespaces. */
   private Map<String, String> mandatoryNamespaces;
+  
+  /** The entity types map. */
   private Map<FullQualifiedName, EntityType> entityTypesMap = new HashMap<FullQualifiedName, EntityType>();
+  
+  /** The complex types map. */
   private Map<FullQualifiedName, ComplexType> complexTypesMap = new HashMap<FullQualifiedName, ComplexType>();
+  
+  /** The associations map. */
   private Map<FullQualifiedName, Association> associationsMap = new HashMap<FullQualifiedName, Association>();
+  
+  /** The container map. */
   private Map<FullQualifiedName, EntityContainer> containerMap = new HashMap<FullQualifiedName, EntityContainer>();
+  
+  /** The nav properties. */
   private List<NavigationProperty> navProperties = new ArrayList<NavigationProperty>();
+  
+  /** The edm function import list. */
   private List<FunctionImport> edmFunctionImportList = new ArrayList<FunctionImport>();
+  
+  /** The current handled start tag name. */
   private String currentHandledStartTagName;
+  
+  /** The current namespace. */
   private String currentNamespace;
+  
+  /** The edm namespace. */
   private String edmNamespace = Edm.NAMESPACE_EDM_2008_09;
+  
+  /** The edm namespaces. */
   private Set<String> edmNamespaces;
 
+  /**
+   * Read metadata.
+   *
+   * @param reader the reader
+   * @param validate the validate
+   * @return the data services
+   * @throws EntityProviderException the entity provider exception
+   */
   public DataServices readMetadata(final XMLStreamReader reader, final boolean validate)
       throws EntityProviderException {
     try {
@@ -126,6 +165,14 @@ public class XmlMetadataConsumer {
 
   }
 
+  /**
+   * Read schema.
+   *
+   * @param reader the reader
+   * @return the schema
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   private Schema readSchema(final XMLStreamReader reader) throws XMLStreamException, EntityProviderException {
     reader.require(XMLStreamConstants.START_ELEMENT, edmNamespace, XmlMetadataConstants.EDM_SCHEMA);
 
@@ -175,6 +222,15 @@ public class XmlMetadataConsumer {
     return schema;
   }
 
+  /**
+   * Read using.
+   *
+   * @param reader the reader
+   * @param schemaNamespace the schema namespace
+   * @return the using
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   private Using readUsing(final XMLStreamReader reader, final String schemaNamespace)
       throws XMLStreamException, EntityProviderException {
 
@@ -208,6 +264,14 @@ public class XmlMetadataConsumer {
     return using;
   }
 
+  /**
+   * Read entity container.
+   *
+   * @param reader the reader
+   * @return the entity container
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   private EntityContainer readEntityContainer(final XMLStreamReader reader)
       throws XMLStreamException, EntityProviderException {
     reader.require(XMLStreamConstants.START_ELEMENT, edmNamespace, XmlMetadataConstants.EDM_ENTITY_CONTAINER);
@@ -252,6 +316,14 @@ public class XmlMetadataConsumer {
     return container;
   }
 
+  /**
+   * Read function import.
+   *
+   * @param reader the reader
+   * @return the function import
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   private FunctionImport readFunctionImport(final XMLStreamReader reader)
       throws XMLStreamException, EntityProviderException {
     reader.require(XMLStreamConstants.START_ELEMENT, edmNamespace, XmlMetadataConstants.EDM_FUNCTION_IMPORT);
@@ -299,6 +371,14 @@ public class XmlMetadataConsumer {
     return function;
   }
 
+  /**
+   * Read function import parameter.
+   *
+   * @param reader the reader
+   * @return the function import parameter
+   * @throws EntityProviderException the entity provider exception
+   * @throws XMLStreamException the XML stream exception
+   */
   private FunctionImportParameter readFunctionImportParameter(final XMLStreamReader reader)
       throws EntityProviderException, XMLStreamException {
     reader.require(XMLStreamConstants.START_ELEMENT, edmNamespace, XmlMetadataConstants.EDM_FUNCTION_PARAMETER);
@@ -330,6 +410,14 @@ public class XmlMetadataConsumer {
     return functionParameter;
   }
 
+  /**
+   * Read association set.
+   *
+   * @param reader the reader
+   * @return the association set
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   private AssociationSet readAssociationSet(final XMLStreamReader reader)
       throws XMLStreamException, EntityProviderException {
     reader.require(XMLStreamConstants.START_ELEMENT, edmNamespace, XmlMetadataConstants.EDM_ASSOCIATION_SET);
@@ -375,6 +463,14 @@ public class XmlMetadataConsumer {
     return associationSet;
   }
 
+  /**
+   * Read entity set.
+   *
+   * @param reader the reader
+   * @return the entity set
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   private EntitySet readEntitySet(final XMLStreamReader reader) throws XMLStreamException, EntityProviderException {
     reader.require(XMLStreamConstants.START_ELEMENT, edmNamespace, XmlMetadataConstants.EDM_ENTITY_SET);
     EntitySet entitySet = new EntitySet();
@@ -404,6 +500,14 @@ public class XmlMetadataConsumer {
     return entitySet;
   }
 
+  /**
+   * Read association.
+   *
+   * @param reader the reader
+   * @return the association
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   private Association readAssociation(final XMLStreamReader reader) throws XMLStreamException, EntityProviderException {
     reader.require(XMLStreamConstants.START_ELEMENT, edmNamespace, XmlMetadataConstants.EDM_ASSOCIATION);
 
@@ -440,6 +544,14 @@ public class XmlMetadataConsumer {
     return association;
   }
 
+  /**
+   * Read referential constraint.
+   *
+   * @param reader the reader
+   * @return the referential constraint
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   private ReferentialConstraint readReferentialConstraint(final XMLStreamReader reader) throws XMLStreamException,
       EntityProviderException {
     reader.require(XMLStreamConstants.START_ELEMENT, edmNamespace, XmlMetadataConstants.EDM_ASSOCIATION_CONSTRAINT);
@@ -472,6 +584,14 @@ public class XmlMetadataConsumer {
     return refConstraint;
   }
 
+  /**
+   * Read referential constraint role.
+   *
+   * @param reader the reader
+   * @return the referential constraint role
+   * @throws EntityProviderException the entity provider exception
+   * @throws XMLStreamException the XML stream exception
+   */
   private ReferentialConstraintRole readReferentialConstraintRole(final XMLStreamReader reader)
       throws EntityProviderException, XMLStreamException {
     ReferentialConstraintRole rcRole = new ReferentialConstraintRole();
@@ -500,6 +620,14 @@ public class XmlMetadataConsumer {
     return rcRole;
   }
 
+  /**
+   * Read complex type.
+   *
+   * @param reader the reader
+   * @return the complex type
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   private ComplexType readComplexType(final XMLStreamReader reader) throws XMLStreamException, EntityProviderException {
     reader.require(XMLStreamConstants.START_ELEMENT, edmNamespace, XmlMetadataConstants.EDM_COMPLEX_TYPE);
 
@@ -544,6 +672,14 @@ public class XmlMetadataConsumer {
 
   }
 
+  /**
+   * Read entity type.
+   *
+   * @param reader the reader
+   * @return the entity type
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   private EntityType readEntityType(final XMLStreamReader reader) throws XMLStreamException, EntityProviderException {
     reader.require(XMLStreamConstants.START_ELEMENT, edmNamespace, XmlMetadataConstants.EDM_ENTITY_TYPE);
     EntityType entityType = new EntityType();
@@ -599,6 +735,14 @@ public class XmlMetadataConsumer {
     return entityType;
   }
 
+  /**
+   * Read entity type key.
+   *
+   * @param reader the reader
+   * @return the key
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   private Key readEntityTypeKey(final XMLStreamReader reader) throws XMLStreamException, EntityProviderException {
     reader.require(XMLStreamConstants.START_ELEMENT, edmNamespace, XmlMetadataConstants.EDM_ENTITY_TYPE_KEY);
     List<PropertyRef> keys = new ArrayList<PropertyRef>();
@@ -626,6 +770,14 @@ public class XmlMetadataConsumer {
     return key;
   }
 
+  /**
+   * Read property ref.
+   *
+   * @param reader the reader
+   * @return the property ref
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   private PropertyRef readPropertyRef(final XMLStreamReader reader) throws XMLStreamException, EntityProviderException {
     reader.require(XMLStreamConstants.START_ELEMENT, edmNamespace, XmlMetadataConstants.EDM_PROPERTY_REF);
     PropertyRef propertyRef = new PropertyRef();
@@ -646,6 +798,14 @@ public class XmlMetadataConsumer {
     return propertyRef;
   }
 
+  /**
+   * Read navigation property.
+   *
+   * @param reader the reader
+   * @return the navigation property
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   private NavigationProperty readNavigationProperty(final XMLStreamReader reader) throws XMLStreamException,
       EntityProviderException {
     reader.require(XMLStreamConstants.START_ELEMENT, edmNamespace, XmlMetadataConstants.EDM_NAVIGATION_PROPERTY);
@@ -682,6 +842,14 @@ public class XmlMetadataConsumer {
     return navProperty;
   }
 
+  /**
+   * Read property.
+   *
+   * @param reader the reader
+   * @return the property
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   private Property readProperty(final XMLStreamReader reader) throws XMLStreamException, EntityProviderException {
     reader.require(XMLStreamConstants.START_ELEMENT, edmNamespace, XmlMetadataConstants.EDM_PROPERTY);
     Property property;
@@ -716,6 +884,14 @@ public class XmlMetadataConsumer {
     return property;
   }
 
+  /**
+   * Read complex property.
+   *
+   * @param reader the reader
+   * @param fqName the fq name
+   * @return the property
+   * @throws XMLStreamException the XML stream exception
+   */
   private Property readComplexProperty(final XMLStreamReader reader, final FullQualifiedName fqName)
       throws XMLStreamException {
     ComplexProperty property = new ComplexProperty();
@@ -724,6 +900,14 @@ public class XmlMetadataConsumer {
     return property;
   }
 
+  /**
+   * Read simple property.
+   *
+   * @param reader the reader
+   * @param fqName the fq name
+   * @return the property
+   * @throws XMLStreamException the XML stream exception
+   */
   private Property readSimpleProperty(final XMLStreamReader reader, final FullQualifiedName fqName)
       throws XMLStreamException {
     SimpleProperty property = new SimpleProperty();
@@ -732,6 +916,13 @@ public class XmlMetadataConsumer {
     return property;
   }
 
+  /**
+   * Read facets.
+   *
+   * @param reader the reader
+   * @return the facets
+   * @throws XMLStreamException the XML stream exception
+   */
   private Facets readFacets(final XMLStreamReader reader) throws XMLStreamException {
     String isNullable = reader.getAttributeValue(null, XmlMetadataConstants.EDM_PROPERTY_NULLABLE);
     String maxLength = reader.getAttributeValue(null, XmlMetadataConstants.EDM_PROPERTY_MAX_LENGTH);
@@ -781,6 +972,12 @@ public class XmlMetadataConsumer {
     }
   }
 
+  /**
+   * Read customizable feed mappings.
+   *
+   * @param reader the reader
+   * @return the customizable feed mappings
+   */
   private CustomizableFeedMappings readCustomizableFeedMappings(final XMLStreamReader reader) {
     String targetPath = reader.getAttributeValue(Edm.NAMESPACE_M_2007_08, XmlMetadataConstants.M_FC_TARGET_PATH);
     String sourcePath = reader.getAttributeValue(Edm.NAMESPACE_M_2007_08, XmlMetadataConstants.M_FC_SOURCE_PATH);
@@ -808,6 +1005,14 @@ public class XmlMetadataConsumer {
 
   }
 
+  /**
+   * Read association end.
+   *
+   * @param reader the reader
+   * @return the association end
+   * @throws EntityProviderException the entity provider exception
+   * @throws XMLStreamException the XML stream exception
+   */
   private AssociationEnd readAssociationEnd(final XMLStreamReader reader) throws EntityProviderException,
       XMLStreamException {
     reader.require(XMLStreamConstants.START_ELEMENT, edmNamespace, XmlMetadataConstants.EDM_ASSOCIATION_END);
@@ -850,6 +1055,13 @@ public class XmlMetadataConsumer {
     return associationEnd;
   }
 
+  /**
+   * Read annotation element.
+   *
+   * @param reader the reader
+   * @return the annotation element
+   * @throws XMLStreamException the XML stream exception
+   */
   private AnnotationElement readAnnotationElement(final XMLStreamReader reader) throws XMLStreamException {
     AnnotationElement aElement = new AnnotationElement();
     List<AnnotationElement> annotationElements = new ArrayList<AnnotationElement>();
@@ -909,6 +1121,12 @@ public class XmlMetadataConsumer {
     return aElement;
   }
 
+  /**
+   * Read annotation attribute.
+   *
+   * @param reader the reader
+   * @return the list
+   */
   private List<AnnotationAttribute> readAnnotationAttribute(final XMLStreamReader reader) {
     List<AnnotationAttribute> annotationAttributes = new ArrayList<AnnotationAttribute>();
     for (int i = 0; i < reader.getAttributeCount(); i++) {
@@ -927,10 +1145,21 @@ public class XmlMetadataConsumer {
     return annotationAttributes;
   }
 
+  /**
+   * Checks if is default namespace.
+   *
+   * @param namespace the namespace
+   * @return true, if is default namespace
+   */
   private boolean isDefaultNamespace(final String namespace) {
     return namespace.isEmpty();
   }
 
+  /**
+   * Check mandatory namespaces available.
+   *
+   * @throws EntityProviderException the entity provider exception
+   */
   private void checkMandatoryNamespacesAvailable() throws EntityProviderException {
     if (!xmlNamespaceMap.containsValue(Edm.NAMESPACE_EDMX_2007_06)) {
       throw new EntityProviderException(EntityProviderException.INVALID_NAMESPACE
@@ -940,6 +1169,11 @@ public class XmlMetadataConsumer {
     }
   }
 
+  /**
+   * Check edm namespace.
+   *
+   * @throws EntityProviderException the entity provider exception
+   */
   private void checkEdmNamespace() throws EntityProviderException {
     if (!edmNamespaces.contains(edmNamespace)) {
       throw new EntityProviderException(EntityProviderException.INVALID_NAMESPACE
@@ -947,6 +1181,12 @@ public class XmlMetadataConsumer {
     }
   }
 
+  /**
+   * Extract namespaces.
+   *
+   * @param reader the reader
+   * @throws EntityProviderException the entity provider exception
+   */
   private void extractNamespaces(final XMLStreamReader reader) throws EntityProviderException {
     int namespaceCount = reader.getNamespaceCount();
     for (int i = 0; i < namespaceCount; i++) {
@@ -962,6 +1202,13 @@ public class XmlMetadataConsumer {
     }
   }
 
+  /**
+   * Extract FQ name.
+   *
+   * @param name the name
+   * @return the full qualified name
+   * @throws EntityProviderException the entity provider exception
+   */
   private FullQualifiedName extractFQName(final String name)
       throws EntityProviderException {
     // Looking for the last dot
@@ -974,6 +1221,13 @@ public class XmlMetadataConsumer {
     }
   }
 
+  /**
+   * Validate entity type with alias.
+   *
+   * @param aliasName the alias name
+   * @return the full qualified name
+   * @throws EntityProviderException the entity provider exception
+   */
   private FullQualifiedName validateEntityTypeWithAlias(final FullQualifiedName aliasName)
       throws EntityProviderException {
     String namespace = aliasNamespaceMap.get(aliasName.getNamespace());
@@ -984,6 +1238,11 @@ public class XmlMetadataConsumer {
     return fqName;
   }
 
+  /**
+   * Validate entity types.
+   *
+   * @throws EntityProviderException the entity provider exception
+   */
   private void validateEntityTypes() throws EntityProviderException {
     for (Map.Entry<FullQualifiedName, EntityType> entityTypes : entityTypesMap.entrySet()) {
       if (entityTypes.getValue() != null && entityTypes.getKey() != null) {
@@ -1010,6 +1269,14 @@ public class XmlMetadataConsumer {
   }
 
   
+  /**
+   * Fetch last base type.
+   *
+   * @param baseTypeFQName the base type FQ name
+   * @param entityTypesMap the entity types map
+   * @return the entity type
+   * @throws EntityProviderException the entity provider exception
+   */
   /* This method gets the last base type of the EntityType 
    * which has key defined in order to validate it*/
    private EntityType fetchLastBaseType
@@ -1030,6 +1297,13 @@ public class XmlMetadataConsumer {
      return baseEntityType;
    }
 
+  /**
+   * Validate complex type with alias.
+   *
+   * @param aliasName the alias name
+   * @return the full qualified name
+   * @throws EntityProviderException the entity provider exception
+   */
   private FullQualifiedName validateComplexTypeWithAlias(final FullQualifiedName aliasName)
       throws EntityProviderException {
     String namespace = aliasNamespaceMap.get(aliasName.getNamespace());
@@ -1041,6 +1315,11 @@ public class XmlMetadataConsumer {
     return fqName;
   }
 
+  /**
+   * Validate complex types.
+   *
+   * @throws EntityProviderException the entity provider exception
+   */
   private void validateComplexTypes() throws EntityProviderException {
     for (Map.Entry<FullQualifiedName, ComplexType> complexTypes : complexTypesMap.entrySet()) {
       if (complexTypes.getValue() != null && complexTypes.getKey() != null) {
@@ -1055,6 +1334,11 @@ public class XmlMetadataConsumer {
     }
   }
 
+  /**
+   * Validate relationship.
+   *
+   * @throws EntityProviderException the entity provider exception
+   */
   private void validateRelationship() throws EntityProviderException {
     for (NavigationProperty navProperty : navProperties) {
       if (associationsMap.containsKey(navProperty.getRelationship())) {
@@ -1079,6 +1363,11 @@ public class XmlMetadataConsumer {
 
   }
   
+  /**
+   * Validate function import.
+   *
+   * @throws EntityProviderException the entity provider exception
+   */
   private void validateFunctionImport() throws EntityProviderException {
     for (FunctionImport functionImport : edmFunctionImportList) {
       ReturnType returnType = functionImport.getReturnType();
@@ -1099,6 +1388,11 @@ public class XmlMetadataConsumer {
     }
   }
 
+  /**
+   * Validate association.
+   *
+   * @throws EntityProviderException the entity provider exception
+   */
   private void validateAssociation() throws EntityProviderException {
     for (Map.Entry<FullQualifiedName, EntityContainer> container : containerMap.entrySet()) {
       for (AssociationSet associationSet : container.getValue().getAssociationSets()) {
@@ -1129,6 +1423,13 @@ public class XmlMetadataConsumer {
 
   }
 
+  /**
+   * Validate association end.
+   *
+   * @param end the end
+   * @param association the association
+   * @throws EntityProviderException the entity provider exception
+   */
   private void validateAssociationEnd(final AssociationSetEnd end, final Association association)
       throws EntityProviderException {
     if (!(association.getEnd1().getRole().equals(end.getRole()) ^ association
@@ -1137,6 +1438,11 @@ public class XmlMetadataConsumer {
     }
   }
 
+  /**
+   * Validate entity set.
+   *
+   * @throws EntityProviderException the entity provider exception
+   */
   private void validateEntitySet() throws EntityProviderException {
     for (Map.Entry<FullQualifiedName, EntityContainer> container : containerMap.entrySet()) {
       for (EntitySet entitySet : container.getValue().getEntitySets()) {
@@ -1148,6 +1454,11 @@ public class XmlMetadataConsumer {
     }
   }
 
+  /**
+   * Validate.
+   *
+   * @throws EntityProviderException the entity provider exception
+   */
   private void validate() throws EntityProviderException {
     checkMandatoryNamespacesAvailable();
     validateEntityTypes();
@@ -1158,6 +1469,9 @@ public class XmlMetadataConsumer {
     validateFunctionImport();
   }
 
+  /**
+   * Initialize.
+   */
   private void initialize() {
     xmlNamespaceMap = new HashMap<String, String>();
     mandatoryNamespaces = new HashMap<String, String>();

@@ -41,22 +41,49 @@ import org.apache.olingo.odata2.api.edm.provider.FunctionImport;
 import org.apache.olingo.odata2.api.edm.provider.Schema;
 import org.apache.olingo.odata2.api.exception.ODataException;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class EdmEntityContainerImplProv.
  */
 public class EdmEntityContainerImplProv implements EdmEntityContainer, EdmAnnotatable {
 
+  /** The edm. */
   private EdmImplProv edm;
+  
+  /** The entity container hierachy. */
   private List<EntityContainer> entityContainerHierachy;
+  
+  /** The entity container info. */
   private EntityContainerInfo entityContainerInfo;
+  
+  /** The edm entity sets. */
   private Map<String, EdmEntitySet> edmEntitySets;
+  
+  /** The edm association sets. */
   private Map<String, EdmAssociationSet> edmAssociationSets;
+  
+  /** The edm function imports. */
   private Map<String, EdmFunctionImport> edmFunctionImports;
+  
+  /** The edm extended entity container. */
   private EdmEntityContainer edmExtendedEntityContainer;
+  
+  /** The is default container. */
   private boolean isDefaultContainer;
+  
+  /** The annotations. */
   private EdmAnnotations annotations;
+  
+  /** The namespace. */
   private String namespace;
   
+  /**
+   * Instantiates a new edm entity container impl prov.
+   *
+   * @param edm the edm
+   * @param entityContainerInfo the entity container info
+   * @throws EdmException the edm exception
+   */
   public EdmEntityContainerImplProv(final EdmImplProv edm, final EntityContainerInfo entityContainerInfo)
       throws EdmException {
     this.edm = edm;
@@ -74,11 +101,24 @@ public class EdmEntityContainerImplProv implements EdmEntityContainer, EdmAnnota
     }
   }
 
+  /**
+   * Gets the name.
+   *
+   * @return the name
+   * @throws EdmException the edm exception
+   */
   @Override
   public String getName() throws EdmException {
     return entityContainerInfo.getName();
   }
 
+  /**
+   * Gets the entity set.
+   *
+   * @param name the name
+   * @return the entity set
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmEntitySet getEntitySet(final String name) throws EdmException {
     EdmEntitySet edmEntitySet = edmEntitySets.get(name);
@@ -105,6 +145,13 @@ public class EdmEntityContainerImplProv implements EdmEntityContainer, EdmAnnota
     return edmEntitySet;
   }
 
+  /**
+   * Gets the function import.
+   *
+   * @param name the name
+   * @return the function import
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmFunctionImport getFunctionImport(final String name) throws EdmException {
     EdmFunctionImport edmFunctionImport = edmFunctionImports.get(name);
@@ -132,6 +179,14 @@ public class EdmEntityContainerImplProv implements EdmEntityContainer, EdmAnnota
     return edmFunctionImport;
   }
 
+  /**
+   * Gets the association set.
+   *
+   * @param sourceEntitySet the source entity set
+   * @param navigationProperty the navigation property
+   * @return the association set
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmAssociationSet getAssociationSet(final EdmEntitySet sourceEntitySet,
       final EdmNavigationProperty navigationProperty) throws EdmException {
@@ -174,10 +229,10 @@ public class EdmEntityContainerImplProv implements EdmEntityContainer, EdmAnnota
   /**
    * Create an {@link EdmEntitySet} based on given {@link EntitySet} and put it into the cache (see
    * {@link #edmEntitySets}).
-   * 
+   *
    * @param entitySet based on which the {@link EdmEntitySet} is created
    * @return the created and cached {@link EdmEntitySet}
-   * @throws EdmException
+   * @throws EdmException the edm exception
    */
   private EdmEntitySet createEntitySet(final EntitySet entitySet) throws EdmException {
     EdmEntitySet edmEntitySet = new EdmEntitySetImplProv(edm, entitySet, this);
@@ -185,19 +240,44 @@ public class EdmEntityContainerImplProv implements EdmEntityContainer, EdmAnnota
     return edmEntitySet;
   }
 
+  /**
+   * Creates the function import.
+   *
+   * @param functionImport the function import
+   * @return the edm function import
+   * @throws EdmException the edm exception
+   */
   private EdmFunctionImport createFunctionImport(final FunctionImport functionImport) throws EdmException {
     return new EdmFunctionImportImplProv(edm, functionImport, this);
   }
 
+  /**
+   * Creates the association set.
+   *
+   * @param associationSet the association set
+   * @return the edm association set
+   * @throws EdmException the edm exception
+   */
   private EdmAssociationSet createAssociationSet(final AssociationSet associationSet) throws EdmException {
     return new EdmAssociationSetImplProv(edm, associationSet, this);
   }
 
+  /**
+   * Checks if is default entity container.
+   *
+   * @return true, if is default entity container
+   */
   @Override
   public boolean isDefaultEntityContainer() {
     return isDefaultContainer;
   }
 
+  /**
+   * Gets the annotations.
+   *
+   * @return the annotations
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmAnnotations getAnnotations() throws EdmException {
     if (annotations == null) {
@@ -207,6 +287,12 @@ public class EdmEntityContainerImplProv implements EdmEntityContainer, EdmAnnota
     return annotations;
   }
 
+  /**
+   * Gets the entity sets.
+   *
+   * @return the entity sets
+   * @throws EdmException the edm exception
+   */
   @Override
   public List<EdmEntitySet> getEntitySets() throws EdmException {
     try {
@@ -225,6 +311,12 @@ public class EdmEntityContainerImplProv implements EdmEntityContainer, EdmAnnota
     }
   }
 
+  /**
+   * Gets the association sets.
+   *
+   * @return the association sets
+   * @throws EdmException the edm exception
+   */
   @Override
   public List<EdmAssociationSet> getAssociationSets() throws EdmException {
     try {
@@ -244,6 +336,12 @@ public class EdmEntityContainerImplProv implements EdmEntityContainer, EdmAnnota
     }
   }
 
+  /**
+   * Gets the entity container map.
+   *
+   * @return the entity container map
+   * @throws ODataException the o data exception
+   */
   private Map<String, EntityContainer> getEntityContainerMap() throws ODataException {
     Map<String, EntityContainer> name2Container = new HashMap<String, EntityContainer>();
     List<Schema> schemas = edm.edmProvider.getSchemas();
@@ -256,6 +354,12 @@ public class EdmEntityContainerImplProv implements EdmEntityContainer, EdmAnnota
     return name2Container;
   }
 
+  /**
+   * Gets the entity container hierachy.
+   *
+   * @return the entity container hierachy
+   * @throws ODataException the o data exception
+   */
   private List<EntityContainer> getEntityContainerHierachy() throws ODataException {
     if (entityContainerHierachy != null) {
       return entityContainerHierachy;
@@ -277,6 +381,12 @@ public class EdmEntityContainerImplProv implements EdmEntityContainer, EdmAnnota
   }
   
 
+  /**
+   * Gets the namespace.
+   *
+   * @return the namespace
+   * @throws EdmException the edm exception
+   */
   @Override
   public String getNamespace()  throws EdmException{
     try {

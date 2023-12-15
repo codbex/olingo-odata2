@@ -24,21 +24,36 @@ import org.apache.olingo.odata2.api.edm.EdmMapping;
 import org.apache.olingo.odata2.api.edm.EdmSimpleTypeKind;
 import org.apache.olingo.odata2.client.api.edm.EdmDocumentation;
 
+// TODO: Auto-generated Javadoc
 /**
- * Objects of this class represent function import parameters
- * 
+ * Objects of this class represent function import parameters.
  */
 public class EdmFunctionImportParameter {
 
+  /** The name. */
   private String name;
+  
+  /** The mode. */
   private String mode;
+  
+  /** The type. */
   private EdmSimpleTypeKind type;
+  
+  /** The facets. */
   private EdmFacets facets;
+  
+  /** The mapping. */
   private EdmMapping mapping;
+  
+  /** The documentation. */
   private EdmDocumentation documentation;
+  
+  /** The annotations. */
   private EdmAnnotations annotations;
 
   /**
+   * Gets the name.
+   *
    * @return <b>String</b> name of the parameter
    */
   public String getName() {
@@ -46,6 +61,8 @@ public class EdmFunctionImportParameter {
   }
 
   /**
+   * Gets the type.
+   *
    * @return {@link EdmSimpleTypeKind} of this parameter
    */
   public EdmSimpleTypeKind getType() {
@@ -53,6 +70,8 @@ public class EdmFunctionImportParameter {
   }
 
   /**
+   * Gets the facets.
+   *
    * @return {@link EdmFacets} of this parameter
    */
   public EdmFacets getFacets() {
@@ -60,6 +79,8 @@ public class EdmFunctionImportParameter {
   }
 
   /**
+   * Gets the mapping.
+   *
    * @return {@link EdmMappingImpl} of this parameter
    */
   public EdmMapping getMapping() {
@@ -67,8 +88,9 @@ public class EdmFunctionImportParameter {
   }
 
   /**
-   * Sets the name of this {@link EdmFunctionImportParameter}
-   * @param name
+   * Sets the name of this {@link EdmFunctionImportParameter}.
+   *
+   * @param name the name
    * @return {@link EdmFunctionImportParameter} for method chaining
    */
   public EdmFunctionImportParameter setName(final String name) {
@@ -77,8 +99,9 @@ public class EdmFunctionImportParameter {
   }
 
   /**
-   * Sets the mode of this {@link EdmFunctionImportParameter}
-   * @param mode
+   * Sets the mode of this {@link EdmFunctionImportParameter}.
+   *
+   * @param mode the mode
    * @return {@link EdmFunctionImportParameter} for method chaining
    */
   public EdmFunctionImportParameter setMode(final String mode) {
@@ -87,8 +110,9 @@ public class EdmFunctionImportParameter {
   }
 
   /**
-   * Sets the {@link EdmSimpleTypeKind} of this {@link EdmFunctionImportParameter}
-   * @param type
+   * Sets the {@link EdmSimpleTypeKind} of this {@link EdmFunctionImportParameter}.
+   *
+   * @param type the type
    * @return {@link EdmFunctionImportParameter} for method chaining
    */
   public EdmFunctionImportParameter setType(final EdmSimpleTypeKind type) {
@@ -97,8 +121,9 @@ public class EdmFunctionImportParameter {
   }
 
   /**
-   * Sets the {@link EdmFacets} of this {@link EdmFunctionImportParameter}
-   * @param facets
+   * Sets the {@link EdmFacets} of this {@link EdmFunctionImportParameter}.
+   *
+   * @param facets the facets
    * @return {@link EdmFunctionImportParameter} for method chaining
    */
   public EdmFunctionImportParameter setFacets(final EdmFacets facets) {
@@ -107,8 +132,9 @@ public class EdmFunctionImportParameter {
   }
 
   /**
-   * Sets the {@link EdmMappingImpl} of this {@link EdmFunctionImportParameter}
-   * @param mapping
+   * Sets the {@link EdmMappingImpl} of this {@link EdmFunctionImportParameter}.
+   *
+   * @param mapping the mapping
    * @return {@link EdmFunctionImportParameter} for method chaining
    */
   public EdmFunctionImportParameter setMapping(final EdmMapping mapping) {
@@ -117,8 +143,9 @@ public class EdmFunctionImportParameter {
   }
 
   /**
-   * Sets the {@link Documentation} of this {@link EdmFunctionImportParameter}
-   * @param documentation
+   * Sets the {@link Documentation} of this {@link EdmFunctionImportParameter}.
+   *
+   * @param documentation the documentation
    * @return {@link EdmFunctionImportParameter} for method chaining
    */
   public EdmFunctionImportParameter setDocumentation(final EdmDocumentation documentation) {
@@ -126,13 +153,29 @@ public class EdmFunctionImportParameter {
     return this;
   }
 
+  /**
+   * Sets the annotations.
+   *
+   * @param annotations the new annotations
+   */
   public void setAnnotations(EdmAnnotationsImpl annotations) {
     this.annotations = annotations;
   }
   
+  /**
+   * Gets the annotations.
+   *
+   * @return the annotations
+   */
   public EdmAnnotations getAnnotations() {
     return this.annotations;
   }  
+  
+  /**
+   * To string.
+   *
+   * @return the string
+   */
   @Override
   public String toString() {
       return String.format(name);

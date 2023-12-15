@@ -23,24 +23,65 @@ import java.util.List;
 
 import org.apache.olingo.odata2.api.edm.EdmType;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Interface ParameterSetCombination.
+ */
 public interface ParameterSetCombination {
 
+  /**
+   * Adds the.
+   *
+   * @param parameterSet the parameter set
+   */
   void add(ParameterSet parameterSet);
 
+  /**
+   * Validate.
+   *
+   * @param actualParameterTypes the actual parameter types
+   * @return the parameter set
+   * @throws ExpressionParserInternalError the expression parser internal error
+   */
   ParameterSet validate(List<EdmType> actualParameterTypes) throws ExpressionParserInternalError;
 
+  /**
+   * Adds the first.
+   *
+   * @param parameterSet the parameter set
+   */
   void addFirst(ParameterSet parameterSet);
 
+  /**
+   * Gets the return type.
+   *
+   * @return the return type
+   */
   EdmType getReturnType();
 
+  /**
+   * The Class PSCflex.
+   */
   public static class PSCflex implements ParameterSetCombination {
+    
+    /** The combinations. */
     private List<ParameterSet> combinations = new ArrayList<ParameterSet>();
 
+    /**
+     * Adds the.
+     *
+     * @param parameterSet the parameter set
+     */
     @Override
     public void add(final ParameterSet parameterSet) {
       combinations.add(parameterSet);
     }
 
+    /**
+     * Gets the return type.
+     *
+     * @return the return type
+     */
     @Override
     public EdmType getReturnType() {
       int parameterCount = combinations.size();
@@ -64,6 +105,11 @@ public interface ParameterSetCombination {
 
     }
 
+    /**
+     * Adds the first.
+     *
+     * @param parameterSet the parameter set
+     */
     @Override
     public void addFirst(final ParameterSet parameterSet) {
       List<ParameterSet> oldCombinations = combinations;
@@ -75,6 +121,13 @@ public interface ParameterSetCombination {
 
     }
 
+    /**
+     * Validate.
+     *
+     * @param actualParameterTypes the actual parameter types
+     * @return the parameter set
+     * @throws ExpressionParserInternalError the expression parser internal error
+     */
     @Override
     public ParameterSet validate(final List<EdmType> actualParameterTypes) throws ExpressionParserInternalError {
       if (combinations.isEmpty()) {
@@ -101,24 +154,49 @@ public interface ParameterSetCombination {
 
   }
 
+  /**
+   * The Class PSCReturnTypeEqLastParameter.
+   */
   public static class PSCReturnTypeEqLastParameter implements ParameterSetCombination {
 
+    /**
+     * Adds the.
+     *
+     * @param parameterSet the parameter set
+     */
     @Override
     public void add(final ParameterSet parameterSet) {
       throw new IllegalStateException();
     }
 
+    /**
+     * Adds the first.
+     *
+     * @param parameterSet the parameter set
+     */
     @Override
     public void addFirst(final ParameterSet parameterSet) {
       throw new IllegalStateException();
     }
 
+    /**
+     * Validate.
+     *
+     * @param actualParameterTypes the actual parameter types
+     * @return the parameter set
+     * @throws ExpressionParserInternalError the expression parser internal error
+     */
     @Override
     public ParameterSet validate(final List<EdmType> actualParameterTypes) throws ExpressionParserInternalError {
       EdmType xxx = actualParameterTypes.get(actualParameterTypes.size() - 1);
       return new ParameterSet(xxx, null);
     }
 
+    /**
+     * Gets the return type.
+     *
+     * @return the return type
+     */
     @Override
     public EdmType getReturnType() {
       // If the return type is always the type of the last parameter of the actual parameters ( e.g. when using the

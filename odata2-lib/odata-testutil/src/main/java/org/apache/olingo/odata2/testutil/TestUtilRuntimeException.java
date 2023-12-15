@@ -18,23 +18,39 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.testutil;
 
+// TODO: Auto-generated Javadoc
 /**
- * This class is a helper to throw RuntimeExceptions in test util methods
- * 
- * 
+ * This class is a helper to throw RuntimeExceptions in test util methods.
  */
 public class TestUtilRuntimeException extends RuntimeException {
 
+  /** The Constant serialVersionUID. */
   private static final long serialVersionUID = 1L;
 
+  /**
+   * Instantiates a new test util runtime exception.
+   *
+   * @param e the e
+   */
   public TestUtilRuntimeException(final Throwable e) {
     super(e);
   }
 
+  /**
+   * Instantiates a new test util runtime exception.
+   *
+   * @param msg the msg
+   */
   public TestUtilRuntimeException(final String msg) {
     super(msg);
   }
 
+  /**
+   * Instantiates a new test util runtime exception.
+   *
+   * @param msg the msg
+   * @param e the e
+   */
   public TestUtilRuntimeException(final String msg, final Throwable e) {
     super(msg, e);
   }

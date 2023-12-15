@@ -20,33 +20,49 @@ package org.apache.olingo.odata2.client.api.ep;
 
 import java.io.InputStream;
 
+// TODO: Auto-generated Javadoc
 /**
  * Data representation for a single entity.
  */
 public class EntityStream {
 
+  /** The content. */
   private InputStream content ;
+  
+  /** The read properties. */
   private DeserializerProperties readProperties;
+  
+  /**
+   * Gets the content.
+   *
+   * @return the content
+   */
   public InputStream getContent() {
     return content;
   }
+  
   /**
-   * Set the content
-   * @param content
+   * Set the content.
+   *
+   * @param content the new content
    */
   public void setContent(InputStream content) {
     this.content = content;
   }
+  
   /**
-   * Get Read properties
+   * Get Read properties.
+   *
    * @return DeserializerProperties
    */
   public DeserializerProperties getReadProperties() {
     return readProperties;
   }
+  
   /**
-   * Set read properties
-   * @param readProperties
+   * Set read properties.
+   *
+   * @param readProperties the new read properties
    */
   public void setReadProperties(DeserializerProperties readProperties) {
     this.readProperties = readProperties;

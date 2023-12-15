@@ -18,6 +18,7 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.ep.entry;
 
+// TODO: Auto-generated Javadoc
 /**
  * {@link MediaMetadata} contains all metadata for media related entries.
  */

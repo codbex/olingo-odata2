@@ -56,15 +56,25 @@ import org.apache.olingo.odata2.testutil.mock.MockFacade;
 import org.junit.Before;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
  * Tests for OData URI parsing.
  * 
  */
 public class UriParserTest extends BaseTest {
 
+  /** The edm. */
   private Edm edm;
+  
+  /** The Constant ACCEPT_FORM_ENCODING. */
   private static final String ACCEPT_FORM_ENCODING = "odata-accept-forms-encoding";
 
+  /**
+   * Gets the edm.
+   *
+   * @return the edm
+   * @throws ODataException the o data exception
+   */
   @Before
   public void getEdm() throws ODataException {
     edm = MockFacade.getMockEdm();
@@ -73,8 +83,12 @@ public class UriParserTest extends BaseTest {
   /**
    * Parse the URI part after an OData service root, given as string.
    * Query parameters can be included.
+   *
    * @param uri the URI part
    * @return a {@link UriInfoImpl} instance containing the parsed information
+   * @throws UriSyntaxException the uri syntax exception
+   * @throws UriNotMatchingException the uri not matching exception
+   * @throws EdmException the edm exception
    */
   private UriInfoImpl parse(final String uri) throws UriSyntaxException, UriNotMatchingException, EdmException {
     final String[] path = uri.split("\\?", -1);
@@ -89,6 +103,12 @@ public class UriParserTest extends BaseTest {
     return (UriInfoImpl) new UriParserImpl(edm).parseAll(pathSegments, queryParameters);
   }
 
+  /**
+   * Gets the query parameters.
+   *
+   * @param uri the uri
+   * @return the query parameters
+   */
   private Map<String, List<String>> getQueryParameters(final String uri) {
     Map<String, List<String>> allQueryParameters = new HashMap<String, List<String>>();
 
@@ -105,6 +125,13 @@ public class UriParserTest extends BaseTest {
     return allQueryParameters;
   }
 
+  /**
+   * Unescape.
+   *
+   * @param s the s
+   * @return the string
+   * @throws UriSyntaxException the uri syntax exception
+   */
   private String unescape(final String s) throws UriSyntaxException {
     try {
       return new URI(s).getPath();
@@ -113,6 +140,12 @@ public class UriParserTest extends BaseTest {
     }
   }
 
+  /**
+   * Parses the wrong uri.
+   *
+   * @param uri the uri
+   * @param exceptionContext the exception context
+   */
   private void parseWrongUri(final String uri, final MessageReference exceptionContext) {
     try {
       parse(uri);
@@ -123,6 +156,11 @@ public class UriParserTest extends BaseTest {
     }
   }
 
+  /**
+   * Copy path segments test.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void copyPathSegmentsTest() throws Exception {
     List<PathSegment> pathSegments = new ArrayList<PathSegment>();
@@ -133,6 +171,11 @@ public class UriParserTest extends BaseTest {
     assertEquals("$metadata", pathSegments.get(0).getPath());
   }
   
+  /**
+   * Copy path segments test encoded.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void copyPathSegmentsTestEncoded() throws Exception {
     List<PathSegment> pathSegments = new ArrayList<PathSegment>();
@@ -143,11 +186,21 @@ public class UriParserTest extends BaseTest {
     assertEquals(UriType.URI8, result.getUriType());
   }
   
+  /**
+   * Parses the nonsense.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseNonsense() throws Exception {
     parseWrongUri("/bla", UriNotMatchingException.NOTFOUND);
   }
 
+  /**
+   * Parses the service document.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseServiceDocument() throws Exception {
     UriInfoImpl result = parse("/");
@@ -162,38 +215,73 @@ public class UriParserTest extends BaseTest {
     assertEquals(UriType.URI0, result.getUriType());
   }
 
+  /**
+   * Parses the metadata.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseMetadata() throws Exception {
     UriInfoImpl result = parse("/$metadata");
     assertEquals(UriType.URI8, result.getUriType());
   }
 
+  /**
+   * Parses the metadata error.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseMetadataError() throws Exception {
     parseWrongUri("/$metadata/somethingwrong", UriSyntaxException.MUSTBELASTSEGMENT);
   }
 
+  /**
+   * Parses the batch.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseBatch() throws Exception {
     UriInfoImpl result = parse("/$batch");
     assertEquals(UriType.URI9, result.getUriType());
   }
 
+  /**
+   * Parses the batch error.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseBatchError() throws Exception {
     parseWrongUri("/$batch/somethingwrong", UriSyntaxException.MUSTBELASTSEGMENT);
   }
 
+  /**
+   * Parses the something entity set.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseSomethingEntitySet() throws Exception {
     parseWrongUri("/somethingwrong", UriNotMatchingException.NOTFOUND);
   }
 
+  /**
+   * Parses the container without entity set.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseContainerWithoutEntitySet() throws Exception {
     parseWrongUri("Container1.", UriNotMatchingException.MATCHPROBLEM);
   }
 
+  /**
+   * Parses the employees entity set.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseEmployeesEntitySet() throws Exception {
     UriInfoImpl result = parse("/Employees");
@@ -202,6 +290,11 @@ public class UriParserTest extends BaseTest {
     assertEquals(UriType.URI1, result.getUriType());
   }
 
+  /**
+   * Parses the employees entity set parentheses count.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseEmployeesEntitySetParenthesesCount() throws Exception {
     UriInfoImpl result = parse("/Employees()/$count");
@@ -211,11 +304,21 @@ public class UriParserTest extends BaseTest {
     assertTrue(result.isCount());
   }
 
+  /**
+   * Parses the employees entity set parentheses count not last.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseEmployeesEntitySetParenthesesCountNotLast() throws Exception {
     parseWrongUri("/Employees()/$count/somethingwrong", UriSyntaxException.MUSTBELASTSEGMENT);
   }
 
+  /**
+   * Parses the employees entity set parentheses.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseEmployeesEntitySetParentheses() throws Exception {
     UriInfoImpl result = parse("/Employees()");
@@ -224,6 +327,11 @@ public class UriParserTest extends BaseTest {
     assertEquals(UriType.URI1, result.getUriType());
   }
 
+  /**
+   * Final empty segment.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void finalEmptySegment() throws Exception {
     UriInfoImpl result = parse("Employees()/");
@@ -231,6 +339,11 @@ public class UriParserTest extends BaseTest {
     assertEquals(UriType.URI1, result.getUriType());
   }
 
+  /**
+   * Parses the wrong entities.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseWrongEntities() throws Exception {
     parseWrongUri("//", UriSyntaxException.EMPTYSEGMENT);
@@ -243,6 +356,11 @@ public class UriParserTest extends BaseTest {
     parseWrongUri("Employees//", UriSyntaxException.EMPTYSEGMENT);
   }
 
+  /**
+   * Parses the employees entity with key.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseEmployeesEntityWithKey() throws Exception {
     UriInfoImpl result = parse("/Employees('1')");
@@ -255,12 +373,22 @@ public class UriParserTest extends BaseTest {
     assertEquals("EmployeeId", result.getKeyPredicates().get(0).getProperty().getName());
   }
   
+  /**
+   * Parses the employees entity with null key.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseEmployeesEntityWithNullKey() throws Exception {
     parseWrongUri("/Employees(null)", UriSyntaxException.INCOMPATIBLELITERAL);
   }
 
 
+  /**
+   * Parses the employees entity with key with comma.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseEmployeesEntityWithKeyWithComma() throws Exception {
     UriInfoImpl result = parse("/Employees('1,2')");
@@ -273,6 +401,11 @@ public class UriParserTest extends BaseTest {
     assertEquals("EmployeeId", result.getKeyPredicates().get(0).getProperty().getName());
   }
 
+  /**
+   * Parses the employees entity with key with squote in string.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseEmployeesEntityWithKeyWithSquoteInString() throws Exception {
     UriInfoImpl result = parse("/Employees('1''2')");
@@ -286,6 +419,11 @@ public class UriParserTest extends BaseTest {
   }
 
 
+  /**
+   * Parses the employees entity with key encoded.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseEmployeesEntityWithKeyEncoded() throws Exception {
     UriInfoImpl result = parse("/%45mployees('1')");
@@ -298,6 +436,11 @@ public class UriParserTest extends BaseTest {
     assertEquals("EmployeeId", result.getKeyPredicates().get(0).getProperty().getName());
   }
   
+  /**
+   * Parses the employees entity.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseEmployeesEntity() throws Exception {
     UriInfoImpl result = parse("/Employees('1')");
@@ -310,6 +453,11 @@ public class UriParserTest extends BaseTest {
     assertEquals("EmployeeId", result.getKeyPredicates().get(0).getProperty().getName());
   }
 
+  /**
+   * Parses the employees entity with explicit key.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseEmployeesEntityWithExplicitKey() throws Exception {
     UriInfoImpl result = parse("/Employees(EmployeeId='1')");
@@ -322,6 +470,11 @@ public class UriParserTest extends BaseTest {
     assertEquals("EmployeeId", result.getKeyPredicates().get(0).getProperty().getName());
   }
 
+  /**
+   * Parses the employees entity with explicit key and comma.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseEmployeesEntityWithExplicitKeyAndComma() throws Exception {
     UriInfoImpl result = parse("/Employees(EmployeeId='1,2')");
@@ -334,6 +487,11 @@ public class UriParserTest extends BaseTest {
     assertEquals("EmployeeId", result.getKeyPredicates().get(0).getProperty().getName());
   }
 
+  /**
+   * Parses the employees entity with explicit key and squote in string.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseEmployeesEntityWithExplicitKeyAndSquoteInString() throws Exception {
     UriInfoImpl result = parse("/Employees(EmployeeId='1''2')");
@@ -346,6 +504,11 @@ public class UriParserTest extends BaseTest {
     assertEquals("EmployeeId", result.getKeyPredicates().get(0).getProperty().getName());
   }
 
+  /**
+   * Parses the employees entity with key value.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseEmployeesEntityWithKeyValue() throws Exception {
     UriInfoImpl result = parse("/Employees('1')/$value");
@@ -359,6 +522,11 @@ public class UriParserTest extends BaseTest {
     assertEquals("EmployeeId", result.getKeyPredicates().get(0).getProperty().getName());
   }
 
+  /**
+   * Parses the employees entity with key count.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseEmployeesEntityWithKeyCount() throws Exception {
     UriInfoImpl result = parse("/Employees('1')/$count");
@@ -371,6 +539,11 @@ public class UriParserTest extends BaseTest {
     assertEquals("EmployeeId", result.getKeyPredicates().get(0).getProperty().getName());
   }
   
+  /**
+   * Parses the employees entity with key count encoded.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseEmployeesEntityWithKeyCountEncoded() throws Exception {
     UriInfoImpl result = parse("/Employees('1')/%24count");
@@ -383,6 +556,11 @@ public class UriParserTest extends BaseTest {
     assertEquals("EmployeeId", result.getKeyPredicates().get(0).getProperty().getName());
   }
   
+  /**
+   * Parses the employees simple property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseEmployeesSimpleProperty() throws Exception {
     UriInfoImpl result = parse("/Employees('1')/EmployeeName");
@@ -392,6 +570,11 @@ public class UriParserTest extends BaseTest {
     assertEquals("EmployeeName", result.getPropertyPath().get(0).getName());
   }
 
+  /**
+   * Parses the employees simple property value.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseEmployeesSimplePropertyValue() throws Exception {
     UriInfoImpl result = parse("/Employees('1')/EmployeeName/$value");
@@ -402,6 +585,11 @@ public class UriParserTest extends BaseTest {
     assertTrue(result.isValue());
   }
   
+  /**
+   * Parses the employees simple property value encoded.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseEmployeesSimplePropertyValueEncoded() throws Exception {
     UriInfoImpl result = parse("/Employees('1')/EmployeeName/%24value");
@@ -412,6 +600,11 @@ public class UriParserTest extends BaseTest {
     assertTrue(result.isValue());
   }
   
+  /**
+   * Parses the employees complex property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseEmployeesComplexProperty() throws Exception {
     UriInfoImpl result = parse("/Employees('1')/Location");
@@ -421,6 +614,11 @@ public class UriParserTest extends BaseTest {
     assertEquals("Location", result.getPropertyPath().get(0).getName());
   }
 
+  /**
+   * Parses the employees complex property with entity.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseEmployeesComplexPropertyWithEntity() throws Exception {
     UriInfoImpl result = parse("/Employees('1')/Location/Country");
@@ -431,6 +629,11 @@ public class UriParserTest extends BaseTest {
     assertEquals("Country", result.getPropertyPath().get(1).getName());
   }
 
+  /**
+   * Parses the employees complex property with entity value.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseEmployeesComplexPropertyWithEntityValue() throws Exception {
     UriInfoImpl result = parse("/Employees('1')/Location/Country/$value");
@@ -442,6 +645,11 @@ public class UriParserTest extends BaseTest {
     assertTrue(result.isValue());
   }
 
+  /**
+   * Simple property wrong.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void simplePropertyWrong() throws Exception {
     parseWrongUri("/Employees('1')/EmployeeName(1)", UriSyntaxException.INVALIDSEGMENT);
@@ -450,17 +658,32 @@ public class UriParserTest extends BaseTest {
     parseWrongUri("/Employees('1')/EmployeeName/$value/something", UriSyntaxException.MUSTBELASTSEGMENT);
   }
 
+  /**
+   * Complex property wrong.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void complexPropertyWrong() throws Exception {
     parseWrongUri("/Employees('1')/Location(1)", UriSyntaxException.INVALIDSEGMENT);
     parseWrongUri("/Employees('1')/Location/somethingwrong", UriNotMatchingException.PROPERTYNOTFOUND);
   }
 
+  /**
+   * Employees no property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void EmployeesNoProperty() throws Exception {
     parseWrongUri("/Employees('1')/somethingwrong", UriNotMatchingException.PROPERTYNOTFOUND);
   }
 
+  /**
+   * Parses the navigation property with entity result.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseNavigationPropertyWithEntityResult() throws Exception {
     UriInfoImpl result = parse("/Employees('1')/ne_Manager");
@@ -468,6 +691,11 @@ public class UriParserTest extends BaseTest {
     assertEquals(UriType.URI6A, result.getUriType());
   }
 
+  /**
+   * Parses the navigation property with entity set result.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseNavigationPropertyWithEntitySetResult() throws Exception {
     UriInfoImpl result = parse("/Managers('1')/nm_Employees");
@@ -475,6 +703,11 @@ public class UriParserTest extends BaseTest {
     assertEquals(UriType.URI6B, result.getUriType());
   }
 
+  /**
+   * Parses the navigation property with entity set result parenthesis.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseNavigationPropertyWithEntitySetResultParenthesis() throws Exception {
     UriInfoImpl result = parse("/Managers('1')/nm_Employees()");
@@ -482,6 +715,11 @@ public class UriParserTest extends BaseTest {
     assertEquals(UriType.URI6B, result.getUriType());
   }
 
+  /**
+   * Parses the navigation property with entity result with key.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseNavigationPropertyWithEntityResultWithKey() throws Exception {
     UriInfoImpl result = parse("/Managers('1')/nm_Employees('1')");
@@ -489,6 +727,11 @@ public class UriParserTest extends BaseTest {
     assertEquals(UriType.URI6A, result.getUriType());
   }
 
+  /**
+   * Parses the navigation property with links one.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseNavigationPropertyWithLinksOne() throws Exception {
     UriInfoImpl result = parse("/Employees('1')/$links/ne_Manager");
@@ -497,6 +740,11 @@ public class UriParserTest extends BaseTest {
     assertEquals(UriType.URI7A, result.getUriType());
   }
 
+  /**
+   * Parses the navigation property with links many.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseNavigationPropertyWithLinksMany() throws Exception {
     UriInfoImpl result = parse("/Managers('1')/$links/nm_Employees");
@@ -505,6 +753,11 @@ public class UriParserTest extends BaseTest {
     assertEquals(UriType.URI7B, result.getUriType());
   }
   
+  /**
+   * Parses the navigation property with links many encoded.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseNavigationPropertyWithLinksManyEncoded() throws Exception {
     UriInfoImpl result = parse("/Managers('1')/%24links/nm_Employees");
@@ -513,6 +766,11 @@ public class UriParserTest extends BaseTest {
     assertEquals(UriType.URI7B, result.getUriType());
   }
   
+  /**
+   * Parses the navigation property with managers count.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseNavigationPropertyWithManagersCount() throws Exception {
     UriInfoImpl result = parse("/Employees('1')/ne_Manager/$count");
@@ -521,6 +779,11 @@ public class UriParserTest extends BaseTest {
     assertEquals(UriType.URI16, result.getUriType());
   }
 
+  /**
+   * Parses the navigation property with employees count.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseNavigationPropertyWithEmployeesCount() throws Exception {
     UriInfoImpl result = parse("/Managers('1')/nm_Employees/$count");
@@ -529,6 +792,11 @@ public class UriParserTest extends BaseTest {
     assertEquals(UriType.URI15, result.getUriType());
   }
 
+  /**
+   * Parses the navigation property with employee count.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseNavigationPropertyWithEmployeeCount() throws Exception {
     UriInfoImpl result = parse("Managers('1')/nm_Employees('1')/$count");
@@ -537,6 +805,11 @@ public class UriParserTest extends BaseTest {
     assertEquals(UriType.URI16, result.getUriType());
   }
 
+  /**
+   * Parses the navigation property with links count many.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseNavigationPropertyWithLinksCountMany() throws Exception {
     UriInfoImpl result = parse("/Managers('1')/$links/nm_Employees/$count");
@@ -546,6 +819,11 @@ public class UriParserTest extends BaseTest {
     assertEquals(UriType.URI50B, result.getUriType());
   }
 
+  /**
+   * Parses the navigation property with links count one.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseNavigationPropertyWithLinksCountOne() throws Exception {
     UriInfoImpl result = parse("/Employees('1')/$links/ne_Manager/$count");
@@ -561,6 +839,11 @@ public class UriParserTest extends BaseTest {
     assertEquals(UriType.URI50A, result.getUriType());
   }
 
+  /**
+   * Navigation property wrong.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void navigationPropertyWrong() throws Exception {
     parseWrongUri("Employees('1')/somethingwrong", UriNotMatchingException.PROPERTYNOTFOUND);
@@ -583,21 +866,41 @@ public class UriParserTest extends BaseTest {
     parseWrongUri("Employees('1')/$links/$links/ne_Manager", UriNotMatchingException.PROPERTYNOTFOUND);
   }
 
+  /**
+   * Navigation path wrong match.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void navigationPathWrongMatch() throws Exception {
     parseWrongUri("/Employees('1')/(somethingwrong(", UriNotMatchingException.MATCHPROBLEM);
   }
 
+  /**
+   * Navigation segment wrong match.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void navigationSegmentWrongMatch() throws Exception {
     parseWrongUri("/Employees('1')/$links/(somethingwrong(", UriNotMatchingException.MATCHPROBLEM);
   }
 
+  /**
+   * Parses the teams entity with int key value.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseTeamsEntityWithIntKeyValue() throws Exception {
     parseWrongUri("/Teams(1)/$value", UriSyntaxException.INCOMPATIBLELITERAL);
   }
 
+  /**
+   * Parses the wrong key.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseWrongKey() throws Exception {
     parseWrongUri("Employees(EmployeeId=)", UriSyntaxException.INVALIDKEYPREDICATE);
@@ -617,6 +920,11 @@ public class UriParserTest extends BaseTest {
     parseWrongUri("Container2.Photos(Id=1)", UriSyntaxException.INVALIDKEYPREDICATE);
   }
 
+  /**
+   * Parses the photo entity with explicit key set.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parsePhotoEntityWithExplicitKeySet() throws Exception {
     UriInfoImpl result = parse("/Container2.Photos(Id=1,Type='abc')");
@@ -639,6 +947,11 @@ public class UriParserTest extends BaseTest {
     assertEquals("test,comma", result.getKeyPredicates().get(1).getLiteral());
   }
 
+  /**
+   * Parses the container employees entity set.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseContainerEmployeesEntitySet() throws Exception {
     UriInfoImpl result = parse("/Container1.Employees");
@@ -647,6 +960,11 @@ public class UriParserTest extends BaseTest {
     assertEquals(UriType.URI1, result.getUriType());
   }
 
+  /**
+   * Parses the container employees entity set parentheses.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseContainerEmployeesEntitySetParentheses() throws Exception {
     UriInfoImpl result = parse("/Container1.Employees()");
@@ -655,6 +973,11 @@ public class UriParserTest extends BaseTest {
     assertEquals(UriType.URI1, result.getUriType());
   }
 
+  /**
+   * Parses the container employees entity with key.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseContainerEmployeesEntityWithKey() throws Exception {
     UriInfoImpl result = parse("/Container1.Employees('1')");
@@ -667,16 +990,31 @@ public class UriParserTest extends BaseTest {
     assertEquals("EmployeeId", result.getKeyPredicates().get(0).getProperty().getName());
   }
 
+  /**
+   * Parses the nonexistent container.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseNonexistentContainer() throws Exception {
     parseWrongUri("/somethingwrong.Employees()", UriNotMatchingException.CONTAINERNOTFOUND);
   }
 
+  /**
+   * Parses the invalid segment.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseInvalidSegment() throws Exception {
     parseWrongUri("/.somethingwrong", UriNotMatchingException.MATCHPROBLEM);
   }
 
+  /**
+   * Parses the function imports.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseFunctionImports() throws Exception {
     UriInfoImpl result = parse("EmployeeSearch");
@@ -723,6 +1061,11 @@ public class UriParserTest extends BaseTest {
     assertEquals(UriType.URI14, result.getUriType());
   }
 
+  /**
+   * Parses the function import parameters.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseFunctionImportParameters() throws Exception {
     UriInfoImpl result = parse("EmployeeSearch?q='Hugo'&notaparameter=2");
@@ -733,6 +1076,11 @@ public class UriParserTest extends BaseTest {
     assertEquals("Hugo", result.getFunctionImportParameters().get("q").getLiteral());
   }
   
+  /**
+   * Parses the function import parameters with facets.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseFunctionImportParametersWithFacets() throws Exception {
     UriInfoImpl result = parse("FINullableParameter");
@@ -745,6 +1093,11 @@ public class UriParserTest extends BaseTest {
     assertEquals("A", result.getFunctionImportParameters().get("Id").getLiteral());
   }
 
+  /**
+   * Parses the wrong function imports.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseWrongFunctionImports() throws Exception {
     parseWrongUri("EmployeeSearch?q=42", UriSyntaxException.INCOMPATIBLELITERAL);
@@ -755,6 +1108,11 @@ public class UriParserTest extends BaseTest {
     parseWrongUri("ManagerPhoto?Id='", UriSyntaxException.UNKNOWNLITERAL);
   }
 
+  /**
+   * Parses the wrong function import parameters.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseWrongFunctionImportParameters() throws Exception {
     // override parameter type for testing literal parsing errors
@@ -766,6 +1124,11 @@ public class UriParserTest extends BaseTest {
     parseWrongUri("ManagerPhoto?Id=12345678901234567890", UriSyntaxException.LITERALFORMAT);
   }
 
+  /**
+   * Parses the system query options.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseSystemQueryOptions() throws Exception {
     UriInfoImpl result = parse("Employees?$format=json&$inlinecount=allpages&$skiptoken=abc&$skip=2&$top=1");
@@ -835,6 +1198,11 @@ public class UriParserTest extends BaseTest {
     assertEquals("EmployeeName desc", result.getOrderBy().getUriLiteral());
   }
 
+  /**
+   * Parses the wrong system query options.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseWrongSystemQueryOptions() throws Exception {
     parseWrongUri("Employees??", UriSyntaxException.URISYNTAX);
@@ -850,6 +1218,11 @@ public class UriParserTest extends BaseTest {
     parseWrongUri("Employees?$orderby=desc", UriSyntaxException.INVALIDORDERBYEXPRESSION);
   }
 
+  /**
+   * Parses the wrong redundant system query options.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseWrongRedundantSystemQueryOptions() throws Exception {
     parseWrongUri("Employees?$top=1&$top=2", UriSyntaxException.DUPLICATESYSTEMQUERYPARAMETES);
@@ -868,6 +1241,11 @@ public class UriParserTest extends BaseTest {
     parseWrongUri("Employees?$format=xml&$format=json", UriSyntaxException.DUPLICATESYSTEMQUERYPARAMETES);
   }
 
+  /**
+   * Parses the wrong system query option skip.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseWrongSystemQueryOptionSkip() throws Exception {
     parseWrongUri("Employees?$skip=-1", UriSyntaxException.INVALIDNEGATIVEVALUE);
@@ -886,6 +1264,11 @@ public class UriParserTest extends BaseTest {
     parseWrongUri("Employees?$skip=12345678901234567890", UriSyntaxException.INVALIDVALUE);
   }
 
+  /**
+   * Parses the wrong system query option top.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseWrongSystemQueryOptionTop() throws Exception {
     parseWrongUri("Employees?$top=-1", UriSyntaxException.INVALIDNEGATIVEVALUE);
@@ -901,6 +1284,11 @@ public class UriParserTest extends BaseTest {
     parseWrongUri("Employees?$top=12345678901234567890", UriSyntaxException.INVALIDVALUE);
   }
 
+  /**
+   * Parses the wrong system query option initial values.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseWrongSystemQueryOptionInitialValues() throws Exception {
     parseWrongUri("Employees?$expand=", UriSyntaxException.INVALIDNULLVALUE);
@@ -924,6 +1312,11 @@ public class UriParserTest extends BaseTest {
     parseWrongUri("Employees?$select", UriSyntaxException.INVALIDNULLVALUE);
   }
 
+  /**
+   * Parses the compatible system query options.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseCompatibleSystemQueryOptions() throws Exception {
     UriInfoImpl result = parse("Employees?$format=json&$inlinecount=allpages&$skiptoken=abc&$skip=2&$top=1");
@@ -936,6 +1329,11 @@ public class UriParserTest extends BaseTest {
     assertEquals(1, result.getTop().intValue());
   }
 
+  /**
+   * Parses the in compatible system query options.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseInCompatibleSystemQueryOptions() throws Exception {
     parseWrongUri("$metadata?$top=1", UriSyntaxException.INCOMPATIBLESYSTEMQUERYOPTION);
@@ -948,6 +1346,11 @@ public class UriParserTest extends BaseTest {
     parseWrongUri("/Employees('1')/EmployeeName/$value?$skip=2", UriSyntaxException.INCOMPATIBLESYSTEMQUERYOPTION);
   }
 
+  /**
+   * Parses the possible query options.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parsePossibleQueryOptions() throws Exception {
     UriInfoImpl result = parse("EmployeeSearch?q='a'&client=100&odata-debug=true");
@@ -956,6 +1359,11 @@ public class UriParserTest extends BaseTest {
     assertEquals("true", result.getCustomQueryOptions().get("odata-debug"));
   }
 
+  /**
+   * Parses the system query option select single.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseSystemQueryOptionSelectSingle() throws Exception {
     UriInfoImpl result = parse("Employees?$select=EmployeeName");
@@ -998,6 +1406,11 @@ public class UriParserTest extends BaseTest {
     assertTrue(result.getSelect().get(0).isStar());
   }
 
+  /**
+   * Parses the system query option select multiple.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseSystemQueryOptionSelectMultiple() throws Exception {
     UriInfoImpl result = parse("Employees?$select=EmployeeName,Location");
@@ -1028,6 +1441,11 @@ public class UriParserTest extends BaseTest {
         result.getSelect().get(0).getNavigationPropertySegments().get(0).getTargetEntitySet().getName());
   }
 
+  /**
+   * Parses the system query option select negative.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseSystemQueryOptionSelectNegative() throws Exception {
     parseWrongUri("Employees?$select=somethingwrong", UriNotMatchingException.PROPERTYNOTFOUND);
@@ -1045,6 +1463,11 @@ public class UriParserTest extends BaseTest {
     parseWrongUri("Teams('1')?$select=nt_Employees//*", UriSyntaxException.EMPTYSEGMENT);
   }
 
+  /**
+   * Parses the filter with space form encoding.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseFilterWithSpaceFormEncoding() throws Exception {
     UriInfoImpl result = parse("Employees?$filter=EmployeeId%20eq%20%271%27&odata-accept-forms-encoding=true");
@@ -1054,6 +1477,11 @@ public class UriParserTest extends BaseTest {
     assertNull(result.getCustomQueryOptions().get(ACCEPT_FORM_ENCODING));
   }
   
+  /**
+   * Parses the filter with space no form encoding.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseFilterWithSpaceNoFormEncoding() throws Exception {
     UriInfoImpl result = parse("Employees?$filter=EmployeeId%20eq%20%271%27");
@@ -1062,6 +1490,11 @@ public class UriParserTest extends BaseTest {
     assertEquals("EmployeeId eq '1'", result.getFilter().getUriLiteral());
   }
   
+  /**
+   * Parses the system query option filter form encoding.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseSystemQueryOptionFilterFormEncoding() throws Exception {
     UriInfoImpl result = parse("Employees?$filter=EmployeeId+eq+%271%27&odata-accept-forms-encoding=true");
@@ -1071,6 +1504,11 @@ public class UriParserTest extends BaseTest {
     assertNull(result.getCustomQueryOptions().get(ACCEPT_FORM_ENCODING));
   }
   
+  /**
+   * Parses the filter form encoding.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseFilterFormEncoding() throws Exception {
     UriInfoImpl result = parse("Employees?odata-accept-forms-encoding=true&$filter=EmployeeId+eq+%271%27");
@@ -1080,18 +1518,33 @@ public class UriParserTest extends BaseTest {
     assertNull(result.getCustomQueryOptions().get(ACCEPT_FORM_ENCODING));
   }
   
+  /**
+   * Parses the system query option filter false form encoding.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseSystemQueryOptionFilterFalseFormEncoding() throws Exception {
     parseWrongUri("Employees?$filter=EmployeeId+eq+%271%27&odata-accept-forms-encoding=false", 
         UriSyntaxException.INVALIDFILTEREXPRESSION);
   }
   
+  /**
+   * Parses the system query option filter no form encoding.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseSystemQueryOptionFilterNoFormEncoding() throws Exception {
     parseWrongUri("Employees?$filter=EmployeeId+eq+%271%27", 
         UriSyntaxException.INVALIDFILTEREXPRESSION);
   }
   
+  /**
+   * Parses the system query option filter invalid form encoding.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseSystemQueryOptionFilterInvalidFormEncoding() throws Exception {
     parseWrongUri("Employees?$filter=EmployeeId+eq+%271%27&odata-accept-forms-encoding=asdf", 
@@ -1099,6 +1552,11 @@ public class UriParserTest extends BaseTest {
   }
 
   
+  /**
+   * Parses the system query option having plus as value filter form encoding 1.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseSystemQueryOptionHavingPlusAsValueFilterFormEncoding1() throws Exception {
     UriInfoImpl result = parse("Employees?$filter=EmployeeId+eq+%27A+B%27&odata-accept-forms-encoding=true");
@@ -1108,6 +1566,11 @@ public class UriParserTest extends BaseTest {
     assertNull(result.getCustomQueryOptions().get(ACCEPT_FORM_ENCODING));
   }
   
+  /**
+   * Parses the system query option having plus as value filter form encoding 2.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseSystemQueryOptionHavingPlusAsValueFilterFormEncoding2() throws Exception {
     UriInfoImpl result = parse("Employees?$filter=EmployeeId+eq+%27A+B+C%27&odata-accept-forms-encoding=true");
@@ -1118,6 +1581,11 @@ public class UriParserTest extends BaseTest {
     assertNull(result.getCustomQueryOptions().get(ACCEPT_FORM_ENCODING));
   }
   
+  /**
+   * Parses the system query option having plus as value AND filter form encoding.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseSystemQueryOptionHavingPlusAsValueANDFilterFormEncoding() throws Exception {
     UriInfoImpl result = parse("Employees?$filter=EmployeeId+eq+%27A+B%27+and+"
@@ -1129,6 +1597,11 @@ public class UriParserTest extends BaseTest {
     assertNull(result.getCustomQueryOptions().get(ACCEPT_FORM_ENCODING));
   }
   
+  /**
+   * Parses the system query option having plus as valuestartswith filter form encoding.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseSystemQueryOptionHavingPlusAsValuestartswithFilterFormEncoding() throws Exception {
     UriInfoImpl result = parse("Employees?$filter=substring(EmployeeId,1)+eq+%27A+B%27"
@@ -1140,6 +1613,11 @@ public class UriParserTest extends BaseTest {
     assertNull(result.getCustomQueryOptions().get(ACCEPT_FORM_ENCODING));
   }
   
+  /**
+   * Parses the system query option having plus as valuesubstringofilter form encoding.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseSystemQueryOptionHavingPlusAsValuesubstringofilterFormEncoding() throws Exception {
     UriInfoImpl result = parse("Employees?$filter=startswith(EmployeeId,%27A+B%27)&odata-accept-forms-encoding=true");
@@ -1150,6 +1628,11 @@ public class UriParserTest extends BaseTest {
     assertNull(result.getCustomQueryOptions().get(ACCEPT_FORM_ENCODING));
   } 
   
+  /**
+   * Parses the system query option having plus as valueendswith filter form encoding.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseSystemQueryOptionHavingPlusAsValueendswithFilterFormEncoding() throws Exception {
     UriInfoImpl result = parse("Employees?$filter=endswith(EmployeeId,%27A+B%27)&odata-accept-forms-encoding=true");
@@ -1160,6 +1643,11 @@ public class UriParserTest extends BaseTest {
     assertNull(result.getCustomQueryOptions().get(ACCEPT_FORM_ENCODING));
   } 
 
+  /**
+   * Parses the system query option having plus as value OR filter form encoding 1.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseSystemQueryOptionHavingPlusAsValueORFilterFormEncoding1() throws Exception {
     UriInfoImpl result = parse("Employees?$filter=EmployeeId+eq+%27A+B%27+or+"
@@ -1171,6 +1659,11 @@ public class UriParserTest extends BaseTest {
     assertNull(result.getCustomQueryOptions().get(ACCEPT_FORM_ENCODING));
   }
   
+  /**
+   * Parses the system query option having plus as valueorderby andsubstringofilter form encoding.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseSystemQueryOptionHavingPlusAsValueorderbyAndsubstringofilterFormEncoding() throws Exception {
     UriInfoImpl result = parse("Employees?$orderby=EmployeeId%20asc&$filter=substringof(%27GW%27,EmployeeId)"
@@ -1185,6 +1678,11 @@ public class UriParserTest extends BaseTest {
   }  
    
   
+  /**
+   * Parses the system query option having plus as value OR filter form encoding 2.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseSystemQueryOptionHavingPlusAsValueORFilterFormEncoding2() throws Exception {
     UriInfoImpl result = parse("Employees?$filter=EmployeeId+eq+%27A%20B%27+or+"
@@ -1196,6 +1694,11 @@ public class UriParserTest extends BaseTest {
     assertNull(result.getCustomQueryOptions().get(ACCEPT_FORM_ENCODING));
   }
   
+  /**
+   * Parses the system query option having plus as value AN dsubsctringof filter form encoding.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseSystemQueryOptionHavingPlusAsValueANDsubsctringofFilterFormEncoding() throws Exception {
     UriInfoImpl result = parse("Employees?$filter=substring(EmployeeId,1)+eq+"
@@ -1207,6 +1710,11 @@ public class UriParserTest extends BaseTest {
     assertNull(result.getCustomQueryOptions().get(ACCEPT_FORM_ENCODING));
   }   
     
+  /**
+   * Parses the system query option expand.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseSystemQueryOptionExpand() throws Exception {
     UriInfoImpl result = parse("Managers('1')?$expand=nm_Employees");
@@ -1228,6 +1736,11 @@ public class UriParserTest extends BaseTest {
         result.getExpand().get(0).get(0).getNavigationProperty());
   }
 
+  /**
+   * Parses the system query option expand wrong.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseSystemQueryOptionExpandWrong() throws Exception {
     parseWrongUri("Managers('1')?$expand=,nm_Employees", UriSyntaxException.EMPTYSEGMENT);
@@ -1249,6 +1762,15 @@ public class UriParserTest extends BaseTest {
     parseWrongUri("Teams('1')?$expand=nt_Employees//ne_Manager", UriSyntaxException.EMPTYSEGMENT);
   }
 
+  /**
+   * Wrong get key.
+   *
+   * @param entitySet the entity set
+   * @param link the link
+   * @param serviceRoot the service root
+   * @param exceptionContext the exception context
+   * @throws ODataException the o data exception
+   */
   private void wrongGetKey(final EdmEntitySet entitySet, final String link, final String serviceRoot,
       final MessageReference exceptionContext) throws ODataException {
     try {
@@ -1261,6 +1783,12 @@ public class UriParserTest extends BaseTest {
     }
   }
 
+  /**
+   * Gets the key from link.
+   *
+   * @return the key from link
+   * @throws Exception the exception
+   */
   @Test
   public void getKeyFromLink() throws Exception {
     final EdmEntitySet entitySet = edm.getDefaultEntityContainer().getEntitySet("Teams");
@@ -1293,6 +1821,9 @@ public class UriParserTest extends BaseTest {
         UriNotMatchingException.CONTAINERNOTFOUND);
   }
 
+  /**
+   * Creates the path segment.
+   */
   @Test
   public void createPathSegment() {
     PathSegment segment = UriParser.createPathSegment("simple", null);

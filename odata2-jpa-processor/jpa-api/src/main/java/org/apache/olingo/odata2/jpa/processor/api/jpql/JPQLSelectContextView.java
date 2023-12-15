@@ -20,6 +20,7 @@ package org.apache.olingo.odata2.jpa.processor.api.jpql;
 
 import java.util.Map;
 
+// TODO: Auto-generated Javadoc
 /**
  * The interface provide a view on JPQL select context.The interface provides
  * methods for accessing the clauses of a JPQL SELECT statement like "SELECT",
@@ -66,7 +67,8 @@ public interface JPQLSelectContextView extends JPQLContextView {
   
   /**
    * Key in the map is the JPA query and value is a map with key being index and 
-   * value being parameter value
+   * value being parameter value.
+   *
    * @return a map of String and value is another map of Integer and Object
    */
   public Map<String, Map<Integer, Object>> getParameterizedQueryMap();

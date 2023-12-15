@@ -27,6 +27,7 @@ import org.apache.olingo.odata2.api.ODataServiceFactory;
 import org.apache.olingo.odata2.api.exception.ODataException;
 import org.apache.olingo.odata2.api.uri.PathInfo;
 
+// TODO: Auto-generated Javadoc
 /**
  * Compilation of generic context objects.
  * 
@@ -34,24 +35,29 @@ import org.apache.olingo.odata2.api.uri.PathInfo;
  */
 public interface ODataContext {
 
+  /** The http servlet request object. */
   String HTTP_SERVLET_REQUEST_OBJECT = "~httpRequestObject";
 
   /**
    * Gets the OData service.
+   *
    * @return ODataService related for this context
-   * @throws ODataException
+   * @throws ODataException the o data exception
    */
   ODataService getService() throws ODataException;
 
   /**
+   * Gets the service factory.
+   *
    * @return the service factory instance
    */
   ODataServiceFactory getServiceFactory();
 
   /**
    * Gets information about the request path.
+   *
    * @return an OData path info object
-   * @throws ODataException
+   * @throws ODataException the o data exception
    */
   PathInfo getPathInfo() throws ODataException;
 
@@ -63,6 +69,8 @@ public interface ODataContext {
   ODataContext getBatchParentContext();
 
   /**
+   * Checks if is in batch mode.
+   *
    * @return true in case of this request is part of a batch processing queue
    */
   boolean isInBatchMode();

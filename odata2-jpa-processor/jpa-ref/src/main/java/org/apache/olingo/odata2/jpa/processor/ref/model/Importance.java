@@ -18,6 +18,18 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.jpa.processor.ref.model;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Enum Importance.
+ */
 public enum Importance {
-  LOW, MEDIUM, HIGH, VIP
+  
+  /** The low. */
+  LOW, 
+ /** The medium. */
+ MEDIUM, 
+ /** The high. */
+ HIGH, 
+ /** The vip. */
+ VIP
 }

@@ -38,16 +38,28 @@ import org.apache.olingo.odata2.testutil.helper.StringHelper;
 import org.apache.olingo.odata2.testutil.server.ServletType;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
  * Tests employing the reference scenario reading function-import output in JSON format.
  * 
  */
 public class FunctionImportJsonTest extends AbstractRefTest {
 
+  /**
+   * Instantiates a new function import json test.
+   *
+   * @param servletType the servlet type
+   */
   public FunctionImportJsonTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /**
+   * Gets the entity container.
+   *
+   * @return the entity container
+   * @throws Exception the exception
+   */
   private EdmEntityContainer getEntityContainer() throws Exception {
     final HttpResponse response = callUri("$metadata"); 
     final EdmEntityContainer entityContainer = EntityProvider.readMetadata(response.getEntity().getContent(), false)
@@ -56,6 +68,11 @@ public class FunctionImportJsonTest extends AbstractRefTest {
     return entityContainer;
   }
 
+  /**
+   * Entity collection.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entityCollection() throws Exception {
     final HttpResponse response = callUri("EmployeeSearch?q='nat'&$format=json");
@@ -64,6 +81,11 @@ public class FunctionImportJsonTest extends AbstractRefTest {
     assertEquals(getBody(callUri("Employees?$filter=substringof('nat',EmployeeName)&$format=json")), body);
   }
 
+  /**
+   * Complex type collection.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void complexTypeCollection() throws Exception {
     final HttpResponse response = callUri("AllLocations?$format=json");
@@ -89,6 +111,11 @@ public class FunctionImportJsonTest extends AbstractRefTest {
     assertEquals(CITY_2_NAME, secondCity.get("CityName"));
   }
 
+  /**
+   * Simple type collection.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void simpleTypeCollection() throws Exception {
     final HttpResponse response = callUri("AllUsedRoomIds?$format=json");
@@ -104,6 +131,11 @@ public class FunctionImportJsonTest extends AbstractRefTest {
     assertEquals(Arrays.asList("1", "2", "3"), result);
   }
 
+  /**
+   * Simple type.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void simpleType() throws Exception {
     final HttpResponse response = callUri("MaximalAge?$format=json");
@@ -117,6 +149,11 @@ public class FunctionImportJsonTest extends AbstractRefTest {
     assertEquals(Short.valueOf(EMPLOYEE_3_AGE), result);
   }
 
+  /**
+   * Complex type.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void complexType() throws Exception {
@@ -142,6 +179,11 @@ public class FunctionImportJsonTest extends AbstractRefTest {
     assertEquals(CITY_2_NAME, resultMap.get("CityName"));
   }
 
+  /**
+   * Binary.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void binary() throws Exception {
     final HttpResponse response = callUri("ManagerPhoto?Id='1'&$format=json");
@@ -149,6 +191,11 @@ public class FunctionImportJsonTest extends AbstractRefTest {
     assertTrue(getBody(response).startsWith("{\"d\":{\"ManagerPhoto\":\"iVBORw0KGgoAAAAN"));
   }
 
+  /**
+   * Entity.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entity() throws Exception {
     final String expected = getBody(callUri("Employees('3')?$format=json"));

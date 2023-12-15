@@ -48,12 +48,26 @@ import org.apache.olingo.odata2.jpa.processor.core.mock.data.JPATypeMock.JPAType
 import org.apache.olingo.odata2.jpa.processor.core.model.JPAEdmMappingImpl;
 import org.easymock.EasyMock;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EdmMockUtilV2.
+ */
 public class EdmMockUtilV2 {
 
+  /**
+   * The Interface JPAEdmMappingMock.
+   */
   public static interface JPAEdmMappingMock extends JPAEdmMapping, EdmMapping {
 
   }
 
+  /**
+   * Mock edm entity container.
+   *
+   * @param entityName the entity name
+   * @return the edm entity container
+   * @throws EdmException the edm exception
+   */
   public static EdmEntityContainer mockEdmEntityContainer(final String entityName) throws EdmException {
     EdmEntityContainer entityContainer = EasyMock.createMock(EdmEntityContainer.class);
     entityContainer = EasyMock.createMock(EdmEntityContainer.class);
@@ -67,6 +81,14 @@ public class EdmMockUtilV2 {
     return entityContainer;
   }
 
+  /**
+   * Mock edm entity type.
+   *
+   * @param entityName the entity name
+   * @param withComplexType the with complex type
+   * @return the edm entity type
+   * @throws EdmException the edm exception
+   */
   public static EdmEntityType mockEdmEntityType(final String entityName, final boolean withComplexType)
       throws EdmException {
 
@@ -127,6 +149,13 @@ public class EdmMockUtilV2 {
     return entityType;
   }
 
+  /**
+   * Mock key properties.
+   *
+   * @param entityName the entity name
+   * @return the list
+   * @throws EdmException the edm exception
+   */
   public static List<EdmProperty> mockKeyProperties(final String entityName) throws EdmException {
     List<EdmProperty> edmProperties = new ArrayList<EdmProperty>();
     edmProperties.add(mockEdmProperty(entityName, JPATypeMock.PROPERTY_NAME_MINT));
@@ -134,6 +163,12 @@ public class EdmMockUtilV2 {
     return edmProperties;
   }
 
+  /**
+   * Mock navigation property names.
+   *
+   * @param entityName the entity name
+   * @return the list
+   */
   public static List<String> mockNavigationPropertyNames(final String entityName) {
     List<String> propertyNames = new ArrayList<String>();
     if (JPATypeMock.ENTITY_NAME.equals(entityName)) {
@@ -144,6 +179,12 @@ public class EdmMockUtilV2 {
     return propertyNames;
   }
 
+  /**
+   * Mock simple key property names.
+   *
+   * @param entityName the entity name
+   * @return the list
+   */
   public static List<String> mockSimpleKeyPropertyNames(final String entityName) {
     List<String> keyPropertyNames = new ArrayList<String>();
     if (entityName.equals(JPATypeMock.ENTITY_NAME)) {
@@ -155,6 +196,12 @@ public class EdmMockUtilV2 {
     return keyPropertyNames;
   }
 
+  /**
+   * Mock property names.
+   *
+   * @param entityName the entity name
+   * @return the list
+   */
   public static List<String> mockPropertyNames(final String entityName) {
     List<String> propertyNames = new ArrayList<String>();
 
@@ -190,6 +237,12 @@ public class EdmMockUtilV2 {
     return propertyNames;
   }
 
+  /**
+   * Mock property names with complex type.
+   *
+   * @param entityName the entity name
+   * @return the list
+   */
   public static List<String> mockPropertyNamesWithComplexType(final String entityName) {
     List<String> propertyNames = mockPropertyNames(entityName);
     propertyNames.add(JPATypeMock.PROPERTY_NAME_MCOMPLEXTYPE);
@@ -198,6 +251,14 @@ public class EdmMockUtilV2 {
 
   }
 
+  /**
+   * Mock edm associatio end.
+   *
+   * @param navigationPropertyName the navigation property name
+   * @param role the role
+   * @return the edm association end
+   * @throws EdmException the edm exception
+   */
   public static EdmAssociationEnd mockEdmAssociatioEnd(final String navigationPropertyName, final String role)
       throws EdmException {
     EdmAssociationEnd associationEnd = EasyMock.createMock(EdmAssociationEnd.class);
@@ -211,6 +272,13 @@ public class EdmMockUtilV2 {
     return associationEnd;
   }
 
+  /**
+   * Mock edm association.
+   *
+   * @param navigationPropertyName the navigation property name
+   * @return the edm association
+   * @throws EdmException the edm exception
+   */
   public static EdmAssociation mockEdmAssociation(final String navigationPropertyName) throws EdmException {
     EdmAssociation edmAssociation = EasyMock.createMock(EdmAssociation.class);
     EasyMock.expect(edmAssociation.getEnd("TO")).andReturn(mockEdmAssociatioEnd(navigationPropertyName, "TO"));
@@ -220,6 +288,14 @@ public class EdmMockUtilV2 {
     return edmAssociation;
   }
 
+  /**
+   * Mock edm entity set.
+   *
+   * @param entityName the entity name
+   * @param withComplexType the with complex type
+   * @return the edm entity set
+   * @throws EdmException the edm exception
+   */
   public static EdmEntitySet mockEdmEntitySet(final String entityName, final boolean withComplexType)
       throws EdmException {
     EdmEntitySet entitySet = null;
@@ -237,6 +313,14 @@ public class EdmMockUtilV2 {
     return entitySet;
   }
 
+  /**
+   * Mock edm navigation property.
+   *
+   * @param navigationPropertyName the navigation property name
+   * @param multiplicity the multiplicity
+   * @return the edm navigation property
+   * @throws EdmException the edm exception
+   */
   public static EdmNavigationProperty mockEdmNavigationProperty(final String navigationPropertyName,
       final EdmMultiplicity multiplicity) throws EdmException {
 
@@ -259,6 +343,14 @@ public class EdmMockUtilV2 {
     return navigationProperty;
   }
 
+  /**
+   * Mock edm property.
+   *
+   * @param entityName the entity name
+   * @param propertyName the property name
+   * @return the edm property
+   * @throws EdmException the edm exception
+   */
   public static EdmProperty mockEdmProperty(final String entityName, final String propertyName) throws EdmException {
     EdmProperty edmProperty = EasyMock.createMock(EdmProperty.class);
 
@@ -330,6 +422,13 @@ public class EdmMockUtilV2 {
     return edmProperty;
   }
 
+  /**
+   * Mock complex type.
+   *
+   * @param complexPropertyName the complex property name
+   * @return the edm complex type
+   * @throws EdmException the edm exception
+   */
   public static EdmComplexType mockComplexType(final String complexPropertyName) throws EdmException {
 
     String complexTypeName = null;
@@ -368,6 +467,14 @@ public class EdmMockUtilV2 {
     return edmComplexType;
   }
 
+  /**
+   * Mock edm mapping.
+   *
+   * @param entityName the entity name
+   * @param propertyName the property name
+   * @param navigationPropertyName the navigation property name
+   * @return the JPA edm mapping
+   */
   public static JPAEdmMapping mockEdmMapping(final String entityName, final String propertyName,
       final String navigationPropertyName) {
     JPAEdmMapping mapping = new JPAEdmMappingImpl();

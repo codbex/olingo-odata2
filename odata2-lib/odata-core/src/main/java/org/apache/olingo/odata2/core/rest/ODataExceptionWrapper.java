@@ -54,22 +54,46 @@ import org.apache.olingo.odata2.core.exception.MessageService;
 import org.apache.olingo.odata2.core.exception.MessageService.Message;
 import org.apache.olingo.odata2.core.exception.ODataRuntimeException;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class ODataExceptionWrapper.
  */
 public class ODataExceptionWrapper {
 
+  /** The Constant DOLLAR_FORMAT. */
   private static final String DOLLAR_FORMAT = "$format";
+  
+  /** The Constant DOLLAR_FORMAT_JSON. */
   private static final String DOLLAR_FORMAT_JSON = "json";
+  
+  /** The Constant DEFAULT_RESPONSE_LOCALE. */
   private static final Locale DEFAULT_RESPONSE_LOCALE = Locale.ENGLISH;
 
+  /** The content type. */
   private String contentType;
+  
+  /** The request uri. */
   private URI requestUri;
+  
+  /** The message locale. */
   private final Locale messageLocale;
+  
+  /** The http request headers. */
   private final Map<String, List<String>> httpRequestHeaders;
+  
+  /** The callback. */
   private final ODataErrorCallback callback;
+  
+  /** The error context. */
   private final ODataErrorContext errorContext = new ODataErrorContext();
 
+  /**
+   * Instantiates a new o data exception wrapper.
+   *
+   * @param context the context
+   * @param queryParameters the query parameters
+   * @param acceptHeaderContentTypes the accept header content types
+   */
   public ODataExceptionWrapper(final ODataContext context, final Map<String, String> queryParameters,
       final List<String> acceptHeaderContentTypes) {
     contentType = getContentType(queryParameters, acceptHeaderContentTypes).toContentTypeString();
@@ -84,6 +108,13 @@ public class ODataExceptionWrapper {
     }
   }
 
+  /**
+   * Instantiates a new o data exception wrapper.
+   *
+   * @param uriInfo the uri info
+   * @param httpHeaders the http headers
+   * @param errorCallback the error callback
+   */
   public ODataExceptionWrapper(final UriInfo uriInfo, final HttpHeaders httpHeaders,
       final ODataErrorCallback errorCallback) {
     try {
@@ -98,6 +129,12 @@ public class ODataExceptionWrapper {
     callback = errorCallback;
   }
 
+  /**
+   * Wrap in exception response.
+   *
+   * @param exception the exception
+   * @return the o data response
+   */
   public ODataResponse wrapInExceptionResponse(final Exception exception) {
     try {
       final Exception toHandleException = extractException(exception);
@@ -128,11 +165,23 @@ public class ODataExceptionWrapper {
     }
   }
 
+  /**
+   * Enhance context with runtime application exception.
+   *
+   * @param toHandleException the to handle exception
+   */
   private void enhanceContextWithRuntimeApplicationException(ODataRuntimeApplicationException toHandleException) {
     errorContext.setHttpStatus(toHandleException.getHttpStatus());
     errorContext.setErrorCode(toHandleException.getCode());
   }
 
+  /**
+   * Handle error callback.
+   *
+   * @param callback the callback
+   * @return the o data response
+   * @throws EntityProviderException the entity provider exception
+   */
   private ODataResponse handleErrorCallback(final ODataErrorCallback callback) throws EntityProviderException {
     ODataResponse oDataResponse;
     try {
@@ -145,12 +194,22 @@ public class ODataExceptionWrapper {
     return oDataResponse;
   }
 
+  /**
+   * Enhance context with application exception.
+   *
+   * @param toHandleException the to handle exception
+   */
   private void enhanceContextWithApplicationException(final ODataApplicationException toHandleException) {
     errorContext.setHttpStatus(toHandleException.getHttpStatus());
     errorContext.setErrorCode(toHandleException.getCode());
     errorContext.setLocale(messageLocale);
   }
 
+  /**
+   * Enhance context with message exception.
+   *
+   * @param toHandleException the to handle exception
+   */
   private void enhanceContextWithMessageException(final ODataMessageException toHandleException) {
     errorContext.setErrorCode(toHandleException.getErrorCode());
     MessageReference messageReference = toHandleException.getMessageReference();
@@ -209,6 +268,12 @@ public class ODataExceptionWrapper {
     }
   }
 
+  /**
+   * Extract exception.
+   *
+   * @param exception the exception
+   * @return the exception
+   */
   private Exception extractException(final Exception exception) {
     if (exception instanceof ODataException) {
       ODataException odataException = (ODataException) exception;
@@ -223,10 +288,22 @@ public class ODataExceptionWrapper {
     return exception;
   }
 
+  /**
+   * Extract entity.
+   *
+   * @param context the context
+   * @return the message
+   */
   private Message extractEntity(final MessageReference context) {
     return MessageService.getMessage(messageLocale, context);
   }
 
+  /**
+   * Gets the languages.
+   *
+   * @param context the context
+   * @return the languages
+   */
   private List<Locale> getLanguages(final ODataContext context) {
     try {
       if (context.getAcceptableLanguages().isEmpty()) {
@@ -244,6 +321,12 @@ public class ODataExceptionWrapper {
     }
   }
 
+  /**
+   * Gets the languages.
+   *
+   * @param httpHeaders the http headers
+   * @return the languages
+   */
   private List<Locale> getLanguages(final HttpHeaders httpHeaders) {
     try {
       if (httpHeaders.getAcceptableLanguages().isEmpty()) {
@@ -261,6 +344,13 @@ public class ODataExceptionWrapper {
     }
   }
 
+  /**
+   * Gets the content type.
+   *
+   * @param queryParameters the query parameters
+   * @param acceptHeaderContentTypes the accept header content types
+   * @return the content type
+   */
   private ContentType getContentType(final Map<String, String> queryParameters,
       final List<String> acceptHeaderContentTypes) {
     ContentType cntType = getContentTypeByUriInfo(queryParameters);
@@ -270,6 +360,12 @@ public class ODataExceptionWrapper {
     return cntType;
   }
 
+  /**
+   * Gets the content type by uri info.
+   *
+   * @param queryParameters the query parameters
+   * @return the content type by uri info
+   */
   private ContentType getContentTypeByUriInfo(final Map<String, String> queryParameters) {
     ContentType cntType = null;
     if (queryParameters != null) {
@@ -288,6 +384,12 @@ public class ODataExceptionWrapper {
     return cntType;
   }
 
+  /**
+   * Gets the content type by accept header.
+   *
+   * @param acceptHeaderContentTypes the accept header content types
+   * @return the content type by accept header
+   */
   private ContentType getContentTypeByAcceptHeader(final List<String> acceptHeaderContentTypes) {
     for (String acceptContentType : acceptHeaderContentTypes) {
       if (ContentType.isParseable(acceptContentType)) {
@@ -308,6 +410,13 @@ public class ODataExceptionWrapper {
     return ContentType.APPLICATION_XML;
   }
 
+  /**
+   * Gets the content type.
+   *
+   * @param uriInfo the uri info
+   * @param httpHeaders the http headers
+   * @return the content type
+   */
   private ContentType getContentType(final UriInfo uriInfo, final HttpHeaders httpHeaders) {
     ContentType cntType = getContentTypeByUriInfo(uriInfo);
     if (cntType == null) {
@@ -316,6 +425,12 @@ public class ODataExceptionWrapper {
     return cntType;
   }
 
+  /**
+   * Gets the content type by uri info.
+   *
+   * @param uriInfo the uri info
+   * @return the content type by uri info
+   */
   private ContentType getContentTypeByUriInfo(final UriInfo uriInfo) {
     ContentType cntType = null;
     if (uriInfo != null && uriInfo.getQueryParameters() != null) {
@@ -334,6 +449,12 @@ public class ODataExceptionWrapper {
     return cntType;
   }
 
+  /**
+   * Gets the content type by accept header.
+   *
+   * @param httpHeaders the http headers
+   * @return the content type by accept header
+   */
   private ContentType getContentTypeByAcceptHeader(final HttpHeaders httpHeaders) {
     for (MediaType type : httpHeaders.getAcceptableMediaTypes()) {
       if (ContentType.isParseable(type.toString())) {
@@ -354,6 +475,15 @@ public class ODataExceptionWrapper {
     return ContentType.APPLICATION_XML;
   }
 
+  /**
+   * Gets the error handler callback from context.
+   *
+   * @param context the context
+   * @return the error handler callback from context
+   * @throws ClassNotFoundException the class not found exception
+   * @throws InstantiationException the instantiation exception
+   * @throws IllegalAccessException the illegal access exception
+   */
   private ODataErrorCallback getErrorHandlerCallbackFromContext(final ODataContext context)
       throws ClassNotFoundException, InstantiationException, IllegalAccessException {
     ODataErrorCallback cback = null;

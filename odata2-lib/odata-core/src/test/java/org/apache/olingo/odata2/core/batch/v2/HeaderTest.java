@@ -29,8 +29,15 @@ import org.apache.olingo.odata2.core.batch.v2.BatchParserCommon;
 import org.apache.olingo.odata2.core.batch.v2.Header;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class HeaderTest.
+ */
 public class HeaderTest {
 
+  /**
+   * Test.
+   */
   @Test
   public void test() {
     Header header = new Header(1);
@@ -41,6 +48,9 @@ public class HeaderTest {
     assertEquals(HttpContentType.MULTIPART_MIXED, header.getHeaders(HttpHeaders.CONTENT_TYPE).get(0));
   }
 
+  /**
+   * Test not available.
+   */
   @Test
   public void testNotAvailable() {
     Header header = new Header(1);
@@ -50,6 +60,9 @@ public class HeaderTest {
     assertEquals("", header.getHeaderNotNull(HttpHeaders.CONTENT_TYPE));
   }
 
+  /**
+   * Test case insensitive.
+   */
   @Test
   public void testCaseInsensitive() {
     Header header = new Header(1);
@@ -60,6 +73,9 @@ public class HeaderTest {
     assertEquals(HttpContentType.MULTIPART_MIXED, header.getHeaders("cOnTenT-TyPE").get(0));
   }
 
+  /**
+   * Test duplicated add.
+   */
   @Test
   public void testDuplicatedAdd() {
     Header header = new Header(1);
@@ -71,6 +87,9 @@ public class HeaderTest {
     assertEquals(HttpContentType.MULTIPART_MIXED, header.getHeaders(HttpHeaders.CONTENT_TYPE).get(0));
   }
 
+  /**
+   * Test matcher.
+   */
   @Test
   public void testMatcher() {
     Header header = new Header(1);
@@ -79,6 +98,9 @@ public class HeaderTest {
     assertTrue(header.isHeaderMatching(HttpHeaders.CONTENT_TYPE, BatchParserCommon.PATTERN_MULTIPART_MIXED));
   }
 
+  /**
+   * Test field name.
+   */
   @Test
   public void testFieldName() {
     Header header = new Header(0);
@@ -92,6 +114,9 @@ public class HeaderTest {
     assertEquals("myValue", header.toSingleMap().get("MyFieldNamE"));
   }
 
+  /**
+   * Test deep copy.
+   */
   @Test
   public void testDeepCopy() {
     Header header = new Header(1);
@@ -106,6 +131,9 @@ public class HeaderTest {
     assertTrue(header.getHeaderField(HttpHeaders.CONTENT_TYPE) != copy.getHeaderField(HttpHeaders.CONTENT_TYPE));
   }
 
+  /**
+   * Test matcher no header.
+   */
   @Test
   public void testMatcherNoHeader() {
     Header header = new Header(1);
@@ -113,6 +141,9 @@ public class HeaderTest {
     assertFalse(header.isHeaderMatching(HttpHeaders.CONTENT_TYPE,  BatchParserCommon.PATTERN_MULTIPART_MIXED));
   }
 
+  /**
+   * Test matcher fail.
+   */
   @Test
   public void testMatcherFail() {
     Header header = new Header(1);
@@ -121,6 +152,9 @@ public class HeaderTest {
     assertFalse(header.isHeaderMatching(HttpHeaders.CONTENT_TYPE, BatchParserCommon.PATTERN_HEADER_LINE));
   }
 
+  /**
+   * Test duplicated add list.
+   */
   @Test
   public void testDuplicatedAddList() {
     Header header = new Header(1);
@@ -135,6 +169,9 @@ public class HeaderTest {
     assertEquals(HttpContentType.APPLICATION_ATOM_SVC, header.getHeaders(HttpHeaders.CONTENT_TYPE).get(1));
   }
 
+  /**
+   * Test remove.
+   */
   @Test
   public void testRemove() {
     Header header = new Header(1);
@@ -145,6 +182,9 @@ public class HeaderTest {
     assertEquals(0, header.getHeaders(HttpHeaders.CONTENT_TYPE).size());
   }
 
+  /**
+   * Test multiple values.
+   */
   @Test
   public void testMultipleValues() {
     Header header = new Header(1);
@@ -163,6 +203,9 @@ public class HeaderTest {
     assertEquals(HttpContentType.APPLICATION_ATOM_XML, header.getHeaders(HttpHeaders.CONTENT_TYPE).get(2));
   }
   
+  /**
+   * Test split values.
+   */
   @Test
   public void testSplitValues() {
     final String values = "abc, def,123,77,   99, ysd";

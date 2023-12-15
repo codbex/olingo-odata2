@@ -33,11 +33,19 @@ import org.apache.olingo.odata2.api.exception.ODataException;
 import org.apache.olingo.odata2.api.processor.ODataContext;
 import org.apache.olingo.odata2.testutil.server.TestServer;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * A factory for creating FitStaticService objects.
  */
 public class FitStaticServiceFactory extends ODataServiceFactory {
 
+  /**
+   * Gets the callback.
+   *
+   * @param <T> the generic type
+   * @param callbackInterface the callback interface
+   * @return the callback
+   */
   @SuppressWarnings("unchecked")
   @Override
   public <T extends ODataCallback> T getCallback(final Class<T> callbackInterface) {
@@ -48,25 +56,55 @@ public class FitStaticServiceFactory extends ODataServiceFactory {
     return super.getCallback(callbackInterface);
   }
 
+  /** The port 2 service. */
   private static Map<String, ODataService> PORT_2_SERVICE = Collections
       .synchronizedMap(new HashMap<String, ODataService>());
 
+  /**
+   * Bind service.
+   *
+   * @param key the key
+   * @param service the service
+   */
   public static void bindService(final String key, final ODataService service) {
     PORT_2_SERVICE.put(key, service);
   }
 
+  /**
+   * Unbind service.
+   *
+   * @param key the key
+   */
   public static void unbindService(final String key) {
     PORT_2_SERVICE.remove(key);
   }
 
+  /**
+   * Bind service.
+   *
+   * @param server the server
+   * @param service the service
+   */
   public static void bindService(final TestServer server, final ODataService service) {
     PORT_2_SERVICE.put(createId(server), service);
   }
 
+  /**
+   * Unbind service.
+   *
+   * @param server the server
+   */
   public static void unbindService(final TestServer server) {
     PORT_2_SERVICE.remove(createId(server));
   }
 
+  /**
+   * Creates a new FitStaticService object.
+   *
+   * @param ctx the ctx
+   * @return the o data service
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataService createService(final ODataContext ctx) throws ODataException {
 
@@ -90,6 +128,12 @@ public class FitStaticServiceFactory extends ODataServiceFactory {
     }
   }
 
+  /**
+   * Creates a new FitStaticService object.
+   *
+   * @param server the server
+   * @return the string
+   */
   private static String createId(final TestServer server) {
     final URI endpoint = server.getEndpoint();
     if (endpoint == null) {

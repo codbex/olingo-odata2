@@ -30,14 +30,28 @@ import org.apache.olingo.odata2.api.edm.provider.SimpleProperty;
 import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmExtension;
 import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmSchemaView;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SalesOrderProcessingExtension.
+ */
 public class SalesOrderProcessingExtension implements JPAEdmExtension {
 
+  /**
+   * Extend JPA edm schema.
+   *
+   * @param view the view
+   */
   @Override
   public void extendJPAEdmSchema(final JPAEdmSchemaView view) {
     Schema edmSchema = view.getEdmSchema();
     edmSchema.getComplexTypes().add(getComplexType());
   }
 
+  /**
+   * Gets the complex type.
+   *
+   * @return the complex type
+   */
   private ComplexType getComplexType() {
     ComplexType complexType = new ComplexType();
 
@@ -60,6 +74,11 @@ public class SalesOrderProcessingExtension implements JPAEdmExtension {
 
   }
 
+  /**
+   * Extend with operation.
+   *
+   * @param view the view
+   */
   @Override
   public void extendWithOperation(final JPAEdmSchemaView view) {
     view.registerOperations(SalesOrderHeaderProcessor.class, null);
@@ -67,6 +86,11 @@ public class SalesOrderProcessingExtension implements JPAEdmExtension {
 
   }
 
+  /**
+   * Gets the JPA edm mapping model stream.
+   *
+   * @return the JPA edm mapping model stream
+   */
   @Override
   public InputStream getJPAEdmMappingModelStream() {
     return null;

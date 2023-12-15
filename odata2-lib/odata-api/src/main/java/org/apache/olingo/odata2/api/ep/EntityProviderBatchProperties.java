@@ -20,15 +20,15 @@ package org.apache.olingo.odata2.api.ep;
 
 import org.apache.olingo.odata2.api.uri.PathInfo;
 
+// TODO: Auto-generated Javadoc
 /**
  * The {@link EntityProviderBatchProperties} contains necessary informations to parse a Batch Request body.
  * 
  * 
  */
 public class EntityProviderBatchProperties {
-  /**
-   * PathInfo contains service root and preceding segments which should be used for URI parsing of a single request
-   */
+  
+  /** PathInfo contains service root and preceding segments which should be used for URI parsing of a single request. */
   private PathInfo pathInfo;
 
   /**
@@ -36,37 +36,82 @@ public class EntityProviderBatchProperties {
    */
   private boolean isStrict = true;
 
+  /**
+   * Inits the.
+   *
+   * @return the entity provider batch properties builder
+   */
   public static EntityProviderBatchPropertiesBuilder init() {
     return new EntityProviderBatchPropertiesBuilder();
   }
 
+  /**
+   * Gets the path info.
+   *
+   * @return the path info
+   */
   public PathInfo getPathInfo() {
     return pathInfo;
   }
 
+  /**
+   * Checks if is strict.
+   *
+   * @return true, if is strict
+   */
   public boolean isStrict() {
     return isStrict;
   }
 
+  /**
+   * The Class EntityProviderBatchPropertiesBuilder.
+   */
   public static class EntityProviderBatchPropertiesBuilder {
+    
+    /** The properties. */
     private final EntityProviderBatchProperties properties = new EntityProviderBatchProperties();
 
+    /**
+     * Instantiates a new entity provider batch properties builder.
+     */
     public EntityProviderBatchPropertiesBuilder() {}
 
+    /**
+     * Instantiates a new entity provider batch properties builder.
+     *
+     * @param propertiesFrom the properties from
+     */
     public EntityProviderBatchPropertiesBuilder(final EntityProviderBatchProperties propertiesFrom) {
       properties.pathInfo = propertiesFrom.pathInfo;
     }
 
+    /**
+     * Path info.
+     *
+     * @param pathInfo the path info
+     * @return the entity provider batch properties builder
+     */
     public EntityProviderBatchPropertiesBuilder pathInfo(final PathInfo pathInfo) {
       properties.pathInfo = pathInfo;
       return this;
     }
 
+    /**
+     * Sets the strict.
+     *
+     * @param isStrict the is strict
+     * @return the entity provider batch properties builder
+     */
     public EntityProviderBatchPropertiesBuilder setStrict(final boolean isStrict) {
       properties.isStrict = isStrict;
       return this;
     }
 
+    /**
+     * Builds the.
+     *
+     * @return the entity provider batch properties
+     */
     public EntityProviderBatchProperties build() {
       return properties;
     }

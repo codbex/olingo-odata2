@@ -51,15 +51,27 @@ import org.apache.olingo.odata2.api.uri.info.GetServiceDocumentUriInfo;
 import org.apache.olingo.odata2.testutil.server.ServletType;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class ContextTest.
  */
 public class ContextTest extends AbstractBasicTest {
 
+  /**
+   * Instantiates a new context test.
+   *
+   * @param servletType the servlet type
+   */
   public ContextTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /**
+   * Creates the processor.
+   *
+   * @return the o data single processor
+   * @throws ODataException the o data exception
+   */
   @Override
   protected ODataSingleProcessor createProcessor() throws ODataException {
     final ODataSingleProcessor processor = mock(ODataSingleProcessor.class);
@@ -71,6 +83,13 @@ public class ContextTest extends AbstractBasicTest {
     return processor;
   }
 
+  /**
+   * Check context exists.
+   *
+   * @throws ClientProtocolException the client protocol exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws ODataException the o data exception
+   */
   @Test
   public void checkContextExists() throws ClientProtocolException, IOException, ODataException {
     assertNull(getService().getProcessor().getContext());
@@ -87,6 +106,13 @@ public class ContextTest extends AbstractBasicTest {
     assertEquals("$metadata", context.getPathInfo().getODataSegments().get(0).getPath());
   }
 
+  /**
+   * Check base uri for service document.
+   *
+   * @throws ClientProtocolException the client protocol exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws ODataException the o data exception
+   */
   @Test
   public void checkBaseUriForServiceDocument() throws ClientProtocolException, IOException, ODataException {
     executeGetRequest("");
@@ -96,6 +122,13 @@ public class ContextTest extends AbstractBasicTest {
     assertEquals(getEndpoint().toString(), ctx.getPathInfo().getServiceRoot().toASCIIString());
   }
 
+  /**
+   * Check service factory is set.
+   *
+   * @throws ClientProtocolException the client protocol exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws ODataException the o data exception
+   */
   @Test
   public void checkServiceFactoryIsSet() throws ClientProtocolException, IOException, ODataException {
     executeGetRequest("");
@@ -105,6 +138,13 @@ public class ContextTest extends AbstractBasicTest {
     assertNotNull(ctx.getServiceFactory());
   }
 
+  /**
+   * Check service is set.
+   *
+   * @throws ClientProtocolException the client protocol exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws ODataException the o data exception
+   */
   @Test
   public void checkServiceIsSet() throws ClientProtocolException, IOException, ODataException {
     executeGetRequest("");
@@ -114,6 +154,13 @@ public class ContextTest extends AbstractBasicTest {
     assertNotNull(ctx.getService());
   }
 
+  /**
+   * Check base uri for metadata.
+   *
+   * @throws ClientProtocolException the client protocol exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws ODataException the o data exception
+   */
   @Test
   public void checkBaseUriForMetadata() throws ClientProtocolException, IOException, ODataException {
     executeGetRequest("$metadata");
@@ -123,6 +170,13 @@ public class ContextTest extends AbstractBasicTest {
     assertEquals(getEndpoint().toString(), ctx.getPathInfo().getServiceRoot().toASCIIString());
   }
 
+  /**
+   * Check acceptuables language.
+   *
+   * @throws ODataException the o data exception
+   * @throws ClientProtocolException the client protocol exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Test
   public void checkAcceptuablesLanguage() throws ODataException, ClientProtocolException, IOException {
     final HttpGet get = new HttpGet(URI.create(getEndpoint().toString() + "/$metadata"));
@@ -136,6 +190,13 @@ public class ContextTest extends AbstractBasicTest {
     assertEquals("[de, en]", ctx.getAcceptableLanguages().toString());
   }
 
+  /**
+   * Check acceptuables languages no header.
+   *
+   * @throws ODataException the o data exception
+   * @throws ClientProtocolException the client protocol exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Test
   public void checkAcceptuablesLanguagesNoHeader() throws ODataException, ClientProtocolException, IOException {
     final HttpGet get = new HttpGet(URI.create(getEndpoint().toString() + "/$metadata"));
@@ -147,6 +208,13 @@ public class ContextTest extends AbstractBasicTest {
     assertEquals("[*]", ctx.getAcceptableLanguages().toString());
   }
 
+  /**
+   * Check request header.
+   *
+   * @throws ClientProtocolException the client protocol exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws ODataException the o data exception
+   */
   @Test
   public void checkRequestHeader() throws ClientProtocolException, IOException, ODataException {
     final HttpGet get = new HttpGet(URI.create(getEndpoint().toString() + "/$metadata"));
@@ -160,6 +228,13 @@ public class ContextTest extends AbstractBasicTest {
     assertNull(ctx.getRequestHeader("nonsens"));
   }
 
+  /**
+   * Check request headers.
+   *
+   * @throws ClientProtocolException the client protocol exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws ODataException the o data exception
+   */
   @Test
   public void checkRequestHeaders() throws ClientProtocolException, IOException, ODataException {
     final HttpGet get = new HttpGet(URI.create(getEndpoint().toString() + "/$metadata"));
@@ -173,6 +248,13 @@ public class ContextTest extends AbstractBasicTest {
     assertEquals("de, en", header.get(HttpHeaders.CONTENT_LANGUAGE).get(0));
   }
 
+  /**
+   * Check new request header.
+   *
+   * @throws ClientProtocolException the client protocol exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws ODataException the o data exception
+   */
   @Test
   public void checkNewRequestHeader() throws ClientProtocolException, IOException, ODataException {
     final HttpGet get = new HttpGet(URI.create(getEndpoint().toString() + "/$metadata"));
@@ -186,6 +268,13 @@ public class ContextTest extends AbstractBasicTest {
     assertNull(ctx.getRequestHeader("nonsens"));
   }
 
+  /**
+   * Check new request headers.
+   *
+   * @throws ClientProtocolException the client protocol exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws ODataException the o data exception
+   */
   @Test
   public void checkNewRequestHeaders() throws ClientProtocolException, IOException, ODataException {
     final HttpGet get = new HttpGet(URI.create(getEndpoint().toString() + "/$metadata"));
@@ -202,6 +291,13 @@ public class ContextTest extends AbstractBasicTest {
     assertEquals("de, en", header.get(HttpHeaders.CONTENT_LANGUAGE).get(0));
   }
 
+  /**
+   * Check http method.
+   *
+   * @throws ClientProtocolException the client protocol exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws ODataException the o data exception
+   */
   @Test
   public void checkHttpMethod() throws ClientProtocolException, IOException, ODataException {
     final HttpGet get = new HttpGet(URI.create(getEndpoint().toString() + "/$metadata"));
@@ -214,6 +310,13 @@ public class ContextTest extends AbstractBasicTest {
     assertEquals("GET", httpMethod);
   }
 
+  /**
+   * Check http request.
+   *
+   * @throws ClientProtocolException the client protocol exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws ODataException the o data exception
+   */
   @Test
   public void checkHttpRequest() throws ClientProtocolException, IOException, ODataException {
     final HttpGet get = new HttpGet(URI.create(getEndpoint().toString() + "/$metadata"));

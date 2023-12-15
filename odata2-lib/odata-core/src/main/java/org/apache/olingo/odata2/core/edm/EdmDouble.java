@@ -28,24 +28,42 @@ import org.apache.olingo.odata2.api.edm.EdmLiteralKind;
 import org.apache.olingo.odata2.api.edm.EdmSimpleType;
 import org.apache.olingo.odata2.api.edm.EdmSimpleTypeException;
 
+// TODO: Auto-generated Javadoc
 /**
  * Implementation of the EDM simple type Double.
  * 
  */
 public class EdmDouble extends AbstractSimpleType {
 
+  /** The Constant MAX_PRECISION. */
   // value-range limitations according to the CSDL document
   private static final int MAX_PRECISION = 15;
+  
+  /** The Constant MAX_SCALE. */
   private static final int MAX_SCALE = 308;
 
+  /** The Constant PATTERN. */
   private static final Pattern PATTERN = Pattern.compile(
       "(?:\\+|-)?\\p{Digit}+(?:\\.\\p{Digit}+)?(?:(?:E|e)(?:\\+|-)?\\p{Digit}{1,3})?(D|d)?");
+  
+  /** The Constant instance. */
   private static final EdmDouble instance = new EdmDouble();
 
+  /**
+   * Gets the single instance of EdmDouble.
+   *
+   * @return single instance of EdmDouble
+   */
   public static EdmDouble getInstance() {
     return instance;
   }
 
+  /**
+   * Checks if is compatible.
+   *
+   * @param simpleType the simple type
+   * @return true, if is compatible
+   */
   @Override
   public boolean isCompatible(final EdmSimpleType simpleType) {
     return simpleType instanceof Bit
@@ -59,11 +77,27 @@ public class EdmDouble extends AbstractSimpleType {
         || simpleType instanceof EdmDouble;
   }
 
+  /**
+   * Gets the default type.
+   *
+   * @return the default type
+   */
   @Override
   public Class<?> getDefaultType() {
     return Double.class;
   }
 
+  /**
+   * Internal value of string.
+   *
+   * @param <T> the generic type
+   * @param value the value
+   * @param literalKind the literal kind
+   * @param facets the facets
+   * @param returnType the return type
+   * @return the t
+   * @throws EdmSimpleTypeException the edm simple type exception
+   */
   @Override
   protected <T> T internalValueOfString(final String value, final EdmLiteralKind literalKind, final EdmFacets facets,
       final Class<T> returnType) throws EdmSimpleTypeException {
@@ -134,6 +168,16 @@ public class EdmDouble extends AbstractSimpleType {
     }
   }
 
+  /**
+   * Internal value to string.
+   *
+   * @param <T> the generic type
+   * @param value the value
+   * @param literalKind the literal kind
+   * @param facets the facets
+   * @return the string
+   * @throws EdmSimpleTypeException the edm simple type exception
+   */
   @Override
   protected <T> String internalValueToString(final T value, final EdmLiteralKind literalKind, final EdmFacets facets)
       throws EdmSimpleTypeException {
@@ -164,6 +208,12 @@ public class EdmDouble extends AbstractSimpleType {
     }
   }
 
+  /**
+   * To uri literal.
+   *
+   * @param literal the literal
+   * @return the string
+   */
   @Override
   public String toUriLiteral(final String literal) {
     return "-INF".equals(literal) || "INF".equals(literal) || "NaN".equals(literal) ?

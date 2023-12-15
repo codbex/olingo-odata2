@@ -43,25 +43,51 @@ import org.apache.olingo.odata2.ref.model.Photo;
 import org.apache.olingo.odata2.ref.model.Room;
 import org.apache.olingo.odata2.ref.model.Team;
 
+// TODO: Auto-generated Javadoc
 /**
- * Data for the reference scenario
- * 
+ * Data for the reference scenario.
  */
 public class ScenarioDataSource {
 
+  /** The Constant ENTITYSET_1_1. */
   private static final String ENTITYSET_1_1 = "Employees";
+  
+  /** The Constant ENTITYSET_1_2. */
   private static final String ENTITYSET_1_2 = "Teams";
+  
+  /** The Constant ENTITYSET_1_3. */
   private static final String ENTITYSET_1_3 = "Rooms";
+  
+  /** The Constant ENTITYSET_1_4. */
   private static final String ENTITYSET_1_4 = "Managers";
+  
+  /** The Constant ENTITYSET_1_5. */
   private static final String ENTITYSET_1_5 = "Buildings";
+  
+  /** The Constant ENTITYSET_2_1. */
   private static final String ENTITYSET_2_1 = "Photos";
 
+  /** The data container. */
   private final DataContainer dataContainer;
 
+  /**
+   * Instantiates a new scenario data source.
+   *
+   * @param dataContainer the data container
+   */
   public ScenarioDataSource(final DataContainer dataContainer) {
     this.dataContainer = dataContainer;
   }
 
+  /**
+   * Read data.
+   *
+   * @param entitySet the entity set
+   * @return the list
+   * @throws ODataNotImplementedException the o data not implemented exception
+   * @throws ODataNotFoundException the o data not found exception
+   * @throws EdmException the edm exception
+   */
   public List<?> readData(final EdmEntitySet entitySet) throws ODataNotImplementedException, ODataNotFoundException,
       EdmException {
     if (ENTITYSET_1_1.equals(entitySet.getName())) {
@@ -81,6 +107,16 @@ public class ScenarioDataSource {
     }
   }
 
+  /**
+   * Read data.
+   *
+   * @param entitySet the entity set
+   * @param keys the keys
+   * @return the object
+   * @throws ODataNotImplementedException the o data not implemented exception
+   * @throws ODataNotFoundException the o data not found exception
+   * @throws EdmException the edm exception
+   */
   public Object readData(final EdmEntitySet entitySet, final Map<String, Object> keys)
       throws ODataNotImplementedException, ODataNotFoundException, EdmException {
     if (ENTITYSET_1_1.equals(entitySet.getName())) {
@@ -136,6 +172,18 @@ public class ScenarioDataSource {
     throw new ODataNotImplementedException();
   }
 
+  /**
+   * Read related data.
+   *
+   * @param sourceEntitySet the source entity set
+   * @param sourceData the source data
+   * @param targetEntitySet the target entity set
+   * @param targetKeys the target keys
+   * @return the object
+   * @throws ODataNotImplementedException the o data not implemented exception
+   * @throws ODataNotFoundException the o data not found exception
+   * @throws EdmException the edm exception
+   */
   public Object readRelatedData(final EdmEntitySet sourceEntitySet, final Object sourceData,
       final EdmEntitySet targetEntitySet, final Map<String, Object> targetKeys) throws ODataNotImplementedException,
       ODataNotFoundException, EdmException {
@@ -214,6 +262,17 @@ public class ScenarioDataSource {
     }
   }
 
+  /**
+   * Read data.
+   *
+   * @param function the function
+   * @param parameters the parameters
+   * @param keys the keys
+   * @return the object
+   * @throws ODataNotImplementedException the o data not implemented exception
+   * @throws ODataNotFoundException the o data not found exception
+   * @throws EdmException the edm exception
+   */
   public Object readData(final EdmFunctionImport function, final Map<String, Object> parameters,
       final Map<String, Object> keys) throws ODataNotImplementedException, ODataNotFoundException, EdmException {
     if (function.getName().equals("EmployeeSearch")) {
@@ -277,6 +336,12 @@ public class ScenarioDataSource {
     }
   }
 
+  /**
+   * Search employees.
+   *
+   * @param search the search
+   * @return the list
+   */
   private List<Employee> searchEmployees(final String search) {
     List<Employee> employees = new ArrayList<Employee>();
     for (final Employee employee : dataContainer.getEmployees()) {
@@ -291,6 +356,12 @@ public class ScenarioDataSource {
     return employees;
   }
 
+  /**
+   * Gets the locations.
+   *
+   * @return the locations
+   * @throws ODataNotFoundException the o data not found exception
+   */
   private Map<Location, Integer> getLocations() throws ODataNotFoundException {
     Map<Location, Integer> locations = new LinkedHashMap<Location, Integer>();
     for (Employee employee : dataContainer.getEmployees()) {
@@ -316,6 +387,12 @@ public class ScenarioDataSource {
     }
   }
 
+  /**
+   * Gets the most common location.
+   *
+   * @return the most common location
+   * @throws ODataNotFoundException the o data not found exception
+   */
   private Location getMostCommonLocation() throws ODataNotFoundException {
     Integer count = 0;
     Location location = null;
@@ -328,6 +405,11 @@ public class ScenarioDataSource {
     return location;
   }
 
+  /**
+   * Gets the oldest employee.
+   *
+   * @return the oldest employee
+   */
   private Employee getOldestEmployee() {
     Employee oldestEmployee = null;
     for (final Employee employee : dataContainer.getEmployees()) {
@@ -338,6 +420,17 @@ public class ScenarioDataSource {
     return oldestEmployee;
   }
 
+  /**
+   * Read binary data.
+   *
+   * @param entitySet the entity set
+   * @param mediaLinkEntryData the media link entry data
+   * @return the binary data
+   * @throws ODataNotImplementedException the o data not implemented exception
+   * @throws ODataNotFoundException the o data not found exception
+   * @throws EdmException the edm exception
+   * @throws ODataApplicationException the o data application exception
+   */
   public BinaryData readBinaryData(final EdmEntitySet entitySet, final Object mediaLinkEntryData)
       throws ODataNotImplementedException, ODataNotFoundException, EdmException, ODataApplicationException {
     if (mediaLinkEntryData == null) {
@@ -358,6 +451,17 @@ public class ScenarioDataSource {
     }
   }
 
+  /**
+   * Write binary data.
+   *
+   * @param entitySet the entity set
+   * @param mediaLinkEntryData the media link entry data
+   * @param binaryData the binary data
+   * @throws ODataNotImplementedException the o data not implemented exception
+   * @throws ODataNotFoundException the o data not found exception
+   * @throws EdmException the edm exception
+   * @throws ODataApplicationException the o data application exception
+   */
   public void
       writeBinaryData(final EdmEntitySet entitySet, final Object mediaLinkEntryData, final BinaryData binaryData)
           throws ODataNotImplementedException, ODataNotFoundException, EdmException, ODataApplicationException {
@@ -380,6 +484,14 @@ public class ScenarioDataSource {
     }
   }
 
+  /**
+   * New data object.
+   *
+   * @param entitySet the entity set
+   * @return the object
+   * @throws ODataNotImplementedException the o data not implemented exception
+   * @throws EdmException the edm exception
+   */
   public Object newDataObject(final EdmEntitySet entitySet) throws ODataNotImplementedException, EdmException {
     if (ENTITYSET_1_1.equals(entitySet.getName())) {
       Employee employee = dataContainer.createEmployee();
@@ -407,6 +519,16 @@ public class ScenarioDataSource {
     }
   }
 
+  /**
+   * Delete data.
+   *
+   * @param entitySet the entity set
+   * @param keys the keys
+   * @throws ODataNotImplementedException the o data not implemented exception
+   * @throws ODataNotFoundException the o data not found exception
+   * @throws EdmException the edm exception
+   * @throws ODataApplicationException the o data application exception
+   */
   public void deleteData(final EdmEntitySet entitySet, final Map<String, Object> keys)
       throws ODataNotImplementedException, ODataNotFoundException, EdmException, ODataApplicationException {
     final Object data = readData(entitySet, keys);
@@ -461,6 +583,15 @@ public class ScenarioDataSource {
     }
   }
 
+  /**
+   * Creates the data.
+   *
+   * @param entitySet the entity set
+   * @param data the data
+   * @throws ODataNotImplementedException the o data not implemented exception
+   * @throws EdmException the edm exception
+   * @throws ODataApplicationException the o data application exception
+   */
   public void createData(final EdmEntitySet entitySet, final Object data) throws ODataNotImplementedException,
       EdmException, ODataApplicationException {
     if (ENTITYSET_1_1.equals(entitySet.getName())) {
@@ -480,6 +611,18 @@ public class ScenarioDataSource {
     }
   }
 
+  /**
+   * Delete relation.
+   *
+   * @param sourceEntitySet the source entity set
+   * @param sourceData the source data
+   * @param targetEntitySet the target entity set
+   * @param targetKeys the target keys
+   * @throws ODataNotImplementedException the o data not implemented exception
+   * @throws ODataNotFoundException the o data not found exception
+   * @throws EdmException the edm exception
+   * @throws ODataApplicationException the o data application exception
+   */
   public void deleteRelation(final EdmEntitySet sourceEntitySet, final Object sourceData,
       final EdmEntitySet targetEntitySet, final Map<String, Object> targetKeys) throws ODataNotImplementedException,
       ODataNotFoundException, EdmException, ODataApplicationException {
@@ -541,6 +684,18 @@ public class ScenarioDataSource {
     }
   }
 
+  /**
+   * Write relation.
+   *
+   * @param sourceEntitySet the source entity set
+   * @param sourceData the source data
+   * @param targetEntitySet the target entity set
+   * @param targetKeys the target keys
+   * @throws ODataNotImplementedException the o data not implemented exception
+   * @throws ODataNotFoundException the o data not found exception
+   * @throws EdmException the edm exception
+   * @throws ODataApplicationException the o data application exception
+   */
   public void writeRelation(final EdmEntitySet sourceEntitySet, final Object sourceData,
       final EdmEntitySet targetEntitySet, final Map<String, Object> targetKeys) throws ODataNotImplementedException,
       ODataNotFoundException, EdmException, ODataApplicationException {
@@ -615,22 +770,47 @@ public class ScenarioDataSource {
    * Container to store binary data (as byte array) and the associated MIME type.
    */
   public static class BinaryData {
+    
+    /** The data. */
     private final byte[] data;
+    
+    /** The mime type. */
     private final String mimeType;
 
+    /**
+     * Instantiates a new binary data.
+     *
+     * @param data the data
+     * @param mimeType the mime type
+     */
     public BinaryData(final byte[] data, final String mimeType) {
       this.data = data;
       this.mimeType = mimeType;
     }
 
+    /**
+     * Gets the data.
+     *
+     * @return the data
+     */
     public byte[] getData() {
       return data;
     }
 
+    /**
+     * Gets the mime type.
+     *
+     * @return the mime type
+     */
     public String getMimeType() {
       return mimeType;
     }
 
+    /**
+     * To string.
+     *
+     * @return the string
+     */
     @Override
     public String toString() {
       return "data=" + Arrays.toString(data) + ", mimeType=" + mimeType;

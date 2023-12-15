@@ -54,21 +54,40 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ClientDeltaResponseTest.
+ */
 @Ignore
 public class ClientDeltaResponseTest extends AbstractFitTest {
 
+  /**
+   * Instantiates a new client delta response test.
+   *
+   * @param servletType the servlet type
+   */
   public ClientDeltaResponseTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /** The Constant DELTATOKEN_1234. */
   private static final String DELTATOKEN_1234 = "!deltatoken=1234";
 
+  /** The room data count. */
   private static int roomDataCount = 2;
+  
+  /** The deleted room data count. */
   private static int deletedRoomDataCount = 2;
 
+  /** The client. */
   private Client client;
+  
+  /** The processor. */
   StubProcessor processor;
 
+  /**
+   * Before.
+   */
   @Before
   @Override
   public void before() {
@@ -80,6 +99,12 @@ public class ClientDeltaResponseTest extends AbstractFitTest {
     }
   }
 
+  /**
+   * Creates the service.
+   *
+   * @return the o data service
+   * @throws ODataException the o data exception
+   */
   @Override
   protected ODataService createService() throws ODataException {
     EdmProvider provider = new ScenarioEdmProvider();
@@ -88,8 +113,19 @@ public class ClientDeltaResponseTest extends AbstractFitTest {
     return new ODataSingleProcessorService(provider, processor);
   }
 
+  /**
+   * The Class StubProcessor.
+   */
   private class StubProcessor extends ODataSingleProcessor {
 
+    /**
+     * Read entity set.
+     *
+     * @param uriInfo the uri info
+     * @param contentType the content type
+     * @return the o data response
+     * @throws ODataException the o data exception
+     */
     @Override
     public ODataResponse readEntitySet(final GetEntitySetUriInfo uriInfo, final String contentType)
         throws ODataException {
@@ -128,6 +164,11 @@ public class ClientDeltaResponseTest extends AbstractFitTest {
       }
     }
 
+    /**
+     * Creates the room data.
+     *
+     * @return the array list
+     */
     private ArrayList<Map<String, Object>> createRoomData() {
       ArrayList<Map<String, Object>> roomsData = new ArrayList<Map<String, Object>>();
 
@@ -142,6 +183,11 @@ public class ClientDeltaResponseTest extends AbstractFitTest {
       return roomsData;
     }
 
+    /**
+     * Creates the deleted room data.
+     *
+     * @return the array list
+     */
     private ArrayList<Map<String, Object>> createDeletedRoomData() {
       ArrayList<Map<String, Object>> deletedRoomData = new ArrayList<Map<String, Object>>();
 
@@ -158,9 +204,19 @@ public class ClientDeltaResponseTest extends AbstractFitTest {
     }
   }
 
+  /**
+   * Dummy.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void dummy() throws Exception {}
 
+  /**
+   * Test edm.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testEdm() throws Exception {
     Edm edm = client.getEdm();
@@ -168,6 +224,11 @@ public class ClientDeltaResponseTest extends AbstractFitTest {
     assertNotNull(edm.getDefaultEntityContainer());
   }
 
+  /**
+   * Test entity sets.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testEntitySets() throws Exception {
     List<EdmEntitySetInfo> sets = client.getEntitySets();
@@ -175,6 +236,12 @@ public class ClientDeltaResponseTest extends AbstractFitTest {
     assertEquals(6, sets.size());
   }
 
+  /**
+   * Test delta feed with delta link.
+   *
+   * @param contentType the content type
+   * @throws Exception the exception
+   */
   private void testDeltaFeedWithDeltaLink(final String contentType) throws Exception {
     roomDataCount = 3;
     deletedRoomDataCount = 4;
@@ -208,6 +275,12 @@ public class ClientDeltaResponseTest extends AbstractFitTest {
     }
   }
 
+  /**
+   * Test delta feed with zero entries.
+   *
+   * @param contentType the content type
+   * @throws Exception the exception
+   */
   private void testDeltaFeedWithZeroEntries(final String contentType) throws Exception {
     roomDataCount = 0;
     deletedRoomDataCount = 0;
@@ -230,36 +303,73 @@ public class ClientDeltaResponseTest extends AbstractFitTest {
     assertEquals(deletedRoomDataCount, deletedEntries.size());
   }
 
+  /**
+   * Test delta feed with delta link xml.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testDeltaFeedWithDeltaLinkXml() throws Exception {
     testDeltaFeedWithDeltaLink("application/atom+xml");
   }
 
+  /**
+   * Test feed with delta link json.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testFeedWithDeltaLinkJson() throws Exception {
     testDeltaFeedWithDeltaLink("application/json");
   }
 
+  /**
+   * Test delta feed with zero entries xml.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testDeltaFeedWithZeroEntriesXml() throws Exception {
     testDeltaFeedWithZeroEntries("application/atom+xml");
   }
 
+  /**
+   * Test feed with zero entries json.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testFeedWithZeroEntriesJson() throws Exception {
     testDeltaFeedWithZeroEntries("application/json");
   }
 
+  /**
+   * The Class TombstoneCallbackImpl.
+   */
   static public class TombstoneCallbackImpl implements TombstoneCallback {
 
+    /** The deleted entries data. */
     private ArrayList<Map<String, Object>> deletedEntriesData;
+    
+    /** The delta link. */
     private String deltaLink = null;
 
+    /**
+     * Instantiates a new tombstone callback impl.
+     *
+     * @param deletedEntriesData the deleted entries data
+     * @param deltaLink the delta link
+     */
     public TombstoneCallbackImpl(final ArrayList<Map<String, Object>> deletedEntriesData, final String deltaLink) {
       this.deletedEntriesData = deletedEntriesData;
       this.deltaLink = deltaLink;
     }
 
+    /**
+     * Gets the tombstone callback result.
+     *
+     * @return the tombstone callback result
+     */
     @Override
     public TombstoneCallbackResult getTombstoneCallbackResult() {
       TombstoneCallbackResult result = new TombstoneCallbackResult();

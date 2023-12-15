@@ -35,15 +35,29 @@ import org.apache.olingo.odata2.jpa.processor.ref.model.Address;
 import org.apache.olingo.odata2.jpa.processor.ref.model.SalesOrderHeader;
 import org.apache.olingo.odata2.jpa.processor.ref.model.SalesOrderItem;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SalesOrderHeaderProcessor.
+ */
 public class SalesOrderHeaderProcessor {
 
+  /** The em. */
   private EntityManager em;
 
+  /**
+   * Instantiates a new sales order header processor.
+   */
   public SalesOrderHeaderProcessor() {
     em = Persistence.createEntityManagerFactory("salesorderprocessing")
         .createEntityManager();
   }
 
+  /**
+   * Find all sales orders.
+   *
+   * @param status the status
+   * @return the list
+   */
   @SuppressWarnings("unchecked")
   @EdmFunctionImport(name = "FindAllSalesOrders", entitySet = "SalesOrders", returnType = @ReturnType(
       type = Type.ENTITY, isCollection = true))
@@ -59,6 +73,13 @@ public class SalesOrderHeaderProcessor {
     return soList;
   }
 
+  /**
+   * Check ATP.
+   *
+   * @param soID the so ID
+   * @param lineItemID the line item ID
+   * @return true, if successful
+   */
   @EdmFunctionImport(name = "CheckATP", returnType = @ReturnType(type = Type.SIMPLE, isCollection = false),
       httpMethod = HttpMethod.GET)
   public boolean checkATP(
@@ -71,6 +92,13 @@ public class SalesOrderHeaderProcessor {
     }
   }
 
+  /**
+   * Calculate net amount.
+   *
+   * @param soID the so ID
+   * @return the sales order header
+   * @throws ODataException the o data exception
+   */
   @EdmFunctionImport(returnType = @ReturnType(type = Type.ENTITY, isCollection = false), entitySet = "SalesOrders")
   public SalesOrderHeader calculateNetAmount(
       @EdmFunctionImportParameter(name = "SoID", facets = @EdmFacets(nullable = false)) final Long soID)
@@ -96,6 +124,12 @@ public class SalesOrderHeaderProcessor {
     return so;
   }
 
+  /**
+   * Gets the address.
+   *
+   * @param soID the so ID
+   * @return the address
+   */
   @SuppressWarnings("unchecked")
   @EdmFunctionImport(returnType = @ReturnType(type = Type.COMPLEX))
   public Address getAddress(
@@ -112,6 +146,12 @@ public class SalesOrderHeaderProcessor {
     }
   }
 
+  /**
+   * Order value.
+   *
+   * @param soID the so ID
+   * @return the order value
+   */
   @EdmFunctionImport(returnType = @ReturnType(type = Type.COMPLEX))
   public OrderValue orderValue(
       @EdmFunctionImportParameter(name = "SoId", facets = @EdmFacets(nullable = false)) final Long soID) {

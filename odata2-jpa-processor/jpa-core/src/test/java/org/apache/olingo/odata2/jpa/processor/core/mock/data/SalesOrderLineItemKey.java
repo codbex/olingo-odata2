@@ -18,33 +18,69 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.jpa.processor.core.mock.data;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SalesOrderLineItemKey.
+ */
 public class SalesOrderLineItemKey {
 
+  /** The so id. */
   private int soId;
+  
+  /** The li id. */
   private int liId;
 
+  /**
+   * Instantiates a new sales order line item key.
+   */
   public SalesOrderLineItemKey() {
 
   }
 
+  /**
+   * Instantiates a new sales order line item key.
+   *
+   * @param soId the so id
+   * @param liId the li id
+   */
   public SalesOrderLineItemKey(final int soId, final int liId) {
     super();
     this.soId = soId;
     this.liId = liId;
   }
 
+  /**
+   * Gets the so id.
+   *
+   * @return the so id
+   */
   public int getSoId() {
     return soId;
   }
 
+  /**
+   * Sets the so id.
+   *
+   * @param soId the new so id
+   */
   public void setSoId(final int soId) {
     this.soId = soId;
   }
 
+  /**
+   * Gets the li id.
+   *
+   * @return the li id
+   */
   public int getLiId() {
     return liId;
   }
 
+  /**
+   * Sets the li id.
+   *
+   * @param liId the new li id
+   */
   public void setLiId(final int liId) {
     this.liId = liId;
   }

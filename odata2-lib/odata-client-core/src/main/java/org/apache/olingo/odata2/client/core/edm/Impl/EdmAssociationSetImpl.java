@@ -30,27 +30,55 @@ import org.apache.olingo.odata2.api.edm.EdmException;
 import org.apache.olingo.odata2.api.edm.FullQualifiedName;
 import org.apache.olingo.odata2.client.api.edm.EdmDocumentation;
 
+// TODO: Auto-generated Javadoc
 /**
- * Objects of this class represent AssociationSet
- *
+ * Objects of this class represent AssociationSet.
  */
 public class EdmAssociationSetImpl extends EdmNamedImpl implements EdmAssociationSet, EdmAnnotatable {
 
+  /** The edm entity container. */
   private EdmEntityContainer edmEntityContainer;
+  
+  /** The annotations. */
   private EdmAnnotations annotations;
+  
+  /** The association set FQ name. */
   private FullQualifiedName associationSetFQName;
+  
+  /** The end 2. */
   private EdmAssociationSetEnd end2;
+  
+  /** The end 1. */
   private EdmAssociationSetEnd end1;
+  
+  /** The documentation. */
   private EdmDocumentation documentation;
 
   
+  /**
+   * Gets the association set FQ name.
+   *
+   * @return the association set FQ name
+   */
   public FullQualifiedName getAssociationSetFQName() {
     return associationSetFQName ;
   }
+  
+  /**
+   * Sets the documentation.
+   *
+   * @param documentation the new documentation
+   */
   public void setDocumentation(EdmDocumentation documentation) {
     this.documentation = documentation;
   }
 
+  /**
+   * Gets the association.
+   *
+   * @return the association
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmAssociation getAssociation() throws EdmException {
     EdmAssociation association =
@@ -63,6 +91,8 @@ public class EdmAssociationSetImpl extends EdmNamedImpl implements EdmAssociatio
   }
 
   /**
+   * Sets the annotations.
+   *
    * @param annotations the annotations to set
    */
   public void setAnnotations(EdmAnnotations annotations) {
@@ -70,12 +100,21 @@ public class EdmAssociationSetImpl extends EdmNamedImpl implements EdmAssociatio
   }
 
   /**
+   * Sets the edm entity container.
+   *
    * @param edmEntityContainer the edmEntityContainer to set
    */
   public void setEdmEntityContainer(EdmEntityContainer edmEntityContainer) {
     this.edmEntityContainer = edmEntityContainer;
   }
 
+  /**
+   * Gets the end.
+   *
+   * @param role the role
+   * @return the end
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmAssociationSetEnd getEnd(final String role) throws EdmException {
     EdmAssociationSetEnd end;
@@ -93,29 +132,58 @@ public class EdmAssociationSetImpl extends EdmNamedImpl implements EdmAssociatio
     return end;
   }
 
+  /**
+   * Gets the entity container.
+   *
+   * @return the entity container
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmEntityContainer getEntityContainer() throws EdmException {
     return edmEntityContainer;
   }
 
+  /**
+   * Gets the annotations.
+   *
+   * @return the annotations
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmAnnotations getAnnotations() throws EdmException {
     return annotations;
   }
 
+  /**
+   * Sets the association.
+   *
+   * @param associationSetFQName the new association
+   */
   public void setAssociation(FullQualifiedName associationSetFQName) {
     this.associationSetFQName = associationSetFQName;
   }
   
+  /**
+   * Sets the end 1.
+   *
+   * @param end1 the new end 1
+   */
   public void setEnd1(EdmAssociationSetEnd end1) {
     this.end1 = end1;
   }
   
+  /**
+   * Sets the end 2.
+   *
+   * @param end2 the new end 2
+   */
   public void setEnd2(EdmAssociationSetEnd end2) {
     this.end2 = end2;
   }
 
   /**
+   * Gets the end 2.
+   *
    * @return the end2
    */
   public EdmAssociationSetEnd getEnd2() {
@@ -123,12 +191,19 @@ public class EdmAssociationSetImpl extends EdmNamedImpl implements EdmAssociatio
   }
 
   /**
+   * Gets the end 1.
+   *
    * @return the end1
    */
   public EdmAssociationSetEnd getEnd1() {
     return end1;
   }
   
+  /**
+   * To string.
+   *
+   * @return the string
+   */
   @Override
   public String toString() {
     return associationSetFQName.getNamespace() + Edm.DELIMITER + associationSetFQName.getName();

@@ -50,21 +50,55 @@ import org.apache.olingo.odata2.jpa.processor.core.model.JPAEdmMappingImpl;
 import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAEntity.
+ */
 public class JPAEntity {
 
+    /** The jpa entity. */
     private Object jpaEntity = null;
+    
+    /** The parent JPA entity. */
     private JPAEntity parentJPAEntity = null;
+    
+    /** The o data entity type. */
     private EdmEntityType oDataEntityType = null;
+    
+    /** The o data entity set. */
     private EdmEntitySet oDataEntitySet = null;
+    
+    /** The jpa type. */
     private Class<?> jpaType = null;
+    
+    /** The access modifiers write. */
     private HashMap<String, Method> accessModifiersWrite = null;
+    
+    /** The jpa entity parser. */
     private JPAEntityParser jpaEntityParser = null;
+    
+    /** The o data JPA context. */
     private ODataJPAContext oDataJPAContext;
+    
+    /** The on JPA write content. */
     private OnJPAWriteContent onJPAWriteContent = null;
+    
+    /** The related JPA entity link. */
     private final List<String> relatedJPAEntityLink = new ArrayList<String>();
+    
+    /** The related JPA entity map. */
     private HashMap<String, List<Object>> relatedJPAEntityMap = null;
+    
+    /** The via navigation property. */
     private EdmNavigationProperty viaNavigationProperty;
 
+    /**
+     * Instantiates a new JPA entity.
+     *
+     * @param oDataEntityType the o data entity type
+     * @param oDataEntitySet the o data entity set
+     * @param context the context
+     */
     public JPAEntity(final EdmEntityType oDataEntityType, final EdmEntitySet oDataEntitySet, final ODataJPAContext context) {
         this.oDataEntityType = oDataEntityType;
         this.oDataEntitySet = oDataEntitySet;
@@ -81,30 +115,66 @@ public class JPAEntity {
                                            .getCallback(OnJPAWriteContent.class);
     }
 
+    /**
+     * Sets the access modifers write.
+     *
+     * @param accessModifiersWrite the access modifiers write
+     */
     public void setAccessModifersWrite(final HashMap<String, Method> accessModifiersWrite) {
         this.accessModifiersWrite = accessModifiersWrite;
     }
 
+    /**
+     * Sets the parent JPA entity.
+     *
+     * @param jpaEntity the new parent JPA entity
+     */
     public void setParentJPAEntity(final JPAEntity jpaEntity) {
         parentJPAEntity = jpaEntity;
     }
 
+    /**
+     * Gets the parent JPA entity.
+     *
+     * @return the parent JPA entity
+     */
     public JPAEntity getParentJPAEntity() {
         return parentJPAEntity;
     }
 
+    /**
+     * Gets the JPA entity.
+     *
+     * @return the JPA entity
+     */
     public Object getJPAEntity() {
         return jpaEntity;
     }
 
+    /**
+     * Sets the via navigation property.
+     *
+     * @param viaNavigationProperty the new via navigation property
+     */
     public void setViaNavigationProperty(EdmNavigationProperty viaNavigationProperty) {
         this.viaNavigationProperty = viaNavigationProperty;
     }
 
+    /**
+     * Gets the via navigation property.
+     *
+     * @return the via navigation property
+     */
     public EdmNavigationProperty getViaNavigationProperty() {
         return viaNavigationProperty;
     }
 
+    /**
+     * Creates the.
+     *
+     * @param oDataEntry the o data entry
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
+     */
     public void create(final ODataEntry oDataEntry) throws ODataJPARuntimeException {
 
         if (oDataEntry == null) {
@@ -156,15 +226,32 @@ public class JPAEntity {
         }
     }
 
+    /**
+     * Gets the edm entity set.
+     *
+     * @return the edm entity set
+     */
     public EdmEntitySet getEdmEntitySet() {
         return oDataEntitySet;
     }
 
+    /**
+     * Creates the.
+     *
+     * @param oDataEntryProperties the o data entry properties
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
+     */
     public void create(final Map<String, Object> oDataEntryProperties) throws ODataJPARuntimeException {
         normalizeInlineEntries(oDataEntryProperties);
         write(oDataEntryProperties, true);
     }
 
+    /**
+     * Update.
+     *
+     * @param oDataEntry the o data entry
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
+     */
     public void update(final ODataEntry oDataEntry) throws ODataJPARuntimeException {
         if (oDataEntry == null) {
             throw ODataJPARuntimeException.throwException(ODataJPARuntimeException.GENERAL, null);
@@ -183,15 +270,43 @@ public class JPAEntity {
         }
     }
 
+    /**
+     * Update.
+     *
+     * @param oDataEntryProperties the o data entry properties
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
+     */
     public void update(final Map<String, Object> oDataEntryProperties) throws ODataJPARuntimeException {
         normalizeInlineEntries(oDataEntryProperties);
         write(oDataEntryProperties, false);
     }
 
+    /**
+     * Sets the JPA entity.
+     *
+     * @param jpaEntity the new JPA entity
+     */
     public void setJPAEntity(final Object jpaEntity) {
         this.jpaEntity = jpaEntity;
     }
 
+    /**
+     * Sets the complex property.
+     *
+     * @param accessModifier the access modifier
+     * @param jpaEntity the jpa entity
+     * @param edmComplexType the edm complex type
+     * @param propertyValue the property value
+     * @throws EdmException the edm exception
+     * @throws IllegalAccessException the illegal access exception
+     * @throws IllegalArgumentException the illegal argument exception
+     * @throws InvocationTargetException the invocation target exception
+     * @throws InstantiationException the instantiation exception
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
+     * @throws NoSuchMethodException the no such method exception
+     * @throws SecurityException the security exception
+     * @throws SQLException the SQL exception
+     */
     protected void setComplexProperty(Method accessModifier, final Object jpaEntity, final EdmStructuralType edmComplexType,
             final HashMap<String, Object> propertyValue)
             throws EdmException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, InstantiationException,
@@ -200,6 +315,20 @@ public class JPAEntity {
         setComplexProperty(accessModifier, jpaEntity, edmComplexType, propertyValue, null);
     }
 
+    /**
+     * Sets the property.
+     *
+     * @param method the method
+     * @param entity the entity
+     * @param entityPropertyValue the entity property value
+     * @param type the type
+     * @param isNullable the is nullable
+     * @throws IllegalAccessException the illegal access exception
+     * @throws IllegalArgumentException the illegal argument exception
+     * @throws InvocationTargetException the invocation target exception
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
+     * @throws EdmException the edm exception
+     */
     protected void setProperty(final Method method, final Object entity, final Object entityPropertyValue, final EdmSimpleType type,
             boolean isNullable)
             throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, ODataJPARuntimeException, EdmException {
@@ -207,6 +336,20 @@ public class JPAEntity {
         setProperty(method, entity, entityPropertyValue, type, null, isNullable);
     }
 
+    /**
+     * Sets the embeddable key property.
+     *
+     * @param embeddableKeys the embeddable keys
+     * @param oDataEntryKeyProperties the o data entry key properties
+     * @param oDataEntryProperties the o data entry properties
+     * @param entity the entity
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
+     * @throws EdmException the edm exception
+     * @throws IllegalAccessException the illegal access exception
+     * @throws IllegalArgumentException the illegal argument exception
+     * @throws InvocationTargetException the invocation target exception
+     * @throws InstantiationException the instantiation exception
+     */
     protected void setEmbeddableKeyProperty(final HashMap<String, String> embeddableKeys, final List<EdmProperty> oDataEntryKeyProperties,
             final Map<String, Object> oDataEntryProperties, final Object entity) throws ODataJPARuntimeException, EdmException,
             IllegalAccessException, IllegalArgumentException, InvocationTargetException, InstantiationException {
@@ -252,6 +395,13 @@ public class JPAEntity {
         }
     }
 
+    /**
+     * Instantiate JPA entity.
+     *
+     * @return the object
+     * @throws InstantiationException the instantiation exception
+     * @throws IllegalAccessException the illegal access exception
+     */
     protected Object instantiateJPAEntity() throws InstantiationException, IllegalAccessException {
         if (jpaType == null) {
             throw new InstantiationException();
@@ -260,6 +410,12 @@ public class JPAEntity {
         return jpaType.newInstance();
     }
 
+    /**
+     * Normalize inline entries.
+     *
+     * @param oDataEntryProperties the o data entry properties
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
+     */
     private void normalizeInlineEntries(final Map<String, Object> oDataEntryProperties) throws ODataJPARuntimeException {
         List<ODataEntry> entries = null;
         try {
@@ -281,6 +437,13 @@ public class JPAEntity {
         }
     }
 
+    /**
+     * Write.
+     *
+     * @param oDataEntryProperties the o data entry properties
+     * @param isCreate the is create
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
+     */
     @SuppressWarnings("unchecked")
     private void write(final Map<String, Object> oDataEntryProperties, final boolean isCreate) throws ODataJPARuntimeException {
         try {
@@ -405,6 +568,24 @@ public class JPAEntity {
         }
     }
 
+    /**
+     * Sets the complex property.
+     *
+     * @param accessModifier the access modifier
+     * @param jpaEntity the jpa entity
+     * @param edmComplexType the edm complex type
+     * @param propertyValue the property value
+     * @param propertyName the property name
+     * @throws EdmException the edm exception
+     * @throws IllegalAccessException the illegal access exception
+     * @throws IllegalArgumentException the illegal argument exception
+     * @throws InvocationTargetException the invocation target exception
+     * @throws InstantiationException the instantiation exception
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
+     * @throws NoSuchMethodException the no such method exception
+     * @throws SecurityException the security exception
+     * @throws SQLException the SQL exception
+     */
     @SuppressWarnings("unchecked")
     protected void setComplexProperty(Method accessModifier, final Object jpaEntity, final EdmStructuralType edmComplexType,
             final HashMap<String, Object> propertyValue, String propertyName)
@@ -451,6 +632,21 @@ public class JPAEntity {
         }
     }
 
+    /**
+     * Sets the property.
+     *
+     * @param method the method
+     * @param entity the entity
+     * @param entityPropertyValue the entity property value
+     * @param type the type
+     * @param propertyName the property name
+     * @param isNullable the is nullable
+     * @throws IllegalAccessException the illegal access exception
+     * @throws IllegalArgumentException the illegal argument exception
+     * @throws InvocationTargetException the invocation target exception
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
+     * @throws EdmException the edm exception
+     */
     @SuppressWarnings({"unchecked", "rawtypes"})
     protected void setProperty(final Method method, final Object entity, final Object entityPropertyValue, final EdmSimpleType type,
             String propertyName, boolean isNullable)

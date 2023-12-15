@@ -27,16 +27,38 @@ import org.apache.olingo.odata2.jpa.processor.api.factory.ODataJPAFactory;
 import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmBaseView;
 import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmExtension;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAEdmBaseViewImpl.
+ */
 public abstract class JPAEdmBaseViewImpl implements JPAEdmBaseView {
 
+  /** The skip default naming. */
   protected boolean skipDefaultNaming = false;
+  
+  /** The p unit name. */
   protected String pUnitName = null;
+  
+  /** The meta model. */
   protected Metamodel metaModel = null;
+  
+  /** The is consistent. */
   protected boolean isConsistent = true;
+  
+  /** The builder. */
   protected JPAEdmBuilder builder = null;
+  
+  /** The jpa edm extension. */
   protected JPAEdmExtension jpaEdmExtension = null;
+  
+  /** The jpa edm mapping model access. */
   private JPAEdmMappingModelAccess jpaEdmMappingModelAccess = null;
 
+  /**
+   * Instantiates a new JPA edm base view impl.
+   *
+   * @param view the view
+   */
   public JPAEdmBaseViewImpl(final JPAEdmBaseView view) {
     pUnitName = view.getpUnitName();
     metaModel = view.getJPAMetaModel();
@@ -45,6 +67,11 @@ public abstract class JPAEdmBaseViewImpl implements JPAEdmBaseView {
     skipDefaultNaming = view.isDefaultNamingSkipped();
   }
 
+  /**
+   * Instantiates a new JPA edm base view impl.
+   *
+   * @param context the context
+   */
   public JPAEdmBaseViewImpl(final ODataJPAContext context) {
     pUnitName = context.getPersistenceUnitName();
     metaModel = context.getEntityManager().getMetamodel();
@@ -55,26 +82,50 @@ public abstract class JPAEdmBaseViewImpl implements JPAEdmBaseView {
     skipDefaultNaming = !context.getDefaultNaming();
   }
 
+  /**
+   * Instantiates a new JPA edm base view impl.
+   *
+   * @param metaModel the meta model
+   * @param pUnitName the unit name
+   */
   public JPAEdmBaseViewImpl(final Metamodel metaModel, final String pUnitName) {
     this.metaModel = metaModel;
     this.pUnitName = pUnitName;
   }
 
+  /**
+   * Gets the p unit name.
+   *
+   * @return the p unit name
+   */
   @Override
   public String getpUnitName() {
     return pUnitName;
   }
 
+  /**
+   * Gets the JPA meta model.
+   *
+   * @return the JPA meta model
+   */
   @Override
   public Metamodel getJPAMetaModel() {
     return metaModel;
   }
 
+  /**
+   * Checks if is consistent.
+   *
+   * @return true, if is consistent
+   */
   @Override
   public boolean isConsistent() {
     return isConsistent;
   }
 
+  /**
+   * Clean.
+   */
   @Override
   public void clean() {
     pUnitName = null;
@@ -82,17 +133,32 @@ public abstract class JPAEdmBaseViewImpl implements JPAEdmBaseView {
     isConsistent = false;
   }
 
+  /**
+   * Gets the JPA edm mapping model access.
+   *
+   * @return the JPA edm mapping model access
+   */
   @Override
   public JPAEdmMappingModelAccess getJPAEdmMappingModelAccess() {
     return jpaEdmMappingModelAccess;
 
   }
 
+  /**
+   * Gets the JPA edm extension.
+   *
+   * @return the JPA edm extension
+   */
   @Override
   public JPAEdmExtension getJPAEdmExtension() {
     return jpaEdmExtension;
   }
 
+  /**
+   * Checks if is default naming skipped.
+   *
+   * @return true, if is default naming skipped
+   */
   @Override
   public boolean isDefaultNamingSkipped() {
     return skipDefaultNaming;

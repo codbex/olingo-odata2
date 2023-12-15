@@ -25,16 +25,27 @@ import org.apache.olingo.odata2.api.commons.HttpContentType;
 import org.apache.olingo.odata2.testutil.server.ServletType;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
  * Tests employing the reference scenario reading links in JSON format.
  * 
  */
 public final class LinksJsonReadOnlyTest extends AbstractRefTest {
 
+  /**
+   * Instantiates a new links json read only test.
+   *
+   * @param servletType the servlet type
+   */
   public LinksJsonReadOnlyTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /**
+   * Single link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void singleLink() throws Exception {
     HttpResponse response = callUri("Employees('1')/$links/ne_Room?$format=json");
@@ -42,6 +53,11 @@ public final class LinksJsonReadOnlyTest extends AbstractRefTest {
     assertEquals("{\"d\":{\"uri\":\"" + getEndpoint() + "Rooms('1')\"}}", getBody(response));
   }
 
+  /**
+   * Links.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void links() throws Exception {
     HttpResponse response = callUri("Rooms('1')/$links/nr_Employees?$format=json");

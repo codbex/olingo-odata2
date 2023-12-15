@@ -26,61 +26,120 @@ import org.apache.olingo.odata2.api.annotation.edm.EdmEntityType;
 import org.apache.olingo.odata2.api.annotation.edm.EdmNavigationProperty;
 import org.apache.olingo.odata2.api.annotation.edm.EdmProperty;
 
+// TODO: Auto-generated Javadoc
 /**
- *
+ * The Class Room.
  */
 @EdmEntityType(name = "Room", namespace = ModelSharedConstants.NAMESPACE_1)
 @EdmEntitySet(name = "Rooms")
 public class Room extends RefBase {
 
+  /** The seats. */
   @EdmProperty
   private Integer seats;
+  
+  /** The version. */
   @EdmProperty
   private Integer version;
+  
+  /** The building. */
   @EdmNavigationProperty(name = "nr_Building", association = "BuildingRooms")
   private Building building;
+  
+  /** The employees. */
   @EdmNavigationProperty(name = "nr_Employees")
   private List<Employee> employees = new ArrayList<Employee>();
 
+  /**
+   * Sets the seats.
+   *
+   * @param seats the new seats
+   */
   public void setSeats(final int seats) {
     this.seats = seats;
   }
 
+  /**
+   * Gets the seats.
+   *
+   * @return the seats
+   */
   public int getSeats() {
     return seats;
   }
 
+  /**
+   * Sets the version.
+   *
+   * @param version the new version
+   */
   public void setVersion(final int version) {
     this.version = version;
   }
 
+  /**
+   * Gets the version.
+   *
+   * @return the version
+   */
   public int getVersion() {
     return version;
   }
 
+  /**
+   * Sets the building.
+   *
+   * @param building the new building
+   */
   public void setBuilding(final Building building) {
     this.building = building;
   }
 
+  /**
+   * Gets the building.
+   *
+   * @return the building
+   */
   public Building getBuilding() {
     return building;
   }
 
+  /**
+   * Gets the employees.
+   *
+   * @return the employees
+   */
   public List<Employee> getEmployees() {
     return employees;
   }
 
+  /**
+   * Hash code.
+   *
+   * @return the int
+   */
   @Override
   public int hashCode() {
     return super.hashCode();
   }
 
+  /**
+   * Equals.
+   *
+   * @param obj the obj
+   * @return true, if successful
+   */
   @Override
   public boolean equals(final Object obj) {
     return this == obj
         || obj != null && getClass() == obj.getClass() && id == ((Room) obj).id;
   }
 
+  /**
+   * To string.
+   *
+   * @return the string
+   */
   @Override
   public String toString() {
     return "{\"Id\":\"" + id + "\",\"Name\":\"" + name + "\",\"Seats\":" + seats + ",\"Version\":" + version + "}";

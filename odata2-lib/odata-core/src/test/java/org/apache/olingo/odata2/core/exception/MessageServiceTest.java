@@ -28,13 +28,20 @@ import org.apache.olingo.odata2.core.exception.MessageService.Message;
 import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class MessageServiceTest.
  */
 public class MessageServiceTest extends BaseTest {
 
+  /** The Constant DEFAULT_LANGUAGE. */
   private static final Locale DEFAULT_LANGUAGE = new Locale("test", "foo");
 
+  /**
+   * Test resource bundle exception.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testResourceBundleException() throws Exception {
     MessageReference context = MessageReference.create(ODataMessageException.class, "COMMON");
@@ -46,6 +53,11 @@ public class MessageServiceTest extends BaseTest {
         ms.getText());
   }
 
+  /**
+   * Test.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void test() throws Exception {
     MessageReference context = MessageReference.create(ODataMessageException.class, "COMMON");
@@ -54,6 +66,11 @@ public class MessageServiceTest extends BaseTest {
     assertEquals("Common exception", ms.getText());
   }
 
+  /**
+   * Test parameter.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testParameter() throws Exception {
     MessageReference context =
@@ -63,6 +80,11 @@ public class MessageServiceTest extends BaseTest {
     assertEquals("Only replacement is [first]!", ms.getText());
   }
 
+  /**
+   * Test one parameter for two.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testOneParameterForTwo() throws Exception {
     MessageReference context =
@@ -75,6 +97,11 @@ public class MessageServiceTest extends BaseTest {
         ms.getText());
   }
 
+  /**
+   * Test two parameters.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testTwoParameters() throws Exception {
     MessageReference context =
@@ -84,6 +111,11 @@ public class MessageServiceTest extends BaseTest {
     assertEquals("First was [first] and second was [second]!", ms.getText());
   }
 
+  /**
+   * Test two parameters with two add content.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testTwoParametersWithTwoAddContent() throws Exception {
     MessageReference context =
@@ -94,6 +126,11 @@ public class MessageServiceTest extends BaseTest {
     assertEquals("First was [first] and second was [second]!", ms.getText());
   }
 
+  /**
+   * Test three parameters for two.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testThreeParametersForTwo() throws Exception {
     MessageReference context =
@@ -103,6 +140,11 @@ public class MessageServiceTest extends BaseTest {
     assertEquals("First was [first] and second was [second]!", ms.getText());
   }
 
+  /**
+   * Test three parameters per add content for two.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testThreeParametersPerAddContentForTwo() throws Exception {
     MessageReference context = MessageReference.create(ODataMessageException.class, "TWO_REPLACEMENTS")
@@ -112,6 +154,11 @@ public class MessageServiceTest extends BaseTest {
     assertEquals("First was [first] and second was [second]!", ms.getText());
   }
 
+  /**
+   * Test three parameters per mixed for two.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testThreeParametersPerMixedForTwo() throws Exception {
     MessageReference context = MessageReference.create(ODataMessageException.class, "TWO_REPLACEMENTS")

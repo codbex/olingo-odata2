@@ -18,19 +18,24 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.edm;
 
+// TODO: Auto-generated Javadoc
 /**
- * @org.apache.olingo.odata2.DoNotImplement
- * <p>Representation of a simple-typed literal</p>
+ * The Class EdmLiteral.
+ *
+ * @see EdmLiteralKind
+ * @org.apache.olingo.odata2.DoNotImplement <p>Representation of a simple-typed literal</p>
  * <p>The literal is in default representation. The URI representation differs
  * from the default representation mainly in the additional presence of type
  * indicators (prefixes or suffixes, respectively); since the type information
  * is stored here separately, the default representation is more appropriate.
  * Should the URI representation be needed, it can be re-created by calling {@link EdmSimpleType#toUriLiteral}.</p>
- * 
- * @see EdmLiteralKind
  */
 public final class EdmLiteral {
+  
+  /** The type. */
   private final EdmSimpleType type;
+  
+  /** The literal. */
   private final String literal;
 
   /**
@@ -59,6 +64,11 @@ public final class EdmLiteral {
     return literal;
   }
 
+  /**
+   * To string.
+   *
+   * @return the string
+   */
   @Override
   public String toString() {
     return "type=" + type + ", literal=" + literal;

@@ -18,6 +18,14 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.testutil.server;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Enum ServletType.
+ */
 public enum ServletType {
-  ODATA_SERVLET, JAXRS_SERVLET
+  
+  /** The odata servlet. */
+  ODATA_SERVLET, 
+ /** The jaxrs servlet. */
+ JAXRS_SERVLET
 }

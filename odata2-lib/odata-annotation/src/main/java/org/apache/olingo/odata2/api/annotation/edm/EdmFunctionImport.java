@@ -23,6 +23,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+// TODO: Auto-generated Javadoc
 /**
  * <p>Annotation for definition of an method as an {@link EdmFunctionImport} call/endpoint.</p>
  */
@@ -38,7 +39,13 @@ public @interface EdmFunctionImport {
      * Concrete return types as specified in OData.
      */
     enum Type {
-      SIMPLE, ENTITY, COMPLEX
+      
+      /** The simple. */
+      SIMPLE, 
+ /** The entity. */
+ ENTITY, 
+ /** The complex. */
+ COMPLEX
     }
 
     /**
@@ -62,7 +69,19 @@ public @interface EdmFunctionImport {
    * Concrete HttpMethods for a function import as specified in OData.
    */
   enum HttpMethod {
-    POST, PUT, GET, MERGE, DELETE, PATCH
+    
+    /** The post. */
+    POST, 
+ /** The put. */
+ PUT, 
+ /** The get. */
+ GET, 
+ /** The merge. */
+ MERGE, 
+ /** The delete. */
+ DELETE, 
+ /** The patch. */
+ PATCH
   };
 
   /**
@@ -82,8 +101,8 @@ public @interface EdmFunctionImport {
   String entitySet() default "";
 
   /**
-   * Define the return type of this function import
-   * 
+   * Define the return type of this function import.
+   *
    * @return return type of this function import
    */
   ReturnType returnType();

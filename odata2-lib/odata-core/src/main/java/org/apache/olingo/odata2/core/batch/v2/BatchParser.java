@@ -31,32 +31,76 @@ import org.apache.olingo.odata2.api.ep.EntityProviderBatchProperties;
 import org.apache.olingo.odata2.api.uri.PathInfo;
 import org.apache.olingo.odata2.core.exception.ODataRuntimeException;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BatchParser.
+ */
 public class BatchParser {
 
+  /** The batch request path info. */
   private final PathInfo batchRequestPathInfo;
+  
+  /** The content type mime. */
   private final String contentTypeMime;
+  
+  /** The is strict. */
   private final boolean isStrict;
 
+  /**
+   * Instantiates a new batch parser.
+   *
+   * @param contentType the content type
+   * @param isStrict the is strict
+   */
   public BatchParser(final String contentType, final boolean isStrict) {
     this(contentType, null, isStrict);
   }
 
+  /**
+   * Instantiates a new batch parser.
+   *
+   * @param contentType the content type
+   * @param properties the properties
+   * @param isStrict the is strict
+   */
   public BatchParser(final String contentType, final EntityProviderBatchProperties properties, final boolean isStrict) {
     contentTypeMime = contentType;
     batchRequestPathInfo = (properties != null) ? properties.getPathInfo() : null;
     this.isStrict = isStrict;
   }
 
+  /**
+   * Parses the batch response.
+   *
+   * @param in the in
+   * @return the list
+   * @throws BatchException the batch exception
+   */
   @SuppressWarnings("unchecked")
   public List<BatchSingleResponse> parseBatchResponse(final InputStream in) throws BatchException {
     return (List<BatchSingleResponse>) parse(in, new BatchResponseTransformator());
   }
 
+  /**
+   * Parses the batch request.
+   *
+   * @param in the in
+   * @return the list
+   * @throws BatchException the batch exception
+   */
   @SuppressWarnings("unchecked")
   public List<BatchRequestPart> parseBatchRequest(final InputStream in) throws BatchException {
     return (List<BatchRequestPart>) parse(in, new BatchRequestTransformator());
   }
 
+  /**
+   * Parses the.
+   *
+   * @param in the in
+   * @param transformator the transformator
+   * @return the list<? extends batch parser result>
+   * @throws BatchException the batch exception
+   */
   private List<? extends BatchParserResult> parse(final InputStream in, final BatchTransformator transformator)
       throws BatchException {
     try {
@@ -72,6 +116,15 @@ public class BatchParser {
     }
   }
 
+  /**
+   * Parses the batch.
+   *
+   * @param in the in
+   * @param transformator the transformator
+   * @return the list
+   * @throws BatchException the batch exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private List<BatchParserResult> parseBatch(final InputStream in,
       final BatchTransformator transformator) throws BatchException, IOException {
 
@@ -88,6 +141,15 @@ public class BatchParser {
     return resultList;
   }
   
+  /**
+   * Split body parts.
+   *
+   * @param in the in
+   * @param boundary the boundary
+   * @return the list
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws BatchException the batch exception
+   */
   private List<List<Line>> splitBodyParts(final InputStream in, final String boundary)
       throws IOException, BatchException {
 
@@ -99,6 +161,12 @@ public class BatchParser {
   }
 
 
+  /**
+   * Gets the base uri.
+   *
+   * @return the base uri
+   * @throws BatchException the batch exception
+   */
   private String getBaseUri() throws BatchException {
     String baseUri = "";
 
@@ -111,6 +179,12 @@ public class BatchParser {
     return baseUri;
   }
 
+  /**
+   * Removes the last slash.
+   *
+   * @param baseUri the base uri
+   * @return the string
+   */
   private String removeLastSlash(String baseUri) {
     if (baseUri.lastIndexOf('/') == baseUri.length() - 1) {
       baseUri = baseUri.substring(0, baseUri.length() - 1);

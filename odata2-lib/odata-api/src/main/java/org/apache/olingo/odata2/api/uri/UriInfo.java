@@ -49,11 +49,12 @@ import org.apache.olingo.odata2.api.uri.info.GetSimplePropertyUriInfo;
 import org.apache.olingo.odata2.api.uri.info.PostUriInfo;
 import org.apache.olingo.odata2.api.uri.info.PutMergePatchUriInfo;
 
+// TODO: Auto-generated Javadoc
 /**
  * Structured parts of the request URI - the result of URI parsing.
- * @org.apache.olingo.odata2.DoNotImplement
- * 
+ *
  * @see UriParser
+ * @org.apache.olingo.odata2.DoNotImplement 
  */
 public interface UriInfo extends GetServiceDocumentUriInfo,
     GetEntitySetUriInfo, GetEntityUriInfo,

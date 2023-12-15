@@ -18,41 +18,46 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.edm;
 
+// TODO: Auto-generated Javadoc
 /**
- * @org.apache.olingo.odata2.DoNotImplement
- * A CSDL Association element
+ * The Interface EdmAssociation.
+ *
+ * @org.apache.olingo.odata2.DoNotImplement A CSDL Association element
  * 
  * <p>EdmAssociation defines the relationship of two entity types.
- * 
  */
 public interface EdmAssociation extends EdmType, EdmAnnotatable {
 
   /**
-   * Get the {@link EdmAssociationEnd} by role
-   * @param role
+   * Get the {@link EdmAssociationEnd} by role.
+   *
+   * @param role the role
    * @return {@link EdmAssociationEnd}
-   * @throws EdmException
+   * @throws EdmException the edm exception
    */
   EdmAssociationEnd getEnd(String role) throws EdmException;
 
   /**
-   * Get the {@link EdmAssociationEnd} for end1
+   * Get the {@link EdmAssociationEnd} for end1.
+   *
    * @return {@link EdmAssociationEnd}
-   * @throws EdmException
+   * @throws EdmException the edm exception
    */
   EdmAssociationEnd getEnd1() throws EdmException;
 
   /**
-   * Get the {@link EdmAssociationEnd} for end2
+   * Get the {@link EdmAssociationEnd} for end2.
+   *
    * @return {@link EdmAssociationEnd}
-   * @throws EdmException
+   * @throws EdmException the edm exception
    */
   EdmAssociationEnd getEnd2() throws EdmException;
 
   /**
-   * Get the {@link EdmReferentialConstraint}
+   * Get the {@link EdmReferentialConstraint}.
+   *
    * @return {@link EdmReferentialConstraint}
-   * @throws EdmException
+   * @throws EdmException the edm exception
    */
   EdmReferentialConstraint getReferentialConstraint() throws EdmException;
 }

@@ -18,15 +18,22 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.testutil.server;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class ServerRuntimeException.
  */
 public class ServerRuntimeException extends RuntimeException {
 
+  /**
+   * Instantiates a new server runtime exception.
+   *
+   * @param e the e
+   */
   public ServerRuntimeException(final Exception e) {
     super(e);
   }
 
+  /** The Constant serialVersionUID. */
   private static final long serialVersionUID = 1L;
 
 }

@@ -21,6 +21,7 @@ package org.apache.olingo.odata2.api.ep.callback;
 import java.util.List;
 import java.util.Map;
 
+// TODO: Auto-generated Javadoc
 /**
  * Objects of this class are a container for the result of the {@link TombstoneCallback}.
  * 
@@ -28,7 +29,10 @@ import java.util.Map;
  */
 public class TombstoneCallbackResult {
 
+  /** The deleted entries data. */
   private List<Map<String, Object>> deletedEntriesData;
+  
+  /** The delta link. */
   private String deltaLink;
 
   /**
@@ -43,14 +47,17 @@ public class TombstoneCallbackResult {
   }
 
   /**
-   * Sets the data for all deleted entries
-   * @param deletedEntriesData
+   * Sets the data for all deleted entries.
+   *
+   * @param deletedEntriesData the deleted entries data
    */
   public void setDeletedEntriesData(final List<Map<String, Object>> deletedEntriesData) {
     this.deletedEntriesData = deletedEntriesData;
   }
 
   /**
+   * Gets the delta link.
+   *
    * @return delta link as String
    */
   public String getDeltaLink() {
@@ -59,7 +66,8 @@ public class TombstoneCallbackResult {
 
   /**
    * Sets the delta link to retrieve a delta.
-   * @param deltaLink
+   *
+   * @param deltaLink the new delta link
    */
   public void setDeltaLink(final String deltaLink) {
     this.deltaLink = deltaLink;

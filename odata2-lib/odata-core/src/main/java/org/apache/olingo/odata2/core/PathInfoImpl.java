@@ -25,48 +25,96 @@ import java.util.List;
 import org.apache.olingo.odata2.api.uri.PathInfo;
 import org.apache.olingo.odata2.api.uri.PathSegment;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class PathInfoImpl.
  */
 public class PathInfoImpl implements PathInfo {
 
+  /** The preceding path segment. */
   private List<PathSegment> precedingPathSegment = Collections.emptyList();
+  
+  /** The odata path segment. */
   private List<PathSegment> odataPathSegment = Collections.emptyList();
+  
+  /** The service root. */
   private URI serviceRoot;
+  
+  /** The request uri. */
   private URI requestUri;
 
+  /**
+   * Sets the o data path segment.
+   *
+   * @param odataPathSegment the new o data path segment
+   */
   public void setODataPathSegment(final List<PathSegment> odataPathSegment) {
     this.odataPathSegment = odataPathSegment;
   }
 
+  /**
+   * Sets the preceding path segment.
+   *
+   * @param precedingPathSegment the new preceding path segment
+   */
   public void setPrecedingPathSegment(final List<PathSegment> precedingPathSegment) {
     this.precedingPathSegment = precedingPathSegment;
   }
 
+  /**
+   * Sets the service root.
+   *
+   * @param uri the new service root
+   */
   public void setServiceRoot(final URI uri) {
     serviceRoot = uri;
   }
 
+  /**
+   * Gets the preceding segments.
+   *
+   * @return the preceding segments
+   */
   @Override
   public List<PathSegment> getPrecedingSegments() {
     return Collections.unmodifiableList(precedingPathSegment);
   }
 
+  /**
+   * Gets the o data segments.
+   *
+   * @return the o data segments
+   */
   @Override
   public List<PathSegment> getODataSegments() {
     return Collections.unmodifiableList(odataPathSegment);
   }
 
+  /**
+   * Gets the service root.
+   *
+   * @return the service root
+   */
   @Override
   public URI getServiceRoot() {
     return serviceRoot;
   }
 
+  /**
+   * Gets the request uri.
+   *
+   * @return the request uri
+   */
   @Override
   public URI getRequestUri() {
     return requestUri;
   }
 
+  /**
+   * Sets the request uri.
+   *
+   * @param requestUri the new request uri
+   */
   public void setRequestUri(final URI requestUri) {
     this.requestUri = requestUri;
   }

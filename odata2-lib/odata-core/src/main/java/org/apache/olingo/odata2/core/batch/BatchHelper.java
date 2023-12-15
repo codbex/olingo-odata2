@@ -37,23 +37,55 @@ import java.nio.charset.Charset;
 import java.util.Map;
 import java.util.UUID;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BatchHelper.
+ */
 public class BatchHelper {
 
+  /** The Constant BINARY_ENCODING. */
   public static final String BINARY_ENCODING = "binary";
+  
+  /** The Constant UTF8_ENCODING. */
   public static final String UTF8_ENCODING = "UTF-8";
+  
+  /** The Constant ISO_ENCODING. */
   public static final String ISO_ENCODING = "ISO-8859-1";
+  
+  /** The default encoding. */
   private static String DEFAULT_ENCODING = "ISO-8859-1";
+  
+  /** The Constant HTTP_CONTENT_TRANSFER_ENCODING. */
   public static final String HTTP_CONTENT_TRANSFER_ENCODING = "Content-Transfer-Encoding";
+  
+  /** The Constant HTTP_CONTENT_ID. */
   public static final String HTTP_CONTENT_ID = "Content-Id";
+  
+  /** The Constant MIME_HEADER_CONTENT_ID. */
   public static final String MIME_HEADER_CONTENT_ID = "MimeHeader-ContentId";
+  
+  /** The Constant REQUEST_HEADER_CONTENT_ID. */
   public static final String REQUEST_HEADER_CONTENT_ID = "RequestHeader-ContentId";
 
+  /** The default charset. */
   protected static Charset DEFAULT_CHARSET = Charset.forName(DEFAULT_ENCODING);
 
+  /**
+   * Generate boundary.
+   *
+   * @param value the value
+   * @return the string
+   */
   protected static String generateBoundary(final String value) {
     return value + "_" + UUID.randomUUID().toString();
   }
 
+  /**
+   * Gets the bytes.
+   *
+   * @param body the body
+   * @return the bytes
+   */
   protected static byte[] getBytes(final String body) {
     try {
       return body.getBytes(DEFAULT_ENCODING);
@@ -62,6 +94,12 @@ public class BatchHelper {
     }
   }
 
+  /**
+   * Extract charset.
+   *
+   * @param headers the headers
+   * @return the charset
+   */
   public static Charset extractCharset(Map<String, String> headers) {
     String contentType = null;
     for (Map.Entry<String, String> s : headers.entrySet()) {
@@ -74,6 +112,12 @@ public class BatchHelper {
     return getCharset(contentType);
   }
 
+  /**
+   * Extract charset.
+   *
+   * @param contentType the content type
+   * @return the charset
+   */
   public static Charset extractCharset(ContentType contentType) {
     if (contentType != null) {
       final String charsetValue = contentType.getParameters().get(ContentType.PARAMETER_CHARSET);
@@ -91,6 +135,12 @@ public class BatchHelper {
     return Charset.forName(ISO_ENCODING);
   }
 
+  /**
+   * Gets the charset.
+   *
+   * @param contentType the content type
+   * @return the charset
+   */
   private static Charset getCharset(String contentType) {
     ContentType ct = ContentType.parse(contentType);
     if(ct != null) {
@@ -109,6 +159,11 @@ public class BatchHelper {
     return Charset.forName(ISO_ENCODING);
   }
   
+  /**
+   * Sets the default values.
+   *
+   * @param contentType the new default values
+   */
   private static void setDefaultValues(String contentType) {
     DEFAULT_CHARSET = Charset.forName(contentType);
     DEFAULT_ENCODING = contentType;
@@ -119,11 +174,24 @@ public class BatchHelper {
    * Builder class to create the body and the header.
    */
   static class BodyBuilder {
+    
+    /** The Constant DEFAULT_SIZE. */
     public static final int DEFAULT_SIZE = 8192;
+    
+    /** The charset iso 8859 1. */
     private final Charset CHARSET_ISO_8859_1 = Charset.forName("iso-8859-1");
+    
+    /** The buffer. */
     private ByteBuffer buffer = ByteBuffer.allocate(DEFAULT_SIZE);
+    
+    /** The is closed. */
     private boolean isClosed = false;
 
+    /**
+     * Gets the content.
+     *
+     * @return the content
+     */
     public byte[] getContent() {
       isClosed = true;
       byte[] tmp = new byte[buffer.position()];
@@ -132,24 +200,51 @@ public class BatchHelper {
       return tmp;
     }
 
+    /**
+     * Gets the content as stream.
+     *
+     * @return the content as stream
+     */
     public InputStream getContentAsStream() {
       return new ByteArrayInputStream(getContent());
     }
 
+    /**
+     * Gets the content as string.
+     *
+     * @param charset the charset
+     * @return the content as string
+     */
     public String getContentAsString(Charset charset) {
       return new String(getContent(), charset);
     }
 
+    /**
+     * Gets the length.
+     *
+     * @return the length
+     */
     public int getLength() {
       return (buffer.limit() > buffer.position() ? buffer.limit(): buffer.position());
     }
 
+    /**
+     * Append.
+     *
+     * @param string the string
+     * @return the body builder
+     */
     public BodyBuilder append(String string) {
       byte [] b = string.getBytes(DEFAULT_CHARSET);
       put(b);
       return this;
     }
 
+    /**
+     * Put.
+     *
+     * @param b the b
+     */
     private void put(byte[] b) {
       if(isClosed) {
         throw new RuntimeException("BodyBuilder is closed.");
@@ -164,15 +259,32 @@ public class BatchHelper {
       buffer.put(b);
     }
 
+    /**
+     * Append.
+     *
+     * @param statusCode the status code
+     * @return the body builder
+     */
     public BodyBuilder append(int statusCode) {
       return append(String.valueOf(statusCode));
     }
 
+    /**
+     * Append.
+     *
+     * @param body the body
+     * @return the body builder
+     */
     public BodyBuilder append(Body body) {
       put(body.getContent());
       return this;
     }
 
+    /**
+     * To string.
+     *
+     * @return the string
+     */
     public String toString() {
       return new String(buffer.array(), 0, buffer.position());
     }
@@ -182,8 +294,9 @@ public class BatchHelper {
      * Since after applying the charset the content length changes.
      * If the previously generated length is sent back then the batch response 
      * body is seen truncated
-     * @param batchResponseBody
-     * @return
+     *
+     * @param batchResponseBody the batch response body
+     * @return the int
      */
     public int calculateLength(Object batchResponseBody) {
       if (batchResponseBody != null) {
@@ -209,35 +322,75 @@ public class BatchHelper {
    * Body part which is read and stored as bytes (no charset conversion).
    */
   static class Body {
+    
+    /** The Constant BUFFER_SIZE. */
     private static final int BUFFER_SIZE = 8192;
+    
+    /** The Constant EMPTY_BYTES. */
     public static final byte[] EMPTY_BYTES = new byte[0];
+    
+    /** The content. */
     private final byte[] content;
 
+    /**
+     * Instantiates a new body.
+     *
+     * @param response the response
+     */
     public Body(BatchChangeSetPart response) {
       this.content = getBody(response);
     }
 
+    /**
+     * Instantiates a new body.
+     *
+     * @param response the response
+     */
     public Body(ODataResponse response) {
       this.content = getBody(response);
     }
 
+    /**
+     * Instantiates a new body.
+     */
     public Body() {
       this.content = EMPTY_BYTES;
       setDefaultValues(ISO_ENCODING);
     }
 
+    /**
+     * Gets the length.
+     *
+     * @return the length
+     */
     public int getLength() {
       return content.length;
     }
 
+    /**
+     * Gets the content.
+     *
+     * @return the content
+     */
     public byte[] getContent() {
       return content;
     }
 
+    /**
+     * Checks if is empty.
+     *
+     * @return true, if is empty
+     */
     public boolean isEmpty() {
       return content.length == 0;
     }
 
+    /**
+     * Gets the body.
+     *
+     * @param response the response
+     * @return the body
+     */
     private byte[] getBody(final BatchChangeSetPart response) {
       if (response == null || response.getBodyAsBytes() == null) {
         return EMPTY_BYTES;
@@ -246,6 +399,12 @@ public class BatchHelper {
       return response.getBodyAsBytes();
     }
 
+    /**
+     * Gets the body.
+     *
+     * @param response the response
+     * @return the body
+     */
     private byte[] getBody(final ODataResponse response) {
       if (response == null) {
         return EMPTY_BYTES;

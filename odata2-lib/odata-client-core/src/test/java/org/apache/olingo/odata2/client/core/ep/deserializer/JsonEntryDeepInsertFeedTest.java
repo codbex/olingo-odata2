@@ -34,17 +34,30 @@ import org.apache.olingo.odata2.client.core.ep.deserializer.JsonEntityDeserializ
 import org.apache.olingo.odata2.testutil.mock.MockFacade;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class JsonEntryDeepInsertFeedTest.
  */
 public class JsonEntryDeepInsertFeedTest extends AbstractDeserializerTest {
 
+  /** The Constant BUILDING_WITH_INLINE_ROOMS. */
   private static final String BUILDING_WITH_INLINE_ROOMS = "JsonBuildingWithInlineRooms.json";
+  
+  /** The Constant BUILDING_WITH_INLINE_ROOMS_CLIENT_CASE. */
   private static final String BUILDING_WITH_INLINE_ROOMS_CLIENT_CASE = "JsonBuildingWithInlineRoomsClientCase.json";
+  
+  /** The Constant TEAM_WITH_INLINE_EMPLOYEES. */
   private static final String TEAM_WITH_INLINE_EMPLOYEES = "JsonTeamsWithInlineEmployees.json";
+  
+  /** The Constant BUILDING_WITH_INLINE_ROOMS_NEXTLINK_AND_COUNT. */
   private static final String BUILDING_WITH_INLINE_ROOMS_NEXTLINK_AND_COUNT =
       "JsonBuildingWithInlineRoomsAndNextLinkAndCount.json";
 
+  /**
+   * Inner feed without results wrapper client use case.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void innerFeedWithoutResultsWrapperClientUseCase() throws Exception {
     ODataEntry outerEntry = prepareAndExecuteEntry(
@@ -75,6 +88,11 @@ public class JsonEntryDeepInsertFeedTest extends AbstractDeserializerTest {
     assertEquals("http://localhost:8080/ReferenceScenario.svc/Rooms('1')/nr_Building", associationUris.get(0));
   }
   
+  /**
+   * Inner feed no media resource.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void innerFeedNoMediaResource() throws Exception {
     ODataEntry outerEntry = prepareAndExecuteEntry(BUILDING_WITH_INLINE_ROOMS, "Buildings", DEFAULT_PROPERTIES);
@@ -104,6 +122,11 @@ public class JsonEntryDeepInsertFeedTest extends AbstractDeserializerTest {
     assertEquals("http://localhost:8080/ReferenceScenario.svc/Rooms('1')/nr_Building", associationUris.get(0));
   }
 
+  /**
+   * Inner feed no media resource contains next link and count.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void innerFeedNoMediaResourceContainsNextLinkAndCount() throws Exception {
     ODataEntry outerEntry =
@@ -121,6 +144,11 @@ public class JsonEntryDeepInsertFeedTest extends AbstractDeserializerTest {
     assertEquals("nextLink", roomsMetadata.getNextLink());
   }
 
+  /**
+   * Inner feed no media resource simple array.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void innerFeedNoMediaResourceSimpleArray() throws Exception {
     EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Buildings");
@@ -140,6 +168,11 @@ public class JsonEntryDeepInsertFeedTest extends AbstractDeserializerTest {
     assertEquals(1, rooms.size());
   }
 
+  /**
+   * Inner feed media resource.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void innerFeedMediaResource() throws Exception {
     ODataEntry outerEntry = prepareAndExecuteEntry(TEAM_WITH_INLINE_EMPLOYEES, "Teams", DEFAULT_PROPERTIES);

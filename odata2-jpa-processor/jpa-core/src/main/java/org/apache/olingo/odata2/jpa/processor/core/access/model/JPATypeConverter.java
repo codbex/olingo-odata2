@@ -39,6 +39,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.apache.olingo.odata2.api.edm.EdmSimpleTypeKind;
 import org.apache.olingo.odata2.jpa.processor.api.exception.ODataJPAModelException;
 
+// TODO: Auto-generated Javadoc
 /**
  * This class holds utility methods for Type conversions between JPA and OData Types.
  * 
@@ -51,13 +52,11 @@ public class JPATypeConverter {
    * This utility method converts a given jpa Type to equivalent
    * EdmSimpleTypeKind for maintaining compatibility between Java and OData
    * Types.
-   * 
-   * @param jpaType
-   * The JPA Type input.
+   *
+   * @param jpaType The JPA Type input.
+   * @param currentAttribute the current attribute
    * @return The corresponding EdmSimpleTypeKind.
-   * @throws ODataJPAModelException
-   * @throws org.apache.olingo.odata2.jpa.processor.api.exception.ODataJPARuntimeException
-   * 
+   * @throws ODataJPAModelException the o data JPA model exception
    * @see EdmSimpleTypeKind
    */
 
@@ -149,6 +148,12 @@ public class JPATypeConverter {
     }
   }
 
+  /**
+   * Checks if is blob.
+   *
+   * @param currentAttribute the current attribute
+   * @return true, if is blob
+   */
   private static boolean isBlob(final Attribute<?, ?> currentAttribute) {
     if (currentAttribute != null) {
       AnnotatedElement annotatedElement = (AnnotatedElement) currentAttribute.getJavaMember();
@@ -159,6 +164,13 @@ public class JPATypeConverter {
     return false;
   }
 
+  /**
+   * Determine temporal type.
+   *
+   * @param currentAttribute the current attribute
+   * @return the temporal type
+   * @throws ODataJPAModelException the o data JPA model exception
+   */
   private static TemporalType determineTemporalType(final Attribute<?, ?> currentAttribute)
       throws ODataJPAModelException {
     if (currentAttribute != null) {

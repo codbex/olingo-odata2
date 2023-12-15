@@ -46,6 +46,7 @@ import org.apache.olingo.odata2.api.processor.part.MetadataProcessor;
 import org.apache.olingo.odata2.api.processor.part.ServiceDocumentProcessor;
 import org.apache.olingo.odata2.api.rt.RuntimeDelegate;
 
+// TODO: Auto-generated Javadoc
 /**
  * <p>An {@link ODataService} implementation that uses {@link ODataSingleProcessor}.</p>
  * <p>Usually custom services create an instance by their implementation of
@@ -56,11 +57,15 @@ import org.apache.olingo.odata2.api.rt.RuntimeDelegate;
  */
 public class ODataSingleProcessorService implements ODataService {
 
+  /** The processor. */
   private final ODataSingleProcessor processor;
+  
+  /** The edm. */
   private final Edm edm;
 
   /**
-   * Construct service
+   * Construct service.
+   *
    * @param provider A custom {@link EdmProvider}
    * @param processor A custom {@link ODataSingleProcessor}
    */
@@ -70,6 +75,10 @@ public class ODataSingleProcessorService implements ODataService {
   }
 
   /**
+   * Gets the version.
+   *
+   * @return the version
+   * @throws ODataException the o data exception
    * @see ODataService
    */
   @Override
@@ -78,6 +87,10 @@ public class ODataSingleProcessorService implements ODataService {
   }
 
   /**
+   * Gets the entity data model.
+   *
+   * @return the entity data model
+   * @throws ODataException the o data exception
    * @see ODataService
    */
   @Override
@@ -86,6 +99,10 @@ public class ODataSingleProcessorService implements ODataService {
   }
 
   /**
+   * Gets the metadata processor.
+   *
+   * @return the metadata processor
+   * @throws ODataException the o data exception
    * @see ODataService
    */
   @Override
@@ -94,6 +111,10 @@ public class ODataSingleProcessorService implements ODataService {
   }
 
   /**
+   * Gets the service document processor.
+   *
+   * @return the service document processor
+   * @throws ODataException the o data exception
    * @see ODataService
    */
   @Override
@@ -102,6 +123,10 @@ public class ODataSingleProcessorService implements ODataService {
   }
 
   /**
+   * Gets the entity processor.
+   *
+   * @return the entity processor
+   * @throws ODataException the o data exception
    * @see ODataService
    */
   @Override
@@ -110,6 +135,10 @@ public class ODataSingleProcessorService implements ODataService {
   }
 
   /**
+   * Gets the entity set processor.
+   *
+   * @return the entity set processor
+   * @throws ODataException the o data exception
    * @see ODataService
    */
   @Override
@@ -118,6 +147,10 @@ public class ODataSingleProcessorService implements ODataService {
   }
 
   /**
+   * Gets the entity complex property processor.
+   *
+   * @return the entity complex property processor
+   * @throws ODataException the o data exception
    * @see ODataService
    */
   @Override
@@ -126,6 +159,10 @@ public class ODataSingleProcessorService implements ODataService {
   }
 
   /**
+   * Gets the entity link processor.
+   *
+   * @return the entity link processor
+   * @throws ODataException the o data exception
    * @see ODataService
    */
   @Override
@@ -134,6 +171,10 @@ public class ODataSingleProcessorService implements ODataService {
   }
 
   /**
+   * Gets the entity links processor.
+   *
+   * @return the entity links processor
+   * @throws ODataException the o data exception
    * @see ODataService
    */
   @Override
@@ -142,6 +183,10 @@ public class ODataSingleProcessorService implements ODataService {
   }
 
   /**
+   * Gets the entity media processor.
+   *
+   * @return the entity media processor
+   * @throws ODataException the o data exception
    * @see ODataService
    */
   @Override
@@ -150,6 +195,10 @@ public class ODataSingleProcessorService implements ODataService {
   }
 
   /**
+   * Gets the entity simple property processor.
+   *
+   * @return the entity simple property processor
+   * @throws ODataException the o data exception
    * @see ODataService
    */
   @Override
@@ -158,6 +207,10 @@ public class ODataSingleProcessorService implements ODataService {
   }
 
   /**
+   * Gets the entity simple property value processor.
+   *
+   * @return the entity simple property value processor
+   * @throws ODataException the o data exception
    * @see ODataService
    */
   @Override
@@ -166,6 +219,10 @@ public class ODataSingleProcessorService implements ODataService {
   }
 
   /**
+   * Gets the function import processor.
+   *
+   * @return the function import processor
+   * @throws ODataException the o data exception
    * @see ODataService
    */
   @Override
@@ -174,6 +231,10 @@ public class ODataSingleProcessorService implements ODataService {
   }
 
   /**
+   * Gets the function import value processor.
+   *
+   * @return the function import value processor
+   * @throws ODataException the o data exception
    * @see ODataService
    */
   @Override
@@ -182,6 +243,10 @@ public class ODataSingleProcessorService implements ODataService {
   }
 
   /**
+   * Gets the batch processor.
+   *
+   * @return the batch processor
+   * @throws ODataException the o data exception
    * @see ODataService
    */
   @Override
@@ -190,6 +255,10 @@ public class ODataSingleProcessorService implements ODataService {
   }
 
   /**
+   * Gets the processor.
+   *
+   * @return the processor
+   * @throws ODataException the o data exception
    * @see ODataService
    */
   @Override
@@ -197,6 +266,13 @@ public class ODataSingleProcessorService implements ODataService {
     return processor;
   }
 
+  /**
+   * Gets the supported content types.
+   *
+   * @param processorFeature the processor feature
+   * @return the supported content types
+   * @throws ODataException the o data exception
+   */
   @Override
   public List<String> getSupportedContentTypes(final Class<? extends ODataProcessor> processorFeature)
       throws ODataException {

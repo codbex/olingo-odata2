@@ -20,29 +20,55 @@ package org.apache.olingo.odata2.api.exception;
 
 import org.apache.olingo.odata2.api.commons.HttpStatusCodes;
 
+// TODO: Auto-generated Javadoc
 /**
- * Exceptions of this class will result in a HTTP status 428 precondition required
- * 
+ * Exceptions of this class will result in a HTTP status 428 precondition required.
  */
 public class ODataPreconditionRequiredException extends ODataHttpException {
 
+  /** The Constant serialVersionUID. */
   private static final long serialVersionUID = 1L;
 
+  /** The Constant COMMON. */
   public static final MessageReference COMMON = createMessageReference(ODataPreconditionRequiredException.class,
       "COMMON");
 
+  /**
+   * Instantiates a new o data precondition required exception.
+   *
+   * @param context the context
+   */
   public ODataPreconditionRequiredException(final MessageReference context) {
     super(context, HttpStatusCodes.PRECONDITION_REQUIRED);
   }
 
+  /**
+   * Instantiates a new o data precondition required exception.
+   *
+   * @param context the context
+   * @param cause the cause
+   */
   public ODataPreconditionRequiredException(final MessageReference context, final Throwable cause) {
     super(context, cause, HttpStatusCodes.PRECONDITION_REQUIRED);
   }
 
+  /**
+   * Instantiates a new o data precondition required exception.
+   *
+   * @param context the context
+   * @param errorCode the error code
+   */
   public ODataPreconditionRequiredException(final MessageReference context, final String errorCode) {
     super(context, HttpStatusCodes.PRECONDITION_REQUIRED, errorCode);
   }
 
+  /**
+   * Instantiates a new o data precondition required exception.
+   *
+   * @param context the context
+   * @param cause the cause
+   * @param errorCode the error code
+   */
   public ODataPreconditionRequiredException(final MessageReference context, final Throwable cause,
       final String errorCode) {
     super(context, cause, HttpStatusCodes.PRECONDITION_REQUIRED, errorCode);

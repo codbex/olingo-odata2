@@ -43,15 +43,26 @@ import org.custommonkey.xmlunit.XMLUnit;
 import org.junit.Before;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class MappingTest.
  */
 public class MappingTest extends AbstractFitTest {
 
+  /**
+   * Instantiates a new mapping test.
+   *
+   * @param servletType the servlet type
+   */
   public MappingTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /**
+   * The main method.
+   *
+   * @param args the arguments
+   */
   public static void main(final String[] args) {
     final TestServer server = new TestServer(ServletType.JAXRS_SERVLET);
     try {
@@ -65,6 +76,9 @@ public class MappingTest extends AbstractFitTest {
     }
   }
 
+  /**
+   * Before.
+   */
   @Override
   @Before
   public void before() {
@@ -76,11 +90,22 @@ public class MappingTest extends AbstractFitTest {
     XMLUnit.setXpathNamespaceContext(new SimpleNamespaceContext(prefixMap));
   }
 
+  /**
+   * Creates the service.
+   *
+   * @return the o data service
+   * @throws ODataException the o data exception
+   */
   @Override
   protected ODataService createService() throws ODataException {
     return MapFactory.create();
   }
 
+  /**
+   * Test service document.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testServiceDocument() throws Exception {
     final HttpGet get = new HttpGet(URI.create(getEndpoint().toString() + "/"));
@@ -88,6 +113,11 @@ public class MappingTest extends AbstractFitTest {
     assertEquals(HttpStatusCodes.OK.getStatusCode(), response.getStatusLine().getStatusCode());
   }
 
+  /**
+   * Test metadata.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testMetadata() throws Exception {
     final HttpGet get = new HttpGet(URI.create(getEndpoint().toString() + "/$metadata"));
@@ -95,6 +125,11 @@ public class MappingTest extends AbstractFitTest {
     assertEquals(HttpStatusCodes.OK.getStatusCode(), response.getStatusLine().getStatusCode());
   }
 
+  /**
+   * Test entity set.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testEntitySet() throws Exception {
     final HttpGet get = new HttpGet(URI.create(getEndpoint().toString() + "/mappings"));
@@ -109,6 +144,11 @@ public class MappingTest extends AbstractFitTest {
     }
   }
 
+  /**
+   * Test entity.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testEntity() throws Exception {
     final HttpGet get = new HttpGet(URI.create(getEndpoint().toString() + "/mappings('V01.7')"));
@@ -121,6 +161,11 @@ public class MappingTest extends AbstractFitTest {
     assertXpathEvaluatesTo("V03.7", "/a:entry/a:content/m:properties/d:p3", payload);
   }
 
+  /**
+   * Test property value.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testPropertyValue() throws Exception {
     final HttpGet get = new HttpGet(URI.create(getEndpoint().toString() + "/mappings('V01.7')/p2/$value"));

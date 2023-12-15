@@ -39,6 +39,7 @@ import org.apache.olingo.odata2.api.processor.ODataSingleProcessor;
 import org.apache.olingo.odata2.api.uri.ExpandSelectTreeNode.ExpandSelectTreeNodeBuilder;
 import org.apache.olingo.odata2.api.uri.UriParser;
 
+// TODO: Auto-generated Javadoc
 /**
  * Provides access to core implementation classes for interfaces. This class is used
  * by internal abstract API implementations and it is not intended to be used by others.
@@ -48,6 +49,7 @@ import org.apache.olingo.odata2.api.uri.UriParser;
  */
 public abstract class RuntimeDelegate {
 
+  /** The Constant IMPLEMENTATION. */
   private static final String IMPLEMENTATION = "org.apache.olingo.odata2.core.rt.RuntimeDelegateImpl";
 
   /**
@@ -81,34 +83,112 @@ public abstract class RuntimeDelegate {
    */
   public static abstract class RuntimeDelegateInstance {
 
+    /**
+     * Creates the O data response builder.
+     *
+     * @return the o data response builder
+     */
     protected abstract ODataResponseBuilder createODataResponseBuilder();
 
+    /**
+     * Gets the edm simple type.
+     *
+     * @param edmSimpleTypeKind the edm simple type kind
+     * @return the edm simple type
+     */
     protected abstract EdmSimpleType getEdmSimpleType(EdmSimpleTypeKind edmSimpleTypeKind);
 
+    /**
+     * Gets the uri parser.
+     *
+     * @param edm the edm
+     * @return the uri parser
+     */
     protected abstract UriParser getUriParser(Edm edm);
 
+    /**
+     * Gets the simple type facade.
+     *
+     * @return the simple type facade
+     */
     protected abstract EdmSimpleTypeFacade getSimpleTypeFacade();
 
+    /**
+     * Creates the edm.
+     *
+     * @param provider the provider
+     * @return the edm
+     */
     protected abstract Edm createEdm(EdmProvider provider);
 
+    /**
+     * Creates the entity provider.
+     *
+     * @return the entity provider interface
+     */
     protected abstract EntityProviderInterface createEntityProvider();
 
+    /**
+     * Creates the O data single processor service.
+     *
+     * @param provider the provider
+     * @param processor the processor
+     * @return the o data service
+     */
     protected abstract ODataService createODataSingleProcessorService(EdmProvider provider,
         ODataSingleProcessor processor);
 
+    /**
+     * Creates the edm provider.
+     *
+     * @param metadataXml the metadata xml
+     * @param validate the validate
+     * @return the edm provider
+     * @throws EntityProviderException the entity provider exception
+     */
     protected abstract EdmProvider createEdmProvider(InputStream metadataXml, boolean validate)
         throws EntityProviderException;
 
+    /**
+     * Creates the batch response part builder.
+     *
+     * @return the batch response part builder
+     */
     protected abstract BatchResponsePartBuilder createBatchResponsePartBuilder();
 
+    /**
+     * Creates the O data request builder.
+     *
+     * @return the o data request builder
+     */
     protected abstract ODataRequestBuilder createODataRequestBuilder();
 
+    /**
+     * Creates the batch change set builder.
+     *
+     * @return the batch change set builder
+     */
     protected abstract BatchChangeSetBuilder createBatchChangeSetBuilder();
 
+    /**
+     * Creates the batch query request builder.
+     *
+     * @return the batch query part builder
+     */
     protected abstract BatchQueryPartBuilder createBatchQueryRequestBuilder();
 
+    /**
+     * Creates the batch change set request.
+     *
+     * @return the batch change set part builder
+     */
     protected abstract BatchChangeSetPartBuilder createBatchChangeSetRequest();
 
+    /**
+     * Creates the expand select tree node builder.
+     *
+     * @return the expand select tree node builder
+     */
     public abstract ExpandSelectTreeNodeBuilder createExpandSelectTreeNodeBuilder();
 
     /**
@@ -184,44 +264,85 @@ public abstract class RuntimeDelegate {
 
   /**
    * Creates and returns an edm provider.
+   *
    * @param metadataXml a metadata xml input stream (means the metadata document)
    * @param validate true if semantic checks for metadata input stream shall be done
    * @return an instance of EdmProvider
+   * @throws EntityProviderException the entity provider exception
    */
   public static EdmProvider createEdmProvider(final InputStream metadataXml, final boolean validate)
       throws EntityProviderException {
     return RuntimeDelegate.getInstance().createEdmProvider(metadataXml, validate);
   }
 
+  /**
+   * The Class RuntimeDelegateException.
+   */
   private static class RuntimeDelegateException extends RuntimeException {
 
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1L;
 
+    /**
+     * Instantiates a new runtime delegate exception.
+     *
+     * @param e the e
+     */
     public RuntimeDelegateException(final Exception e) {
       super(e);
     }
   }
 
+  /**
+   * Creates the batch response part builder.
+   *
+   * @return the batch response part builder
+   */
   public static BatchResponsePartBuilder createBatchResponsePartBuilder() {
     return RuntimeDelegate.getInstance().createBatchResponsePartBuilder();
   }
 
+  /**
+   * Creates the O data request builder.
+   *
+   * @return the o data request builder
+   */
   public static ODataRequestBuilder createODataRequestBuilder() {
     return RuntimeDelegate.getInstance().createODataRequestBuilder();
   }
 
+  /**
+   * Creates the batch change set builder.
+   *
+   * @return the batch change set builder
+   */
   public static BatchChangeSetBuilder createBatchChangeSetBuilder() {
     return RuntimeDelegate.getInstance().createBatchChangeSetBuilder();
   }
 
+  /**
+   * Creates the batch query part builder.
+   *
+   * @return the batch query part builder
+   */
   public static BatchQueryPartBuilder createBatchQueryPartBuilder() {
     return RuntimeDelegate.getInstance().createBatchQueryRequestBuilder();
   }
 
+  /**
+   * Creates the batch change set part builder.
+   *
+   * @return the batch change set part builder
+   */
   public static BatchChangeSetPartBuilder createBatchChangeSetPartBuilder() {
     return RuntimeDelegate.getInstance().createBatchChangeSetRequest();
   }
 
+  /**
+   * Creates the expand select tree node builder.
+   *
+   * @return the expand select tree node builder
+   */
   public static ExpandSelectTreeNodeBuilder createExpandSelectTreeNodeBuilder() {
     return RuntimeDelegate.getInstance().createExpandSelectTreeNodeBuilder();
   }

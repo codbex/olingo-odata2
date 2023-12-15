@@ -25,13 +25,29 @@ import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AbstractXmlProducerTestHelper.
+ */
 @RunWith(Parameterized.class)
 public abstract class AbstractXmlProducerTestHelper extends BaseTest {
 
+  /**
+   * The Enum StreamWriterImplType.
+   */
   public enum StreamWriterImplType {
-    WOODSTOCKIMPL, SUNINTERNALIMPL;
+    
+    /** The woodstockimpl. */
+    WOODSTOCKIMPL, 
+ /** The suninternalimpl. */
+ SUNINTERNALIMPL;
   }
 
+  /**
+   * Instantiates a new abstract xml producer test helper.
+   *
+   * @param type the type
+   */
   // CHECKSTYLE:OFF
   public AbstractXmlProducerTestHelper(final StreamWriterImplType type) {
     switch (type) {
@@ -52,6 +68,11 @@ public abstract class AbstractXmlProducerTestHelper extends BaseTest {
 
   // CHECKSTYLE:On
 
+  /**
+   * Data.
+   *
+   * @return the list
+   */
   @Parameterized.Parameters
   public static List<Object[]> data() {
     // If desired this can be made dependent on runtime variables

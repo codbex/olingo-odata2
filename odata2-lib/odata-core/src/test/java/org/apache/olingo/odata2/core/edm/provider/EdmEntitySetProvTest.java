@@ -48,16 +48,28 @@ import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
  *  
  *
  */
 public class EdmEntitySetProvTest extends BaseTest {
 
+  /** The edm entity set foo. */
   private static EdmEntitySetImplProv edmEntitySetFoo;
+  
+  /** The edm enitiy set bar. */
   private static EdmEntitySetImplProv edmEnitiySetBar;
+  
+  /** The edm provider. */
   private static EdmProvider edmProvider;
 
+  /**
+   * Gets the edm entity container impl.
+   *
+   * @return the edm entity container impl
+   * @throws Exception the exception
+   */
   @BeforeClass
   public static void getEdmEntityContainerImpl() throws Exception {
 
@@ -106,18 +118,33 @@ public class EdmEntitySetProvTest extends BaseTest {
     edmEnitiySetBar = new EdmEntitySetImplProv(edmImplProv, entitySetBar, edmEntityContainer);
   }
 
+  /**
+   * Test entity set 1.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testEntitySet1() throws Exception {
     assertEquals("foo", edmEntitySetFoo.getName());
     assertEquals("Container", edmEntitySetFoo.getEntityContainer().getName());
   }
 
+  /**
+   * Test entity set 2.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testEntitySet2() throws Exception {
     assertEquals("bar", edmEnitiySetBar.getName());
     assertEquals("Container", edmEnitiySetBar.getEntityContainer().getName());
   }
 
+  /**
+   * Test entity set navigation.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testEntitySetNavigation() throws Exception {
     List<String> navPropertyyNames = edmEntitySetFoo.getEntityType().getNavigationPropertyNames();
@@ -130,6 +157,11 @@ public class EdmEntitySetProvTest extends BaseTest {
     assertEquals(edmEnitiySetBar.getName(), relatedEntitySet.getName());
   }
 
+  /**
+   * Test entity set type.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testEntitySetType() throws Exception {
     assertEquals("fooEntityType", edmEntitySetFoo.getEntityType().getName());
@@ -137,30 +169,55 @@ public class EdmEntitySetProvTest extends BaseTest {
         new FullQualifiedName("namespace", "fooEntityType")).getName());
   }
 
+  /**
+   * Check invalid start colon name.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected=EdmException.class)
   public void checkInvalidStartColonName() throws Exception {
     EntitySet provES = new EntitySet().setName(":Name");
     new EdmEntitySetImplProv(null, provES, null);
   }
 
+  /**
+   * Check invalid colon name.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected=EdmException.class)
   public void checkInvalidColonName() throws Exception {
     EntitySet provES = new EntitySet().setName("B:Name");
     new EdmEntitySetImplProv(null, provES , null);
   }
 
+  /**
+   * Check invalid minus name.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected=EdmException.class)
   public void checkInvalidMinusName() throws Exception {
     EntitySet provES = new EntitySet().setName("My-Name");
     new EdmEntitySetImplProv(null, provES, null);
   }
 
+  /**
+   * Check invalid start minus name.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected=EdmException.class)
   public void checkInvalidStartMinusName() throws Exception {
     EntitySet provES = new EntitySet().setName("-Name");
     new EdmEntitySetImplProv(null, provES , null);
   }
 
+  /**
+   * Check valid name.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void checkValidName() throws Exception {
     EntitySet provES = new EntitySet().setName("Содержание");
@@ -168,6 +225,11 @@ public class EdmEntitySetProvTest extends BaseTest {
     assertEquals("Содержание", entitySet.getName());
   }
 
+  /**
+   * Check valid name with underscore.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void checkValidNameWithUnderscore() throws Exception {
     EntitySet provES = new EntitySet().setName("_Name");
@@ -179,6 +241,12 @@ public class EdmEntitySetProvTest extends BaseTest {
     assertEquals("N_ame_", entitySet.getName());
   }
 
+  /**
+   * Gets the annotations.
+   *
+   * @return the annotations
+   * @throws Exception the exception
+   */
   @Test
   public void getAnnotations() throws Exception {
     EdmAnnotatable annotatable = edmEntitySetFoo;

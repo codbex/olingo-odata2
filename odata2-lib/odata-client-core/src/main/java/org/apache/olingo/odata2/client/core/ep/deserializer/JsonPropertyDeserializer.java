@@ -41,18 +41,20 @@ import org.apache.olingo.odata2.core.ep.util.FormatJson;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 
+// TODO: Auto-generated Javadoc
 /**
  * JSON property consumer.
  */
 public class JsonPropertyDeserializer {
 
   /**
-   * Deserializes Property
-   * @param reader
-   * @param edmProperty
-   * @param readProperties
+   * Deserializes Property.
+   *
+   * @param reader the reader
+   * @param edmProperty the edm property
+   * @param readProperties the read properties
    * @return Map<String, Object>
-   * @throws EntityProviderException
+   * @throws EntityProviderException the entity provider exception
    */
   public Map<String, Object> readPropertyStandalone(JsonReader reader, final EdmProperty edmProperty,
       final DeserializerProperties readProperties) throws EntityProviderException {
@@ -60,12 +62,13 @@ public class JsonPropertyDeserializer {
   }
 
   /**
-   * Deserializes Property
-   * @param reader
-   * @param propertyInfo
-   * @param readProperties
+   * Deserializes Property.
+   *
+   * @param reader the reader
+   * @param propertyInfo the property info
+   * @param readProperties the read properties
    * @return Map<String, Object>
-   * @throws EntityProviderException
+   * @throws EntityProviderException the entity provider exception
    */
   public Map<String, Object> readPropertyStandalone(final JsonReader reader, final EntityPropertyInfo propertyInfo,
       final DeserializerProperties readProperties) throws EntityProviderException {
@@ -101,12 +104,13 @@ public class JsonPropertyDeserializer {
   }
 
   /**
-   * This method reads through a collection of entities and deserializes each entry
-   * @param reader
-   * @param propertyInfo
-   * @param readProperties
+   * This method reads through a collection of entities and deserializes each entry.
+   *
+   * @param reader the reader
+   * @param propertyInfo the property info
+   * @param readProperties the read properties
    * @return List<?>
-   * @throws EntityProviderException
+   * @throws EntityProviderException the entity provider exception
    */
   public List<?> readCollection(JsonReader reader, final EntityPropertyInfo propertyInfo,
         final DeserializerProperties readProperties) throws EntityProviderException {
@@ -173,6 +177,17 @@ public class JsonPropertyDeserializer {
     }
   }
 
+  /**
+   * Handle name.
+   *
+   * @param reader the reader
+   * @param typeMappings the type mappings
+   * @param entityPropertyInfo the entity property info
+   * @param readProperties the read properties
+   * @param result the result
+   * @param nextName the next name
+   * @throws EntityProviderException the entity provider exception
+   */
   private void handleName(final JsonReader reader, final Map<String, Object> typeMappings,
       final EntityPropertyInfo entityPropertyInfo, final DeserializerProperties readProperties,
       final Map<String, Object> result, final String nextName) throws EntityProviderException {
@@ -184,6 +199,16 @@ public class JsonPropertyDeserializer {
     result.put(nextName, propertyValue);
   }
 
+  /**
+   * Read property value.
+   *
+   * @param reader the reader
+   * @param entityPropertyInfo the entity property info
+   * @param typeMapping the type mapping
+   * @param readProperties the read properties
+   * @return the object
+   * @throws EntityProviderException the entity provider exception
+   */
   protected Object readPropertyValue(final JsonReader reader, final EntityPropertyInfo entityPropertyInfo,
       final Object typeMapping, final DeserializerProperties readProperties)
           throws EntityProviderException {
@@ -200,6 +225,18 @@ public class JsonPropertyDeserializer {
     }
   }
 
+  /**
+   * Read simple property.
+   *
+   * @param reader the reader
+   * @param entityPropertyInfo the entity property info
+   * @param typeMapping the type mapping
+   * @param readProperties the read properties
+   * @return the object
+   * @throws EdmException the edm exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private Object readSimpleProperty(final JsonReader reader, final EntityPropertyInfo entityPropertyInfo,
       final Object typeMapping, final DeserializerProperties readProperties)
       throws EdmException, EntityProviderException, IOException {
@@ -260,6 +297,18 @@ public class JsonPropertyDeserializer {
     return type.valueOfString((String) value, EdmLiteralKind.JSON, facets, typeMappingClass);
   }
 
+  /**
+   * Read complex property.
+   *
+   * @param reader the reader
+   * @param complexPropertyInfo the complex property info
+   * @param typeMapping the type mapping
+   * @param readProperties the read properties
+   * @return the object
+   * @throws EdmException the edm exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @SuppressWarnings("unchecked")
   private Object readComplexProperty(final JsonReader reader, final EntityComplexPropertyInfo complexPropertyInfo,
       final Object typeMapping, final DeserializerProperties readProperties)
@@ -309,6 +358,14 @@ public class JsonPropertyDeserializer {
     return data;
   }
 
+  /**
+   * Read and check type info.
+   *
+   * @param reader the reader
+   * @param expectedTypeName the expected type name
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws EntityProviderException the entity provider exception
+   */
   protected void readAndCheckTypeInfo(final JsonReader reader, String expectedTypeName)
           throws IOException, EntityProviderException {
     reader.beginObject();

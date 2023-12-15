@@ -21,12 +21,15 @@ package org.apache.olingo.odata2.api;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+// TODO: Auto-generated Javadoc
 /**
  * This class is a container for the supported ODataServiceVersions.
  * 
  * 
  */
 public class ODataServiceVersion {
+  
+  /** The Constant DATASERVICEVERSIONPATTERN. */
   private static final Pattern DATASERVICEVERSIONPATTERN = Pattern.compile("(\\p{Digit}+\\.\\p{Digit}+)(:?;.*)?");
 
   /**
@@ -42,6 +45,9 @@ public class ODataServiceVersion {
    */
   public static final String V30 = "3.0";
   
+  /**
+   * Instantiates a new o data service version.
+   */
   private ODataServiceVersion() {
     
   }
@@ -64,9 +70,10 @@ public class ODataServiceVersion {
   }
 
   /**
-   * actual > comparedTo
-   * @param actual
-   * @param comparedTo
+   * actual > comparedTo.
+   *
+   * @param actual the actual
+   * @param comparedTo the compared to
    * @return <code>true</code> if actual is bigger than comparedTo
    */
   public static boolean isBiggerThan(final String actual, final String comparedTo) {
@@ -80,6 +87,12 @@ public class ODataServiceVersion {
     return me > other;
   }
 
+  /**
+   * Extract data service version string.
+   *
+   * @param rawDataServiceVersion the raw data service version
+   * @return the string
+   */
   private static String extractDataServiceVersionString(final String rawDataServiceVersion) {
     if (rawDataServiceVersion != null) {
       final String[] pattern = rawDataServiceVersion.split(";");

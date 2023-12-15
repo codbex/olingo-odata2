@@ -27,40 +27,81 @@ import java.util.regex.Pattern;
 import org.apache.olingo.odata2.api.batch.BatchException;
 import org.apache.olingo.odata2.api.exception.MessageReference;
 
+// TODO: Auto-generated Javadoc
 /**
- *
+ * The Class AcceptParser.
  */
 public class AcceptParser {
 
+  /** The Constant BAD_REQUEST. */
   private static final String BAD_REQUEST = "400";
+  
+  /** The Constant ALL. */
   private static final String ALL = "*";
+  
+  /** The Constant REG_EX_QUALITY_FACTOR. */
   private static final String REG_EX_QUALITY_FACTOR = "q=((?:1\\.0{0,3})|(?:0\\.[0-9]{0,2}[1-9]))";
+  
+  /** The Constant REG_EX_OPTIONAL_WHITESPACE. */
   private static final String REG_EX_OPTIONAL_WHITESPACE = "\\s?";
+  
+  /** The Constant REG_EX_ACCEPT. */
   private static final Pattern REG_EX_ACCEPT = Pattern.compile("([a-z\\*]+/[a-z0-9\\+\\*\\-=;\\s]+)");
+  
+  /** The Constant REG_EX_ACCEPT_WITH_Q_FACTOR. */
   private static final Pattern REG_EX_ACCEPT_WITH_Q_FACTOR = Pattern.compile(REG_EX_ACCEPT + "(?:;"
       + REG_EX_OPTIONAL_WHITESPACE + REG_EX_QUALITY_FACTOR + ")?");
+  
+  /** The Constant REG_EX_ACCEPT_LANGUAGES. */
   private static final Pattern REG_EX_ACCEPT_LANGUAGES = Pattern
       .compile("((?:(?:[a-zA-Z]{1,8})(?:-[a-zA-Z0-9]{1,8}){0,})|(?:\\*))");
+  
+  /** The Constant REG_EX_ACCEPT_LANGUAGES_WITH_Q_FACTOR. */
   private static final Pattern REG_EX_ACCEPT_LANGUAGES_WITH_Q_FACTOR = Pattern.compile(REG_EX_ACCEPT_LANGUAGES + "(?:;"
       + REG_EX_OPTIONAL_WHITESPACE + REG_EX_QUALITY_FACTOR + ")?");
 
+  /** The Constant QUALITY_PARAM_FACTOR. */
   private static final double QUALITY_PARAM_FACTOR = 0.001;
 
+  /** The accept header values. */
   private List<String> acceptHeaderValues = new ArrayList<String>();
+  
+  /** The accept language header values. */
   private List<String> acceptLanguageHeaderValues = new ArrayList<String>();
 
+  /**
+   * Parses the accept headers.
+   *
+   * @return the list
+   * @throws BatchException the batch exception
+   */
   public List<String> parseAcceptHeaders() throws BatchException {
     return parseQualifiedHeader(acceptHeaderValues,
         REG_EX_ACCEPT_WITH_Q_FACTOR,
         BatchException.INVALID_ACCEPT_HEADER);
   }
 
+  /**
+   * Parses the acceptable languages.
+   *
+   * @return the list
+   * @throws BatchException the batch exception
+   */
   public List<String> parseAcceptableLanguages() throws BatchException {
     return parseQualifiedHeader(acceptLanguageHeaderValues,
         REG_EX_ACCEPT_LANGUAGES_WITH_Q_FACTOR,
         BatchException.INVALID_ACCEPT_LANGUAGE_HEADER);
   }
 
+  /**
+   * Parses the qualified header.
+   *
+   * @param headerValues the header values
+   * @param regEx the reg ex
+   * @param exectionMessage the exection message
+   * @return the list
+   * @throws BatchException the batch exception
+   */
   private List<String> parseQualifiedHeader(List<String> headerValues, Pattern regEx, MessageReference exectionMessage)
       throws BatchException {
     final TreeSet<Accept> acceptTree = new TreeSet<AcceptParser.Accept>();
@@ -89,6 +130,12 @@ public class AcceptParser {
     return acceptHeaders;
   }
 
+  /**
+   * Gets the qualified header.
+   *
+   * @param matcher the matcher
+   * @return the qualified header
+   */
   private Accept getQualifiedHeader(final Matcher matcher) {
     final String acceptHeaderValue = matcher.group(1);
     double qualityFactor = matcher.group(2) != null ? Double.parseDouble(matcher.group(2)) : 1d;
@@ -97,6 +144,13 @@ public class AcceptParser {
     return new Accept().setQuality(qualityFactor).setValue(acceptHeaderValue);
   }
   
+  /**
+   * Gets the quality factor.
+   *
+   * @param acceptHeaderValue the accept header value
+   * @param qualityFactor the quality factor
+   * @return the quality factor
+   */
   private double getQualityFactor(final String acceptHeaderValue, double qualityFactor) {
     int paramNumber = 0;
     double typeFactor = 0.0;
@@ -123,32 +177,72 @@ public class AcceptParser {
     return qualityFactor;
   }
   
+  /**
+   * Adds the accept header value.
+   *
+   * @param headerValue the header value
+   */
   public void addAcceptHeaderValue(final String headerValue) {
     acceptHeaderValues.add(headerValue);
   }
 
+  /**
+   * Adds the accept language header value.
+   *
+   * @param headerValue the header value
+   */
   public void addAcceptLanguageHeaderValue(final String headerValue) {
     acceptLanguageHeaderValues.add(headerValue);
   }
 
+  /**
+   * The Class Accept.
+   */
   private static class Accept implements Comparable<Accept> {
+    
+    /** The quality. */
     private double quality;
+    
+    /** The value. */
     private String value;
 
+    /**
+     * Gets the value.
+     *
+     * @return the value
+     */
     public String getValue() {
       return value;
     }
 
+    /**
+     * Sets the value.
+     *
+     * @param value the value
+     * @return the accept
+     */
     public Accept setValue(final String value) {
       this.value = value;
       return this;
     }
 
+    /**
+     * Sets the quality.
+     *
+     * @param quality the quality
+     * @return the accept
+     */
     public Accept setQuality(final double quality) {
       this.quality = quality;
       return this;
     }
 
+    /**
+     * Compare to.
+     *
+     * @param o the o
+     * @return the int
+     */
     @Override
     public int compareTo(Accept o) {
       if (quality <= o.quality) {

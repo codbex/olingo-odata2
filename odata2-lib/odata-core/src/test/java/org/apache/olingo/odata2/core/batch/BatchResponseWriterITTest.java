@@ -34,8 +34,17 @@ import org.apache.olingo.odata2.core.commons.ContentType;
 import org.apache.olingo.odata2.testutil.helper.StringHelper;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BatchResponseWriterITTest.
+ */
 public class BatchResponseWriterITTest {
 
+  /**
+   * Test simple request.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testSimpleRequest() throws Exception {
     // Create batch response
@@ -67,6 +76,11 @@ public class BatchResponseWriterITTest {
     }
   }
 
+  /**
+   * Test no content.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testNoContent() throws Exception {
     // Create batch response
@@ -95,6 +109,11 @@ public class BatchResponseWriterITTest {
     }
   }
 
+  /**
+   * Test change set.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testChangeSet() throws Exception {
     List<BatchResponsePart> parts = new ArrayList<BatchResponsePart>();
@@ -178,6 +197,11 @@ public class BatchResponseWriterITTest {
     assertEquals("Test", parserResponse.getBody());
   }
 
+  /**
+   * Test change set utf.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testChangeSetUtf() throws Exception {
     List<BatchResponsePart> parts = new ArrayList<BatchResponsePart>();
@@ -263,6 +287,11 @@ public class BatchResponseWriterITTest {
     assertEquals("Test", parserResponse.getBody());
   }
 
+  /**
+   * Test change set iso.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testChangeSetIso() throws Exception {
     List<BatchResponsePart> parts = new ArrayList<BatchResponsePart>();

@@ -25,11 +25,17 @@ import java.io.StringWriter;
 import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class JsonStreamWriterTest.
  */
 public class JsonStreamWriterTest extends BaseTest {
 
+  /**
+   * Basic.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void basic() throws Exception {
     StringWriter writer = new StringWriter();
@@ -50,6 +56,11 @@ public class JsonStreamWriterTest extends BaseTest {
         writer.toString());
   }
 
+  /**
+   * Null values.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void nullValues() throws Exception {
     StringWriter writer = new StringWriter();
@@ -62,6 +73,11 @@ public class JsonStreamWriterTest extends BaseTest {
     assertEquals("{\"number\":null,\"string\":null,\"raw\":null}", writer.toString());
   }
 
+  /**
+   * Escape.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void escape() throws Exception {
     final String outsideBMP = String.valueOf(Character.toChars(0x1F603));

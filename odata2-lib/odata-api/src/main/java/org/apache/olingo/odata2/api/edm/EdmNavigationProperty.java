@@ -18,36 +18,37 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.edm;
 
+// TODO: Auto-generated Javadoc
 /**
- * @org.apache.olingo.odata2.DoNotImplement
- * A CSDL NavigationProperty element
+ * The Interface EdmNavigationProperty.
+ *
+ * @org.apache.olingo.odata2.DoNotImplement A CSDL NavigationProperty element
  * 
  * <p>EdmNavigationProperty allows navigation from one entity type to another via a relationship.
- * 
  */
 public interface EdmNavigationProperty extends EdmTyped, EdmMappable, EdmAnnotatable {
 
   /**
-   * Get the relationship of the navigation property
-   * 
+   * Get the relationship of the navigation property.
+   *
    * @return {@link EdmAssociation}
-   * @throws EdmException
+   * @throws EdmException the edm exception
    */
   EdmAssociation getRelationship() throws EdmException;
 
   /**
-   * Get the from role of the navigation property
-   * 
+   * Get the from role of the navigation property.
+   *
    * @return from role as String
-   * @throws EdmException
+   * @throws EdmException the edm exception
    */
   String getFromRole() throws EdmException;
 
   /**
-   * Get the to role of the navigation property
-   * 
+   * Get the to role of the navigation property.
+   *
    * @return to role as String
-   * @throws EdmException
+   * @throws EdmException the edm exception
    */
   String getToRole() throws EdmException;
 }

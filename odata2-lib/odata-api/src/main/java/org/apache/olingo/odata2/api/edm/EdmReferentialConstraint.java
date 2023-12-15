@@ -18,24 +18,27 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.edm;
 
+// TODO: Auto-generated Javadoc
 /**
- * @org.apache.olingo.odata2.DoNotImplement
- * A CSDL ReferentialConstraint element
- * 
+ * The Interface EdmReferentialConstraint.
+ *
+ * @org.apache.olingo.odata2.DoNotImplement A CSDL ReferentialConstraint element
  */
 public interface EdmReferentialConstraint extends EdmAnnotatable {
 
   /**
-   * Get the principal end element
+   * Get the principal end element.
+   *
    * @return {@link EdmReferentialConstraintRole}
-   * @throws EdmException
+   * @throws EdmException the edm exception
    */
   public EdmReferentialConstraintRole getPrincipal() throws EdmException;
 
   /**
-   * Get the dependent end element
+   * Get the dependent end element.
+   *
    * @return {@link EdmReferentialConstraintRole}
-   * @throws EdmException
+   * @throws EdmException the edm exception
    */
   public EdmReferentialConstraintRole getDependent() throws EdmException;
 }

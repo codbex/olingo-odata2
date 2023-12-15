@@ -18,13 +18,15 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.uri.expression;
 
+// TODO: Auto-generated Javadoc
 /**
- * Enumeration describing all possible node types inside an expression tree
- * 
+ * Enumeration describing all possible node types inside an expression tree.
  */
 public enum ExpressionKind {
+  
   /**
-   * Used to mark the root node of a filter expression tree
+   * Used to mark the root node of a filter expression tree.
+   *
    * @see FilterExpression
    */
   FILTER,
@@ -35,43 +37,50 @@ public enum ExpressionKind {
   LITERAL,
 
   /**
-   * Unary operator expressions like "not" and "-"
+   * Unary operator expressions like "not" and "-".
+   *
    * @see UnaryExpression
    */
   UNARY,
 
   /**
-   * Binary operator expressions like "eq" and "or"
+   * Binary operator expressions like "eq" and "or".
+   *
    * @see BinaryExpression
    */
   BINARY,
 
   /**
-   * Method operator expressions like "substringof" and "concat"
+   * Method operator expressions like "substringof" and "concat".
+   *
    * @see MethodExpression
    */
   METHOD,
 
   /**
-   * Member access expressions like "/" in "adress/street"
+   * Member access expressions like "/" in "adress/street".
+   *
    * @see MemberExpression
    */
   MEMBER,
 
   /**
-   * Property expressions like "age"
+   * Property expressions like "age".
+   *
    * @see PropertyExpression
    */
   PROPERTY,
 
   /**
-   * Order expressions like "age desc"
+   * Order expressions like "age desc".
+   *
    * @see OrderExpression
    */
   ORDER,
 
   /**
-   * Orderby expression like "age desc, name asc"
+   * Orderby expression like "age desc, name asc".
+   *
    * @see OrderByExpression
    */
   ORDERBY;

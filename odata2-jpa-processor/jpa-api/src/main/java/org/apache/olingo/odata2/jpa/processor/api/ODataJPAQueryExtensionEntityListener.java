@@ -33,16 +33,22 @@ import org.apache.olingo.odata2.api.uri.info.GetEntityUriInfo;
 import org.apache.olingo.odata2.api.uri.info.PutMergePatchUriInfo;
 import org.apache.olingo.odata2.jpa.processor.api.exception.ODataJPARuntimeException;
 
+// TODO: Auto-generated Javadoc
 /**
  * Extend this class to build JPA Query object for a given OData request. The extended class can be registered as JPA
  * entity listeners.The implemented JPA Entity Listener classes will be called back from OData JPA Processor Library.
+ *
+ * @see ODataJPAQueryExtensionEntityEvent
  */
 public abstract class ODataJPAQueryExtensionEntityListener extends ODataJPATombstoneEntityListener {
+  
   /**
-   * Override this method to build JPA Query for OData request - GetEntitySet; SELECT *
+   * Override this method to build JPA Query for OData request - GetEntitySet; SELECT *.
+   *
    * @param uriInfo is a reference to OData request
    * @param em is a reference to {@link jakarta.persistence.EntityManager}
    * @return an instance of type {@link jakarta.persistence.Query}
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
    */
   public Query getQuery(GetEntitySetUriInfo uriInfo, EntityManager em) throws ODataJPARuntimeException {
     return null;
@@ -50,10 +56,12 @@ public abstract class ODataJPAQueryExtensionEntityListener extends ODataJPATombs
 
   /**
    * Override this method to build JPA Query for OData request - GetEntity; SELECT SINGLE with key in WHERE
-   * clause
+   * clause.
+   *
    * @param uriInfo is a reference to OData request
    * @param em is a reference to {@link jakarta.persistence.EntityManager}
    * @return an instance of type {@link jakarta.persistence.Query}
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
    */
   public Query getQuery(GetEntityUriInfo uriInfo, EntityManager em) throws ODataJPARuntimeException {
     return null;
@@ -61,20 +69,24 @@ public abstract class ODataJPAQueryExtensionEntityListener extends ODataJPATombs
 
   /**
    * Override this method to build JPA Query for OData request - GetEntity Count; SELECT SINGLE with key in WHERE
-   * clause
+   * clause.
+   *
    * @param uriInfo is a reference to OData request
    * @param em is a reference to {@link jakarta.persistence.EntityManager}
    * @return an instance of type {@link jakarta.persistence.Query}
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
    */
   public Query getQuery(GetEntityCountUriInfo uriInfo, EntityManager em) throws ODataJPARuntimeException {
     return null;
   }
 
   /**
-   * Override this method to build JPA Query for OData request - GetEntitySet Count; SELECT COUNT(*)
+   * Override this method to build JPA Query for OData request - GetEntitySet Count; SELECT COUNT(*).
+   *
    * @param uriInfo is a reference to OData request
    * @param em is a reference to {@link jakarta.persistence.EntityManager}
    * @return an instance of type {@link jakarta.persistence.Query}
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
    */
   public Query getQuery(GetEntitySetCountUriInfo uriInfo, EntityManager em) throws ODataJPARuntimeException {
     return null;
@@ -82,10 +94,12 @@ public abstract class ODataJPAQueryExtensionEntityListener extends ODataJPATombs
 
   /**
    * Override this method to build JPA Query for OData request - Update; SELECT SINGLE with key in WHERE
-   * clause
+   * clause.
+   *
    * @param uriInfo is a reference to OData request
    * @param em is a reference to {@link jakarta.persistence.EntityManager}
    * @return an instance of type {@link jakarta.persistence.Query}
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
    */
   public Query getQuery(PutMergePatchUriInfo uriInfo, EntityManager em) throws ODataJPARuntimeException {
     return null;
@@ -93,22 +107,32 @@ public abstract class ODataJPAQueryExtensionEntityListener extends ODataJPATombs
 
   /**
    * Override this method to build JPA Query for OData request - Delete; SELECT SINGLE with key in WHERE
-   * clause
+   * clause.
+   *
    * @param uriInfo is a reference to OData request
    * @param em is a reference to {@link jakarta.persistence.EntityManager}
    * @return an instance of type {@link jakarta.persistence.Query}
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
    */
   public Query getQuery(DeleteUriInfo uriInfo, EntityManager em) throws ODataJPARuntimeException {
     return null;
   }
 
+  /**
+   * Generate delta token.
+   *
+   * @param deltas the deltas
+   * @param query the query
+   * @return the string
+   */
   @Override
   public String generateDeltaToken(List<Object> deltas, Query query) {
     return null;
   }
 
   /**
-   * Implement this method to indicate whether the extended class can handle OData Tombstone feature as well
+   * Implement this method to indicate whether the extended class can handle OData Tombstone feature as well.
+   *
    * @return false by default
    */
   @Override
@@ -116,6 +140,13 @@ public abstract class ODataJPAQueryExtensionEntityListener extends ODataJPATombs
     return false;
   }
 
+  /**
+   * Creates the application error.
+   *
+   * @param message the message
+   * @param locale the locale
+   * @return the o data JPA runtime exception
+   */
   protected ODataJPARuntimeException createApplicationError(String message, Locale locale) {
     return ODataJPARuntimeException.throwException(
         ODataJPARuntimeException.GENERAL, new ODataApplicationException(message, locale));

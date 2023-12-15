@@ -25,32 +25,43 @@ import org.apache.olingo.odata2.api.edm.EdmAnnotationElement;
 import org.apache.olingo.odata2.api.edm.provider.AnnotationAttribute;
 import org.apache.olingo.odata2.api.edm.provider.AnnotationElement;
 
+// TODO: Auto-generated Javadoc
 /**
- *  Impl objects of this class create a client EdmUsing
+ *  Impl objects of this class create a client EdmUsing.
  */
 public interface EdmUsing {
 
   /**
+   * Gets the namespace.
+   *
    * @return <b>String</b> namespace
    */
   public String getNamespace() ;
 
   /**
+   * Gets the alias.
+   *
    * @return <b>String</b> alias
    */
   public String getAlias() ;
 
   /**
+   * Gets the documentation.
+   *
    * @return {@link EdmDocumentation} documentation
    */
   public EdmDocumentation getDocumentation() ;
 
   /**
+   * Gets the annotation attributes.
+   *
    * @return collection of {@link AnnotationAttribute} annotation attributes
    */
   public Collection<EdmAnnotationAttribute> getAnnotationAttributes() ;
 
   /**
+   * Gets the annotation elements.
+   *
    * @return collection of {@link AnnotationElement} annotation elements
    */
   public Collection<EdmAnnotationElement> getAnnotationElements() ;

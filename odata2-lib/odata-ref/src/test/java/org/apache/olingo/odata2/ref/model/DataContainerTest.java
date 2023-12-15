@@ -28,14 +28,21 @@ import java.util.List;
 import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class DataContainerTest.
  */
 public class DataContainerTest extends BaseTest {
 
+  /** The data container. */
   private DataContainer dataContainer = new DataContainer();
+  
+  /** The Constant NAME. */
   private static final String NAME = "Other name for team";
 
+  /**
+   * Test reset.
+   */
   @Test
   public void testReset() {
     dataContainer.init();
@@ -56,6 +63,9 @@ public class DataContainerTest extends BaseTest {
     }
   }
 
+  /**
+   * Test reset 2.
+   */
   @Test
   public void testReset2() {
     dataContainer.init();
@@ -70,6 +80,9 @@ public class DataContainerTest extends BaseTest {
     assertEquals(initSize, data.size());
   }
 
+  /**
+   * Test init.
+   */
   @Test
   public void testInit() {
     dataContainer.init();

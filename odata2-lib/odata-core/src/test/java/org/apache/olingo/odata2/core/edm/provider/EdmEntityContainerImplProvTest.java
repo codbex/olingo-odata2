@@ -50,13 +50,21 @@ import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.junit.Before;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class EdmEntityContainerImplProvTest.
  */
 public class EdmEntityContainerImplProvTest extends BaseTest {
 
+  /** The edm entity container. */
   private EdmEntityContainer edmEntityContainer;
 
+  /**
+   * Gets the edm entity container impl.
+   *
+   * @return the edm entity container impl
+   * @throws Exception the exception
+   */
   @Before
   public void getEdmEntityContainerImpl() throws Exception {
     EdmProvider edmProvider = mock(EdmProvider.class);
@@ -123,16 +131,31 @@ public class EdmEntityContainerImplProvTest extends BaseTest {
     edmEntityContainer = new EdmEntityContainerImplProv(edmImplProv, entityContainerInfo);
   }
 
+  /**
+   * Test entity container name.
+   *
+   * @throws EdmException the edm exception
+   */
   @Test
   public void testEntityContainerName() throws EdmException {
     assertEquals("Container", edmEntityContainer.getName());
   }
 
+  /**
+   * Test entity container namespace.
+   *
+   * @throws EdmException the edm exception
+   */
   @Test
   public void testEntityContainerNamespace() throws EdmException {
     assertEquals("Namespace", edmEntityContainer.getNamespace());
   }
 
+  /**
+   * Test entity container inheritance.
+   *
+   * @throws EdmException the edm exception
+   */
   @Test
   public void testEntityContainerInheritance() throws EdmException {
     assertEquals("fooFromParent", edmEntityContainer.getEntitySet("fooFromParent").getName());
@@ -158,12 +181,22 @@ public class EdmEntityContainerImplProvTest extends BaseTest {
     assertTrue(failed);
   }
 
+  /**
+   * Test entity set cache.
+   *
+   * @throws EdmException the edm exception
+   */
   @Test
   public void testEntitySetCache() throws EdmException {
     assertEquals(edmEntityContainer.getEntitySet("foo"), edmEntityContainer.getEntitySet("foo"));
     assertNotSame(edmEntityContainer.getEntitySet("foo"), edmEntityContainer.getEntitySet("bar"));
   }
 
+  /**
+   * Test association set cache.
+   *
+   * @throws EdmException the edm exception
+   */
   @Test
   public void testAssociationSetCache() throws EdmException {
     EdmEntitySet sourceEntitySet = mock(EdmEntitySet.class);
@@ -182,12 +215,23 @@ public class EdmEntityContainerImplProvTest extends BaseTest {
         .getAssociationSet(sourceEntitySet, edmNavigationProperty));
   }
 
+  /**
+   * Test function import cache.
+   *
+   * @throws EdmException the edm exception
+   */
   @Test
   public void testFunctionImportCache() throws EdmException {
     assertEquals(edmEntityContainer.getFunctionImport("foo"), edmEntityContainer.getFunctionImport("foo"));
     assertNotSame(edmEntityContainer.getFunctionImport("foo"), edmEntityContainer.getFunctionImport("bar"));
   }
 
+  /**
+   * Gets the annotations.
+   *
+   * @return the annotations
+   * @throws Exception the exception
+   */
   @Test
   public void getAnnotations() throws Exception {
     EdmAnnotatable annotatable = edmEntityContainer;
@@ -196,6 +240,11 @@ public class EdmEntityContainerImplProvTest extends BaseTest {
     assertNull(annotations.getAnnotationElements());
   }
 
+  /**
+   * Test get entity sets.
+   *
+   * @throws EdmException the edm exception
+   */
   @Test
   public void testGetEntitySets() throws EdmException {
 
@@ -212,6 +261,11 @@ public class EdmEntityContainerImplProvTest extends BaseTest {
     }
   }
 
+  /**
+   * Test get association sets.
+   *
+   * @throws EdmException the edm exception
+   */
   @Test
   public void testGetAssociationSets() throws EdmException {
     List<EdmAssociationSet> associationSets = edmEntityContainer.getAssociationSets();

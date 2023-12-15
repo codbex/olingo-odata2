@@ -69,25 +69,55 @@ import org.apache.olingo.odata2.testutil.helper.StringHelper;
 import org.apache.olingo.odata2.testutil.mock.EdmTestProvider;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class XmlMetadataConsumerTest.
+ */
 public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
 
+  /**
+   * Instantiates a new xml metadata consumer test.
+   *
+   * @param type the type
+   */
   public XmlMetadataConsumerTest(final StreamWriterImplType type) {
     super(type);
   }
 
+  /** The Constant DEFAULT_VALUE. */
   private static final String DEFAULT_VALUE = "Photo";
+  
+  /** The Constant FC_TARGET_PATH. */
   private static final String FC_TARGET_PATH = "Содержание";
+  
+  /** The Constant FC_NS_URI. */
   private static final String FC_NS_URI = "http://localhost";
+  
+  /** The Constant FC_NS_PREFIX. */
   private static final String FC_NS_PREFIX = "ру";
+  
+  /** The Constant FC_KEEP_IN_CONTENT. */
   private static final Boolean FC_KEEP_IN_CONTENT = Boolean.FALSE;
+  
+  /** The Constant NAMESPACE. */
   private static final String NAMESPACE = "RefScenario";
+  
+  /** The Constant NAMESPACE2. */
   private static final String NAMESPACE2 = "RefScenario2";
+  
+  /** The Constant MIME_TYPE. */
   private static final String MIME_TYPE = "image/jpeg";
+  
+  /** The Constant ASSOCIATION. */
   private static final String ASSOCIATION = "ManagerEmployees";
+  
+  /** The Constant MAX_LENGTH. */
   private static final int MAX_LENGTH = 4;
 
+  /** The property names. */
   private final String[] propertyNames = { "EmployeeId", "EmployeeName", "Location" };
 
+  /** The xml. */
   private final String xml = "<edmx:Edmx Version=\"1.0\" xmlns:edmx=\"" + Edm.NAMESPACE_EDMX_2007_06 + "\">"
       + "<edmx:DataServices m:DataServiceVersion=\"2.0\" xmlns:m=\"" + Edm.NAMESPACE_M_2007_08 + "\">"
       + "<Schema Namespace=\"" + NAMESPACE + "\" xmlns=\"" + Edm.NAMESPACE_EDM_2008_09 + "\">"
@@ -98,6 +128,7 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
       + "<ComplexType Name=\"c_Location\">" + "<Property Name=\"Country\" Type=\"Edm.String\"/>" + "</ComplexType>"
       + "</Schema>" + "</edmx:DataServices>" + "</edmx:Edmx>";
 
+  /** The xml 2. */
   private final String xml2 = "<edmx:Edmx Version=\"1.0\" xmlns:edmx=\"" + Edm.NAMESPACE_EDMX_2007_06
       + "\" xmlns:prefix=\"namespace\">" + "<edmx:DataServices m:DataServiceVersion=\"2.0\" xmlns:m=\""
       + Edm.NAMESPACE_M_2007_08 + "\">" + "<Schema Namespace=\"" + NAMESPACE + "\" xmlns=\""
@@ -109,6 +140,7 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
       + "<ComplexType Name=\"c_Location\">" + "<Property Name=\"Country\" Type=\"Edm.String\"/>" + "</ComplexType>"
       + "</Schema>" + "</edmx:DataServices>" + "</edmx:Edmx>";
 
+  /** The xml with base type. */
   private final String xmlWithBaseType = "<edmx:Edmx Version=\"1.0\" xmlns:edmx=\"" + Edm.NAMESPACE_EDMX_2007_06
       + "\">" + "<edmx:DataServices m:DataServiceVersion=\"2.0\" xmlns:m=\"" + Edm.NAMESPACE_M_2007_08 + "\">"
       + "<Schema Namespace=\"" + NAMESPACE + "\" xmlns=\"" + Edm.NAMESPACE_EDM_2008_09 + "\">"
@@ -120,6 +152,7 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
       + "<ComplexType Name=\"c_Location\">" + "<Property Name=\"Country\" Type=\"Edm.String\"/>" + "</ComplexType>"
       + "</Schema>" + "</edmx:DataServices>" + "</edmx:Edmx>";
 
+  /** The xml with association. */
   private final String xmlWithAssociation =
       "<edmx:Edmx Version=\"1.0\" xmlns:edmx=\""
           + Edm.NAMESPACE_EDMX_2007_06
@@ -155,6 +188,7 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
           + "<End EntitySet=\"Managers\" Role=\"r_Manager\"/>" + "<End EntitySet=\"Employees\" Role=\"r_Employees\"/>"
           + "</AssociationSet>" + "</EntityContainer>" + "</Schema>" + "</edmx:DataServices>" + "</edmx:Edmx>";
 
+  /** The xml with two schemas. */
   private final String xmlWithTwoSchemas = "<edmx:Edmx Version=\"1.0\" xmlns:edmx=\"" + Edm.NAMESPACE_EDMX_2007_06
       + "\">" + "<edmx:DataServices m:DataServiceVersion=\"2.0\" xmlns:m=\"" + Edm.NAMESPACE_M_2007_08 + "\">"
       + "<Schema Namespace=\"" + NAMESPACE + "\" xmlns=\"" + Edm.NAMESPACE_EDM_2008_09 + "\">"
@@ -172,6 +206,7 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
       + FC_KEEP_IN_CONTENT + "\" m:FC_ContentKind=\"text\" >" + "</Property>" + "</EntityType>" + "</Schema>"
       + "</edmx:DataServices>" + "</edmx:Edmx>";
 
+  /** The xml with string value for max length facet. */
   private final String xmlWithStringValueForMaxLengthFacet = "<edmx:Edmx Version=\"1.0\" xmlns:edmx=\""
       + Edm.NAMESPACE_EDMX_2007_06
       + "\">" + "<edmx:DataServices m:DataServiceVersion=\"2.0\" xmlns:m=\"" + Edm.NAMESPACE_M_2007_08 + "\">"
@@ -180,6 +215,7 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
       "Nullable=\"false\" MaxLength=\"Max\"/><Property Name=\"Name\" Type=\"Edm.Int32\" MaxLength=\"max\"/>"
       + "</EntityType></Schema></edmx:DataServices></edmx:Edmx>";
 
+  /** The edmx ref for 1680364709. */
   private final String edmxRefFor1680364709 = 
       "<edmx:Edmx xmlns:edmx=\"http://schemas.microsoft.com/ado/2007/06/edmx\" " +
       "xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:sap=\"" +
@@ -192,6 +228,11 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
       "</edmx:Reference>" + 
       "</edmx:Edmx>";
   
+  /**
+   * Two edmx with validation.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void twoEdmxWithValidation() throws Exception {
     XmlMetadataConsumer parser = new XmlMetadataConsumer();
@@ -201,6 +242,11 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
 
   }
   
+  /**
+   * Two edmx without validation.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void twoEdmxWithoutValidation() throws Exception {
     XmlMetadataConsumer parser = new XmlMetadataConsumer();
@@ -209,6 +255,12 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     assertNotNull(result);
 
   }
+  
+  /**
+   * Test metadata dokument with whitepaces.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testMetadataDokumentWithWhitepaces() throws Exception {
     final String metadata = ""
@@ -247,6 +299,11 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     assertEquals("value2", childElements.get(1).getText());
   }
 
+  /**
+   * Test metadata dokument with whitepaces multiline.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testMetadataDokumentWithWhitepacesMultiline() throws Exception {
     final String metadata = ""
@@ -287,6 +344,11 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     assertEquals("value2", childElements.get(1).getText());
   }
 
+  /**
+   * Test metadata dokument with whitepaces 2.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testMetadataDokumentWithWhitepaces2() throws Exception {
     final String metadata = ""
@@ -324,6 +386,11 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
   }
   
 
+  /**
+   * ODATAJAV A 77 test metadata dokument with multi level entity type.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void ODATAJAVA_77_testMetadataDokumentWithMultiLevelEntityType() throws Exception {
     final String metadata = ""
@@ -353,6 +420,11 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
 
   }
   
+  /**
+   * ODATAJAV A 77 test base type key.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void ODATAJAVA_77_testBaseTypeKey() throws Exception {
     final String metadata = ""
@@ -387,6 +459,11 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
 
   }
   
+  /**
+   * ODATAJAV A 77 test entity type key.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void ODATAJAVA_77_testEntityTypeKey() throws Exception {
     final String metadata = ""
@@ -420,6 +497,12 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     assertEquals(4, entityTypes.size());
 
   }
+  
+  /**
+   * ODATAJAV A 77 exception scenario.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected=EntityProviderException.class)
   public void ODATAJAVA_77_ExceptionScenario() throws Exception {
     final String metadata = ""
@@ -443,6 +526,11 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
 
 
 
+  /**
+   * String value for max legth facet.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void stringValueForMaxLegthFacet() throws Exception {
     XmlMetadataConsumer parser = new XmlMetadataConsumer();
@@ -461,6 +549,13 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     assertEquals(new Integer(Integer.MAX_VALUE), facets.getMaxLength());
   }
 
+  /**
+   * Gets the for name.
+   *
+   * @param properties the properties
+   * @param propertyName the property name
+   * @return the for name
+   */
   private Property getForName(final List<Property> properties, final String propertyName) {
     for (Property property : properties) {
       if (property.getName().equals(propertyName)) {
@@ -471,6 +566,12 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     return null;
   }
 
+  /**
+   * Test.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   @Test
   public void test() throws XMLStreamException, EntityProviderException {
     int i = 0;
@@ -504,6 +605,12 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     }
   }
 
+  /**
+   * Test other edm namespace.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   @Test
   public void testOtherEdmNamespace() throws XMLStreamException, EntityProviderException {
     int i = 0;
@@ -537,6 +644,12 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     }
   }
 
+  /**
+   * Test base type.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   @Test
   public void testBaseType() throws XMLStreamException, EntityProviderException {
     int i = 0;
@@ -559,6 +672,12 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     }
   }
 
+  /**
+   * Test complex type with base type.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   @Test
   public void testComplexTypeWithBaseType() throws XMLStreamException, EntityProviderException {
     final String xml =
@@ -601,6 +720,12 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     }
   }
 
+  /**
+   * Test complex type with invalid base type.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   @Test(expected = EntityProviderException.class)
   public void testComplexTypeWithInvalidBaseType() throws XMLStreamException, EntityProviderException {
     final String xml =
@@ -619,6 +744,12 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     parser.readMetadata(reader, true);
   }
 
+  /**
+   * Test complex type with invalid base type 2.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   @Test(expected = EntityProviderException.class)
   public void testComplexTypeWithInvalidBaseType2() throws XMLStreamException, EntityProviderException {
     final String xml =
@@ -637,6 +768,12 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     parser.readMetadata(reader, true);
   }
 
+  /**
+   * Test missing edmx close tag.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   @Test(expected = EntityProviderException.class)
   public void testMissingEdmxCloseTag() throws XMLStreamException, EntityProviderException {
     final String xml = "<edmx:Edmx Version=\"1.0\" xmlns:edmx=\"" + Edm.NAMESPACE_EDMX_2007_06 + "\">"
@@ -654,6 +791,12 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     parser.readMetadata(reader, true);
   }
 
+  /**
+   * Test association.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   @Test
   public void testAssociation() throws XMLStreamException, EntityProviderException {
     XmlMetadataConsumer parser = new XmlMetadataConsumer();
@@ -695,6 +838,12 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     }
   }
 
+  /**
+   * Test two schemas.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   @Test
   public void testTwoSchemas() throws XMLStreamException, EntityProviderException {
     int i = 0;
@@ -712,6 +861,12 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     }
   }
 
+  /**
+   * Test properties.
+   *
+   * @throws EntityProviderException the entity provider exception
+   * @throws XMLStreamException the XML stream exception
+   */
   @Test
   public void testProperties() throws EntityProviderException, XMLStreamException {
     XmlMetadataConsumer parser = new XmlMetadataConsumer();
@@ -762,6 +917,12 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     }
   }
 
+  /**
+   * Test entity set.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   @Test
   public void testEntitySet() throws XMLStreamException, EntityProviderException {
     final String xmWithEntityContainer =
@@ -790,6 +951,12 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     }
   }
 
+  /**
+   * Test association set.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   @Test
   public void testAssociationSet() throws XMLStreamException, EntityProviderException {
     XmlMetadataConsumer parser = new XmlMetadataConsumer();
@@ -816,6 +983,12 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     }
   }
 
+  /**
+   * Test function import.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   @Test
   public void testFunctionImport() throws XMLStreamException, EntityProviderException {
     final String xmWithEntityContainer =
@@ -945,6 +1118,12 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     }
   }
 
+/**
+ * Test function import entity.
+ *
+ * @throws XMLStreamException the XML stream exception
+ * @throws EntityProviderException the entity provider exception
+ */
 //Function Import with return type as entity type and entityset attribute set
   @Test
   public void testFunctionImportEntity() throws XMLStreamException, EntityProviderException {
@@ -1004,6 +1183,12 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     }
   }
   
+  /**
+   * Test function import entity order change.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   @Test
   public void testFunctionImportEntityOrderChange() throws XMLStreamException, EntityProviderException {
     final String xmWithEntityContainer =
@@ -1063,6 +1248,12 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     }
   }
   
+/**
+ * Test function import entity without entity set.
+ *
+ * @throws XMLStreamException the XML stream exception
+ * @throws EntityProviderException the entity provider exception
+ */
 //Function Import with return type as entity type and entityset attribute not set
   @Test
   public void testFunctionImportEntityWithoutEntitySet() throws XMLStreamException, EntityProviderException {
@@ -1123,6 +1314,12 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     }
   }
   
+  /**
+   * Test function import collection.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   //Function Import with return type collection of complex type and entityset attribute not set
   @Test
   public void testFunctionImportCollection() throws XMLStreamException, EntityProviderException {
@@ -1190,6 +1387,13 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
       }
     }
   }
+  
+  /**
+   * Test function import coll error.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   //Function import returning collection of entitysets must have entityset attribute defined
   @Test(expected = EntityProviderException.class)
   public void testFunctionImportCollError() throws XMLStreamException, EntityProviderException {
@@ -1227,6 +1431,12 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     parser.readMetadata(reader, true);
   }
   
+  /**
+   * Test function import error.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   //Function import returning complextype or edmsimpletype must not have entityset attribute
   @Test(expected = EntityProviderException.class)
   public void testFunctionImportError() throws XMLStreamException, EntityProviderException {
@@ -1263,6 +1473,13 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     XMLStreamReader reader = createStreamReader(xmWithEntityContainer);
     parser.readMetadata(reader, true);
   }
+
+/**
+ * Test function import property.
+ *
+ * @throws XMLStreamException the XML stream exception
+ * @throws EntityProviderException the entity provider exception
+ */
 //Function import returning complextype or edmsimpletype must not have entityset attribute positive flow
   @Test
   public void testFunctionImportProperty() throws XMLStreamException, EntityProviderException {
@@ -1307,6 +1524,12 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     }
   }
   
+  /**
+   * Test alias.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   @Test()
   public void testAlias() throws XMLStreamException, EntityProviderException {
     final String xml =
@@ -1332,6 +1555,12 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     }
   }
 
+  /**
+   * Test entity type without keys.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   @Test(expected = EntityProviderException.class)
   public void testEntityTypeWithoutKeys() throws XMLStreamException, EntityProviderException {
     final String xmlWithoutKeys =
@@ -1343,6 +1572,12 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     parser.readMetadata(reader, true);
   }
 
+  /**
+   * Test invalid base type.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   @Test(expected = EntityProviderException.class)
   public void testInvalidBaseType() throws XMLStreamException, EntityProviderException {
     final String xmlWithInvalidBaseType =
@@ -1354,6 +1589,12 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     parser.readMetadata(reader, true);
   }
 
+  /**
+   * Test invalid role.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   @Test(expected = EntityProviderException.class)
   public void testInvalidRole() throws XMLStreamException, EntityProviderException {
     final String xmlWithInvalidAssociation =
@@ -1387,6 +1628,12 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     parser.readMetadata(reader, true);
   }
 
+  /**
+   * Test invalid relationship.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   @Test(expected = EntityProviderException.class)
   public void testInvalidRelationship() throws XMLStreamException, EntityProviderException {
     final String xmlWithInvalidAssociation =
@@ -1419,6 +1666,11 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     parser.readMetadata(reader, true);
   }
 
+  /**
+   * Test missing relationship.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void testMissingRelationship() throws Exception {
     final String xmlWithInvalidAssociation =
@@ -1446,6 +1698,11 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     }
   }
 
+  /**
+   * Test missing entity type.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void testMissingEntityType() throws Exception {
     final String xmlWithInvalidAssociation =
@@ -1486,6 +1743,11 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     }
   }
 
+  /**
+   * Test missing type.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void testMissingType() throws Exception {
     final String xmlWithInvalidAssociation =
@@ -1525,6 +1787,11 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     }
   }
 
+  /**
+   * Test missing type at association.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void testMissingTypeAtAssociation() throws Exception {
     final String xmlWithInvalidAssociation =
@@ -1564,6 +1831,11 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     }
   }
 
+  /**
+   * Test missing type at function import.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void testMissingTypeAtFunctionImport() throws Exception {
     final String xml =
@@ -1606,6 +1878,11 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     }
   }
 
+  /**
+   * Test missing association.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void testMissingAssociation() throws Exception {
     final String xmlWithAssociation =
@@ -1646,6 +1923,12 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     }
   }
 
+  /**
+   * Test invalid association.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   @Test(expected = EntityProviderException.class)
   public void testInvalidAssociation() throws XMLStreamException, EntityProviderException {
     final String xmlWithInvalidAssociationSet =
@@ -1688,6 +1971,12 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
 
   }
 
+  /**
+   * Test invalid association end.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   @Test(expected = EntityProviderException.class)
   public void testInvalidAssociationEnd() throws XMLStreamException, EntityProviderException {
     final String employees = "r_Employees";
@@ -1719,6 +2008,12 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
 
   }
 
+  /**
+   * Test invalid association end 2.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   @Test(expected = EntityProviderException.class)
   public void testInvalidAssociationEnd2() throws XMLStreamException, EntityProviderException {
     final String employees = "r_Employees";
@@ -1750,6 +2045,12 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
 
   }
 
+  /**
+   * Test invalid entity set.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   @Test(expected = EntityProviderException.class)
   public void testInvalidEntitySet() throws XMLStreamException, EntityProviderException {
     final String xmWithEntityContainer =
@@ -1768,6 +2069,12 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
 
   }
 
+  /**
+   * Test entity type in other schema.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   @Test
   public void testEntityTypeInOtherSchema() throws XMLStreamException, EntityProviderException {
     final String xmWithEntityContainer =
@@ -1798,6 +2105,12 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     }
   }
 
+  /**
+   * Scenario test.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   @Test
   public void scenarioTest() throws XMLStreamException, EntityProviderException {
     final String ASSOCIATION2 = "TeamEmployees";
@@ -1888,6 +2201,11 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     }
   }
 
+  /**
+   * Test ref scenario.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testRefScenario() throws Exception {
     EdmProvider testProvider = new EdmTestProvider();
@@ -1902,6 +2220,12 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     assertEquals(stream, streamAfterParse);
   }
 
+  /**
+   * Test annotations.
+   *
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   @Test
   public void testAnnotations() throws XMLStreamException, EntityProviderException {
     final String xmlWithAnnotations =
@@ -1985,6 +2309,11 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     }
   }
 
+  /**
+   * Edmx references.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void edmxReferences() throws Exception {
     DataServices serviceMetadata = new DataServices();
@@ -1998,6 +2327,11 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
     EntityProvider.readMetadata(response.getEntityAsStream(), false);
   }
 
+  /**
+   * Creates the element with include.
+   *
+   * @return the annotation element
+   */
   private AnnotationElement createElementWithInclude() {
     List<AnnotationAttribute> childAttributes = new ArrayList<AnnotationAttribute>();
     childAttributes.add(new AnnotationAttribute().setName("Namespace").setText("Org.OData.Core.V1"));
@@ -2011,6 +2345,11 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
         "http://docs.oasis-open.org/odata/ns/edmx").setAttributes(referenceAttributes).setChildElements(childElements);
   }
 
+  /**
+   * Creates the element without include.
+   *
+   * @return the annotation element
+   */
   private AnnotationElement createElementWithoutInclude() {
     List<AnnotationAttribute> referenceAttributes = new ArrayList<AnnotationAttribute>();
     referenceAttributes.add(new AnnotationAttribute().setName("Uri").setText("http://someurl.com"));
@@ -2018,6 +2357,13 @@ public class XmlMetadataConsumerTest extends AbstractXmlConsumerTest {
         "http://docs.oasis-open.org/odata/ns/edmx").setAttributes(referenceAttributes);
   }
 
+  /**
+   * Creates the stream reader.
+   *
+   * @param xml the xml
+   * @return the XML stream reader
+   * @throws XMLStreamException the XML stream exception
+   */
   private XMLStreamReader createStreamReader(final String xml) throws XMLStreamException {
     XMLInputFactory factory = XMLInputFactory.newInstance();
     factory.setProperty(XMLInputFactory.IS_VALIDATING, false);

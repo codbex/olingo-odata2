@@ -34,12 +34,19 @@ import org.apache.olingo.odata2.api.uri.UriSyntaxException;
 import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- * Tests for the parsing of URI literals
- * 
+ * Tests for the parsing of URI literals.
  */
 public class EdmSimpleTypeFacadeTest extends BaseTest {
 
+  /**
+   * Parses the.
+   *
+   * @param literal the literal
+   * @param expectedType the expected type
+   * @throws EdmLiteralException the edm literal exception
+   */
   public static void parse(final String literal, final EdmSimpleType expectedType) throws EdmLiteralException {
     final EdmLiteral uriLiteral = EdmSimpleTypeKind.parseUriLiteral(literal);
     assertNotNull(uriLiteral);
@@ -51,6 +58,11 @@ public class EdmSimpleTypeFacadeTest extends BaseTest {
     assertEquals(expectedType, uriLiteral.getType());
   }
 
+  /**
+   * Compare.
+   *
+   * @param simpleType the simple type
+   */
   public static void compare(final EdmSimpleTypeKind simpleType) {
     final EdmSimpleType bin1 = simpleType.getEdmSimpleTypeInstance();
     assertNotNull(bin1);
@@ -61,29 +73,54 @@ public class EdmSimpleTypeFacadeTest extends BaseTest {
     assertEquals(bin1, bin2);
   }
 
+  /**
+   * Parses the uri literal binary.
+   *
+   * @throws EdmLiteralException the edm literal exception
+   */
   @Test
   public void parseUriLiteralBinary() throws EdmLiteralException {
     parse("X'Fa12aAA1'", EdmBinary.getInstance());
     parse("binary'FA12AAA1'", EdmBinary.getInstance());
   }
 
+  /**
+   * Parses the uri literal boolean.
+   *
+   * @throws EdmLiteralException the edm literal exception
+   */
   @Test
   public void parseUriLiteralBoolean() throws EdmLiteralException {
     parse("true", EdmBoolean.getInstance());
     parse("false", EdmBoolean.getInstance());
   }
 
+  /**
+   * Parses the uri literal bit.
+   *
+   * @throws EdmLiteralException the edm literal exception
+   */
   @Test
   public void parseUriLiteralBit() throws EdmLiteralException {
     parse("1", Bit.getInstance());
     parse("0", Bit.getInstance());
   }
 
+  /**
+   * Parses the uri literal byte.
+   *
+   * @throws EdmLiteralException the edm literal exception
+   */
   @Test
   public void parseUriLiteralByte() throws EdmLiteralException {
     parse("255", EdmByte.getInstance());
   }
 
+  /**
+   * Parses the uri literal uint 7.
+   *
+   * @throws EdmLiteralException the edm literal exception
+   */
   @Test
   public void parseUriLiteralUint7() throws EdmLiteralException {
     parse("123", Uint7.getInstance());
@@ -91,11 +128,21 @@ public class EdmSimpleTypeFacadeTest extends BaseTest {
     parse("42", Uint7.getInstance());
   }
 
+  /**
+   * Parses the uri literal date time.
+   *
+   * @throws EdmLiteralException the edm literal exception
+   */
   @Test
   public void parseUriLiteralDateTime() throws EdmLiteralException {
     parse("datetime'2009-12-26T21:23:38'", EdmDateTime.getInstance());
   }
 
+  /**
+   * Parses the uri literal date time offset.
+   *
+   * @throws EdmLiteralException the edm literal exception
+   */
   @Test
   public void parseUriLiteralDateTimeOffset() throws EdmLiteralException {
     parse("datetimeoffset'2009-12-26T21:23:38Z'", EdmDateTimeOffset.getInstance());
@@ -103,52 +150,97 @@ public class EdmSimpleTypeFacadeTest extends BaseTest {
     parse("datetimeoffset'2009-12-26T21:23:38'", EdmDateTimeOffset.getInstance());
   }
 
+  /**
+   * Parses the uri literal decimal.
+   *
+   * @throws EdmLiteralException the edm literal exception
+   */
   @Test
   public void parseUriLiteralDecimal() throws EdmLiteralException {
     parse("4.5m", EdmDecimal.getInstance());
     parse("4.5M", EdmDecimal.getInstance());
   }
 
+  /**
+   * Parses the uri literal double.
+   *
+   * @throws EdmLiteralException the edm literal exception
+   */
   @Test
   public void parseUriLiteralDouble() throws EdmLiteralException {
     parse("4.5d", EdmDouble.getInstance());
     parse("4.5D", EdmDouble.getInstance());
   }
 
+  /**
+   * Parses the uri literal guid.
+   *
+   * @throws EdmLiteralException the edm literal exception
+   */
   @Test
   public void parseUriLiteralGuid() throws EdmLiteralException {
     parse("guid'1225c695-cfb8-4ebb-aaaa-80da344efa6a'", EdmGuid.getInstance());
   }
 
+  /**
+   * Parses the uri literal int 16.
+   *
+   * @throws EdmLiteralException the edm literal exception
+   */
   @Test
   public void parseUriLiteralInt16() throws EdmLiteralException {
     parse("-32768", EdmInt16.getInstance());
     parse("3276", EdmInt16.getInstance());
   }
 
+  /**
+   * Parses the uri literal int 32.
+   *
+   * @throws EdmLiteralException the edm literal exception
+   */
   @Test
   public void parseUriLiteralInt32() throws EdmLiteralException {
     parse("-327687", EdmInt32.getInstance());
     parse("32768", EdmInt32.getInstance());
   }
 
+  /**
+   * Parses the uri literal int 64.
+   *
+   * @throws EdmLiteralException the edm literal exception
+   */
   @Test
   public void parseUriLiteralInt64() throws EdmLiteralException {
     parse("64l", EdmInt64.getInstance());
     parse("64L", EdmInt64.getInstance());
   }
 
+  /**
+   * Parses the uri literal null.
+   *
+   * @throws EdmLiteralException the edm literal exception
+   */
   @Test
   public void parseUriLiteralNull() throws EdmLiteralException {
     parse(null, EdmNull.getInstance());
     parse("null", EdmNull.getInstance());
   }
 
+  /**
+   * Parses the uri literal S byte.
+   *
+   * @throws EdmLiteralException the edm literal exception
+   */
   @Test
   public void parseUriLiteralSByte() throws EdmLiteralException {
     parse("-123", EdmSByte.getInstance());
   }
 
+  /**
+   * Parses the uri literal single.
+   *
+   * @throws EdmLiteralException the edm literal exception
+   */
   @Test
   public void parseUriLiteralSingle() throws EdmLiteralException {
     parse("4.5f", EdmSingle.getInstance());
@@ -158,16 +250,29 @@ public class EdmSimpleTypeFacadeTest extends BaseTest {
     parse("NaN", EdmSingle.getInstance());
   }
 
+  /**
+   * Parses the uri literal string.
+   *
+   * @throws EdmLiteralException the edm literal exception
+   */
   @Test
   public void parseUriLiteralString() throws EdmLiteralException {
     parse("'abc'", EdmString.getInstance());
   }
 
+  /**
+   * Parses the uri literal time.
+   *
+   * @throws EdmLiteralException the edm literal exception
+   */
   @Test
   public void parseUriLiteralTime() throws EdmLiteralException {
     parse("time'PT120S'", EdmTime.getInstance());
   }
 
+  /**
+   * Compare types.
+   */
   @Test
   public void compareTypes() {
     compare(EdmSimpleTypeKind.Binary);
@@ -189,15 +294,12 @@ public class EdmSimpleTypeFacadeTest extends BaseTest {
   /**
    * Parse a URI literal value string and assert that it is compatible
    * to the given EDM simple type and has the correct parsed value.
-   * 
-   * @param literal
-   * the URI literal value to be parsed as string
-   * @param typeKind
-   * the {@link EdmSimpleTypeKind} the URI literal should be compatible to
-   * @param expectedLiteral
-   * the expected literal value
-   * @throws UriSyntaxException
-   * @throws EdmException
+   *
+   * @param literal the URI literal value to be parsed as string
+   * @param typeKind the {@link EdmSimpleTypeKind} the URI literal should be compatible to
+   * @param expectedLiteral the expected literal value
+   * @throws UriSyntaxException the uri syntax exception
+   * @throws EdmException the edm exception
    */
   private void parseLiteral(final String literal, final EdmSimpleTypeKind typeKind, final String expectedLiteral)
       throws UriSyntaxException, EdmException {
@@ -207,6 +309,11 @@ public class EdmSimpleTypeFacadeTest extends BaseTest {
     assertEquals(expectedLiteral, uriLiteral.getLiteral());
   }
 
+  /**
+   * Parses the decimal.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseDecimal() throws Exception {
     parseLiteral("4.5m", EdmSimpleTypeKind.Decimal, "4.5");
@@ -221,6 +328,11 @@ public class EdmSimpleTypeFacadeTest extends BaseTest {
     parseLiteral("1234567890", EdmSimpleTypeKind.Decimal, "1234567890");
   }
 
+  /**
+   * Parses the int 16.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseInt16() throws Exception {
     parseLiteral("16", EdmSimpleTypeKind.Int16, "16");
@@ -230,6 +342,11 @@ public class EdmSimpleTypeFacadeTest extends BaseTest {
 
   }
 
+  /**
+   * Parses the int 32.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseInt32() throws Exception {
     parseLiteral("32", EdmSimpleTypeKind.Int32, "32");
@@ -239,6 +356,11 @@ public class EdmSimpleTypeFacadeTest extends BaseTest {
     parseLiteral("-32769", EdmSimpleTypeKind.Int32, "-32769");
   }
 
+  /**
+   * Parses the int 64.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseInt64() throws Exception {
     parseLiteral("64", EdmSimpleTypeKind.Int64, "64");
@@ -250,6 +372,11 @@ public class EdmSimpleTypeFacadeTest extends BaseTest {
     parseLiteral("" + Long.MIN_VALUE + "l", EdmSimpleTypeKind.Int64, "" + Long.MIN_VALUE);
   }
 
+  /**
+   * Parses the string.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseString() throws Exception {
     parseLiteral("'abc'", EdmSimpleTypeKind.String, "abc");
@@ -257,6 +384,11 @@ public class EdmSimpleTypeFacadeTest extends BaseTest {
     parseLiteral("''", EdmSimpleTypeKind.String, "");
   }
 
+  /**
+   * Parses the single.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseSingle() throws Exception {
     parseLiteral("45", EdmSimpleTypeKind.Single, "45");
@@ -272,6 +404,11 @@ public class EdmSimpleTypeFacadeTest extends BaseTest {
     parseLiteral("NaN", EdmSimpleTypeKind.Single, "NaN");
   }
 
+  /**
+   * Parses the double.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseDouble() throws Exception {
     parseLiteral("45", EdmSimpleTypeKind.Double, "45");
@@ -284,28 +421,53 @@ public class EdmSimpleTypeFacadeTest extends BaseTest {
     parseLiteral("4.5e21f", EdmSimpleTypeKind.Double, "4.5e21");
   }
 
+  /**
+   * Parses the byte.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseByte() throws Exception {
     parseLiteral("255", EdmSimpleTypeKind.Byte, "255");
     parseLiteral("123", EdmSimpleTypeKind.Byte, "123");
   }
 
+  /**
+   * Parses the guid.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseGuid() throws Exception {
     parseLiteral("guid'1225c695-cfb8-4ebb-aaaa-80da344efa6a'", EdmSimpleTypeKind.Guid,
         "1225c695-cfb8-4ebb-aaaa-80da344efa6a");
   }
 
+  /**
+   * Parses the time.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseTime() throws Exception {
     parseLiteral("time'PT120S'", EdmSimpleTypeKind.Time, "PT120S");
   }
 
+  /**
+   * Parses the datetime.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseDatetime() throws Exception {
     parseLiteral("datetime'2009-12-26T21:23:38'", EdmSimpleTypeKind.DateTime, "2009-12-26T21:23:38");
   }
 
+  /**
+   * Parses the datetime offset.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseDatetimeOffset() throws Exception {
     parseLiteral("datetimeoffset'2009-12-26T21:23:38Z'", EdmSimpleTypeKind.DateTimeOffset, "2009-12-26T21:23:38Z");
@@ -314,6 +476,11 @@ public class EdmSimpleTypeFacadeTest extends BaseTest {
     parseLiteral("datetimeoffset'2009-12-26T21:23:38'", EdmSimpleTypeKind.DateTimeOffset, "2009-12-26T21:23:38");
   }
 
+  /**
+   * Parses the boolean.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseBoolean() throws Exception {
     parseLiteral("true", EdmSimpleTypeKind.Boolean, "true");
@@ -322,18 +489,34 @@ public class EdmSimpleTypeFacadeTest extends BaseTest {
     parseLiteral("0", EdmSimpleTypeKind.Boolean, "0");
   }
 
+  /**
+   * Parses the S byte.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseSByte() throws Exception {
     parseLiteral("-123", EdmSimpleTypeKind.SByte, "-123");
     parseLiteral("12", EdmSimpleTypeKind.SByte, "12");
   }
 
+  /**
+   * Parses the binary.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseBinary() throws Exception {
     parseLiteral("X'Fa12aAA1'", EdmSimpleTypeKind.Binary, "+hKqoQ==");
     parseLiteral("binary'FA12AAA1'", EdmSimpleTypeKind.Binary, "+hKqoQ==");
   }
 
+  /**
+   * Parses the wrong literal content.
+   *
+   * @param literal the literal
+   * @param messageReference the message reference
+   */
   private void parseWrongLiteralContent(final String literal, final MessageReference messageReference) {
     try {
       EdmSimpleTypeKind.parseUriLiteral(literal);
@@ -344,6 +527,11 @@ public class EdmSimpleTypeFacadeTest extends BaseTest {
     }
   }
 
+  /**
+   * Parses the literal with wrong content.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseLiteralWithWrongContent() throws Exception {
     parseWrongLiteralContent("binary'abcde'", EdmLiteralException.LITERALFORMAT);
@@ -360,12 +548,24 @@ public class EdmSimpleTypeFacadeTest extends BaseTest {
     parseWrongLiteralContent("time'3'", EdmLiteralException.LITERALFORMAT);
   }
 
+  /**
+   * Parses the incompatible literal content.
+   *
+   * @param literal the literal
+   * @param typeKind the type kind
+   * @throws EdmLiteralException the edm literal exception
+   */
   private void parseIncompatibleLiteralContent(final String literal, final EdmSimpleTypeKind typeKind)
       throws EdmLiteralException {
     final EdmLiteral uriLiteral = EdmSimpleTypeKind.parseUriLiteral(literal);
     assertFalse(typeKind.getEdmSimpleTypeInstance().isCompatible(uriLiteral.getType()));
   }
 
+  /**
+   * Parses the incompatible literal.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parseIncompatibleLiteral() throws Exception {
     parseIncompatibleLiteralContent("1D", EdmSimpleTypeKind.Binary);

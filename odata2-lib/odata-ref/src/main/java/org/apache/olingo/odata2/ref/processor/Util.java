@@ -18,17 +18,30 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.ref.processor;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Util.
+ */
 public class Util {
 
+  /** The Constant instance. */
   private static final Util instance = new Util();
 
+  /** The binary content. */
   private byte[] binaryContent = null;
 
+  /**
+   * Gets the single instance of Util.
+   *
+   * @return single instance of Util
+   */
   public static Util getInstance() {
     return instance;
   }
 
   /**
+   * Gets the binary content.
+   *
    * @return the binaryContent
    */
   public byte[] getBinaryContent() {
@@ -36,6 +49,8 @@ public class Util {
   }
 
   /**
+   * Sets the binary content.
+   *
    * @param binaryContent the binaryContent to set
    */
   public void setBinaryContent(byte[] binaryContent) {

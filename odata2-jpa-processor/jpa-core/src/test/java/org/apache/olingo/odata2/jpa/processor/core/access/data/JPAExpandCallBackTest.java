@@ -46,8 +46,15 @@ import org.apache.olingo.odata2.jpa.processor.core.common.ODataJPATestConstants;
 import org.apache.olingo.odata2.jpa.processor.core.mock.data.EdmMockUtil;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAExpandCallBackTest.
+ */
 public class JPAExpandCallBackTest {
 
+  /**
+   * Test retrieve entry result.
+   */
   @Test
   public void testRetrieveEntryResult() {
     JPAExpandCallBack callBack = getJPAExpandCallBackObject();
@@ -71,6 +78,9 @@ public class JPAExpandCallBackTest {
     }
   }
 
+  /**
+   * Test retrieve feed result.
+   */
   @Test
   public void testRetrieveFeedResult() {
     JPAExpandCallBack callBack = getJPAExpandCallBackObject();
@@ -94,6 +104,9 @@ public class JPAExpandCallBackTest {
     }
   }
 
+  /**
+   * Test get callbacks.
+   */
   @Test
   public void testGetCallbacks() {
     Map<String, ODataCallback> callBacks = null;
@@ -112,6 +125,9 @@ public class JPAExpandCallBackTest {
 
   }
 
+  /**
+   * Test get next navigation property.
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void testGetNextNavigationProperty() {
@@ -148,6 +164,9 @@ public class JPAExpandCallBackTest {
     }
   }
 
+  /**
+   * Test get next navigation property with number.
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void testGetNextNavigationPropertyWithNumber() {
@@ -187,6 +206,11 @@ public class JPAExpandCallBackTest {
     }
   }
 
+  /**
+   * Gets the JPA expand call back object.
+   *
+   * @return the JPA expand call back object
+   */
   private JPAExpandCallBack getJPAExpandCallBackObject() {
     Map<String, ODataCallback> callBacks = null;
     try {

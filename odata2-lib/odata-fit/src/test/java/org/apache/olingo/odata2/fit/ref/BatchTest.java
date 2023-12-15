@@ -55,20 +55,35 @@ import org.apache.olingo.odata2.testutil.helper.StringHelper;
 import org.apache.olingo.odata2.testutil.server.ServletType;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- *  
+ * The Class BatchTest.
  */
 public class BatchTest extends AbstractRefTest {
 
+  /** The Constant PUT. */
   private static final String PUT = "PUT";
+  
+  /** The Constant POST. */
   private static final String POST = "POST";
+  
+  /** The Constant BOUNDARY. */
   private static final String BOUNDARY = "batch_123";
   
+  /**
+   * Instantiates a new batch test.
+   *
+   * @param servletType the servlet type
+   */
   public BatchTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /**
+   * Test simple batch.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testSimpleBatch() throws Exception {
     String responseBody = execute("/simple.batch");
@@ -78,6 +93,11 @@ public class BatchTest extends AbstractRefTest {
         "<edmx:Edmx xmlns:edmx=\"http://schemas.microsoft.com/ado/2007/06/edmx\" Version=\"1.0\""));
   }
 
+  /**
+   * Function import batch.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void functionImportBatch() throws Exception {
     String responseBody = execute("/functionImport.batch");
@@ -87,6 +107,11 @@ public class BatchTest extends AbstractRefTest {
     assertTrue(responseBody.contains("<?xml version='1.0' encoding='utf-8'?><ManagerPhoto xmlns="));
   }
 
+  /**
+   * Employees with filter batch.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void employeesWithFilterBatch() throws Exception {
     String responseBody = execute("/employeesWithFilter.batch");
@@ -96,12 +121,22 @@ public class BatchTest extends AbstractRefTest {
     assertTrue(responseBody.contains("<d:EmployeeName>Walter Winter</d:EmployeeName>"));
   }
 
+  /**
+   * Test change set batch.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testChangeSetBatch() throws Exception {
     String responseBody = execute("/changeset.batch");
     assertTrue(responseBody.contains("Frederic Fall MODIFIED"));
   }
 
+  /**
+   * Test content id referencing.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testContentIdReferencing() throws Exception {
     String responseBody = execute("/batchWithContentId.batch");
@@ -112,6 +147,11 @@ public class BatchTest extends AbstractRefTest {
     assertTrue(responseBody.contains("\"Age\":40"));
   }
 
+  /**
+   * Test content id echoing.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testContentIdEchoing() throws Exception {
     String responseBody = execute("/batchWithContentId.batch");
@@ -123,6 +163,11 @@ public class BatchTest extends AbstractRefTest {
     assertTrue(responseBody.contains("Content-Id: newEmployee"));
   }
 
+  /**
+   * Test wrong content id.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testWrongContentId() throws Exception {
     HttpResponse response = execute("/batchWithWrongContentId.batch", "batch_cf90-46e5-1246");
@@ -130,6 +175,11 @@ public class BatchTest extends AbstractRefTest {
     assertTrue(responseBody.contains("HTTP/1.1 404 Not Found"));
   }
 
+  /**
+   * Test fail first request.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testFailFirstRequest() throws Exception {
     HttpResponse response = execute("/batchFailFirstCreateRequest.batch", "batch_cf90-46e5-1246");
@@ -137,6 +187,11 @@ public class BatchTest extends AbstractRefTest {
     assertTrue(responseBody.contains("HTTP/1.1 404 Not Found"));
   }
 
+  /**
+   * Test GPPG.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testGPPG() throws Exception {
     HttpResponse response = execute("/batchWithContentIdPart2.batch", "batch_cf90-46e5-1246");
@@ -160,6 +215,11 @@ public class BatchTest extends AbstractRefTest {
     Assert.assertTrue(indexBoundary < indexContentType);
   }
 
+  /**
+   * Test error batch.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testErrorBatch() throws Exception {
     String responseBody = execute("/error.batch");
@@ -168,9 +228,9 @@ public class BatchTest extends AbstractRefTest {
 
   /**
    * Validate that given <code>content</code> contains all <code>values</code> in the given order.
-   * 
-   * @param content
-   * @param containingValues
+   *
+   * @param content the content
+   * @param containingValues the containing values
    */
   private void assertContentContainValues(final String content, final String... containingValues) {
     int index = -1;
@@ -181,6 +241,13 @@ public class BatchTest extends AbstractRefTest {
     }
   }
 
+  /**
+   * Execute.
+   *
+   * @param batchResource the batch resource
+   * @return the string
+   * @throws Exception the exception
+   */
   private String execute(final String batchResource) throws Exception {
     HttpResponse response = execute(batchResource, "batch_123");
 
@@ -188,6 +255,16 @@ public class BatchTest extends AbstractRefTest {
     return responseBody;
   }
 
+  /**
+   * Execute.
+   *
+   * @param batchResource the batch resource
+   * @param boundary the boundary
+   * @return the http response
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   * @throws ClientProtocolException the client protocol exception
+   */
   private HttpResponse execute(final String batchResource, final String boundary) throws IOException,
       UnsupportedEncodingException, ClientProtocolException {
     final HttpPost post = new HttpPost(URI.create(getEndpoint().toString() + "$batch"));
@@ -204,10 +281,12 @@ public class BatchTest extends AbstractRefTest {
   }
   
   /**
-   * @param method
-   * @param data
-   * @param contentType 
-   * @return
+   * Creates the batch request.
+   *
+   * @param method the method
+   * @param data the data
+   * @param contentType the content type
+   * @return the input stream
    */
   private InputStream createBatchRequest(String method, byte[] data, String contentType) {
     List<BatchPart> batch = new ArrayList<BatchPart>();
@@ -242,6 +321,11 @@ public class BatchTest extends AbstractRefTest {
     return batchRequest;
   }
   
+  /**
+   * Test batch with changeset with raw bytes in put operation.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testBatchWithChangesetWithRawBytesInPutOperation() throws Exception {
     InputStream requestPayload = createBatchRequestWithRawBytes(PUT);
@@ -275,6 +359,11 @@ public class BatchTest extends AbstractRefTest {
     }
   }
   
+  /**
+   * Test batch with changeset with raw bytes in POST operation.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testBatchWithChangesetWithRawBytesInPOSTOperation() throws Exception {
     InputStream requestPayload = createBatchRequestWithRawBytes(POST);
@@ -308,6 +397,11 @@ public class BatchTest extends AbstractRefTest {
     }
   }
   
+  /**
+   * Test batch with changeset with image object in put operation.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testBatchWithChangesetWithImageObjectInPutOperation() throws Exception {
     InputStream requestPayload = createBatchRequestWithImage("/Employee_1.png", PUT);
@@ -342,18 +436,34 @@ public class BatchTest extends AbstractRefTest {
     }
   }
   
+  /**
+   * Creates the batch request with image.
+   *
+   * @param imageUrl the image url
+   * @param method the method
+   * @return the input stream
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private InputStream createBatchRequestWithImage(String imageUrl, String method) throws IOException {
     byte[] data = getImageData(imageUrl);
     return createBatchRequest(method, data, "image/jpeg");
   }
   
+  /**
+   * Creates the batch request with raw bytes.
+   *
+   * @param method the method
+   * @return the input stream
+   */
   private InputStream createBatchRequestWithRawBytes(String method) {
     byte[] data = rawBytes();
     return createBatchRequest(method, data, "application/octect-stream");
   }
 
   /**
-   * @return
+   * Raw bytes.
+   *
+   * @return the byte[]
    */
   private byte[] rawBytes() {
     byte[] data = new byte[Byte.MAX_VALUE - Byte.MIN_VALUE + 1];
@@ -365,9 +475,11 @@ public class BatchTest extends AbstractRefTest {
   }
 
   /**
-   * @param imageUrl
-   * @return
-   * @throws IOException 
+   * Gets the image data.
+   *
+   * @param imageUrl the image url
+   * @return the image data
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   private byte[] getImageData(String imageUrl) throws IOException {
     byte[] data = null;

@@ -20,6 +20,7 @@ package org.apache.olingo.odata2.core.commons;
 
 import java.io.UnsupportedEncodingException;
 
+// TODO: Auto-generated Javadoc
 /**
  * Encodes a Java String (in its internal UTF-16 encoding) into its
  * percent-encoded UTF-8 representation according to
@@ -45,12 +46,15 @@ public class Encoder {
   // Other sub-delims not used neither by JAX-RS nor by OData could be added
   // if the encoding is considered to be too aggressive.
   // RFC 3986 would also allow the gen-delims ":" and "@" to appear literally
+  /** The Constant ODATA_UNENCODED. */
   // in path-segment parts.
   private static final String ODATA_UNENCODED = "'";
 
+  /** The Constant UNRESERVED. */
   // Character classes from RFC 3986
   private final static String UNRESERVED = "-._~"; // + ALPHA + DIGIT
   // RFC 3986 says: "For consistency, URI producers and normalizers should
+  /** The Constant hex. */
   // use uppercase hexadecimal digits for all percent-encodings."
   private final static String[] hex = { "%00", "%01", "%02", "%03", "%04", "%05", "%06", "%07", "%08", "%09", "%0A",
       "%0B", "%0C", "%0D", "%0E", "%0F", "%10", "%11", "%12", "%13", "%14", "%15", "%16", "%17", "%18", "%19", "%1A",
@@ -70,11 +74,17 @@ public class Encoder {
       "%E9", "%EA", "%EB", "%EC", "%ED", "%EE", "%EF", "%F0", "%F1", "%F2", "%F3", "%F4", "%F5", "%F6", "%F7", "%F8",
       "%F9", "%FA", "%FB", "%FC", "%FD", "%FE", "%FF" };
 
+  /** The Constant encoder. */
   private static final Encoder encoder = new Encoder(ODATA_UNENCODED);
 
-  /** characters to remain unencoded in addition to {@link #UNRESERVED} */
+  /**  characters to remain unencoded in addition to {@link #UNRESERVED}. */
   private final String unencoded;
 
+  /**
+   * Instantiates a new encoder.
+   *
+   * @param unencoded the unencoded
+   */
   private Encoder(final String unencoded) {
     this.unencoded = unencoded == null ? "" : unencoded;
   }
@@ -120,6 +130,12 @@ public class Encoder {
     return resultStr.toString();
   }
 
+  /**
+   * Checks if is unreserved.
+   *
+   * @param character the character
+   * @return true, if is unreserved
+   */
   private static boolean isUnreserved(final char character) {
     return 'A' <= character && character <= 'Z' // case A..Z
         || 'a' <= character && character <= 'z' // case a..z
@@ -127,6 +143,12 @@ public class Encoder {
         || UNRESERVED.indexOf(character) >= 0;
   }
 
+  /**
+   * Checks if is unencoded.
+   *
+   * @param character the character
+   * @return true, if is unencoded
+   */
   private boolean isUnencoded(final char character) {
     return unencoded.indexOf(character) >= 0;
   }

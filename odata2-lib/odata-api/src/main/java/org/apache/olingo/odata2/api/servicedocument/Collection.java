@@ -20,50 +20,52 @@ package org.apache.olingo.odata2.api.servicedocument;
 
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
 /**
  * A Collection
- * <p>Collection element describes a Collection
- * 
+ * <p>Collection element describes a Collection.
  */
 public interface Collection {
+  
   /**
-   * Get the human-readable title for the Collection
-   * 
+   * Get the human-readable title for the Collection.
+   *
    * @return {@link Title}
    */
   public Title getTitle();
 
   /**
-   * Get the "href" attribute, whose value gives IRI of the Collection
-   * 
+   * Get the "href" attribute, whose value gives IRI of the Collection.
+   *
    * @return href as String
    */
   public String getHref();
 
   /**
-   * Get common attributes
-   * 
+   * Get common attributes.
+   *
    * @return {@link CommonAttributes}
    */
   public CommonAttributes getCommonAttributes();
 
   /**
    * Get the media range that specifies a type of representation
-   * that can be POSTed to a Collection
+   * that can be POSTed to a Collection.
+   *
    * @return a list of {@link Accept}
    */
   public List<Accept> getAcceptElements();
 
   /**
-   * 
-   * 
+   * Gets the categories.
+   *
    * @return a list of {@link Categories}
    */
   public List<Categories> getCategories();
 
   /**
-   * Get the list of extension elements
-   * 
+   * Get the list of extension elements.
+   *
    * @return a list of {@link ExtensionElement}
    */
   public List<ExtensionElement> getExtesionElements();

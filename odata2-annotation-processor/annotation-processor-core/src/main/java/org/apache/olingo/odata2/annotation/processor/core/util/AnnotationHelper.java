@@ -39,19 +39,21 @@ import org.apache.olingo.odata2.api.edm.EdmSimpleTypeKind;
 import org.apache.olingo.odata2.api.edm.FullQualifiedName;
 import org.apache.olingo.odata2.api.exception.ODataException;
 
+// TODO: Auto-generated Javadoc
 /**
- *
+ * The Class AnnotationHelper.
  */
 public class AnnotationHelper {
 
+  /** The Constant DEFAULT_CONTAINER_NAME. */
   public static final String DEFAULT_CONTAINER_NAME = "DefaultContainer";
 
   /**
    * Compare keys of both instances.
-   * 
-   * @param firstInstance
-   * @param secondInstance
-   * @return
+   *
+   * @param firstInstance the first instance
+   * @param secondInstance the second instance
+   * @return true, if successful
    */
   public boolean keyMatch(final Object firstInstance, final Object secondInstance) {
     if (firstInstance == null || secondInstance == null) {
@@ -73,16 +75,23 @@ public class AnnotationHelper {
 
   /**
    * Compare keys of instance with key values in map.
-   * 
-   * @param instance
-   * @param keyName2Value
-   * @return
+   *
+   * @param instance the instance
+   * @param keyName2Value the key name 2 value
+   * @return true, if successful
    */
   public boolean keyMatch(final Object instance, final Map<String, Object> keyName2Value) {
     Map<String, Object> instanceKeyFields = getValueForAnnotatedFields(instance, EdmKey.class);
     return keyValuesMatch(instanceKeyFields, keyName2Value);
   }
 
+  /**
+   * Key values match.
+   *
+   * @param firstKeyValues the first key values
+   * @param secondKeyValues the second key values
+   * @return true, if successful
+   */
   private boolean keyValuesMatch(final Map<String, Object> firstKeyValues, final Map<String, Object> secondKeyValues) {
     if (firstKeyValues.size() != secondKeyValues.size()) {
       return false;
@@ -101,6 +110,13 @@ public class AnnotationHelper {
     }
   }
 
+  /**
+   * Checks if is equal.
+   *
+   * @param firstKey the first key
+   * @param secondKey the second key
+   * @return true, if is equal
+   */
   private boolean isEqual(final Object firstKey, final Object secondKey) {
     if (firstKey == null) {
       return secondKey == null || secondKey.equals(firstKey);
@@ -109,11 +125,25 @@ public class AnnotationHelper {
     }
   }
 
+  /**
+   * Extract entity type name.
+   *
+   * @param enp the enp
+   * @param fallbackClass the fallback class
+   * @return the string
+   */
   public String extractEntityTypeName(final EdmNavigationProperty enp, final Class<?> fallbackClass) {
     Class<?> entityTypeClass = enp.toType();
     return extractEntityTypeName(entityTypeClass == Object.class ? fallbackClass : entityTypeClass);
   }
 
+  /**
+   * Extract entity type name.
+   *
+   * @param enp the enp
+   * @param field the field
+   * @return the string
+   */
   public String extractEntityTypeName(final EdmNavigationProperty enp, final Field field) {
     Class<?> entityTypeClass = enp.toType();
     if (entityTypeClass == Object.class) {
@@ -128,9 +158,9 @@ public class AnnotationHelper {
   /**
    * Returns <code>NULL</code> if given class is not annotated. If annotated the set entity type name is returned and if
    * no name is set the default name is generated from the simple class name.
-   * 
-   * @param annotatedClass
-   * @return
+   *
+   * @param annotatedClass the annotated class
+   * @return the string
    */
   public String extractEntityTypeName(final Class<?> annotatedClass) {
     return extractTypeName(annotatedClass, EdmEntityType.class);
@@ -140,9 +170,9 @@ public class AnnotationHelper {
    * Returns <code>NULL</code> if given class is not annotated.
    * If annotated the entity set name is returned and if
    * no name is set a default name is generated based on the simple class name.
-   * 
-   * @param annotatedClass
-   * @return
+   *
+   * @param annotatedClass the annotated class
+   * @return the string
    */
   public String extractEntitySetName(final Class<?> annotatedClass) {
     if (annotatedClass == Object.class) {
@@ -160,6 +190,13 @@ public class AnnotationHelper {
     return name;
   }
 
+  /**
+   * Extract entity type fqn.
+   *
+   * @param type the type
+   * @param annotatedClass the annotated class
+   * @return the full qualified name
+   */
   public FullQualifiedName extractEntityTypeFqn(final EdmEntityType type, final Class<?> annotatedClass) {
     if (type.namespace().isEmpty()) {
       return new FullQualifiedName(generateNamespace(annotatedClass), extractEntityTypeName(annotatedClass));
@@ -167,6 +204,12 @@ public class AnnotationHelper {
     return new FullQualifiedName(type.namespace(), extractEntityTypeName(annotatedClass));
   }
 
+  /**
+   * Extract entity type fqn.
+   *
+   * @param annotatedClass the annotated class
+   * @return the full qualified name
+   */
   public FullQualifiedName extractEntityTypeFqn(final Class<?> annotatedClass) {
     EdmEntityType type = annotatedClass.getAnnotation(EdmEntityType.class);
     if (type == null) {
@@ -175,6 +218,12 @@ public class AnnotationHelper {
     return extractEntityTypeFqn(type, annotatedClass);
   }
 
+  /**
+   * Extract complex type fqn.
+   *
+   * @param annotatedClass the annotated class
+   * @return the full qualified name
+   */
   public FullQualifiedName extractComplexTypeFqn(final Class<?> annotatedClass) {
     EdmComplexType type = annotatedClass.getAnnotation(EdmComplexType.class);
     if (type == null) {
@@ -183,6 +232,13 @@ public class AnnotationHelper {
     return extractComplexTypeFqn(type, annotatedClass);
   }
 
+  /**
+   * Extract complex type fqn.
+   *
+   * @param type the type
+   * @param annotatedClass the annotated class
+   * @return the full qualified name
+   */
   public FullQualifiedName extractComplexTypeFqn(final EdmComplexType type, final Class<?> annotatedClass) {
     if (type.namespace().isEmpty()) {
       return new FullQualifiedName(generateNamespace(annotatedClass), extractComplexTypeName(annotatedClass));
@@ -190,20 +246,32 @@ public class AnnotationHelper {
     return new FullQualifiedName(type.namespace(), extractComplexTypeName(annotatedClass));
   }
 
+  /**
+   * Extract complex type name.
+   *
+   * @param annotatedClass the annotated class
+   * @return the string
+   */
   public String extractComplexTypeName(final Class<?> annotatedClass) {
     return extractTypeName(annotatedClass, EdmComplexType.class);
   }
 
+  /**
+   * Generate namespace.
+   *
+   * @param annotatedClass the annotated class
+   * @return the string
+   */
   public String generateNamespace(final Class<?> annotatedClass) {
     return annotatedClass.getPackage().getName();
   }
 
   /**
-   * 
-   * 
+   * Extract type name.
+   *
    * @param <T> must be EdmEntityType or EdmComplexType annotation
-   * @param annotatedClass
-   * @param typeAnnotation
+   * @param annotatedClass the annotated class
+   * @param typeAnnotation the type annotation
    * @return null if annotatedClass is not annotated or name set via annotation or generated via
    * {@link #getCanonicalName(java.lang.Class)}
    */
@@ -233,9 +301,9 @@ public class AnnotationHelper {
 
   /**
    * Get the set property name from an EdmProperty or EdmNavigationProperty annotation.
-   * 
-   * @param field
-   * @return
+   *
+   * @param field the field
+   * @return the property name from annotation
    */
   public String getPropertyNameFromAnnotation(final Field field) {
     EdmProperty property = field.getAnnotation(EdmProperty.class);
@@ -250,6 +318,12 @@ public class AnnotationHelper {
     return property.name();
   }
 
+  /**
+   * Gets the property name.
+   *
+   * @param field the field
+   * @return the property name
+   */
   public String getPropertyName(final Field field) {
     String propertyName = getPropertyNameFromAnnotation(field);
     if (propertyName.isEmpty()) {
@@ -258,6 +332,13 @@ public class AnnotationHelper {
     return propertyName;
   }
 
+  /**
+   * Extract to role name.
+   *
+   * @param enp the enp
+   * @param field the field
+   * @return the string
+   */
   public String extractToRoleName(final EdmNavigationProperty enp, final Field field) {
     String role = enp.toRole();
     if (role.isEmpty()) {
@@ -266,10 +347,23 @@ public class AnnotationHelper {
     return role;
   }
 
+  /**
+   * Extract from role entity name.
+   *
+   * @param field the field
+   * @return the string
+   */
   public String extractFromRoleEntityName(final Field field) {
     return extractEntityTypeName(field.getDeclaringClass());
   }
 
+  /**
+   * Extract to role entity name.
+   *
+   * @param enp the enp
+   * @param field the field
+   * @return the string
+   */
   public String extractToRoleEntityName(final EdmNavigationProperty enp, final Field field) {
     Class<?> clazz = enp.toType();
     if (clazz == Object.class) {
@@ -282,10 +376,23 @@ public class AnnotationHelper {
     return extractEntityTypeName(clazz);
   }
 
+  /**
+   * Gets the canonical role name.
+   *
+   * @param name the name
+   * @return the canonical role name
+   */
   public String getCanonicalRoleName(String name) {
     return "r_" + name.substring(0, 1).toUpperCase(Locale.ENGLISH) + name.substring(1);
   }
 
+  /**
+   * Extract relationship name.
+   *
+   * @param enp the enp
+   * @param field the field
+   * @return the string
+   */
   public String extractRelationshipName(final EdmNavigationProperty enp, final Field field) {
     String relationshipName = enp.association();
     if (relationshipName.isEmpty()) {
@@ -296,6 +403,13 @@ public class AnnotationHelper {
     return relationshipName;
   }
 
+  /**
+   * Creates the canonical relationship name.
+   *
+   * @param fromRole the from role
+   * @param toRole the to role
+   * @return the string
+   */
   public String createCanonicalRelationshipName(String fromRole, String toRole) {
       if (fromRole.compareTo(toRole) > 0) {
         return toRole + "_2_" + fromRole;
@@ -304,6 +418,13 @@ public class AnnotationHelper {
       }
   }
 
+  /**
+   * Extract multiplicity.
+   *
+   * @param enp the enp
+   * @param field the field
+   * @return the edm multiplicity
+   */
   public EdmMultiplicity extractMultiplicity(final EdmNavigationProperty enp, final Field field) {
     EdmMultiplicity multiplicity = mapMultiplicity(enp.toMultiplicity());
     final boolean isCollectionType = field.getType().isArray() || Collection.class.isAssignableFrom(field.getType());
@@ -318,10 +439,11 @@ public class AnnotationHelper {
    * Set key fields based on values in map.
    * If an key field is not available or <code>NULL</code> in the map
    * it will be not set as <code>NULL</code> at the instance object.
-   * 
-   * @param instance
-   * @param keys
-   * @return
+   *
+   * @param <T> the generic type
+   * @param instance the instance
+   * @param keys the keys
+   * @return the t
    */
   public <T> T setKeyFields(final T instance, final Map<String, Object> keys) {
     List<Field> fields = getAnnotatedFields(instance, EdmKey.class);
@@ -335,24 +457,59 @@ public class AnnotationHelper {
     return instance;
   }
 
+  /**
+   * The Class ODataAnnotationException.
+   */
   public static final class ODataAnnotationException extends ODataException {
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 42L;
 
+    /**
+     * Instantiates a new o data annotation exception.
+     *
+     * @param message the message
+     */
     public ODataAnnotationException(final String message) {
       super(message);
     }
 
+    /**
+     * Instantiates a new o data annotation exception.
+     *
+     * @param message the message
+     * @param cause the cause
+     */
     public ODataAnnotationException(final String message, final Exception cause) {
       super(message, cause);
     }
   }
 
+  /**
+   * The Class AnnotatedNavInfo.
+   */
   public class AnnotatedNavInfo {
+    
+    /** The from field. */
     private final Field fromField;
+    
+    /** The to field. */
     private final Field toField;
+    
+    /** The from navigation. */
     private final EdmNavigationProperty fromNavigation;
+    
+    /** The to navigation. */
     private final EdmNavigationProperty toNavigation;
 
+    /**
+     * Instantiates a new annotated nav info.
+     *
+     * @param fromField the from field
+     * @param toField the to field
+     * @param fromNavigation the from navigation
+     * @param toNavigation the to navigation
+     */
     public AnnotatedNavInfo(final Field fromField, final Field toField, final EdmNavigationProperty fromNavigation,
         final EdmNavigationProperty toNavigation) {
       this.fromField = fromField;
@@ -361,10 +518,20 @@ public class AnnotationHelper {
       this.toNavigation = toNavigation;
     }
 
+    /**
+     * Gets the from field.
+     *
+     * @return the from field
+     */
     public Field getFromField() {
       return fromField;
     }
 
+    /**
+     * Gets the from role name.
+     *
+     * @return the from role name
+     */
     public String getFromRoleName() {
       if(isBiDirectional()) {
         return extractFromRoleEntityName(toField);
@@ -372,10 +539,20 @@ public class AnnotationHelper {
       return extractToRoleName(toNavigation, toField);
     }
 
+    /**
+     * Gets the to field.
+     *
+     * @return the to field
+     */
     public Field getToField() {
       return toField;
     }
 
+    /**
+     * Gets the to role name.
+     *
+     * @return the to role name
+     */
     public String getToRoleName() {
       if(isBiDirectional()) {
         return extractToRoleName(toNavigation, toField);
@@ -383,6 +560,11 @@ public class AnnotationHelper {
       return extractToRoleName(fromNavigation, fromField);
     }
 
+    /**
+     * Gets the from multiplicity.
+     *
+     * @return the from multiplicity
+     */
     public EdmMultiplicity getFromMultiplicity() {
       if(isBiDirectional()) {
         return EdmMultiplicity.ONE;
@@ -390,6 +572,11 @@ public class AnnotationHelper {
       return extractMultiplicity(toNavigation, toField);
     }
 
+    /**
+     * Gets the to multiplicity.
+     *
+     * @return the to multiplicity
+     */
     public EdmMultiplicity getToMultiplicity() {
       if(isBiDirectional()) {
         return extractMultiplicity(toNavigation, toField);
@@ -397,10 +584,20 @@ public class AnnotationHelper {
       return extractMultiplicity(fromNavigation, fromField);
     }
 
+    /**
+     * Checks if is bi directional.
+     *
+     * @return true, if is bi directional
+     */
     public boolean isBiDirectional() {
       return fromNavigation == null;
     }
 
+    /**
+     * Gets the relationship name.
+     *
+     * @return the relationship name
+     */
     public String getRelationshipName() {
       String toAssociation = toNavigation.association();
       String fromAssociation = "";
@@ -419,6 +616,11 @@ public class AnnotationHelper {
       return toAssociation;
     }
 
+    /**
+     * Gets the from type name.
+     *
+     * @return the from type name
+     */
     public String getFromTypeName() {
       if(isBiDirectional()) {
         return extractEntityTypeName(toField.getDeclaringClass());
@@ -426,6 +628,11 @@ public class AnnotationHelper {
       return extractEntityTypeName(fromField.getDeclaringClass());
     }
 
+    /**
+     * Gets the to type name.
+     *
+     * @return the to type name
+     */
     public String getToTypeName() {
       if(isBiDirectional()) {
         return extractEntityTypeName(ClassHelper.getFieldType(toField));
@@ -433,6 +640,11 @@ public class AnnotationHelper {
       return extractEntityTypeName(toField.getDeclaringClass());
     }
 
+    /**
+     * To string.
+     *
+     * @return the string
+     */
     @Override
     public String toString() {
       if(isBiDirectional()) {
@@ -449,6 +661,13 @@ public class AnnotationHelper {
   }
 
 
+  /**
+   * Gets the common navigation info.
+   *
+   * @param sourceClass the source class
+   * @param targetClass the target class
+   * @return the common navigation info
+   */
   public AnnotatedNavInfo getCommonNavigationInfo(final Class<?> sourceClass, final Class<?> targetClass) {
     List<Field> sourceFields = getAnnotatedFields(sourceClass, EdmNavigationProperty.class);
     List<Field> targetFields = getAnnotatedFields(targetClass, EdmNavigationProperty.class);
@@ -479,6 +698,13 @@ public class AnnotationHelper {
     return getCommonNavigationInfoBiDirectional(sourceClass, targetClass);
   }
 
+  /**
+   * Gets the common navigation info bi directional.
+   *
+   * @param sourceClass the source class
+   * @param targetClass the target class
+   * @return the common navigation info bi directional
+   */
   private AnnotatedNavInfo getCommonNavigationInfoBiDirectional(final Class<?> sourceClass,
                                                                 final Class<?> targetClass) {
     List<Field> sourceFields = getAnnotatedFields(sourceClass, EdmNavigationProperty.class);
@@ -496,6 +722,14 @@ public class AnnotationHelper {
     return null;
   }
 
+  /**
+   * Gets the field type for property.
+   *
+   * @param clazz the clazz
+   * @param propertyName the property name
+   * @return the field type for property
+   * @throws ODataAnnotationException the o data annotation exception
+   */
   public Class<?> getFieldTypeForProperty(final Class<?> clazz, final String propertyName)
       throws ODataAnnotationException {
     if (clazz == null) {
@@ -510,6 +744,14 @@ public class AnnotationHelper {
     return field.getType();
   }
 
+  /**
+   * Gets the field type for property.
+   *
+   * @param instance the instance
+   * @param propertyName the property name
+   * @return the field type for property
+   * @throws ODataAnnotationException the o data annotation exception
+   */
   public Class<?> getFieldTypeForProperty(final Object instance, final String propertyName)
       throws ODataAnnotationException {
     if (instance == null) {
@@ -519,6 +761,14 @@ public class AnnotationHelper {
     return getFieldTypeForProperty(instance.getClass(), propertyName);
   }
 
+  /**
+   * Gets the value for property.
+   *
+   * @param instance the instance
+   * @param propertyName the property name
+   * @return the value for property
+   * @throws ODataAnnotationException the o data annotation exception
+   */
   public Object getValueForProperty(final Object instance, final String propertyName) throws ODataAnnotationException {
     if (instance == null) {
       return null;
@@ -532,6 +782,13 @@ public class AnnotationHelper {
     return getFieldValue(instance, field);
   }
 
+  /**
+   * Sets the value for property.
+   *
+   * @param instance the instance
+   * @param propertyName the property name
+   * @param propertyValue the property value
+   */
   public void setValueForProperty(final Object instance, final String propertyName, final Object propertyValue) {
     if (instance != null) {
       Field field = getFieldForPropertyName(propertyName, instance.getClass(), true);
@@ -541,6 +798,14 @@ public class AnnotationHelper {
     }
   }
 
+  /**
+   * Gets the field for property name.
+   *
+   * @param propertyName the property name
+   * @param resultClass the result class
+   * @param inherited the inherited
+   * @return the field for property name
+   */
   private Field getFieldForPropertyName(final String propertyName,
       final Class<?> resultClass, final boolean inherited) {
 
@@ -564,6 +829,14 @@ public class AnnotationHelper {
     return null;
   }
 
+  /**
+   * Gets the value for field.
+   *
+   * @param instance the instance
+   * @param fieldName the field name
+   * @param annotation the annotation
+   * @return the value for field
+   */
   public Object getValueForField(final Object instance, final String fieldName,
       final Class<? extends Annotation> annotation) {
     if (instance == null) {
@@ -572,6 +845,13 @@ public class AnnotationHelper {
     return getValueForField(instance, fieldName, instance.getClass(), annotation, true);
   }
 
+  /**
+   * Gets the value for field.
+   *
+   * @param instance the instance
+   * @param annotation the annotation
+   * @return the value for field
+   */
   public Object getValueForField(final Object instance, final Class<? extends Annotation> annotation) {
     if (instance == null) {
       return null;
@@ -579,16 +859,41 @@ public class AnnotationHelper {
     return getValueForField(instance, instance.getClass(), annotation, true);
   }
 
+  /**
+   * Gets the value for field.
+   *
+   * @param instance the instance
+   * @param resultClass the result class
+   * @param annotation the annotation
+   * @param inherited the inherited
+   * @return the value for field
+   */
   private Object getValueForField(final Object instance, final Class<?> resultClass,
       final Class<? extends Annotation> annotation, final boolean inherited) {
     return getValueForField(instance, null, resultClass, annotation, inherited);
   }
 
+  /**
+   * Gets the value for annotated fields.
+   *
+   * @param instance the instance
+   * @param annotation the annotation
+   * @return the value for annotated fields
+   */
   public Map<String, Object> getValueForAnnotatedFields(final Object instance,
       final Class<? extends Annotation> annotation) {
     return getValueForAnnotatedFields(instance, instance.getClass(), annotation, true);
   }
 
+  /**
+   * Gets the value for annotated fields.
+   *
+   * @param instance the instance
+   * @param resultClass the result class
+   * @param annotation the annotation
+   * @param inherited the inherited
+   * @return the value for annotated fields
+   */
   private Map<String, Object> getValueForAnnotatedFields(final Object instance, final Class<?> resultClass,
       final Class<? extends Annotation> annotation, final boolean inherited) {
     if (instance == null) {
@@ -615,6 +920,12 @@ public class AnnotationHelper {
     return fieldName2Value;
   }
 
+  /**
+   * Extract property name.
+   *
+   * @param field the field
+   * @return the string
+   */
   private String extractPropertyName(final Field field) {
     final EdmProperty property = field.getAnnotation(EdmProperty.class);
     if (property == null || property.name().isEmpty()) {
@@ -624,6 +935,14 @@ public class AnnotationHelper {
     }
   }
 
+  /**
+   * Sets the value for annotated field.
+   *
+   * @param instance the instance
+   * @param annotation the annotation
+   * @param value the value
+   * @throws ODataAnnotationException the o data annotation exception
+   */
   public void setValueForAnnotatedField(final Object instance, final Class<? extends Annotation> annotation,
       final Object value)
       throws ODataAnnotationException {
@@ -640,6 +959,13 @@ public class AnnotationHelper {
     setFieldValue(instance, fields.get(0), value);
   }
 
+  /**
+   * Sets the values to annotated fields.
+   *
+   * @param instance the instance
+   * @param annotation the annotation
+   * @param fieldName2Value the field name 2 value
+   */
   public void setValuesToAnnotatedFields(final Object instance,
       final Class<? extends Annotation> annotation, final Map<String, Object> fieldName2Value) {
     List<Field> fields = getAnnotatedFields(instance, annotation);
@@ -654,6 +980,13 @@ public class AnnotationHelper {
     }
   }
 
+  /**
+   * Gets the annotated fields.
+   *
+   * @param instance the instance
+   * @param annotation the annotation
+   * @return the annotated fields
+   */
   public List<Field> getAnnotatedFields(final Object instance, final Class<? extends Annotation> annotation) {
     if (instance == null) {
       return null;
@@ -661,16 +994,24 @@ public class AnnotationHelper {
     return getAnnotatedFields(instance.getClass(), annotation, true);
   }
 
+  /**
+   * Gets the annotated fields.
+   *
+   * @param fieldClass the field class
+   * @param annotation the annotation
+   * @return the annotated fields
+   */
   public List<Field> getAnnotatedFields(final Class<?> fieldClass, final Class<? extends Annotation> annotation) {
     return getAnnotatedFields(fieldClass, annotation, true);
   }
 
   /**
-   * 
-   * @param resultClass
-   * @param annotation
-   * @param inherited
-   * @return
+   * Gets the annotated fields.
+   *
+   * @param resultClass the result class
+   * @param annotation the annotation
+   * @param inherited the inherited
+   * @return the annotated fields
    */
   private List<Field> getAnnotatedFields(final Class<?> resultClass,
       final Class<? extends Annotation> annotation, final boolean inherited) {
@@ -696,6 +1037,16 @@ public class AnnotationHelper {
     return annotatedFields;
   }
 
+  /**
+   * Gets the value for field.
+   *
+   * @param instance the instance
+   * @param fieldName the field name
+   * @param resultClass the result class
+   * @param annotation the annotation
+   * @param inherited the inherited
+   * @return the value for field
+   */
   private Object getValueForField(final Object instance, final String fieldName, final Class<?> resultClass,
       final Class<? extends Annotation> annotation, final boolean inherited) {
     if (instance == null) {
@@ -718,6 +1069,13 @@ public class AnnotationHelper {
     return null;
   }
 
+  /**
+   * Gets the field value.
+   *
+   * @param instance the instance
+   * @param field the field
+   * @return the field value
+   */
   private Object getFieldValue(final Object instance, final Field field) {
     try {
       boolean access = field.isAccessible();
@@ -732,6 +1090,13 @@ public class AnnotationHelper {
     }
   }
 
+  /**
+   * Sets the field value.
+   *
+   * @param instance the instance
+   * @param field the field
+   * @param value the value
+   */
   private void setFieldValue(final Object instance, final Field field, final Object value) {
     try {
       Object usedValue = value;
@@ -751,6 +1116,13 @@ public class AnnotationHelper {
     }
   }
 
+  /**
+   * Convert.
+   *
+   * @param field the field
+   * @param propertyValue the property value
+   * @return the object
+   */
   private Object convert(final Field field, final String propertyValue) {
     Class<?> fieldClass = field.getType();
     try {
@@ -765,6 +1137,12 @@ public class AnnotationHelper {
     }
   }
 
+  /**
+   * Checks if is edm annotated.
+   *
+   * @param object the object
+   * @return true, if is edm annotated
+   */
   public boolean isEdmAnnotated(final Object object) {
     if (object == null) {
       return false;
@@ -772,12 +1150,24 @@ public class AnnotationHelper {
     return isEdmAnnotated(object.getClass());
   }
 
+  /**
+   * Checks if is edm type annotated.
+   *
+   * @param clazz the clazz
+   * @return true, if is edm type annotated
+   */
   public boolean isEdmTypeAnnotated(final Class<?> clazz) {
     boolean isComplexEntity = clazz.getAnnotation(EdmComplexType.class) != null;
     boolean isEntity = clazz.getAnnotation(EdmEntityType.class) != null;
     return isComplexEntity || isEntity;
   }
 
+  /**
+   * Checks if is edm annotated.
+   *
+   * @param clazz the clazz
+   * @return true, if is edm annotated
+   */
   public boolean isEdmAnnotated(final Class<?> clazz) {
     if (clazz == null) {
       return false;
@@ -789,14 +1179,32 @@ public class AnnotationHelper {
     }
   }
 
+  /**
+   * Gets the canonical name.
+   *
+   * @param field the field
+   * @return the canonical name
+   */
   public String getCanonicalName(final Field field) {
     return firstCharToUpperCase(field.getName());
   }
 
+  /**
+   * Gets the canonical name.
+   *
+   * @param clazz the clazz
+   * @return the canonical name
+   */
   public String getCanonicalName(final Class<?> clazz) {
     return firstCharToUpperCase(clazz.getSimpleName());
   }
 
+  /**
+   * First char to upper case.
+   *
+   * @param content the content
+   * @return the string
+   */
   private String firstCharToUpperCase(final String content) {
     if (content == null || content.isEmpty()) {
       return content;
@@ -804,6 +1212,12 @@ public class AnnotationHelper {
     return content.substring(0, 1).toUpperCase(Locale.ENGLISH) + content.substring(1);
   }
 
+  /**
+   * Map type kind.
+   *
+   * @param type the type
+   * @return the edm simple type kind
+   */
   public EdmSimpleTypeKind mapTypeKind(final org.apache.olingo.odata2.api.annotation.edm.EdmType type) {
     switch (type) {
     case BINARY:
@@ -846,6 +1260,12 @@ public class AnnotationHelper {
     }
   }
 
+  /**
+   * Map multiplicity.
+   *
+   * @param multiplicity the multiplicity
+   * @return the edm multiplicity
+   */
   public EdmMultiplicity mapMultiplicity(final Multiplicity multiplicity) {
     switch (multiplicity) {
     case ZERO_OR_ONE:
@@ -860,21 +1280,39 @@ public class AnnotationHelper {
   }
 
   /**
-   * 
+   * The Class EdmAnnotationException.
    */
   private static class EdmAnnotationException extends RuntimeException {
 
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 42L;
 
+    /**
+     * Instantiates a new edm annotation exception.
+     *
+     * @param message the message
+     */
     public EdmAnnotationException(final String message) {
       super(message);
     }
   }
 
+  /**
+   * Gets the canonical namespace.
+   *
+   * @param aClass the a class
+   * @return the canonical namespace
+   */
   public String getCanonicalNamespace(final Class<?> aClass) {
     return generateNamespace(aClass);
   }
 
+  /**
+   * Extract container name.
+   *
+   * @param aClass the a class
+   * @return the string
+   */
   public String extractContainerName(final Class<?> aClass) {
     EdmEntitySet entitySet = aClass.getAnnotation(EdmEntitySet.class);
     if (entitySet != null) {

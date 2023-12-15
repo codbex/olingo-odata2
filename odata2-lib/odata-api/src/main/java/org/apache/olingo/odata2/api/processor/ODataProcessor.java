@@ -20,6 +20,7 @@ package org.apache.olingo.odata2.api.processor;
 
 import org.apache.olingo.odata2.api.exception.ODataException;
 
+// TODO: Auto-generated Javadoc
 /**
  * An <code>ODataProcessor</code> is the root interface for processor implementation.
  * A processor handles OData requests like reading or writing entities. All possible
@@ -30,14 +31,18 @@ import org.apache.olingo.odata2.api.exception.ODataException;
 public interface ODataProcessor {
 
   /**
+   * Sets the context.
+   *
    * @param context A request context object which is usually injected by the OData library itself.
-   * @throws ODataException
+   * @throws ODataException the o data exception
    */
   void setContext(ODataContext context) throws ODataException;
 
   /**
+   * Gets the context.
+   *
    * @return A request context object.
-   * @throws ODataException
+   * @throws ODataException the o data exception
    */
   ODataContext getContext() throws ODataException;
 }

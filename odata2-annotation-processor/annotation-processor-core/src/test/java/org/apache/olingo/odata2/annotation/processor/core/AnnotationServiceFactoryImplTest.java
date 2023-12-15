@@ -32,11 +32,17 @@ import org.apache.olingo.odata2.api.ODataService;
 import org.apache.olingo.odata2.api.exception.ODataException;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *
+ * The Class AnnotationServiceFactoryImplTest.
  */
 public class AnnotationServiceFactoryImplTest {
 
+  /**
+   * Creates the from package.
+   *
+   * @throws ODataException the o data exception
+   */
   @Test
   public void createFromPackage() throws ODataException {
     AnnotationServiceFactoryImpl factory = new AnnotationServiceFactoryImpl();
@@ -45,6 +51,11 @@ public class AnnotationServiceFactoryImplTest {
     Assert.assertNotNull(service);
   }
 
+  /**
+   * Creates the from annotated classes.
+   *
+   * @throws ODataException the o data exception
+   */
   @Test
   public void createFromAnnotatedClasses() throws ODataException {
     AnnotationServiceFactoryImpl factory = new AnnotationServiceFactoryImpl();
@@ -61,6 +72,11 @@ public class AnnotationServiceFactoryImplTest {
     Assert.assertNotNull(service);
   }
 
+  /**
+   * Creates the from classes.
+   *
+   * @throws ODataException the o data exception
+   */
   @Test(expected = ODataException.class)
   public void createFromClasses() throws ODataException {
     AnnotationServiceFactoryImpl factory = new AnnotationServiceFactoryImpl();

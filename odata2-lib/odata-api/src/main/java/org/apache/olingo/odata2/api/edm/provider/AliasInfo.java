@@ -18,15 +18,21 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.edm.provider;
 
+// TODO: Auto-generated Javadoc
 /**
- * Objects of this class hold an alias and the associated namespace
+ * Objects of this class hold an alias and the associated namespace.
  */
 public class AliasInfo {
 
+  /** The alias. */
   private String alias;
+  
+  /** The namespace. */
   private String namespace;
 
   /**
+   * Gets the alias.
+   *
    * @return the alias
    */
   public String getAlias() {
@@ -34,7 +40,9 @@ public class AliasInfo {
   }
 
   /**
-   * @param alias
+   * Sets the alias.
+   *
+   * @param alias the alias
    * @return {@link AliasInfo} for method chaining
    */
   public AliasInfo setAlias(final String alias) {
@@ -43,6 +51,8 @@ public class AliasInfo {
   }
 
   /**
+   * Gets the namespace.
+   *
    * @return the namespace which is associated with this alias
    */
   public String getNamespace() {
@@ -50,7 +60,9 @@ public class AliasInfo {
   }
 
   /**
-   * @param namespace
+   * Sets the namespace.
+   *
+   * @param namespace the namespace
    * @return {@link AliasInfo} for method chaining
    */
   public AliasInfo setNamespace(final String namespace) {

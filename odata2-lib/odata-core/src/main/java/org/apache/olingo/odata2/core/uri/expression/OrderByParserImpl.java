@@ -24,11 +24,29 @@ import org.apache.olingo.odata2.api.uri.expression.ExpressionParserException;
 import org.apache.olingo.odata2.api.uri.expression.OrderByExpression;
 import org.apache.olingo.odata2.api.uri.expression.SortOrder;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class OrderByParserImpl.
+ */
 public class OrderByParserImpl extends FilterParserImpl implements OrderByParser {
+  
+  /**
+   * Instantiates a new order by parser impl.
+   *
+   * @param resourceEntityType the resource entity type
+   */
   public OrderByParserImpl(final EdmEntityType resourceEntityType) {
     super(resourceEntityType);
   }
 
+  /**
+   * Parses the order by string.
+   *
+   * @param orderByExpression the order by expression
+   * @return the order by expression
+   * @throws ExpressionParserException the expression parser exception
+   * @throws ExpressionParserInternalError the expression parser internal error
+   */
   @Override
   public OrderByExpression parseOrderByString(final String orderByExpression) throws ExpressionParserException,
       ExpressionParserInternalError {

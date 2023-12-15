@@ -39,12 +39,26 @@ import org.apache.olingo.odata2.api.uri.UriParser;
 import org.apache.olingo.odata2.jpa.processor.api.ODataJPAContext;
 import org.apache.olingo.odata2.jpa.processor.api.exception.ODataJPARuntimeException;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ODataEntityParser.
+ */
 public final class ODataEntityParser {
 
+  /** The context. */
   private ODataJPAContext context;
+  
+  /** The edm. */
   private Edm edm;
+  
+  /** The service root. */
   private String serviceRoot = null;
 
+  /**
+   * Instantiates a new o data entity parser.
+   *
+   * @param context the context
+   */
   public ODataEntityParser(final ODataJPAContext context) {
     this.context = context;
     try {
@@ -54,6 +68,16 @@ public final class ODataEntityParser {
     }
   }
 
+  /**
+   * Parses the entry.
+   *
+   * @param entitySet the entity set
+   * @param content the content
+   * @param requestContentType the request content type
+   * @param merge the merge
+   * @return the o data entry
+   * @throws ODataBadRequestException the o data bad request exception
+   */
   public final ODataEntry parseEntry(final EdmEntitySet entitySet,
       final InputStream content, final String requestContentType, final boolean merge)
       throws ODataBadRequestException {
@@ -69,6 +93,15 @@ public final class ODataEntityParser {
 
   }
 
+  /**
+   * Parses the URI segment with custom options.
+   *
+   * @param segmentFromIndex the segment from index
+   * @param segmentToIndex the segment to index
+   * @param options the options
+   * @return the uri info
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   public final UriInfo parseURISegmentWithCustomOptions(final int segmentFromIndex, final int segmentToIndex,
       final Map<String, String> options) throws ODataJPARuntimeException {
     UriInfo uriInfo = null;
@@ -86,6 +119,14 @@ public final class ODataEntityParser {
     return uriInfo;
   }
 
+  /**
+   * Parses the URI segment.
+   *
+   * @param segmentFromIndex the segment from index
+   * @param segmentToIndex the segment to index
+   * @return the uri info
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   public final UriInfo parseURISegment(final int segmentFromIndex, final int segmentToIndex)
       throws ODataJPARuntimeException {
     UriInfo uriInfo = null;
@@ -103,6 +144,15 @@ public final class ODataEntityParser {
     return uriInfo;
   }
 
+  /**
+   * Parses the link.
+   *
+   * @param entitySet the entity set
+   * @param content the content
+   * @param contentType the content type
+   * @return the uri info
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   public final UriInfo parseLink(final EdmEntitySet entitySet, final InputStream content, final String contentType)
       throws ODataJPARuntimeException {
 
@@ -123,6 +173,14 @@ public final class ODataEntityParser {
     return uri;
   }
 
+  /**
+   * Parses the link segments.
+   *
+   * @param linkSegments the link segments
+   * @param options the options
+   * @return the uri info
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   public UriInfo parseLinkSegments(final List<String> linkSegments, final Map<String, String> options)
       throws ODataJPARuntimeException {
     List<PathSegment> pathSegments = new ArrayList<PathSegment>();
@@ -140,6 +198,14 @@ public final class ODataEntityParser {
     return uriInfo;
   }
 
+  /**
+   * Parses the binding link.
+   *
+   * @param link the link
+   * @param options the options
+   * @return the uri info
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   public UriInfo parseBindingLink(final String link, final Map<String, String> options)
       throws ODataJPARuntimeException {
     final List<PathSegment> pathSegment = getPathSegment(link);
@@ -153,6 +219,12 @@ public final class ODataEntityParser {
     return uriInfo;
   }
 
+  /**
+   * Gets the edm.
+   *
+   * @return the edm
+   * @throws ODataException the o data exception
+   */
   private Edm getEdm() throws ODataException {
     if (edm == null) {
       edm = context.getODataContext().getService().getEntityDataModel();
@@ -160,6 +232,12 @@ public final class ODataEntityParser {
     return edm;
   }
 
+  /**
+   * Gets the path segment.
+   *
+   * @param path the path
+   * @return the path segment
+   */
   private List<PathSegment> getPathSegment(final String path) {
     String trimmedPath = path.replace(serviceRoot, "");
 

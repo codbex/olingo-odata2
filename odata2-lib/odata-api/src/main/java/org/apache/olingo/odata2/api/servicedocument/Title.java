@@ -18,13 +18,16 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.servicedocument;
 
+// TODO: Auto-generated Javadoc
 /**
  * A Title element
- * <p>Title element gives a human-readable title
- * 
+ * <p>Title element gives a human-readable title.
  */
 public interface Title {
+  
   /**
+   * Gets the text.
+   *
    * @return text as String
    */
   public String getText();

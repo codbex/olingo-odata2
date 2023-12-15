@@ -47,10 +47,21 @@ import org.apache.olingo.odata2.jpa.processor.core.mock.data.EdmMockUtilV2;
 import org.apache.olingo.odata2.jpa.processor.core.mock.data.JPATypeMock;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ODataEntityParserTest.
+ */
 public class ODataEntityParserTest {
 
+  /** The parser. */
   private ODataEntityParser parser;
 
+  /**
+   * Mock.
+   *
+   * @param path the path
+   * @return the o data JPA context
+   */
   private ODataJPAContext mock(final String path) {
     ODataServiceMock serviceMock = new ODataServiceMock();
     ODataContextMock contextMock = new ODataContextMock();
@@ -85,6 +96,9 @@ public class ODataEntityParserTest {
     return odataJPAContext;
   }
 
+  /**
+   * Test parse URI segment.
+   */
   @Test
   public void testParseURISegment() {
 
@@ -98,6 +112,9 @@ public class ODataEntityParserTest {
     }
   }
 
+  /**
+   * Test parse URI segment invalid index 00.
+   */
   @Test
   public void testParseURISegmentInvalidIndex00() {
     try {
@@ -110,6 +127,9 @@ public class ODataEntityParserTest {
     }
   }
 
+  /**
+   * Test parse URI segment invalid index 01.
+   */
   @Test
   public void testParseURISegmentInvalidIndex01() {
     try {
@@ -122,6 +142,9 @@ public class ODataEntityParserTest {
     }
   }
 
+  /**
+   * Test parse URI segment invalid index 02.
+   */
   @Test
   public void testParseURISegmentInvalidIndex02() {
     try {
@@ -134,6 +157,9 @@ public class ODataEntityParserTest {
     }
   }
 
+  /**
+   * Test parse URI segment invalid entity type.
+   */
   @Test
   public void testParseURISegmentInvalidEntityType() {
     try {
@@ -145,6 +171,9 @@ public class ODataEntityParserTest {
     }
   }
 
+  /**
+   * Test parse binding link.
+   */
   @Test
   public void testParseBindingLink() {
     try {
@@ -158,6 +187,9 @@ public class ODataEntityParserTest {
 
   }
 
+  /**
+   * Test parse binding link negative.
+   */
   @Test
   public void testParseBindingLinkNegative() {
     try {
@@ -169,6 +201,9 @@ public class ODataEntityParserTest {
     }
   }
 
+  /**
+   * Test parse link.
+   */
   @Test
   public void testParseLink() {
     parser = new ODataEntityParser(mock("JPATypeMock(2)"));
@@ -186,6 +221,9 @@ public class ODataEntityParserTest {
     }
   }
 
+  /**
+   * Test parse link without service root.
+   */
   @Test
   public void testParseLinkWithoutServiceRoot() {
     parser = new ODataEntityParser(mock("JPATypeMock(2)"));
@@ -203,6 +241,9 @@ public class ODataEntityParserTest {
     }
   }
 
+  /**
+   * Test parse link negative.
+   */
   @Test
   public void testParseLinkNegative() {
     parser = new ODataEntityParser(mock("JPATypeMock(2)"));
@@ -218,6 +259,12 @@ public class ODataEntityParserTest {
     }
   }
 
+  /**
+   * Mock URI content.
+   *
+   * @param variant the variant
+   * @return the input stream
+   */
   private InputStream mockURIContent(final int variant) {
     String uri = null;
     InputStream is = null;

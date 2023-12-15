@@ -20,6 +20,7 @@ package org.apache.olingo.odata2.jpa.processor.api.model;
 
 import org.apache.olingo.odata2.api.edm.provider.Key;
 
+// TODO: Auto-generated Javadoc
 /**
  * A view on Java Persistence Entity Key Attributes and EDM Key properties. Java
  * Persistence Key Attributes of type
@@ -36,9 +37,9 @@ import org.apache.olingo.odata2.api.edm.provider.Key;
  * 
  * 
  * <p>
- * @org.apache.olingo.odata2.DoNotImplement
+ *
  * @see org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmPropertyView
- * 
+ * @org.apache.olingo.odata2.DoNotImplement 
  */
 public interface JPAEdmKeyView extends JPAEdmBaseView {
   /**

@@ -56,24 +56,42 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.xml.sax.SAXException;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class AtomFeedSerializerTest.
  */
 public class AtomFeedSerializerTest extends AbstractProviderTest {
+  
+  /** The expected ex. */
   @Rule
   public ExpectedException expectedEx = ExpectedException.none();
 
+  /** The employee X path string. */
   private String employeeXPathString = "/a:entry/a:link[@href=\"Rooms('1')/nr_Employees\" and @title='nr_Employees']";
 
+  /** The Constant EXP_MSG. */
   private static final String EXP_MSG = "Write properties are mandatory for XML.";
+  
+  /** The Constant ERROR_MSG. */
   private static final String ERROR_MSG = "Entity or expanded entity cannot have null value.";
   
+  /**
+   * Instantiates a new atom feed serializer test.
+   *
+   * @param type the type
+   */
   public AtomFeedSerializerTest(final StreamWriterImplType type) {
     super(type);
   }
 
+  /** The view. */
   private GetEntitySetUriInfo view;
 
+  /**
+   * Before.
+   *
+   * @throws Exception the exception
+   */
   @Before
   public void before() throws Exception {
     initializeRoomData(1);
@@ -84,6 +102,11 @@ public class AtomFeedSerializerTest extends AbstractProviderTest {
     when(view.getTargetEntitySet()).thenReturn(set);
   }
 
+  /**
+   * Entity with inline feed.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entityWithInlineFeed() throws Exception {
     Entity roomData = new Entity();
@@ -122,6 +145,11 @@ public class AtomFeedSerializerTest extends AbstractProviderTest {
     verifyEmployees(employeeXPathString, xmlString);
   }
 
+  /**
+   * Entity with partial inline feed.
+   *
+   * @throws Exception the exception
+   */
   public void entityWithPartialInlineFeed() throws Exception {
     expectedEx.expect(EntityProviderException.class);
     expectedEx.expectMessage("Entity or expanded entity cannot have null value.");
@@ -165,6 +193,11 @@ public class AtomFeedSerializerTest extends AbstractProviderTest {
     verifyEmployees(employeeXPathString, xmlString);
   }
 
+  /**
+   * Entity with partial null inline feed.
+   *
+   * @throws Exception the exception
+   */
   public void entityWithPartialNullInlineFeed() throws Exception {
     expectedEx.expect(EntityProviderException.class);
     expectedEx.expectMessage("Entity or expanded entity cannot have null value.");
@@ -205,6 +238,11 @@ public class AtomFeedSerializerTest extends AbstractProviderTest {
     verifyEmployees(employeeXPathString, xmlString);
   }
 
+  /**
+   * Entity without id inline feed.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void entityWithoutIdInlineFeed() throws Exception {
     Entity roomData = new Entity();
@@ -237,6 +275,11 @@ public class AtomFeedSerializerTest extends AbstractProviderTest {
     verifyEmployees(employeeXPathString, xmlString);
   }
 
+  /**
+   * Entity with empty feed.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entityWithEmptyFeed() throws Exception {
     Entity roomData = new Entity();
@@ -259,6 +302,11 @@ public class AtomFeedSerializerTest extends AbstractProviderTest {
     assertXpathExists("/a:entry/a:link", xmlString);
   }
 
+  /**
+   * Entity with empty entity in feed.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entityWithEmptyEntityInFeed() throws Exception {
     Entity roomData = new Entity();
@@ -290,6 +338,11 @@ public class AtomFeedSerializerTest extends AbstractProviderTest {
     assertXpathExists(employeeXPathString + "/m:inline/a:feed/a:entry", xmlString);
   }
 
+  /**
+   * Entity with null feed.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void entityWithNullFeed() throws Exception {
     Entity roomData = new Entity();
@@ -311,6 +364,11 @@ public class AtomFeedSerializerTest extends AbstractProviderTest {
     assertXpathExists("/a:entry/a:link", xmlString);
   }
 
+  /**
+   * Entity with null entity in feed.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void entityWithNullEntityInFeed() throws Exception {
     Entity roomData = new Entity();
@@ -333,6 +391,11 @@ public class AtomFeedSerializerTest extends AbstractProviderTest {
     assertXpathExists("/a:entry/a:link", xmlString);
   }
 
+  /**
+   * Entity without inline entity property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entityWithoutInlineEntityProperty() throws Exception {
     Entity roomData = new Entity();
@@ -369,6 +432,11 @@ public class AtomFeedSerializerTest extends AbstractProviderTest {
     verifyEmployees(employeeXPathString, xmlString);
   }
 
+  /**
+   * Entity without inline collection property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entityWithoutInlineCollectionProperty() throws Exception {
     Entity roomData = new Entity();
@@ -403,6 +471,11 @@ public class AtomFeedSerializerTest extends AbstractProviderTest {
     verifyEmployees(employeeXPathString, xmlString);
   }
 
+  /**
+   * Entity without property inline feed.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entityWithoutPropertyInlineFeed() throws Exception {
     Entity roomData = new Entity();
@@ -436,6 +509,11 @@ public class AtomFeedSerializerTest extends AbstractProviderTest {
     verifyEmployeesContent(employeeXPathString, xmlString);
   }
 
+  /**
+   * Entity with property at collection for inline feed.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entityWithPropertyAtCollectionForInlineFeed() throws Exception {
     Entity roomData = new Entity();
@@ -469,6 +547,11 @@ public class AtomFeedSerializerTest extends AbstractProviderTest {
     verifyEmployeesContent(employeeXPathString, xmlString);
   }
 
+  /**
+   * Entity with two property inline feed.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entityWithTwoPropertyInlineFeed() throws Exception {
     Entity roomData = new Entity();
@@ -507,6 +590,15 @@ public class AtomFeedSerializerTest extends AbstractProviderTest {
     verifyEmployeesForCollection(employeeXPathString, xmlString, COLL_URI);
   }
 
+  /**
+   * Verify employees.
+   *
+   * @param path the path
+   * @param xmlString the xml string
+   * @throws XpathException the xpath exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws SAXException the SAX exception
+   */
   private void verifyEmployees(final String path, final String xmlString) throws XpathException, IOException,
       SAXException {
     assertXpathExists(path, xmlString);
@@ -533,6 +625,15 @@ public class AtomFeedSerializerTest extends AbstractProviderTest {
 
   }
 
+  /**
+   * Verify employees content.
+   *
+   * @param path the path
+   * @param xmlString the xml string
+   * @throws XpathException the xpath exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws SAXException the SAX exception
+   */
   private void verifyEmployeesContent(final String path, final String xmlString) throws XpathException, IOException,
       SAXException {
     assertXpathExists(path, xmlString);
@@ -551,6 +652,16 @@ public class AtomFeedSerializerTest extends AbstractProviderTest {
 
   }
 
+  /**
+   * Verify employees for collection.
+   *
+   * @param path the path
+   * @param xmlString the xml string
+   * @param coll_uri the coll uri
+   * @throws XpathException the xpath exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws SAXException the SAX exception
+   */
   private void verifyEmployeesForCollection(final String path, final String xmlString, URI coll_uri)
       throws XpathException, IOException,
       SAXException {
@@ -578,6 +689,13 @@ public class AtomFeedSerializerTest extends AbstractProviderTest {
 
   }
 
+  /**
+   * Verify response.
+   *
+   * @param response the response
+   * @return the string
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private String verifyResponse(final ODataResponse response) throws IOException {
     assertNotNull(response);
     assertNotNull(response.getEntity());
@@ -586,6 +704,11 @@ public class AtomFeedSerializerTest extends AbstractProviderTest {
     return xmlString;
   }
 
+  /**
+   * Feed.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void feed() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -613,6 +736,11 @@ public class AtomFeedSerializerTest extends AbstractProviderTest {
     assertXpathExists("/a:feed/a:entry/a:content/m:properties/d:isScrumTeam", xmlString);    
   }
   
+  /**
+   * Feed with empty data.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void feedWithEmptyData() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -638,6 +766,11 @@ public class AtomFeedSerializerTest extends AbstractProviderTest {
     assertTrue(xmlString.contains("<entry><content type=\"application/xml\"/></entry>"));
   }
   
+  /**
+   * Feed with null data.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void feedWithNullData() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -649,6 +782,11 @@ public class AtomFeedSerializerTest extends AbstractProviderTest {
     }
   }
   
+  /**
+   * Feed with metadata.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void feedWithMetadata() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -679,6 +817,11 @@ public class AtomFeedSerializerTest extends AbstractProviderTest {
     assertXpathExists("/a:feed/a:entry/a:content/m:properties/d:isScrumTeam", xmlString);
   }
   
+  /**
+   * Feed with global entity properties.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void feedWithGlobalEntityProperties() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -705,6 +848,11 @@ public class AtomFeedSerializerTest extends AbstractProviderTest {
     assertXpathExists("/a:feed/a:entry/a:content/m:properties/d:isScrumTeam", xmlString);
   }
   
+  /**
+   * Feed without collection properties.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void feedWithoutCollectionProperties() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -729,6 +877,11 @@ public class AtomFeedSerializerTest extends AbstractProviderTest {
     }
   }
   
+  /**
+   * Unbalanced property feed with inline feed.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void unbalancedPropertyFeedWithInlineFeed() throws Exception {
     Edm edm = MockFacade.getMockEdm();
@@ -791,6 +944,15 @@ public class AtomFeedSerializerTest extends AbstractProviderTest {
     verifyRoomsFeedWithInlineEmployeeFeed(xmlString, BASE_URI);
   }
   
+  /**
+   * Verify rooms feed with inline employee feed.
+   *
+   * @param xmlString the xml string
+   * @param coll_uri the coll uri
+   * @throws XpathException the xpath exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws SAXException the SAX exception
+   */
   private void verifyRoomsFeedWithInlineEmployeeFeed(final String xmlString, URI coll_uri)
       throws XpathException, IOException,
       SAXException {
@@ -810,6 +972,11 @@ public class AtomFeedSerializerTest extends AbstractProviderTest {
 
   }
   
+  /**
+   * Unbalanced property feed with inline feed and navigation link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void unbalancedPropertyFeedWithInlineFeedAndNavigationLink() throws Exception {
     Edm edm = MockFacade.getMockEdm();
@@ -879,6 +1046,11 @@ public class AtomFeedSerializerTest extends AbstractProviderTest {
     verifyRoomsFeedWithInlineEmployeeFeedWithNavigationLinks(xmlString, BASE_URI);
   }
 
+  /**
+   * Unbalanced property feed with inline feed and navigation link without key.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void unbalancedPropertyFeedWithInlineFeedAndNavigationLinkWithoutKey() throws Exception {
     Edm edm = MockFacade.getMockEdm();
@@ -942,6 +1114,15 @@ public class AtomFeedSerializerTest extends AbstractProviderTest {
     verifyRoomsFeedWithInlineEmployeeFeedWithNavigationLinksWithoutKeys(xmlString, BASE_URI);
   }
   
+  /**
+   * Verify rooms feed with inline employee feed with navigation links.
+   *
+   * @param xmlString the xml string
+   * @param coll_uri the coll uri
+   * @throws XpathException the xpath exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws SAXException the SAX exception
+   */
   private void verifyRoomsFeedWithInlineEmployeeFeedWithNavigationLinks(String xmlString, URI coll_uri) 
       throws XpathException, IOException, SAXException {
     assertXpathExists("/a:feed[@xml:base='" + coll_uri + "']", xmlString);
@@ -961,6 +1142,11 @@ public class AtomFeedSerializerTest extends AbstractProviderTest {
     
   }
   
+  /**
+   * Unbalanced property feed with inline entry and navigation link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void unbalancedPropertyFeedWithInlineEntryAndNavigationLink() throws Exception {
     Edm edm = MockFacade.getMockEdm();
@@ -1012,6 +1198,15 @@ public class AtomFeedSerializerTest extends AbstractProviderTest {
     assertXpathExists("/a:feed/a:entry/a:link[@href=\"Buildings('1')\"]", xmlString);
   }
   
+  /**
+   * Verify rooms feed with inline employee feed with navigation links without keys.
+   *
+   * @param xmlString the xml string
+   * @param coll_uri the coll uri
+   * @throws XpathException the xpath exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws SAXException the SAX exception
+   */
   private void verifyRoomsFeedWithInlineEmployeeFeedWithNavigationLinksWithoutKeys(String xmlString, URI coll_uri) 
       throws XpathException, IOException, SAXException {
     assertXpathExists("/a:feed[@xml:base='" + coll_uri + "']", xmlString);

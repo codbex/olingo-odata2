@@ -31,13 +31,29 @@ import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAEdmMappingModelService.
+ */
 public class JPAEdmMappingModelService implements JPAEdmMappingModelAccess {
 
+    /** The mapping model exists. */
     boolean mappingModelExists = true;
+    
+    /** The mapping model. */
     private JPAEdmMappingModel mappingModel;
+    
+    /** The mapping model stream. */
     private InputStream mappingModelStream = null;
+    
+    /** The mapping model name. */
     private final String mappingModelName;
 
+    /**
+     * Instantiates a new JPA edm mapping model service.
+     *
+     * @param ctx the ctx
+     */
     public JPAEdmMappingModelService(final ODataJPAContext ctx) {
         JPAEdmExtension ext = null;
         mappingModelName = ctx.getJPAEdmMappingModel();
@@ -51,6 +67,9 @@ public class JPAEdmMappingModelService implements JPAEdmMappingModelAccess {
         mappingModelExists = mappingModelName != null || mappingModelStream != null;
     }
 
+    /**
+     * Load mapping model.
+     */
     @Override
     public void loadMappingModel() {
         InputStream is = null;
@@ -88,16 +107,32 @@ public class JPAEdmMappingModelService implements JPAEdmMappingModelAccess {
         }
     }
 
+    /**
+     * Checks if is mapping model exists.
+     *
+     * @return true, if is mapping model exists
+     */
     @Override
     public boolean isMappingModelExists() {
         return mappingModelExists;
     }
 
+    /**
+     * Gets the JPA edm mapping model.
+     *
+     * @return the JPA edm mapping model
+     */
     @Override
     public JPAEdmMappingModel getJPAEdmMappingModel() {
         return mappingModel;
     }
 
+    /**
+     * Map JPA persistence unit.
+     *
+     * @param persistenceUnitName the persistence unit name
+     * @return the string
+     */
     @Override
     public String mapJPAPersistenceUnit(final String persistenceUnitName) {
 
@@ -110,6 +145,12 @@ public class JPAEdmMappingModelService implements JPAEdmMappingModelAccess {
         return null;
     }
 
+    /**
+     * Map JPA entity type.
+     *
+     * @param jpaEntityTypeName the jpa entity type name
+     * @return the string
+     */
     @Override
     public String mapJPAEntityType(final String jpaEntityTypeName) {
 
@@ -120,6 +161,12 @@ public class JPAEdmMappingModelService implements JPAEdmMappingModelAccess {
         return null;
     }
 
+    /**
+     * Map JPA entity set.
+     *
+     * @param jpaEntityTypeName the jpa entity type name
+     * @return the string
+     */
     @Override
     public String mapJPAEntitySet(final String jpaEntityTypeName) {
         JPAEntityTypeMapType jpaEntityTypeMap = searchJPAEntityTypeMapType(jpaEntityTypeName);
@@ -129,6 +176,13 @@ public class JPAEdmMappingModelService implements JPAEdmMappingModelAccess {
         return null;
     }
 
+    /**
+     * Map JPA attribute.
+     *
+     * @param jpaEntityTypeName the jpa entity type name
+     * @param jpaAttributeName the jpa attribute name
+     * @return the string
+     */
     @Override
     public String mapJPAAttribute(final String jpaEntityTypeName, final String jpaAttributeName) {
         JPAEntityTypeMapType jpaEntityTypeMap = searchJPAEntityTypeMapType(jpaEntityTypeName);
@@ -148,6 +202,13 @@ public class JPAEdmMappingModelService implements JPAEdmMappingModelAccess {
         return null;
     }
 
+    /**
+     * Map JPA relationship.
+     *
+     * @param jpaEntityTypeName the jpa entity type name
+     * @param jpaRelationshipName the jpa relationship name
+     * @return the string
+     */
     @Override
     public String mapJPARelationship(final String jpaEntityTypeName, final String jpaRelationshipName) {
         JPAEntityTypeMapType jpaEntityTypeMap = searchJPAEntityTypeMapType(jpaEntityTypeName);
@@ -164,6 +225,12 @@ public class JPAEdmMappingModelService implements JPAEdmMappingModelAccess {
         return null;
     }
 
+    /**
+     * Map JPA embeddable type.
+     *
+     * @param jpaEmbeddableTypeName the jpa embeddable type name
+     * @return the string
+     */
     @Override
     public String mapJPAEmbeddableType(final String jpaEmbeddableTypeName) {
         JPAEmbeddableTypeMapType jpaEmbeddableType = searchJPAEmbeddableTypeMapType(jpaEmbeddableTypeName);
@@ -173,6 +240,13 @@ public class JPAEdmMappingModelService implements JPAEdmMappingModelAccess {
         return null;
     }
 
+    /**
+     * Map JPA embeddable type attribute.
+     *
+     * @param jpaEmbeddableTypeName the jpa embeddable type name
+     * @param jpaAttributeName the jpa attribute name
+     * @return the string
+     */
     @Override
     public String mapJPAEmbeddableTypeAttribute(final String jpaEmbeddableTypeName, final String jpaAttributeName) {
         JPAEmbeddableTypeMapType jpaEmbeddableType = searchJPAEmbeddableTypeMapType(jpaEmbeddableTypeName);
@@ -188,6 +262,12 @@ public class JPAEdmMappingModelService implements JPAEdmMappingModelAccess {
         return null;
     }
 
+    /**
+     * Search JPA entity type map type.
+     *
+     * @param jpaEntityTypeName the jpa entity type name
+     * @return the JPA entity type map type
+     */
     private JPAEntityTypeMapType searchJPAEntityTypeMapType(final String jpaEntityTypeName) {
         if (mappingModel != null) {
             List<JPAEntityTypeMapType> types = mappingModel.getPersistenceUnit()
@@ -203,6 +283,12 @@ public class JPAEdmMappingModelService implements JPAEdmMappingModelAccess {
         return null;
     }
 
+    /**
+     * Search JPA embeddable type map type.
+     *
+     * @param jpaEmbeddableTypeName the jpa embeddable type name
+     * @return the JPA embeddable type map type
+     */
     private JPAEmbeddableTypeMapType searchJPAEmbeddableTypeMapType(final String jpaEmbeddableTypeName) {
         if (null != mappingModel.getPersistenceUnit() && null != mappingModel.getPersistenceUnit()
                                                                              .getJPAEmbeddableTypes()) {
@@ -218,6 +304,11 @@ public class JPAEdmMappingModelService implements JPAEdmMappingModelAccess {
         return null;
     }
 
+    /**
+     * Load mapping model input stream.
+     *
+     * @return the input stream
+     */
     protected InputStream loadMappingModelInputStream() {
         if (mappingModelStream != null) {
             return mappingModelStream;
@@ -227,6 +318,12 @@ public class JPAEdmMappingModelService implements JPAEdmMappingModelAccess {
         return (modelStream != null) ? modelStream : classLoader.getResourceAsStream(mappingModelName);
     }
 
+    /**
+     * Check exclusion of JPA entity type.
+     *
+     * @param jpaEntityTypeName the jpa entity type name
+     * @return true, if successful
+     */
     @Override
     public boolean checkExclusionOfJPAEntityType(final String jpaEntityTypeName) {
         JPAEntityTypeMapType type = searchJPAEntityTypeMapType(jpaEntityTypeName);
@@ -236,6 +333,13 @@ public class JPAEdmMappingModelService implements JPAEdmMappingModelAccess {
         return false;
     }
 
+    /**
+     * Check exclusion of JPA attribute type.
+     *
+     * @param jpaEntityTypeName the jpa entity type name
+     * @param jpaAttributeName the jpa attribute name
+     * @return true, if successful
+     */
     @Override
     public boolean checkExclusionOfJPAAttributeType(final String jpaEntityTypeName, final String jpaAttributeName) {
         JPAEntityTypeMapType type = searchJPAEntityTypeMapType(jpaEntityTypeName);
@@ -251,6 +355,12 @@ public class JPAEdmMappingModelService implements JPAEdmMappingModelAccess {
         return false;
     }
 
+    /**
+     * Check exclusion of JPA embeddable type.
+     *
+     * @param jpaEmbeddableTypeName the jpa embeddable type name
+     * @return true, if successful
+     */
     @Override
     public boolean checkExclusionOfJPAEmbeddableType(final String jpaEmbeddableTypeName) {
         JPAEmbeddableTypeMapType type = searchJPAEmbeddableTypeMapType(jpaEmbeddableTypeName);
@@ -260,6 +370,13 @@ public class JPAEdmMappingModelService implements JPAEdmMappingModelAccess {
         return false;
     }
 
+    /**
+     * Check exclusion of JPA embeddable attribute type.
+     *
+     * @param jpaEmbeddableTypeName the jpa embeddable type name
+     * @param jpaAttributeName the jpa attribute name
+     * @return true, if successful
+     */
     @Override
     public boolean checkExclusionOfJPAEmbeddableAttributeType(final String jpaEmbeddableTypeName, final String jpaAttributeName) {
         JPAEmbeddableTypeMapType type = searchJPAEmbeddableTypeMapType(jpaEmbeddableTypeName);

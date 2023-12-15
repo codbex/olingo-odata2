@@ -28,30 +28,60 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import jakarta.servlet.http.HttpServlet;
 
+// TODO: Auto-generated Javadoc
 /**
- *
+ * The Class TestServer.
  */
 public class TestServer {
+    
+    /** The Constant log. */
     private static final Logger log = LoggerFactory.getLogger(TestServer.class);
 
+    /** The Constant PORT_MIN. */
     private static final int PORT_MIN = 19000;
+    
+    /** The Constant PORT_MAX. */
     private static final int PORT_MAX = 19200;
+    
+    /** The Constant PORT_INC. */
     private static final int PORT_INC = 1;
 
+    /** The Constant DEFAULT_SCHEME. */
     private static final String DEFAULT_SCHEME = "http";
+    
+    /** The Constant DEFAULT_HOST. */
     private static final String DEFAULT_HOST = "localhost";
+    
+    /** The Constant DEFAULT_PATH. */
     private static final String DEFAULT_PATH = "/test";
 
+    /** The endpoint. */
     private URI endpoint; // = URI.create("http://localhost:19080/test"); // no slash at the end !!!
+    
+    /** The path. */
     private final String path;
 
+    /** The path split. */
     private int pathSplit = 0;
+    
+    /** The servlet type. */
     private final ServletType servletType;
 
+    /**
+     * Instantiates a new test server.
+     *
+     * @param type the type
+     */
     public TestServer(final ServletType type) {
         this(DEFAULT_PATH, type);
     }
 
+    /**
+     * Instantiates a new test server.
+     *
+     * @param path the path
+     * @param type the type
+     */
     public TestServer(final String path, final ServletType type) {
         if (path.startsWith("/")) {
             this.path = path;
@@ -61,20 +91,42 @@ public class TestServer {
         servletType = type;
     }
 
+    /**
+     * Gets the path split.
+     *
+     * @return the path split
+     */
     public int getPathSplit() {
         return pathSplit;
     }
 
+    /**
+     * Sets the path split.
+     *
+     * @param pathSplit the new path split
+     */
     public void setPathSplit(final int pathSplit) {
         this.pathSplit = pathSplit;
     }
 
+    /**
+     * Gets the endpoint.
+     *
+     * @return the endpoint
+     */
     public URI getEndpoint() {
         return URI.create(endpoint + "/");
     }
 
+    /** The server. */
     private Server server;
 
+    /**
+     * Start server.
+     *
+     * @param factoryClass the factory class
+     * @param fixedPort the fixed port
+     */
     public void startServer(final Class<? extends ODataServiceFactory> factoryClass, final int fixedPort) {
         try {
             final ServletContextHandler contextHandler = createContextHandler(factoryClass);
@@ -91,6 +143,11 @@ public class TestServer {
         }
     }
 
+    /**
+     * Start server.
+     *
+     * @param factoryClass the factory class
+     */
     public void startServer(final Class<? extends ODataServiceFactory> factoryClass) {
         try {
             for (int port = PORT_MIN; port <= PORT_MAX; port += PORT_INC) {
@@ -118,6 +175,13 @@ public class TestServer {
         }
     }
 
+    /**
+     * Creates the context handler.
+     *
+     * @param factoryClass the factory class
+     * @return the servlet context handler
+     * @throws Exception the exception
+     */
     private ServletContextHandler createContextHandler(final Class<? extends ODataServiceFactory> factoryClass) throws Exception {
         ServletHolder odataServletHolder = null;
 
@@ -148,6 +212,11 @@ public class TestServer {
         return contextHandler;
     }
 
+    /**
+     * Start server.
+     *
+     * @param service the service
+     */
     public void startServer(final ODataService service) {
         startServer(FitStaticServiceFactory.class);
 
@@ -156,6 +225,12 @@ public class TestServer {
         }
     }
 
+    /**
+     * Start server.
+     *
+     * @param service the service
+     * @param clazz the clazz
+     */
     public void startServer(final ODataService service, Class<? extends FitStaticServiceFactory> clazz) {
         startServer(clazz);
 
@@ -164,6 +239,9 @@ public class TestServer {
         }
     }
 
+    /**
+     * Stop server.
+     */
     public void stopServer() {
         try {
             if (server != null) {

@@ -20,6 +20,7 @@ package org.apache.olingo.odata2.api.uri.expression;
 
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
 /**
  * Represents a $orderby expression
  * Used to define the <b>root</b> expression node in an $filter expression tree.
@@ -27,14 +28,18 @@ import java.util.List;
  * 
  */
 public interface OrderByExpression extends CommonExpression {
+  
   /**
+   * Gets the expression string.
+   *
    * @return Returns the $filter expression string used to build the expression tree
    */
   String getExpressionString();
 
   /**
-   * @return
-   * Returns a ordered list of order expressions contained in the $orderby expression string
+   * Gets the orders.
+   *
+   * @return Returns a ordered list of order expressions contained in the $orderby expression string
    * <p>
    * <b>For example</b>: The orderby expression build from "$orderby=name asc, age desc"
    * would contain to order expression.
@@ -42,6 +47,8 @@ public interface OrderByExpression extends CommonExpression {
   public List<OrderExpression> getOrders();
 
   /**
+   * Gets the orders count.
+   *
    * @return Returns the count of order expressions contained in the $orderby expression string
    */
   public int getOrdersCount();

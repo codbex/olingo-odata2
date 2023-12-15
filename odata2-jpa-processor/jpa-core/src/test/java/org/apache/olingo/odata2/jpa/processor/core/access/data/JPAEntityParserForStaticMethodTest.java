@@ -32,8 +32,15 @@ import org.apache.olingo.odata2.jpa.processor.api.exception.ODataJPARuntimeExcep
 import org.apache.olingo.odata2.jpa.processor.core.common.ODataJPATestConstants;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAEntityParserForStaticMethodTest.
+ */
 public class JPAEntityParserForStaticMethodTest {
 
+    /**
+     * Test to string default.
+     */
     @Test
     public void testToStringDefault() {
 
@@ -42,18 +49,27 @@ public class JPAEntityParserForStaticMethodTest {
 
     }
 
+    /**
+     * Test to string null.
+     */
     @Test
     public void testToStringNull() {
         Character[] input = null;
         assertNull(JPAEntityParser.toString(input));
     }
 
+    /**
+     * Test to string partial null.
+     */
     @Test
     public void testToStringPartialNull() {
         Character[] input = {'A', null};
         assertEquals("A", JPAEntityParser.toString(input));
     }
 
+    /**
+     * Test to character array default.
+     */
     @Test
     public void testToCharacterArrayDefault() {
         String input = new String("AB");
@@ -64,6 +80,9 @@ public class JPAEntityParserForStaticMethodTest {
         assertTrue(ch[1].equals('B'));
     }
 
+    /**
+     * Test to character array null.
+     */
     @Test
     public void testToCharacterArrayNull() {
         String input = null;
@@ -72,6 +91,9 @@ public class JPAEntityParserForStaticMethodTest {
         assertNull(ch);
     }
 
+    /**
+     * Test get property character.
+     */
     @Test
     public void testGetPropertyCharacter() {
         try {
@@ -84,6 +106,9 @@ public class JPAEntityParserForStaticMethodTest {
         }
     }
 
+    /**
+     * Test get property character null.
+     */
     @Test
     public void testGetPropertyCharacterNull() {
         try {
@@ -96,6 +121,9 @@ public class JPAEntityParserForStaticMethodTest {
         }
     }
 
+    /**
+     * Test get property character array.
+     */
     @Test
     public void testGetPropertyCharacterArray() {
         try {
@@ -108,6 +136,9 @@ public class JPAEntityParserForStaticMethodTest {
         }
     }
 
+    /**
+     * Test get property character array null.
+     */
     @Test
     public void testGetPropertyCharacterArrayNull() {
         try {
@@ -120,6 +151,9 @@ public class JPAEntityParserForStaticMethodTest {
         }
     }
 
+    /**
+     * Test get property char.
+     */
     @Test
     public void testGetPropertyChar() {
         try {
@@ -132,6 +166,9 @@ public class JPAEntityParserForStaticMethodTest {
         }
     }
 
+    /**
+     * Test get property char null.
+     */
     @Test
     public void testGetPropertyCharNull() {
         try {
@@ -144,6 +181,9 @@ public class JPAEntityParserForStaticMethodTest {
         }
     }
 
+    /**
+     * Test get property char array.
+     */
     @Test
     public void testGetPropertyCharArray() {
         try {
@@ -156,6 +196,9 @@ public class JPAEntityParserForStaticMethodTest {
         }
     }
 
+    /**
+     * Test get property char array null.
+     */
     @Test
     public void testGetPropertyCharArrayNull() {
         try {
@@ -168,6 +211,9 @@ public class JPAEntityParserForStaticMethodTest {
         }
     }
 
+    /**
+     * Test get property char array value null.
+     */
     @Test
     public void testGetPropertyCharArrayValueNull() {
         try {
@@ -180,6 +226,9 @@ public class JPAEntityParserForStaticMethodTest {
         }
     }
 
+    /**
+     * Test get property object.
+     */
     @Test
     public void testGetPropertyObject() {
 
@@ -193,6 +242,9 @@ public class JPAEntityParserForStaticMethodTest {
         }
     }
 
+    /**
+     * Test get property object with parameters.
+     */
     @Test
     public void testGetPropertyObjectWithParameters() {
 
@@ -207,6 +259,9 @@ public class JPAEntityParserForStaticMethodTest {
         }
     }
 
+    /**
+     * Test get string.
+     */
     @Test
     public void testGetString() {
         char[] expectedChar = {'a', 'b', 'c'};
@@ -221,6 +276,9 @@ public class JPAEntityParserForStaticMethodTest {
         }
     }
 
+    /**
+     * Test get bytes.
+     */
     @Test
     public void testGetBytes() {
         final String fileName = "SalesOrderProcessingMappingModels.xml";
@@ -252,50 +310,112 @@ public class JPAEntityParserForStaticMethodTest {
         }
     }
 
+    /**
+     * Gets the character.
+     *
+     * @return the character
+     */
     public Character getCharacter() {
         return new Character('A');
     }
 
+    /**
+     * Gets the character null.
+     *
+     * @return the character null
+     */
     public Character getCharacterNull() {
         return null;
     }
 
+    /**
+     * Gets the character array.
+     *
+     * @return the character array
+     */
     public Character[] getCharacterArray() {
         return new Character[] {'A', 'B'};
     }
 
+    /**
+     * Gets the character array null.
+     *
+     * @return the character array null
+     */
     public Character[] getCharacterArrayNull() {
         return null;
     }
 
+    /**
+     * Gets the char.
+     *
+     * @return the char
+     */
     public char getChar() {
         return 'A';
     }
 
+    /**
+     * Gets the char null.
+     *
+     * @return the char null
+     */
     public char getCharNull() {
         return '\u0000';
     }
 
+    /**
+     * Gets the char array.
+     *
+     * @return the char array
+     */
     public char[] getCharArray() {
         return new char[] {'A', 'B'};
     }
 
+    /**
+     * Gets the char array null.
+     *
+     * @return the char array null
+     */
     public char[] getCharArrayNull() {
         return null;
     }
 
+    /**
+     * Gets the char array value null.
+     *
+     * @return the char array value null
+     */
     public char[] getCharArrayValueNull() {
         return new char[] {'A', '\u0000'};
     }
 
+    /**
+     * Gets the object.
+     *
+     * @return the object
+     */
     public Object getObject() {
         return new Object();
     }
 
+    /**
+     * Gets the object with parameters.
+     *
+     * @param ob1 the ob 1
+     * @return the object with parameters
+     */
     public Object getObjectWithParameters(Object ob1) {
         return new Object();
     }
 
+    /**
+     * Gets the parameter type for method.
+     *
+     * @param methodName the method name
+     * @return the parameter type for method
+     */
     private Class<?>[] getParameterTypeForMethod(String methodName) {
 
         Method[] methods = JPAEntityParserForStaticMethodTest.class.getMethods();

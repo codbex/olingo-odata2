@@ -54,15 +54,33 @@ import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAEdmAssociationTest.
+ */
 public class JPAEdmAssociationTest extends JPAEdmTestModelView {
 
+  /** The obj association. */
   private JPAEdmAssociation objAssociation = null;
+  
+  /** The association name. */
   private static String ASSOCIATION_NAME = "SalesOrderHeader_String_One_Many1";
+  
+  /** The local view. */
   private JPAEdmAssociationTest localView = null;
+  
+  /** The Constant PUNIT_NAME. */
   private static final String PUNIT_NAME = "salesorderprocessing";
+  
+  /** The variant. */
   private int variant;
+  
+  /** The join column names. */
   private List<String[]> joinColumnNames = null;
 
+  /**
+   * Setup.
+   */
   @Before
   public void setup() {
     localView = new JPAEdmAssociationTest();
@@ -76,6 +94,11 @@ public class JPAEdmAssociationTest extends JPAEdmTestModelView {
     }
   }
 
+  /**
+   * Gets the edm association end 1.
+   *
+   * @return the edm association end 1
+   */
   @Override
   public AssociationEnd getEdmAssociationEnd1() {
     AssociationEnd associationEnd = new AssociationEnd();
@@ -85,6 +108,11 @@ public class JPAEdmAssociationTest extends JPAEdmTestModelView {
     return associationEnd;
   }
 
+  /**
+   * Gets the edm association end 2.
+   *
+   * @return the edm association end 2
+   */
   @Override
   public AssociationEnd getEdmAssociationEnd2() {
     AssociationEnd associationEnd = new AssociationEnd();
@@ -94,6 +122,11 @@ public class JPAEdmAssociationTest extends JPAEdmTestModelView {
     return associationEnd;
   }
 
+  /**
+   * Gets the edm association.
+   *
+   * @return the edm association
+   */
   @Override
   public Association getEdmAssociation() {
     Association association = new Association();
@@ -104,27 +137,52 @@ public class JPAEdmAssociationTest extends JPAEdmTestModelView {
     return association;
   }
 
+  /**
+   * Checks if is exists.
+   *
+   * @return true, if is exists
+   */
   @Override
   public boolean isExists() {
     return true;
   }
 
+  /**
+   * Gets the JPA edm referential constraint view.
+   *
+   * @return the JPA edm referential constraint view
+   */
   @Override
   public JPAEdmReferentialConstraintView getJPAEdmReferentialConstraintView() {
     JPAEdmReferentialConstraint refConstraintView = new JPAEdmReferentialConstraint(localView, localView, localView);
     return refConstraintView;
   }
 
+  /**
+   * Gets the JPA attribute.
+   *
+   * @return the JPA attribute
+   */
   @Override
   public Attribute<?, ?> getJPAAttribute() {
     return getJPAAttributeLocal();
   }
 
+  /**
+   * Gets the p unit name.
+   *
+   * @return the p unit name
+   */
   @Override
   public String getpUnitName() {
     return PUNIT_NAME;
   }
 
+  /**
+   * Gets the edm entity type.
+   *
+   * @return the edm entity type
+   */
   @Override
   public EntityType getEdmEntityType() {
     EntityType entityType = new EntityType();
@@ -132,16 +190,32 @@ public class JPAEdmAssociationTest extends JPAEdmTestModelView {
     return entityType;
   }
 
+  /**
+   * The Class AttributeMock.
+   *
+   * @param <Object> the generic type
+   * @param <String> the generic type
+   */
   // The inner class which gives us an replica of the jpa attribute
   @SuppressWarnings("hiding")
   private class AttributeMock<Object, String> extends JPAAttributeMock<Object, String> {
 
+    /**
+     * Gets the java type.
+     *
+     * @return the java type
+     */
     @SuppressWarnings("unchecked")
     @Override
     public Class<String> getJavaType() {
       return (Class<String>) SimpleType.SimpleTypeA.clazz;
     }
 
+    /**
+     * Gets the persistent attribute type.
+     *
+     * @return the persistent attribute type
+     */
     @Override
     public PersistentAttributeType getPersistentAttributeType() {
       if (variant == 1) {
@@ -157,32 +231,54 @@ public class JPAEdmAssociationTest extends JPAEdmTestModelView {
     }
   }
 
+  /**
+   * Gets the JPA attribute local.
+   *
+   * @return the JPA attribute local
+   */
   private Attribute<?, ?> getJPAAttributeLocal() {
     AttributeMock<Object, String> attr = new AttributeMock<Object, String>();
     return attr;
   }
 
+  /**
+   * Test get builder.
+   */
   @Test
   public void testGetBuilder() {
     assertNotNull(objAssociation.getBuilder());
   }
 
+  /**
+   * Test get edm association.
+   */
   @Test
   public void testGetEdmAssociation() {
     assertNotNull(objAssociation.getEdmAssociation());
     assertEquals(ASSOCIATION_NAME,objAssociation.getEdmAssociation().getName());
   }
 
+  /**
+   * Test get consistent edm association list.
+   */
   @Test
   public void testGetConsistentEdmAssociationList() {
     assertTrue(objAssociation.getConsistentEdmAssociationList().size() > 0);
   }
 
+  /**
+   * Gets the edm relation ship name.
+   *
+   * @return the edm relation ship name
+   */
   @Override
   public String getEdmRelationShipName() {
     return "Association_SalesOrderHeader_String";
   }
 
+  /**
+   * Test search association 1.
+   */
   @Test
   public void testSearchAssociation1() {
     class TestAssociationEndView extends JPAEdmTestModelView {
@@ -368,6 +464,9 @@ public class JPAEdmAssociationTest extends JPAEdmTestModelView {
 
   }
 
+  /**
+   * Test add JPA edm association view.
+   */
   @Test
   public void testAddJPAEdmAssociationView() {
 
@@ -415,6 +514,9 @@ public class JPAEdmAssociationTest extends JPAEdmTestModelView {
 
   }
 
+  /**
+   * Test add JPA edm ref constraint view.
+   */
   @Test
   public void testAddJPAEdmRefConstraintView() {
 
@@ -432,6 +534,9 @@ public class JPAEdmAssociationTest extends JPAEdmTestModelView {
     assertTrue(objAssociation.getConsistentEdmAssociationList().size() > 0);
   }
 
+  /**
+   * Test get JPA edm referential constraint view.
+   */
   @Test
   public void testGetJPAEdmReferentialConstraintView() {
 

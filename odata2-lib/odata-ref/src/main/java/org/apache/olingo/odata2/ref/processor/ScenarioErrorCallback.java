@@ -27,14 +27,23 @@ import org.apache.olingo.odata2.api.processor.ODataResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+// TODO: Auto-generated Javadoc
 /**
  * Callback for handling errors by logging internal server errors additionally.
  * 
  */
 public class ScenarioErrorCallback implements ODataErrorCallback {
 
+  /** The Constant LOG. */
   private static final Logger LOG = LoggerFactory.getLogger(ScenarioErrorCallback.class);
 
+  /**
+   * Handle error.
+   *
+   * @param context the context
+   * @return the o data response
+   * @throws ODataApplicationException the o data application exception
+   */
   @Override
   public ODataResponse handleError(final ODataErrorContext context) throws ODataApplicationException {
     if (context.getHttpStatus() == HttpStatusCodes.INTERNAL_SERVER_ERROR) {

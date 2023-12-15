@@ -20,9 +20,11 @@ package org.apache.olingo.odata2.api.edm;
 
 import java.util.Collection;
 
+// TODO: Auto-generated Javadoc
 /**
- * @org.apache.olingo.odata2.DoNotImplement
- * A CSDL FunctionImport element
+ * The Interface EdmFunctionImport.
+ *
+ * @org.apache.olingo.odata2.DoNotImplement A CSDL FunctionImport element
  * 
  * EdmFunctionImport can be used model functions which have input parameters, an associated HTTP Method
  * and a return type which can be of different kinds:
@@ -30,49 +32,55 @@ import java.util.Collection;
  * <li>{@link EdmSimpleType} or a collection of simple types
  * <li>{@link EdmEntityType} or a collection of entity types
  * <li>{@link EdmEntitySet}
- * 
  */
 public interface EdmFunctionImport extends EdmMappable, EdmNamed, EdmAnnotatable {
 
   /**
-   * Get the parameter by name
-   * @param name
+   * Get the parameter by name.
+   *
+   * @param name the name
    * @return {@link EdmParameter}
-   * @throws EdmException
+   * @throws EdmException the edm exception
    */
   EdmParameter getParameter(String name) throws EdmException;
 
   /**
-   * Get all parameter names
+   * Get all parameter names.
+   *
    * @return collection of parameter names of type Collection<String>
-   * @throws EdmException
+   * @throws EdmException the edm exception
    */
   Collection<String> getParameterNames() throws EdmException;
 
   /**
-   * Get the edm entity set
+   * Get the edm entity set.
+   *
    * @return {@link EdmEntitySet}
-   * @throws EdmException
+   * @throws EdmException the edm exception
    */
   EdmEntitySet getEntitySet() throws EdmException;
 
   /**
-   * Get the HTTP Method
+   * Get the HTTP Method.
+   *
    * @return HTTP Method as String
-   * @throws EdmException
+   * @throws EdmException the edm exception
    */
   String getHttpMethod() throws EdmException;
 
   /**
+   * Gets the return type.
+   *
    * @return {@link EdmTyped}
-   * @throws EdmException
+   * @throws EdmException the edm exception
    */
   EdmTyped getReturnType() throws EdmException;
 
   /**
-   * Get the entity container the function import is contained in
+   * Get the entity container the function import is contained in.
+   *
    * @return {@link EdmEntityContainer}
-   * @throws EdmException
+   * @throws EdmException the edm exception
    */
   EdmEntityContainer getEntityContainer() throws EdmException;
 }

@@ -42,18 +42,37 @@ import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPQLSelectStatementBuilderTest.
+ */
 public class JPQLSelectStatementBuilderTest {
 
   /**
-   * @throws java.lang.Exception
+   * The jpql select statement builder.
+   *
    */
   private JPQLSelectStatementBuilder jpqlSelectStatementBuilder;
 
+  /**
+   * Sets the up.
+   *
+   * @throws Exception the exception
+   */
   @Before
   public void setUp() throws Exception {
 
   }
 
+  /**
+   * Creates the select context.
+   *
+   * @param orderByExpression the order by expression
+   * @param filterExpression the filter expression
+   * @return the JPQL select context
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   * @throws EdmException the edm exception
+   */
   private JPQLSelectContext createSelectContext(final OrderByExpression orderByExpression,
       final FilterExpression filterExpression) throws ODataJPARuntimeException, EdmException {
     // Object Instantiation
@@ -90,8 +109,9 @@ public class JPQLSelectStatementBuilderTest {
 
   /**
    * Test method for {@link org.apache.olingo.odata2.processor.jpa.jpql.JPQLSelectStatementBuilder#build)}.
-   * @throws EdmException
-   * @throws ODataJPARuntimeException
+   *
+   * @throws EdmException the edm exception
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
    */
 
   @Test
@@ -103,6 +123,12 @@ public class JPQLSelectStatementBuilderTest {
     assertEquals("SELECT E1 FROM SalesOrderHeader E1", jpqlSelectStatementBuilder.build().toString());
   }
 
+  /**
+   * Test build query with order by.
+   *
+   * @throws EdmException the edm exception
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   @Test
   public void testBuildQueryWithOrderBy() throws EdmException, ODataJPARuntimeException {
     OrderByExpression orderByExpression = EasyMock.createMock(OrderByExpression.class);
@@ -115,6 +141,12 @@ public class JPQLSelectStatementBuilderTest {
         jpqlSelectStatementBuilder.build().toString());
   }
 
+  /**
+   * Test build query with filter.
+   *
+   * @throws EdmException the edm exception
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   @Test
   public void testBuildQueryWithFilter() throws EdmException, ODataJPARuntimeException {
     OrderByExpression orderByExpression = EasyMock.createMock(OrderByExpression.class);

@@ -23,35 +23,40 @@ import java.util.List;
 import org.apache.olingo.odata2.api.edm.EdmAnnotationAttribute;
 import org.apache.olingo.odata2.api.edm.EdmAnnotationElement;
 
+// TODO: Auto-generated Javadoc
 /**
- * Objects of this class represent documentation
- * 
+ * Objects of this class represent documentation.
  */
 public interface EdmDocumentation {
 
   /**
-   * Sets the summary for this {@link EdmDocumentation}
-   * @param summary
+   * Sets the summary for this {@link EdmDocumentation}.
+   *
+   * @param summary the summary
    * @return {@link EdmDocumentation} for method chaining
    */
   public EdmDocumentation setSummary(final String summary);
 
   /**
-   * Sets the long description for this {@link EdmDocumentation}
-   * @param longDescription
+   * Sets the long description for this {@link EdmDocumentation}.
+   *
+   * @param longDescription the long description
    * @return {@link EdmDocumentation} for method chaining
    */
   public EdmDocumentation setLongDescription(final String longDescription) ;
+  
   /**
-   * Sets the collection of {@link AnnotationAttribute} for this {@link EdmDocumentation}
-   * @param annotationAttributes
+   * Sets the collection of {@link AnnotationAttribute} for this {@link EdmDocumentation}.
+   *
+   * @param annotationAttributes the annotation attributes
    * @return {@link EdmDocumentation} for method chaining
    */
   public EdmDocumentation setAnnotationAttributes(final List<EdmAnnotationAttribute> annotationAttributes) ;
 
   /**
-   * Sets the collection of {@link AnnotationElement} for this {@link EdmDocumentation}
-   * @param annotationElements
+   * Sets the collection of {@link AnnotationElement} for this {@link EdmDocumentation}.
+   *
+   * @param annotationElements the annotation elements
    * @return {@link EdmDocumentation} for method chaining
    */
   public EdmDocumentation setAnnotationElements(final List<EdmAnnotationElement> annotationElements);

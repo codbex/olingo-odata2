@@ -31,6 +31,7 @@ import org.apache.olingo.odata2.jpa.processor.api.exception.ODataJPARuntimeExcep
 import org.apache.olingo.odata2.jpa.processor.api.factory.ODataJPAAccessFactory;
 import org.apache.olingo.odata2.jpa.processor.api.factory.ODataJPAFactory;
 
+// TODO: Auto-generated Javadoc
 /**
  * <p>
  * Extend this factory class and create own instance of {@link org.apache.olingo.odata2.api.ODataService} that
@@ -77,10 +78,19 @@ import org.apache.olingo.odata2.jpa.processor.api.factory.ODataJPAFactory;
 
 public abstract class ODataJPAServiceFactory extends ODataServiceFactory {
 
+  /** The o data JPA context. */
   private ODataJPAContext oDataJPAContext;
+  
+  /** The o data context. */
   private ODataContext oDataContext;
+  
+  /** The set detail errors. */
   private boolean setDetailErrors = false;
+  
+  /** The on JPA write content. */
   private OnJPAWriteContent onJPAWriteContent = null;
+  
+  /** The o data JPA transaction. */
   private ODataJPATransaction oDataJPATransaction = null;
 
   /**
@@ -105,9 +115,9 @@ public abstract class ODataJPAServiceFactory extends ODataServiceFactory {
    * }</blockquote>
    * } </code>
    * <p>
-   * 
+   *
    * @return an instance of type {@link org.apache.olingo.odata2.jpa.processor.api.ODataJPAContext}
-   * @throws ODataJPARuntimeException
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
    */
   public abstract ODataJPAContext initializeODataJPAContext() throws ODataJPARuntimeException;
 
@@ -115,6 +125,10 @@ public abstract class ODataJPAServiceFactory extends ODataServiceFactory {
    * Creates an OData Service based on the values set in
    * {@link org.apache.olingo.odata2.jpa.processor.api.ODataJPAContext} and
    * {@link org.apache.olingo.odata2.api.processor.ODataContext}.
+   *
+   * @param ctx the ctx
+   * @return the o data service
+   * @throws ODataException the o data exception
    */
   @Override
   public final ODataService createService(final ODataContext ctx) throws ODataException {
@@ -144,13 +158,21 @@ public abstract class ODataJPAServiceFactory extends ODataServiceFactory {
     return createODataSingleProcessorService(edmProvider, odataJPAProcessor);
   }
 
+  /**
+   * Creates a new ODataJPAService object.
+   *
+   * @param oDataJPAContext the o data JPA context
+   * @return the o data single processor
+   */
   public ODataSingleProcessor createCustomODataProcessor(ODataJPAContext oDataJPAContext) {
     return null;
   }
 
   /**
+   * Gets the o data JPA context.
+   *
    * @return an instance of type {@link ODataJPAContext}
-   * @throws ODataJPARuntimeException
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
    */
   public final ODataJPAContext getODataJPAContext() throws ODataJPARuntimeException {
     if (oDataJPAContext == null) {
@@ -163,6 +185,13 @@ public abstract class ODataJPAServiceFactory extends ODataServiceFactory {
 
   }
 
+  /**
+   * Gets the callback.
+   *
+   * @param <T> the generic type
+   * @param callbackInterface the callback interface
+   * @return the callback
+   */
   @SuppressWarnings("unchecked")
   @Override
   public <T extends ODataCallback> T getCallback(final Class<T> callbackInterface) {
@@ -217,6 +246,11 @@ public abstract class ODataJPAServiceFactory extends ODataServiceFactory {
     this.setDetailErrors = setDetailErrors;
   }
 
+  /**
+   * Validate pre conditions.
+   *
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   private void validatePreConditions() throws ODataJPARuntimeException {
 
     if (oDataJPAContext.getEntityManager() == null) {

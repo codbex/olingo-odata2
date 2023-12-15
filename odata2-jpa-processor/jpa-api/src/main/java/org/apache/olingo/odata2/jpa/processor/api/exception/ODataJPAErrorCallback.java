@@ -24,8 +24,19 @@ import org.apache.olingo.odata2.api.processor.ODataErrorCallback;
 import org.apache.olingo.odata2.api.processor.ODataErrorContext;
 import org.apache.olingo.odata2.api.processor.ODataResponse;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ODataJPAErrorCallback.
+ */
 public class ODataJPAErrorCallback implements ODataErrorCallback {
 
+  /**
+   * Handle error.
+   *
+   * @param context the context
+   * @return the o data response
+   * @throws ODataApplicationException the o data application exception
+   */
   @Override
   public ODataResponse handleError(final ODataErrorContext context) throws ODataApplicationException {
 

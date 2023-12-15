@@ -30,14 +30,28 @@ import org.apache.olingo.odata2.api.servicedocument.Workspace;
 import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ServiceDocumentConsumerTest.
+ */
 public class ServiceDocumentConsumerTest extends BaseTest {
 
+    /**
+     * Test.
+     *
+     * @throws EntityProviderException the entity provider exception
+     */
     @Test
     public void test() throws EntityProviderException {
         InputStream in = ServiceDocumentConsumerTest.class.getResourceAsStream("/svcExample.xml");
         assertNotNull(EntityProvider.readServiceDocument(in, "application/atom+xml"));
     }
 
+    /**
+     * Test atom service document.
+     *
+     * @throws EntityProviderException the entity provider exception
+     */
     @Test
     public void testAtomServiceDocument() throws EntityProviderException {
         InputStream in = ServiceDocumentConsumerTest.class.getResourceAsStream("/svcExample.xml");
@@ -65,18 +79,33 @@ public class ServiceDocumentConsumerTest extends BaseTest {
         }
     }
 
+    /**
+     * Test json.
+     *
+     * @throws EntityProviderException the entity provider exception
+     */
     @Test
     public void testJson() throws EntityProviderException {
         InputStream in = ServiceDocumentConsumerTest.class.getResourceAsStream("/svcDocJson.json");
         assertNotNull(EntityProvider.readServiceDocument(in, "application/json"));
     }
 
+    /**
+     * Test invalid input stream.
+     *
+     * @throws EntityProviderException the entity provider exception
+     */
     @Test(expected = EntityProviderException.class)
     public void testInvalidInputStream() throws EntityProviderException {
         InputStream in = ServiceDocumentConsumerTest.class.getResourceAsStream("/svcDocJson.json");
         EntityProvider.readServiceDocument(in, "application/atom+xml");
     }
 
+    /**
+     * Test json service document.
+     *
+     * @throws EntityProviderException the entity provider exception
+     */
     @Test
     public void testJsonServiceDocument() throws EntityProviderException {
         InputStream in = ServiceDocumentConsumerTest.class.getResourceAsStream("/svcDocJson.json");
@@ -96,6 +125,11 @@ public class ServiceDocumentConsumerTest extends BaseTest {
         }
     }
 
+    /**
+     * Test compare json with atom.
+     *
+     * @throws EntityProviderException the entity provider exception
+     */
     @Test
     public void testCompareJsonWithAtom() throws EntityProviderException {
         InputStream inputJson = ServiceDocumentConsumerTest.class.getResourceAsStream("/svcDocJson.json");

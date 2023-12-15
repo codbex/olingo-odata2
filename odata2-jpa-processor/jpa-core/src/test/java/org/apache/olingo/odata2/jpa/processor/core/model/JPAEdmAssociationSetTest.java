@@ -43,11 +43,21 @@ import org.apache.olingo.odata2.jpa.processor.core.common.ODataJPATestConstants;
 import org.junit.Before;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAEdmAssociationSetTest.
+ */
 public class JPAEdmAssociationSetTest extends JPAEdmTestModelView {
 
+  /** The obj JPA edm association set test. */
   private JPAEdmAssociationSetTest objJPAEdmAssociationSetTest;
+  
+  /** The obj JPA edm association set. */
   private JPAEdmAssociationSet objJPAEdmAssociationSet;
 
+  /**
+   * Sets the up.
+   */
   @Before
   public void setUp() {
     objJPAEdmAssociationSetTest = new JPAEdmAssociationSetTest();
@@ -62,31 +72,49 @@ public class JPAEdmAssociationSetTest extends JPAEdmTestModelView {
 
   }
 
+  /**
+   * Test get builder.
+   */
   @Test
   public void testGetBuilder() {
     assertNotNull(objJPAEdmAssociationSet.getBuilder());
   }
 
+  /**
+   * Test get consistent edm association set list.
+   */
   @Test
   public void testGetConsistentEdmAssociationSetList() {
     assertNotNull(objJPAEdmAssociationSet.getConsistentEdmAssociationSetList());
   }
 
+  /**
+   * Test get edm association set.
+   */
   @Test
   public void testGetEdmAssociationSet() {
     assertNotNull(objJPAEdmAssociationSet.getEdmAssociationSet());
   }
 
+  /**
+   * Test get edm association.
+   */
   @Test
   public void testGetEdmAssociation() {
     assertNotNull(objJPAEdmAssociationSet.getEdmAssociation());
   }
 
+  /**
+   * Test is consistent.
+   */
   @Test
   public void testIsConsistent() {
     assertTrue(objJPAEdmAssociationSet.isConsistent());
   }
 
+  /**
+   * Test get builder idempotent.
+   */
   @Test
   public void testGetBuilderIdempotent() {
     JPAEdmBuilder builder1 = objJPAEdmAssociationSet.getBuilder();
@@ -95,21 +123,41 @@ public class JPAEdmAssociationSetTest extends JPAEdmTestModelView {
     assertEquals(builder1.hashCode(), builder2.hashCode());
   }
 
+  /**
+   * Gets the JPA edm entity container view.
+   *
+   * @return the JPA edm entity container view
+   */
   @Override
   public JPAEdmEntityContainerView getJPAEdmEntityContainerView() {
     return this;
   }
 
+  /**
+   * Gets the JPA edm entity set view.
+   *
+   * @return the JPA edm entity set view
+   */
   @Override
   public JPAEdmEntitySetView getJPAEdmEntitySetView() {
     return this;
   }
 
+  /**
+   * Gets the JPA edm association view.
+   *
+   * @return the JPA edm association view
+   */
   @Override
   public JPAEdmAssociationView getJPAEdmAssociationView() {
     return this;
   }
 
+  /**
+   * Gets the edm association set.
+   *
+   * @return the edm association set
+   */
   @Override
   public AssociationSet getEdmAssociationSet() {
     AssociationSet associationSet = new AssociationSet();
@@ -119,11 +167,21 @@ public class JPAEdmAssociationSetTest extends JPAEdmTestModelView {
     return associationSet;
   }
 
+  /**
+   * Gets the consistent edm association list.
+   *
+   * @return the consistent edm association list
+   */
   @Override
   public List<Association> getConsistentEdmAssociationList() {
     return getEdmAssociationListLocal();
   }
 
+  /**
+   * Gets the consistent edm association set list.
+   *
+   * @return the consistent edm association set list
+   */
   @Override
   public List<AssociationSet> getConsistentEdmAssociationSetList() {
 
@@ -134,16 +192,31 @@ public class JPAEdmAssociationSetTest extends JPAEdmTestModelView {
     return associationSetList;
   }
 
+  /**
+   * Gets the consistent edm entity set list.
+   *
+   * @return the consistent edm entity set list
+   */
   @Override
   public List<EntitySet> getConsistentEdmEntitySetList() {
     return getEntitySetListLocal();
   }
 
+  /**
+   * Checks if is consistent.
+   *
+   * @return true, if is consistent
+   */
   @Override
   public boolean isConsistent() {
     return true;
   }
 
+  /**
+   * Gets the edm schema.
+   *
+   * @return the edm schema
+   */
   @Override
   public Schema getEdmSchema() {
     Schema schema = new Schema();
@@ -151,6 +224,11 @@ public class JPAEdmAssociationSetTest extends JPAEdmTestModelView {
     return schema;
   }
 
+  /**
+   * Gets the entity set list local.
+   *
+   * @return the entity set list local
+   */
   private List<EntitySet> getEntitySetListLocal() {
     List<EntitySet> entitySetList = new ArrayList<EntitySet>();
 
@@ -167,6 +245,11 @@ public class JPAEdmAssociationSetTest extends JPAEdmTestModelView {
     return entitySetList;
   }
 
+  /**
+   * Gets the edm association list local.
+   *
+   * @return the edm association list local
+   */
   private List<Association> getEdmAssociationListLocal() {
     List<Association> associationList = new ArrayList<Association>();
 

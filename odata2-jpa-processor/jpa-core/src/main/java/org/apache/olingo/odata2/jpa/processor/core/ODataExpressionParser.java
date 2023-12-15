@@ -63,6 +63,7 @@ import org.apache.olingo.odata2.jpa.processor.api.exception.ODataJPARuntimeExcep
 import org.apache.olingo.odata2.jpa.processor.api.jpql.JPQLStatement;
 import org.apache.olingo.odata2.jpa.processor.core.model.JPAEdmMappingImpl;
 
+// TODO: Auto-generated Javadoc
 /**
  * This class contains utility methods for parsing the filter expressions built by core library from user OData Query.
  *
@@ -71,20 +72,25 @@ import org.apache.olingo.odata2.jpa.processor.core.model.JPAEdmMappingImpl;
  */
 public class ODataExpressionParser {
 
+  /** The Constant EMPTY. */
   public static final String EMPTY = ""; //$NON-NLS-1$
+  
+  /** The Constant methodFlag. */
   public static final ThreadLocal<Integer> methodFlag = new ThreadLocal<Integer>();
+  
+  /** The Constant EMPTY_CHARACTER_ARRAY. */
   public static final Character[] EMPTY_CHARACTER_ARRAY = new Character[0];
+  
+  /** The Constant positionalParameters. */
   public static final ThreadLocal<Map<Integer, Object>> positionalParameters = new ThreadLocal<Map<Integer,Object>>();
   
   /**
    * This method returns the parsed where condition corresponding to the filter input in the user query.
    *
-   * @param whereExpression
-   * @param concurrentHashMap 
-   * @param index 
-   *
+   * @param whereExpression the where expression
+   * @param tableAlias the table alias
    * @return Parsed where condition String
-   * @throws ODataException
+   * @throws ODataException the o data exception
    */
   public static String parseToJPAWhereExpression(final CommonExpression whereExpression, final String tableAlias)
       throws ODataException {
@@ -93,6 +99,17 @@ public class ODataExpressionParser {
         new ConcurrentHashMap<Integer,Object>(), edmMapping);
   }
   
+  /**
+   * Parses the to JPA where expression.
+   *
+   * @param whereExpression the where expression
+   * @param tableAlias the table alias
+   * @param index the index
+   * @param positionalParameters the positional parameters
+   * @param edmMapping the edm mapping
+   * @return the string
+   * @throws ODataException the o data exception
+   */
   public static String parseToJPAWhereExpression(final CommonExpression whereExpression, final String tableAlias, 
       int index, Map<Integer,Object> positionalParameters,EdmMapping edmMapping) throws ODataException {
     switch (whereExpression.getKind()) {
@@ -289,6 +306,13 @@ public class ODataExpressionParser {
     }
   }
   
+  /**
+   * Gets the edm mapping.
+   *
+   * @param binaryExpression the binary expression
+   * @return the edm mapping
+   * @throws EdmException the edm exception
+   */
   private static EdmMapping getEdmMapping(BinaryExpression binaryExpression) throws EdmException {
     if(binaryExpression!=null && binaryExpression.getLeftOperand() instanceof PropertyExpression){
       PropertyExpression left = (PropertyExpression)binaryExpression.getLeftOperand();
@@ -300,6 +324,13 @@ public class ODataExpressionParser {
     return null;
   }
   
+  /**
+   * Gets the index value.
+   *
+   * @param index the index
+   * @param map the map
+   * @return the index value
+   */
   private static int getIndexValue(int index, Map<Integer, Object> map) {
     if (map != null && !map.isEmpty()) {
       for (Entry<Integer, Object> entry : map.entrySet()) {
@@ -312,8 +343,10 @@ public class ODataExpressionParser {
   }
 
   /**
-   * This method converts String to Byte array
-   * @param uriLiteral
+   * This method converts String to Byte array.
+   *
+   * @param uriLiteral the uri literal
+   * @return the byte[]
    */  
   public static Byte[] toByteArray(String uriLiteral) {
     int length =  uriLiteral.length();
@@ -329,8 +362,10 @@ public class ODataExpressionParser {
  }
   
   /**
-   * This method escapes the wildcards
-   * @param first
+   * This method escapes the wildcards.
+   *
+   * @param value the value
+   * @return the string
    */
   private static String updateValueIfWildcards(String value) {
     if (value != null) {
@@ -340,11 +375,12 @@ public class ODataExpressionParser {
     }
     return value;
   }
+  
   /**
-   * This method parses the select clause
+   * This method parses the select clause.
    *
-   * @param tableAlias
-   * @param selectedFields
+   * @param tableAlias the table alias
+   * @param selectedFields the selected fields
    * @return a select expression
    */
   public static String parseToJPASelectExpression(final String tableAlias, final ArrayList<String> selectedFields) {
@@ -371,9 +407,10 @@ public class ODataExpressionParser {
   /**
    * This method parses the order by condition in the query.
    *
-   * @param orderByExpression
+   * @param orderByExpression the order by expression
+   * @param tableAlias the table alias
    * @return a map of JPA attributes and their sort order
-   * @throws ODataJPARuntimeException
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
    */
   public static String parseToJPAOrderByExpression(final OrderByExpression orderByExpression,
       final String tableAlias) throws ODataJPARuntimeException {
@@ -404,6 +441,12 @@ public class ODataExpressionParser {
     return normalizeOrderByExpression(jpqlOrderByExpression);
   }
 
+  /**
+   * Normalize order by expression.
+   *
+   * @param jpqlOrderByExpression the jpql order by expression
+   * @return the string
+   */
   private static String normalizeOrderByExpression(final String jpqlOrderByExpression) {
     if (jpqlOrderByExpression != "") {
       return jpqlOrderByExpression.substring(0, jpqlOrderByExpression.length() - 3);
@@ -415,8 +458,10 @@ public class ODataExpressionParser {
   /**
    * This method evaluated the where expression for read of an entity based on the keys specified in the query.
    *
-   * @param keyPredicates
+   * @param keyPredicates the key predicates
+   * @param tableAlias the table alias
    * @return the evaluated where expression
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
    */
 
   public static String parseKeyPredicates(final List<KeyPredicate> keyPredicates, final String tableAlias)
@@ -464,8 +509,11 @@ public class ODataExpressionParser {
   }
   
   /**
-   * Convert char array to Character Array
-   * */
+   * Convert char array to Character Array.
+   *
+   * @param array the array
+   * @return the character[]
+   */
   public static Character[] toCharacterArray(char[] array) {
     if (array == null) {
         return null;
@@ -479,6 +527,14 @@ public class ODataExpressionParser {
     return result;
  }
   
+  /**
+   * Parses the key properties to JPA order by expression.
+   *
+   * @param edmPropertylist the edm propertylist
+   * @param tableAlias the table alias
+   * @return the string
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   public static String parseKeyPropertiesToJPAOrderByExpression(
       final List<EdmProperty> edmPropertylist, final String tableAlias) throws ODataJPARuntimeException {
     String propertyName = null;
@@ -505,13 +561,13 @@ public class ODataExpressionParser {
   /**
    * This method evaluates the expression based on the type instance. Used for adding escape characters where necessary.
    *
-   * @param uriLiteral
-   * @param edmSimpleType
-   * @param edmMappedType 
-   * @param index 
-   * @param positionalParameter
+   * @param uriLiteral the uri literal
+   * @param edmSimpleType the edm simple type
+   * @param edmMappedType the edm mapped type
+   * @param positionalParameters the positional parameters
+   * @param index the index
    * @return the evaluated expression
-   * @throws ODataJPARuntimeException
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
    */
   private static String evaluateComparingExpression(String uriLiteral, final EdmSimpleType edmSimpleType,
       Class<?> edmMappedType, Map<Integer, Object> positionalParameters, int index) throws ODataJPARuntimeException {
@@ -574,6 +630,16 @@ public class ODataExpressionParser {
     return uriLiteral;
   }
 
+  /**
+   * Evaluate expression for numbers.
+   *
+   * @param uriLiteral the uri literal
+   * @param edmSimpleType the edm simple type
+   * @param edmMappedType the edm mapped type
+   * @param positionalParameters the positional parameters
+   * @param index the index
+   * @return the string
+   */
   private static String evaluateExpressionForNumbers(String uriLiteral, EdmSimpleType edmSimpleType,
       Class<?> edmMappedType, Map<Integer, Object> positionalParameters, int index) {
     Class<? extends Object> type = edmMappedType==null? edmSimpleType.getDefaultType():
@@ -622,6 +688,14 @@ public class ODataExpressionParser {
     return uriLiteral;
   }
 
+  /**
+   * Evaluate expression for string.
+   *
+   * @param uriLiteral the uri literal
+   * @param edmMappedType the edm mapped type
+   * @param positionalParameters the positional parameters
+   * @param index the index
+   */
   private static void evaluateExpressionForString(String uriLiteral, Class<?> edmMappedType, 
       Map<Integer, Object> positionalParameters, int index) {
     if(edmMappedType.equals(char[].class)){
@@ -645,6 +719,14 @@ public class ODataExpressionParser {
     }
   }
   
+  /**
+   * Gets the property name.
+   *
+   * @param whereExpression the where expression
+   * @return the property name
+   * @throws EdmException the edm exception
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   private static String getPropertyName(final CommonExpression whereExpression) throws EdmException,
       ODataJPARuntimeException {
     EdmTyped edmProperty = ((PropertyExpression) whereExpression).getEdmProperty();
@@ -661,6 +743,12 @@ public class ODataExpressionParser {
 
     return mapping != null ? mapping.getInternalName() : edmProperty.getName();
   }
+  
+  /**
+   * Sets the positional parameters thread local.
+   *
+   * @param parameter the parameter
+   */
   public static void setPositionalParametersThreadLocal(final Map<Integer, Object> parameter) {
     if (null != getPositionalParametersThreadLocal() && 
         getPositionalParametersThreadLocal().size() > 0) {
@@ -670,10 +758,18 @@ public class ODataExpressionParser {
     positionalParameters.set(map);
   }
   
+  /**
+   * Gets the positional parameters thread local.
+   *
+   * @return the positional parameters thread local
+   */
   public static Map<Integer, Object> getPositionalParametersThreadLocal() {
     return positionalParameters.get();
   }
   
+  /**
+   * Removes the positional parameters thread local.
+   */
   public static void removePositionalParametersThreadLocal() {
     positionalParameters.remove();
   }

@@ -20,21 +20,36 @@ package org.apache.olingo.odata2.api.edm.provider;
 
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
 /**
- * Objects of this class represent an association
- * 
+ * Objects of this class represent an association.
  */
 public class Association {
 
+  /** The name. */
   private String name;
+  
+  /** The end 1. */
   private AssociationEnd end1;
+  
+  /** The end 2. */
   private AssociationEnd end2;
+  
+  /** The referential constraint. */
   private ReferentialConstraint referentialConstraint;
+  
+  /** The documentation. */
   private Documentation documentation;
+  
+  /** The annotation attributes. */
   private List<AnnotationAttribute> annotationAttributes;
+  
+  /** The annotation elements. */
   private List<AnnotationElement> annotationElements;
 
   /**
+   * Gets the name.
+   *
    * @return <b>String</b> name
    */
   public String getName() {
@@ -42,6 +57,8 @@ public class Association {
   }
 
   /**
+   * Gets the end 1.
+   *
    * @return {@link AssociationEnd} end2
    */
   public AssociationEnd getEnd1() {
@@ -49,6 +66,8 @@ public class Association {
   }
 
   /**
+   * Gets the end 2.
+   *
    * @return {@link AssociationEnd} end2
    */
   public AssociationEnd getEnd2() {
@@ -56,6 +75,8 @@ public class Association {
   }
 
   /**
+   * Gets the referential constraint.
+   *
    * @return {@link ReferentialConstraint} referentialConstraint
    */
   public ReferentialConstraint getReferentialConstraint() {
@@ -63,6 +84,8 @@ public class Association {
   }
 
   /**
+   * Gets the documentation.
+   *
    * @return {@link Documentation} documentation
    */
   public Documentation getDocumentation() {
@@ -70,6 +93,8 @@ public class Association {
   }
 
   /**
+   * Gets the annotation attributes.
+   *
    * @return collection of {@link AnnotationAttribute} annotation attributes
    */
   public List<AnnotationAttribute> getAnnotationAttributes() {
@@ -77,6 +102,8 @@ public class Association {
   }
 
   /**
+   * Gets the annotation elements.
+   *
    * @return collection of {@link AnnotationElement} annotation elements
    */
   public List<AnnotationElement> getAnnotationElements() {
@@ -84,8 +111,9 @@ public class Association {
   }
 
   /**
-   * Sets the name for this {@link Association}
-   * @param name
+   * Sets the name for this {@link Association}.
+   *
+   * @param name the name
    * @return {@link Association} for method chaining
    */
   public Association setName(final String name) {
@@ -94,8 +122,9 @@ public class Association {
   }
 
   /**
-   * Sets the first {@link AssociationEnd} for this {@link Association}
-   * @param end1
+   * Sets the first {@link AssociationEnd} for this {@link Association}.
+   *
+   * @param end1 the end 1
    * @return {@link Association} for method chaining
    */
   public Association setEnd1(final AssociationEnd end1) {
@@ -104,8 +133,9 @@ public class Association {
   }
 
   /**
-   * Sets the second {@link AssociationEnd} for this {@link Association}
-   * @param end2
+   * Sets the second {@link AssociationEnd} for this {@link Association}.
+   *
+   * @param end2 the end 2
    * @return {@link Association} for method chaining
    */
   public Association setEnd2(final AssociationEnd end2) {
@@ -114,8 +144,9 @@ public class Association {
   }
 
   /**
-   * Sets the {@link ReferentialConstraint} for this {@link Association}
-   * @param referentialConstraint
+   * Sets the {@link ReferentialConstraint} for this {@link Association}.
+   *
+   * @param referentialConstraint the referential constraint
    * @return {@link Association} for method chaining
    */
   public Association setReferentialConstraint(final ReferentialConstraint referentialConstraint) {
@@ -124,8 +155,9 @@ public class Association {
   }
 
   /**
-   * Sets the {@link Documentation} for this {@link Association}
-   * @param documentation
+   * Sets the {@link Documentation} for this {@link Association}.
+   *
+   * @param documentation the documentation
    * @return {@link Association} for method chaining
    */
   public Association setDocumentation(final Documentation documentation) {
@@ -134,8 +166,9 @@ public class Association {
   }
 
   /**
-   * Sets the collection of {@link AnnotationAttribute} for this {@link Association}
-   * @param annotationAttributes
+   * Sets the collection of {@link AnnotationAttribute} for this {@link Association}.
+   *
+   * @param annotationAttributes the annotation attributes
    * @return {@link Association} for method chaining
    */
   public Association setAnnotationAttributes(final List<AnnotationAttribute> annotationAttributes) {
@@ -144,8 +177,9 @@ public class Association {
   }
 
   /**
-   * Sets the collection of {@link AnnotationElement} for this {@link Association}
-   * @param annotationElements
+   * Sets the collection of {@link AnnotationElement} for this {@link Association}.
+   *
+   * @param annotationElements the annotation elements
    * @return {@link Association} for method chaining
    */
   public Association setAnnotationElements(final List<AnnotationElement> annotationElements) {

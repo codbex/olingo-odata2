@@ -26,11 +26,22 @@ import org.apache.olingo.odata2.api.processor.ODataErrorContext;
 import org.apache.olingo.odata2.core.ep.util.FormatJson;
 import org.apache.olingo.odata2.core.ep.util.JsonStreamWriter;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class JsonErrorDocumentProducer.
  */
 public class JsonErrorDocumentProducer {
 
+  /**
+   * Write error document.
+   *
+   * @param writer the writer
+   * @param errorCode the error code
+   * @param message the message
+   * @param locale the locale
+   * @param innerError the inner error
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   public void writeErrorDocument(final Writer writer, final String errorCode, final String message,
       final Locale locale, final String innerError) throws IOException {
       ODataErrorContext context = new ODataErrorContext();
@@ -42,6 +53,13 @@ public class JsonErrorDocumentProducer {
       writeErrorDocument(writer, context);
   }
 
+  /**
+   * Write error document.
+   *
+   * @param writer the writer
+   * @param context the context
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   public void writeErrorDocument(final Writer writer, ODataErrorContext context) throws IOException {
     Locale locale = context.getLocale();
     String innerError = context.getInnerError();

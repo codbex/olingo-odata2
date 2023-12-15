@@ -30,11 +30,17 @@ import org.apache.olingo.odata2.client.api.ep.DeserializerProperties;
 import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class DeserializerPropertiesTest.
  */
 public class DeserializerPropertiesTest extends BaseTest {
 
+  /**
+   * Builds the read properties.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void buildReadProperties() throws Exception {
     DeserializerProperties properties = DeserializerProperties.init()
@@ -46,6 +52,11 @@ public class DeserializerPropertiesTest extends BaseTest {
     assertEquals(0, properties.getValidatedPrefixNamespaceUris().size());
    }
 
+  /**
+   * Builds the properties all set.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void buildPropertiesAllSet() throws Exception {
     Map<String, String> namespaces = new HashMap<String, String>();

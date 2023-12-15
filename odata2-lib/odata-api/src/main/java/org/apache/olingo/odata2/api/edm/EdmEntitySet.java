@@ -18,36 +18,37 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.edm;
 
+// TODO: Auto-generated Javadoc
 /**
- * @org.apache.olingo.odata2.DoNotImplement
- * A CSDL EntitySet element
+ * The Interface EdmEntitySet.
+ *
+ * @org.apache.olingo.odata2.DoNotImplement A CSDL EntitySet element
  * <p>EdmEntitySet is the container for entity type instances as described in the OData protocol.
- * 
  */
 public interface EdmEntitySet extends EdmMappable, EdmNamed, EdmAnnotatable {
 
   /**
-   * Get the entity type
-   * 
+   * Get the entity type.
+   *
    * @return {@link EdmEntityType}
-   * @throws EdmException
+   * @throws EdmException the edm exception
    */
   EdmEntityType getEntityType() throws EdmException;
 
   /**
-   * Get the related entity set by providing the navigation property
-   * 
+   * Get the related entity set by providing the navigation property.
+   *
    * @param navigationProperty of type {@link EdmNavigationProperty}
    * @return {@link EdmEntitySet}
-   * @throws EdmException
+   * @throws EdmException the edm exception
    */
   EdmEntitySet getRelatedEntitySet(EdmNavigationProperty navigationProperty) throws EdmException;
 
   /**
-   * Get the entity container the entity set is contained in
-   * 
+   * Get the entity container the entity set is contained in.
+   *
    * @return {@link EdmEntityContainer}
-   * @throws EdmException
+   * @throws EdmException the edm exception
    */
   EdmEntityContainer getEntityContainer() throws EdmException;
 }

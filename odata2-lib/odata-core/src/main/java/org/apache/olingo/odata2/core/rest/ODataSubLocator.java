@@ -38,41 +38,84 @@ import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.core.Response;
 
+// TODO: Auto-generated Javadoc
 /**
- *
+ * The Class ODataSubLocator.
  */
 public final class ODataSubLocator {
 
+    /** The service factory. */
     private ODataServiceFactory serviceFactory;
+    
+    /** The request. */
     private ODataRequest request;
 
+    /** The http request. */
     private HttpServletRequest httpRequest;
 
+    /**
+     * Handle get.
+     *
+     * @return the response
+     * @throws ODataException the o data exception
+     */
     @GET
     public Response handleGet() throws ODataException {
         return handle(ODataHttpMethod.GET);
     }
 
+    /**
+     * Handle put.
+     *
+     * @return the response
+     * @throws ODataException the o data exception
+     */
     @PUT
     public Response handlePut() throws ODataException {
         return handle(ODataHttpMethod.PUT);
     }
 
+    /**
+     * Handle patch.
+     *
+     * @return the response
+     * @throws ODataException the o data exception
+     */
     @PATCH
     public Response handlePatch() throws ODataException {
         return handle(ODataHttpMethod.PATCH);
     }
 
+    /**
+     * Handle merge.
+     *
+     * @return the response
+     * @throws ODataException the o data exception
+     */
     @MERGE
     public Response handleMerge() throws ODataException {
         return handle(ODataHttpMethod.MERGE);
     }
 
+    /**
+     * Handle delete.
+     *
+     * @return the response
+     * @throws ODataException the o data exception
+     */
     @DELETE
     public Response handleDelete() throws ODataException {
         return handle(ODataHttpMethod.DELETE);
     }
 
+    /**
+     * Handle post.
+     *
+     * @param xHttpMethod the x http method
+     * @param xHttpMethodOverride the x http method override
+     * @return the response
+     * @throws ODataException the o data exception
+     */
     @POST
     public Response handlePost(@HeaderParam("X-HTTP-Method") final String xHttpMethod,
             @HeaderParam("X-HTTP-Method-Override") String xHttpMethodOverride) throws ODataException {
@@ -112,6 +155,13 @@ public final class ODataSubLocator {
         return returnNotImplementedResponse(ODataNotImplementedException.TUNNELING);
     }
 
+    /**
+     * Handle method override.
+     *
+     * @param xHttpMethodOverride the x http method override
+     * @return the response
+     * @throws ODataException the o data exception
+     */
     private Response handleMethodOverride(String xHttpMethodOverride) throws ODataException {
         switch (xHttpMethodOverride.toUpperCase()) {
             case HttpMethod.OPTIONS:
@@ -135,12 +185,24 @@ public final class ODataSubLocator {
         }
     }
 
+    /**
+     * Return not implemented response.
+     *
+     * @param messageReference the message reference
+     * @return the response
+     */
     private Response returnNotImplementedResponse(final MessageReference messageReference) {
         // RFC 2616, 5.1.1: "An origin server SHOULD return the status code [...]
         // 501 (Not Implemented) if the method is unrecognized [...] by the origin server."
         return returnException(new ODataNotImplementedException(messageReference));
     }
 
+    /**
+     * Return exception.
+     *
+     * @param messageException the message exception
+     * @return the response
+     */
     private Response returnException(final ODataMessageException messageException) {
         ODataContextImpl context = new ODataContextImpl(request, serviceFactory);
         context.setRequest(request);
@@ -154,10 +216,21 @@ public final class ODataSubLocator {
         return RestUtil.convertResponse(response);
     }
 
+    /**
+     * Return no service response.
+     *
+     * @param messageReference the message reference
+     * @return the response
+     */
     private Response returnNoServiceResponse(MessageReference messageReference) {
         return returnException(new ODataInternalServerErrorException(messageReference));
     }
 
+    /**
+     * Handle options.
+     *
+     * @return the response
+     */
     @OPTIONS
     public Response handleOptions() {
         // RFC 2616, 5.1.1: "An origin server SHOULD return the status code [...]
@@ -166,11 +239,24 @@ public final class ODataSubLocator {
         return returnNotImplementedResponse(ODataNotImplementedException.COMMON);
     }
 
+    /**
+     * Handle head.
+     *
+     * @return the response
+     * @throws ODataException the o data exception
+     */
     @HEAD
     public Response handleHead() throws ODataException {
         return handleGet();
     }
 
+    /**
+     * Handle.
+     *
+     * @param method the method
+     * @return the response
+     * @throws ODataException the o data exception
+     */
     private Response handle(final ODataHttpMethod method) throws ODataException {
         request = ODataRequest.fromRequest(request)
                               .method(method)
@@ -195,6 +281,13 @@ public final class ODataSubLocator {
 
 
 
+    /**
+     * Creates the.
+     *
+     * @param param the param
+     * @return the o data sub locator
+     * @throws ODataException the o data exception
+     */
     public static ODataSubLocator create(final SubLocatorParameter param) throws ODataException {
         ODataSubLocator subLocator = new ODataSubLocator();
 
@@ -219,5 +312,8 @@ public final class ODataSubLocator {
         return subLocator;
     }
 
+    /**
+     * Instantiates a new o data sub locator.
+     */
     private ODataSubLocator() {}
 }

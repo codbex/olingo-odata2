@@ -30,14 +30,34 @@ import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmPropertyView;
 import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmSchemaView;
 import org.apache.olingo.odata2.jpa.processor.core.access.model.JPAEdmNameBuilder;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAEdmNavigationProperty.
+ */
 public class JPAEdmNavigationProperty extends JPAEdmBaseViewImpl implements JPAEdmNavigationPropertyView {
 
+  /** The association view. */
   private JPAEdmAssociationView associationView = null;
+  
+  /** The current navigation property. */
   private NavigationProperty currentNavigationProperty = null;
+  
+  /** The property view. */
   private JPAEdmPropertyView propertyView = null;
+  
+  /** The consistent navigation properties. */
   private List<NavigationProperty> consistentNavigationProperties = null;
+  
+  /** The count. */
   private int count;
 
+  /**
+   * Instantiates a new JPA edm navigation property.
+   *
+   * @param associationView the association view
+   * @param propertyView the property view
+   * @param countNumber the count number
+   */
   public JPAEdmNavigationProperty(final JPAEdmAssociationView associationView, final JPAEdmPropertyView propertyView,
       final int countNumber) {
     super(associationView);
@@ -49,12 +69,22 @@ public class JPAEdmNavigationProperty extends JPAEdmBaseViewImpl implements JPAE
     }
   }
 
+  /**
+   * Instantiates a new JPA edm navigation property.
+   *
+   * @param schemaView the schema view
+   */
   public JPAEdmNavigationProperty(final JPAEdmSchemaView schemaView) {
     super(schemaView);
     consistentNavigationProperties = new ArrayList<NavigationProperty>();
 
   }
 
+  /**
+   * Gets the builder.
+   *
+   * @return the builder
+   */
   @Override
   public JPAEdmBuilder getBuilder() {
     if (builder == null) {
@@ -64,8 +94,16 @@ public class JPAEdmNavigationProperty extends JPAEdmBaseViewImpl implements JPAE
     return builder;
   }
 
+  /**
+   * The Class JPAEdmNavigationPropertyBuilder.
+   */
   private class JPAEdmNavigationPropertyBuilder implements JPAEdmBuilder {
 
+    /**
+     * Builds the.
+     *
+     * @throws ODataJPAModelException the o data JPA model exception
+     */
     @Override
     public void build() throws ODataJPAModelException {
 
@@ -76,16 +114,31 @@ public class JPAEdmNavigationProperty extends JPAEdmBaseViewImpl implements JPAE
 
   }
 
+  /**
+   * Gets the edm navigation property.
+   *
+   * @return the edm navigation property
+   */
   @Override
   public NavigationProperty getEdmNavigationProperty() {
     return currentNavigationProperty;
   }
 
+  /**
+   * Gets the consistent edm navigation properties.
+   *
+   * @return the consistent edm navigation properties
+   */
   @Override
   public List<NavigationProperty> getConsistentEdmNavigationProperties() {
     return consistentNavigationProperties;
   }
 
+  /**
+   * Adds the JPA edm navigation property view.
+   *
+   * @param view the view
+   */
   @Override
   public void addJPAEdmNavigationPropertyView(final JPAEdmNavigationPropertyView view) {
     if (view != null && view.isConsistent()) {

@@ -22,20 +22,47 @@ import java.util.List;
 
 import org.apache.olingo.odata2.api.batch.BatchException;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BatchQueryOperation.
+ */
 public class BatchQueryOperation implements BatchPart {
 
+  /** The is strict. */
   protected final boolean isStrict;
+  
+  /** The http status line. */
   protected Line httpStatusLine;
+  
+  /** The headers. */
   protected Header headers;
+  
+  /** The body. */
   protected List<Line> body;
+  
+  /** The body size. */
   protected int bodySize;
+  
+  /** The message. */
   protected List<Line> message;
 
+  /**
+   * Instantiates a new batch query operation.
+   *
+   * @param message the message
+   * @param isStrict the is strict
+   */
   public BatchQueryOperation(final List<Line> message, final boolean isStrict) {
     this.isStrict = isStrict;
     this.message = message;
   }
 
+  /**
+   * Parses the.
+   *
+   * @return the batch query operation
+   * @throws BatchException the batch exception
+   */
   public BatchQueryOperation parse() throws BatchException {
     httpStatusLine = consumeHttpStatusLine(message);
     headers = BatchParserCommon.consumeHeaders(message);
@@ -45,6 +72,13 @@ public class BatchQueryOperation implements BatchPart {
     return this;
   }
 
+  /**
+   * Consume http status line.
+   *
+   * @param message the message
+   * @return the line
+   * @throws BatchException the batch exception
+   */
   protected Line consumeHttpStatusLine(final List<Line> message) throws BatchException {
     if (!message.isEmpty() && !"".equals(message.get(0).toString().trim())) {
       final Line method = message.get(0);
@@ -57,23 +91,48 @@ public class BatchQueryOperation implements BatchPart {
     }
   }
 
+  /**
+   * Gets the http status line.
+   *
+   * @return the http status line
+   */
   public Line getHttpStatusLine() {
     return httpStatusLine;
   }
 
+  /**
+   * Gets the body.
+   *
+   * @return the body
+   */
   public List<Line> getBody() {
     return body;
   }
 
+  /**
+   * Gets the body size.
+   *
+   * @return the body size
+   */
   public int getBodySize() {
     return bodySize;
   }
 
+  /**
+   * Gets the headers.
+   *
+   * @return the headers
+   */
   @Override
   public Header getHeaders() {
     return headers;
   }
 
+  /**
+   * Checks if is strict.
+   *
+   * @return true, if is strict
+   */
   @Override
   public boolean isStrict() {
     return isStrict;

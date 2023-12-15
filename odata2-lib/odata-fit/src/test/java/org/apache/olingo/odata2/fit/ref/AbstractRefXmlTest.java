@@ -36,16 +36,26 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.xml.sax.SAXException;
 
+// TODO: Auto-generated Javadoc
 /**
  * Abstract base class for tests employing the reference scenario reading or writing XML.
  * 
  */
 @Ignore("no test methods")
 public class AbstractRefXmlTest extends AbstractRefTest {
+  
+  /**
+   * Instantiates a new abstract ref xml test.
+   *
+   * @param servletType the servlet type
+   */
   public AbstractRefXmlTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /**
+   * Sets the xml namespace prefixes.
+   */
   @Before
   public void setXmlNamespacePrefixes() {
     Map<String, String> prefixMap = new HashMap<String, String>();
@@ -59,24 +69,51 @@ public class AbstractRefXmlTest extends AbstractRefTest {
     XMLUnit.setXpathNamespaceContext(new SimpleNamespaceContext(prefixMap));
   }
 
+  /**
+   * Bad request.
+   *
+   * @param uri the uri
+   * @throws Exception the exception
+   */
   @Override
   protected void badRequest(final String uri) throws Exception {
     final HttpResponse response = callUri(uri, HttpStatusCodes.BAD_REQUEST);
     validateXmlError(getBody(response));
   }
 
+  /**
+   * Not found.
+   *
+   * @param uri the uri
+   * @throws Exception the exception
+   */
   @Override
   protected void notFound(final String uri) throws Exception {
     final HttpResponse response = callUri(uri, HttpStatusCodes.NOT_FOUND);
     validateXmlError(getBody(response));
   }
 
+  /**
+   * Validate xml error.
+   *
+   * @param xml the xml
+   * @throws XpathException the xpath exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws SAXException the SAX exception
+   */
   protected void validateXmlError(final String xml) throws XpathException, IOException, SAXException {
     assertXpathExists("/m:error", xml);
     assertXpathExists("/m:error/m:code", xml);
     assertXpathExists("/m:error/m:message[@xml:lang=\"en\"]", xml);
   }
 
+  /**
+   * Read file.
+   *
+   * @param filename the filename
+   * @return the string
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   protected String readFile(final String filename) throws IOException {
     InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream(filename);
     if (in == null) {

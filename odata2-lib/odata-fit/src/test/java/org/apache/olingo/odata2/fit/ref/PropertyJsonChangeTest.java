@@ -26,16 +26,27 @@ import org.apache.olingo.odata2.api.commons.HttpStatusCodes;
 import org.apache.olingo.odata2.testutil.server.ServletType;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
  * Tests employing the reference scenario changing properties in JSON format.
  * 
  */
 public class PropertyJsonChangeTest extends AbstractRefTest {
 
+  /**
+   * Instantiates a new property json change test.
+   *
+   * @param servletType the servlet type
+   */
   public PropertyJsonChangeTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /**
+   * Simple property without accept header.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void simplePropertyWithoutAcceptHeader() throws Exception {
     final String url = "Employees('2')/Age";
@@ -49,6 +60,11 @@ public class PropertyJsonChangeTest extends AbstractRefTest {
     putUri(urlForName, "{\"EmployeeName\":NewName}", HttpContentType.APPLICATION_JSON, HttpStatusCodes.BAD_REQUEST);
   }
 
+  /**
+   * Simple property with accept header.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void simplePropertyWithAcceptHeader() throws Exception {
     final String url = "Employees('2')/Age";
@@ -63,6 +79,11 @@ public class PropertyJsonChangeTest extends AbstractRefTest {
     putUri(urlForName, "{\"EmployeeName\":NewName}", HttpContentType.APPLICATION_JSON, HttpStatusCodes.BAD_REQUEST);
   }
 
+  /**
+   * Simple property with invalid accept header.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void simplePropertyWithInvalidAcceptHeader() throws Exception {
     final String url = "Employees('2')/Age";
@@ -76,6 +97,11 @@ public class PropertyJsonChangeTest extends AbstractRefTest {
         HttpStatusCodes.NOT_ACCEPTABLE);
   }
 
+  /**
+   * Complex property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void complexProperty() throws Exception {
     final String url1 = "Employees('2')/Location";

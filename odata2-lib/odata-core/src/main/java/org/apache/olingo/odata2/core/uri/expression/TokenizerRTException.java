@@ -18,19 +18,18 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.core.uri.expression;
 
+// TODO: Auto-generated Javadoc
 /**
  * Internal error. If used(thrown) the thrower
  * 
  */
 public class TokenizerRTException extends Exception {
 
-  /**
-   * 
-   */
+  /** The Constant serialVersionUID. */
   private static final long serialVersionUID = 1L;
 
   /**
-   * 
+   * Instantiates a new tokenizer RT exception.
    */
   public TokenizerRTException() {
     super();

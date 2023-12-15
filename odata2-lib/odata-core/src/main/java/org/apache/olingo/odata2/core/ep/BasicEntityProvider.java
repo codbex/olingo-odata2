@@ -55,19 +55,21 @@ import org.apache.olingo.odata2.core.commons.XmlHelper;
 import org.apache.olingo.odata2.core.ep.producer.XmlMetadataProducer;
 import org.apache.olingo.odata2.core.ep.util.CircleStreamBuffer;
 
+// TODO: Auto-generated Javadoc
 /**
  * Provider for all basic (content type independent) entity provider methods.
  */
 public class BasicEntityProvider {
 
-  /** Default used charset for writer and response content header */
+  /**  Default used charset for writer and response content header. */
   private static final String DEFAULT_CHARSET = "utf-8";
 
   /**
    * Reads binary data from an input stream.
+   *
    * @param content the content input stream
    * @return the binary data
-   * @throws EntityProviderException
+   * @throws EntityProviderException the entity provider exception
    */
   public byte[] readBinary(final InputStream content) throws EntityProviderException {
     ByteArrayOutputStream buffer = new ByteArrayOutputStream();
@@ -88,9 +90,10 @@ public class BasicEntityProvider {
 
   /**
    * Reads text from an input stream.
+   *
    * @param content the content input stream
    * @return text as string from <code>InputStream</code>
-   * @throws EntityProviderException
+   * @throws EntityProviderException the entity provider exception
    */
   public String readText(final InputStream content) throws EntityProviderException {
     BufferedReader bufferedReader =
@@ -111,11 +114,12 @@ public class BasicEntityProvider {
 
   /**
    * Reads an unformatted value of an EDM property as binary or as content type <code>text/plain</code>.
+   *
    * @param edmProperty the EDM property
    * @param content the content input stream
-   * @param typeMapping
+   * @param typeMapping the type mapping
    * @return the value as the proper system data type
-   * @throws EntityProviderException
+   * @throws EntityProviderException the entity provider exception
    */
   public Object readPropertyValue(final EdmProperty edmProperty, final InputStream content, final Class<?> typeMapping)
       throws EntityProviderException {
@@ -144,10 +148,11 @@ public class BasicEntityProvider {
 
   /**
    * Write property as binary or as content type <code>text/plain</code>.
+   *
    * @param edmProperty the EDM property
    * @param value its value
    * @return resulting {@link ODataResponse} with written content
-   * @throws EntityProviderException
+   * @throws EntityProviderException the entity provider exception
    */
   public ODataResponse writePropertyValue(final EdmProperty edmProperty, final Object value)
       throws EntityProviderException {
@@ -190,9 +195,10 @@ public class BasicEntityProvider {
 
   /**
    * Write text value as content type <code>text/plain</code> with charset parameter set to {@value #DEFAULT_CHARSET}.
+   *
    * @param value the string that is written to {@link ODataResponse}
    * @return resulting {@link ODataResponse} with written text content
-   * @throws EntityProviderException
+   * @throws EntityProviderException the entity provider exception
    */
   public ODataResponse writeText(final String value) throws EntityProviderException {
     ODataResponseBuilder builder = ODataResponse.newBuilder();
@@ -212,10 +218,11 @@ public class BasicEntityProvider {
 
   /**
    * Write binary content with content type header set to given <code>mime type</code> parameter.
+   *
    * @param mimeType MIME type which is written and used as content type header information
    * @param data data is written to {@link ODataResponse}
    * @return resulting {@link ODataResponse} with written binary content
-   * @throws EntityProviderException
+   * @throws EntityProviderException the entity provider exception
    */
   public ODataResponse writeBinary(final String mimeType, final byte[] data) throws EntityProviderException {
     ODataResponseBuilder builder = ODataResponse.newBuilder();
@@ -232,10 +239,11 @@ public class BasicEntityProvider {
   /**
    * Writes the metadata in XML format. Predefined namespaces is of type Map{@literal <}prefix,namespace{@literal >} and
    * may be null or an empty Map.
-   * @param schemas
-   * @param predefinedNamespaces
+   *
+   * @param schemas the schemas
+   * @param predefinedNamespaces the predefined namespaces
    * @return resulting {@link ODataResponse} with written metadata content
-   * @throws EntityProviderException
+   * @throws EntityProviderException the entity provider exception
    */
   public ODataResponse writeMetadata(final List<Schema> schemas, final Map<String, String> predefinedNamespaces)
       throws EntityProviderException {
@@ -247,6 +255,16 @@ public class BasicEntityProvider {
     return writeMetadataInternal(predefinedNamespaces, dataServiceVersion, metadata);
   }
 
+  /**
+   * Write metadata internal.
+   *
+   * @param predefinedNamespaces the predefined namespaces
+   * @param dataServiceVersion the data service version
+   * @param metadata the metadata
+   * @return the o data response
+   * @throws EntityProviderException the entity provider exception
+   * @throws EntityProviderProducerException the entity provider producer exception
+   */
   private ODataResponse writeMetadataInternal(final Map<String, String> predefinedNamespaces, String dataServiceVersion,
       DataServices metadata) throws EntityProviderException,
       EntityProviderProducerException {
@@ -275,10 +293,11 @@ public class BasicEntityProvider {
   /**
    * Writes the metadata in XML format. Predefined namespaces is of type Map{@literal <}prefix,namespace{@literal >} and
    * may be null or an empty Map.
-   * @param serviceMetadata
-   * @param predefinedNamespaces
+   *
+   * @param serviceMetadata the service metadata
+   * @param predefinedNamespaces the predefined namespaces
    * @return resulting {@link ODataResponse} with written metadata content
-   * @throws EntityProviderException
+   * @throws EntityProviderException the entity provider exception
    */
   public ODataResponse writeMetadata(final DataServices serviceMetadata,
       final Map<String, String> predefinedNamespaces) throws EntityProviderException {
@@ -288,8 +307,9 @@ public class BasicEntityProvider {
   }
 
   /**
-   * Calculates the necessary data service version for the metadata serialization
-   * @param schemas
+   * Calculates the necessary data service version for the metadata serialization.
+   *
+   * @param schemas the schemas
    * @return DataServiceversion as String
    */
   private String calculateDataServiceVersion(final List<Schema> schemas) {

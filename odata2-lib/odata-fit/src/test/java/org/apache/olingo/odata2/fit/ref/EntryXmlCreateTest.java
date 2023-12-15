@@ -29,16 +29,27 @@ import org.apache.olingo.odata2.api.commons.HttpStatusCodes;
 import org.apache.olingo.odata2.testutil.server.ServletType;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
  * Tests employing the reference scenario changing entities in XML format.
  * 
  */
 public class EntryXmlCreateTest extends AbstractRefXmlTest {
 
+  /**
+   * Instantiates a new entry xml create test.
+   *
+   * @param servletType the servlet type
+   */
   public EntryXmlCreateTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /**
+   * Creates the deep insert room with four employees.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void createDeepInsertRoomWithFourEmployees() throws Exception {
 

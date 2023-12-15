@@ -38,21 +38,24 @@ import org.apache.olingo.odata2.core.ep.aggregator.EntityInfoAggregator;
 import org.apache.olingo.odata2.core.ep.aggregator.EntityPropertyInfo;
 import org.apache.olingo.odata2.core.ep.util.FormatXml;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class TombstoneProducer.
  */
 public class TombstoneProducer {
 
+  /** The default date string. */
   private String defaultDateString;
 
   /**
    * Appends tombstones to an already started feed.
    * If the list is empty no elements will be appended.
+   *
    * @param writer same as in feed
    * @param eia same as in feed
    * @param properties same as in feed
    * @param deletedEntries data to be appended
-   * @throws EntityProviderException
+   * @throws EntityProviderException the entity provider exception
    */
   public void appendTombstones(final XMLStreamWriter writer, final EntityInfoAggregator eia,
       final EntityProviderWriteProperties properties, final List<Map<String, Object>> deletedEntries)
@@ -73,6 +76,15 @@ public class TombstoneProducer {
     }
   }
 
+  /**
+   * Append when attribute.
+   *
+   * @param writer the writer
+   * @param eia the eia
+   * @param deletedEntry the deleted entry
+   * @throws XMLStreamException the XML stream exception
+   * @throws EdmSimpleTypeException the edm simple type exception
+   */
   private void appendWhenAttribute(final XMLStreamWriter writer, final EntityInfoAggregator eia,
       final Map<String, Object> deletedEntry) throws XMLStreamException, EdmSimpleTypeException {
     Object updateDate = null;
@@ -88,6 +100,15 @@ public class TombstoneProducer {
     }
   }
 
+  /**
+   * Append custom when attribute.
+   *
+   * @param writer the writer
+   * @param updateDate the update date
+   * @param updatedInfo the updated info
+   * @throws XMLStreamException the XML stream exception
+   * @throws EdmSimpleTypeException the edm simple type exception
+   */
   private void appendCustomWhenAttribute(final XMLStreamWriter writer, final Object updateDate,
       final EntityPropertyInfo updatedInfo) throws XMLStreamException, EdmSimpleTypeException {
     EdmFacets updateFacets = updatedInfo.getFacets();
@@ -95,6 +116,16 @@ public class TombstoneProducer {
         EdmLiteralKind.DEFAULT, updateFacets));
   }
 
+  /**
+   * Append ref attribute.
+   *
+   * @param writer the writer
+   * @param eia the eia
+   * @param properties the properties
+   * @param deletedEntry the deleted entry
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   private void appendRefAttribute(final XMLStreamWriter writer, final EntityInfoAggregator eia,
       final EntityProviderWriteProperties properties, final Map<String, Object> deletedEntry)
       throws XMLStreamException, EntityProviderException {
@@ -103,6 +134,13 @@ public class TombstoneProducer {
     writer.writeAttribute(FormatXml.ATOM_TOMBSTONE_REF, ref);
   }
 
+  /**
+   * Append default when attribute.
+   *
+   * @param writer the writer
+   * @throws XMLStreamException the XML stream exception
+   * @throws EdmSimpleTypeException the edm simple type exception
+   */
   private void appendDefaultWhenAttribute(final XMLStreamWriter writer) throws XMLStreamException,
       EdmSimpleTypeException {
     if (defaultDateString == null) {

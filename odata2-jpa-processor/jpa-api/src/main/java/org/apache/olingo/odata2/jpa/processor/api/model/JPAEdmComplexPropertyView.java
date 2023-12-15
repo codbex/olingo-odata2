@@ -20,6 +20,7 @@ package org.apache.olingo.odata2.jpa.processor.api.model;
 
 import org.apache.olingo.odata2.api.edm.provider.ComplexProperty;
 
+// TODO: Auto-generated Javadoc
 /**
  * <p>
  * A view on properties of Java Persistence embeddable type and EDM complex
@@ -31,9 +32,9 @@ import org.apache.olingo.odata2.api.edm.provider.ComplexProperty;
  * type created for a given JPA EDM complex type. The implementation acts as a
  * container for the properties of EDM complex type.
  * </p>
- * 
- * @org.apache.olingo.odata2.DoNotImplement
+ *
  * @see org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmComplexTypeView
+ * @org.apache.olingo.odata2.DoNotImplement 
  */
 public interface JPAEdmComplexPropertyView extends JPAEdmBaseView {
   /**

@@ -35,44 +35,90 @@ import org.apache.olingo.odata2.api.servicedocument.Workspace;
 import org.apache.olingo.odata2.core.commons.Decoder;
 import org.apache.olingo.odata2.core.edm.provider.EdmEntitySetInfoImplProv;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class AtomInfoImpl.
  */
 public class AtomInfoImpl implements AtomInfo {
+  
+  /** The workspaces. */
   private List<Workspace> workspaces;
+  
+  /** The attributes. */
   private CommonAttributes attributes;
+  
+  /** The extension elements. */
   private List<ExtensionElement> extensionElements;
 
+  /**
+   * Gets the common attributes.
+   *
+   * @return the common attributes
+   */
   @Override
   public CommonAttributes getCommonAttributes() {
     return attributes;
   }
 
+  /**
+   * Gets the workspaces.
+   *
+   * @return the workspaces
+   */
   @Override
   public List<Workspace> getWorkspaces() {
     return workspaces;
   }
 
+  /**
+   * Gets the extesion elements.
+   *
+   * @return the extesion elements
+   */
   @Override
   public List<ExtensionElement> getExtesionElements() {
     return extensionElements;
   }
 
+  /**
+   * Sets the workspaces.
+   *
+   * @param workspaces the workspaces
+   * @return the atom info impl
+   */
   public AtomInfoImpl setWorkspaces(final List<Workspace> workspaces) {
     this.workspaces = workspaces;
     return this;
   }
 
+  /**
+   * Sets the common attributes.
+   *
+   * @param attributes the attributes
+   * @return the atom info impl
+   */
   public AtomInfoImpl setCommonAttributes(final CommonAttributes attributes) {
     this.attributes = attributes;
     return this;
   }
 
+  /**
+   * Sets the extesion elements.
+   *
+   * @param elements the elements
+   * @return the atom info impl
+   */
   public AtomInfoImpl setExtesionElements(final List<ExtensionElement> elements) {
     extensionElements = elements;
     return this;
   }
 
+  /**
+   * Gets the entity sets info.
+   *
+   * @return the entity sets info
+   * @throws EntityProviderException the entity provider exception
+   */
   public List<EdmEntitySetInfo> getEntitySetsInfo() throws EntityProviderException {
     List<EdmEntitySetInfo> entitySets = new ArrayList<EdmEntitySetInfo>();
     for (Workspace workspace : workspaces) {

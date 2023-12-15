@@ -27,25 +27,49 @@ import java.util.Set;
 
 import org.apache.olingo.odata2.api.ep.EntityProviderException;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class EntityTypeMapping.
  */
 public class EntityTypeMapping {
+  
+  /** The Constant ENTITY_TYPE_MAPPING. */
   private static final EntityTypeMapping ENTITY_TYPE_MAPPING = new EntityTypeMapping();
+  
+  /** The property name. */
   final String propertyName;
+  
+  /** The mapping. */
   final Class<?> mapping;
+  
+  /** The mappings. */
   final List<EntityTypeMapping> mappings;
 
+  /**
+   * Instantiates a new entity type mapping.
+   */
   private EntityTypeMapping() {
     this(null, Object.class);
   }
 
+  /**
+   * Instantiates a new entity type mapping.
+   *
+   * @param name the name
+   * @param mappingClass the mapping class
+   */
   private EntityTypeMapping(final String name, final Class<?> mappingClass) {
     propertyName = name;
     mapping = mappingClass;
     mappings = Collections.emptyList();
   }
 
+  /**
+   * Instantiates a new entity type mapping.
+   *
+   * @param name the name
+   * @param typeMappings the type mappings
+   */
   private EntityTypeMapping(final String name, final List<EntityTypeMapping> typeMappings) {
     propertyName = name;
     mapping = EntityTypeMapping.class;
@@ -56,10 +80,25 @@ public class EntityTypeMapping {
     mappings = Collections.unmodifiableList(tmp);
   }
 
+  /**
+   * Creates the.
+   *
+   * @param mappings the mappings
+   * @return the entity type mapping
+   * @throws EntityProviderException the entity provider exception
+   */
   public static EntityTypeMapping create(final Map<String, Object> mappings) throws EntityProviderException {
     return create(null, mappings);
   }
 
+  /**
+   * Creates the.
+   *
+   * @param name the name
+   * @param mappings the mappings
+   * @return the entity type mapping
+   * @throws EntityProviderException the entity provider exception
+   */
   @SuppressWarnings("unchecked")
   public static EntityTypeMapping create(final String name, final Map<String, Object> mappings)
       throws EntityProviderException {
@@ -84,6 +123,11 @@ public class EntityTypeMapping {
     return new EntityTypeMapping(name, typeMappings);
   }
 
+  /**
+   * Checks if is complex.
+   *
+   * @return true, if is complex
+   */
   boolean isComplex() {
     return mappings != null && mapping == EntityTypeMapping.class;
   }
@@ -91,7 +135,8 @@ public class EntityTypeMapping {
   /**
    * If this {@link EntityTypeMapping} is complex the mapping for the property
    * with the given <code>name</code> is returned; otherwise an empty {@link EntityTypeMapping} is returned.
-   * @param name
+   *
+   * @param name the name
    * @return the mapping for this entity type
    */
   public EntityTypeMapping getEntityTypeMapping(final String name) {
@@ -108,7 +153,8 @@ public class EntityTypeMapping {
   /**
    * If this {@link EntityTypeMapping} is complex the mapping {@link Class} for the property
    * with the given <code>name</code> is returned; otherwise <code>NULL</code> is returned.
-   * @param name
+   *
+   * @param name the name
    * @return mapping {@link Class} for the property with given <code>name</code> or <code>NULL</code>.
    */
   public Class<?> getMappingClass(final String name) {
@@ -122,6 +168,11 @@ public class EntityTypeMapping {
     return null;
   }
 
+  /**
+   * To string.
+   *
+   * @return the string
+   */
   @Override
   public String toString() {
     if (isComplex()) {

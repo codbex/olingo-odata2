@@ -18,8 +18,15 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.annotation.processor.core.model;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Interface ModelSharedConstants.
+ */
 public interface ModelSharedConstants {
 
+  /** The namespace 1. */
   String NAMESPACE_1 = "RefScenario";
+  
+  /** The container 1. */
   String CONTAINER_1 = "DefaultContainer";
 }

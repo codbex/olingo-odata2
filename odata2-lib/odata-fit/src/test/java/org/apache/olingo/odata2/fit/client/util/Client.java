@@ -37,25 +37,62 @@ import org.apache.olingo.odata2.api.ep.feed.ODataDeltaFeed;
 import org.apache.olingo.odata2.api.ep.feed.ODataFeed;
 import org.apache.olingo.odata2.api.exception.ODataException;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Client.
+ */
 public class Client {
 
+  /** The Constant APPLICATION_JSON. */
   public static final String APPLICATION_JSON = "application/json";
+  
+  /** The Constant APPLICATION_XML. */
   public static final String APPLICATION_XML = "application/xml";
+  
+  /** The Constant APPLICATION_ATOM_XML. */
   public static final String APPLICATION_ATOM_XML = "application/atom+xml";
 
+  /** The Constant METADATA. */
   public static final String METADATA = "$metadata";
 
+  /** The service url. */
   private String serviceUrl;
+  
+  /** The protocol. */
   private Proxy.Type protocol;
+  
+  /** The proxy. */
   private String proxy;
+  
+  /** The port. */
   private int port;
+  
+  /** The use proxy. */
   private boolean useProxy;
+  
+  /** The username. */
   private String username;
+  
+  /** The password. */
   private String password;
+  
+  /** The use authentication. */
   private boolean useAuthentication;
 
+  /** The edm. */
   private Edm edm;
 
+  /**
+   * Instantiates a new client.
+   *
+   * @param serviceUrl the service url
+   * @param protocol the protocol
+   * @param proxy the proxy
+   * @param port the port
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws ODataException the o data exception
+   * @throws HttpException the http exception
+   */
   public Client(final String serviceUrl, final Proxy.Type protocol, final String proxy, final int port)
       throws IOException, ODataException,
       HttpException {
@@ -69,6 +106,14 @@ public class Client {
     edm = getEdmInternal();
   }
 
+  /**
+   * Instantiates a new client.
+   *
+   * @param serviceUrl the service url
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws ODataException the o data exception
+   * @throws HttpException the http exception
+   */
   public Client(final String serviceUrl) throws IOException, ODataException, HttpException {
     this.serviceUrl = serviceUrl;
     useProxy = false;
@@ -77,6 +122,19 @@ public class Client {
     edm = getEdmInternal();
   }
 
+  /**
+   * Instantiates a new client.
+   *
+   * @param serviceUrl the service url
+   * @param protocol the protocol
+   * @param proxy the proxy
+   * @param port the port
+   * @param username the username
+   * @param password the password
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws ODataException the o data exception
+   * @throws HttpException the http exception
+   */
   public Client(final String serviceUrl, final Proxy.Type protocol, final String proxy, final int port,
       final String username, final String password)
       throws IOException, ODataException, HttpException {
@@ -92,6 +150,16 @@ public class Client {
     edm = getEdmInternal();
   }
 
+  /**
+   * Instantiates a new client.
+   *
+   * @param serviceUrl the service url
+   * @param username the username
+   * @param password the password
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws ODataException the o data exception
+   * @throws HttpException the http exception
+   */
   public Client(final String serviceUrl, final String username, final String password) throws IOException,
       ODataException, HttpException {
     this.serviceUrl = serviceUrl;
@@ -103,12 +171,27 @@ public class Client {
     edm = getEdmInternal();
   }
 
+  /**
+   * Gets the edm internal.
+   *
+   * @return the edm internal
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws ODataException the o data exception
+   * @throws HttpException the http exception
+   */
   private Edm getEdmInternal() throws IOException, ODataException, HttpException {
     HttpURLConnection connection = connect(METADATA, null, APPLICATION_XML, "GET");
     edm = EntityProvider.readMetadata((InputStream) connection.getContent(), false);
     return edm;
   }
 
+  /**
+   * Check status.
+   *
+   * @param connection the connection
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws HttpException the http exception
+   */
   private void checkStatus(final HttpURLConnection connection) throws IOException, HttpException {
     if (400 <= connection.getResponseCode() && connection.getResponseCode() <= 599) {
       HttpStatusCodes httpStatusCode = HttpStatusCodes.fromStatusCode(connection.getResponseCode());
@@ -116,20 +199,54 @@ public class Client {
     }
   }
 
+  /**
+   * Gets the edm.
+   *
+   * @return the edm
+   */
   public Edm getEdm() {
     return edm;
   }
 
+  /**
+   * Gets the entity sets.
+   *
+   * @return the entity sets
+   * @throws ODataException the o data exception
+   */
   public List<EdmEntitySetInfo> getEntitySets() throws ODataException {
     return edm.getServiceMetadata().getEntitySetInfos();
   }
 
+  /**
+   * Read feed.
+   *
+   * @param entityContainerName the entity container name
+   * @param entitySetName the entity set name
+   * @param contentType the content type
+   * @return the o data feed
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws ODataException the o data exception
+   * @throws HttpException the http exception
+   */
   public ODataFeed readFeed(final String entityContainerName, final String entitySetName, final String contentType)
       throws IOException,
       ODataException, HttpException {
     return readFeed(entityContainerName, entitySetName, contentType, null);
   }
 
+  /**
+   * Read feed.
+   *
+   * @param entityContainerName the entity container name
+   * @param entitySetName the entity set name
+   * @param contentType the content type
+   * @param query the query
+   * @return the o data feed
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws ODataException the o data exception
+   * @throws HttpException the http exception
+   */
   public ODataFeed readFeed(final String entityContainerName, final String entitySetName, final String contentType,
       final String query)
       throws IOException, ODataException, HttpException {
@@ -146,6 +263,16 @@ public class Client {
         EntityProviderReadProperties.init().build());
   }
 
+  /**
+   * Connect.
+   *
+   * @param absoluteUri the absolute uri
+   * @param contentType the content type
+   * @param httpMethod the http method
+   * @return the http URL connection
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws HttpException the http exception
+   */
   private HttpURLConnection connect(final String absoluteUri, final String contentType, final String httpMethod)
       throws IOException,
       HttpException {
@@ -173,6 +300,17 @@ public class Client {
     return connection;
   }
 
+  /**
+   * Connect.
+   *
+   * @param relativeUri the relative uri
+   * @param query the query
+   * @param contentType the content type
+   * @param httpMethod the http method
+   * @return the http URL connection
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws HttpException the http exception
+   */
   private HttpURLConnection connect(final String relativeUri, final String query, final String contentType,
       final String httpMethod)
       throws IOException,
@@ -181,6 +319,18 @@ public class Client {
     return connect(url.toString(), contentType, httpMethod);
   }
 
+  /**
+   * Read delta feed.
+   *
+   * @param entityContainerName the entity container name
+   * @param entitySetName the entity set name
+   * @param contentType the content type
+   * @param deltaLink the delta link
+   * @return the o data delta feed
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws ODataException the o data exception
+   * @throws HttpException the http exception
+   */
   public ODataDeltaFeed
       readDeltaFeed(final String entityContainerName, final String entitySetName, final String contentType,
           final String deltaLink)

@@ -47,11 +47,17 @@ import org.apache.olingo.odata2.api.exception.MessageReference;
 import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class EdmSimpleTypeTest.
  */
 public class EdmSimpleTypeTest extends BaseTest {
 
+  /**
+   * Test name space.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testNameSpace() throws Exception {
     assertEquals(EdmSimpleType.SYSTEM_NAMESPACE, Bit.getInstance().getNamespace());
@@ -74,6 +80,11 @@ public class EdmSimpleTypeTest extends BaseTest {
     assertEquals(EdmSimpleType.EDM_NAMESPACE, EdmTime.getInstance().getNamespace());
   }
 
+  /**
+   * Test names.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testNames() throws Exception {
     assertEquals("Bit", Bit.getInstance().getName());
@@ -97,6 +108,11 @@ public class EdmSimpleTypeTest extends BaseTest {
     assertEquals("Time", EdmSimpleTypeKind.Time.getEdmSimpleTypeInstance().getName());
   }
 
+  /**
+   * Test kind.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testKind() throws Exception {
     for (EdmSimpleTypeKind kind : EdmSimpleTypeKind.values()) {
@@ -104,18 +120,30 @@ public class EdmSimpleTypeTest extends BaseTest {
     }
   }
 
+  /**
+   * Test compatibility.
+   *
+   * @param type the type
+   * @param edmSimpleTypes the edm simple types
+   */
   private void testCompatibility(final EdmSimpleType type, final EdmSimpleType... edmSimpleTypes) {
     for (EdmSimpleType compatible : edmSimpleTypes) {
       assertTrue(type.isCompatible(compatible));
     }
   }
 
+  /**
+   * Test uint 7 compatibility.
+   */
   @Test
   public void testUint7Compatibility() {
     testCompatibility(Uint7.getInstance(), Uint7.getInstance(), Bit.getInstance());
     assertFalse(Uint7.getInstance().isCompatible(EdmSimpleTypeKind.String.getEdmSimpleTypeInstance()));
   }
 
+  /**
+   * Test binary compatibility.
+   */
   @Test
   public void testBinaryCompatibility() {
     testCompatibility(EdmSimpleTypeKind.Binary.getEdmSimpleTypeInstance(),
@@ -124,6 +152,9 @@ public class EdmSimpleTypeTest extends BaseTest {
         EdmSimpleTypeKind.String.getEdmSimpleTypeInstance()));
   }
 
+  /**
+   * Test boolean compatibility.
+   */
   @Test
   public void testBooleanCompatibility() {
     testCompatibility(EdmSimpleTypeKind.Boolean.getEdmSimpleTypeInstance(),
@@ -133,6 +164,9 @@ public class EdmSimpleTypeTest extends BaseTest {
         EdmSimpleTypeKind.String.getEdmSimpleTypeInstance()));
   }
 
+  /**
+   * Test byte compatibility.
+   */
   @Test
   public void testByteCompatibility() {
     testCompatibility(EdmSimpleTypeKind.Byte.getEdmSimpleTypeInstance(),
@@ -143,6 +177,9 @@ public class EdmSimpleTypeTest extends BaseTest {
         EdmSimpleTypeKind.String.getEdmSimpleTypeInstance()));
   }
 
+  /**
+   * Test date time compatibility.
+   */
   @Test
   public void testDateTimeCompatibility() {
     testCompatibility(EdmSimpleTypeKind.DateTime.getEdmSimpleTypeInstance(),
@@ -151,6 +188,9 @@ public class EdmSimpleTypeTest extends BaseTest {
         EdmSimpleTypeKind.String.getEdmSimpleTypeInstance()));
   }
 
+  /**
+   * Test date time offset compatibility.
+   */
   @Test
   public void testDateTimeOffsetCompatibility() {
     testCompatibility(EdmSimpleTypeKind.DateTimeOffset.getEdmSimpleTypeInstance(),
@@ -159,6 +199,9 @@ public class EdmSimpleTypeTest extends BaseTest {
         EdmSimpleTypeKind.String.getEdmSimpleTypeInstance()));
   }
 
+  /**
+   * Test decimal compatibility.
+   */
   @Test
   public void testDecimalCompatibility() {
     testCompatibility(EdmSimpleTypeKind.Decimal.getEdmSimpleTypeInstance(),
@@ -176,6 +219,9 @@ public class EdmSimpleTypeTest extends BaseTest {
         EdmSimpleTypeKind.String.getEdmSimpleTypeInstance()));
   }
 
+  /**
+   * Test double compatibility.
+   */
   @Test
   public void testDoubleCompatibility() {
     testCompatibility(EdmSimpleTypeKind.Double.getEdmSimpleTypeInstance(),
@@ -192,6 +238,9 @@ public class EdmSimpleTypeTest extends BaseTest {
         EdmSimpleTypeKind.String.getEdmSimpleTypeInstance()));
   }
 
+  /**
+   * Test guid compatibility.
+   */
   @Test
   public void testGuidCompatibility() {
     testCompatibility(EdmSimpleTypeKind.Guid.getEdmSimpleTypeInstance(),
@@ -200,6 +249,9 @@ public class EdmSimpleTypeTest extends BaseTest {
         EdmSimpleTypeKind.String.getEdmSimpleTypeInstance()));
   }
 
+  /**
+   * Test int 16 compatibility.
+   */
   @Test
   public void testInt16Compatibility() {
     testCompatibility(EdmSimpleTypeKind.Int16.getEdmSimpleTypeInstance(),
@@ -212,6 +264,9 @@ public class EdmSimpleTypeTest extends BaseTest {
         EdmSimpleTypeKind.String.getEdmSimpleTypeInstance()));
   }
 
+  /**
+   * Test int 32 compatibility.
+   */
   @Test
   public void testInt32Compatibility() {
     testCompatibility(EdmSimpleTypeKind.Int32.getEdmSimpleTypeInstance(),
@@ -225,6 +280,9 @@ public class EdmSimpleTypeTest extends BaseTest {
         EdmSimpleTypeKind.String.getEdmSimpleTypeInstance()));
   }
 
+  /**
+   * Test int 64 compatibility.
+   */
   @Test
   public void testInt64Compatibility() {
     testCompatibility(EdmSimpleTypeKind.Int64.getEdmSimpleTypeInstance(),
@@ -239,6 +297,9 @@ public class EdmSimpleTypeTest extends BaseTest {
         EdmSimpleTypeKind.String.getEdmSimpleTypeInstance()));
   }
 
+  /**
+   * Test S byte compatibility.
+   */
   @Test
   public void testSByteCompatibility() {
     testCompatibility(EdmSimpleTypeKind.SByte.getEdmSimpleTypeInstance(),
@@ -249,6 +310,9 @@ public class EdmSimpleTypeTest extends BaseTest {
         EdmSimpleTypeKind.String.getEdmSimpleTypeInstance()));
   }
 
+  /**
+   * Test single compatibility.
+   */
   @Test
   public void testSingleCompatibility() {
     testCompatibility(EdmSimpleTypeKind.Single.getEdmSimpleTypeInstance(),
@@ -264,6 +328,9 @@ public class EdmSimpleTypeTest extends BaseTest {
         EdmSimpleTypeKind.String.getEdmSimpleTypeInstance()));
   }
 
+  /**
+   * Test string compatibility.
+   */
   @Test
   public void testStringCompatibility() {
     testCompatibility(EdmSimpleTypeKind.String.getEdmSimpleTypeInstance(),
@@ -272,6 +339,9 @@ public class EdmSimpleTypeTest extends BaseTest {
         EdmSimpleTypeKind.Binary.getEdmSimpleTypeInstance()));
   }
 
+  /**
+   * Test time compatibility.
+   */
   @Test
   public void testTimeCompatibility() {
     testCompatibility(EdmSimpleTypeKind.Time.getEdmSimpleTypeInstance(),
@@ -280,11 +350,21 @@ public class EdmSimpleTypeTest extends BaseTest {
         EdmSimpleTypeKind.String.getEdmSimpleTypeInstance()));
   }
 
+  /**
+   * To uri literal binary.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void toUriLiteralBinary() throws Exception {
     assertEquals("binary'FA12AAA1'", EdmSimpleTypeKind.Binary.getEdmSimpleTypeInstance().toUriLiteral("+hKqoQ=="));
   }
 
+  /**
+   * To uri literal boolean.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void toUriLiteralBoolean() throws Exception {
     assertEquals("true", EdmSimpleTypeKind.Boolean.getEdmSimpleTypeInstance().toUriLiteral("true"));
@@ -293,11 +373,21 @@ public class EdmSimpleTypeTest extends BaseTest {
     assertEquals("1", EdmSimpleTypeKind.Boolean.getEdmSimpleTypeInstance().toUriLiteral("1"));
   }
 
+  /**
+   * To uri literal byte.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void toUriLiteralByte() throws Exception {
     assertEquals("127", EdmSimpleTypeKind.Byte.getEdmSimpleTypeInstance().toUriLiteral("127"));
   }
 
+  /**
+   * To uri literal date time.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void toUriLiteralDateTime() throws Exception {
     assertEquals("datetime'2009-12-26T21:23:38'", EdmSimpleTypeKind.DateTime.getEdmSimpleTypeInstance().toUriLiteral(
@@ -306,6 +396,11 @@ public class EdmSimpleTypeTest extends BaseTest {
         "2009-12-26T21:23:38Z"));
   }
 
+  /**
+   * To uri literal date time offset.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void toUriLiteralDateTimeOffset() throws Exception {
     assertEquals("datetimeoffset'2009-12-26T21:23:38Z'", EdmSimpleTypeKind.DateTimeOffset.getEdmSimpleTypeInstance()
@@ -314,31 +409,61 @@ public class EdmSimpleTypeTest extends BaseTest {
         .getEdmSimpleTypeInstance().toUriLiteral("2002-10-10T12:00:00-05:00"));
   }
 
+  /**
+   * To uri literal int 16.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void toUriLiteralInt16() throws Exception {
     assertEquals("127", EdmSimpleTypeKind.Int16.getEdmSimpleTypeInstance().toUriLiteral("127"));
   }
 
+  /**
+   * To uri literal int 32.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void toUriLiteralInt32() throws Exception {
     assertEquals("127", EdmSimpleTypeKind.Int32.getEdmSimpleTypeInstance().toUriLiteral("127"));
   }
 
+  /**
+   * To uri literal int 64.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void toUriLiteralInt64() throws Exception {
     assertEquals("127L", EdmSimpleTypeKind.Int64.getEdmSimpleTypeInstance().toUriLiteral("127"));
   }
 
+  /**
+   * To uri literal S byte.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void toUriLiteralSByte() throws Exception {
     assertEquals("127", EdmSimpleTypeKind.SByte.getEdmSimpleTypeInstance().toUriLiteral("127"));
   }
 
+  /**
+   * To uri literal single.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void toUriLiteralSingle() throws Exception {
     assertEquals("127F", EdmSimpleTypeKind.Single.getEdmSimpleTypeInstance().toUriLiteral("127"));
   }
 
+  /**
+   * To uri literal string.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void toUriLiteralString() throws Exception {
     assertEquals("'StringValue'", EdmSimpleTypeKind.String.getEdmSimpleTypeInstance().toUriLiteral("StringValue"));
@@ -347,11 +472,21 @@ public class EdmSimpleTypeTest extends BaseTest {
         "String'''Value"));
   }
 
+  /**
+   * To uri literal time.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void toUriLiteralTime() throws Exception {
     assertEquals("time'P120D'", EdmSimpleTypeKind.Time.getEdmSimpleTypeInstance().toUriLiteral("P120D"));
   }
 
+  /**
+   * To string all.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void toStringAll() throws Exception {
     assertEquals("System.Bit", Bit.getInstance().toString());
@@ -374,18 +509,37 @@ public class EdmSimpleTypeTest extends BaseTest {
     assertEquals("Edm.Time", EdmTime.getInstance().toString());
   }
 
+  /**
+   * Gets the max length facets.
+   *
+   * @param maxLength the max length
+   * @return the max length facets
+   */
   private EdmFacets getMaxLengthFacets(final Integer maxLength) {
     EdmFacets facets = mock(EdmFacets.class);
     when(facets.getMaxLength()).thenReturn(maxLength);
     return facets;
   }
 
+  /**
+   * Gets the nullable facets.
+   *
+   * @param nullable the nullable
+   * @return the nullable facets
+   */
   private EdmFacets getNullableFacets(final Boolean nullable) {
     EdmFacets facets = mock(EdmFacets.class);
     when(facets.isNullable()).thenReturn(nullable);
     return facets;
   }
 
+  /**
+   * Gets the precision scale facets.
+   *
+   * @param precision the precision
+   * @param scale the scale
+   * @return the precision scale facets
+   */
   private EdmFacets getPrecisionScaleFacets(final Integer precision, final Integer scale) {
     EdmFacets facets = mock(EdmFacets.class);
     when(facets.getPrecision()).thenReturn(precision);
@@ -393,6 +547,12 @@ public class EdmSimpleTypeTest extends BaseTest {
     return facets;
   }
 
+  /**
+   * Gets the unicode facets.
+   *
+   * @param unicode the unicode
+   * @return the unicode facets
+   */
   private EdmFacets getUnicodeFacets(final Boolean unicode) {
     EdmFacets facets = mock(EdmFacets.class);
     when(facets.isUnicode()).thenReturn(unicode);
@@ -400,6 +560,15 @@ public class EdmSimpleTypeTest extends BaseTest {
     return facets;
   }
 
+  /**
+   * Expect error in value to string.
+   *
+   * @param instance the instance
+   * @param value the value
+   * @param literalKind the literal kind
+   * @param facets the facets
+   * @param messageReference the message reference
+   */
   private void expectErrorInValueToString(final EdmSimpleType instance, final Object value,
       final EdmLiteralKind literalKind, final EdmFacets facets, final MessageReference messageReference) {
     try {
@@ -411,6 +580,11 @@ public class EdmSimpleTypeTest extends BaseTest {
     }
   }
 
+  /**
+   * Check null.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void checkNull() throws Exception {
     for (EdmSimpleTypeKind kind : EdmSimpleTypeKind.values()) {
@@ -427,6 +601,11 @@ public class EdmSimpleTypeTest extends BaseTest {
     }
   }
 
+  /**
+   * Default type.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void defaultType() throws Exception {
     assertEquals(Byte.class, Bit.getInstance().getDefaultType());
@@ -450,6 +629,11 @@ public class EdmSimpleTypeTest extends BaseTest {
     assertEquals(Calendar.class, EdmSimpleTypeKind.Time.getEdmSimpleTypeInstance().getDefaultType());
   }
 
+  /**
+   * Value to string binary.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void valueToStringBinary() throws Exception {
     final byte[] binary = new byte[] { (byte) 0xAA, (byte) 0xBB, (byte) 0xCC, (byte) 0xDD, (byte) 0xEE, (byte) 0xFF };
@@ -482,6 +666,11 @@ public class EdmSimpleTypeTest extends BaseTest {
     expectErrorInValueToString(instance, binary, null, null, EdmSimpleTypeException.LITERAL_KIND_MISSING);
   }
 
+  /**
+   * Value to string boolean.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void valueToStringBoolean() throws Exception {
     final EdmSimpleType instance = EdmSimpleTypeKind.Boolean.getEdmSimpleTypeInstance();
@@ -496,6 +685,11 @@ public class EdmSimpleTypeTest extends BaseTest {
     expectErrorInValueToString(instance, false, null, null, EdmSimpleTypeException.LITERAL_KIND_MISSING);
   }
 
+  /**
+   * Value to string byte.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void valueToStringByte() throws Exception {
     final EdmSimpleType instance = EdmSimpleTypeKind.Byte.getEdmSimpleTypeInstance();
@@ -517,6 +711,11 @@ public class EdmSimpleTypeTest extends BaseTest {
     expectErrorInValueToString(instance, 1, null, null, EdmSimpleTypeException.LITERAL_KIND_MISSING);
   }
 
+  /**
+   * Value to string date time.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void valueToStringDateTime() throws Exception {
     final EdmSimpleType instance = EdmSimpleTypeKind.DateTime.getEdmSimpleTypeInstance();
@@ -608,6 +807,11 @@ public class EdmSimpleTypeTest extends BaseTest {
     expectErrorInValueToString(instance, dateTime, null, null, EdmSimpleTypeException.LITERAL_KIND_MISSING);
   }
 
+  /**
+   * Value to string date time offset.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void valueToStringDateTimeOffset() throws Exception {
     final EdmSimpleType instance = EdmSimpleTypeKind.DateTimeOffset.getEdmSimpleTypeInstance();
@@ -667,6 +871,11 @@ public class EdmSimpleTypeTest extends BaseTest {
     expectErrorInValueToString(instance, dateTime, null, null, EdmSimpleTypeException.LITERAL_KIND_MISSING);
   }
   
+  /**
+   * Value to string decimal.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void valueToStringDecimal() throws Exception {
     final EdmSimpleType instance = EdmSimpleTypeKind.Decimal.getEdmSimpleTypeInstance();
@@ -719,6 +928,11 @@ public class EdmSimpleTypeTest extends BaseTest {
     expectErrorInValueToString(instance, 1, null, null, EdmSimpleTypeException.LITERAL_KIND_MISSING);
   }
 
+  /**
+   * Value to string double.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void valueToStringDouble() throws Exception {
     final EdmSimpleType instance = EdmSimpleTypeKind.Double.getEdmSimpleTypeInstance();
@@ -750,6 +964,11 @@ public class EdmSimpleTypeTest extends BaseTest {
     expectErrorInValueToString(instance, 1, null, null, EdmSimpleTypeException.LITERAL_KIND_MISSING);
   }
 
+  /**
+   * Value to string guid.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void valueToStringGuid() throws Exception {
     final EdmSimpleType instance = EdmSimpleTypeKind.Guid.getEdmSimpleTypeInstance();
@@ -764,6 +983,11 @@ public class EdmSimpleTypeTest extends BaseTest {
     expectErrorInValueToString(instance, 1, null, null, EdmSimpleTypeException.LITERAL_KIND_MISSING);
   }
 
+  /**
+   * Value to string int 16.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void valueToStringInt16() throws Exception {
     final EdmSimpleType instance = EdmSimpleTypeKind.Int16.getEdmSimpleTypeInstance();
@@ -786,6 +1010,11 @@ public class EdmSimpleTypeTest extends BaseTest {
     expectErrorInValueToString(instance, 1, null, null, EdmSimpleTypeException.LITERAL_KIND_MISSING);
   }
 
+  /**
+   * Value to string int 32.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void valueToStringInt32() throws Exception {
     final EdmSimpleType instance = EdmSimpleTypeKind.Int32.getEdmSimpleTypeInstance();
@@ -808,6 +1037,11 @@ public class EdmSimpleTypeTest extends BaseTest {
     expectErrorInValueToString(instance, 1, null, null, EdmSimpleTypeException.LITERAL_KIND_MISSING);
   }
 
+  /**
+   * Value to string int 64.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void valueToStringInt64() throws Exception {
     final EdmSimpleType instance = EdmSimpleTypeKind.Int64.getEdmSimpleTypeInstance();
@@ -833,6 +1067,11 @@ public class EdmSimpleTypeTest extends BaseTest {
     expectErrorInValueToString(instance, 1, null, null, EdmSimpleTypeException.LITERAL_KIND_MISSING);
   }
 
+  /**
+   * Value to string S byte.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void valueToStringSByte() throws Exception {
     final EdmSimpleType instance = EdmSimpleTypeKind.SByte.getEdmSimpleTypeInstance();
@@ -854,6 +1093,11 @@ public class EdmSimpleTypeTest extends BaseTest {
     expectErrorInValueToString(instance, 1, null, null, EdmSimpleTypeException.LITERAL_KIND_MISSING);
   }
 
+  /**
+   * Value to string single.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void valueToStringSingle() throws Exception {
     final EdmSimpleType instance = EdmSimpleTypeKind.Single.getEdmSimpleTypeInstance();
@@ -886,6 +1130,11 @@ public class EdmSimpleTypeTest extends BaseTest {
     expectErrorInValueToString(instance, 1, null, null, EdmSimpleTypeException.LITERAL_KIND_MISSING);
   }
 
+  /**
+   * Value to string string.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void valueToStringString() throws Exception {
     final EdmSimpleType instance = EdmSimpleTypeKind.String.getEdmSimpleTypeInstance();
@@ -909,6 +1158,11 @@ public class EdmSimpleTypeTest extends BaseTest {
     expectErrorInValueToString(instance, "text", null, null, EdmSimpleTypeException.LITERAL_KIND_MISSING);
   }
 
+  /**
+   * Value to string time.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void valueToStringTime() throws Exception {
     final EdmSimpleType instance = EdmSimpleTypeKind.Time.getEdmSimpleTypeInstance();
@@ -965,6 +1219,15 @@ public class EdmSimpleTypeTest extends BaseTest {
     expectErrorInValueToString(instance, dateTime, null, null, EdmSimpleTypeException.LITERAL_KIND_MISSING);
   }
 
+  /**
+   * Expect error in value of string.
+   *
+   * @param instance the instance
+   * @param value the value
+   * @param literalKind the literal kind
+   * @param facets the facets
+   * @param messageReference the message reference
+   */
   private void expectErrorInValueOfString(final EdmSimpleType instance, final String value,
       final EdmLiteralKind literalKind, final EdmFacets facets, final MessageReference messageReference) {
     try {
@@ -976,6 +1239,13 @@ public class EdmSimpleTypeTest extends BaseTest {
     }
   }
 
+  /**
+   * Expect type error in value of string.
+   *
+   * @param instance the instance
+   * @param value the value
+   * @param literalKind the literal kind
+   */
   private void expectTypeErrorInValueOfString(final EdmSimpleType instance, final String value,
       final EdmLiteralKind literalKind) {
     try {
@@ -987,6 +1257,13 @@ public class EdmSimpleTypeTest extends BaseTest {
     }
   }
 
+  /**
+   * Expect unconvertible error in value of string.
+   *
+   * @param instance the instance
+   * @param value the value
+   * @param type the type
+   */
   private void expectUnconvertibleErrorInValueOfString(final EdmSimpleType instance, final String value,
       final Class<?> type) {
     try {
@@ -999,6 +1276,11 @@ public class EdmSimpleTypeTest extends BaseTest {
     }
   }
 
+  /**
+   * Check value of null.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void checkValueOfNull() throws Exception {
     for (EdmSimpleTypeKind kind : EdmSimpleTypeKind.values()) {
@@ -1018,6 +1300,11 @@ public class EdmSimpleTypeTest extends BaseTest {
     }
   }
 
+  /**
+   * Value of string binary.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void valueOfStringBinary() throws Exception {
     final byte[] binary = new byte[] { (byte) 0xAA, (byte) 0xBB, (byte) 0xCC, (byte) 0xDD, (byte) 0xEE, (byte) 0xFF };
@@ -1079,6 +1366,11 @@ public class EdmSimpleTypeTest extends BaseTest {
     expectTypeErrorInValueOfString(instance, "qrvM3e7/", EdmLiteralKind.DEFAULT);
   }
 
+  /**
+   * Value of string boolean.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void valueOfStringBoolean() throws Exception {
     final EdmSimpleType instance = EdmSimpleTypeKind.Boolean.getEdmSimpleTypeInstance();
@@ -1098,6 +1390,11 @@ public class EdmSimpleTypeTest extends BaseTest {
     expectTypeErrorInValueOfString(instance, "1", EdmLiteralKind.DEFAULT);
   }
 
+  /**
+   * Value of string byte.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void valueOfStringByte() throws Exception {
     final EdmSimpleType instance = EdmSimpleTypeKind.Byte.getEdmSimpleTypeInstance();
@@ -1123,6 +1420,11 @@ public class EdmSimpleTypeTest extends BaseTest {
     expectUnconvertibleErrorInValueOfString(instance, "128", Byte.class);
   }
 
+  /**
+   * Value of string date time.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void valueOfStringDateTime() throws Exception {
     final EdmSimpleType instance = EdmSimpleTypeKind.DateTime.getEdmSimpleTypeInstance();
@@ -1221,6 +1523,11 @@ public class EdmSimpleTypeTest extends BaseTest {
     expectTypeErrorInValueOfString(instance, "/Date(1)/", EdmLiteralKind.JSON);
   }
 
+  /**
+   * Value of string date time offset.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void valueOfStringDateTimeOffset() throws Exception {
     final EdmSimpleType instance = EdmSimpleTypeKind.DateTimeOffset.getEdmSimpleTypeInstance();
@@ -1315,6 +1622,11 @@ public class EdmSimpleTypeTest extends BaseTest {
     expectTypeErrorInValueOfString(instance, "2012-02-29T01:02:03Z", EdmLiteralKind.DEFAULT);
   }
 
+  /**
+   * Value of string decimal.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void valueOfStringDecimal() throws Exception {
     final EdmSimpleType instance = EdmSimpleTypeKind.Decimal.getEdmSimpleTypeInstance();
@@ -1391,6 +1703,11 @@ public class EdmSimpleTypeTest extends BaseTest {
     expectUnconvertibleErrorInValueOfString(instance, "1234567.0625", Float.class);
   }
 
+  /**
+   * Value of string double.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void valueOfStringDouble() throws Exception {
     final EdmSimpleType instance = EdmSimpleTypeKind.Double.getEdmSimpleTypeInstance();
@@ -1451,6 +1768,11 @@ public class EdmSimpleTypeTest extends BaseTest {
     expectUnconvertibleErrorInValueOfString(instance, "922337203685477.75E4", Long.class);
   }
 
+  /**
+   * Value of string guid.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void valueOfStringGuid() throws Exception {
     final EdmSimpleType instance = EdmSimpleTypeKind.Guid.getEdmSimpleTypeInstance();
@@ -1475,6 +1797,11 @@ public class EdmSimpleTypeTest extends BaseTest {
     expectTypeErrorInValueOfString(instance, uuid.toString(), EdmLiteralKind.DEFAULT);
   }
 
+  /**
+   * Value of string int 16.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void valueOfStringInt16() throws Exception {
     final EdmSimpleType instance = EdmSimpleTypeKind.Int16.getEdmSimpleTypeInstance();
@@ -1497,6 +1824,11 @@ public class EdmSimpleTypeTest extends BaseTest {
     expectUnconvertibleErrorInValueOfString(instance, "128", Byte.class);
   }
 
+  /**
+   * Value of string int 32.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void valueOfStringInt32() throws Exception {
     final EdmSimpleType instance = EdmSimpleTypeKind.Int32.getEdmSimpleTypeInstance();
@@ -1519,6 +1851,11 @@ public class EdmSimpleTypeTest extends BaseTest {
     expectUnconvertibleErrorInValueOfString(instance, "32768", Short.class);
   }
 
+  /**
+   * Value of string int 64.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void valueOfStringInt64() throws Exception {
     final EdmSimpleType instance = EdmSimpleTypeKind.Int64.getEdmSimpleTypeInstance();
@@ -1551,6 +1888,11 @@ public class EdmSimpleTypeTest extends BaseTest {
     expectUnconvertibleErrorInValueOfString(instance, "2147483648", Integer.class);
   }
 
+  /**
+   * Value of string S byte.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void valueOfStringSByte() throws Exception {
     final EdmSimpleType instance = EdmSimpleTypeKind.SByte.getEdmSimpleTypeInstance();
@@ -1572,6 +1914,11 @@ public class EdmSimpleTypeTest extends BaseTest {
     expectTypeErrorInValueOfString(instance, "1", EdmLiteralKind.DEFAULT);
   }
 
+  /**
+   * Value of string single.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void valueOfStringSingle() throws Exception {
     final EdmSimpleType instance = EdmSimpleTypeKind.Single.getEdmSimpleTypeInstance();
@@ -1630,6 +1977,11 @@ public class EdmSimpleTypeTest extends BaseTest {
     expectUnconvertibleErrorInValueOfString(instance, "1E19", Long.class);
   }
 
+  /**
+   * Value of string string.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void valueOfStringString() throws Exception {
     final EdmSimpleType instance = EdmSimpleTypeKind.String.getEdmSimpleTypeInstance();
@@ -1661,6 +2013,11 @@ public class EdmSimpleTypeTest extends BaseTest {
     expectTypeErrorInValueOfString(instance, "text", EdmLiteralKind.DEFAULT);
   }
 
+  /**
+   * Value of string time.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void valueOfStringTime() throws Exception {
     final EdmSimpleType instance = EdmSimpleTypeKind.Time.getEdmSimpleTypeInstance();
@@ -1763,6 +2120,11 @@ public class EdmSimpleTypeTest extends BaseTest {
     expectTypeErrorInValueOfString(instance, "PT0S", EdmLiteralKind.DEFAULT);
   }
 
+  /**
+   * Validate.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void validate() throws Exception {
     for (EdmSimpleTypeKind kind : EdmSimpleTypeKind.values()) {

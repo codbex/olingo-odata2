@@ -28,8 +28,22 @@ import org.apache.olingo.odata2.api.edm.Edm;
 import org.apache.olingo.odata2.api.processor.ODataErrorContext;
 import org.apache.olingo.odata2.core.ep.util.FormatXml;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class XmlErrorDocumentProducer.
+ */
 public class XmlErrorDocumentProducer {
 
+  /**
+   * Write error document.
+   *
+   * @param writer the writer
+   * @param errorCode the error code
+   * @param message the message
+   * @param locale the locale
+   * @param innerError the inner error
+   * @throws XMLStreamException the XML stream exception
+   */
   public void writeErrorDocument(final XMLStreamWriter writer, final String errorCode, final String message,
       final Locale locale, final String innerError) throws XMLStreamException {
       ODataErrorContext context = new ODataErrorContext();
@@ -41,6 +55,13 @@ public class XmlErrorDocumentProducer {
       writeErrorDocument(writer, context);
   }
 
+  /**
+   * Write error document.
+   *
+   * @param writer the writer
+   * @param context the context
+   * @throws XMLStreamException the XML stream exception
+   */
   public void writeErrorDocument(final XMLStreamWriter writer, ODataErrorContext context) throws XMLStreamException {
     Locale locale = context.getLocale();
     String errorCode = context.getErrorCode();
@@ -72,6 +93,13 @@ public class XmlErrorDocumentProducer {
     writer.writeEndDocument();
   }
 
+  /**
+   * Write error details.
+   *
+   * @param writer the writer
+   * @param errorDetails the error details
+   * @throws XMLStreamException the XML stream exception
+   */
   private void writeErrorDetails(final XMLStreamWriter writer, Collection<ODataErrorContext> errorDetails)
           throws XMLStreamException {
       writer.writeStartElement(FormatXml.M_INNER_ERROR);
@@ -92,6 +120,9 @@ public class XmlErrorDocumentProducer {
 
   /**
    * Gets language and country as defined in RFC 4646 based on {@link Locale}.
+   *
+   * @param locale the locale
+   * @return the locale
    */
   private String getLocale(final Locale locale) {
     if (locale.getCountry().isEmpty()) {
@@ -101,6 +132,14 @@ public class XmlErrorDocumentProducer {
     }
   }
 
+  /**
+   * Write simple element.
+   *
+   * @param writer the writer
+   * @param elementName the element name
+   * @param value the value
+   * @throws XMLStreamException the XML stream exception
+   */
   private void writeSimpleElement(final XMLStreamWriter writer, String elementName, String value)
           throws XMLStreamException {
       writer.writeStartElement(elementName);

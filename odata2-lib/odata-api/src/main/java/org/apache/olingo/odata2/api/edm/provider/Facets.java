@@ -24,9 +24,9 @@ import java.util.List;
 import org.apache.olingo.odata2.api.edm.EdmConcurrencyMode;
 import org.apache.olingo.odata2.api.edm.EdmFacets;
 
+// TODO: Auto-generated Javadoc
 /**
- * Objects of this class represent the facets an entity type, property or function import can have
- * 
+ * Objects of this class represent the facets an entity type, property or function import can have.
  */
 public class Facets implements EdmFacets {
 
@@ -35,63 +35,125 @@ public class Facets implements EdmFacets {
    * we want to know if it's set explicitly by an application.
    */
   Boolean nullable;
+  
+  /** The default value. */
   String defaultValue;
+  
+  /** The max length. */
   Integer maxLength;
+  
+  /** The fixed length. */
   Boolean fixedLength;
+  
+  /** The precision. */
   Integer precision;
+  
+  /** The scale. */
   Integer scale;
+  
+  /** The unicode. */
   Boolean unicode;
+  
+  /** The collation. */
   String collation;
+  
+  /** The concurrency mode. */
   EdmConcurrencyMode concurrencyMode;
 
+  /**
+   * Checks if is nullable.
+   *
+   * @return the boolean
+   */
   @Override
   public Boolean isNullable() {
     return nullable;
   }
 
+  /**
+   * Gets the default value.
+   *
+   * @return the default value
+   */
   @Override
   public String getDefaultValue() {
     return defaultValue;
   }
 
+  /**
+   * Gets the max length.
+   *
+   * @return the max length
+   */
   @Override
   public Integer getMaxLength() {
     return maxLength;
   }
 
+  /**
+   * Checks if is fixed length.
+   *
+   * @return the boolean
+   */
   @Override
   public Boolean isFixedLength() {
     return fixedLength;
   }
 
+  /**
+   * Gets the precision.
+   *
+   * @return the precision
+   */
   @Override
   public Integer getPrecision() {
     return precision;
   }
 
+  /**
+   * Gets the scale.
+   *
+   * @return the scale
+   */
   @Override
   public Integer getScale() {
     return scale;
   }
 
+  /**
+   * Checks if is unicode.
+   *
+   * @return the boolean
+   */
   @Override
   public Boolean isUnicode() {
     return unicode;
   }
 
+  /**
+   * Gets the collation.
+   *
+   * @return the collation
+   */
   @Override
   public String getCollation() {
     return collation;
   }
 
+  /**
+   * Gets the concurrency mode.
+   *
+   * @return the concurrency mode
+   */
   @Override
   public EdmConcurrencyMode getConcurrencyMode() {
     return concurrencyMode;
   }
 
   /**
-   * Sets if this {@link Facets} is nullable
-   * @param nullable
+   * Sets if this {@link Facets} is nullable.
+   *
+   * @param nullable the nullable
    * @return {@link Facets} for method chaining
    */
   public Facets setNullable(final Boolean nullable) {
@@ -100,8 +162,9 @@ public class Facets implements EdmFacets {
   }
 
   /**
-   * Sets the fixed length of this {@link Facets}
-   * @param fixedLength
+   * Sets the fixed length of this {@link Facets}.
+   *
+   * @param fixedLength the fixed length
    * @return {@link Facets} for method chaining
    */
   public Facets setFixedLength(final Boolean fixedLength) {
@@ -110,8 +173,9 @@ public class Facets implements EdmFacets {
   }
 
   /**
-   * Sets if this {@link Facets} is in Unicode
-   * @param unicode
+   * Sets if this {@link Facets} is in Unicode.
+   *
+   * @param unicode the unicode
    * @return {@link Facets} for method chaining
    */
   public Facets setUnicode(final Boolean unicode) {
@@ -120,8 +184,9 @@ public class Facets implements EdmFacets {
   }
 
   /**
-   * Sets the default value of this {@link Facets}
-   * @param defaultValue
+   * Sets the default value of this {@link Facets}.
+   *
+   * @param defaultValue the default value
    * @return {@link Facets} for method chaining
    */
   public Facets setDefaultValue(final String defaultValue) {
@@ -130,8 +195,9 @@ public class Facets implements EdmFacets {
   }
 
   /**
-   * Sets the maximum length of this {@link Facets}
-   * @param maxLength
+   * Sets the maximum length of this {@link Facets}.
+   *
+   * @param maxLength the max length
    * @return {@link Facets} for method chaining
    */
   public Facets setMaxLength(final Integer maxLength) {
@@ -140,8 +206,9 @@ public class Facets implements EdmFacets {
   }
 
   /**
-   * Sets the precision of this {@link Facets}
-   * @param precision
+   * Sets the precision of this {@link Facets}.
+   *
+   * @param precision the precision
    * @return {@link Facets} for method chaining
    */
   public Facets setPrecision(final Integer precision) {
@@ -150,8 +217,9 @@ public class Facets implements EdmFacets {
   }
 
   /**
-   * Sets the scale of this {@link Facets}
-   * @param scale
+   * Sets the scale of this {@link Facets}.
+   *
+   * @param scale the scale
    * @return {@link Facets} for method chaining
    */
   public Facets setScale(final Integer scale) {
@@ -160,8 +228,9 @@ public class Facets implements EdmFacets {
   }
 
   /**
-   * Sets the collation of this {@link Facets}
-   * @param collation
+   * Sets the collation of this {@link Facets}.
+   *
+   * @param collation the collation
    * @return {@link Facets} for method chaining
    */
   public Facets setCollation(final String collation) {
@@ -170,8 +239,9 @@ public class Facets implements EdmFacets {
   }
 
   /**
-   * Sets the {@link EdmConcurrencyMode} of this {@link Facets}
-   * @param concurrencyMode
+   * Sets the {@link EdmConcurrencyMode} of this {@link Facets}.
+   *
+   * @param concurrencyMode the concurrency mode
    * @return {@link Facets} for method chaining
    */
   public Facets setConcurrencyMode(final EdmConcurrencyMode concurrencyMode) {
@@ -179,6 +249,11 @@ public class Facets implements EdmFacets {
     return this;
   }
 
+  /**
+   * To string.
+   *
+   * @return the string
+   */
   @Override
   public String toString() {
     final List<String> values = new ArrayList<String>();

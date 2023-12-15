@@ -22,6 +22,10 @@ import java.util.List;
 
 import org.apache.olingo.odata2.api.ep.entry.DeletedEntryMetadata;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Interface ODataDeltaFeed.
+ */
 public interface ODataDeltaFeed extends ODataFeed {
 
   /**

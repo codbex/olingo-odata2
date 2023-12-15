@@ -34,16 +34,34 @@ import org.apache.olingo.odata2.testutil.mock.MockFacade;
 import org.junit.Before;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class UriBuilderIntegrationTest.
+ */
 public class UriBuilderIntegrationTest {
 
+  /** The Constant SERVICE_ROOT_URI. */
   protected static final String SERVICE_ROOT_URI = "http://host:80/service/";
+  
+  /** The edm. */
   private Edm edm;
 
+  /**
+   * Gets the edm.
+   *
+   * @return the edm
+   * @throws ODataException the o data exception
+   */
   @Before
   public void getEdm() throws ODataException {
     edm = MockFacade.getMockEdm();
   }
   
+  /**
+   * Construct edm uri.
+   *
+   * @throws EdmException the edm exception
+   */
   @Test
   public void constructEdmUri() throws EdmException {
     EdmEntitySet entitySet = edm.getDefaultEntityContainer().getEntitySet("Employees");
@@ -56,6 +74,9 @@ public class UriBuilderIntegrationTest {
     assertEquals("http://host:80/service/Employees('1')/ne_Team", uri.toASCIIString());
   }
   
+  /**
+   * Construct uri.
+   */
   @Test
   public void constructUri() {
     URI uri = ODataClient.newInstance().uriBuilder(SERVICE_ROOT_URI).

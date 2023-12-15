@@ -20,6 +20,7 @@ import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
 
+// TODO: Auto-generated Javadoc
 /**
  *
  * The default name for EDM complex type is derived from JPA Embeddable type name. This can be
@@ -54,12 +55,19 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "JPAEmbeddableTypeMapType", propOrder = {"edmComplexType", "jpaAttributes"})
 public class JPAEmbeddableTypeMapType {
 
+    /** The edm complex type. */
     @XmlElement(name = "EDMComplexType")
     protected String edmComplexType;
+    
+    /** The jpa attributes. */
     @XmlElement(name = "JPAAttributes", required = true)
     protected JPAAttributeMapType jpaAttributes;
+    
+    /** The name. */
     @XmlAttribute(name = "name", required = true)
     protected String name;
+    
+    /** The exclude. */
     @XmlAttribute(name = "exclude")
     protected Boolean exclude;
 

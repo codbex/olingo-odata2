@@ -29,21 +29,39 @@ import org.apache.olingo.odata2.api.commons.ODataHttpHeaders;
 import org.apache.olingo.odata2.testutil.server.ServletType;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class DataServiceVersionTest.
  */
 public class DataServiceVersionTest extends AbstractRefTest {
 
+  /**
+   * Instantiates a new data service version test.
+   *
+   * @param servletType the servlet type
+   */
   public DataServiceVersionTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /**
+   * Check version.
+   *
+   * @param response the response
+   * @param expectedValue the expected value
+   * @throws AssertionError the assertion error
+   */
   private static void checkVersion(final HttpResponse response, final String expectedValue) throws AssertionError {
     final Header header = response.getFirstHeader(ODataHttpHeaders.DATASERVICEVERSION);
     assertNotNull(header);
     assertEquals(expectedValue, header.getValue());
   }
 
+  /**
+   * Test data service version case.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testDataServiceVersionCase() throws Exception {
     HttpResponse response = callUri("Employees");
@@ -54,17 +72,32 @@ public class DataServiceVersionTest extends AbstractRefTest {
     checkVersion(response, ODataServiceVersion.V20);
   }
 
+  /**
+   * Test data service version with semicolon.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testDataServiceVersionWithSemicolon() throws Exception {
     HttpResponse response = callUri("Employees", ODataHttpHeaders.DATASERVICEVERSION, "2.0;hallo", HttpStatusCodes.OK);
     checkVersion(response, ODataServiceVersion.V20);
   }
 
+  /**
+   * Test data service version not set on entity set.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testDataServiceVersionNotSetOnEntitySet() throws Exception {
     checkVersion(callUri("Employees"), ODataServiceVersion.V20);
   }
 
+  /**
+   * Test data service version set on entity set.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testDataServiceVersionSetOnEntitySet() throws Exception {
     HttpResponse response = callUri("Employees", ODataHttpHeaders.DATASERVICEVERSION, "2.0");
@@ -75,6 +108,11 @@ public class DataServiceVersionTest extends AbstractRefTest {
     checkVersion(response, ODataServiceVersion.V20);
   }
 
+  /**
+   * Test data service version set on entity set fail.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testDataServiceVersionSetOnEntitySetFail() throws Exception {
     HttpResponse response =
@@ -94,11 +132,21 @@ public class DataServiceVersionTest extends AbstractRefTest {
     checkVersion(response, ODataServiceVersion.V10);
   }
 
+  /**
+   * Test data service version not set on metadata.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testDataServiceVersionNotSetOnMetadata() throws Exception {
     checkVersion(callUri("$metadata"), ODataServiceVersion.V20);
   }
 
+  /**
+   * Test data service version set on metadata.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testDataServiceVersionSetOnMetadata() throws Exception {
     HttpResponse response = callUri("$metadata", ODataHttpHeaders.DATASERVICEVERSION, "1.0");
@@ -110,11 +158,21 @@ public class DataServiceVersionTest extends AbstractRefTest {
     getBody(response);
   }
 
+  /**
+   * Test data service version not set on service document.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testDataServiceVersionNotSetOnServiceDocument() throws Exception {
     checkVersion(callUri(""), ODataServiceVersion.V10);
   }
 
+  /**
+   * Test data service version set on service document.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testDataServiceVersionSetOnServiceDocument() throws Exception {
     HttpResponse response = callUri("", ODataHttpHeaders.DATASERVICEVERSION, "1.0");

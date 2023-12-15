@@ -43,12 +43,26 @@ import org.apache.olingo.odata2.client.api.ep.callback.OnDeserializeInlineConten
 import org.apache.olingo.odata2.testutil.mock.MockFacade;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JsonEntryDeepInsertEntryTest.
+ */
 public class JsonEntryDeepInsertEntryTest extends AbstractDeserializerTest {
 
+  /** The Constant EMPLOYEE_WITH_INLINE_TEAM. */
   private static final String EMPLOYEE_WITH_INLINE_TEAM = "JsonEmployeeWithInlineTeam.json";
+  
+  /** The Constant INLINE_ROOM_WITH_INLINE_BUILDING. */
   private static final String INLINE_ROOM_WITH_INLINE_BUILDING = "JsonInlineRoomWithInlineBuilding.json";
+  
+  /** The Constant INLINE_ROOM_WITH_INLINE_NULL. */
   private static final String INLINE_ROOM_WITH_INLINE_NULL = "JsonInlineRoomWithInlineNull.json";
 
+  /**
+   * Inner entry no media resource.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void innerEntryNoMediaResource() throws Exception {
     ODataEntry outerEntry = prepareAndExecuteEntry(EMPLOYEE_WITH_INLINE_TEAM, "Employees", DEFAULT_PROPERTIES);
@@ -70,6 +84,11 @@ public class JsonEntryDeepInsertEntryTest extends AbstractDeserializerTest {
     assertEquals("http://localhost:8080/ReferenceScenario.svc/Teams('1')/nt_Employees", associationUris.get(0));
   }
 
+  /**
+   * Inner entry with optional navigation property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void innerEntryWithOptionalNavigationProperty() throws Exception {
     // prepare
@@ -110,6 +129,11 @@ public class JsonEntryDeepInsertEntryTest extends AbstractDeserializerTest {
     assertEquals("http://localhost:8080/ReferenceScenario.svc/Teams('1')/nt_Employees", associationUris.get(0));
   }
 
+  /**
+   * Inline room with inline building.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void inlineRoomWithInlineBuilding() throws Exception {
     OnDeserializeInlineContent callback = new Callback();
@@ -155,6 +179,11 @@ public class JsonEntryDeepInsertEntryTest extends AbstractDeserializerTest {
     assertEquals("http://localhost:8080/ReferenceScenario.svc/Buildings('1')/nb_Rooms", associationUris.get(0));
   }
 
+  /**
+   * Inline room with inline null.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void inlineRoomWithInlineNull() throws Exception {
     DeserializerProperties readProperties =

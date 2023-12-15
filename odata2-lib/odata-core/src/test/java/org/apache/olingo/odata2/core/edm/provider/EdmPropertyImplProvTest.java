@@ -42,17 +42,32 @@ import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class EdmPropertyImplProvTest.
  */
 public class EdmPropertyImplProvTest extends BaseTest {
 
+  /** The edm provider. */
   private static EdmProvider edmProvider;
+  
+  /** The property simple provider. */
   private static EdmPropertyImplProv propertySimpleProvider;
+  
+  /** The property simple with facets provider. */
   private static EdmPropertyImplProv propertySimpleWithFacetsProvider;
+  
+  /** The property simple with facets provider 2. */
   private static EdmPropertyImplProv propertySimpleWithFacetsProvider2;
+  
+  /** The property complex provider. */
   private static EdmPropertyImplProv propertyComplexProvider;
 
+  /**
+   * Setup.
+   *
+   * @throws Exception the exception
+   */
   @BeforeClass
   public static void setup() throws Exception {
 
@@ -86,6 +101,11 @@ public class EdmPropertyImplProvTest extends BaseTest {
 
   }
 
+  /**
+   * Test property simple.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testPropertySimple() throws Exception {
     assertNotNull(propertySimpleProvider);
@@ -101,6 +121,11 @@ public class EdmPropertyImplProvTest extends BaseTest {
     assertEquals(EdmMultiplicity.ZERO_TO_ONE, propertySimpleProvider.getMultiplicity());
   }
 
+  /**
+   * Test property simple with facets.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testPropertySimpleWithFacets() throws Exception {
     assertNotNull(propertySimpleWithFacetsProvider.getFacets());
@@ -112,6 +137,11 @@ public class EdmPropertyImplProvTest extends BaseTest {
     assertEquals(EdmMultiplicity.ZERO_TO_ONE, propertySimpleWithFacetsProvider2.getMultiplicity());
   }
 
+  /**
+   * Test property complex.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testPropertyComplex() throws Exception {
     assertNotNull(propertyComplexProvider);
@@ -120,6 +150,12 @@ public class EdmPropertyImplProvTest extends BaseTest {
     assertEquals("complexType", propertyComplexProvider.getType().getName());
   }
 
+  /**
+   * Gets the annotations.
+   *
+   * @return the annotations
+   * @throws Exception the exception
+   */
   @Test
   public void getAnnotations() throws Exception {
     EdmAnnotatable annotatable = propertySimpleProvider;

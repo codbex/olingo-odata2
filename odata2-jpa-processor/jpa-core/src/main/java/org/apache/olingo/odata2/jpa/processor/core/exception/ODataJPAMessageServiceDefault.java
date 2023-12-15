@@ -33,15 +33,35 @@ import org.apache.olingo.odata2.api.exception.MessageReference;
 import org.apache.olingo.odata2.jpa.processor.api.exception.ODataJPAMessageService;
 import org.apache.olingo.odata2.jpa.processor.core.ODataJPAContextImpl;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ODataJPAMessageServiceDefault.
+ */
 public class ODataJPAMessageServiceDefault implements ODataJPAMessageService {
 
+  /** The Constant BUNDLE_NAME. */
   private static final String BUNDLE_NAME = "jpaprocessor_msg"; //$NON-NLS-1$
+  
+  /** The Constant LOCALE_2_MESSAGE_SERVICE. */
   private static final Map<Locale, ODataJPAMessageService> LOCALE_2_MESSAGE_SERVICE =
       new HashMap<Locale, ODataJPAMessageService>();
+  
+  /** The Constant defaultResourceBundle. */
   private static final ResourceBundle defaultResourceBundle = ResourceBundle.getBundle(BUNDLE_NAME);
+  
+  /** The resource bundle. */
   private final ResourceBundle resourceBundle;
+  
+  /** The lan locale. */
   private final Locale lanLocale;
 
+  /**
+   * Gets the localized message.
+   *
+   * @param context the context
+   * @param exception the exception
+   * @return the localized message
+   */
   @Override
   public String getLocalizedMessage(final MessageReference context, final Throwable exception) {
 
@@ -76,11 +96,23 @@ public class ODataJPAMessageServiceDefault implements ODataJPAMessageService {
     }
   }
 
+  /**
+   * Instantiates a new o data JPA message service default.
+   *
+   * @param resourceBundle the resource bundle
+   * @param locale the locale
+   */
   private ODataJPAMessageServiceDefault(final ResourceBundle resourceBundle, final Locale locale) {
     this.resourceBundle = resourceBundle;
     lanLocale = locale;
   }
 
+  /**
+   * Gets the single instance of ODataJPAMessageServiceDefault.
+   *
+   * @param locale the locale
+   * @return single instance of ODataJPAMessageServiceDefault
+   */
   public static ODataJPAMessageService getInstance(final Locale locale) {
 
     Locale acceptedLocale = Locale.ENGLISH;
@@ -116,6 +148,12 @@ public class ODataJPAMessageServiceDefault implements ODataJPAMessageService {
     return messagesInstance;
   }
 
+  /**
+   * Gets the message.
+   *
+   * @param key the key
+   * @return the message
+   */
   private String getMessage(final String key) {
     return resourceBundle.getString(key);
   }

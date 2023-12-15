@@ -34,14 +34,22 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SpringNamespaceHandlerTest.
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:spring/applicationContext.xml")
 @WebAppConfiguration
 public class SpringNamespaceHandlerTest {
 
+  /** The app ctx. */
   @Autowired
   private ApplicationContext appCtx;
 
+  /**
+   * Test successfully created.
+   */
   @Test
   public void testSuccessfullyCreated() {
     assertTrue(appCtx.containsBean("testServer"));
@@ -60,6 +68,9 @@ public class SpringNamespaceHandlerTest {
     assertEquals("/service.svc", server.getAddress());
   }
 
+  /**
+   * Test correct factory and path split.
+   */
   @Test
   public void testCorrectFactoryAndPathSplit() {
     String rootLocatorName = "OlingoRootLocator-testServer-serviceFactory";

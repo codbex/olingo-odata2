@@ -27,52 +27,105 @@ import org.apache.olingo.odata2.api.uri.expression.ExpressionVisitor;
 import org.apache.olingo.odata2.api.uri.expression.OrderExpression;
 import org.apache.olingo.odata2.api.uri.expression.SortOrder;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class OrderExpressionImpl.
  */
 public class OrderExpressionImpl implements OrderExpression {
 
+  /** The order type. */
   SortOrder orderType = SortOrder.asc;
+  
+  /** The expression. */
   CommonExpression expression;
 
+  /**
+   * Instantiates a new order expression impl.
+   *
+   * @param expression the expression
+   */
   OrderExpressionImpl(final CommonExpression expression) {
     this.expression = expression;
   }
 
+  /**
+   * Gets the sort order.
+   *
+   * @return the sort order
+   */
   @Override
   public SortOrder getSortOrder() {
     return orderType;
   }
 
+  /**
+   * Gets the expression.
+   *
+   * @return the expression
+   */
   @Override
   public CommonExpression getExpression() {
     return expression;
   }
 
+  /**
+   * Sets the sort order.
+   *
+   * @param orderType the new sort order
+   */
   void setSortOrder(final SortOrder orderType) {
     this.orderType = orderType;
   }
 
+  /**
+   * Gets the kind.
+   *
+   * @return the kind
+   */
   @Override
   public ExpressionKind getKind() {
     return ExpressionKind.ORDER;
   }
 
+  /**
+   * Gets the edm type.
+   *
+   * @return the edm type
+   */
   @Override
   public EdmType getEdmType() {
     return null;
   }
 
+  /**
+   * Sets the edm type.
+   *
+   * @param edmType the edm type
+   * @return the common expression
+   */
   @Override
   public CommonExpression setEdmType(final EdmType edmType) {
     return this;
   }
 
+  /**
+   * Gets the uri literal.
+   *
+   * @return the uri literal
+   */
   @Override
   public String getUriLiteral() {
     return "";
   }
 
+  /**
+   * Accept.
+   *
+   * @param visitor the visitor
+   * @return the object
+   * @throws ExceptionVisitExpression the exception visit expression
+   * @throws ODataApplicationException the o data application exception
+   */
   @Override
   public Object accept(final ExpressionVisitor visitor) throws ExceptionVisitExpression, ODataApplicationException {
     Object obj = expression.accept(visitor);

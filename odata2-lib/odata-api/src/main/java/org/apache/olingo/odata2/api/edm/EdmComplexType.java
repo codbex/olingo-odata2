@@ -18,6 +18,7 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.edm;
 
+// TODO: Auto-generated Javadoc
 /**
  * <p>A CSDL ComplexType element.</p>
  * <p>EdmComplexType holds a set of related information like {@link EdmSimpleType} properties and EdmComplexType
@@ -27,6 +28,12 @@ package org.apache.olingo.odata2.api.edm;
  */
 public interface EdmComplexType extends EdmStructuralType {
 
+  /**
+   * Gets the base type.
+   *
+   * @return the base type
+   * @throws EdmException the edm exception
+   */
   @Override
   EdmComplexType getBaseType() throws EdmException;
 }

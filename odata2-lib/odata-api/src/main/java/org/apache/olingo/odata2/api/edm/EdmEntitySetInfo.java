@@ -20,25 +20,31 @@ package org.apache.olingo.odata2.api.edm;
 
 import java.net.URI;
 
+// TODO: Auto-generated Javadoc
 /**
- * @org.apache.olingo.odata2.DoNotImplement
- * Objects of this class contain information about one entity set inside the EntityDataModel.
- * 
- * 
+ * The Interface EdmEntitySetInfo.
+ *
+ * @org.apache.olingo.odata2.DoNotImplement Objects of this class contain information about one entity set inside the EntityDataModel.
  */
 public interface EdmEntitySetInfo {
 
   /**
+   * Gets the entity container name.
+   *
    * @return the entity container name which contains this entity set.
    */
   public String getEntityContainerName();
 
   /**
+   * Gets the entity set name.
+   *
    * @return the entity set name
    */
   public String getEntitySetName();
 
   /**
+   * Checks if is default entity container.
+   *
    * @return true if this entity set is contained inside the default container
    */
   public boolean isDefaultEntityContainer();

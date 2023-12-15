@@ -35,10 +35,24 @@ import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EdmAssociationSetEndImplProvTest.
+ */
 public class EdmAssociationSetEndImplProvTest extends BaseTest {
+  
+  /** The edm association set end. */
   private static EdmAssociationSetEnd edmAssociationSetEnd;
+  
+  /** The edm provider. */
   private static EdmProvider edmProvider;
 
+  /**
+   * Gets the edm entity container impl.
+   *
+   * @return the edm entity container impl
+   * @throws Exception the exception
+   */
   @BeforeClass
   public static void getEdmEntityContainerImpl() throws Exception {
 
@@ -56,6 +70,11 @@ public class EdmAssociationSetEndImplProvTest extends BaseTest {
         new EdmAssociationSetEndImplProv(associationSetEnd, edmEntityContainer.getEntitySet("entitySetRole1"));
   }
 
+  /**
+   * Test association set end.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testAssociationSetEnd() throws Exception {
     EdmAssociationSetEnd setEnd = edmAssociationSetEnd;
@@ -64,6 +83,12 @@ public class EdmAssociationSetEndImplProvTest extends BaseTest {
     assertEquals("entitySetRole1", setEnd.getEntitySet().getName());
   }
 
+  /**
+   * Gets the annotations.
+   *
+   * @return the annotations
+   * @throws Exception the exception
+   */
   @Test
   public void getAnnotations() throws Exception {
     EdmAnnotatable annotatable = (EdmAnnotatable) edmAssociationSetEnd;

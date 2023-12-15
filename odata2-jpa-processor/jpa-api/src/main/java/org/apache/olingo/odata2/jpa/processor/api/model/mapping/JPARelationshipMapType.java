@@ -23,6 +23,7 @@ import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
 import jakarta.xml.bind.annotation.XmlValue;
 
+// TODO: Auto-generated Javadoc
 /**
  *
  * The default name for EDM navigation property is derived from JPA relationship name. This can be
@@ -61,6 +62,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 @XmlType(name = "JPARelationshipMapType", propOrder = {"jpaRelationship"})
 public class JPARelationshipMapType {
 
+    /** The jpa relationship. */
     @XmlElement(name = "JPARelationship")
     protected List<JPARelationshipMapType.JPARelationship> jpaRelationship;
 
@@ -83,8 +85,8 @@ public class JPARelationshipMapType {
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link JPARelationshipMapType.JPARelationship }
-     * 
-     * 
+     *
+     * @return the JPA relationship
      */
     public List<JPARelationshipMapType.JPARelationship> getJPARelationship() {
         if (jpaRelationship == null) {
@@ -116,8 +118,11 @@ public class JPARelationshipMapType {
     @XmlType(name = "", propOrder = {"value"})
     public static class JPARelationship {
 
+        /** The value. */
         @XmlValue
         protected String value;
+        
+        /** The name. */
         @XmlAttribute(name = "name", required = true)
         protected String name;
 

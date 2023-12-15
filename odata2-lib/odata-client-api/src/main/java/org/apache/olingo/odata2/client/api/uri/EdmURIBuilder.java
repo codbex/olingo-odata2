@@ -28,10 +28,9 @@ import org.apache.olingo.odata2.api.edm.EdmNavigationProperty;
 import org.apache.olingo.odata2.api.edm.EdmParameter;
 import org.apache.olingo.odata2.api.edm.EdmProperty;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * This is an Edm Uri Builder
- *
+ * This is an Edm Uri Builder.
  */
 public interface EdmURIBuilder {
   /**
@@ -171,7 +170,8 @@ public interface EdmURIBuilder {
   EdmURIBuilder skip(int skip);
   
   /**
-   * Adds custom query option
+   * Adds custom query option.
+   *
    * @param paramName parameter name
    * @param paramValue parameter value
    * @return current EdmURIBuilder instance
@@ -179,15 +179,17 @@ public interface EdmURIBuilder {
   EdmURIBuilder addCustomQueryOption(String paramName, Object paramValue);
   
   /**
-   * Appends Function import to the uri
-   * @param functionImport
+   * Appends Function import to the uri.
+   *
+   * @param functionImport the function import
    * @return current EdmURIBuilder instance
    */
   EdmURIBuilder appendFunctionImportSegment(EdmFunctionImport functionImport);
   
   /**
-   * Appends function import parameters
-   * @param functionImportParams
+   * Appends function import parameters.
+   *
+   * @param functionImportParams the function import params
    * @return current EdmURIBuilder instance
    */
   EdmURIBuilder appendFunctionImportParameters(Map<EdmParameter, Object> functionImportParams);

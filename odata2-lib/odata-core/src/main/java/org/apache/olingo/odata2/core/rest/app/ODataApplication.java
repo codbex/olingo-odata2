@@ -37,11 +37,17 @@ import jakarta.ws.rs.ext.Provider;
 import org.apache.olingo.odata2.core.rest.ODataExceptionMapperImpl;
 import org.apache.olingo.odata2.core.rest.ODataRootLocator;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class ODataApplication.
  */
 public class ODataApplication extends Application {
 
+  /**
+   * Gets the classes.
+   *
+   * @return the classes
+   */
   @Override
   public Set<Class<?>> getClasses() {
     Set<Class<?>> classes = new HashSet<Class<?>>();
@@ -53,28 +59,65 @@ public class ODataApplication extends Application {
 
   /**
    * Singletons are not recommended because they break the state less REST principle.
+   *
+   * @return the singletons
    */
   @Override
   public Set<Object> getSingletons() {
     return Collections.emptySet();
   }
 
+  /**
+   * The Class MyProvider.
+   */
   @Provider
   @Produces({ "generic/value", "multipart/mixed" })
   public static class MyProvider implements MessageBodyWriter<String> {
 
+    /**
+     * Checks if is writeable.
+     *
+     * @param type the type
+     * @param genericType the generic type
+     * @param annotations the annotations
+     * @param mediaType the media type
+     * @return true, if is writeable
+     */
     @Override
     public boolean isWriteable(final Class<?> type, final Type genericType, final Annotation[] annotations,
         final MediaType mediaType) {
       return (type == String.class);
     }
 
+    /**
+     * Gets the size.
+     *
+     * @param t the t
+     * @param type the type
+     * @param genericType the generic type
+     * @param annotations the annotations
+     * @param mediaType the media type
+     * @return the size
+     */
     @Override
     public long getSize(final String t, final Class<?> type, final Type genericType, final Annotation[] annotations,
         final MediaType mediaType) {
       return t.length();
     }
 
+    /**
+     * Write to.
+     *
+     * @param t the t
+     * @param type the type
+     * @param genericType the generic type
+     * @param annotations the annotations
+     * @param mediaType the media type
+     * @param httpHeaders the http headers
+     * @param entityStream the entity stream
+     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws WebApplicationException the web application exception
+     */
     @Override
     public void writeTo(final String t, final Class<?> type, final Type genericType, final Annotation[] annotations,
         final MediaType mediaType, final MultivaluedMap<String, Object> httpHeaders, final OutputStream entityStream)

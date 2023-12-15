@@ -30,30 +30,51 @@ import java.util.Calendar;
 import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class EmployeeTest.
  */
 public class EmployeeTest extends BaseTest {
 
+  /** The Constant VALUE_AGE. */
   private static final int VALUE_AGE = 36;
+  
+  /** The Constant VALUE_NAME. */
   private static final String VALUE_NAME = "Alex Kaiser";
+  
+  /** The Constant VALUE_URI. */
   private static final String VALUE_URI = "http://localhost/employee1.jpg";
+  
+  /** The Constant IMAGE_URL. */
   private static final String IMAGE_URL = "/Employee_1.png";
+  
+  /** The Constant IMAGE. */
   private static final String IMAGE = "String for convert";
+  
+  /** The Constant TYPE. */
   private static final String TYPE = "image/jpeg";
 
+  /**
+   * Test id.
+   */
   @Test
   public void testId() {
     Employee employee1 = new Employee(1, null);
     assertNotNull(employee1.getId());
   }
 
+  /**
+   * Test name.
+   */
   @Test
   public void testName() {
     Employee employee1 = new Employee(1, VALUE_NAME);
     assertEquals(VALUE_NAME, employee1.getEmployeeName());
   }
 
+  /**
+   * Test age.
+   */
   @Test
   public void testAge() {
     Employee employee1 = new Employee(1, null);
@@ -61,6 +82,9 @@ public class EmployeeTest extends BaseTest {
     assertEquals(VALUE_AGE, employee1.getAge());
   }
 
+  /**
+   * Test image uri.
+   */
   @Test
   public void testImageUri() {
     Employee employee1 = new Employee(1, null);
@@ -68,6 +92,9 @@ public class EmployeeTest extends BaseTest {
     assertEquals(VALUE_URI, employee1.getImageUri());
   }
 
+  /**
+   * Test manager.
+   */
   @Test
   public void testManager() {
     Employee employee1 = new Employee(1, null);
@@ -78,6 +105,9 @@ public class EmployeeTest extends BaseTest {
     assertEquals(employee1, manager1.getEmployees().get(0));
   }
 
+  /**
+   * Test team.
+   */
   @Test
   public void testTeam() {
     Employee employee1 = new Employee(1, null);
@@ -88,6 +118,9 @@ public class EmployeeTest extends BaseTest {
     assertEquals(employee1, team1.getEmployees().get(0));
   }
 
+  /**
+   * Test room.
+   */
   @Test
   public void testRoom() {
     Employee employee1 = new Employee(1, null);
@@ -98,6 +131,9 @@ public class EmployeeTest extends BaseTest {
     assertEquals(employee1, room1.getEmployees().get(0));
   }
 
+  /**
+   * Test location.
+   */
   @Test
   public void testLocation() {
     Location location = new Location(null, null, null);
@@ -106,6 +142,9 @@ public class EmployeeTest extends BaseTest {
     assertEquals(location, emp1.getLocation());
   }
 
+  /**
+   * Test entry date.
+   */
   @Test
   public void testEntryDate() {
     Employee employee1 = new Employee(1, null);
@@ -114,6 +153,9 @@ public class EmployeeTest extends BaseTest {
     assertEquals(date1, employee1.getEntryDate());
   }
 
+  /**
+   * Test image.
+   */
   @Test
   public void testImage() {
     byte[] byteArray = null;
@@ -135,6 +177,9 @@ public class EmployeeTest extends BaseTest {
     assertArrayEquals(byteArray, employee1.getImage());
   }
 
+  /**
+   * Test image 2.
+   */
   @Test
   public void testImage2() {
     byte[] byteArray = IMAGE.getBytes();
@@ -145,6 +190,9 @@ public class EmployeeTest extends BaseTest {
     assertArrayEquals(byteArray, byteArrayOfImage);
   }
 
+  /**
+   * Test image type.
+   */
   @Test
   public void testImageType() {
     Employee employee1 = new Employee(1, null);

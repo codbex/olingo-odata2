@@ -24,15 +24,13 @@ import org.apache.olingo.odata2.jpa.processor.api.access.JPAProcessor;
 import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmMapping;
 import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmModelView;
 
+// TODO: Auto-generated Javadoc
 /**
  * Factory interface for creating
  * <ol>
  * <li>JPA EDM Model view</li>
  * <li>JPA Processor</li>
- * </ol>
- * 
- * 
- * 
+ * </ol>.
  */
 public interface JPAAccessFactory {
   /**

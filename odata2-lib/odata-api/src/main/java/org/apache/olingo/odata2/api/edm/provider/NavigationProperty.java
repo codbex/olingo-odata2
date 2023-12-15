@@ -22,22 +22,39 @@ import java.util.List;
 
 import org.apache.olingo.odata2.api.edm.FullQualifiedName;
 
+// TODO: Auto-generated Javadoc
 /**
- * Objects of this Class represent a navigation property
- * 
+ * Objects of this Class represent a navigation property.
  */
 public class NavigationProperty {
 
+  /** The name. */
   private String name;
+  
+  /** The relationship. */
   private FullQualifiedName relationship;
+  
+  /** The from role. */
   private String fromRole;
+  
+  /** The to role. */
   private String toRole;
+  
+  /** The documentation. */
   private Documentation documentation;
+  
+  /** The mapping. */
   private Mapping mapping;
+  
+  /** The annotation attributes. */
   private List<AnnotationAttribute> annotationAttributes;
+  
+  /** The annotation elements. */
   private List<AnnotationElement> annotationElements;
 
   /**
+   * Gets the name.
+   *
    * @return <b>String</b> name of this navigation property
    */
   public String getName() {
@@ -45,6 +62,8 @@ public class NavigationProperty {
   }
 
   /**
+   * Gets the relationship.
+   *
    * @return {@link FullQualifiedName} of the relationship
    */
   public FullQualifiedName getRelationship() {
@@ -52,6 +71,8 @@ public class NavigationProperty {
   }
 
   /**
+   * Gets the from role.
+   *
    * @return <b>String</b> name of the role this navigation is comming from
    */
   public String getFromRole() {
@@ -59,6 +80,8 @@ public class NavigationProperty {
   }
 
   /**
+   * Gets the to role.
+   *
    * @return <b>String</b> name of the role this navigation is going to
    */
   public String getToRole() {
@@ -66,6 +89,8 @@ public class NavigationProperty {
   }
 
   /**
+   * Gets the mapping.
+   *
    * @return {@link Mapping} of this navigation property
    */
   public Mapping getMapping() {
@@ -73,6 +98,8 @@ public class NavigationProperty {
   }
 
   /**
+   * Gets the documentation.
+   *
    * @return {@link Documentation} documentation
    */
   public Documentation getDocumentation() {
@@ -80,6 +107,8 @@ public class NavigationProperty {
   }
 
   /**
+   * Gets the annotation attributes.
+   *
    * @return List of {@link AnnotationAttribute} annotation attributes
    */
   public List<AnnotationAttribute> getAnnotationAttributes() {
@@ -87,6 +116,8 @@ public class NavigationProperty {
   }
 
   /**
+   * Gets the annotation elements.
+   *
    * @return List of {@link AnnotationElement} annotation elements
    */
   public List<AnnotationElement> getAnnotationElements() {
@@ -94,8 +125,9 @@ public class NavigationProperty {
   }
 
   /**
-   * Sets the name of this {@link NavigationProperty}
-   * @param name
+   * Sets the name of this {@link NavigationProperty}.
+   *
+   * @param name the name
    * @return {@link NavigationProperty} for method chaining
    */
   public NavigationProperty setName(final String name) {
@@ -104,8 +136,9 @@ public class NavigationProperty {
   }
 
   /**
-   * Sets the {@link FullQualifiedName} for the relationship of this {@link NavigationProperty}
-   * @param relationship
+   * Sets the {@link FullQualifiedName} for the relationship of this {@link NavigationProperty}.
+   *
+   * @param relationship the relationship
    * @return {@link NavigationProperty} for method chaining
    */
   public NavigationProperty setRelationship(final FullQualifiedName relationship) {
@@ -114,8 +147,9 @@ public class NavigationProperty {
   }
 
   /**
-   * Sets the role this {@link NavigationProperty} is comming from
-   * @param fromRole
+   * Sets the role this {@link NavigationProperty} is comming from.
+   *
+   * @param fromRole the from role
    * @return {@link NavigationProperty} for method chaining
    */
   public NavigationProperty setFromRole(final String fromRole) {
@@ -124,8 +158,9 @@ public class NavigationProperty {
   }
 
   /**
-   * Sets the role this {@link NavigationProperty} is going to
-   * @param toRole
+   * Sets the role this {@link NavigationProperty} is going to.
+   *
+   * @param toRole the to role
    * @return {@link NavigationProperty} for method chaining
    */
   public NavigationProperty setToRole(final String toRole) {
@@ -134,8 +169,9 @@ public class NavigationProperty {
   }
 
   /**
-   * Sets the {@link Mapping} for this {@link NavigationProperty}
-   * @param mapping
+   * Sets the {@link Mapping} for this {@link NavigationProperty}.
+   *
+   * @param mapping the mapping
    * @return {@link NavigationProperty} for method chaining
    */
   public NavigationProperty setMapping(final Mapping mapping) {
@@ -144,8 +180,9 @@ public class NavigationProperty {
   }
 
   /**
-   * Sets the {@link Documentation} for this {@link NavigationProperty}
-   * @param documentation
+   * Sets the {@link Documentation} for this {@link NavigationProperty}.
+   *
+   * @param documentation the documentation
    * @return {@link NavigationProperty} for method chaining
    */
   public NavigationProperty setDocumentation(final Documentation documentation) {
@@ -154,8 +191,9 @@ public class NavigationProperty {
   }
 
   /**
-   * Sets the List of {@link AnnotationAttribute} for this {@link NavigationProperty}
-   * @param annotationAttributes
+   * Sets the List of {@link AnnotationAttribute} for this {@link NavigationProperty}.
+   *
+   * @param annotationAttributes the annotation attributes
    * @return {@link NavigationProperty} for method chaining
    */
   public NavigationProperty setAnnotationAttributes(final List<AnnotationAttribute> annotationAttributes) {
@@ -164,8 +202,9 @@ public class NavigationProperty {
   }
 
   /**
-   * Sets the List of {@link AnnotationElement} for this {@link NavigationProperty}
-   * @param annotationElements
+   * Sets the List of {@link AnnotationElement} for this {@link NavigationProperty}.
+   *
+   * @param annotationElements the annotation elements
    * @return {@link NavigationProperty} for method chaining
    */
   public NavigationProperty setAnnotationElements(final List<AnnotationElement> annotationElements) {

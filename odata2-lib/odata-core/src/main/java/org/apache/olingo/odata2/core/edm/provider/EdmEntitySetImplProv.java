@@ -31,13 +31,32 @@ import org.apache.olingo.odata2.api.edm.EdmNavigationProperty;
 import org.apache.olingo.odata2.api.edm.FullQualifiedName;
 import org.apache.olingo.odata2.api.edm.provider.EntitySet;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EdmEntitySetImplProv.
+ */
 public class EdmEntitySetImplProv extends EdmNamedImplProv implements EdmEntitySet, EdmAnnotatable {
 
+  /** The entity set. */
   private EntitySet entitySet;
+  
+  /** The edm entity container. */
   private EdmEntityContainer edmEntityContainer;
+  
+  /** The edm entity type. */
   private EdmEntityType edmEntityType;
+  
+  /** The annotations. */
   private EdmAnnotationsImplProv annotations;
 
+  /**
+   * Instantiates a new edm entity set impl prov.
+   *
+   * @param edm the edm
+   * @param entitySet the entity set
+   * @param edmEntityContainer the edm entity container
+   * @throws EdmException the edm exception
+   */
   public EdmEntitySetImplProv(final EdmImplProv edm, final EntitySet entitySet,
       final EdmEntityContainer edmEntityContainer) throws EdmException {
     super(edm, entitySet.getName());
@@ -45,6 +64,12 @@ public class EdmEntitySetImplProv extends EdmNamedImplProv implements EdmEntityS
     this.edmEntityContainer = edmEntityContainer;
   }
 
+  /**
+   * Gets the entity type.
+   *
+   * @return the entity type
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmEntityType getEntityType() throws EdmException {
     if (edmEntityType == null) {
@@ -57,6 +82,13 @@ public class EdmEntitySetImplProv extends EdmNamedImplProv implements EdmEntityS
     return edmEntityType;
   }
 
+  /**
+   * Gets the related entity set.
+   *
+   * @param navigationProperty the navigation property
+   * @return the related entity set
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmEntitySet getRelatedEntitySet(final EdmNavigationProperty navigationProperty) throws EdmException {
     EdmAssociationSet associationSet =
@@ -72,11 +104,23 @@ public class EdmEntitySetImplProv extends EdmNamedImplProv implements EdmEntityS
     return targetEntitySet;
   }
 
+  /**
+   * Gets the entity container.
+   *
+   * @return the entity container
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmEntityContainer getEntityContainer() throws EdmException {
     return edmEntityContainer;
   }
 
+  /**
+   * Gets the annotations.
+   *
+   * @return the annotations
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmAnnotations getAnnotations() throws EdmException {
     if (annotations == null) {
@@ -85,6 +129,12 @@ public class EdmEntitySetImplProv extends EdmNamedImplProv implements EdmEntityS
     return annotations;
   }
 
+  /**
+   * Gets the mapping.
+   *
+   * @return the mapping
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmMapping getMapping() throws EdmException {
     return entitySet.getMapping();

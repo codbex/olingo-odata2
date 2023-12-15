@@ -23,6 +23,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
 /**
  * APPLICATION DEVELOPERS: Please use {@link ODataApplicationException} to throw custom exceptions. This class is used
  * inside the library only.
@@ -35,13 +36,27 @@ import java.util.List;
  */
 public abstract class MessageReference {
 
+  /** The key. */
   protected final String key;
+  
+  /** The content. */
   protected List<Object> content = null;
 
+  /**
+   * Instantiates a new message reference.
+   *
+   * @param key the key
+   */
   private MessageReference(final String key) {
     this(key, null);
   }
 
+  /**
+   * Instantiates a new message reference.
+   *
+   * @param key the key
+   * @param content the content
+   */
   private MessageReference(final String key, final List<Object> content) {
     this.key = key;
     this.content = content;
@@ -60,12 +75,19 @@ public abstract class MessageReference {
     return new SimpleMessageReference(clazz.getName() + "." + key);
   }
 
+  /**
+   * Creates the.
+   *
+   * @return the message reference
+   */
   public MessageReference create() {
     return new SingleMessageReference(key);
   }
 
   /**
    * Returns message key.
+   *
+   * @return the key
    */
   public String getKey() {
     return key;
@@ -73,6 +95,9 @@ public abstract class MessageReference {
 
   /**
    * Adds given content to message reference.
+   *
+   * @param content the content
+   * @return the message reference
    */
   public MessageReference addContent(final Object... content) {
     if (this.content == null) {
@@ -88,6 +113,8 @@ public abstract class MessageReference {
   /**
    * Receives content for this {@link MessageReference}.
    * Beware that returned list is immutable.
+   *
+   * @return the content
    */
   public List<?> getContent() {
     if (content == null) {
@@ -101,32 +128,77 @@ public abstract class MessageReference {
    * Simple inner class for realization of {@link MessageReference} interface.
    */
   private static class SimpleMessageReference extends MessageReference {
+    
+    /**
+     * Instantiates a new simple message reference.
+     *
+     * @param implKey the impl key
+     */
     public SimpleMessageReference(final String implKey) {
       super(implKey);
     }
 
+    /**
+     * Instantiates a new simple message reference.
+     *
+     * @param implKey the impl key
+     * @param content the content
+     */
     public SimpleMessageReference(final String implKey, final List<Object> content) {
       super(implKey, content);
     }
 
+    /**
+     * Instantiates a new simple message reference.
+     *
+     * @param implKey the impl key
+     * @param content the content
+     */
     public SimpleMessageReference(final String implKey, final Object... content) {
       super(implKey, Arrays.asList(content));
     }
   }
 
+  /**
+   * The Class SingleMessageReference.
+   */
   private static class SingleMessageReference extends MessageReference {
+    
+    /**
+     * Instantiates a new single message reference.
+     *
+     * @param implKey the impl key
+     */
     public SingleMessageReference(final String implKey) {
       super(implKey);
     }
 
+    /**
+     * Instantiates a new single message reference.
+     *
+     * @param implKey the impl key
+     * @param content the content
+     */
     public SingleMessageReference(final String implKey, final List<Object> content) {
       super(implKey, content);
     }
 
+    /**
+     * Instantiates a new single message reference.
+     *
+     * @param implKey the impl key
+     * @param content the content
+     */
     public SingleMessageReference(final String implKey, final Object... content) {
       super(implKey, Arrays.asList(content));
     }
 
+    /**
+     * Adds the content.
+     *
+     * @param content the content
+     * @return the message reference
+     */
     @Override
     public MessageReference addContent(final Object... content) {
 
@@ -139,6 +211,11 @@ public abstract class MessageReference {
     }
   }
 
+  /**
+   * Hash code.
+   *
+   * @return the int
+   */
   @Override
   public int hashCode() {
     final int prime = 31;
@@ -149,6 +226,8 @@ public abstract class MessageReference {
 
   /**
    * {@link MessageReference}s are equal if their message keys have the same value.
+   *
+   * @param obj the obj
    * @return <code>true</code> if both instances are equal, otherwise <code>false</code>.
    */
   @Override
@@ -173,6 +252,13 @@ public abstract class MessageReference {
     return true;
   }
   
+  /**
+   * Update content.
+   *
+   * @param oldContent the old content
+   * @param newContent the new content
+   * @return the message reference
+   */
   public MessageReference updateContent(List<?> oldContent, Object... newContent) {
     
     final List<Object> mergedContent = new ArrayList<Object>();

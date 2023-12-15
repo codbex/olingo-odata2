@@ -43,18 +43,36 @@ import org.apache.olingo.odata2.core.ep.util.JsonStreamWriter;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParser;
 
+// TODO: Auto-generated Javadoc
 /**
  * Response body debug information.
  */
 public class DebugInfoBody implements DebugInfo {
 
+  /** The response. */
   private final ODataResponse response;
+  
+  /** The service root. */
   private final String serviceRoot;
+  
+  /** The is xml. */
   private final boolean isXml;
+  
+  /** The is json. */
   private final boolean isJson;
+  
+  /** The is text. */
   private final boolean isText;
+  
+  /** The is image. */
   private final boolean isImage;
 
+  /**
+   * Instantiates a new debug info body.
+   *
+   * @param response the response
+   * @param serviceRoot the service root
+   */
   public DebugInfoBody(final ODataResponse response, final String serviceRoot) {
     this.response = response;
     this.serviceRoot = serviceRoot;
@@ -67,11 +85,22 @@ public class DebugInfoBody implements DebugInfo {
     isImage = !isText && contentType.startsWith("image/");
   }
 
+  /**
+   * Gets the name.
+   *
+   * @return the name
+   */
   @Override
   public String getName() {
     return "Body";
   }
 
+  /**
+   * Append json.
+   *
+   * @param jsonStreamWriter the json stream writer
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Override
   public void appendJson(final JsonStreamWriter jsonStreamWriter) throws IOException {
     if (isJson) {
@@ -83,6 +112,11 @@ public class DebugInfoBody implements DebugInfo {
     }
   }
 
+  /**
+   * Gets the content string.
+   *
+   * @return the content string
+   */
   private String getContentString() {
     if (response.getEntity() instanceof String) {
       return (String) response.getEntity();
@@ -100,6 +134,12 @@ public class DebugInfoBody implements DebugInfo {
     }
   }
 
+  /**
+   * Append html.
+   *
+   * @param writer the writer
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Override
   public void appendHtml(final Writer writer) throws IOException {
     final String body = getContentString();
@@ -116,6 +156,13 @@ public class DebugInfoBody implements DebugInfo {
     }
   }
 
+  /**
+   * Format xml.
+   *
+   * @param xml the xml
+   * @return the string
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private String formatXml(final String xml) throws IOException {
     try {
       final TransformerFactory transformerFactory = XmlHelper.getTransformerFactory();
@@ -130,10 +177,23 @@ public class DebugInfoBody implements DebugInfo {
     }
   }
 
+  /**
+   * Format json.
+   *
+   * @param json the json
+   * @return the string
+   */
   private String formatJson(final String json) {
     return new GsonBuilder().disableHtmlEscaping().setPrettyPrinting().create().toJson(new JsonParser().parse(json));
   }
 
+  /**
+   * Adds the links.
+   *
+   * @param source the source
+   * @param isXml the is xml
+   * @return the string
+   */
   private String addLinks(final String source, final boolean isXml) {
     final String debugOption = ODataDebugResponseWrapper.ODATA_DEBUG_QUERY_PARAMETER + "="
         + ODataDebugResponseWrapper.ODATA_DEBUG_HTML;

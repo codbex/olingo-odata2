@@ -43,19 +43,41 @@ import org.apache.olingo.odata2.core.ep.aggregator.EntityPropertyInfo;
 import org.apache.olingo.odata2.core.ep.aggregator.EntityTypeMapping;
 import org.apache.olingo.odata2.core.ep.util.FormatXml;
 
+// TODO: Auto-generated Javadoc
 /**
  * XML property consumer.
  */
 public class XmlPropertyConsumer {
 
+  /** The Constant TRUE. */
   protected static final String TRUE = "true";
+  
+  /** The Constant FALSE. */
   protected static final String FALSE = "false";
 
+  /**
+   * Read property.
+   *
+   * @param reader the reader
+   * @param property the property
+   * @param readProperties the read properties
+   * @return the map
+   * @throws EntityProviderException the entity provider exception
+   */
   public Map<String, Object> readProperty(final XMLStreamReader reader, final EdmProperty property,
       final EntityProviderReadProperties readProperties) throws EntityProviderException {
     return readProperty(reader, EntityInfoAggregator.create(property), readProperties);
   }
 
+  /**
+   * Read property.
+   *
+   * @param reader the reader
+   * @param propertyInfo the property info
+   * @param readProperties the read properties
+   * @return the map
+   * @throws EntityProviderException the entity provider exception
+   */
   public Map<String, Object> readProperty(final XMLStreamReader reader, final EntityPropertyInfo propertyInfo,
       final EntityProviderReadProperties readProperties) throws EntityProviderException {
     final EntityTypeMapping typeMappings =
@@ -83,6 +105,13 @@ public class XmlPropertyConsumer {
     }
   }
 
+  /**
+   * Merge with default values.
+   *
+   * @param value the value
+   * @param epi the epi
+   * @throws EntityProviderException the entity provider exception
+   */
   @SuppressWarnings("unchecked")
   private void mergeWithDefaultValues(final Object value, final EntityPropertyInfo epi) throws EntityProviderException {
     if (!(value instanceof Map)) {
@@ -95,6 +124,12 @@ public class XmlPropertyConsumer {
     mergeComplexWithDefaultValues((Map<String, Object>) value, (EntityComplexPropertyInfo) epi);
   }
 
+  /**
+   * Merge complex with default values.
+   *
+   * @param complexValue the complex value
+   * @param ecpi the ecpi
+   */
   private void mergeComplexWithDefaultValues(final Map<String, Object> complexValue,
       final EntityComplexPropertyInfo ecpi) {
     for (EntityPropertyInfo info : ecpi.getPropertyInfos()) {
@@ -114,6 +149,15 @@ public class XmlPropertyConsumer {
     }
   }
 
+  /**
+   * Read collection.
+   *
+   * @param reader the reader
+   * @param info the info
+   * @param properties the properties
+   * @return the list
+   * @throws EntityProviderException the entity provider exception
+   */
   public List<?> readCollection(XMLStreamReader reader, final EntityPropertyInfo info,
       final EntityProviderReadProperties properties) throws EntityProviderException {
     final String collectionName = info.getName();
@@ -144,6 +188,18 @@ public class XmlPropertyConsumer {
     }
   }
 
+  /**
+   * Read started element.
+   *
+   * @param reader the reader
+   * @param name the name
+   * @param propertyInfo the property info
+   * @param typeMappings the type mappings
+   * @param readProperties the read properties
+   * @return the object
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   */
   protected Object readStartedElement(XMLStreamReader reader, final String name, final EntityPropertyInfo propertyInfo,
       final EntityTypeMapping typeMappings, final EntityProviderReadProperties readProperties)
       throws EntityProviderException, EdmException {
@@ -200,6 +256,16 @@ public class XmlPropertyConsumer {
     }
   }
 
+  /**
+   * Convert.
+   *
+   * @param property the property
+   * @param value the value
+   * @param typeMapping the type mapping
+   * @param readProperties the read properties
+   * @return the object
+   * @throws EdmSimpleTypeException the edm simple type exception
+   */
   private Object convert(final EntityPropertyInfo property, final String value, final Class<?> typeMapping,
       final EntityProviderReadProperties readProperties) throws EdmSimpleTypeException {
     final EdmSimpleType type = (EdmSimpleType) property.getType();

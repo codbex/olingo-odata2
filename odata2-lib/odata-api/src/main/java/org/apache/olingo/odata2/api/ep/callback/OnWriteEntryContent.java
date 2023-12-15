@@ -21,6 +21,7 @@ package org.apache.olingo.odata2.api.ep.callback;
 import org.apache.olingo.odata2.api.ODataCallback;
 import org.apache.olingo.odata2.api.exception.ODataApplicationException;
 
+// TODO: Auto-generated Javadoc
 /**
  * Callback interface for the $expand query option.
  * <p>If an expand clause for a navigation property which points to an entry is found this callback will be called.
@@ -34,9 +35,10 @@ public interface OnWriteEntryContent extends ODataCallback {
   /**
    * Retrieves the data for an entry. See {@link WriteEntryCallbackContext} for details on the context and
    * {@link WriteEntryCallbackResult} for details on the result of this method.
+   *
    * @param context of this entry
    * @return result - must not be null.
-   * @throws ODataApplicationException
+   * @throws ODataApplicationException the o data application exception
    */
   WriteEntryCallbackResult retrieveEntryResult(WriteEntryCallbackContext context) throws ODataApplicationException;
 

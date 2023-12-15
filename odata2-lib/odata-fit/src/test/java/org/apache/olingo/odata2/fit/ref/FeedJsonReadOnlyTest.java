@@ -26,16 +26,27 @@ import org.apache.olingo.odata2.api.commons.HttpContentType;
 import org.apache.olingo.odata2.testutil.server.ServletType;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
  * Tests employing the reference scenario reading entity sets in JSON format.
  * 
  */
 public class FeedJsonReadOnlyTest extends AbstractRefTest {
 
+  /**
+   * Instantiates a new feed json read only test.
+   *
+   * @param servletType the servlet type
+   */
   public FeedJsonReadOnlyTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /**
+   * Feed.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void feed() throws Exception {
     final HttpResponse response = callUri("Buildings()?$top=2&$format=json");
@@ -56,6 +67,11 @@ public class FeedJsonReadOnlyTest extends AbstractRefTest {
         getBody(response));
   }
 
+  /**
+   * Feedwith count and next.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void feedwithCountAndNext() throws Exception {
     final HttpResponse response = callUri("Rooms()?$inlinecount=allpages&$format=json");
@@ -65,6 +81,11 @@ public class FeedJsonReadOnlyTest extends AbstractRefTest {
     assertTrue(json.endsWith("],\"__next\":\"Rooms()?$inlinecount=allpages&$format=json&$skiptoken=97\"}}"));
   }
 
+  /**
+   * Feed with inline entry.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void feedWithInlineEntry() throws Exception {
     final HttpResponse response = callUri("Rooms()?$expand=nr_Building&$top=2&$format=json");
@@ -90,6 +111,11 @@ public class FeedJsonReadOnlyTest extends AbstractRefTest {
         getBody(response));
   }
 
+  /**
+   * Feed with inline feed.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void feedWithInlineFeed() throws Exception {
     final HttpResponse response = callUri("Buildings()?$expand=nb_Rooms&$top=2&$format=json");
@@ -124,6 +150,11 @@ public class FeedJsonReadOnlyTest extends AbstractRefTest {
         getBody(response));
   }
 
+  /**
+   * Feed with two level inline.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void feedWithTwoLevelInline() throws Exception {
     final HttpResponse response =

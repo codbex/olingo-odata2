@@ -24,46 +24,91 @@ import org.apache.olingo.odata2.api.edm.EdmException;
 import org.apache.olingo.odata2.api.edm.EdmReferentialConstraint;
 import org.apache.olingo.odata2.api.edm.EdmReferentialConstraintRole;
 
+// TODO: Auto-generated Javadoc
 /**
- * Objects of this class represent EdmReferentialConstraint
- *
+ * Objects of this class represent EdmReferentialConstraint.
  */
 public class EdmReferentialConstraintImpl implements EdmReferentialConstraint, EdmAnnotatable {
+  
+  /** The annotations. */
   private EdmAnnotations annotations;
+  
+  /** The referential constraint dependent role. */
   private EdmReferentialConstraintRole referentialConstraintDependentRole;
+  
+  /** The referential constraint principal role. */
   private EdmReferentialConstraintRole referentialConstraintPrincipalRole;
 
 
+  /**
+   * Gets the principal.
+   *
+   * @return the principal
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmReferentialConstraintRole getPrincipal() throws EdmException {
     return referentialConstraintPrincipalRole;
   }
 
+  /**
+   * Gets the dependent.
+   *
+   * @return the dependent
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmReferentialConstraintRole getDependent() throws EdmException {
     return referentialConstraintDependentRole;
   }
 
+  /**
+   * Gets the annotations.
+   *
+   * @return the annotations
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmAnnotations getAnnotations() throws EdmException {
     return annotations;
   }
 
 
+  /**
+   * Sets the principal.
+   *
+   * @param referentialConstraintPrincipalRole the new principal
+   */
   public void setPrincipal(EdmReferentialConstraintRole referentialConstraintPrincipalRole) {
     this.referentialConstraintPrincipalRole = referentialConstraintPrincipalRole;
     
   }
 
+  /**
+   * Sets the dependent.
+   *
+   * @param referentialConstraintDependentRole the new dependent
+   */
   public void setDependent(EdmReferentialConstraintRole referentialConstraintDependentRole) {
     this.referentialConstraintDependentRole = referentialConstraintDependentRole;
     
   }
 
+  /**
+   * Sets the annotations.
+   *
+   * @param annotations the new annotations
+   */
   public void setAnnotations(EdmAnnotations annotations) {
     this.annotations = annotations;
     
   }
+  
+  /**
+   * To string.
+   *
+   * @return the string
+   */
   @Override
   public String toString() {
       return String.format("Dependent Role: " + referentialConstraintDependentRole.getRole() + 

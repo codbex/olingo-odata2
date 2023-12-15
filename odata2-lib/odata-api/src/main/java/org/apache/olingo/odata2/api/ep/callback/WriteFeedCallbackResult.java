@@ -23,6 +23,7 @@ import java.util.Map;
 
 import org.apache.olingo.odata2.api.ep.EntityProviderWriteProperties;
 
+// TODO: Auto-generated Javadoc
 /**
  * Result of a callback. It contains the data of the feed which is to be expanded as well as the BaseUri of the feed.
  * Further callbacks for this feed can also be set.
@@ -31,10 +32,15 @@ import org.apache.olingo.odata2.api.ep.EntityProviderWriteProperties;
  */
 public class WriteFeedCallbackResult {
 
+  /** The inline properties. */
   EntityProviderWriteProperties inlineProperties;
+  
+  /** The feed data. */
   List<Map<String, Object>> feedData;
 
   /**
+   * Gets the inline properties.
+   *
    * @return the inline provider properties
    */
   public EntityProviderWriteProperties getInlineProperties() {
@@ -43,13 +49,16 @@ public class WriteFeedCallbackResult {
 
   /**
    * Sets the properties for the inline data. MUST NOT BE NULL.
-   * @param inlineProperties
+   *
+   * @param inlineProperties the new inline properties
    */
   public void setInlineProperties(final EntityProviderWriteProperties inlineProperties) {
     this.inlineProperties = inlineProperties;
   }
 
   /**
+   * Gets the feed data.
+   *
    * @return the feed data as a list of maps
    */
   public List<Map<String, Object>> getFeedData() {
@@ -58,7 +67,8 @@ public class WriteFeedCallbackResult {
 
   /**
    * Sets the feed data as a list of maps.
-   * @param feedData
+   *
+   * @param feedData the feed data
    */
   public void setFeedData(final List<Map<String, Object>> feedData) {
     this.feedData = feedData;

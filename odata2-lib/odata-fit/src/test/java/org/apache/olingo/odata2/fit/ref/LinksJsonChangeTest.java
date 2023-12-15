@@ -25,16 +25,27 @@ import org.apache.olingo.odata2.api.commons.HttpStatusCodes;
 import org.apache.olingo.odata2.testutil.server.ServletType;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
  * Tests employing the reference scenario changing links in JSON format.
  * 
  */
 public final class LinksJsonChangeTest extends AbstractRefTest {
 
+  /**
+   * Instantiates a new links json change test.
+   *
+   * @param servletType the servlet type
+   */
   public LinksJsonChangeTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /**
+   * Creates the link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void createLink() throws Exception {
     final String uriString = "Rooms('3')/$links/nr_Employees";
@@ -43,6 +54,11 @@ public final class LinksJsonChangeTest extends AbstractRefTest {
     assertEquals("{\"d\":" + requestBody + "}", getBody(callUri(uriString + "('6')?$format=json")));
   }
 
+  /**
+   * Update link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void updateLink() throws Exception {
     final String uriString = "Employees('2')/$links/ne_Room";

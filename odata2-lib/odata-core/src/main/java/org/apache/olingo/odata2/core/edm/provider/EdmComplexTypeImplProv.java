@@ -23,13 +23,31 @@ import org.apache.olingo.odata2.api.edm.EdmException;
 import org.apache.olingo.odata2.api.edm.EdmTypeKind;
 import org.apache.olingo.odata2.api.edm.provider.ComplexType;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EdmComplexTypeImplProv.
+ */
 public class EdmComplexTypeImplProv extends EdmStructuralTypeImplProv implements EdmComplexType {
 
+  /**
+   * Instantiates a new edm complex type impl prov.
+   *
+   * @param edm the edm
+   * @param complexType the complex type
+   * @param namespace the namespace
+   * @throws EdmException the edm exception
+   */
   public EdmComplexTypeImplProv(final EdmImplProv edm, final ComplexType complexType, final String namespace)
       throws EdmException {
     super(edm, complexType, EdmTypeKind.COMPLEX, namespace);
   }
 
+  /**
+   * Gets the base type.
+   *
+   * @return the base type
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmComplexType getBaseType() throws EdmException {
     return (EdmComplexType) edmBaseType;

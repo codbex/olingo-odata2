@@ -47,33 +47,70 @@ import org.apache.olingo.odata2.jpa.processor.api.exception.ODataJPARuntimeExcep
 import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmMapping;
 import org.apache.olingo.odata2.jpa.processor.core.model.JPAEdmMappingImpl;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAEntityParser.
+ */
 public final class JPAEntityParser {
 
+  /** The max size. */
   /*
    * List of buffers used by the Parser
    */
   private static short MAX_SIZE = 10;
+  
+  /** The Constant ACCESS_MODIFIER_GET. */
   public static final String ACCESS_MODIFIER_GET = "get";
+  
+  /** The Constant ACCESS_MODIFIER_SET. */
   public static final String ACCESS_MODIFIER_SET = "set";
+  
+  /** The Constant ACCESS_MODIFIER_IS. */
   private static final String ACCESS_MODIFIER_IS = "is";
 
+  /** The jpa entity access map. */
   private HashMap<String, HashMap<String, Method>> jpaEntityAccessMap = null;
+  
+  /** The jpa embeddable key map. */
   private HashMap<String, HashMap<String, String>> jpaEmbeddableKeyMap = null;
 
+  /**
+   * Instantiates a new JPA entity parser.
+   */
   public JPAEntityParser() {
     jpaEntityAccessMap = new HashMap<String, HashMap<String, Method>>(
         MAX_SIZE);
     jpaEmbeddableKeyMap = new HashMap<String, HashMap<String, String>>();
   };
 
+  /**
+   * Gets the JPA entity access map.
+   *
+   * @param jpaEntityName the jpa entity name
+   * @return the JPA entity access map
+   */
   public HashMap<String, Method> getJPAEntityAccessMap(final String jpaEntityName) {
     return jpaEntityAccessMap.get(jpaEntityName);
   }
 
+  /**
+   * Gets the JPA embeddable key map.
+   *
+   * @param jpaEntityName the jpa entity name
+   * @return the JPA embeddable key map
+   */
   public HashMap<String, String> getJPAEmbeddableKeyMap(final String jpaEntityName) {
     return jpaEmbeddableKeyMap.get(jpaEntityName);
   }
 
+  /**
+   * Parses the 2 edm entity list.
+   *
+   * @param jpaEntityList the jpa entity list
+   * @param properties the properties
+   * @return the list
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   public List<Map<String, Object>> parse2EdmEntityList(final Collection<Object> jpaEntityList,
       final List<EdmProperty> properties)
       throws ODataJPARuntimeException {
@@ -89,6 +126,14 @@ public final class JPAEntityParser {
     return edmEntityList;
   }
 
+  /**
+   * Parses the 2 edm property value map.
+   *
+   * @param jpaEntity the jpa entity
+   * @param selectPropertyList the select property list
+   * @return the hash map
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   public final HashMap<String, Object> parse2EdmPropertyValueMap(final Object jpaEntity,
       final List<EdmProperty> selectPropertyList) throws ODataJPARuntimeException {
 
@@ -144,6 +189,14 @@ public final class JPAEntityParser {
     return edmEntity;
   }
 
+  /**
+   * Parses the 2 edm entity list.
+   *
+   * @param jpaEntityList the jpa entity list
+   * @param structuralType the structural type
+   * @return the list
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   public final List<Map<String, Object>> parse2EdmEntityList(final Collection<Object> jpaEntityList,
       final EdmStructuralType structuralType) throws ODataJPARuntimeException {
     if (jpaEntityList == null || structuralType == null) {
@@ -158,6 +211,14 @@ public final class JPAEntityParser {
     return edmEntityList;
   }
 
+  /**
+   * Parses the 2 edm property value map.
+   *
+   * @param jpaEntity the jpa entity
+   * @param structuralType the structural type
+   * @return the hash map
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   public final HashMap<String, Object> parse2EdmPropertyValueMap(final Object jpaEntity,
       final EdmStructuralType structuralType) throws ODataJPARuntimeException {
     if (jpaEntity == null || structuralType == null) {
@@ -166,6 +227,14 @@ public final class JPAEntityParser {
     return parse2EdmPropertyValueMap(jpaEntity, getEdmProperties(structuralType));
   }
 
+  /**
+   * Parses the 2 edm navigation value map.
+   *
+   * @param jpaEntity the jpa entity
+   * @param navigationPropertyList the navigation property list
+   * @return the hash map
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   public final HashMap<String, Object> parse2EdmNavigationValueMap(
       final Object jpaEntity, final List<EdmNavigationProperty> navigationPropertyList)
       throws ODataJPARuntimeException {
@@ -209,6 +278,14 @@ public final class JPAEntityParser {
     return navigationMap;
   }
 
+  /**
+   * Gets the access modifier set.
+   *
+   * @param jpaEntity the jpa entity
+   * @param methodName the method name
+   * @return the access modifier set
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   public Method getAccessModifierSet(final Object jpaEntity, final String methodName) throws ODataJPARuntimeException {
     Class<?> jpaType = jpaEntity.getClass();
     String methodNameGet = ACCESS_MODIFIER_GET + methodName.substring(3);
@@ -227,11 +304,29 @@ public final class JPAEntityParser {
     return method;
   }
 
+  /**
+   * Gets the access modifiers.
+   *
+   * @param jpaEntity the jpa entity
+   * @param structuralType the structural type
+   * @param accessModifier the access modifier
+   * @return the access modifiers
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   public HashMap<String, Method> getAccessModifiers(final Object jpaEntity,
       final EdmStructuralType structuralType, final String accessModifier) throws ODataJPARuntimeException {
     return getAccessModifiers(getEdmProperties(structuralType), jpaEntity.getClass(), accessModifier);
   }
 
+  /**
+   * Gets the property value.
+   *
+   * @param method the method
+   * @param entity the entity
+   * @param propertyName the property name
+   * @return the property value
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   public static Object getPropertyValue(final Method method, final Object entity, String propertyName) 
 		  throws ODataJPARuntimeException {
     Object propertyValue = null;
@@ -283,6 +378,13 @@ public final class JPAEntityParser {
     return propertyValue;
   }
 
+  /**
+   * Gets the string.
+   *
+   * @param clob the clob
+   * @return the string
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   public static String getString(final Clob clob) throws ODataJPARuntimeException {
     Reader stringReader = null;
     try {
@@ -343,6 +445,13 @@ public final class JPAEntityParser {
 
   }
 
+  /**
+   * Gets the bytes.
+   *
+   * @param blob the blob
+   * @return the bytes
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   public static byte[] getBytes(final Blob blob) throws ODataJPARuntimeException {
     InputStream is = null;
     ByteArrayOutputStream buffer = null;
@@ -402,6 +511,15 @@ public final class JPAEntityParser {
     }
   }
 
+  /**
+   * Gets the embeddable property value.
+   *
+   * @param methodName the method name
+   * @param jpaEntity the jpa entity
+   * @param isVirtualAccess the is virtual access
+   * @return the embeddable property value
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   public Object getEmbeddablePropertyValue(final String methodName, final Object jpaEntity, boolean isVirtualAccess)
       throws ODataJPARuntimeException {
 
@@ -431,12 +549,26 @@ public final class JPAEntityParser {
     return propertyValue;
   }
 
+  /**
+   * Gets the embeddable property value.
+   *
+   * @param methodName the method name
+   * @param jpaEntity the jpa entity
+   * @return the embeddable property value
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   public Object getEmbeddablePropertyValue(final String methodName, final Object jpaEntity)
 	      throws ODataJPARuntimeException {
 
 	  return getEmbeddablePropertyValue(methodName, jpaEntity, false);
   }
   
+  /**
+   * To string.
+   *
+   * @param input the input
+   * @return the string
+   */
   public static String toString(final Character[] input) {
     if (input == null) {
       return null;
@@ -453,6 +585,12 @@ public final class JPAEntityParser {
 
   }
 
+  /**
+   * To character array.
+   *
+   * @param input the input
+   * @return the character[]
+   */
   public static Character[] toCharacterArray(final String input) {
     if (input == null) {
       return null;
@@ -467,6 +605,15 @@ public final class JPAEntityParser {
     return characters;
   }
 
+  /**
+   * Gets the access modifier name.
+   *
+   * @param propertyName the property name
+   * @param mapping the mapping
+   * @param accessModifier the access modifier
+   * @return the access modifier name
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   public static String getAccessModifierName(final String propertyName, final EdmMapping mapping,
       final String accessModifier)
       throws ODataJPARuntimeException {
@@ -512,6 +659,15 @@ public final class JPAEntityParser {
 
   }
 
+  /**
+   * Gets the access modifier.
+   *
+   * @param jpaEntityType the jpa entity type
+   * @param navigationProperty the navigation property
+   * @param accessModifier the access modifier
+   * @return the access modifier
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   public Method getAccessModifier(final Class<?> jpaEntityType, final EdmNavigationProperty navigationProperty,
       final String accessModifier)
       throws ODataJPARuntimeException {
@@ -554,6 +710,15 @@ public final class JPAEntityParser {
     }
   }
 
+  /**
+   * Gets the access modifiers.
+   *
+   * @param edmProperties the edm properties
+   * @param jpaEntityType the jpa entity type
+   * @param accessModifier the access modifier
+   * @return the access modifiers
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   private HashMap<String, Method> getAccessModifiers(final List<EdmProperty> edmProperties,
       final Class<?> jpaEntityType,
       final String accessModifier) throws ODataJPARuntimeException {
@@ -639,6 +804,13 @@ public final class JPAEntityParser {
     return accessModifierMap;
   }
 
+  /**
+   * Gets the edm properties.
+   *
+   * @param structuralType the structural type
+   * @return the edm properties
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   private List<EdmProperty> getEdmProperties(final EdmStructuralType structuralType) throws ODataJPARuntimeException {
     List<EdmProperty> edmProperties = new ArrayList<EdmProperty>();
     try {

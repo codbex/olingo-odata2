@@ -27,22 +27,49 @@ import org.apache.olingo.odata2.api.edm.EdmMultiplicity;
 import org.apache.olingo.odata2.api.edm.FullQualifiedName;
 import org.apache.olingo.odata2.api.edm.provider.AssociationEnd;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EdmAssociationEndImplProv.
+ */
 public class EdmAssociationEndImplProv implements EdmAssociationEnd, EdmAnnotatable {
 
+  /** The edm. */
   private EdmImplProv edm;
+  
+  /** The association end. */
   private AssociationEnd associationEnd;
+  
+  /** The annotations. */
   private EdmAnnotations annotations;
 
+  /**
+   * Instantiates a new edm association end impl prov.
+   *
+   * @param edm the edm
+   * @param associationEnd the association end
+   * @throws EdmException the edm exception
+   */
   public EdmAssociationEndImplProv(final EdmImplProv edm, final AssociationEnd associationEnd) throws EdmException {
     this.edm = edm;
     this.associationEnd = associationEnd;
   }
 
+  /**
+   * Gets the role.
+   *
+   * @return the role
+   */
   @Override
   public String getRole() {
     return associationEnd.getRole();
   }
 
+  /**
+   * Gets the entity type.
+   *
+   * @return the entity type
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmEntityType getEntityType() throws EdmException {
     final FullQualifiedName type = associationEnd.getType();
@@ -53,11 +80,22 @@ public class EdmAssociationEndImplProv implements EdmAssociationEnd, EdmAnnotata
     return entityType;
   }
 
+  /**
+   * Gets the multiplicity.
+   *
+   * @return the multiplicity
+   */
   @Override
   public EdmMultiplicity getMultiplicity() {
     return associationEnd.getMultiplicity();
   }
 
+  /**
+   * Gets the annotations.
+   *
+   * @return the annotations
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmAnnotations getAnnotations() throws EdmException {
     if (annotations == null) {

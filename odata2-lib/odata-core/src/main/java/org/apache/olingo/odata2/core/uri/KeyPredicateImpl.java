@@ -21,38 +21,73 @@ package org.apache.olingo.odata2.core.uri;
 import org.apache.olingo.odata2.api.edm.EdmProperty;
 import org.apache.olingo.odata2.api.uri.KeyPredicate;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class KeyPredicateImpl.
  */
 public class KeyPredicateImpl implements KeyPredicate {
 
+  /**
+   * Instantiates a new key predicate impl.
+   *
+   * @param literal the literal
+   * @param property the property
+   */
   public KeyPredicateImpl(final String literal, final EdmProperty property) {
     super();
     this.literal = literal;
     this.property = property;
   }
 
+  /** The literal. */
   private String literal;
+  
+  /** The property. */
   private EdmProperty property;
 
+  /**
+   * Gets the literal.
+   *
+   * @return the literal
+   */
   @Override
   public String getLiteral() {
     return literal;
   }
 
+  /**
+   * Sets the value.
+   *
+   * @param value the new value
+   */
   public void setValue(final String value) {
     literal = value;
   }
 
+  /**
+   * Gets the property.
+   *
+   * @return the property
+   */
   @Override
   public EdmProperty getProperty() {
     return property;
   }
 
+  /**
+   * Sets the property.
+   *
+   * @param property the new property
+   */
   public void setProperty(final EdmProperty property) {
     this.property = property;
   }
 
+  /**
+   * To string.
+   *
+   * @return the string
+   */
   @Override
   public String toString() {
     return "KeyPredicate: literal=" + literal + ", propertyName=" + property;

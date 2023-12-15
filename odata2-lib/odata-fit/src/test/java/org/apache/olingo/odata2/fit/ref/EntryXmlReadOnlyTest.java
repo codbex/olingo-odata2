@@ -38,16 +38,27 @@ import org.apache.olingo.odata2.testutil.server.ServletType;
 import org.custommonkey.xmlunit.XMLAssert;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
  * Tests employing the reference scenario reading a single entity in XML format.
  * 
  */
 public class EntryXmlReadOnlyTest extends AbstractRefXmlTest {
 
+  /**
+   * Instantiates a new entry xml read only test.
+   *
+   * @param servletType the servlet type
+   */
   public EntryXmlReadOnlyTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /**
+   * Entry.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entry() throws Exception {
     HttpResponse response = callUri("Employees('2')");
@@ -97,6 +108,11 @@ public class EntryXmlReadOnlyTest extends AbstractRefXmlTest {
     badRequest("Rooms(X'33')");
   }
 
+  /**
+   * Entry with special key.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entryWithSpecialKey() throws Exception {
     // Ugly hack to create an entity with a key containing special characters just for this test.
@@ -123,6 +139,14 @@ public class EntryXmlReadOnlyTest extends AbstractRefXmlTest {
     assertXpathEvaluatesTo(expected + "/$value", "/atom:entry/atom:link[@rel=\"edit-media\"]/@href", body);
   }
 
+  /**
+   * Gets the field.
+   *
+   * @param clazz the clazz
+   * @param string the string
+   * @return the field
+   * @throws Exception the exception
+   */
   private Field getField(final Class<?> clazz, final String string) throws Exception {
     try {
       return clazz.getDeclaredField(string);
@@ -134,6 +158,11 @@ public class EntryXmlReadOnlyTest extends AbstractRefXmlTest {
     }
   }
 
+  /**
+   * Expand.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void expand() throws Exception {
     HttpResponse response = callUri("Employees('5')?$expand=ne_Manager");
@@ -168,6 +197,11 @@ public class EntryXmlReadOnlyTest extends AbstractRefXmlTest {
     notFound("Employees()?$expand=ne_Room/noNavProp");
   }
 
+  /**
+   * Select.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void select() throws Exception {
     HttpResponse response = callUri("Employees('6')?$select=EmployeeId,Age");
@@ -227,6 +261,11 @@ public class EntryXmlReadOnlyTest extends AbstractRefXmlTest {
     notFound("Employees('3')/ne_Room?$select=ne_Room");
   }
 
+  /**
+   * Entry media resource.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entryMediaResource() throws Exception {
     HttpResponse response = callUri("Employees('2')/$value");
@@ -238,6 +277,11 @@ public class EntryXmlReadOnlyTest extends AbstractRefXmlTest {
     XMLAssert.assertXpathExists("/m:error/m:message", body);
   }
 
+  /**
+   * Navigation entry.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void navigationEntry() throws Exception {
     HttpResponse response = callUri("Employees('2')/ne_Manager");

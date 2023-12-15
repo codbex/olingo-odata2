@@ -20,10 +20,11 @@ package org.apache.olingo.odata2.api.uri;
 
 import org.apache.olingo.odata2.api.edm.EdmProperty;
 
+// TODO: Auto-generated Javadoc
 /**
- * Key predicate, consisting of a simple-type property and its value as String literal
- * @org.apache.olingo.odata2.DoNotImplement
- * 
+ * Key predicate, consisting of a simple-type property and its value as String literal.
+ *
+ * @org.apache.olingo.odata2.DoNotImplement 
  */
 public interface KeyPredicate {
 

@@ -47,19 +47,43 @@ import org.apache.olingo.odata2.api.uri.NavigationPropertySegment;
 import org.apache.olingo.odata2.jpa.processor.api.exception.ODataJPARuntimeException;
 import org.apache.olingo.odata2.jpa.processor.core.access.data.JPAEntityParser;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAExpandCallBack.
+ */
 public class JPAExpandCallBack implements OnWriteFeedContent, OnWriteEntryContent, ODataCallback {
 
+  /** The base uri. */
   private URI baseUri;
+  
+  /** The expand list. */
   private List<ArrayList<NavigationPropertySegment>> expandList;
+  
+  /** The next entity set. */
   private EdmEntitySet nextEntitySet = null;
+  
+  /** The edm property map. */
   private HashMap<String, List<EdmProperty>> edmPropertyMap = new HashMap<String, List<EdmProperty>>();
 
+  /**
+   * Instantiates a new JPA expand call back.
+   *
+   * @param baseUri the base uri
+   * @param expandList the expand list
+   */
   private JPAExpandCallBack(final URI baseUri, final List<ArrayList<NavigationPropertySegment>> expandList) {
     super();
     this.baseUri = baseUri;
     this.expandList = expandList;
   }
 
+  /**
+   * Retrieve entry result.
+   *
+   * @param context the context
+   * @return the write entry callback result
+   * @throws ODataApplicationException the o data application exception
+   */
   @Override
   public WriteEntryCallbackResult retrieveEntryResult(final WriteEntryCallbackContext context)
       throws ODataApplicationException {
@@ -102,6 +126,14 @@ public class JPAExpandCallBack implements OnWriteFeedContent, OnWriteEntryConten
     return result;
   }
 
+  /**
+   * Gets the edm properties.
+   *
+   * @param entitySet the entity set
+   * @param expandTreeNode the expand tree node
+   * @return the edm properties
+   * @throws ODataApplicationException the o data application exception
+   */
   private List<EdmProperty> getEdmProperties(final EdmEntitySet entitySet, final ExpandSelectTreeNode expandTreeNode)
       throws ODataApplicationException {
 
@@ -132,6 +164,13 @@ public class JPAExpandCallBack implements OnWriteFeedContent, OnWriteEntryConten
     }
   }
 
+  /**
+   * Retrieve feed result.
+   *
+   * @param context the context
+   * @return the write feed callback result
+   * @throws ODataApplicationException the o data application exception
+   */
   @Override
   public WriteFeedCallbackResult retrieveFeedResult(final WriteFeedCallbackContext context)
       throws ODataApplicationException {
@@ -183,6 +222,14 @@ public class JPAExpandCallBack implements OnWriteFeedContent, OnWriteEntryConten
     return result;
   }
 
+  /**
+   * Gets the next navigation property.
+   *
+   * @param sourceEntityType the source entity type
+   * @param navigationProperty the navigation property
+   * @return the next navigation property
+   * @throws EdmException the edm exception
+   */
   private List<EdmNavigationProperty> getNextNavigationProperty(final EdmEntityType sourceEntityType,
       final EdmNavigationProperty navigationProperty) throws EdmException {
     final List<EdmNavigationProperty> edmNavigationPropertyList = new ArrayList<EdmNavigationProperty>();
@@ -200,6 +247,15 @@ public class JPAExpandCallBack implements OnWriteFeedContent, OnWriteEntryConten
     return edmNavigationPropertyList;
   }
 
+  /**
+   * Test nav property segment.
+   *
+   * @param navProperty the nav property
+   * @param sourceEntityType the source entity type
+   * @param navigationProperty the navigation property
+   * @return true, if successful
+   * @throws EdmException the edm exception
+   */
   private boolean testNavPropertySegment(
 		  final EdmNavigationProperty navProperty,
 		  final EdmEntityType sourceEntityType,
@@ -219,6 +275,15 @@ public class JPAExpandCallBack implements OnWriteFeedContent, OnWriteEntryConten
 	  return navProperty.getName().equals(navigationProperty.getName());
   }
   
+  /**
+   * Gets the callbacks.
+   *
+   * @param baseUri the base uri
+   * @param expandSelectTreeNode the expand select tree node
+   * @param expandList the expand list
+   * @return the callbacks
+   * @throws EdmException the edm exception
+   */
   public static Map<String, ODataCallback> getCallbacks(final URI baseUri,
       final ExpandSelectTreeNode expandSelectTreeNode, final List<ArrayList<NavigationPropertySegment>> expandList)
       throws EdmException {
@@ -232,6 +297,13 @@ public class JPAExpandCallBack implements OnWriteFeedContent, OnWriteEntryConten
 
   }
 
+  /**
+   * Gets the inline entity provider properties.
+   *
+   * @param context the context
+   * @return the inline entity provider properties
+   * @throws EdmException the edm exception
+   */
   private EntityProviderWriteProperties getInlineEntityProviderProperties(final WriteCallbackContext context)
       throws EdmException {
     ODataEntityProviderPropertiesBuilder propertiesBuilder = EntityProviderWriteProperties.serviceRoot(baseUri);

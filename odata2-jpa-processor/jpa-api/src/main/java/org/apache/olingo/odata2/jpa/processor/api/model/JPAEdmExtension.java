@@ -20,6 +20,7 @@ package org.apache.olingo.odata2.jpa.processor.api.model;
 
 import java.io.InputStream;
 
+// TODO: Auto-generated Javadoc
 /**
  * The interface provides methods to extend JPA EDM containers.
  * 

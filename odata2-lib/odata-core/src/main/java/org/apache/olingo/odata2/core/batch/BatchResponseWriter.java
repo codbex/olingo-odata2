@@ -28,11 +28,25 @@ import org.apache.olingo.odata2.core.commons.ContentType;
 
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BatchResponseWriter.
+ */
 public class BatchResponseWriter {
+  
+  /** The Constant COLON. */
   private static final String COLON = ":";
+  
+  /** The Constant SP. */
   private static final String SP = " ";
+  
+  /** The Constant CRLF. */
   private static final String CRLF = "\r\n";
+  
+  /** The write entity as input stream. */
   private final boolean writeEntityAsInputStream;
+  
+  /** The writer. */
   private BatchHelper.BodyBuilder writer = new BatchHelper.BodyBuilder();
 
   /**
@@ -44,10 +58,9 @@ public class BatchResponseWriter {
   }
 
   /**
-   * Creates a BatchResponseWriter
+   * Creates a BatchResponseWriter.
    *
-   * @param writeEntityAsInputStream
-   *        if <code>true</code> the <code>entity</code> is set a InputStream.
+   * @param writeEntityAsInputStream        if <code>true</code> the <code>entity</code> is set a InputStream.
    *        if <code>false</code> the <code>entity</code> is set a String with
    *        default charset (see BatchHelper.DEFAULT_CHARSET).
    */
@@ -55,6 +68,13 @@ public class BatchResponseWriter {
     this.writeEntityAsInputStream = writeEntityAsInputStream;
   }
 
+  /**
+   * Write response.
+   *
+   * @param batchResponseParts the batch response parts
+   * @return the o data response
+   * @throws BatchException the batch exception
+   */
   public ODataResponse writeResponse(final List<BatchResponsePart> batchResponseParts) throws BatchException {
     String boundary = BatchHelper.generateBoundary("batch");
     appendResponsePart(batchResponseParts, boundary);
@@ -73,6 +93,12 @@ public class BatchResponseWriter {
         .build();
   }
 
+  /**
+   * Append change set.
+   *
+   * @param batchResponsePart the batch response part
+   * @throws BatchException the batch exception
+   */
   private void appendChangeSet(final BatchResponsePart batchResponsePart) throws BatchException {
     String boundary = BatchHelper.generateBoundary("changeset");
     writer.append(HttpHeaders.CONTENT_TYPE).append(COLON).append(SP)
@@ -84,6 +110,13 @@ public class BatchResponseWriter {
     writer.append("--").append(boundary).append("--").append(CRLF);
   }
 
+  /**
+   * Append response part.
+   *
+   * @param batchResponseParts the batch response parts
+   * @param boundary the boundary
+   * @throws BatchException the batch exception
+   */
   private void appendResponsePart(final List<BatchResponsePart> batchResponseParts, final String boundary)
       throws BatchException {
     for (BatchResponsePart batchResponsePart : batchResponseParts) {
@@ -98,6 +131,12 @@ public class BatchResponseWriter {
     writer.append("--").append(boundary).append("--");
   }
 
+  /**
+   * Append response part body.
+   *
+   * @param response the response
+   * @throws BatchException the batch exception
+   */
   private void appendResponsePartBody(final ODataResponse response) throws BatchException {
     writer.append(HttpHeaders.CONTENT_TYPE).append(COLON).append(SP)
         .append(HttpContentType.APPLICATION_HTTP).append(CRLF);
@@ -126,6 +165,11 @@ public class BatchResponseWriter {
     writer.append(CRLF);
   }
 
+  /**
+   * Append header.
+   *
+   * @param response the response
+   */
   private void appendHeader(final ODataResponse response) {
     for (String name : response.getHeaderNames()) {
       if (!BatchHelper.MIME_HEADER_CONTENT_ID.equalsIgnoreCase(name)

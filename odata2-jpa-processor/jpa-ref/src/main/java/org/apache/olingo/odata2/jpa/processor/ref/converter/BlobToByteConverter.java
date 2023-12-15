@@ -29,9 +29,19 @@ import jakarta.persistence.Converter;
 
 import org.hsqldb.jdbc.JDBCBlob;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BlobToByteConverter.
+ */
 @Converter(autoApply = true)
 public class BlobToByteConverter implements AttributeConverter<Blob, byte[]> {
 
+  /**
+   * Convert to database column.
+   *
+   * @param arg0 the arg 0
+   * @return the byte[]
+   */
   @Override
   public byte[] convertToDatabaseColumn(final Blob arg0) {
     if (arg0 == null) {
@@ -55,6 +65,12 @@ public class BlobToByteConverter implements AttributeConverter<Blob, byte[]> {
     return buffer.toByteArray();
   }
 
+  /**
+   * Convert to entity attribute.
+   *
+   * @param arg0 the arg 0
+   * @return the blob
+   */
   @Override
   public Blob convertToEntityAttribute(final byte[] arg0) {
     try {

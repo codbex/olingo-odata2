@@ -27,12 +27,17 @@ import org.apache.olingo.odata2.api.edm.EdmSimpleTypeKind;
 import org.apache.olingo.odata2.api.edm.provider.Facets;
 import org.apache.olingo.odata2.api.edm.provider.SimpleProperty;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAEdmFacets.
+ */
 public class JPAEdmFacets {
+  
   /**
    * Create and set new facets for SimpleProperty.
    * The new created and set facets are returned for further modification.
    *
-   * @param jpaAttribute
+   * @param jpaAttribute the jpa attribute
    * @param edmProperty property at which facets are set
    * @return set new facets for SimpleProperty
    */
@@ -78,22 +83,46 @@ public class JPAEdmFacets {
     return facets;
   }
 
+  /**
+   * Sets the nullable.
+   *
+   * @param column the column
+   * @param edmProperty the edm property
+   */
   private static void setNullable(final Column column, final SimpleProperty edmProperty) {
     ((Facets) edmProperty.getFacets()).setNullable(column.nullable());
   }
 
+  /**
+   * Sets the max length.
+   *
+   * @param column the column
+   * @param edmProperty the edm property
+   */
   private static void setMaxLength(final Column column, final SimpleProperty edmProperty) {
     if (column.length() > 0) {
       ((Facets) edmProperty.getFacets()).setMaxLength(column.length());
     }
   }
 
+  /**
+   * Sets the precision.
+   *
+   * @param column the column
+   * @param edmProperty the edm property
+   */
   private static void setPrecision(final Column column, final SimpleProperty edmProperty) {
     if (column.precision() > 0) {
       ((Facets) edmProperty.getFacets()).setPrecision(column.precision());
     }
   }
 
+  /**
+   * Sets the scale.
+   *
+   * @param column the column
+   * @param edmProperty the edm property
+   */
   private static void setScale(final Column column, final SimpleProperty edmProperty) {
     if (column.scale() > 0) {
       ((Facets) edmProperty.getFacets()).setScale(column.scale());

@@ -30,53 +30,97 @@ import org.apache.olingo.odata2.api.uri.expression.ExpressionVisitor;
 import org.apache.olingo.odata2.api.uri.expression.MethodExpression;
 import org.apache.olingo.odata2.api.uri.expression.MethodOperator;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class MethodExpressionImpl.
  */
 public class MethodExpressionImpl implements MethodExpression {
 
+  /** The info method. */
   private InfoMethod infoMethod;
+  
+  /** The return type. */
   private EdmType returnType;
+  
+  /** The actual parameters. */
   private List<CommonExpression> actualParameters;
 
+  /**
+   * Instantiates a new method expression impl.
+   *
+   * @param infoMethod the info method
+   */
   public MethodExpressionImpl(final InfoMethod infoMethod) {
     this.infoMethod = infoMethod;
     returnType = infoMethod.getReturnType();
     actualParameters = new ArrayList<CommonExpression>();
   }
 
+  /**
+   * Gets the edm type.
+   *
+   * @return the edm type
+   */
   @Override
   public EdmType getEdmType() {
     return returnType;
   }
 
+  /**
+   * Sets the edm type.
+   *
+   * @param edmType the edm type
+   * @return the common expression
+   */
   @Override
   public CommonExpression setEdmType(final EdmType edmType) {
     returnType = edmType;
     return this;
   }
 
+  /**
+   * Gets the method.
+   *
+   * @return the method
+   */
   @Override
   public MethodOperator getMethod() {
     return infoMethod.getMethod();
   }
 
+  /**
+   * Gets the method info.
+   *
+   * @return the method info
+   */
   public InfoMethod getMethodInfo() {
     return infoMethod;
   }
 
+  /**
+   * Gets the parameters.
+   *
+   * @return the parameters
+   */
   @Override
   public List<CommonExpression> getParameters() {
     return actualParameters;
   }
 
+  /**
+   * Gets the parameter count.
+   *
+   * @return the parameter count
+   */
   @Override
   public int getParameterCount() {
     return actualParameters.size();
   }
 
   /**
-   * @param expression
+   * Append parameter.
+   *
+   * @param expression the expression
    * @return A self reference for method chaining"
    */
   public MethodExpressionImpl appendParameter(final CommonExpression expression) {
@@ -84,16 +128,34 @@ public class MethodExpressionImpl implements MethodExpression {
     return this;
   }
 
+  /**
+   * Gets the kind.
+   *
+   * @return the kind
+   */
   @Override
   public ExpressionKind getKind() {
     return ExpressionKind.METHOD;
   }
 
+  /**
+   * Gets the uri literal.
+   *
+   * @return the uri literal
+   */
   @Override
   public String getUriLiteral() {
     return infoMethod.getSyntax();
   }
 
+  /**
+   * Accept.
+   *
+   * @param visitor the visitor
+   * @return the object
+   * @throws ExceptionVisitExpression the exception visit expression
+   * @throws ODataApplicationException the o data application exception
+   */
   @Override
   public Object accept(final ExpressionVisitor visitor) throws ExceptionVisitExpression, ODataApplicationException {
     ArrayList<Object> retParameters = new ArrayList<Object>();

@@ -27,6 +27,7 @@ import org.apache.olingo.odata2.api.ep.EntityProviderException;
 import org.apache.olingo.odata2.api.ep.EntityProviderReadProperties;
 import org.apache.olingo.odata2.client.api.ep.callback.OnDeserializeInlineContent;
 
+// TODO: Auto-generated Javadoc
 /**
  * <p>The {@link EntityProviderReadProperties} contains all necessary settings
  * to read an entity with the {@link EntityProvider}.</p>
@@ -48,18 +49,23 @@ public class DeserializerProperties{
    */
   private final Map<String, Object> typeMappings;//entity
   
-  /** whether the constraints expressed in properties' facets are validated */
+  /**  whether the constraints expressed in properties' facets are validated. */
   private boolean validatingFacets = true;//entity
 
+  /** The validated prefix 2 namespace uri. */
   private final Map<String, String> validatedPrefix2NamespaceUri;//Collection
 
+  /**
+   * Instantiates a new deserializer properties.
+   */
   private DeserializerProperties() {
     typeMappings = new HashMap<String, Object>();
     validatedPrefix2NamespaceUri = new HashMap<String, String>();
   }
 
   /**
-   * 
+   * Inits the.
+   *
    * @return DeserializerPropertiesBuilder
    */
   public static DeserializerPropertiesBuilder init() {
@@ -67,31 +73,49 @@ public class DeserializerProperties{
   }
 
   /**
-   * 
-   * @param properties
+   * Inits the from.
+   *
+   * @param properties the properties
    * @return DeserializerPropertiesBuilder
    */
   public static DeserializerPropertiesBuilder initFrom
   (final DeserializerProperties properties) {
     return new DeserializerPropertiesBuilder(properties);
   }
+  
   /**
-   * 
+   * Gets the type mappings.
+   *
    * @return TypeMappings
    */
   public Map<String, Object> getTypeMappings() {
     return Collections.unmodifiableMap(typeMappings);
   }
 
+  /**
+   * Gets the validated prefix namespace uris.
+   *
+   * @return the validated prefix namespace uris
+   */
   public Map<String, String> getValidatedPrefixNamespaceUris() {
     return Collections.unmodifiableMap(validatedPrefix2NamespaceUri);
   }
 
 
+  /**
+   * Checks if is validating facets.
+   *
+   * @return true, if is validating facets
+   */
   public boolean isValidatingFacets() {
     return validatingFacets;
   }
   
+  /**
+   * Gets the callback.
+   *
+   * @return the callback
+   */
   public OnDeserializeInlineContent getCallback() {
     return callback;
   }
@@ -100,12 +124,19 @@ public class DeserializerProperties{
    * Builder for {@link EntityProviderReadProperties}.
    */
   public static class DeserializerPropertiesBuilder {
+    
+    /** The properties. */
     private final DeserializerProperties properties = new DeserializerProperties();
 
-    public DeserializerPropertiesBuilder() {}
     /**
-     * 
-     * @param propertiesFrom
+     * Instantiates a new deserializer properties builder.
+     */
+    public DeserializerPropertiesBuilder() {}
+    
+    /**
+     * Instantiates a new deserializer properties builder.
+     *
+     * @param propertiesFrom the properties from
      */
     public DeserializerPropertiesBuilder(final DeserializerProperties propertiesFrom) {
       addValidatedPrefixes(propertiesFrom.validatedPrefix2NamespaceUri);
@@ -115,8 +146,9 @@ public class DeserializerProperties{
     }
 
     /**
-     * 
-     * @param prefix2NamespaceUri
+     * Adds the validated prefixes.
+     *
+     * @param prefix2NamespaceUri the prefix 2 namespace uri
      * @return DeserializerPropertiesBuilder
      */
     public DeserializerPropertiesBuilder addValidatedPrefixes
@@ -128,8 +160,9 @@ public class DeserializerProperties{
     }
 
     /**
-     * 
-     * @param typeMappings
+     * Adds the type mappings.
+     *
+     * @param typeMappings the type mappings
      * @return DeserializerPropertiesBuilder
      */
     public DeserializerPropertiesBuilder addTypeMappings(final Map<String, Object> typeMappings) {
@@ -140,8 +173,9 @@ public class DeserializerProperties{
     }
     
     /**
-     * 
-     * @param callback
+     * Callback.
+     *
+     * @param callback the callback
      * @return DeserializerPropertiesBuilder
      */
     public DeserializerPropertiesBuilder callback(final OnDeserializeInlineContent callback) {
@@ -150,8 +184,9 @@ public class DeserializerProperties{
     }
 
     /**
-     * 
-     * @param validatingFacets
+     * Checks if is validating facets.
+     *
+     * @param validatingFacets the validating facets
      * @return DeserializerPropertiesBuilder
      */
     public DeserializerPropertiesBuilder isValidatingFacets(final boolean validatingFacets) {
@@ -160,7 +195,8 @@ public class DeserializerProperties{
     }
 
     /**
-     * 
+     * Builds the.
+     *
      * @return DeserializerProperties
      */
     public DeserializerProperties build() {

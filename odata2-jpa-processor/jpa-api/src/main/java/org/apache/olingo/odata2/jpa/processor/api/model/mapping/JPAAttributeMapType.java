@@ -23,6 +23,7 @@ import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
 import jakarta.xml.bind.annotation.XmlValue;
 
+// TODO: Auto-generated Javadoc
 /**
  *
  * The default name for EDM property is derived from JPA attribute name. This can be overriden using
@@ -62,6 +63,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 @XmlType(name = "JPAAttributeMapType", propOrder = {"jpaAttribute"})
 public class JPAAttributeMapType {
 
+    /** The jpa attribute. */
     @XmlElement(name = "JPAAttribute")
     protected List<JPAAttributeMapType.JPAAttribute> jpaAttribute;
 
@@ -75,7 +77,7 @@ public class JPAAttributeMapType {
      * 
      * <p>
      * For example, to add a new item, do as follows:
-     *
+     * 
      * <pre>
      * getJPAAttribute().add(newItem);
      * </pre>
@@ -84,8 +86,8 @@ public class JPAAttributeMapType {
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link JPAAttributeMapType.JPAAttribute }
-     * 
-     * 
+     *
+     * @return the JPA attribute
      */
     public List<JPAAttributeMapType.JPAAttribute> getJPAAttribute() {
         if (jpaAttribute == null) {
@@ -118,10 +120,15 @@ public class JPAAttributeMapType {
     @XmlType(name = "", propOrder = {"value"})
     public static class JPAAttribute {
 
+        /** The value. */
         @XmlValue
         protected String value;
+        
+        /** The name. */
         @XmlAttribute(name = "name", required = true)
         protected String name;
+        
+        /** The exclude. */
         @XmlAttribute(name = "exclude")
         protected Boolean exclude;
 

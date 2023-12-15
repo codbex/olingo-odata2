@@ -72,19 +72,34 @@ import org.apache.olingo.odata2.testutil.mock.MockFacade;
 import org.junit.Before;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
  * Tests for the validation of HTTP method, URI path, query options, content types, and
  * conditional-handling HTTP headers.
  */
 public class ODataRequestHandlerValidationTest extends BaseTest {
 
+    /** The edm. */
     private Edm edm = null;
 
+    /**
+     * Sets the edm.
+     *
+     * @throws ODataException the o data exception
+     */
     @Before
     public void setEdm() throws ODataException {
         edm = MockFacade.getMockEdm();
     }
 
+    /**
+     * Creates the path segments.
+     *
+     * @param uriType the uri type
+     * @param moreNavigation the more navigation
+     * @param isValue the is value
+     * @return the list
+     */
     private List<String> createPathSegments(final UriType uriType, final boolean moreNavigation, final boolean isValue) {
         List<String> segments = new ArrayList<String>();
 
@@ -169,6 +184,20 @@ public class ODataRequestHandlerValidationTest extends BaseTest {
         return segments;
     }
 
+    /**
+     * Creates the options.
+     *
+     * @param format the format
+     * @param filter the filter
+     * @param inlineCount the inline count
+     * @param orderBy the order by
+     * @param skipToken the skip token
+     * @param skip the skip
+     * @param top the top
+     * @param expand the expand
+     * @param select the select
+     * @return the map
+     */
     private static Map<String, String> createOptions(final boolean format, final boolean filter, final boolean inlineCount,
             final boolean orderBy, final boolean skipToken, final boolean skip, final boolean top, final boolean expand,
             final boolean select) {
@@ -206,6 +235,18 @@ public class ODataRequestHandlerValidationTest extends BaseTest {
         return map;
     }
 
+    /**
+     * Mock O data request.
+     *
+     * @param method the method
+     * @param pathSegments the path segments
+     * @param queryParameters the query parameters
+     * @param httpHeaderName the http header name
+     * @param httpHeaderValue the http header value
+     * @param requestContentType the request content type
+     * @return the o data request
+     * @throws ODataException the o data exception
+     */
     private ODataRequest mockODataRequest(final ODataHttpMethod method, final List<String> pathSegments,
             final Map<String, String> queryParameters, final String httpHeaderName, final String httpHeaderValue,
             final String requestContentType) throws ODataException {
@@ -232,6 +273,12 @@ public class ODataRequestHandlerValidationTest extends BaseTest {
         return request;
     }
 
+    /**
+     * Convert to multi map.
+     *
+     * @param queryParameters the query parameters
+     * @return the map
+     */
     private Map<String, List<String>> convertToMultiMap(final Map<String, String> queryParameters) {
         Map<String, List<String>> multiMap = new HashMap<String, List<String>>();
 
@@ -245,6 +292,13 @@ public class ODataRequestHandlerValidationTest extends BaseTest {
         return multiMap;
     }
 
+    /**
+     * Mock O data service.
+     *
+     * @param serviceFactory the service factory
+     * @return the o data service
+     * @throws ODataException the o data exception
+     */
     private ODataService mockODataService(final ODataServiceFactory serviceFactory) throws ODataException {
         ODataService service = DispatcherTest.getMockService();
         when(service.getEntityDataModel()).thenReturn(edm);
@@ -288,6 +342,18 @@ public class ODataRequestHandlerValidationTest extends BaseTest {
         return service;
     }
 
+    /**
+     * Execute and validate request.
+     *
+     * @param method the method
+     * @param pathSegments the path segments
+     * @param queryParameters the query parameters
+     * @param httpHeaderName the http header name
+     * @param httpHeaderValue the http header value
+     * @param requestContentType the request content type
+     * @param expectedStatusCode the expected status code
+     * @throws ODataException the o data exception
+     */
     private void executeAndValidateRequest(final ODataHttpMethod method, final List<String> pathSegments,
             final Map<String, String> queryParameters, final String httpHeaderName, final String httpHeaderValue,
             final String requestContentType, final HttpStatusCodes expectedStatusCode) throws ODataException {
@@ -305,33 +371,92 @@ public class ODataRequestHandlerValidationTest extends BaseTest {
         assertEquals(expectedStatusCode == null ? HttpStatusCodes.PAYMENT_REQUIRED : expectedStatusCode, response.getStatus());
     }
 
+    /**
+     * Execute and validate request.
+     *
+     * @param method the method
+     * @param uriType the uri type
+     * @param requestContentType the request content type
+     * @param expectedStatusCode the expected status code
+     * @throws ODataException the o data exception
+     */
     private void executeAndValidateRequest(final ODataHttpMethod method, final UriType uriType, final String requestContentType,
             final HttpStatusCodes expectedStatusCode) throws ODataException {
         executeAndValidateRequest(method, createPathSegments(uriType, false, false), null, null, null, requestContentType,
                 expectedStatusCode);
     }
 
+    /**
+     * Execute and validate header request.
+     *
+     * @param method the method
+     * @param uriType the uri type
+     * @param httpHeaderName the http header name
+     * @param httpHeaderValue the http header value
+     * @param expectedStatusCode the expected status code
+     * @throws ODataException the o data exception
+     */
     private void executeAndValidateHeaderRequest(final ODataHttpMethod method, final UriType uriType, final String httpHeaderName,
             final String httpHeaderValue, final HttpStatusCodes expectedStatusCode) throws ODataException {
         executeAndValidateRequest(method, createPathSegments(uriType, false, false), null, httpHeaderName, httpHeaderValue, null,
                 expectedStatusCode);
     }
 
+    /**
+     * Check accept header.
+     *
+     * @param uriType the uri type
+     * @param acceptHeader the accept header
+     * @param expectedStatusCode the expected status code
+     * @throws ODataException the o data exception
+     */
     private void checkAcceptHeader(final UriType uriType, final String acceptHeader, final HttpStatusCodes expectedStatusCode)
             throws ODataException {
         executeAndValidateHeaderRequest(ODataHttpMethod.GET, uriType, HttpHeaders.ACCEPT, acceptHeader, expectedStatusCode);
     }
 
+    /**
+     * Check value content type.
+     *
+     * @param method the method
+     * @param uriType the uri type
+     * @param requestContentType the request content type
+     * @throws Exception the exception
+     */
     private void checkValueContentType(final ODataHttpMethod method, final UriType uriType, final String requestContentType)
             throws Exception {
         executeAndValidateRequest(method, createPathSegments(uriType, false, true), null, null, null, requestContentType, null);
     }
 
+    /**
+     * Wrong request.
+     *
+     * @param method the method
+     * @param pathSegments the path segments
+     * @param queryParameters the query parameters
+     * @throws ODataException the o data exception
+     */
     private void wrongRequest(final ODataHttpMethod method, final List<String> pathSegments, final Map<String, String> queryParameters)
             throws ODataException {
         executeAndValidateRequest(method, pathSegments, queryParameters, null, null, null, HttpStatusCodes.METHOD_NOT_ALLOWED);
     }
 
+    /**
+     * Wrong options.
+     *
+     * @param method the method
+     * @param uriType the uri type
+     * @param format the format
+     * @param filter the filter
+     * @param inlineCount the inline count
+     * @param orderBy the order by
+     * @param skipToken the skip token
+     * @param skip the skip
+     * @param top the top
+     * @param expand the expand
+     * @param select the select
+     * @throws ODataException the o data exception
+     */
     private void wrongOptions(final ODataHttpMethod method, final UriType uriType, final boolean format, final boolean filter,
             final boolean inlineCount, final boolean orderBy, final boolean skipToken, final boolean skip, final boolean top,
             final boolean expand, final boolean select) throws ODataException {
@@ -339,10 +464,25 @@ public class ODataRequestHandlerValidationTest extends BaseTest {
                 createOptions(format, filter, inlineCount, orderBy, skipToken, skip, top, expand, select));
     }
 
+    /**
+     * Wrong function http method.
+     *
+     * @param method the method
+     * @param uriType the uri type
+     * @throws ODataException the o data exception
+     */
     private void wrongFunctionHttpMethod(final ODataHttpMethod method, final UriType uriType) throws ODataException {
         wrongRequest(method, uriType == UriType.URI10a ? Arrays.asList("EmployeeSearch") : createPathSegments(uriType, false, false), null);
     }
 
+    /**
+     * Wrong property.
+     *
+     * @param method the method
+     * @param ofComplex the of complex
+     * @param key the key
+     * @throws ODataException the o data exception
+     */
     private void wrongProperty(final ODataHttpMethod method, final boolean ofComplex, final Boolean key) throws ODataException {
         EdmProperty property = (EdmProperty) (ofComplex ? edm.getComplexType("RefScenario", "c_Location")
                                                              .getProperty("Country")
@@ -364,22 +504,52 @@ public class ODataRequestHandlerValidationTest extends BaseTest {
         wrongRequest(method, pathSegments, null);
     }
 
+    /**
+     * Wrong navigation path.
+     *
+     * @param method the method
+     * @param uriType the uri type
+     * @param expectedStatusCode the expected status code
+     * @throws ODataException the o data exception
+     */
     private void wrongNavigationPath(final ODataHttpMethod method, final UriType uriType, final HttpStatusCodes expectedStatusCode)
             throws ODataException {
         executeAndValidateRequest(method, createPathSegments(uriType, true, false), null, null, null, null, expectedStatusCode);
     }
 
+    /**
+     * Wrong request content type.
+     *
+     * @param method the method
+     * @param uriType the uri type
+     * @param isValue the is value
+     * @param requestContentType the request content type
+     * @throws ODataException the o data exception
+     */
     private void wrongRequestContentType(final ODataHttpMethod method, final UriType uriType, final boolean isValue,
             final ContentType requestContentType) throws ODataException {
         executeAndValidateRequest(method, createPathSegments(uriType, false, isValue), null, null, null,
                 requestContentType.toContentTypeString(), HttpStatusCodes.UNSUPPORTED_MEDIA_TYPE);
     }
 
+    /**
+     * Wrong request content type.
+     *
+     * @param method the method
+     * @param uriType the uri type
+     * @param requestContentType the request content type
+     * @throws ODataException the o data exception
+     */
     private void wrongRequestContentType(final ODataHttpMethod method, final UriType uriType, final ContentType requestContentType)
             throws ODataException {
         wrongRequestContentType(method, uriType, false, requestContentType);
     }
 
+    /**
+     * Data service version.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void dataServiceVersion() throws Exception {
         executeAndValidateHeaderRequest(ODataHttpMethod.GET, UriType.URI0, ODataHttpHeaders.DATASERVICEVERSION, "1.0", null);
@@ -395,6 +565,11 @@ public class ODataRequestHandlerValidationTest extends BaseTest {
                 HttpStatusCodes.BAD_REQUEST);
     }
 
+    /**
+     * Allowed methods.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void allowedMethods() throws Exception {
         executeAndValidateRequest(ODataHttpMethod.GET, UriType.URI0, null, null);
@@ -410,6 +585,11 @@ public class ODataRequestHandlerValidationTest extends BaseTest {
         executeAndValidateRequest(ODataHttpMethod.GET, UriType.URI17, null, null);
     }
 
+    /**
+     * Not allowed method.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void notAllowedMethod() throws Exception {
         wrongRequest(ODataHttpMethod.DELETE, createPathSegments(UriType.URI0, false, false), null);
@@ -431,6 +611,11 @@ public class ODataRequestHandlerValidationTest extends BaseTest {
         wrongRequest(ODataHttpMethod.DELETE, createPathSegments(UriType.URI50B, false, false), null);
     }
 
+    /**
+     * Not allowed options.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void notAllowedOptions() throws Exception {
         wrongOptions(ODataHttpMethod.POST, UriType.URI1, true, false, false, false, false, false, false, false, false);
@@ -492,6 +677,11 @@ public class ODataRequestHandlerValidationTest extends BaseTest {
         wrongOptions(ODataHttpMethod.DELETE, UriType.URI17, false, true, false, false, false, false, false, false, false);
     }
 
+    /**
+     * Function import wrong http method.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void functionImportWrongHttpMethod() throws Exception {
         wrongFunctionHttpMethod(ODataHttpMethod.POST, UriType.URI10a);
@@ -502,6 +692,11 @@ public class ODataRequestHandlerValidationTest extends BaseTest {
         wrongFunctionHttpMethod(ODataHttpMethod.PUT, UriType.URI14);
     }
 
+    /**
+     * Wrong property.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void wrongProperty() throws Exception {
         wrongProperty(ODataHttpMethod.DELETE, true, false);
@@ -512,6 +707,11 @@ public class ODataRequestHandlerValidationTest extends BaseTest {
         wrongProperty(ODataHttpMethod.DELETE, false, false);
     }
 
+    /**
+     * Wrong navigation path.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void wrongNavigationPath() throws Exception {
         wrongNavigationPath(ODataHttpMethod.PUT, UriType.URI3, HttpStatusCodes.BAD_REQUEST);
@@ -537,6 +737,11 @@ public class ODataRequestHandlerValidationTest extends BaseTest {
         wrongNavigationPath(ODataHttpMethod.DELETE, UriType.URI17, HttpStatusCodes.BAD_REQUEST);
     }
 
+    /**
+     * Request accept header.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void requestAcceptHeader() throws Exception {
         checkAcceptHeader(UriType.URI0, HttpContentType.APPLICATION_JSON, null);
@@ -565,6 +770,11 @@ public class ODataRequestHandlerValidationTest extends BaseTest {
         checkAcceptHeader(UriType.URI8, HttpContentType.APPLICATION_JSON, HttpStatusCodes.NOT_ACCEPTABLE);
     }
 
+    /**
+     * Request content type.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void requestContentType() throws Exception {
         executeAndValidateRequest(ODataHttpMethod.PUT, UriType.URI2, HttpContentType.APPLICATION_XML, null);
@@ -598,12 +808,22 @@ public class ODataRequestHandlerValidationTest extends BaseTest {
         executeAndValidateRequest(ODataHttpMethod.POST, UriType.URI9, HttpContentType.MULTIPART_MIXED, null);
     }
 
+    /**
+     * Request content type media resource.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void requestContentTypeMediaResource() throws Exception {
         executeAndValidateRequest(ODataHttpMethod.POST, UriType.URI1, "image/jpeg", null);
         executeAndValidateRequest(ODataHttpMethod.PUT, UriType.URI17, "image/jpeg", null);
     }
 
+    /**
+     * Request content type function import.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void requestContentTypeFunctionImport() throws Exception {
         EdmFunctionImport function = edm.getDefaultEntityContainer()
@@ -620,6 +840,11 @@ public class ODataRequestHandlerValidationTest extends BaseTest {
         executeAndValidateRequest(ODataHttpMethod.POST, UriType.URI10, null, null);
     }
 
+    /**
+     * Request value content type.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void requestValueContentType() throws Exception {
         checkValueContentType(ODataHttpMethod.PUT, UriType.URI4, HttpContentType.TEXT_PLAIN);
@@ -640,6 +865,11 @@ public class ODataRequestHandlerValidationTest extends BaseTest {
         checkValueContentType(ODataHttpMethod.DELETE, UriType.URI17, HttpContentType.TEXT_PLAIN);
     }
 
+    /**
+     * Request binary value content type.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void requestBinaryValueContentType() throws Exception {
         EdmProperty property = (EdmProperty) edm.getEntityType("RefScenario", "Employee")
@@ -650,6 +880,11 @@ public class ODataRequestHandlerValidationTest extends BaseTest {
         checkValueContentType(ODataHttpMethod.PUT, UriType.URI5, "image/png");
     }
 
+    /**
+     * Wrong request content type.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void wrongRequestContentType() throws Exception {
         wrongRequestContentType(ODataHttpMethod.POST, UriType.URI1, ContentType.WILDCARD);
@@ -688,6 +923,11 @@ public class ODataRequestHandlerValidationTest extends BaseTest {
         wrongRequestContentType(ODataHttpMethod.POST, UriType.URI9, ContentType.APPLICATION_OCTET_STREAM);
     }
 
+    /**
+     * Unsupported request content type no media resource.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void unsupportedRequestContentTypeNoMediaResource() throws Exception {
         EdmEntityType entityType = edm.getDefaultEntityContainer()
@@ -701,6 +941,11 @@ public class ODataRequestHandlerValidationTest extends BaseTest {
         wrongRequestContentType(ODataHttpMethod.POST, UriType.URI6B, ContentType.APPLICATION_ATOM_SVC);
     }
 
+    /**
+     * Conditional handling.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void conditionalHandling() throws Exception {
         EdmProperty property = (EdmProperty) (edm.getEntityType("RefScenario", "Employee")

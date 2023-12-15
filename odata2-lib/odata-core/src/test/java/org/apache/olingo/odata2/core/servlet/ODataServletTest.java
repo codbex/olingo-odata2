@@ -43,21 +43,35 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import junit.framework.Assert;
 
+// TODO: Auto-generated Javadoc
 /**
- *
+ * The Class ODataServletTest.
  */
 public class ODataServletTest {
 
+    /** The req mock. */
     private final HttpServletRequest reqMock;
+    
+    /** The resp mock. */
     private final HttpServletResponse respMock;
+    
+    /** The config mock. */
     private final ServletConfig configMock;
 
+    /**
+     * Instantiates a new o data servlet test.
+     */
     public ODataServletTest() {
         reqMock = Mockito.mock(HttpServletRequest.class);
         respMock = Mockito.mock(HttpServletResponse.class);
         configMock = Mockito.mock(ServletConfig.class);
     }
 
+    /**
+     * Handle redirect.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void handleRedirect() throws Exception {
         ODataServlet servlet = new ODataServlet();
@@ -71,6 +85,11 @@ public class ODataServletTest {
                .setHeader(HttpHeaders.LOCATION, "/context-path/servlet-path/");
     }
 
+    /**
+     * Handle redirect wo servlet path.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void handleRedirectWoServletPath() throws Exception {
         ODataServlet servlet = new ODataServlet();
@@ -84,6 +103,11 @@ public class ODataServletTest {
                .setHeader(HttpHeaders.LOCATION, "/context-path/");
     }
 
+    /**
+     * Handle redirect wo context path.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void handleRedirectWoContextPath() throws Exception {
         ODataServlet servlet = new ODataServlet();
@@ -97,6 +121,11 @@ public class ODataServletTest {
                .setHeader(HttpHeaders.LOCATION, "/servlet-path/");
     }
 
+    /**
+     * Handle redirect wo path.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void handleRedirectWoPath() throws Exception {
         ODataServlet servlet = new ODataServlet();
@@ -110,6 +139,11 @@ public class ODataServletTest {
                .setHeader(HttpHeaders.LOCATION, "/");
     }
 
+    /**
+     * Content length calculated string.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void contentLengthCalculatedString() throws Exception {
         final Method createResponse =
@@ -129,6 +163,11 @@ public class ODataServletTest {
                .setContentLength(content.getBytes("utf-8").length);
     }
 
+    /**
+     * Content length calculated stream.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void contentLengthCalculatedStream() throws Exception {
         final Method createResponse =
@@ -149,6 +188,11 @@ public class ODataServletTest {
                .setContentLength(content.getBytes("utf-8").length);
     }
 
+    /**
+     * Test input stream response.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testInputStreamResponse() throws Exception {
         ODataServlet servlet = new ODataServlet();
@@ -191,6 +235,11 @@ public class ODataServletTest {
     }
 
 
+    /**
+     * Input stream response.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void inputStreamResponse() throws Exception {
         testInputStreamResponse("123", "utf-8", null);
@@ -211,6 +260,14 @@ public class ODataServletTest {
     }
 
 
+    /**
+     * Test input stream response.
+     *
+     * @param content the content
+     * @param encoding the encoding
+     * @param bufferSize the buffer size
+     * @throws Exception the exception
+     */
     private void testInputStreamResponse(String content, String encoding, String bufferSize) throws Exception {
         ODataServlet servlet = new ODataServlet();
         Mockito.when(configMock.getInitParameter("org.apache.olingo.odata2.core.servlet.buffer.size"))
@@ -255,6 +312,12 @@ public class ODataServletTest {
     }
 
 
+    /**
+     * Test data.
+     *
+     * @param amount the amount
+     * @return the string
+     */
     private String testData(int amount) {
         StringBuilder result = new StringBuilder();
         Random r = new Random();
@@ -266,6 +329,11 @@ public class ODataServletTest {
     }
 
 
+    /**
+     * Service instance.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void serviceInstance() throws Exception {
         ODataServlet servlet = new ODataServlet();
@@ -293,6 +361,11 @@ public class ODataServletTest {
                .createService(Mockito.any(ODataContext.class));
     }
 
+    /**
+     * Service classloader.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void serviceClassloader() throws Exception {
         ODataServlet servlet = new ODataServlet();
@@ -317,6 +390,12 @@ public class ODataServletTest {
     }
 
 
+    /**
+     * Prepare response mock to write.
+     *
+     * @param response the response
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     private void prepareResponseMockToWrite(final HttpServletResponse response) throws IOException {
         Mockito.when(response.getOutputStream())
                .thenReturn(new ServletOutputStream() {
@@ -333,6 +412,13 @@ public class ODataServletTest {
                });
     }
 
+    /**
+     * Prepare request.
+     *
+     * @param req the req
+     * @param contextPath the context path
+     * @param servletPath the servlet path
+     */
     private void prepareRequest(final HttpServletRequest req, final String contextPath, final String servletPath) {
         Mockito.when(req.getMethod())
                .thenReturn("GET");
@@ -344,10 +430,21 @@ public class ODataServletTest {
                .thenReturn(Collections.enumeration(Collections.emptyList()));
     }
 
+    /**
+     * Prepare request.
+     *
+     * @param req the req
+     */
     private void prepareRequest(final HttpServletRequest req) {
         prepareRequest(req, "/context-path", "/servlet-path");
     }
 
+    /**
+     * Prepare servlet.
+     *
+     * @param servlet the servlet
+     * @throws Exception the exception
+     */
     private void prepareServlet(final GenericServlet servlet) throws Exception {
         // private transient ServletConfig config;
         Field configField = GenericServlet.class.getDeclaredField("config");
@@ -359,6 +456,11 @@ public class ODataServletTest {
                .thenReturn(factoryClassName);
     }
 
+    /**
+     * Test with no path after servlet path.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testWithNoPathAfterServletPath() throws Exception {
         ODataServlet servlet = new ODataServlet();
@@ -384,6 +486,13 @@ public class ODataServletTest {
                                                                   .getClass());
     }
 
+    /**
+     * Prepare request with no path after servlet path.
+     *
+     * @param req the req
+     * @param contextPath the context path
+     * @param servletPath the servlet path
+     */
     private void prepareRequestWithNoPathAfterServletPath(final HttpServletRequest req, final String contextPath,
             final String servletPath) {
         Mockito.when(req.getMethod())

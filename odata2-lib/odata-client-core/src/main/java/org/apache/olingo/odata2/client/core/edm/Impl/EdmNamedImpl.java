@@ -24,6 +24,7 @@ import java.util.regex.Pattern;
 import org.apache.olingo.odata2.api.edm.EdmException;
 import org.apache.olingo.odata2.api.edm.EdmNamed;
 
+// TODO: Auto-generated Javadoc
 /**
  * See in ABNF
  * <p>
@@ -50,24 +51,53 @@ import org.apache.olingo.odata2.api.edm.EdmNamed;
  */
 public abstract class EdmNamedImpl implements EdmNamed {
   
+  /** The Constant PATTERN_VALID_NAME. */
   private static final Pattern PATTERN_VALID_NAME = Pattern.compile(
       "\\A[_\\p{L}\\p{Nl}][_\\p{L}\\p{Nl}\\p{Nd}\\p{Mn}\\p{Mc}\\p{Pc}\\p{Cf}]{0,}\\Z");
  
+  /** The edm. */
   protected EdmImpl edm;
+  
+  /** The name. */
   protected String name;
 
+  /**
+   * Sets the edm.
+   *
+   * @param edm the new edm
+   */
   public void setEdm(EdmImpl edm) {
     this.edm = edm;
   }
 
+  /**
+   * Sets the name.
+   *
+   * @param name the new name
+   * @throws EdmException the edm exception
+   */
   public void setName(String name) throws EdmException  {
     this.name = getValidatedName(name);
   }
 
+  /**
+   * Gets the name.
+   *
+   * @return the name
+   * @throws EdmException the edm exception
+   */
   @Override
   public String getName() throws EdmException {
     return name;
   }
+  
+  /**
+   * Gets the validated name.
+   *
+   * @param name the name
+   * @return the validated name
+   * @throws EdmException the edm exception
+   */
   private String getValidatedName(final String name) throws EdmException {
     Matcher matcher = PATTERN_VALID_NAME.matcher(name);
     if (matcher.matches()) {
@@ -75,6 +105,12 @@ public abstract class EdmNamedImpl implements EdmNamed {
     }
     throw new EdmException(EdmException.NAMINGERROR.addContent(name));
   }
+  
+  /**
+   * To string.
+   *
+   * @return the string
+   */
   @Override
   public String toString() {
       return String.format(name);

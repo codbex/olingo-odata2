@@ -18,18 +18,19 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.edm;
 
+// TODO: Auto-generated Javadoc
 /**
- * @org.apache.olingo.odata2.DoNotImplement
- * EdmAnnotatable can be applied to CSDL elements as described in the Conceptual Schema Definition Language.
- * 
+ * The Interface EdmAnnotatable.
+ *
+ * @org.apache.olingo.odata2.DoNotImplement EdmAnnotatable can be applied to CSDL elements as described in the Conceptual Schema Definition Language.
  */
 public interface EdmAnnotatable {
 
   /**
-   * Get all annotations applied to an EDM element
-   * 
+   * Get all annotations applied to an EDM element.
+   *
    * @return {@link EdmAnnotations} never null
-   * @throws EdmException
+   * @throws EdmException the edm exception
    */
   EdmAnnotations getAnnotations() throws EdmException;
 }

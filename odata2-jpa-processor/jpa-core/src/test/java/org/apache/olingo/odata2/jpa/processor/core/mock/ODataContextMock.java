@@ -24,24 +24,54 @@ import org.apache.olingo.odata2.api.processor.ODataContext;
 import org.apache.olingo.odata2.api.uri.PathInfo;
 import org.easymock.EasyMock;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ODataContextMock.
+ */
 public class ODataContextMock {
 
+  /** The odata service. */
   private ODataService odataService;
+  
+  /** The path info. */
   private PathInfo pathInfo;
+  
+  /** The is in batch mode. */
   private boolean isInBatchMode;
 
+  /**
+   * Sets the o data service.
+   *
+   * @param service the new o data service
+   */
   public void setODataService(final ODataService service) {
     odataService = service;
   }
 
+  /**
+   * Sets the path info.
+   *
+   * @param pathInfo the new path info
+   */
   public void setPathInfo(final PathInfo pathInfo) {
     this.pathInfo = pathInfo;
   }
 
+  /**
+   * Checks if is in batch mode.
+   *
+   * @param isInBatchMode the is in batch mode
+   */
   public void isInBatchMode(final boolean isInBatchMode) {
     this.isInBatchMode = isInBatchMode;
   }
 
+  /**
+   * Mock.
+   *
+   * @return the o data context
+   * @throws ODataException the o data exception
+   */
   public ODataContext mock() throws ODataException {
     ODataContext context = EasyMock.createMock(ODataContext.class);
     EasyMock.expect(context.getService()).andReturn(odataService).anyTimes();
@@ -54,6 +84,12 @@ public class ODataContextMock {
     return context;
   }
 
+  /**
+   * Mock without on JPA write content.
+   *
+   * @return the o data context
+   * @throws ODataException the o data exception
+   */
   public ODataContext mockWithoutOnJPAWriteContent() throws ODataException {
     ODataContext context = EasyMock.createMock(ODataContext.class);
     EasyMock.expect(context.getService()).andReturn(odataService).anyTimes();

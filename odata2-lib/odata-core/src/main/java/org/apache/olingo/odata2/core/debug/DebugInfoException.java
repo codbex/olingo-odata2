@@ -26,24 +26,45 @@ import org.apache.olingo.odata2.api.exception.ODataMessageException;
 import org.apache.olingo.odata2.core.ep.util.JsonStreamWriter;
 import org.apache.olingo.odata2.core.exception.MessageService;
 
+// TODO: Auto-generated Javadoc
 /**
  * Exception debug information.
  */
 public class DebugInfoException implements DebugInfo {
 
+  /** The exception. */
   private final Exception exception;
+  
+  /** The locale. */
   private final Locale locale;
 
+  /**
+   * Instantiates a new debug info exception.
+   *
+   * @param exception the exception
+   * @param locale the locale
+   */
   public DebugInfoException(final Exception exception, final Locale locale) {
     this.exception = exception;
     this.locale = locale;
   }
 
+  /**
+   * Gets the name.
+   *
+   * @return the name
+   */
   @Override
   public String getName() {
     return "Stacktrace";
   }
 
+  /**
+   * Append json.
+   *
+   * @param jsonStreamWriter the json stream writer
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Override
   public void appendJson(final JsonStreamWriter jsonStreamWriter) throws IOException {
     jsonStreamWriter.beginObject()
@@ -82,6 +103,13 @@ public class DebugInfoException implements DebugInfo {
     jsonStreamWriter.endObject();
   }
 
+  /**
+   * Append json stack trace element.
+   *
+   * @param jsonStreamWriter the json stream writer
+   * @param stackTraceElement the stack trace element
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private static void appendJsonStackTraceElement(final JsonStreamWriter jsonStreamWriter,
       final StackTraceElement stackTraceElement) throws IOException {
     jsonStreamWriter.beginObject()
@@ -91,6 +119,12 @@ public class DebugInfoException implements DebugInfo {
         .endObject();
   }
 
+  /**
+   * Append html.
+   *
+   * @param writer the writer
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Override
   public void appendHtml(final Writer writer) throws IOException {
     appendException(exception, writer);
@@ -101,6 +135,13 @@ public class DebugInfoException implements DebugInfo {
     }
   }
 
+  /**
+   * Append exception.
+   *
+   * @param throwable the throwable
+   * @param writer the writer
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private void appendException(final Throwable throwable, final Writer writer) throws IOException {
     if (throwable.getCause() != null) {
       appendException(throwable.getCause(), writer);
@@ -113,6 +154,15 @@ public class DebugInfoException implements DebugInfo {
     appendStackTraceElement(details, true, true, writer);
   }
 
+  /**
+   * Append stack trace element.
+   *
+   * @param stackTraceElement the stack trace element
+   * @param isFirst the is first
+   * @param isLast the is last
+   * @param writer the writer
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private void appendStackTraceElement(final StackTraceElement stackTraceElement,
       final boolean isFirst, final boolean isLast, final Writer writer) throws IOException {
     if (isFirst) {
@@ -131,6 +181,12 @@ public class DebugInfoException implements DebugInfo {
     }
   }
 
+  /**
+   * Gets the message text.
+   *
+   * @param throwable the throwable
+   * @return the message text
+   */
   private String getMessageText(final Throwable throwable) {
     return throwable instanceof ODataMessageException ?
         MessageService.getMessage(locale, ((ODataMessageException) throwable).getMessageReference()).getText() :

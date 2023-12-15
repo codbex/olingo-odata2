@@ -35,15 +35,26 @@ import org.apache.olingo.odata2.testutil.helper.StringHelper;
 import org.apache.olingo.odata2.testutil.mock.MockFacade;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class XmlFunctionImportTest.
  */
 public class XmlFunctionImportTest extends AbstractProviderTest {
 
+  /**
+   * Instantiates a new xml function import test.
+   *
+   * @param type the type
+   */
   public XmlFunctionImportTest(final StreamWriterImplType type) {
     super(type);
   }
 
+  /**
+   * Single simple type.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void singleSimpleType() throws Exception {
     final EdmFunctionImport functionImport =
@@ -62,6 +73,11 @@ public class XmlFunctionImportTest extends AbstractProviderTest {
     assertXpathEvaluatesTo("52", "/d:MaximalAge/text()", xml);
   }
 
+  /**
+   * Single complex type.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void singleComplexType() throws Exception {
     final EdmFunctionImport functionImport =
@@ -82,6 +98,11 @@ public class XmlFunctionImportTest extends AbstractProviderTest {
     assertXpathEvaluatesTo("Duckburg", "/d:MostCommonLocation/d:City/d:CityName/text()", xml);
   }
 
+  /**
+   * Collection of simple types.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void collectionOfSimpleTypes() throws Exception {
     final EdmFunctionImport functionImport =
@@ -103,6 +124,11 @@ public class XmlFunctionImportTest extends AbstractProviderTest {
     assertXpathEvaluatesTo("3", "/d:AllUsedRoomIds/d:element[3]/text()", xml);
   }
 
+  /**
+   * Collection of complex types.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void collectionOfComplexTypes() throws Exception {
     final EdmFunctionImport functionImport =
@@ -124,6 +150,11 @@ public class XmlFunctionImportTest extends AbstractProviderTest {
     assertXpathEvaluatesTo("Duckburg", "/d:AllLocations/d:element/d:City/d:CityName/text()", xml);
   }
 
+  /**
+   * Single entity type.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void singleEntityType() throws Exception {
     final EdmFunctionImport functionImport =
@@ -143,6 +174,11 @@ public class XmlFunctionImportTest extends AbstractProviderTest {
     assertXpathEvaluatesTo("Duckburg", "/a:entry/m:properties/d:Location/d:City/d:CityName/text()", xml);
   }
   
+  /**
+   * No return type action.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void noReturnTypeAction() throws Exception {
     final EdmFunctionImport functionImport =

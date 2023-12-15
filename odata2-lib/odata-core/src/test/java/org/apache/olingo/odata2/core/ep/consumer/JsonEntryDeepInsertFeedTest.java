@@ -41,17 +41,30 @@ import org.apache.olingo.odata2.core.exception.ODataRuntimeException;
 import org.apache.olingo.odata2.testutil.mock.MockFacade;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class JsonEntryDeepInsertFeedTest.
  */
 public class JsonEntryDeepInsertFeedTest extends AbstractConsumerTest {
 
+  /** The Constant BUILDING_WITH_INLINE_ROOMS. */
   private static final String BUILDING_WITH_INLINE_ROOMS = "JsonBuildingWithInlineRooms.json";
+  
+  /** The Constant BUILDING_WITH_INLINE_ROOMS_CLIENT_CASE. */
   private static final String BUILDING_WITH_INLINE_ROOMS_CLIENT_CASE = "JsonBuildingWithInlineRoomsClientCase.json";
+  
+  /** The Constant TEAM_WITH_INLINE_EMPLOYEES. */
   private static final String TEAM_WITH_INLINE_EMPLOYEES = "JsonTeamsWithInlineEmployees.json";
+  
+  /** The Constant BUILDING_WITH_INLINE_ROOMS_NEXTLINK_AND_COUNT. */
   private static final String BUILDING_WITH_INLINE_ROOMS_NEXTLINK_AND_COUNT =
       "JsonBuildingWithInlineRoomsAndNextLinkAndCount.json";
 
+  /**
+   * Inner feed without results wrapper client use case.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void innerFeedWithoutResultsWrapperClientUseCase() throws Exception {
     ODataEntry outerEntry = prepareAndExecuteEntry(
@@ -82,6 +95,11 @@ public class JsonEntryDeepInsertFeedTest extends AbstractConsumerTest {
     assertEquals("http://localhost:8080/ReferenceScenario.svc/Rooms('1')/nr_Building", associationUris.get(0));
   }
   
+  /**
+   * Inner feed no media resource without callback.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void innerFeedNoMediaResourceWithoutCallback() throws Exception {
     ODataEntry outerEntry = prepareAndExecuteEntry(BUILDING_WITH_INLINE_ROOMS, "Buildings", DEFAULT_PROPERTIES);
@@ -111,6 +129,11 @@ public class JsonEntryDeepInsertFeedTest extends AbstractConsumerTest {
     assertEquals("http://localhost:8080/ReferenceScenario.svc/Rooms('1')/nr_Building", associationUris.get(0));
   }
 
+  /**
+   * Inner feed no media resource without callback contains next link and count.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void innerFeedNoMediaResourceWithoutCallbackContainsNextLinkAndCount() throws Exception {
     ODataEntry outerEntry =
@@ -128,6 +151,11 @@ public class JsonEntryDeepInsertFeedTest extends AbstractConsumerTest {
     assertEquals("nextLink", roomsMetadata.getNextLink());
   }
 
+  /**
+   * Inner feed no media resource without callback simple array.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void innerFeedNoMediaResourceWithoutCallbackSimpleArray() throws Exception {
     EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Buildings");
@@ -144,6 +172,11 @@ public class JsonEntryDeepInsertFeedTest extends AbstractConsumerTest {
     assertEquals(1, rooms.size());
   }
 
+  /**
+   * Inner feed media resource without callback.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void innerFeedMediaResourceWithoutCallback() throws Exception {
     ODataEntry outerEntry = prepareAndExecuteEntry(TEAM_WITH_INLINE_EMPLOYEES, "Teams", DEFAULT_PROPERTIES);
@@ -156,6 +189,11 @@ public class JsonEntryDeepInsertFeedTest extends AbstractConsumerTest {
     assertEquals(3, employees.size());
   }
 
+  /**
+   * Inner feed no media resource with callback.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void innerFeedNoMediaResourceWithCallback() throws Exception {
     FeedCallback callback = new FeedCallback();
@@ -190,6 +228,11 @@ public class JsonEntryDeepInsertFeedTest extends AbstractConsumerTest {
     assertEquals("http://localhost:8080/ReferenceScenario.svc/Rooms('1')/nr_Building", associationUris.get(0));
   }
 
+  /**
+   * Inner feed no media resource with callback contains next link and count.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void innerFeedNoMediaResourceWithCallbackContainsNextLinkAndCount() throws Exception {
     ODataEntry outerEntry =
@@ -208,6 +251,11 @@ public class JsonEntryDeepInsertFeedTest extends AbstractConsumerTest {
 
   }
 
+  /**
+   * Inner feed media resource with callback.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void innerFeedMediaResourceWithCallback() throws Exception {
     ODataEntry outerEntry = prepareAndExecuteEntry(TEAM_WITH_INLINE_EMPLOYEES, "Teams", DEFAULT_PROPERTIES);
@@ -220,32 +268,63 @@ public class JsonEntryDeepInsertFeedTest extends AbstractConsumerTest {
     assertEquals(3, employees.size());
   }
 
+  /**
+   * The Class FeedCallback.
+   */
   private class FeedCallback implements OnReadInlineContent {
+    
+    /** The feed. */
     private ODataFeed feed;
+    
+    /** The inner callback. */
     private FeedCallback innerCallback;
+    
+    /** The navigation prop. */
     private Map<String, Object> navigationProp = new HashMap<String, Object>();
+    
+    /** The id. */
     private String id = "";
     
+    /**
+     * Instantiates a new feed callback.
+     */
     public FeedCallback() {
 
     }
 
     /**
+     * Gets the navigation properties.
+     *
      * @return the navigationPropFeed
      */
     public Map<String, Object> getNavigationProperties() {
       return navigationProp;
     }
     
+    /**
+     * Gets the feed.
+     *
+     * @return the feed
+     */
     public ODataFeed getFeed() {
       return feed;
     }
 
+    /**
+     * Handle read entry.
+     *
+     * @param context the context
+     */
     @Override
     public void handleReadEntry(final ReadEntryResult context) {
       throw new ODataRuntimeException("No entry expected");
     }
 
+    /**
+     * Handle read feed.
+     *
+     * @param context the context
+     */
     @Override
     public void handleReadFeed(final ReadFeedResult context) {
       this.id = context.getParentEntryId();
@@ -253,6 +332,11 @@ public class JsonEntryDeepInsertFeedTest extends AbstractConsumerTest {
       handleFeed(context);
     }
 
+    /**
+     * Handle feed.
+     *
+     * @param context the context
+     */
     private void handleFeed(final ReadFeedResult context) {
       try {
         String navigationPropertyName = context.getNavigationProperty().getName();
@@ -266,6 +350,13 @@ public class JsonEntryDeepInsertFeedTest extends AbstractConsumerTest {
       }
     }
     
+    /**
+     * Receive read properties.
+     *
+     * @param readProperties the read properties
+     * @param navString the nav string
+     * @return the entity provider read properties
+     */
     @Override
     public EntityProviderReadProperties receiveReadProperties(final EntityProviderReadProperties readProperties,
         final EdmNavigationProperty navString) {
@@ -273,6 +364,11 @@ public class JsonEntryDeepInsertFeedTest extends AbstractConsumerTest {
     }
   }
   
+  /**
+   * Inner feed with callback.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void innerFeedWithCallback() throws Exception {
     FeedCallback callback = new FeedCallback();

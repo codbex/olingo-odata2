@@ -49,10 +49,18 @@ import org.apache.olingo.odata2.jpa.processor.core.mock.data.ODataEntryMockUtil;
 import org.junit.Assert;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAEntityTest.
+ */
 public class JPAEntityTest {
 
+  /** The jpa entity. */
   private JPAEntity jpaEntity = null;
 
+  /**
+   * Test create O data entry with complex type.
+   */
   @Test
   public void testCreateODataEntryWithComplexType() {
     try {
@@ -85,6 +93,9 @@ public class JPAEntityTest {
     assertEquals(jpaEmbeddableMock2.getMUUID(), ODataEntryMockUtil.VALUE_UUID);
   }
 
+  /**
+   * Test create O data entry.
+   */
   @Test
   public void testCreateODataEntry() {
     try {
@@ -114,6 +125,9 @@ public class JPAEntityTest {
     assertTrue(jpaTypeMock.getMDateTime().equals(ODataEntryMockUtil.VALUE_DATE_TIME));
   }
 
+  /**
+   * Test create O data entry with xml adapter.
+   */
   @Test
   public void testCreateODataEntryWithXmlAdapter() {
     try {
@@ -136,6 +150,9 @@ public class JPAEntityTest {
     assertEquals(jpaTypeMock.getPropertyWithXmlAdapter().getClass(), EntityWithXmlAdapterOnProperty.class);
   }
 
+  /**
+   * Test create O data entry with inline.
+   */
   @Test
   public void testCreateODataEntryWithInline() {
     try {
@@ -166,6 +183,9 @@ public class JPAEntityTest {
     assertEquals(relatedType.getMLong(), ODataEntryMockUtil.VALUE_MLONG);
   }
 
+  /**
+   * Test create O data entry property.
+   */
   @Test
   public void testCreateODataEntryProperty() {
     try {
@@ -190,6 +210,9 @@ public class JPAEntityTest {
     assertTrue(jpaTypeMock.getMDateTime().equals(ODataEntryMockUtil.VALUE_DATE_TIME));
   }
 
+  /**
+   * Test create O data entry property with out call back.
+   */
   @Test
   public void testCreateODataEntryPropertyWithOutCallBack() {
     try {
@@ -213,6 +236,9 @@ public class JPAEntityTest {
     fail(ODataJPATestConstants.EXCEPTION_EXPECTED);
   }
 
+  /**
+   * Test update O data entry.
+   */
   @Test
   public void testUpdateODataEntry() {
     try {
@@ -239,6 +265,9 @@ public class JPAEntityTest {
     assertTrue(jpaTypeMock.getMDateTime().equals(ODataEntryMockUtil.VALUE_DATE_TIME));
   }
 
+  /**
+   * Test update O data entry property.
+   */
   @Test
   public void testUpdateODataEntryProperty() {
     try {
@@ -266,6 +295,12 @@ public class JPAEntityTest {
     assertTrue(jpaTypeMock.getMDateTime().equals(ODataEntryMockUtil.VALUE_DATE_TIME));
   }
 
+  /**
+   * Mock O data JPA context.
+   *
+   * @return the o data JPA context
+   * @throws ODataException the o data exception
+   */
   private ODataJPAContext mockODataJPAContext() throws ODataException {
     PathInfoMock pathInfoMock = new PathInfoMock();
     try {
@@ -281,12 +316,21 @@ public class JPAEntityTest {
     return jpaContext;
   }
 
+  /**
+   * Mock O data JPA context without call back.
+   *
+   * @return the o data JPA context
+   * @throws ODataException the o data exception
+   */
   private ODataJPAContext mockODataJPAContextWithoutCallBack() throws ODataException {
     ODataContext context = new ODataContextMock().mockWithoutOnJPAWriteContent();
     ODataJPAContext jpaContext = ODataJPAContextMock.mockODataJPAContext(context);
     return jpaContext;
   }
   
+  /**
+   * Test update O data entry with null value.
+   */
   @Test
   public void testUpdateODataEntryWithNullValue() {
     try {
@@ -318,6 +362,9 @@ public class JPAEntityTest {
     assertEquals(jpaTypeMock.getMClob(), null);
   }
   
+  /**
+   * Test create O data entry with complex type with null values.
+   */
   @Test
   public void testCreateODataEntryWithComplexTypeWithNullValues() {
     try {
@@ -353,6 +400,9 @@ public class JPAEntityTest {
     assertEquals(jpaEmbeddableMock2.getMUUID(), null);
   }
   
+  /**
+   * Test create O data entry with complex type with more properties.
+   */
   @Test
   public void testCreateODataEntryWithComplexTypeWithMoreProperties() {
     try {

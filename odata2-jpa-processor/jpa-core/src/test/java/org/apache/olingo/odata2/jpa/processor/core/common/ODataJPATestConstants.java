@@ -18,10 +18,21 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.jpa.processor.core.common;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ODataJPATestConstants.
+ */
 public final class ODataJPATestConstants {
 
+  /** The Constant EXCEPTION_MSG_PART_1. */
   public static final String EXCEPTION_MSG_PART_1 = "Exception [ ";
+  
+  /** The Constant EXCEPTION_MSG_PART_2. */
   public static final String EXCEPTION_MSG_PART_2 = " ] not expected";
+  
+  /** The Constant EMPTY_STRING. */
   public static final String EMPTY_STRING = "gwt1";
+  
+  /** The Constant EXCEPTION_EXPECTED. */
   public static final String EXCEPTION_EXPECTED = "Exception expected";
 }

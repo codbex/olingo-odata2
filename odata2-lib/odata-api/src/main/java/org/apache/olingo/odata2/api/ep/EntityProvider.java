@@ -41,6 +41,7 @@ import org.apache.olingo.odata2.api.processor.ODataResponse;
 import org.apache.olingo.odata2.api.rt.RuntimeDelegate;
 import org.apache.olingo.odata2.api.servicedocument.ServiceDocument;
 
+// TODO: Auto-generated Javadoc
 /**
  * <p>Entity Provider</p>
  * <p>An {@link EntityProvider} provides all necessary <b>read</b> and <b>write</b>
@@ -86,7 +87,8 @@ public final class EntityProvider {
      * This method takes edmx references into account
      * This method will not calculate the DataServiceVersion but will instead take the version provided via the
      * signature if no version is set the default version 2.0 is used.
-     * @param serviceMetadata
+     *
+     * @param serviceMetadata the service metadata
      * @param predefinedNamespaces type of Map{@literal <}prefix,namespace{@literal >} and may be null or an empty Map
      * @return resulting {@link ODataResponse} with written metadata content.
      * @throws EntityProviderException if writing of data (serialization) fails
@@ -374,8 +376,8 @@ public final class EntityProvider {
 
     /**
      * Read (de-serialize) data from metadata <code>inputStream</code> (as {@link InputStream}) and provide Edm as
-     * {@link Edm}
-     * 
+     * {@link Edm}.
+     *
      * @param inputStream the given input stream
      * @param validate has to be true if metadata should be validated
      * @return Edm as {@link Edm}
@@ -402,8 +404,8 @@ public final class EntityProvider {
 
     /**
      * Read (de-serialize) data from service document <code>inputStream</code> (as {@link InputStream}) and provide
-     * ServiceDocument as {@link ServiceDocument}
-     * 
+     * ServiceDocument as {@link ServiceDocument}.
+     *
      * @param serviceDocument the given input stream
      * @param contentType format of content in the given input stream
      * @return ServiceDocument as {@link ServiceDocument}
@@ -413,8 +415,8 @@ public final class EntityProvider {
 
     /**
      * Parse Batch Request body <code>inputStream</code> (as {@link InputStream}) and provide a list of Batch Parts as
-     * {@link BatchPart}
-     * 
+     * {@link BatchPart}.
+     *
      * @param contentType format of content in the given input stream
      * @param content request body
      * @param properties additional properties necessary for parsing. Must not be null.
@@ -427,30 +429,30 @@ public final class EntityProvider {
     /**
      * Write responses of Batch Response Parts in Batch Response as {@link ODataResponse}.
      * Batch Response body matches one-to-one with the corresponding Batch Request body
-     * 
+     *
      * @param batchResponseParts a list of {@link BatchResponsePart}
      * @return Batch Response as {@link ODataResponse}
-     * @throws BatchException
+     * @throws BatchException the batch exception
      */
     ODataResponse writeBatchResponse(List<BatchResponsePart> batchResponseParts) throws BatchException;
 
     /**
      * Create Batch Request body as InputStream.
-     * 
+     *
      * @param batchParts a list of BatchPartRequests {@link BatchPart}
-     * @param boundary
+     * @param boundary the boundary
      * @return Batch Request as InputStream
      */
     InputStream writeBatchRequest(List<BatchPart> batchParts, String boundary);
 
     /**
      * Parse Batch Response body (as {@link InputStream}) and provide a list of single responses as
-     * {@link BatchSingleResponse}
-     * 
-     * @param content response body
+     * {@link BatchSingleResponse}.
+     *
      * @param contentType format of content in the given input stream (incl. boundary parameter)
+     * @param content response body
      * @return list of {@link BatchSingleResponse}
-     * @throws BatchException
+     * @throws BatchException the batch exception
      */
     List<BatchSingleResponse> parseBatchResponse(String contentType, InputStream content) throws BatchException;
 
@@ -504,8 +506,8 @@ public final class EntityProvider {
    * Write metadata document in XML format for the given schemas and the provided predefined
    * namespaces at the EDMX element. PredefinedNamespaces is of type
    * Map{@literal <}prefix,namespace{@literal >} and may be null or an empty Map.
-   * 
-   * @param serviceMetadata
+   *
+   * @param serviceMetadata the service metadata
    * @param predefinedNamespaces type of Map{@literal <}prefix,namespace{@literal >} and may be null or an empty Map
    * @return resulting {@link ODataResponse} with written metadata content.
    * @throws EntityProviderException if writing of data (serialization) fails
@@ -865,8 +867,8 @@ public final class EntityProvider {
 
   /**
    * Read (de-serialize) data from metadata <code>inputStream</code> (as {@link InputStream}) and provide Edm as
-   * {@link Edm}
-   * 
+   * {@link Edm}.
+   *
    * @param metadataXml a metadata xml input stream (means the metadata document)
    * @param validate has to be true if metadata should be validated
    * @return Edm as {@link Edm}
@@ -892,8 +894,8 @@ public final class EntityProvider {
 
   /**
    * Read (de-serialize) data from service document <code>inputStream</code> (as {@link InputStream}) and provide
-   * ServiceDocument as {@link ServiceDocument}
-   * 
+   * ServiceDocument as {@link ServiceDocument}.
+   *
    * @param serviceDocument the given input stream
    * @param contentType format of content in the given input stream
    * @return ServiceDocument as {@link ServiceDocument}
@@ -906,8 +908,8 @@ public final class EntityProvider {
 
   /**
    * Parse Batch Request body <code>inputStream</code> (as {@link InputStream}) and provide a list of Batch Request
-   * parts as {@link BatchRequestPart}
-   * 
+   * parts as {@link BatchRequestPart}.
+   *
    * @param contentType format of content in the given input stream
    * @param content request body
    * @param properties additional properties necessary for parsing. Must not be null.
@@ -922,10 +924,10 @@ public final class EntityProvider {
   /**
    * Write responses of Batch Response Parts in Batch Response as {@link ODataResponse}.
    * Batch Response body matches one-to-one with the corresponding Batch Request body
-   * 
+   *
    * @param batchResponseParts a list of {@link BatchResponsePart}
    * @return Batch Response as {@link ODataResponse}
-   * @throws BatchException
+   * @throws BatchException the batch exception
    */
   public static ODataResponse writeBatchResponse(final List<BatchResponsePart> batchResponseParts)
       throws BatchException {
@@ -934,9 +936,9 @@ public final class EntityProvider {
 
   /**
    * Create Batch Request body as InputStream.
-   * 
+   *
    * @param batchParts a list of BatchPartRequests {@link BatchPart}
-   * @param boundary
+   * @param boundary the boundary
    * @return Batch Request as InputStream
    */
   public static InputStream writeBatchRequest(final List<BatchPart> batchParts, final String boundary) {
@@ -945,12 +947,12 @@ public final class EntityProvider {
 
   /**
    * Parse Batch Response body (as {@link InputStream}) and provide a list of single responses as
-   * {@link BatchSingleResponse}
-   * 
+   * {@link BatchSingleResponse}.
+   *
    * @param content response body
    * @param contentType format of content in the given input stream (inclusive boundary parameter)
    * @return list of {@link BatchSingleResponse}
-   * @throws BatchException
+   * @throws BatchException the batch exception
    */
   public static List<BatchSingleResponse> parseBatchResponse(final InputStream content, final String contentType)
       throws BatchException {

@@ -42,12 +42,29 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ODataJPADefaultProcessor.
+ */
 public abstract class ODataJPADefaultProcessor extends ODataJPAProcessor {
 
+  /**
+   * Instantiates a new o data JPA default processor.
+   *
+   * @param oDataJPAContext the o data JPA context
+   */
   public ODataJPADefaultProcessor(final ODataJPAContext oDataJPAContext) {
     super(oDataJPAContext);
   }
 
+  /**
+   * Read entity set.
+   *
+   * @param uriParserResultView the uri parser result view
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse readEntitySet(final GetEntitySetUriInfo uriParserResultView, final String contentType)
       throws ODataException {
@@ -63,6 +80,14 @@ public abstract class ODataJPADefaultProcessor extends ODataJPAProcessor {
     return oDataResponse;
   }
 
+  /**
+   * Read entity.
+   *
+   * @param uriParserResultView the uri parser result view
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse readEntity(final GetEntityUriInfo uriParserResultView, final String contentType)
       throws ODataException {
@@ -78,6 +103,14 @@ public abstract class ODataJPADefaultProcessor extends ODataJPAProcessor {
     return oDataResponse;
   }
 
+  /**
+   * Count entity set.
+   *
+   * @param uriParserResultView the uri parser result view
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse countEntitySet(final GetEntitySetCountUriInfo uriParserResultView, final String contentType)
       throws ODataException {
@@ -92,6 +125,14 @@ public abstract class ODataJPADefaultProcessor extends ODataJPAProcessor {
     return oDataResponse;
   }
 
+  /**
+   * Exists entity.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse existsEntity(final GetEntityCountUriInfo uriInfo, final String contentType)
       throws ODataException {
@@ -106,6 +147,16 @@ public abstract class ODataJPADefaultProcessor extends ODataJPAProcessor {
     return oDataResponse;
   }
 
+  /**
+   * Creates the entity.
+   *
+   * @param uriParserResultView the uri parser result view
+   * @param content the content
+   * @param requestContentType the request content type
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse createEntity(final PostUriInfo uriParserResultView, final InputStream content,
       final String requestContentType, final String contentType) throws ODataException {
@@ -121,6 +172,17 @@ public abstract class ODataJPADefaultProcessor extends ODataJPAProcessor {
     return oDataResponse;
   }
 
+  /**
+   * Update entity.
+   *
+   * @param uriParserResultView the uri parser result view
+   * @param content the content
+   * @param requestContentType the request content type
+   * @param merge the merge
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse updateEntity(final PutMergePatchUriInfo uriParserResultView, final InputStream content,
       final String requestContentType, final boolean merge, final String contentType) throws ODataException {
@@ -135,6 +197,14 @@ public abstract class ODataJPADefaultProcessor extends ODataJPAProcessor {
     return oDataResponse;
   }
 
+  /**
+   * Delete entity.
+   *
+   * @param uriParserResultView the uri parser result view
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse deleteEntity(final DeleteUriInfo uriParserResultView, final String contentType)
       throws ODataException {
@@ -149,6 +219,14 @@ public abstract class ODataJPADefaultProcessor extends ODataJPAProcessor {
     return oDataResponse;
   }
 
+  /**
+   * Execute function import.
+   *
+   * @param uriParserResultView the uri parser result view
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse executeFunctionImport(final GetFunctionImportUriInfo uriParserResultView,
       final String contentType) throws ODataException {
@@ -164,6 +242,14 @@ public abstract class ODataJPADefaultProcessor extends ODataJPAProcessor {
     return oDataResponse;
   }
 
+  /**
+   * Execute function import value.
+   *
+   * @param uriParserResultView the uri parser result view
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse executeFunctionImportValue(final GetFunctionImportUriInfo uriParserResultView,
       final String contentType) throws ODataException {
@@ -179,6 +265,14 @@ public abstract class ODataJPADefaultProcessor extends ODataJPAProcessor {
     return oDataResponse;
   }
 
+  /**
+   * Read entity link.
+   *
+   * @param uriParserResultView the uri parser result view
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse readEntityLink(final GetEntityLinkUriInfo uriParserResultView, final String contentType)
       throws ODataException {
@@ -194,6 +288,14 @@ public abstract class ODataJPADefaultProcessor extends ODataJPAProcessor {
     return oDataResponse;
   }
 
+  /**
+   * Read entity links.
+   *
+   * @param uriParserResultView the uri parser result view
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse readEntityLinks(final GetEntitySetLinksUriInfo uriParserResultView, final String contentType)
       throws ODataException {
@@ -209,6 +311,16 @@ public abstract class ODataJPADefaultProcessor extends ODataJPAProcessor {
     return oDataResponse;
   }
 
+  /**
+   * Creates the entity link.
+   *
+   * @param uriParserResultView the uri parser result view
+   * @param content the content
+   * @param requestContentType the request content type
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse createEntityLink(final PostUriInfo uriParserResultView, final InputStream content,
       final String requestContentType, final String contentType) throws ODataException {
@@ -221,6 +333,16 @@ public abstract class ODataJPADefaultProcessor extends ODataJPAProcessor {
     }
   }
 
+  /**
+   * Update entity link.
+   *
+   * @param uriParserResultView the uri parser result view
+   * @param content the content
+   * @param requestContentType the request content type
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse updateEntityLink(final PutMergePatchUriInfo uriParserResultView, final InputStream content,
       final String requestContentType, final String contentType) throws ODataException {
@@ -233,6 +355,14 @@ public abstract class ODataJPADefaultProcessor extends ODataJPAProcessor {
     }
   }
 
+  /**
+   * Delete entity link.
+   *
+   * @param uriParserResultView the uri parser result view
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse deleteEntityLink(final DeleteUriInfo uriParserResultView, final String contentType)
       throws ODataException {
@@ -245,6 +375,15 @@ public abstract class ODataJPADefaultProcessor extends ODataJPAProcessor {
     }
   }
 
+  /**
+   * Execute batch.
+   *
+   * @param handler the handler
+   * @param contentType the content type
+   * @param content the content
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse executeBatch(final BatchHandler handler, final String contentType, final InputStream content)
       throws ODataException {
@@ -267,6 +406,14 @@ public abstract class ODataJPADefaultProcessor extends ODataJPAProcessor {
     }
   }
 
+  /**
+   * Execute change set.
+   *
+   * @param handler the handler
+   * @param requests the requests
+   * @return the batch response part
+   * @throws ODataException the o data exception
+   */
   @Override
   public BatchResponsePart executeChangeSet(final BatchHandler handler, final List<ODataRequest> requests)
       throws ODataException {

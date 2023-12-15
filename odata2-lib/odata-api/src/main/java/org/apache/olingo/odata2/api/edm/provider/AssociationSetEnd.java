@@ -20,19 +20,30 @@ package org.apache.olingo.odata2.api.edm.provider;
 
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
 /**
- * Objects of this class represent an association set end
- * 
+ * Objects of this class represent an association set end.
  */
 public class AssociationSetEnd {
 
+  /** The role. */
   private String role;
+  
+  /** The entity set. */
   private String entitySet;
+  
+  /** The documentation. */
   private Documentation documentation;
+  
+  /** The annotation attributes. */
   private List<AnnotationAttribute> annotationAttributes;
+  
+  /** The annotation elements. */
   private List<AnnotationElement> annotationElements;
 
   /**
+   * Gets the role.
+   *
    * @return <b>String</b> role
    */
   public String getRole() {
@@ -40,6 +51,8 @@ public class AssociationSetEnd {
   }
 
   /**
+   * Gets the entity set.
+   *
    * @return <b>String</b> name of the target entity set
    */
   public String getEntitySet() {
@@ -47,6 +60,8 @@ public class AssociationSetEnd {
   }
 
   /**
+   * Gets the documentation.
+   *
    * @return {@link Documentation} documentation
    */
   public Documentation getDocumentation() {
@@ -54,6 +69,8 @@ public class AssociationSetEnd {
   }
 
   /**
+   * Gets the annotation attributes.
+   *
    * @return collection of {@link AnnotationAttribute} annotation attributes
    */
   public List<AnnotationAttribute> getAnnotationAttributes() {
@@ -61,6 +78,8 @@ public class AssociationSetEnd {
   }
 
   /**
+   * Gets the annotation elements.
+   *
    * @return collection of {@link AnnotationElement} annotation elements
    */
   public List<AnnotationElement> getAnnotationElements() {
@@ -68,8 +87,9 @@ public class AssociationSetEnd {
   }
 
   /**
-   * Sets the role of this {@link AssociationSetEnd}
-   * @param role
+   * Sets the role of this {@link AssociationSetEnd}.
+   *
+   * @param role the role
    * @return {@link AssociationSetEnd} for method chaining
    */
   public AssociationSetEnd setRole(final String role) {
@@ -78,8 +98,9 @@ public class AssociationSetEnd {
   }
 
   /**
-   * Sets the target entity set of this {@link AssociationSetEnd}
-   * @param entitySet
+   * Sets the target entity set of this {@link AssociationSetEnd}.
+   *
+   * @param entitySet the entity set
    * @return {@link AssociationSetEnd} for method chaining
    */
   public AssociationSetEnd setEntitySet(final String entitySet) {
@@ -88,8 +109,9 @@ public class AssociationSetEnd {
   }
 
   /**
-   * Sets the {@link Documentation} of this {@link AssociationSetEnd}
-   * @param documentation
+   * Sets the {@link Documentation} of this {@link AssociationSetEnd}.
+   *
+   * @param documentation the documentation
    * @return {@link AssociationSetEnd} for method chaining
    */
   public AssociationSetEnd setDocumentation(final Documentation documentation) {
@@ -98,8 +120,9 @@ public class AssociationSetEnd {
   }
 
   /**
-   * Sets the collection of {@link AnnotationAttribute} for this {@link AssociationSetEnd}
-   * @param annotationAttributes
+   * Sets the collection of {@link AnnotationAttribute} for this {@link AssociationSetEnd}.
+   *
+   * @param annotationAttributes the annotation attributes
    * @return {@link AssociationSetEnd} for method chaining
    */
   public AssociationSetEnd setAnnotationAttributes(final List<AnnotationAttribute> annotationAttributes) {
@@ -108,8 +131,9 @@ public class AssociationSetEnd {
   }
 
   /**
-   * Sets the collection of {@link AnnotationElement} for this {@link AssociationSetEnd}
-   * @param annotationElements
+   * Sets the collection of {@link AnnotationElement} for this {@link AssociationSetEnd}.
+   *
+   * @param annotationElements the annotation elements
    * @return {@link AssociationSetEnd} for method chaining
    */
   public AssociationSetEnd setAnnotationElements(final List<AnnotationElement> annotationElements) {

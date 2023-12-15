@@ -30,18 +30,35 @@ import org.apache.olingo.odata2.core.ep.EntityProviderProducerException;
 import org.apache.olingo.odata2.core.ep.aggregator.EntityInfoAggregator;
 import org.apache.olingo.odata2.core.ep.util.FormatXml;
 
+// TODO: Auto-generated Javadoc
 /**
  * Provider for writing a single link.
  * 
  */
 public class XmlLinkEntityProducer {
 
+  /** The properties. */
   private final EntityProviderWriteProperties properties;
 
+  /**
+   * Instantiates a new xml link entity producer.
+   *
+   * @param properties the properties
+   * @throws EntityProviderException the entity provider exception
+   */
   public XmlLinkEntityProducer(final EntityProviderWriteProperties properties) throws EntityProviderException {
     this.properties = properties == null ? EntityProviderWriteProperties.serviceRoot(null).build() : properties;
   }
 
+  /**
+   * Append.
+   *
+   * @param writer the writer
+   * @param entityInfo the entity info
+   * @param data the data
+   * @param isRootElement the is root element
+   * @throws EntityProviderException the entity provider exception
+   */
   public void append(final XMLStreamWriter writer, final EntityInfoAggregator entityInfo,
       final Map<String, Object> data, final boolean isRootElement) throws EntityProviderException {
     try {

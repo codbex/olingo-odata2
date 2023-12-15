@@ -43,18 +43,26 @@ import org.junit.Before;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
-*/
+ * The Class AbstractProviderTest.
+ */
 public abstract class AbstractProviderTest extends AbstractXmlProducerTestHelper{
 
 
+  /**
+   * Instantiates a new abstract provider test.
+   *
+   * @param type the type
+   */
   public AbstractProviderTest(final StreamWriterImplType type) {
     super(type);
   }
 
+  /** The log. */
   protected final Logger log = LoggerFactory.getLogger(this.getClass());
 
+  /** The Constant BASE_URI. */
   protected static final URI BASE_URI;
 
   static {
@@ -64,20 +72,28 @@ public abstract class AbstractProviderTest extends AbstractXmlProducerTestHelper
       throw new RuntimeException(e);
     }
   }
+  
+  /** The Constant DEFAULT_PROPERTIES. */
   protected static final EntitySerializerProperties DEFAULT_PROPERTIES =
       EntitySerializerProperties.serviceRoot(
       BASE_URI).includeMetadata(true).build();
 
+  /** The employee data. */
   protected Entity employeeData;
 
+  /** The employees data. */
   protected EntityCollection employeesData;
 
+  /** The photo data. */
   protected Entity photoData;
 
+  /** The room data. */
   protected Entity roomData;
 
+  /** The building data. */
   protected Entity buildingData;
 
+  /** The rooms data. */
   protected EntityCollection roomsData;
 
   {
@@ -157,6 +173,11 @@ public abstract class AbstractProviderTest extends AbstractXmlProducerTestHelper
     buildingData.addProperty("Image", "image");
   }
 
+  /**
+   * Initialize room data.
+   *
+   * @param count the count
+   */
   protected void initializeRoomData(final int count) {
     roomsData = new EntityCollection();
     for (int i = 1; i <= count; i++) {
@@ -169,6 +190,11 @@ public abstract class AbstractProviderTest extends AbstractXmlProducerTestHelper
     }
   }
 
+  /**
+   * Sets the xml namespace prefixes.
+   *
+   * @throws Exception the exception
+   */
   @Before
   public void setXmlNamespacePrefixes() throws Exception {
     Map<String, String> prefixMap = new HashMap<String, String>();
@@ -182,6 +208,12 @@ public abstract class AbstractProviderTest extends AbstractXmlProducerTestHelper
     XMLUnit.setXpathNamespaceContext(new SimpleNamespaceContext(prefixMap));
   }
 
+  /**
+   * Creates the context mock.
+   *
+   * @return the o data context
+   * @throws ODataException the o data exception
+   */
   protected ODataContext createContextMock() throws ODataException {
     PathInfo pathInfo = mock(PathInfo.class);
     when(pathInfo.getServiceRoot()).thenReturn(BASE_URI);
@@ -190,22 +222,48 @@ public abstract class AbstractProviderTest extends AbstractXmlProducerTestHelper
     return ctx;
   }
 
+  /**
+   * Creates the atom entity provider.
+   *
+   * @return the atom serializer deserializer
+   * @throws EntityProviderException the entity provider exception
+   */
   protected AtomSerializerDeserializer createAtomEntityProvider() throws EntityProviderException {
     return new AtomSerializerDeserializer();
   }
 
+  /**
+   * Gets the employee data.
+   *
+   * @return the employee data
+   */
   public Entity getEmployeeData() {
     return employeeData;
   }
 
+  /**
+   * Gets the employees data.
+   *
+   * @return the employees data
+   */
   public EntityCollection getEmployeesData() {
     return employeesData;
   }
 
+  /**
+   * Gets the room data.
+   *
+   * @return the room data
+   */
   public Entity getRoomData() {
     return roomData;
   }
 
+  /**
+   * Gets the rooms data.
+   *
+   * @return the rooms data
+   */
   public EntityCollection getRoomsData() {
     return roomsData;
   }

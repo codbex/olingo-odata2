@@ -18,6 +18,7 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.uri.expression;
 
+// TODO: Auto-generated Javadoc
 /**
  * Represents a unary expression node in the expression tree
  * <br>
@@ -31,12 +32,16 @@ package org.apache.olingo.odata2.api.uri.expression;
 public interface UnaryExpression extends CommonExpression {
 
   /**
+   * Gets the operator.
+   *
    * @return Returns the operator object that represents the used operator
    * @see UnaryOperator
    */
   public UnaryOperator getOperator();
 
   /**
+   * Gets the operand.
+   *
    * @return Returns the expression node of the operand of the unary operator
    * @see CommonExpression
    */

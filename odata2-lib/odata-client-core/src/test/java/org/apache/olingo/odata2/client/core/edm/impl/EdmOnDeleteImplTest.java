@@ -29,8 +29,15 @@ import org.apache.olingo.odata2.client.core.edm.Impl.EdmDocumentationImpl;
 import org.apache.olingo.odata2.client.core.edm.Impl.EdmOnDeleteImpl;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EdmOnDeleteImplTest.
+ */
 public class EdmOnDeleteImplTest {
 
+  /**
+   * Test on delete.
+   */
   @Test
   public void testOnDelete(){
     EdmOnDeleteImpl del = new EdmOnDeleteImpl();

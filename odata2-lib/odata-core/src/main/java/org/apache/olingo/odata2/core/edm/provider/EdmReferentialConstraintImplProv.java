@@ -26,26 +26,58 @@ import org.apache.olingo.odata2.api.edm.EdmReferentialConstraintRole;
 import org.apache.olingo.odata2.api.edm.provider.ReferentialConstraint;
 import org.apache.olingo.odata2.api.edm.provider.ReferentialConstraintRole;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EdmReferentialConstraintImplProv.
+ */
 public class EdmReferentialConstraintImplProv implements EdmReferentialConstraint, EdmAnnotatable {
+  
+  /** The referential constraint. */
   private ReferentialConstraint referentialConstraint;
+  
+  /** The annotations. */
   private EdmAnnotations annotations;
 
+  /**
+   * Instantiates a new edm referential constraint impl prov.
+   *
+   * @param referentialConstraint the referential constraint
+   * @throws EdmException the edm exception
+   */
   public EdmReferentialConstraintImplProv(final ReferentialConstraint referentialConstraint) throws EdmException {
     this.referentialConstraint = referentialConstraint;
   }
 
+  /**
+   * Gets the principal.
+   *
+   * @return the principal
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmReferentialConstraintRole getPrincipal() throws EdmException {
     ReferentialConstraintRole principal = referentialConstraint.getPrincipal();
     return new EdmReferentialConstraintRoleImplProv(principal);
   }
 
+  /**
+   * Gets the dependent.
+   *
+   * @return the dependent
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmReferentialConstraintRole getDependent() throws EdmException {
     ReferentialConstraintRole dependent = referentialConstraint.getDependent();
     return new EdmReferentialConstraintRoleImplProv(dependent);
   }
 
+  /**
+   * Gets the annotations.
+   *
+   * @return the annotations
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmAnnotations getAnnotations() throws EdmException {
     if (annotations == null) {

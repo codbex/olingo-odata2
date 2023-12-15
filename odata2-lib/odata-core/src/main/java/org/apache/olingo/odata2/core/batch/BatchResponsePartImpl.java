@@ -23,24 +23,54 @@ import java.util.List;
 import org.apache.olingo.odata2.api.batch.BatchResponsePart;
 import org.apache.olingo.odata2.api.processor.ODataResponse;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BatchResponsePartImpl.
+ */
 public class BatchResponsePartImpl extends BatchResponsePart {
+  
+  /** The responses. */
   private List<ODataResponse> responses;
+  
+  /** The is change set. */
   private boolean isChangeSet;
 
+  /**
+   * Gets the responses.
+   *
+   * @return the responses
+   */
   @Override
   public List<ODataResponse> getResponses() {
     return responses;
   }
 
+  /**
+   * Checks if is change set.
+   *
+   * @return true, if is change set
+   */
   @Override
   public boolean isChangeSet() {
     return isChangeSet;
   }
 
+  /**
+   * The Class BatchResponsePartBuilderImpl.
+   */
   public class BatchResponsePartBuilderImpl extends BatchResponsePartBuilder {
+    
+    /** The responses. */
     private List<ODataResponse> responses;
+    
+    /** The is change set. */
     private boolean isChangeSet;
 
+    /**
+     * Builds the.
+     *
+     * @return the batch response part
+     */
     @Override
     public BatchResponsePart build() {
       BatchResponsePartImpl.this.responses = responses;
@@ -48,12 +78,24 @@ public class BatchResponsePartImpl extends BatchResponsePart {
       return BatchResponsePartImpl.this;
     }
 
+    /**
+     * Responses.
+     *
+     * @param responses the responses
+     * @return the batch response part builder
+     */
     @Override
     public BatchResponsePartBuilder responses(final List<ODataResponse> responses) {
       this.responses = responses;
       return this;
     }
 
+    /**
+     * Change set.
+     *
+     * @param isChangeSet the is change set
+     * @return the batch response part builder
+     */
     @Override
     public BatchResponsePartBuilder changeSet(final boolean isChangeSet) {
       this.isChangeSet = isChangeSet;

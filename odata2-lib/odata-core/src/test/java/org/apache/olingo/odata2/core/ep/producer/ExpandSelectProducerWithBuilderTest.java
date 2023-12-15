@@ -48,10 +48,24 @@ import org.apache.olingo.odata2.testutil.helper.StringHelper;
 import org.apache.olingo.odata2.testutil.mock.MockFacade;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ExpandSelectProducerWithBuilderTest.
+ */
 public class ExpandSelectProducerWithBuilderTest extends AbstractProviderTest {
 
+  /**
+   * The Class LocalCallback.
+   */
   public class LocalCallback implements OnWriteEntryContent {
 
+    /**
+     * Retrieve entry result.
+     *
+     * @param context the context
+     * @return the write entry callback result
+     * @throws ODataApplicationException the o data application exception
+     */
     @Override
     public WriteEntryCallbackResult retrieveEntryResult(final WriteEntryCallbackContext context)
         throws ODataApplicationException {
@@ -69,10 +83,20 @@ public class ExpandSelectProducerWithBuilderTest extends AbstractProviderTest {
 
   }
 
+  /**
+   * Instantiates a new expand select producer with builder test.
+   *
+   * @param type the type
+   */
   public ExpandSelectProducerWithBuilderTest(final StreamWriterImplType type) {
     super(type);
   }
 
+  /**
+   * Select only properties.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void selectOnlyProperties() throws Exception {
     EdmEntitySet roomsSet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");
@@ -90,6 +114,11 @@ public class ExpandSelectProducerWithBuilderTest extends AbstractProviderTest {
     assertXpathNotExists("/a:entry/a:link[@type]", xml);
   }
 
+  /**
+   * Select only links.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void selectOnlyLinks() throws Exception {
     EdmEntitySet roomsSet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");
@@ -109,6 +138,11 @@ public class ExpandSelectProducerWithBuilderTest extends AbstractProviderTest {
     assertXpathExists("/a:entry/a:link[@type]", xml);
   }
 
+  /**
+   * Select id and building link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void selectIdAndBuildingLink() throws Exception {
     EdmEntitySet roomsSet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");
@@ -131,6 +165,11 @@ public class ExpandSelectProducerWithBuilderTest extends AbstractProviderTest {
     assertXpathExists("/a:entry/a:link[@type]", xml);
   }
 
+  /**
+   * Expand building.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void expandBuilding() throws Exception {
     EdmEntitySet roomsSet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");
@@ -152,6 +191,11 @@ public class ExpandSelectProducerWithBuilderTest extends AbstractProviderTest {
     assertXpathExists("/a:entry/a:link[@type]/m:inline", xml);
   }
 
+  /**
+   * Expand building and rooms.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void expandBuildingAndRooms() throws Exception {
     EdmEntitySet roomsSet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");
@@ -225,6 +269,11 @@ public class ExpandSelectProducerWithBuilderTest extends AbstractProviderTest {
             "/a:entry/a:link[@type]/m:inline/a:entry/a:link[@type]/m:inline/a:feed/a:entry/a:id", xml);
   }
 
+  /**
+   * Expand building and select id from room.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void expandBuildingAndSelectIdFromRoom() throws Exception {
     EdmEntitySet roomsSet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");
@@ -251,6 +300,11 @@ public class ExpandSelectProducerWithBuilderTest extends AbstractProviderTest {
     assertXpathExists("/a:entry/a:link[@type]/m:inline", xml);
   }
 
+  /**
+   * Custom expand building and select id from custom node.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void customExpandBuildingAndSelectIdFromCustomNode() throws Exception {
     EdmEntitySet roomsSet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");

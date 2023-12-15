@@ -18,28 +18,49 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.uri.expression;
 
+// TODO: Auto-generated Javadoc
 /**
  * Enumerations for supported unary operators of the OData expression parser
  * for OData version 2.0
  * 
  */
 public enum UnaryOperator {
-  MINUS("-", "negation"), NOT("not");
+  
+  /** The minus. */
+  MINUS("-", "negation"), 
+ /** The not. */
+ NOT("not");
 
+  /** The syntax. */
   private String syntax;
+  
+  /** The string respresentation. */
   private String stringRespresentation;
 
+  /**
+   * Instantiates a new unary operator.
+   *
+   * @param syntax the syntax
+   */
   private UnaryOperator(final String syntax) {
     this.syntax = syntax;
     stringRespresentation = syntax;
   }
 
+  /**
+   * Instantiates a new unary operator.
+   *
+   * @param syntax the syntax
+   * @param stringRespresentation the string respresentation
+   */
   private UnaryOperator(final String syntax, final String stringRespresentation) {
     this.syntax = syntax;
     this.stringRespresentation = stringRespresentation;
   }
 
   /**
+   * To string.
+   *
    * @return Methods name for usage in in text
    */
   @Override
@@ -48,6 +69,8 @@ public enum UnaryOperator {
   }
 
   /**
+   * To uri literal.
+   *
    * @return Syntax of the unary operator as used in the URL.
    */
   public String toUriLiteral() {

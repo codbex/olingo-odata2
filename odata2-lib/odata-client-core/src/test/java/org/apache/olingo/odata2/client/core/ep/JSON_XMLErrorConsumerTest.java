@@ -24,14 +24,23 @@ import org.apache.olingo.odata2.testutil.helper.LocaleAsserter;
 import org.apache.olingo.odata2.testutil.helper.StringHelper;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *
+ * The Class JSON_XMLErrorConsumerTest.
  */
 public class JSON_XMLErrorConsumerTest extends AbstractDeserializerTest {
 
+    /** The Constant JSON. */
     private static final String JSON = "application/json";
+    
+    /** The Constant XML. */
     private static final String XML = "application/xml";
 
+    /**
+     * Read error document json.
+     *
+     * @throws EntityProviderException the entity provider exception
+     */
     @Test
     public void readErrorDocumentJson() throws EntityProviderException {
         ODataClient providerFacade = ODataClient.newInstance();
@@ -45,6 +54,11 @@ public class JSON_XMLErrorConsumerTest extends AbstractDeserializerTest {
         LocaleAsserter.assertLocale("Wrong locale for lang", errorContext.getLocale(), Locale.US);
     }
 
+    /**
+     * Read error document xml.
+     *
+     * @throws EntityProviderException the entity provider exception
+     */
     @Test
     public void readErrorDocumentXml() throws EntityProviderException {
         ODataClient providerFacade = ODataClient.newInstance();

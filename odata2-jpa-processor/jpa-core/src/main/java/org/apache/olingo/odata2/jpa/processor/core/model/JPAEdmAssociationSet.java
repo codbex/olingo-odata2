@@ -34,18 +34,39 @@ import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmEntitySetView;
 import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmSchemaView;
 import org.apache.olingo.odata2.jpa.processor.core.access.model.JPAEdmNameBuilder;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAEdmAssociationSet.
+ */
 public class JPAEdmAssociationSet extends JPAEdmBaseViewImpl implements JPAEdmAssociationSetView {
 
+  /** The schema view. */
   private JPAEdmSchemaView schemaView;
+  
+  /** The current association set. */
   private AssociationSet currentAssociationSet;
+  
+  /** The association set list. */
   private List<AssociationSet> associationSetList;
+  
+  /** The current association. */
   private Association currentAssociation;
 
+  /**
+   * Instantiates a new JPA edm association set.
+   *
+   * @param view the view
+   */
   public JPAEdmAssociationSet(final JPAEdmSchemaView view) {
     super(view);
     schemaView = view;
   }
 
+  /**
+   * Gets the builder.
+   *
+   * @return the builder
+   */
   @Override
   public JPAEdmBuilder getBuilder() {
     if (builder == null) {
@@ -55,23 +76,46 @@ public class JPAEdmAssociationSet extends JPAEdmBaseViewImpl implements JPAEdmAs
     return builder;
   }
 
+  /**
+   * Gets the consistent edm association set list.
+   *
+   * @return the consistent edm association set list
+   */
   @Override
   public List<AssociationSet> getConsistentEdmAssociationSetList() {
     return associationSetList;
   }
 
+  /**
+   * Gets the edm association set.
+   *
+   * @return the edm association set
+   */
   @Override
   public AssociationSet getEdmAssociationSet() {
     return currentAssociationSet;
   }
 
+  /**
+   * Gets the edm association.
+   *
+   * @return the edm association
+   */
   @Override
   public Association getEdmAssociation() {
     return currentAssociation;
   }
 
+  /**
+   * The Class JPAEdmAssociationSetBuilder.
+   */
   private class JPAEdmAssociationSetBuilder implements JPAEdmBuilder {
 
+    /**
+     * Builds the.
+     *
+     * @throws ODataJPAModelException the o data JPA model exception
+     */
     @Override
     public void build() throws ODataJPAModelException {
 

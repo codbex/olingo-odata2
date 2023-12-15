@@ -31,20 +31,42 @@ import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmEntitySetView;
 import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmSchemaView;
 import org.apache.olingo.odata2.jpa.processor.core.access.model.JPAEdmNameBuilder;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAEdmEntityContainer.
+ */
 public class JPAEdmEntityContainer extends JPAEdmBaseViewImpl implements JPAEdmEntityContainerView {
 
+  /** The entity set view. */
   private JPAEdmEntitySetView entitySetView;
+  
+  /** The schema view. */
   private JPAEdmSchemaView schemaView;
+  
+  /** The association set view. */
   private JPAEdmAssociationSetView associationSetView;
 
+  /** The current entity container. */
   private EntityContainer currentEntityContainer;
+  
+  /** The consistent entity container list. */
   private List<EntityContainer> consistentEntityContainerList;
 
+  /**
+   * Instantiates a new JPA edm entity container.
+   *
+   * @param view the view
+   */
   public JPAEdmEntityContainer(final JPAEdmSchemaView view) {
     super(view);
     schemaView = view;
   }
 
+  /**
+   * Gets the builder.
+   *
+   * @return the builder
+   */
   @Override
   public JPAEdmBuilder getBuilder() {
     if (builder == null) {
@@ -54,26 +76,49 @@ public class JPAEdmEntityContainer extends JPAEdmBaseViewImpl implements JPAEdmE
     return builder;
   }
 
+  /**
+   * Gets the edm entity container.
+   *
+   * @return the edm entity container
+   */
   @Override
   public EntityContainer getEdmEntityContainer() {
     return currentEntityContainer;
   }
 
+  /**
+   * Gets the consistent edm entity container list.
+   *
+   * @return the consistent edm entity container list
+   */
   @Override
   public List<EntityContainer> getConsistentEdmEntityContainerList() {
     return consistentEntityContainerList;
   }
 
+  /**
+   * Gets the JPA edm entity set view.
+   *
+   * @return the JPA edm entity set view
+   */
   @Override
   public JPAEdmEntitySetView getJPAEdmEntitySetView() {
     return entitySetView;
   }
 
+  /**
+   * Gets the edm association set view.
+   *
+   * @return the edm association set view
+   */
   @Override
   public JPAEdmAssociationSetView getEdmAssociationSetView() {
     return associationSetView;
   }
 
+  /**
+   * Clean.
+   */
   @Override
   public void clean() {
     super.clean();
@@ -83,7 +128,17 @@ public class JPAEdmEntityContainer extends JPAEdmBaseViewImpl implements JPAEdmE
     consistentEntityContainerList = null;
   }
 
+  /**
+   * The Class JPAEdmEntityContainerBuilder.
+   */
   private class JPAEdmEntityContainerBuilder implements JPAEdmBuilder {
+    
+    /**
+     * Builds the.
+     *
+     * @throws ODataJPAModelException the o data JPA model exception
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
+     */
     /*
      * 
      * Each call to build method creates a new Entity Container and builds

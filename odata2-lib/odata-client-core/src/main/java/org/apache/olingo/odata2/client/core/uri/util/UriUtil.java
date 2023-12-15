@@ -27,22 +27,26 @@ import org.apache.olingo.odata2.client.api.uri.SegmentType;
 import org.apache.olingo.odata2.client.core.uri.Segment;
 import org.apache.olingo.odata2.core.commons.Encoder;
 
+// TODO: Auto-generated Javadoc
 /**
- * Util class
- *
+ * Util class.
  */
 public class UriUtil {
 
+  /**
+   * Instantiates a new uri util.
+   */
   private UriUtil() {
     
   }
   
   /**
-   * 
-   * @param segments
-   * @param queryOptions
-   * @param customQueryOptions
-   * @param functionImportParameters 
+   * Gets the uri.
+   *
+   * @param segments the segments
+   * @param queryOptions the query options
+   * @param customQueryOptions the custom query options
+   * @param functionImportParameters the function import parameters
    * @return URI
    */
   public static URI getUri(List<Segment> segments, Map<String, String> queryOptions, 
@@ -118,10 +122,11 @@ public class UriUtil {
   }
   
   /**
-   * 
-   * @param isQueryOptions
-   * @param isCustomQueryOptions
-   * @param segmentsBuilder
+   * Append query segment delimiter.
+   *
+   * @param isQueryOptions the is query options
+   * @param isCustomQueryOptions the is custom query options
+   * @param segmentsBuilder the segments builder
    */
   private static void appendQuerySegmentDelimiter(boolean isQueryOptions, 
       boolean isCustomQueryOptions, StringBuilder segmentsBuilder) {
@@ -133,10 +138,12 @@ public class UriUtil {
   }
   
   /**
-   * 
-   * @param name
-   * @param value
-   * @param segmentsBuilder
+   * Append query segments.
+   *
+   * @param name the name
+   * @param value the value
+   * @param segmentsBuilder the segments builder
+   * @param isQueryOption the is query option
    */
   private static void appendQuerySegments(String name, Object value, 
       StringBuilder segmentsBuilder, boolean isQueryOption) {
@@ -150,15 +157,25 @@ public class UriUtil {
   }
 
   /**
-   * 
-   * @param items
-   * @param separator
+   * Join.
+   *
+   * @param items the items
+   * @param separator the separator
    * @return String
    */
   public static String join(String[] items, String separator) {
     return join(items, separator, 0, items.length);
   }
 
+  /**
+   * Join.
+   *
+   * @param items the items
+   * @param separator the separator
+   * @param startIndex the start index
+   * @param endIndex the end index
+   * @return the string
+   */
   private static String join(String[] items, String separator, int startIndex, int endIndex) {
     if (items == null) {
       return null;
@@ -186,11 +203,12 @@ public class UriUtil {
   }
   
   /**
-   * 
-   * @param paramName
-   * @param paramValue
-   * @param queryOptions
-   * @param replace
+   * Append query option.
+   *
+   * @param paramName the param name
+   * @param paramValue the param value
+   * @param queryOptions the query options
+   * @param replace the replace
    */
   public static void appendQueryOption(String paramName, String paramValue, Map<String, 
       String> queryOptions, boolean replace) {

@@ -18,10 +18,9 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.commons;
 
+// TODO: Auto-generated Javadoc
 /**
- * HTTP header constants
- * 
- * 
+ * HTTP header constants.
  */
 public interface HttpHeaders {
 

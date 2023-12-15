@@ -36,19 +36,37 @@ import org.custommonkey.xmlunit.SimpleNamespaceContext;
 import org.custommonkey.xmlunit.XMLUnit;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class ExceptionsTest.
  */
 public class ExceptionsTest extends AbstractBasicTest {
+  
+  /**
+   * Instantiates a new exceptions test.
+   *
+   * @param servletType the servlet type
+   */
   public ExceptionsTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /**
+   * Creates the processor.
+   *
+   * @return the o data single processor
+   * @throws ODataException the o data exception
+   */
   @Override
   protected ODataSingleProcessor createProcessor() throws ODataException {
     return mock(ODataSingleProcessor.class);
   }
 
+  /**
+   * Exception basic test.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void exceptionBasicTest() throws Exception {
     final HttpResponse response = executeGetRequest("NoContainer.NoEntitySet()");

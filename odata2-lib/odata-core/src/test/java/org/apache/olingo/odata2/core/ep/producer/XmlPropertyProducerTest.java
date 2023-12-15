@@ -39,15 +39,26 @@ import org.apache.olingo.odata2.testutil.helper.XMLUnitHelper;
 import org.apache.olingo.odata2.testutil.mock.MockFacade;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class XmlPropertyProducerTest.
  */
 public class XmlPropertyProducerTest extends AbstractProviderTest {
 
+  /**
+   * Instantiates a new xml property producer test.
+   *
+   * @param type the type
+   */
   public XmlPropertyProducerTest(final StreamWriterImplType type) {
     super(type);
   }
 
+  /**
+   * Serialize employee id.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serializeEmployeeId() throws Exception {
     AtomEntityProvider s = createAtomEntityProvider();
@@ -65,6 +76,11 @@ public class XmlPropertyProducerTest extends AbstractProviderTest {
     assertXpathEvaluatesTo("1", "/d:EmployeeId/text()", xml);
   }
 
+  /**
+   * Serialize room id with facets.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serializeRoomIdWithFacets() throws Exception {
     AtomEntityProvider s = createAtomEntityProvider();
@@ -81,6 +97,11 @@ public class XmlPropertyProducerTest extends AbstractProviderTest {
     }
   }
 
+  /**
+   * Serialize age.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serializeAge() throws Exception {
     AtomEntityProvider s = createAtomEntityProvider();
@@ -99,6 +120,11 @@ public class XmlPropertyProducerTest extends AbstractProviderTest {
     assertXpathEvaluatesTo("52", "/d:Age/text()", xml);
   }
 
+  /**
+   * Serialize image url.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serializeImageUrl() throws Exception {
     AtomEntityProvider s = createAtomEntityProvider();
@@ -118,6 +144,11 @@ public class XmlPropertyProducerTest extends AbstractProviderTest {
     assertXpathEvaluatesTo("true", "/d:ImageUrl/@m:null", xml);
   }
 
+  /**
+   * Serialize image.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serializeImage() throws Exception {
     final EdmProperty property =
@@ -134,6 +165,11 @@ public class XmlPropertyProducerTest extends AbstractProviderTest {
     assertXpathEvaluatesTo("image/png", "/d:Image/@m:MimeType", xml);
   }
 
+  /**
+   * Serialize binary data.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serializeBinaryData() throws Exception {
     final EdmProperty property =
@@ -150,6 +186,11 @@ public class XmlPropertyProducerTest extends AbstractProviderTest {
     assertXpathEvaluatesTo("image/jpeg", "/d:BinaryData/@m:MimeType", xml);
   }
 
+  /**
+   * Serialize location.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serializeLocation() throws Exception {
     AtomEntityProvider s = createAtomEntityProvider();

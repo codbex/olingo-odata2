@@ -29,19 +29,34 @@ import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.junit.Before;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class CircleStreamBufferTest.
  */
 public class CircleStreamBufferTest extends BaseTest {
 
+  /** The Constant LOG_ON. */
   private static final boolean LOG_ON = false;
+  
+  /** The Constant DEFAULT_CHARSET. */
   private static final Charset DEFAULT_CHARSET = Charset.forName("utf-8");
 
+  /**
+   * Instantiates a new circle stream buffer test.
+   */
   public CircleStreamBufferTest() {}
 
+  /**
+   * Sets the up.
+   */
   @Before
   public void setUp() {}
 
+  /**
+   * Test simple write read sign by sign.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testSimpleWriteReadSignBySign() throws Exception {
     CircleStreamBuffer csb = new CircleStreamBuffer();
@@ -64,6 +79,11 @@ public class CircleStreamBufferTest extends BaseTest {
     assertEquals("Test", result);
   }
 
+  /**
+   * Test simple write read sign by sign more then buffer size.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testSimpleWriteReadSignBySignMoreThenBufferSize() throws Exception {
     CircleStreamBuffer csb = new CircleStreamBuffer(128);
@@ -88,6 +108,11 @@ public class CircleStreamBufferTest extends BaseTest {
     assertEquals(testData, result);
   }
 
+  /**
+   * Test simple write read once.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testSimpleWriteReadOnce() throws Exception {
     CircleStreamBuffer csb = new CircleStreamBuffer();
@@ -106,6 +131,11 @@ public class CircleStreamBufferTest extends BaseTest {
     assertEquals("Test", result);
   }
 
+  /**
+   * Test simple write read twice.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testSimpleWriteReadTwice() throws Exception {
     CircleStreamBuffer csb = new CircleStreamBuffer();
@@ -128,6 +158,11 @@ public class CircleStreamBufferTest extends BaseTest {
     assertEquals("Test_2", secondResult);
   }
 
+  /**
+   * Test simple write read once 8 k.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testSimpleWriteReadOnce8k() throws Exception {
     CircleStreamBuffer csb = new CircleStreamBuffer();
@@ -145,6 +180,11 @@ public class CircleStreamBufferTest extends BaseTest {
     assertEquals(testData, result);
   }
 
+  /**
+   * Test simple write exact once more then buffer size.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testSimpleWriteExactOnceMoreThenBufferSize() throws Exception {
     int bufferSize = 4096;
@@ -163,6 +203,11 @@ public class CircleStreamBufferTest extends BaseTest {
     assertEquals(testData, result);
   }
 
+  /**
+   * Test simple write read once more then buffer size.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testSimpleWriteReadOnceMoreThenBufferSize() throws Exception {
     int bufferSize = 4096;
@@ -181,6 +226,11 @@ public class CircleStreamBufferTest extends BaseTest {
     assertEquals(testData, result);
   }
 
+  /**
+   * Test simple write more then default buffer size.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testSimpleWriteMoreThenDefaultBufferSize() throws Exception {
     CircleStreamBuffer csb = new CircleStreamBuffer();
@@ -197,6 +247,11 @@ public class CircleStreamBufferTest extends BaseTest {
     assertEquals(testData, result);
   }
 
+  /**
+   * Test simple write more then buffer size.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testSimpleWriteMoreThenBufferSize() throws Exception {
     int bufferSize = 4096;
@@ -214,6 +269,11 @@ public class CircleStreamBufferTest extends BaseTest {
     assertEquals(testData, result);
   }
 
+  /**
+   * Test simple write more then buffer size and umlauts.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testSimpleWriteMoreThenBufferSizeAndUmlauts() throws Exception {
     int bufferSize = 4096;
@@ -232,6 +292,11 @@ public class CircleStreamBufferTest extends BaseTest {
     assertEquals(testData, result);
   }
 
+  /**
+   * Test simple write more then buffer size and umlauts iso.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testSimpleWriteMoreThenBufferSizeAndUmlautsIso() throws Exception {
     int bufferSize = 4096;
@@ -250,6 +315,11 @@ public class CircleStreamBufferTest extends BaseTest {
     assertEquals(testData, result);
   }
 
+  /**
+   * Test simple write A lot more then buffer size.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testSimpleWriteALotMoreThenBufferSize() throws Exception {
     int bufferSize = 4096;
@@ -268,6 +338,11 @@ public class CircleStreamBufferTest extends BaseTest {
   }
 
 
+  /**
+   * Test close input stream.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = IOException.class)
   public void testCloseInputStream() throws Exception {
     CircleStreamBuffer csb = new CircleStreamBuffer();
@@ -282,6 +357,11 @@ public class CircleStreamBufferTest extends BaseTest {
     assertEquals(4, count);
   }
 
+  /**
+   * Test close output stream.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = IOException.class)
   public void testCloseOutputStream() throws Exception {
     CircleStreamBuffer csb = new CircleStreamBuffer();
@@ -297,18 +377,50 @@ public class CircleStreamBufferTest extends BaseTest {
   // #
   // ###################################################
 
+  /**
+   * Read from.
+   *
+   * @param stream the stream
+   * @return the string
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private String readFrom(final InputStream stream) throws IOException {
     return readFrom(stream, 128);
   }
 
+  /**
+   * Read from.
+   *
+   * @param stream the stream
+   * @param bufferSize the buffer size
+   * @return the string
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private String readFrom(final InputStream stream, final int bufferSize) throws IOException {
     return readFrom(stream, DEFAULT_CHARSET, bufferSize);
   }
 
+  /**
+   * Read from.
+   *
+   * @param stream the stream
+   * @param charset the charset
+   * @return the string
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private String readFrom(final InputStream stream, final String charset) throws IOException {
     return readFrom(stream, Charset.forName(charset), 128);
   }
 
+  /**
+   * Read from.
+   *
+   * @param stream the stream
+   * @param charset the charset
+   * @param bufferSize the buffer size
+   * @return the string
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private String readFrom(final InputStream stream, final Charset charset, final int bufferSize) throws IOException {
     StringBuilder b = new StringBuilder();
     int count;
@@ -319,6 +431,12 @@ public class CircleStreamBufferTest extends BaseTest {
     return b.toString();
   }
 
+  /**
+   * Creates the test string.
+   *
+   * @param signs the signs
+   * @return the string
+   */
   private String createTestString(final int signs) {
     StringBuilder b = new StringBuilder();
 
@@ -330,6 +448,11 @@ public class CircleStreamBufferTest extends BaseTest {
     return b.toString();
   }
 
+  /**
+   * Log.
+   *
+   * @param toLog the to log
+   */
   private void log(final String toLog) {
     if (LOG_ON) {
       System.out.println(toLog);

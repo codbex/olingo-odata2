@@ -20,18 +20,24 @@ package org.apache.olingo.odata2.api.edm.provider;
 
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
 /**
- * Objects of this class represent a reference to a property via its name
- * 
- * 
+ * Objects of this class represent a reference to a property via its name.
  */
 public class PropertyRef {
 
+  /** The name. */
   private String name;
+  
+  /** The annotation attributes. */
   private List<AnnotationAttribute> annotationAttributes;
+  
+  /** The annotation elements. */
   private List<AnnotationElement> annotationElements;
 
   /**
+   * Gets the name.
+   *
    * @return <b>String</b> name of the {@link Property} this {@link PropertyRef} is referencing to
    */
   public String getName() {
@@ -39,6 +45,8 @@ public class PropertyRef {
   }
 
   /**
+   * Gets the annotation attributes.
+   *
    * @return List of {@link AnnotationAttribute} annotation attributes
    */
   public List<AnnotationAttribute> getAnnotationAttributes() {
@@ -46,6 +54,8 @@ public class PropertyRef {
   }
 
   /**
+   * Gets the annotation elements.
+   *
    * @return List of {@link AnnotationElement} annotation elements
    */
   public List<AnnotationElement> getAnnotationElements() {
@@ -53,8 +63,9 @@ public class PropertyRef {
   }
 
   /**
-   * Sets the name of the {@link Property} this {@link PropertyRef} is pointing to
-   * @param name
+   * Sets the name of the {@link Property} this {@link PropertyRef} is pointing to.
+   *
+   * @param name the name
    * @return {@link PropertyRef} for method chaining
    */
   public PropertyRef setName(final String name) {
@@ -63,8 +74,9 @@ public class PropertyRef {
   }
 
   /**
-   * Sets the List of {@link AnnotationAttribute} for this {@link PropertyRef}
-   * @param annotationAttributes
+   * Sets the List of {@link AnnotationAttribute} for this {@link PropertyRef}.
+   *
+   * @param annotationAttributes the annotation attributes
    * @return {@link PropertyRef} for method chaining
    */
   public PropertyRef setAnnotationAttributes(final List<AnnotationAttribute> annotationAttributes) {
@@ -73,8 +85,9 @@ public class PropertyRef {
   }
 
   /**
-   * Sets the List of {@link AnnotationElement} for this {@link PropertyRef}
-   * @param annotationElements
+   * Sets the List of {@link AnnotationElement} for this {@link PropertyRef}.
+   *
+   * @param annotationElements the annotation elements
    * @return {@link PropertyRef} for method chaining
    */
   public PropertyRef setAnnotationElements(final List<AnnotationElement> annotationElements) {

@@ -55,23 +55,35 @@ import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.apache.olingo.odata2.testutil.helper.ODataMessageTextVerifier;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class ODataExceptionTest.
  */
 public class ODataExceptionTest extends BaseTest {
 
+  /**
+   * No cause.
+   */
   @Test
   public void noCause() {
     ODataException exception = new ODataException("Some message.");
     assertFalse(exception.isCausedByHttpException());
   }
 
+  /**
+   * Null pointer exception cause.
+   */
   @Test
   public void nullPointerExceptionCause() {
     ODataException exception = new ODataException("Some message.", new NullPointerException());
     assertFalse(exception.isCausedByHttpException());
   }
 
+  /**
+   * Gets the message.
+   *
+   * @return the message
+   */
   @Test
   public void getMessage() {
     ODataNotImplementedException odnie = new ODataNotImplementedException();
@@ -80,6 +92,9 @@ public class ODataExceptionTest extends BaseTest {
     assertEquals(commonMsg.getText(), odnie.getMessage());
   }
 
+  /**
+   * O data contexted cause.
+   */
   @Test
   public void oDataContextedCause() {
     ODataException exception =
@@ -87,6 +102,9 @@ public class ODataExceptionTest extends BaseTest {
     assertTrue(exception.isCausedByHttpException());
   }
 
+  /**
+   * O data contexted cause layer 3.
+   */
   @Test
   public void oDataContextedCauseLayer3() {
     ODataException exception = new ODataException("Some message.",
@@ -96,6 +114,9 @@ public class ODataExceptionTest extends BaseTest {
   }
 
   // The following tests verify whether all fields of type {@link MessageReference} of
+  /**
+   * Messages of O data message exceptions.
+   */
   // the tested (Exception) class are provided in the <b>i18n.properties</b> file.
   @Test
   public void messagesOfODataMessageExceptions() {

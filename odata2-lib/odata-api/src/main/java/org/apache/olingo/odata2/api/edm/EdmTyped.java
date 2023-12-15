@@ -18,26 +18,27 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.edm;
 
+// TODO: Auto-generated Javadoc
 /**
- * @org.apache.olingo.odata2.DoNotImplement
- * EdmTyped indicates if an EDM element is of a special type and holds the multiplicity of that type.
- * 
+ * The Interface EdmTyped.
+ *
+ * @org.apache.olingo.odata2.DoNotImplement EdmTyped indicates if an EDM element is of a special type and holds the multiplicity of that type.
  */
 public interface EdmTyped extends EdmNamed {
 
   /**
    * See {@link EdmType} for more information about possible types.
-   * 
+   *
    * @return {@link EdmType}
-   * @throws EdmException
+   * @throws EdmException the edm exception
    */
   EdmType getType() throws EdmException;
 
   /**
    * See {@link EdmMultiplicity} for more information about possible multiplicities.
-   * 
+   *
    * @return {@link EdmMultiplicity}
-   * @throws EdmException
+   * @throws EdmException the edm exception
    */
   EdmMultiplicity getMultiplicity() throws EdmException;
 }

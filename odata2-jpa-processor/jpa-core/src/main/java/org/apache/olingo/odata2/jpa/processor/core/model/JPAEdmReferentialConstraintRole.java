@@ -39,22 +39,47 @@ import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmMapping;
 import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmPropertyView;
 import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmReferentialConstraintRoleView;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAEdmReferentialConstraintRole.
+ */
 public class JPAEdmReferentialConstraintRole extends JPAEdmBaseViewImpl implements JPAEdmReferentialConstraintRoleView {
 
+  /** The first build. */
   private boolean firstBuild = true;
 
+  /** The entity type view. */
   private JPAEdmEntityTypeView entityTypeView;
+  
+  /** The role type. */
   private JPAEdmReferentialConstraintRoleView.RoleType roleType;
 
+  /** The jpa attribute. */
   private Attribute<?, ?> jpaAttribute;
+  
+  /** The jpa column names. */
   private List<String[]> jpaColumnNames;
+  
+  /** The association. */
   private Association association;
 
+  /** The role exists. */
   private boolean roleExists = false;
 
+  /** The builder. */
   private JPAEdmRefConstraintRoleBuilder builder;
+  
+  /** The current role. */
   private ReferentialConstraintRole currentRole;
 
+  /**
+   * Instantiates a new JPA edm referential constraint role.
+   *
+   * @param roleType the role type
+   * @param entityTypeView the entity type view
+   * @param propertyView the property view
+   * @param associationView the association view
+   */
   public JPAEdmReferentialConstraintRole(final JPAEdmReferentialConstraintRoleView.RoleType roleType,
       final JPAEdmEntityTypeView entityTypeView, final JPAEdmPropertyView propertyView,
       final JPAEdmAssociationView associationView) {
@@ -69,12 +94,22 @@ public class JPAEdmReferentialConstraintRole extends JPAEdmBaseViewImpl implemen
 
   }
 
+  /**
+   * Checks if is exists.
+   *
+   * @return true, if is exists
+   */
   @Override
   public boolean isExists() {
     return roleExists;
 
   }
 
+  /**
+   * Gets the builder.
+   *
+   * @return the builder
+   */
   @Override
   public JPAEdmBuilder getBuilder() {
     if (builder == null) {
@@ -84,33 +119,66 @@ public class JPAEdmReferentialConstraintRole extends JPAEdmBaseViewImpl implemen
     return builder;
   }
 
+  /**
+   * Gets the role type.
+   *
+   * @return the role type
+   */
   @Override
   public RoleType getRoleType() {
     return roleType;
   }
 
+  /**
+   * Gets the edm referential constraint role.
+   *
+   * @return the edm referential constraint role
+   */
   @Override
   public ReferentialConstraintRole getEdmReferentialConstraintRole() {
     return currentRole;
   }
 
+  /**
+   * Gets the JPA column name.
+   *
+   * @return the JPA column name
+   */
   @Override
   public String getJPAColumnName() {
     return null;
   }
 
+  /**
+   * Gets the edm entity type name.
+   *
+   * @return the edm entity type name
+   */
   @Override
   public String getEdmEntityTypeName() {
     return null;
   }
 
+  /**
+   * Gets the edm association name.
+   *
+   * @return the edm association name
+   */
   @Override
   public String getEdmAssociationName() {
     return null;
   }
 
+  /**
+   * The Class JPAEdmRefConstraintRoleBuilder.
+   */
   private class JPAEdmRefConstraintRoleBuilder implements JPAEdmBuilder {
 
+    /**
+     * Builds the.
+     *
+     * @throws ODataJPAModelException the o data JPA model exception
+     */
     @Override
     public void build() throws ODataJPAModelException {
       if (firstBuild) {
@@ -127,6 +195,9 @@ public class JPAEdmReferentialConstraintRole extends JPAEdmBaseViewImpl implemen
 
     }
 
+    /**
+     * First build.
+     */
     private void firstBuild() {
       firstBuild = false;
       isConsistent = false;
@@ -139,6 +210,12 @@ public class JPAEdmReferentialConstraintRole extends JPAEdmBaseViewImpl implemen
       }
     }
 
+    /**
+     * Builds the role.
+     *
+     * @throws SecurityException the security exception
+     * @throws NoSuchFieldException the no such field exception
+     */
     private void buildRole() throws SecurityException, NoSuchFieldException {
 
       int index = 0;

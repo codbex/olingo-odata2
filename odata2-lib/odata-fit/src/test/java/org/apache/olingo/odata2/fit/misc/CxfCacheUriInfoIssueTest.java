@@ -42,15 +42,27 @@ import org.apache.olingo.odata2.testutil.fit.FitStaticServiceFactory;
 import org.apache.olingo.odata2.testutil.server.ServletType;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class CxfCacheUriInfoIssueTest.
  */
 public class CxfCacheUriInfoIssueTest extends AbstractBasicTest {
 
+  /**
+   * Instantiates a new cxf cache uri info issue test.
+   *
+   * @param servletType the servlet type
+   */
   public CxfCacheUriInfoIssueTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /**
+   * Creates the processor.
+   *
+   * @return the o data single processor
+   * @throws ODataException the o data exception
+   */
   @Override
   protected ODataSingleProcessor createProcessor() throws ODataException {
     final ODataSingleProcessor processor = mock(ODataSingleProcessor.class);
@@ -59,6 +71,14 @@ public class CxfCacheUriInfoIssueTest extends AbstractBasicTest {
     return processor;
   }
 
+  /**
+   * Check context for different host names requests.
+   *
+   * @throws ClientProtocolException the client protocol exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws ODataException the o data exception
+   * @throws URISyntaxException the URI syntax exception
+   */
   @Test
   public void checkContextForDifferentHostNamesRequests() throws ClientProtocolException, IOException, ODataException,
       URISyntaxException {
@@ -85,6 +105,14 @@ public class CxfCacheUriInfoIssueTest extends AbstractBasicTest {
     assertEquals(uri2.getHost(), serviceRoot2.getHost());
   }
 
+  /**
+   * Check context for different with host header.
+   *
+   * @throws ClientProtocolException the client protocol exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws ODataException the o data exception
+   * @throws URISyntaxException the URI syntax exception
+   */
   @Test
   public void checkContextForDifferentWithHostHeader() throws ClientProtocolException, IOException,
       ODataException, URISyntaxException {

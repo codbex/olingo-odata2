@@ -22,18 +22,27 @@ import java.util.List;
 
 import org.apache.olingo.odata2.api.edm.EdmAction;
 
+// TODO: Auto-generated Javadoc
 /**
- * Objects of this class represent an OnDelete Action
- * 
+ * Objects of this class represent an OnDelete Action.
  */
 public class OnDelete {
 
+  /** The action. */
   private EdmAction action;
+  
+  /** The documentation. */
   private Documentation documentation;
+  
+  /** The annotation attributes. */
   private List<AnnotationAttribute> annotationAttributes;
+  
+  /** The annotation elements. */
   private List<AnnotationElement> annotationElements;
 
   /**
+   * Gets the action.
+   *
    * @return {@link EdmAction} action
    */
   public EdmAction getAction() {
@@ -41,6 +50,8 @@ public class OnDelete {
   }
 
   /**
+   * Gets the documentation.
+   *
    * @return {@link Documentation} documentation
    */
   public Documentation getDocumentation() {
@@ -48,6 +59,8 @@ public class OnDelete {
   }
 
   /**
+   * Gets the annotation attributes.
+   *
    * @return List of {@link AnnotationAttribute} annotation attributes
    */
   public List<AnnotationAttribute> getAnnotationAttributes() {
@@ -55,6 +68,8 @@ public class OnDelete {
   }
 
   /**
+   * Gets the annotation elements.
+   *
    * @return List of {@link AnnotationElement} annotation elements
    */
   public List<AnnotationElement> getAnnotationElements() {
@@ -62,8 +77,9 @@ public class OnDelete {
   }
 
   /**
-   * Sets the {@link EdmAction} for this {@link OnDelete}
-   * @param action
+   * Sets the {@link EdmAction} for this {@link OnDelete}.
+   *
+   * @param action the action
    * @return {@link OnDelete} for method chaining
    */
   public OnDelete setAction(final EdmAction action) {
@@ -72,8 +88,9 @@ public class OnDelete {
   }
 
   /**
-   * Sets the {@link Documentation} for this {@link OnDelete}
-   * @param documentation
+   * Sets the {@link Documentation} for this {@link OnDelete}.
+   *
+   * @param documentation the documentation
    * @return {@link OnDelete} for method chaining
    */
   public OnDelete setDocumentation(final Documentation documentation) {
@@ -82,8 +99,9 @@ public class OnDelete {
   }
 
   /**
-   * Sets the List of {@link AnnotationAttribute} for this {@link OnDelete}
-   * @param annotationAttributes
+   * Sets the List of {@link AnnotationAttribute} for this {@link OnDelete}.
+   *
+   * @param annotationAttributes the annotation attributes
    * @return {@link OnDelete} for method chaining
    */
   public OnDelete setAnnotationAttributes(final List<AnnotationAttribute> annotationAttributes) {
@@ -92,8 +110,9 @@ public class OnDelete {
   }
 
   /**
-   * Sets the List of {@link AnnotationElement} for this {@link OnDelete}
-   * @param annotationElements
+   * Sets the List of {@link AnnotationElement} for this {@link OnDelete}.
+   *
+   * @param annotationElements the annotation elements
    * @return {@link OnDelete} for method chaining
    */
   public OnDelete setAnnotationElements(final List<AnnotationElement> annotationElements) {

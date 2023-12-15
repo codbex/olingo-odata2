@@ -26,27 +26,60 @@ import org.apache.olingo.odata2.api.edm.EdmProperty;
 import org.apache.olingo.odata2.api.edm.FullQualifiedName;
 import org.apache.olingo.odata2.api.edm.provider.Property;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EdmPropertyImplProv.
+ */
 public abstract class EdmPropertyImplProv extends EdmElementImplProv implements EdmProperty, EdmAnnotatable {
 
+  /** The property. */
   private Property property;
+  
+  /** The annotations. */
   private EdmAnnotations annotations;
 
+  /**
+   * Instantiates a new edm property impl prov.
+   *
+   * @param edm the edm
+   * @param propertyName the property name
+   * @param property the property
+   * @throws EdmException the edm exception
+   */
   public EdmPropertyImplProv(final EdmImplProv edm, final FullQualifiedName propertyName, final Property property)
       throws EdmException {
     super(edm, property.getName(), propertyName, property.getFacets(), property.getMapping());
     this.property = property;
   }
 
+  /**
+   * Gets the customizable feed mappings.
+   *
+   * @return the customizable feed mappings
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmCustomizableFeedMappings getCustomizableFeedMappings() throws EdmException {
     return property.getCustomizableFeedMappings();
   }
 
+  /**
+   * Gets the mime type.
+   *
+   * @return the mime type
+   * @throws EdmException the edm exception
+   */
   @Override
   public String getMimeType() throws EdmException {
     return property.getMimeType();
   }
 
+  /**
+   * Gets the annotations.
+   *
+   * @return the annotations
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmAnnotations getAnnotations() throws EdmException {
     if (annotations == null) {

@@ -28,31 +28,76 @@ import javax.xml.transform.TransformerFactory;
 
 import org.apache.olingo.odata2.api.ep.EntityProviderException;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class XmlHelper.
+ */
 public class XmlHelper {
 
-  /** Default used charset for reader */
+  /**  Default used charset for reader. */
   private static final String DEFAULT_CHARSET = "UTF-8";
 
+  /**
+   * The Class XmlInputFactoryHolder.
+   */
   static class XmlInputFactoryHolder {
+    
+    /** The Constant INSTANCE. */
     private static final XMLInputFactory INSTANCE = XMLInputFactory.newInstance();
   }
+  
+  /**
+   * The Class XmlOutputFactoryHolder.
+   */
   static class XmlOutputFactoryHolder {
+    
+    /** The Constant INSTANCE. */
     private static final XMLOutputFactory INSTANCE = XMLOutputFactory.newInstance();
   }
+  
+  /**
+   * The Class TransformerFactoryHolder.
+   */
   static class TransformerFactoryHolder {
+    
+    /** The Constant INSTANCE. */
     private static final TransformerFactory INSTANCE = TransformerFactory.newInstance();
   }
 
+  /**
+   * Gets the XML input factory.
+   *
+   * @return the XML input factory
+   */
   public static XMLInputFactory getXMLInputFactory() {
     return XmlInputFactoryHolder.INSTANCE;
   }
+  
+  /**
+   * Gets the XML output factory.
+   *
+   * @return the XML output factory
+   */
   public static XMLOutputFactory getXMLOutputFactory() {
     return XmlOutputFactoryHolder.INSTANCE;
   }
+  
+  /**
+   * Gets the transformer factory.
+   *
+   * @return the transformer factory
+   */
   public static TransformerFactory getTransformerFactory() {
     return TransformerFactoryHolder.INSTANCE;
   }
 
+  /**
+   * Creates the stream reader.
+   *
+   * @param content the content
+   * @return the XML stream reader
+   * @throws EntityProviderException the entity provider exception
+   */
   public static XMLStreamReader createStreamReader(final Object content) throws EntityProviderException {
     if (content == null) {
       throw new EntityProviderException(EntityProviderException.ILLEGAL_ARGUMENT

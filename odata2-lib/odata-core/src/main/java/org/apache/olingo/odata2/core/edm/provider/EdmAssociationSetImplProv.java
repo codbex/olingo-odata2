@@ -29,12 +29,29 @@ import org.apache.olingo.odata2.api.edm.EdmException;
 import org.apache.olingo.odata2.api.edm.provider.AssociationSet;
 import org.apache.olingo.odata2.api.edm.provider.AssociationSetEnd;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EdmAssociationSetImplProv.
+ */
 public class EdmAssociationSetImplProv extends EdmNamedImplProv implements EdmAssociationSet, EdmAnnotatable {
 
+  /** The association set. */
   private AssociationSet associationSet;
+  
+  /** The edm entity container. */
   private EdmEntityContainer edmEntityContainer;
+  
+  /** The annotations. */
   private EdmAnnotations annotations;
 
+  /**
+   * Instantiates a new edm association set impl prov.
+   *
+   * @param edm the edm
+   * @param associationSet the association set
+   * @param edmEntityContainer the edm entity container
+   * @throws EdmException the edm exception
+   */
   public EdmAssociationSetImplProv(final EdmImplProv edm, final AssociationSet associationSet,
       final EdmEntityContainer edmEntityContainer) throws EdmException {
     super(edm, associationSet.getName());
@@ -42,6 +59,12 @@ public class EdmAssociationSetImplProv extends EdmNamedImplProv implements EdmAs
     this.edmEntityContainer = edmEntityContainer;
   }
 
+  /**
+   * Gets the association.
+   *
+   * @return the association
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmAssociation getAssociation() throws EdmException {
     EdmAssociation association =
@@ -52,6 +75,13 @@ public class EdmAssociationSetImplProv extends EdmNamedImplProv implements EdmAs
     return association;
   }
 
+  /**
+   * Gets the end.
+   *
+   * @param role the role
+   * @return the end
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmAssociationSetEnd getEnd(final String role) throws EdmException {
     AssociationSetEnd end;
@@ -72,11 +102,23 @@ public class EdmAssociationSetImplProv extends EdmNamedImplProv implements EdmAs
     return new EdmAssociationSetEndImplProv(end, entitySet);
   }
 
+  /**
+   * Gets the entity container.
+   *
+   * @return the entity container
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmEntityContainer getEntityContainer() throws EdmException {
     return edmEntityContainer;
   }
 
+  /**
+   * Gets the annotations.
+   *
+   * @return the annotations
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmAnnotations getAnnotations() throws EdmException {
     if (annotations == null) {

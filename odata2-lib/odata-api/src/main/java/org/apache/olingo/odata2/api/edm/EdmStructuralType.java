@@ -20,35 +20,37 @@ package org.apache.olingo.odata2.api.edm;
 
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
 /**
- * @org.apache.olingo.odata2.DoNotImplement
- * EdmStructuralType is the base for a complex type or an entity type.
+ * The Interface EdmStructuralType.
+ *
+ * @org.apache.olingo.odata2.DoNotImplement EdmStructuralType is the base for a complex type or an entity type.
  * <p>Complex types and entity types are described in the Conceptual Schema Definition of the OData protocol.
- * 
  */
 public interface EdmStructuralType extends EdmMappable, EdmType, EdmAnnotatable {
 
   /**
-   * Get property by name
-   * @param name
+   * Get property by name.
+   *
+   * @param name the name
    * @return simple or complex property as {@link EdmTyped}
-   * @throws EdmException
+   * @throws EdmException the edm exception
    */
   EdmTyped getProperty(String name) throws EdmException;
 
   /**
-   * Get all property names
-   * 
+   * Get all property names.
+   *
    * @return property names as type List<String>
-   * @throws EdmException
+   * @throws EdmException the edm exception
    */
   List<String> getPropertyNames() throws EdmException;
 
   /**
    * Base types are described in the OData protocol specification.
-   * 
+   *
    * @return {@link EdmStructuralType}
-   * @throws EdmException
+   * @throws EdmException the edm exception
    */
   EdmStructuralType getBaseType() throws EdmException;
 }

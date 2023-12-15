@@ -38,25 +38,42 @@ import org.apache.olingo.odata2.core.ep.util.FormatJson;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 
+// TODO: Auto-generated Javadoc
 /**
- *  This class Deserializes JsonFeed payloads
+ *  This class Deserializes JsonFeed payloads.
  */
 public class JsonFeedDeserializer {
 
+  /** The reader. */
   private JsonReader reader;
+  
+  /** The eia. */
   private EntityInfoAggregator eia;
+  
+  /** The read properties. */
   private DeserializerProperties readProperties;
+  
+  /** The deleted entries. */
   private List<DeletedEntryMetadata> deletedEntries = new ArrayList<DeletedEntryMetadata>();
+  
+  /** The entries. */
   private List<ODataEntry> entries = new ArrayList<ODataEntry>();
+  
+  /** The feed metadata. */
   private FeedMetadataImpl feedMetadata = new FeedMetadataImpl();
+  
+  /** The results array present. */
   private boolean resultsArrayPresent = false;
+  
+  /** The Constant JSONFEED. */
   private static final String JSONFEED = "JsonFeed";
 
   /**
-   * 
-   * @param reader
-   * @param eia
-   * @param readProperties
+   * Instantiates a new json feed deserializer.
+   *
+   * @param reader the reader
+   * @param eia the eia
+   * @param readProperties the read properties
    */
   public JsonFeedDeserializer(final JsonReader reader, final EntityInfoAggregator eia,
       final DeserializerProperties readProperties) {
@@ -66,9 +83,10 @@ public class JsonFeedDeserializer {
   }
 
   /**
-   * 
+   * Read feed standalone.
+   *
    * @return ODataDeltaFeed
-   * @throws EntityProviderException
+   * @throws EntityProviderException the entity provider exception
    */
   public ODataDeltaFeed readFeedStandalone() throws EntityProviderException {
     try {
@@ -94,10 +112,11 @@ public class JsonFeedDeserializer {
   }
 
   /**
-   * 
-   * @throws IOException
-   * @throws EdmException
-   * @throws EntityProviderException
+   * Read feed.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws EdmException the edm exception
+   * @throws EntityProviderException the entity provider exception
    */
   private void readFeed() throws IOException, EdmException, EntityProviderException {
     JsonToken peek = reader.peek();
@@ -124,10 +143,11 @@ public class JsonFeedDeserializer {
   }
 
   /**
-   * 
-   * @throws IOException
-   * @throws EdmException
-   * @throws EntityProviderException
+   * Read feed content.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws EdmException the edm exception
+   * @throws EntityProviderException the entity provider exception
    */
   private void readFeedContent() throws IOException, EdmException, EntityProviderException {
     while (reader.hasNext()) {
@@ -141,11 +161,12 @@ public class JsonFeedDeserializer {
   }
 
   /**
-   * 
-   * @param nextName
-   * @throws IOException
-   * @throws EdmException
-   * @throws EntityProviderException
+   * Handle name.
+   *
+   * @param nextName the next name
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws EdmException the edm exception
+   * @throws EntityProviderException the entity provider exception
    */
   private void handleName(final String nextName) throws IOException, EdmException, EntityProviderException {
     if (FormatJson.RESULTS.equals(nextName)) {
@@ -179,10 +200,11 @@ public class JsonFeedDeserializer {
   }
 
   /**
-   * 
-   * @throws IOException
-   * @throws EdmException
-   * @throws EntityProviderException
+   * Read array content.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws EdmException the edm exception
+   * @throws EntityProviderException the entity provider exception
    */
   private void readArrayContent() throws IOException, EdmException, EntityProviderException {
     reader.beginArray();
@@ -198,11 +220,12 @@ public class JsonFeedDeserializer {
   }
 
   /**
-   * 
-   * @param reader
-   * @param feedMetadata
-   * @throws IOException
-   * @throws EntityProviderException
+   * Read inline count.
+   *
+   * @param reader the reader
+   * @param feedMetadata the feed metadata
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws EntityProviderException the entity provider exception
    */
   protected static void readInlineCount(final JsonReader reader, final FeedMetadataImpl feedMetadata)
       throws IOException, EntityProviderException {
@@ -224,12 +247,13 @@ public class JsonFeedDeserializer {
   }
 
   /**
-   * 
-   * @param name
+   * Read started inline feed.
+   *
+   * @param name the name
    * @return ODataFeed
-   * @throws EdmException
-   * @throws EntityProviderException
-   * @throws IOException
+   * @throws EdmException the edm exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   protected ODataFeed readStartedInlineFeed(final String name) throws EdmException, EntityProviderException,
       IOException {
@@ -241,11 +265,12 @@ public class JsonFeedDeserializer {
   }
 
   /**
-   * 
+   * Read inline feed standalone.
+   *
    * @return ODataFeed
-   * @throws EdmException
-   * @throws EntityProviderException
-   * @throws IOException
+   * @throws EdmException the edm exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   protected ODataFeed readInlineFeedStandalone() throws EdmException, EntityProviderException, IOException {
     readFeed();

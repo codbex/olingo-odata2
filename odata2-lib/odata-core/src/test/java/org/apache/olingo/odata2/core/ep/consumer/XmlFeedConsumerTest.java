@@ -41,12 +41,26 @@ import org.apache.olingo.odata2.api.uri.ExpandSelectTreeNode;
 import org.apache.olingo.odata2.testutil.mock.MockFacade;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class XmlFeedConsumerTest.
+ */
 public class XmlFeedConsumerTest extends AbstractXmlConsumerTest {
 
+  /**
+   * Instantiates a new xml feed consumer test.
+   *
+   * @param type the type
+   */
   public XmlFeedConsumerTest(final StreamWriterImplType type) {
     super(type);
   }
 
+  /**
+   * Rooms feed with etag entries.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void roomsFeedWithEtagEntries() throws Exception {
     InputStream stream = getFileAsStream("feed_rooms_small.xml");
@@ -71,6 +85,11 @@ public class XmlFeedConsumerTest extends AbstractXmlConsumerTest {
     assertEquals("W/\"1\"", roomMetadata.getEtag());
   }
 
+  /**
+   * Read large employees feed.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readLargeEmployeesFeed() throws Exception {
     InputStream file = getFileAsStream("LargeEmployeeFeed.xml");
@@ -86,6 +105,11 @@ public class XmlFeedConsumerTest extends AbstractXmlConsumerTest {
     assertNotNull(feedMetadata);
   }
 
+  /**
+   * Read employees feed with inline count valid.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readEmployeesFeedWithInlineCountValid() throws Exception {
     // prepare
@@ -113,6 +137,11 @@ public class XmlFeedConsumerTest extends AbstractXmlConsumerTest {
     assertEquals(6, inlineCount);
   }
 
+  /**
+   * Read employees feed with inline count negative.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void readEmployeesFeedWithInlineCountNegative() throws Exception {
     // prepare
@@ -137,6 +166,11 @@ public class XmlFeedConsumerTest extends AbstractXmlConsumerTest {
     Assert.fail("Exception expected");
   }
 
+  /**
+   * Read employees feed with inline count letters.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void readEmployeesFeedWithInlineCountLetters() throws Exception {
     // prepare
@@ -161,6 +195,11 @@ public class XmlFeedConsumerTest extends AbstractXmlConsumerTest {
     Assert.fail("Exception expected");
   }
 
+  /**
+   * Read delta feed.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readDeltaFeed() throws Exception {
     // prepare
@@ -183,11 +222,13 @@ public class XmlFeedConsumerTest extends AbstractXmlConsumerTest {
     assertEquals(1, deltaFeed.getEntries().size());
     assertEquals(1, deltaFeed.getDeletedEntries().size());
   }
+  
   /**
    * Room has an Inline Feed Employees and Employee has an inline Entry Team
    * E.g: Rooms?$expand=nr_Employees/ne_Team
    * Empty Inline entity is also part of payload
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test
   public void roomsFeedWithRoomInlineEmployeesWithTeams() throws Exception {
@@ -219,7 +260,8 @@ public class XmlFeedConsumerTest extends AbstractXmlConsumerTest {
   /**
    * Rooms has an inline feed Employees and Rooms has Inline entry Buildings
    * E.g: Rooms?$expand=nr_Employees,nr_Building
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test
   public void roomsFeedWithRoomInlineEmployeesInlineBuildings() throws Exception {
@@ -251,7 +293,8 @@ public class XmlFeedConsumerTest extends AbstractXmlConsumerTest {
   /**
    * Rooms navigate to Employees and has inline entry Teams
    * E.g: Rooms('1')/nr_Employees?$expand=ne_Team
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test
   public void roomsFeedWithRoomsToEmployeesInlineTeams() throws Exception {
@@ -278,9 +321,11 @@ public class XmlFeedConsumerTest extends AbstractXmlConsumerTest {
   }
   
   /**
-   * @param inlineEntries
-   * @param feed
-   * @param entry
+   * Gets the expanded data.
+   *
+   * @param inlineEntries the inline entries
+   * @param entry the entry
+   * @return the expanded data
    */
   private void getExpandedData(Map<String, Object> inlineEntries, ODataEntry entry) {
     assertNotNull(entry);
@@ -304,9 +349,11 @@ public class XmlFeedConsumerTest extends AbstractXmlConsumerTest {
   }
   
   /**
-   * @param inlineEntries
-   * @param feed
-   * @param entry
+   * Gets the expanded data.
+   *
+   * @param inlineEntries the inline entries
+   * @param feed the feed
+   * @return the expanded data
    */
   private void getExpandedData(Map<String, Object> inlineEntries, ODataFeed feed) {
     assertNotNull(feed.getEntries());

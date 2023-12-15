@@ -47,15 +47,27 @@ import org.apache.olingo.odata2.testutil.helper.StringHelper;
 import org.apache.olingo.odata2.testutil.mock.MockFacade;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class JsonFeedEntitySerializerTest.
  */
 public class JsonFeedEntitySerializerTest extends BaseTest { 
+  
+  /** The Constant BASE_URI. */
   protected static final String BASE_URI = "http://host:80/service/";
+  
+  /** The Constant DEFAULT_PROPERTIES. */
   protected static final EntitySerializerProperties DEFAULT_PROPERTIES =
       EntitySerializerProperties.serviceRoot(URI.create(BASE_URI)).build();
+  
+  /** The Constant ERROR_MSG. */
   protected static final String ERROR_MSG = "Entity or expanded entity cannot have null value.";
 
+  /**
+   * Unbalanced property entry with inline feed.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void unbalancedPropertyEntryWithInlineFeed() throws Exception {
     Edm edm = MockFacade.getMockEdm();
@@ -99,6 +111,11 @@ public class JsonFeedEntitySerializerTest extends BaseTest {
         + "{\"EmployeeId\":\"1\",\"RoomId\":\"1\"}]}", json);
   }
   
+  /**
+   * Unbalanced property entry with inline feed with properties in parent.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void unbalancedPropertyEntryWithInlineFeedWithPropertiesInParent() throws Exception {
     Edm edm = MockFacade.getMockEdm();
@@ -140,6 +157,11 @@ public class JsonFeedEntitySerializerTest extends BaseTest {
         + "{\"EmployeeId\":\"1\",\"RoomId\":\"1\"}]}", json);
   }
   
+  /**
+   * Unbalanced property entry with empty inline feed.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void unbalancedPropertyEntryWithEmptyInlineFeed() throws Exception {
     Edm edm = MockFacade.getMockEdm();
@@ -167,6 +189,11 @@ public class JsonFeedEntitySerializerTest extends BaseTest {
         + "[]}", json);
   }
   
+  /**
+   * Unbalanced property entry with partial empty inline feed.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void unbalancedPropertyEntryWithPartialEmptyInlineFeed() throws Exception {
     Edm edm = MockFacade.getMockEdm();
@@ -203,6 +230,11 @@ public class JsonFeedEntitySerializerTest extends BaseTest {
         + "[{\"EmployeeId\":\"1\",\"EmployeeName\":\"EmpName1\",\"RoomId\":\"1\"},{}]}", json);
   }
   
+  /**
+   * Entry with expanded feed but empty entity collection.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entryWithExpandedFeedButEmptyEntityCollection() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Buildings");
@@ -222,6 +254,11 @@ public class JsonFeedEntitySerializerTest extends BaseTest {
     assertEquals("{\"Id\":\"1\",\"nb_Rooms\":[{}]}", json);
   }
 
+  /**
+   * Entry with expanded feed but null entity collection.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entryWithExpandedFeedButNullEntityCollection() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Buildings");
@@ -240,6 +277,11 @@ public class JsonFeedEntitySerializerTest extends BaseTest {
     }
   }
   
+  /**
+   * Unbalanced property entry with null inline feed.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void unbalancedPropertyEntryWithNullInlineFeed() throws Exception {
     Edm edm = MockFacade.getMockEdm();
@@ -265,6 +307,11 @@ public class JsonFeedEntitySerializerTest extends BaseTest {
     }
   }
   
+  /**
+   * Entry with expanded entry with write properties on collection.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entryWithExpandedEntryWithWritePropertiesOnCollection() throws Exception {
     Edm edm = MockFacade.getMockEdm();
@@ -294,6 +341,11 @@ public class JsonFeedEntitySerializerTest extends BaseTest {
         json);
   }
   
+  /**
+   * Entry with expanded entry with global write properties on collection.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entryWithExpandedEntryWithGlobalWritePropertiesOnCollection() throws Exception {
     Edm edm = MockFacade.getMockEdm();
@@ -325,6 +377,11 @@ public class JsonFeedEntitySerializerTest extends BaseTest {
         json);
   }
   
+  /**
+   * Entry with expanded entry without key with global write properties on collection.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entryWithExpandedEntryWithoutKeyWithGlobalWritePropertiesOnCollection() throws Exception {
     Edm edm = MockFacade.getMockEdm();
@@ -360,6 +417,13 @@ public class JsonFeedEntitySerializerTest extends BaseTest {
         json);
   }
   
+  /**
+   * Verify response.
+   *
+   * @param response the response
+   * @return the string
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private String verifyResponse(final ODataResponse response) throws IOException {
     assertNotNull(response);
     assertNotNull(response.getEntity());
@@ -370,6 +434,11 @@ public class JsonFeedEntitySerializerTest extends BaseTest {
     return json;
   }
   
+  /**
+   * Unbalanced property entry with inline feed without key.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void unbalancedPropertyEntryWithInlineFeedWithoutKey() throws Exception {
     Edm edm = MockFacade.getMockEdm();
@@ -411,6 +480,11 @@ public class JsonFeedEntitySerializerTest extends BaseTest {
         + "{\"RoomId\":\"1\"}]}", json);
   }
   
+  /**
+   * Unbalanced property entry without key with inline feed.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void unbalancedPropertyEntryWithoutKeyWithInlineFeed() throws Exception {
     Edm edm = MockFacade.getMockEdm();
@@ -450,6 +524,11 @@ public class JsonFeedEntitySerializerTest extends BaseTest {
         json);
   }
   
+  /**
+   * Unbalanced property entry without key with empty inline feed including metadata.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected=EntityProviderException.class)
   public void unbalancedPropertyEntryWithoutKeyWithEmptyInlineFeedIncludingMetadata() throws Exception {
     Edm edm = MockFacade.getMockEdm();
@@ -471,6 +550,11 @@ public class JsonFeedEntitySerializerTest extends BaseTest {
     new JsonSerializerDeserializer().writeEntry(entitySet, roomData);
   }
   
+  /**
+   * Unbalanced property entry without key with null inline feed.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void unbalancedPropertyEntryWithoutKeyWithNullInlineFeed() throws Exception {
     Edm edm = MockFacade.getMockEdm();
@@ -495,6 +579,11 @@ public class JsonFeedEntitySerializerTest extends BaseTest {
     }
   }
   
+  /**
+   * Feed.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void feed() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -520,6 +609,11 @@ public class JsonFeedEntitySerializerTest extends BaseTest {
         json);
   }
   
+  /**
+   * Feed with empty data.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void feedWithEmptyData() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -543,6 +637,11 @@ public class JsonFeedEntitySerializerTest extends BaseTest {
         json);
   }
   
+  /**
+   * Feed with null data.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void feedWithNullData() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -554,6 +653,11 @@ public class JsonFeedEntitySerializerTest extends BaseTest {
     }
   }
   
+  /**
+   * Feed with metadata.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void feedWithMetadata() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -584,6 +688,11 @@ public class JsonFeedEntitySerializerTest extends BaseTest {
         json);
   }
   
+  /**
+   * Feed with global entity properties.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void feedWithGlobalEntityProperties() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -616,6 +725,11 @@ public class JsonFeedEntitySerializerTest extends BaseTest {
         json);
   }
   
+  /**
+   * Feed with properties for every entry.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void feedWithPropertiesForEveryEntry() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -650,6 +764,11 @@ public class JsonFeedEntitySerializerTest extends BaseTest {
         json);
   }
   
+  /**
+   * Unbalanced property feed with inline feed.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void unbalancedPropertyFeedWithInlineFeed() throws Exception {
     Edm edm = MockFacade.getMockEdm();
@@ -719,6 +838,11 @@ public class JsonFeedEntitySerializerTest extends BaseTest {
         + "{\"EmployeeId\":\"2\",\"RoomId\":\"2\"}]}]}", json);
   }
   
+  /**
+   * Unbalanced property feed with inline feed and navigation link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void unbalancedPropertyFeedWithInlineFeedAndNavigationLink() throws Exception {
     Edm edm = MockFacade.getMockEdm();
@@ -796,6 +920,11 @@ public class JsonFeedEntitySerializerTest extends BaseTest {
         + "{\"uri\":\"http://host:80/service/Buildings('2')\"}}}]}", json);
   }
   
+  /**
+   * Unbalanced property feed with inline entry and navigation link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void unbalancedPropertyFeedWithInlineEntryAndNavigationLink() throws Exception {
     Edm edm = MockFacade.getMockEdm();
@@ -845,6 +974,11 @@ public class JsonFeedEntitySerializerTest extends BaseTest {
         + "{\"Id\":\"2\",\"Name\":\"Team2\"}}]}", json);
   }
   
+  /**
+   * Unbalanced property feed with inline feed and navigation link without keys.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void unbalancedPropertyFeedWithInlineFeedAndNavigationLinkWithoutKeys() throws Exception {
     Edm edm = MockFacade.getMockEdm();

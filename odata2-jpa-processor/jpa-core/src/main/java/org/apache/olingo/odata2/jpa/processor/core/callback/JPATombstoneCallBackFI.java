@@ -23,13 +23,31 @@ import org.apache.olingo.odata2.api.ep.callback.TombstoneCallback;
 import org.apache.olingo.odata2.api.ep.callback.TombstoneCallbackResult;
 import org.apache.olingo.odata2.api.uri.info.GetFunctionImportUriInfo;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPATombstoneCallBackFI.
+ */
 public class JPATombstoneCallBackFI implements TombstoneCallback {
 
+  /** The Constant DELTA_TOKEN_STRING. */
   private static final String DELTA_TOKEN_STRING = "?!deltatoken=";
+  
+  /** The base uri. */
   private String baseUri;
+  
+  /** The delta token value. */
   private String deltaTokenValue;
+  
+  /** The results view. */
   private GetFunctionImportUriInfo resultsView;
 
+  /**
+   * Instantiates a new JPA tombstone call back FI.
+   *
+   * @param baseUri the base uri
+   * @param resultsView the results view
+   * @param deltaTokenValue the delta token value
+   */
   public JPATombstoneCallBackFI(final String baseUri, final GetFunctionImportUriInfo resultsView,
       final String deltaTokenValue) {
     this.baseUri = baseUri;
@@ -37,6 +55,11 @@ public class JPATombstoneCallBackFI implements TombstoneCallback {
     this.resultsView = resultsView;
   }
 
+  /**
+   * Gets the tombstone callback result.
+   *
+   * @return the tombstone callback result
+   */
   @Override
   public TombstoneCallbackResult getTombstoneCallbackResult() {
     TombstoneCallbackResult jpaTombstoneCallBackResult = new TombstoneCallbackResult();
@@ -45,6 +68,11 @@ public class JPATombstoneCallBackFI implements TombstoneCallback {
     return jpaTombstoneCallBackResult;
   }
 
+  /**
+   * Builds the token.
+   *
+   * @return the string
+   */
   private String buildToken() {
     StringBuilder tokenBuilder = new StringBuilder();
     if (baseUri != null) {

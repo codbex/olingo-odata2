@@ -24,6 +24,7 @@ import java.sql.Clob;
 import org.apache.olingo.odata2.api.ODataCallback;
 import org.apache.olingo.odata2.jpa.processor.api.exception.ODataJPARuntimeException;
 
+// TODO: Auto-generated Javadoc
 /**
  * <p> The interface is a call back interface that enables OData JPA Processor to get JPA provider specific
  * implementation
@@ -39,16 +40,20 @@ public interface OnJPAWriteContent extends ODataCallback {
   /**
    * Implement this method to instantiate JPA provider specific implementation of java.sql.Blob instance from an array
    * of bytes.
+   *
    * @param binaryData is an array of bytes
    * @return an instance of type {@link java.sql.Blob}
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
    */
   public Blob getJPABlob(byte[] binaryData) throws ODataJPARuntimeException;
 
   /**
    * Implement this method to instantiate JPA provider specific implementation of java.sql.Clob instance from an array
    * of characters.
+   *
    * @param characterData is an array of characters
    * @return an instance of type {@link java.sql.Clob}
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
    */
   public Clob getJPAClob(char[] characterData) throws ODataJPARuntimeException;
 }

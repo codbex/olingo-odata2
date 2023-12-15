@@ -36,31 +36,84 @@ import org.apache.olingo.odata2.jpa.processor.core.mock.data.JPATypeMock.JPAType
 import org.apache.olingo.odata2.jpa.processor.core.mock.data.JPATypeMock.JPATypeEmbeddableMock2;
 import org.easymock.EasyMock;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ODataEntryMockUtil.
+ */
 public class ODataEntryMockUtil {
 
+  /** The Constant VALUE_MINT. */
   public static final int VALUE_MINT = 20;
+  
+  /** The value date time. */
   public static Calendar VALUE_DATE_TIME = null;
+  
+  /** The value blob. */
   public static byte[] VALUE_BLOB = null;
+  
+  /** The Constant VALUE_CLOB. */
   public static final String VALUE_CLOB = "ABC";
+  
+  /** The Constant VALUE_C. */
   public static final String VALUE_C = "D";
+  
+  /** The Constant VALUE_CARRAY. */
   public static final String VALUE_CARRAY = "EFG";
+  
+  /** The Constant VALUE_CHAR. */
   public static final String VALUE_CHAR = "I";
+  
+  /** The Constant VALUE_CHARARRAY. */
   public static final String VALUE_CHARARRAY = "LMN";
+  
+  /** The Constant VALUE_MSTRING. */
   public static final String VALUE_MSTRING = "Mock";
+  
+  /** The Constant VALUE_XMLADAPTER. */
   public static final String VALUE_XMLADAPTER = "DOES-NOT-MATTER";
+  
+  /** The Constant VALUE_MLONG. */
   public static final long VALUE_MLONG = 1234567890L;
+  
+  /** The Constant VALUE_MDOUBLE. */
   public static final double VALUE_MDOUBLE = 20.12;
+  
+  /** The Constant VALUE_MBYTE. */
   public static final byte VALUE_MBYTE = 0XA;
+  
+  /** The Constant VALUE_MBYTEARRAY. */
   public static final byte[] VALUE_MBYTEARRAY = new byte[] { 0XA, 0XB };
+  
+  /** The Constant VALUE_MFLOAT. */
   public static final float VALUE_MFLOAT = 2.00F;
+  
+  /** The Constant VALUE_UUID. */
   public static final UUID VALUE_UUID = UUID.fromString("38400000-8cf0-11bd-b23e-10b96e4ef00d");
+  
+  /** The Constant VALUE_SHORT. */
   public static final Short VALUE_SHORT = 2;
+  
+  /** The Constant VALUE_ENUM. */
   public static final JPATypeMock.JPATypeMockEnum VALUE_ENUM = JPATypeMock.JPATypeMockEnum.VALUE;
+  
+  /** The value date. */
   public static java.util.Date VALUE_DATE = null;
+  
+  /** The value date1. */
   public static java.sql.Date VALUE_DATE1 = null;
+  
+  /** The value time. */
   public static Time VALUE_TIME = null;
+  
+  /** The value timestamp. */
   public static Timestamp VALUE_TIMESTAMP = null;
 
+  /**
+   * Mock O data entry.
+   *
+   * @param entityName the entity name
+   * @return the o data entry
+   */
   public static ODataEntry mockODataEntry(final String entityName) {
     ODataEntry oDataEntry = EasyMock.createMock(ODataEntry.class);
     EasyMock.expect(oDataEntry.getProperties()).andReturn(mockODataEntryProperties(entityName)).anyTimes();
@@ -70,6 +123,12 @@ public class ODataEntryMockUtil {
     return oDataEntry;
   }
   
+  /**
+   * Mock O data entry with null value.
+   *
+   * @param entityName the entity name
+   * @return the o data entry
+   */
   public static ODataEntry mockODataEntryWithNullValue(final String entityName) {
     ODataEntry oDataEntry = EasyMock.createMock(ODataEntry.class);
     Map<String, Object> propertiesMap = mockODataEntryProperties(entityName);
@@ -90,6 +149,12 @@ public class ODataEntryMockUtil {
     return oDataEntry;
   }
 
+  /**
+   * Mock O data entry with complex type.
+   *
+   * @param entityName the entity name
+   * @return the o data entry
+   */
   public static ODataEntry mockODataEntryWithComplexType(final String entityName) {
     ODataEntry oDataEntry = EasyMock.createMock(ODataEntry.class);
     EasyMock.expect(oDataEntry.getProperties()).andReturn(mockODataEntryPropertiesWithComplexType(entityName))
@@ -100,6 +165,12 @@ public class ODataEntryMockUtil {
     return oDataEntry;
   }
   
+  /**
+   * Mock O data entry with complex type with null value.
+   *
+   * @param entityName the entity name
+   * @return the o data entry
+   */
   @SuppressWarnings("unchecked")
   public static ODataEntry mockODataEntryWithComplexTypeWithNullValue(final String entityName) {
     ODataEntry oDataEntry = EasyMock.createMock(ODataEntry.class);
@@ -124,6 +195,12 @@ public class ODataEntryMockUtil {
     return oDataEntry;
   }
 
+  /**
+   * Mock O data entry properties.
+   *
+   * @param entityName the entity name
+   * @return the map
+   */
   public static Map<String, Object> mockODataEntryProperties(final String entityName) {
     Map<String, Object> propertyMap = new HashMap<String, Object>();
 
@@ -170,6 +247,12 @@ public class ODataEntryMockUtil {
     return propertyMap;
   }
 
+  /**
+   * Mock O data entry properties with complex type.
+   *
+   * @param entityName the entity name
+   * @return the map
+   */
   public static Map<String, Object> mockODataEntryPropertiesWithComplexType(final String entityName) {
     Map<String, Object> propertyMap = mockODataEntryProperties(entityName);
     propertyMap
@@ -177,6 +260,12 @@ public class ODataEntryMockUtil {
     return propertyMap;
   }
 
+  /**
+   * Mock O data entry properties with inline.
+   *
+   * @param entityName the entity name
+   * @return the map
+   */
   public static Map<String, Object> mockODataEntryPropertiesWithInline(final String entityName) {
     Map<String, Object> propertyMap = mockODataEntryProperties(entityName);
     List<ODataEntry> relatedEntries = new ArrayList<ODataEntry>();
@@ -190,6 +279,12 @@ public class ODataEntryMockUtil {
 
   }
 
+  /**
+   * Mock O data entry with inline.
+   *
+   * @param entityName the entity name
+   * @return the o data entry
+   */
   public static ODataEntry mockODataEntryWithInline(final String entityName) {
     ODataEntry oDataEntry = EasyMock.createMock(ODataEntry.class);
     EasyMock.expect(oDataEntry.getProperties()).andReturn(mockODataEntryPropertiesWithInline(entityName)).anyTimes();
@@ -205,6 +300,13 @@ public class ODataEntryMockUtil {
     return oDataEntry;
   }
 
+  /**
+   * Enhance mock O data entry.
+   *
+   * @param oDataEntry the o data entry
+   * @param hasInline the has inline
+   * @param associationURIs the association UR is
+   */
   private static void
       enhanceMockODataEntry(final ODataEntry oDataEntry, final boolean hasInline, final List<String> associationURIs) {
     EasyMock.expect(oDataEntry.containsInlineEntry()).andReturn(hasInline).anyTimes();

@@ -31,45 +31,87 @@ import org.apache.olingo.odata2.api.annotation.edm.EdmNavigationProperty.Multipl
 import org.apache.olingo.odata2.api.annotation.edm.EdmProperty;
 import org.apache.olingo.odata2.api.annotation.edm.EdmType;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class Building.
  */
 @EdmEntityType(name = "Building", namespace = ModelSharedConstants.NAMESPACE_1)
 @EdmEntitySet(name = "Buildings")
 public class Building {
+  
+  /** The id. */
   @EdmKey
   @EdmProperty(type = EdmType.INT32, facets = @EdmFacets(nullable = false))
   private String id;
+  
+  /** The name. */
   @EdmProperty
   private String name;
+  
+  /** The image. */
   @EdmProperty(name = "Image", type = EdmType.BINARY)
   private byte[] image;
+  
+  /** The rooms. */
   @EdmNavigationProperty(name = "nb_Rooms", toType = Room.class,
       association = "BuildingRooms", toMultiplicity = Multiplicity.MANY)
   private List<Room> rooms = new ArrayList<Room>();
 
+  /**
+   * Instantiates a new building.
+   */
   public Building() {}
 
+  /**
+   * Gets the id.
+   *
+   * @return the id
+   */
   public String getId() {
     return id;
   }
 
+  /**
+   * Sets the id.
+   *
+   * @param id the new id
+   */
   public void setId(final String id) {
     this.id = id;
   }
 
+  /**
+   * Sets the name.
+   *
+   * @param name the new name
+   */
   public void setName(final String name) {
     this.name = name;
   }
 
+  /**
+   * Gets the name.
+   *
+   * @return the name
+   */
   public String getName() {
     return name;
   }
 
+  /**
+   * Sets the image.
+   *
+   * @param byteArray the new image
+   */
   public void setImage(final byte[] byteArray) {
     image = byteArray;
   }
 
+  /**
+   * Gets the image.
+   *
+   * @return the image
+   */
   public byte[] getImage() {
     if (image == null) {
       return null;
@@ -78,21 +120,42 @@ public class Building {
     }
   }
 
+  /**
+   * Gets the rooms.
+   *
+   * @return the rooms
+   */
   public List<Room> getRooms() {
     return rooms;
   }
 
+  /**
+   * Hash code.
+   *
+   * @return the int
+   */
   @Override
   public int hashCode() {
     return id == null ? 0 : id.hashCode();
   }
 
+  /**
+   * Equals.
+   *
+   * @param obj the obj
+   * @return true, if successful
+   */
   @Override
   public boolean equals(final Object obj) {
     return this == obj
         || obj != null && getClass() == obj.getClass() && id == ((Building) obj).id;
   }
 
+  /**
+   * To string.
+   *
+   * @return the string
+   */
   @Override
   public String toString() {
     return "{\"Id\":\"" + id + "\",\"Name\":\"" + name + "\",\"Image\":\"" + Arrays.toString(image) + "\"}";

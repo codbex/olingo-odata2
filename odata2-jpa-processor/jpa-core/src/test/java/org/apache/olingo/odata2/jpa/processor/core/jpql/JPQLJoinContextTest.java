@@ -52,16 +52,36 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPQLJoinContextTest.
+ */
 public class JPQLJoinContextTest {
 
+  /** The entity set uri info. */
   GetEntitySetUriInfo entitySetUriInfo;
 
+  /**
+   * Sets the up before class.
+   *
+   * @throws Exception the exception
+   */
   @BeforeClass
   public static void setUpBeforeClass() throws Exception {}
 
+  /**
+   * Tear down after class.
+   *
+   * @throws Exception the exception
+   */
   @AfterClass
   public static void tearDownAfterClass() throws Exception {}
 
+  /**
+   * Sets the up.
+   *
+   * @throws Exception the exception
+   */
   @Before
   public void setUp() throws Exception {
     entitySetUriInfo = EasyMock.createMock(GetEntitySetUriInfo.class);
@@ -132,9 +152,17 @@ public class JPQLJoinContextTest {
 
   }
 
+  /**
+   * Tear down.
+   *
+   * @throws Exception the exception
+   */
   @After
   public void tearDown() throws Exception {}
 
+  /**
+   * Test get JPA outer join clauses.
+   */
   @Test
   public void testGetJPAOuterJoinClauses() {
     JPQLJoinSelectContext joinContext = new JPQLJoinSelectContext(false);
@@ -156,6 +184,13 @@ public class JPQLJoinContextTest {
     assertEquals("R1", joinClauses.get(1).getEntityRelationShipAlias());
   }
 
+  /**
+   * Creates the navigation property.
+   *
+   * @param z the z
+   * @return the edm navigation property
+   * @throws EdmException the edm exception
+   */
   private EdmNavigationProperty createNavigationProperty(final String z) throws EdmException {
     EdmNavigationProperty navigationProperty = EasyMock.createMock(EdmNavigationProperty.class);
     EdmAssociation association = EasyMock.createMock(EdmAssociation.class);
@@ -180,6 +215,12 @@ public class JPQLJoinContextTest {
     return navigationProperty;
   }
 
+  /**
+   * Creates the key predicates.
+   *
+   * @return the list
+   * @throws EdmException the edm exception
+   */
   private List<KeyPredicate> createKeyPredicates() throws EdmException {
     KeyPredicate keyPredicate = EasyMock.createMock(KeyPredicate.class);
     EasyMock.expect(keyPredicate.getLiteral()).andStubReturn("1");

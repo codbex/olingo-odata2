@@ -60,8 +60,17 @@ import jakarta.persistence.SynchronizationType;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.metamodel.Metamodel;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPQLBuilderFactoryTest.
+ */
 public class JPQLBuilderFactoryTest {
 
+    /**
+     * Test get statement builder factoryfor select.
+     *
+     * @throws ODataException the o data exception
+     */
     @Test
     public void testGetStatementBuilderFactoryforSelect() throws ODataException {
 
@@ -77,6 +86,11 @@ public class JPQLBuilderFactoryTest {
 
     }
 
+    /**
+     * Test get statement builder factoryfor select single.
+     *
+     * @throws ODataException the o data exception
+     */
     @Test
     public void testGetStatementBuilderFactoryforSelectSingle() throws ODataException {
 
@@ -92,6 +106,11 @@ public class JPQLBuilderFactoryTest {
 
     }
 
+    /**
+     * Test get statement builder factoryfor join select.
+     *
+     * @throws ODataException the o data exception
+     */
     @Test
     public void testGetStatementBuilderFactoryforJoinSelect() throws ODataException {
 
@@ -107,6 +126,11 @@ public class JPQLBuilderFactoryTest {
 
     }
 
+    /**
+     * Test get statement builder factoryfor join select single.
+     *
+     * @throws ODataException the o data exception
+     */
     @Test
     public void testGetStatementBuilderFactoryforJoinSelectSingle() throws ODataException {
 
@@ -122,6 +146,11 @@ public class JPQLBuilderFactoryTest {
 
     }
 
+    /**
+     * Test get context builderfor delete.
+     *
+     * @throws ODataException the o data exception
+     */
     @Test
     public void testGetContextBuilderforDelete() throws ODataException {
 
@@ -133,6 +162,11 @@ public class JPQLBuilderFactoryTest {
 
     }
 
+    /**
+     * Test get context builderfor select.
+     *
+     * @throws ODataException the o data exception
+     */
     @Test
     public void testGetContextBuilderforSelect() throws ODataException {
 
@@ -145,6 +179,11 @@ public class JPQLBuilderFactoryTest {
 
     }
 
+    /**
+     * Test get context builderfor select single.
+     *
+     * @throws ODataException the o data exception
+     */
     @Test
     public void testGetContextBuilderforSelectSingle() throws ODataException {
 
@@ -157,6 +196,12 @@ public class JPQLBuilderFactoryTest {
 
     }
 
+    /**
+     * Gets the uri info.
+     *
+     * @return the uri info
+     * @throws EdmException the edm exception
+     */
     private GetEntitySetUriInfo getUriInfo() throws EdmException {
         GetEntitySetUriInfo getEntitySetView = EasyMock.createMock(GetEntitySetUriInfo.class);
         EdmEntitySet edmEntitySet = EasyMock.createMock(EdmEntitySet.class);
@@ -225,6 +270,12 @@ public class JPQLBuilderFactoryTest {
         return getEntitySetView;
     }
 
+    /**
+     * Gets the entity uri info.
+     *
+     * @return the entity uri info
+     * @throws EdmException the edm exception
+     */
     private GetEntityUriInfo getEntityUriInfo() throws EdmException {
         GetEntityUriInfo getEntityView = EasyMock.createMock(GetEntityUriInfo.class);
         EdmEntitySet edmEntitySet = EasyMock.createMock(EdmEntitySet.class);
@@ -262,6 +313,9 @@ public class JPQLBuilderFactoryTest {
         return getEntityView;
     }
 
+    /**
+     * Test JPA access factory.
+     */
     @Test
     public void testJPAAccessFactory() {
         ODataJPAFactoryImpl oDataJPAFactoryImpl = new ODataJPAFactoryImpl();
@@ -290,6 +344,9 @@ public class JPQLBuilderFactoryTest {
     }
 
 
+    /**
+     * Test JPA access factory entity manager only.
+     */
     @Ignore("easymock doesn't respect the times section")
     @Test
     public void testJPAAccessFactoryEntityManagerOnly() {
@@ -313,6 +370,9 @@ public class JPQLBuilderFactoryTest {
         assertNotNull(jpaAccessFactory.getJPAEdmModelView(oDataJPAContextImpl));
     }
 
+    /**
+     * Test odata jpa access factory.
+     */
     @Ignore("easymock doesn't respect the times section")
     @Test
     public void testOdataJpaAccessFactory() {
@@ -340,6 +400,9 @@ public class JPQLBuilderFactoryTest {
         assertNotNull(jpaAccessFactory.createODataProcessor(oDataJPAContextImpl));
     }
 
+    /**
+     * Test odata jpa access factory entity manager only.
+     */
     @Test
     public void testOdataJpaAccessFactoryEntityManagerOnly() {
         ODataJPAFactoryImpl oDataJPAFactoryImpl = new ODataJPAFactoryImpl();
@@ -365,80 +428,166 @@ public class JPQLBuilderFactoryTest {
         assertNotNull(jpaAccessFactory.createODataProcessor(oDataJPAContextImpl));
     }
 
+    /**
+     * A factory for creating TestEntityManager objects.
+     */
     private static class TestEntityManagerFactory implements EntityManagerFactory {
 
+        /** The em. */
         private final EntityManager em;
 
+        /**
+         * Instantiates a new test entity manager factory.
+         *
+         * @param entityManager the entity manager
+         */
         public TestEntityManagerFactory(EntityManager entityManager) {
             em = entityManager;
         }
 
+        /**
+         * Checks if is open.
+         *
+         * @return true, if is open
+         */
         @Override
         public boolean isOpen() {
             return false;
         }
 
+        /**
+         * Gets the properties.
+         *
+         * @return the properties
+         */
         @Override
         public Map<String, Object> getProperties() {
             return null;
         }
 
+        /**
+         * Gets the persistence unit util.
+         *
+         * @return the persistence unit util
+         */
         @Override
         public PersistenceUnitUtil getPersistenceUnitUtil() {
             return null;
         }
 
+        /**
+         * Adds the named query.
+         *
+         * @param s the s
+         * @param query the query
+         */
         @Override
         public void addNamedQuery(String s, Query query) {
 
         }
 
+        /**
+         * Unwrap.
+         *
+         * @param <T> the generic type
+         * @param aClass the a class
+         * @return the t
+         */
         @Override
         public <T> T unwrap(Class<T> aClass) {
             return null;
         }
 
+        /**
+         * Adds the named entity graph.
+         *
+         * @param <T> the generic type
+         * @param s the s
+         * @param entityGraph the entity graph
+         */
         @Override
         public <T> void addNamedEntityGraph(String s, EntityGraph<T> entityGraph) {
 
         }
 
+        /**
+         * Gets the metamodel.
+         *
+         * @return the metamodel
+         */
         @Override
         public Metamodel getMetamodel() {
             return null;
         }
 
+        /**
+         * Gets the criteria builder.
+         *
+         * @return the criteria builder
+         */
         @Override
         public CriteriaBuilder getCriteriaBuilder() {
             return null;
         }
 
+        /**
+         * Gets the cache.
+         *
+         * @return the cache
+         */
         @Override
         public Cache getCache() {
             return null;
         }
 
+        /**
+         * Creates a new TestEntityManager object.
+         *
+         * @param arg0 the arg 0
+         * @return the entity manager
+         */
         @SuppressWarnings("rawtypes")
         @Override
         public EntityManager createEntityManager(final Map arg0) {
             return em;
         }
 
+        /**
+         * Creates a new TestEntityManager object.
+         *
+         * @param synchronizationType the synchronization type
+         * @return the entity manager
+         */
         @Override
         public EntityManager createEntityManager(SynchronizationType synchronizationType) {
             return null;
         }
 
+        /**
+         * Creates a new TestEntityManager object.
+         *
+         * @param synchronizationType the synchronization type
+         * @param map the map
+         * @return the entity manager
+         */
         @Override
         public EntityManager createEntityManager(SynchronizationType synchronizationType, Map map) {
             return null;
         }
 
+        /**
+         * Creates a new TestEntityManager object.
+         *
+         * @return the entity manager
+         */
         @Override
         public EntityManager createEntityManager() {
             return em;
         }
 
+        /**
+         * Close.
+         */
         @Override
         public void close() {}
     }

@@ -29,9 +29,19 @@ import jakarta.persistence.Converter;
 
 import org.hsqldb.jdbc.JDBCClob;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ClobToStringConverter.
+ */
 @Converter(autoApply = true)
 public class ClobToStringConverter implements AttributeConverter<Clob, String> {
 
+  /**
+   * Convert to database column.
+   *
+   * @param clob the clob
+   * @return the string
+   */
   @Override
   public String convertToDatabaseColumn(Clob clob) {
 
@@ -52,6 +62,12 @@ public class ClobToStringConverter implements AttributeConverter<Clob, String> {
     return os.toString();
   }
 
+  /**
+   * Convert to entity attribute.
+   *
+   * @param string the string
+   * @return the clob
+   */
   @Override
   public Clob convertToEntityAttribute(String string) {
     if (string == null) {

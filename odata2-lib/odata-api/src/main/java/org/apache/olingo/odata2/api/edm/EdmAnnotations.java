@@ -20,42 +20,43 @@ package org.apache.olingo.odata2.api.edm;
 
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
 /**
- * @org.apache.olingo.odata2.DoNotImplement
- * EdmAnnotations holds all annotation attributes and elements for a specific CSDL element.
- * 
+ * The Interface EdmAnnotations.
+ *
+ * @org.apache.olingo.odata2.DoNotImplement EdmAnnotations holds all annotation attributes and elements for a specific CSDL element.
  */
 public interface EdmAnnotations {
 
   /**
-   * Get all annotation elements for the CSDL element
-   * 
+   * Get all annotation elements for the CSDL element.
+   *
    * @return List of {@link EdmAnnotationElement} or null if no elements exist
    */
   List<EdmAnnotationElement> getAnnotationElements();
 
   /**
-   * Get annotation element by full qualified name
-   * 
-   * @param name
-   * @param namespace
+   * Get annotation element by full qualified name.
+   *
+   * @param name the name
+   * @param namespace the namespace
    * @return {@link EdmAnnotationElement} or null if no element is found for this name
    */
 
   EdmAnnotationElement getAnnotationElement(String name, String namespace);
 
   /**
-   * Get all annotation attributes for the CSDL element
-   * 
+   * Get all annotation attributes for the CSDL element.
+   *
    * @return List of {@link EdmAnnotationAttribute} or null if no attributes exist
    */
   List<EdmAnnotationAttribute> getAnnotationAttributes();
 
   /**
-   * Get annotation attribute by full qualified name
-   * 
-   * @param name
-   * @param namespace
+   * Get annotation attribute by full qualified name.
+   *
+   * @param name the name
+   * @param namespace the namespace
    * @return {@link EdmAnnotationAttribute} or null if no attribute is found for this name
    */
   EdmAnnotationAttribute getAnnotationAttribute(String name, String namespace);

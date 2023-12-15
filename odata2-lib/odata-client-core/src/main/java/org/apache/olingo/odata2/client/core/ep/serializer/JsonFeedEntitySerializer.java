@@ -31,18 +31,20 @@ import org.apache.olingo.odata2.core.ep.aggregator.EntityInfoAggregator;
 import org.apache.olingo.odata2.core.ep.util.FormatJson;
 import org.apache.olingo.odata2.core.ep.util.JsonStreamWriter;
 
+// TODO: Auto-generated Javadoc
 /**
  * Producer for writing an entity collection (a feed) in JSON.
  * 
  */
 public class JsonFeedEntitySerializer {
 
+  /** The properties. */
   private final EntityCollectionSerializerProperties properties;
 
   /**
-   * 
-   * @param properties
-   * @throws EntityProviderException
+   * Instantiates a new json feed entity serializer.
+   *
+   * @param properties the properties
    */
   public JsonFeedEntitySerializer(final EntityCollectionSerializerProperties properties) {
     this.properties = properties == null ? EntityCollectionSerializerProperties.
@@ -50,11 +52,12 @@ public class JsonFeedEntitySerializer {
   }
 
   /**
-   * This serializes the json payload feed
-   * @param writer
-   * @param entityInfo
-   * @param data
-   * @throws EntityProviderException
+   * This serializes the json payload feed.
+   *
+   * @param writer the writer
+   * @param entityInfo the entity info
+   * @param data the data
+   * @throws EntityProviderException the entity provider exception
    */
   public void appendAsArray(final Writer writer, final EntityInfoAggregator entityInfo,
                             final EntityCollection data) throws EntityProviderException {
@@ -71,12 +74,12 @@ public class JsonFeedEntitySerializer {
   }
 
   /**
-   * This serializes the json payload feed
-   * @param writer
-   * @param entityInfo
-   * @param data
-   * @param isRootElement
-   * @throws EntityProviderException
+   * This serializes the json payload feed.
+   *
+   * @param writer the writer
+   * @param entityInfo the entity info
+   * @param data the data
+   * @throws EntityProviderException the entity provider exception
    */
   public void appendAsObject(final Writer writer, final EntityInfoAggregator entityInfo,
       final EntityCollection data) throws EntityProviderException {
@@ -102,6 +105,16 @@ public class JsonFeedEntitySerializer {
     }
   }
   
+  /**
+   * Append entries.
+   *
+   * @param writer the writer
+   * @param entityInfo the entity info
+   * @param data the data
+   * @param jsonStreamWriter the json stream writer
+   * @throws EntityProviderException the entity provider exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private void appendEntries(final Writer writer, final EntityInfoAggregator entityInfo,
       final EntityCollection data, JsonStreamWriter jsonStreamWriter) throws EntityProviderException,
       IOException {

@@ -30,10 +30,20 @@ import org.apache.olingo.odata2.api.commons.HttpHeaders;
 import org.apache.olingo.odata2.core.batch.BatchHelper;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BatchParserCommonTest.
+ */
 public class BatchParserCommonTest {
   
+  /** The Constant CRLF. */
   private static final String CRLF = "\r\n";
   
+  /**
+   * Test multiple header.
+   *
+   * @throws BatchException the batch exception
+   */
   @Test
   public void testMultipleHeader() throws BatchException {
     String[] messageRaw = new String[] {
@@ -54,6 +64,11 @@ public class BatchParserCommonTest {
     assertEquals("2", contentIdHeaders.get(1));
   }
   
+  /**
+   * Test multiple header same value.
+   *
+   * @throws BatchException the batch exception
+   */
   @Test
   public void testMultipleHeaderSameValue() throws BatchException {
     String[] messageRaw = new String[] {
@@ -73,6 +88,11 @@ public class BatchParserCommonTest {
     assertEquals("1", contentIdHeaders.get(0));
   }
   
+  /**
+   * Test header sperated by comma.
+   *
+   * @throws BatchException the batch exception
+   */
   @Test
   public void testHeaderSperatedByComma() throws BatchException {
     String[] messageRaw = new String[] {
@@ -95,6 +115,11 @@ public class BatchParserCommonTest {
     assertEquals("RTA/x11", upgradeHeader.get(3));
   }
   
+  /**
+   * Test multiple accept header.
+   *
+   * @throws BatchException the batch exception
+   */
   @Test
   public void testMultipleAcceptHeader() throws BatchException {
     String[] messageRaw = new String[] {
@@ -114,6 +139,11 @@ public class BatchParserCommonTest {
     assertEquals(4, acceptHeader.size());
   }
   
+  /**
+   * Test multiple accept header same value.
+   *
+   * @throws BatchException the batch exception
+   */
   @Test
   public void testMultipleAcceptHeaderSameValue() throws BatchException {
     String[] messageRaw = new String[] {
@@ -133,6 +163,11 @@ public class BatchParserCommonTest {
     assertEquals(3, acceptHeader.size());
   }
   
+  /**
+   * Test multiple accep languaget header.
+   *
+   * @throws BatchException the batch exception
+   */
   @Test
   public void testMultipleAccepLanguagetHeader() throws BatchException {
     String[] messageRaw = new String[] {
@@ -151,6 +186,11 @@ public class BatchParserCommonTest {
     assertEquals(4, acceptLanguageHeader.size());
   }
   
+  /**
+   * Test multiple accep languaget header same value.
+   *
+   * @throws BatchException the batch exception
+   */
   @Test
   public void testMultipleAccepLanguagetHeaderSameValue() throws BatchException {
     String[] messageRaw = new String[] {
@@ -169,6 +209,11 @@ public class BatchParserCommonTest {
     assertEquals(3, acceptLanguageHeader.size());
   }
 
+  /**
+   * Headers with special names.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void headersWithSpecialNames() throws Exception {
     final Header header = BatchParserCommon.consumeHeaders(toLineList(new String[] {
@@ -181,6 +226,11 @@ public class BatchParserCommonTest {
     assertEquals("weird", header.getHeader("!#$%&'*+-.^_`|~"));
   }
 
+  /**
+   * Header with wrong name.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void headerWithWrongName() throws Exception {
     final Header header = BatchParserCommon.consumeHeaders(toLineList(new String[] {
@@ -189,54 +239,84 @@ public class BatchParserCommonTest {
     assertNull(header.getHeader("a,b"));
   }
 
+  /**
+   * Test remove ending CRLF.
+   */
   @Test
   public void testRemoveEndingCRLF() {
     String line = "Test\r\n";
     assertEquals("Test", BatchParserCommon.removeEndingCRLF(new Line(line,1)).toString());
   }
 
+  /**
+   * Test remove last ending CRLF.
+   */
   @Test
   public void testRemoveLastEndingCRLF() {
     String line = "Test\r\n\r\n";
     assertEquals("Test\r\n", BatchParserCommon.removeEndingCRLF(new Line(line,1)).toString());
   }
 
+  /**
+   * Test remove ending CRLF with WS.
+   */
   @Test
   public void testRemoveEndingCRLFWithWS() {
     String line = "Test\r\n            ";
     assertEquals("Test", BatchParserCommon.removeEndingCRLF(new Line(line,1)).toString());
   }
 
+  /**
+   * Test remove ending CRLF nothing to remove.
+   */
   @Test
   public void testRemoveEndingCRLFNothingToRemove() {
     String line = "Hallo\r\nBla";
     assertEquals("Hallo\r\nBla", BatchParserCommon.removeEndingCRLF(new Line(line,1)).toString());
   }
 
+  /**
+   * Test remove ending CRLF all.
+   */
   @Test
   public void testRemoveEndingCRLFAll() {
     String line = "\r\n";
     assertEquals("", BatchParserCommon.removeEndingCRLF(new Line(line,1)).toString());
   }
 
+  /**
+   * Test remove ending CRLF space.
+   */
   @Test
   public void testRemoveEndingCRLFSpace() {
     String line = "\r\n                      ";
     assertEquals("", BatchParserCommon.removeEndingCRLF(new Line(line,1)).toString());
   }
 
+  /**
+   * Test remove last ending CRLF with WS.
+   */
   @Test
   public void testRemoveLastEndingCRLFWithWS() {
     String line = "Test            \r\n";
     assertEquals("Test            ", BatchParserCommon.removeEndingCRLF(new Line(line,1)).toString());
   }
 
+  /**
+   * Test remove last ending CRLF with WS long.
+   */
   @Test
   public void testRemoveLastEndingCRLFWithWSLong() {
     String line = "Test            \r\nTest2    \r\n";
     assertEquals("Test            \r\nTest2    ", BatchParserCommon.removeEndingCRLF(new Line(line,1)).toString());
   }
   
+  /**
+   * To line list.
+   *
+   * @param messageRaw the message raw
+   * @return the list
+   */
   private List<Line> toLineList(String[] messageRaw) {
     final List<Line> lineList = new ArrayList<Line>();
     int counter = 1;

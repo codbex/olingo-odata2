@@ -18,6 +18,7 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.edm;
 
+// TODO: Auto-generated Javadoc
 /**
  * <p>EdmSimpleType is a primitive type as defined in the Entity Data Model (EDM).</p>
  * <p>There are methods to convert EDM simple types from and to Java objects, respectively.
@@ -83,7 +84,10 @@ package org.apache.olingo.odata2.api.edm;
  */
 public interface EdmSimpleType extends EdmType {
 
+  /** The Constant EDM_NAMESPACE. */
   public static final String EDM_NAMESPACE = "Edm";
+  
+  /** The Constant SYSTEM_NAMESPACE. */
   public static final String SYSTEM_NAMESPACE = "System";
 
   /**
@@ -115,13 +119,15 @@ public interface EdmSimpleType extends EdmType {
 
   /**
    * Converts literal representation of value to system data type.
-   * 
+   *
+   * @param <T> the generic type
    * @param value the literal representation of value
    * @param literalKind the kind of literal representation of value
    * @param facets additional constraints for parsing (optional)
    * @param returnType the class of the returned value; it must be one of the
    * list in the documentation of {@link EdmSimpleType}
    * @return the value as an instance of the class the parameter <code>returnType</code> indicates
+   * @throws EdmSimpleTypeException the edm simple type exception
    * @see EdmLiteralKind
    * @see EdmFacets
    */
@@ -132,12 +138,13 @@ public interface EdmSimpleType extends EdmType {
    * <p>Converts system data type to literal representation of value.</p>
    * <p>Returns <code>null</code> if value is <code>null</code>
    * and the facets allow the <code>null</code> value.</p>
-   * 
+   *
    * @param value the Java value as Object; its type must be one of the list
    * in the documentation of {@link EdmSimpleType}
    * @param literalKind the requested kind of literal representation
    * @param facets additional constraints for formatting (optional)
    * @return literal representation as String
+   * @throws EdmSimpleTypeException the edm simple type exception
    * @see EdmLiteralKind
    * @see EdmFacets
    */
@@ -145,9 +152,10 @@ public interface EdmSimpleType extends EdmType {
 
   /**
    * Converts default literal representation to URI literal representation.
-   * 
+   *
    * @param literal the literal in default representation
    * @return URI literal representation as String
+   * @throws EdmSimpleTypeException the edm simple type exception
    */
   public String toUriLiteral(String literal) throws EdmSimpleTypeException;
 }

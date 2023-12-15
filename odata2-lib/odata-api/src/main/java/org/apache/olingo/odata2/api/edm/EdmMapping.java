@@ -18,16 +18,17 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.edm;
 
+// TODO: Auto-generated Javadoc
 /**
- * @org.apache.olingo.odata2.DoNotImplement
- * EdmMapping holds custom mapping information which can be applied to a CSDL element.
- * 
+ * The Interface EdmMapping.
+ *
+ * @org.apache.olingo.odata2.DoNotImplement EdmMapping holds custom mapping information which can be applied to a CSDL element.
  */
 public interface EdmMapping {
 
   /**
-   * Get the mapping value
-   * 
+   * Get the mapping value.
+   *
    * @return mapping name as String
    */
   String getInternalName();
@@ -45,8 +46,8 @@ public interface EdmMapping {
   String getMediaResourceMimeTypeKey();
 
   /**
-   * Get the set object for this mapping
-   * 
+   * Get the set object for this mapping.
+   *
    * @return {@link Object} object
    */
   Object getObject();

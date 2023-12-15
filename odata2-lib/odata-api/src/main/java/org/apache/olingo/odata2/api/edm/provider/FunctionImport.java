@@ -20,23 +20,42 @@ package org.apache.olingo.odata2.api.edm.provider;
 
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
 /**
- * Objects of this class represent a function import
- * 
+ * Objects of this class represent a function import.
  */
 public class FunctionImport {
 
+  /** The name. */
   private String name;
+  
+  /** The return type. */
   private ReturnType returnType;
+  
+  /** The entity set. */
   private String entitySet;
+  
+  /** The http method. */
   private String httpMethod;
+  
+  /** The parameters. */
   private List<FunctionImportParameter> parameters;
+  
+  /** The mapping. */
   private Mapping mapping;
+  
+  /** The documentation. */
   private Documentation documentation;
+  
+  /** The annotation attributes. */
   private List<AnnotationAttribute> annotationAttributes;
+  
+  /** The annotation elements. */
   private List<AnnotationElement> annotationElements;
 
   /**
+   * Gets the name.
+   *
    * @return <b>String</b> name of this function import
    */
   public String getName() {
@@ -44,6 +63,8 @@ public class FunctionImport {
   }
 
   /**
+   * Gets the return type.
+   *
    * @return {@link ReturnType} of this function import
    */
   public ReturnType getReturnType() {
@@ -51,6 +72,8 @@ public class FunctionImport {
   }
 
   /**
+   * Gets the entity set.
+   *
    * @return <b>String</b> name of the entity set
    */
   public String getEntitySet() {
@@ -58,6 +81,8 @@ public class FunctionImport {
   }
 
   /**
+   * Gets the http method.
+   *
    * @return <b>String</b> name of the used HTTP method
    */
   public String getHttpMethod() {
@@ -65,6 +90,8 @@ public class FunctionImport {
   }
 
   /**
+   * Gets the parameters.
+   *
    * @return List<{@link FunctionImportParameter}>s of this function import
    */
   public List<FunctionImportParameter> getParameters() {
@@ -72,6 +99,8 @@ public class FunctionImport {
   }
 
   /**
+   * Gets the mapping.
+   *
    * @return {@link Mapping} for this type
    */
   public Mapping getMapping() {
@@ -79,6 +108,8 @@ public class FunctionImport {
   }
 
   /**
+   * Gets the documentation.
+   *
    * @return {@link Documentation} documentation
    */
   public Documentation getDocumentation() {
@@ -86,6 +117,8 @@ public class FunctionImport {
   }
 
   /**
+   * Gets the annotation attributes.
+   *
    * @return collection of {@link AnnotationAttribute} annotation attributes
    */
   public List<AnnotationAttribute> getAnnotationAttributes() {
@@ -93,6 +126,8 @@ public class FunctionImport {
   }
 
   /**
+   * Gets the annotation elements.
+   *
    * @return collection of {@link AnnotationElement} annotation elements
    */
   public List<AnnotationElement> getAnnotationElements() {
@@ -100,8 +135,9 @@ public class FunctionImport {
   }
 
   /**
-   * Sets the name of this {@link FunctionImport}
-   * @param name
+   * Sets the name of this {@link FunctionImport}.
+   *
+   * @param name the name
    * @return {@link FunctionImport} for method chaining
    */
   public FunctionImport setName(final String name) {
@@ -110,8 +146,9 @@ public class FunctionImport {
   }
 
   /**
-   * Sets the {@link ReturnType} of this {@link FunctionImport}
-   * @param returnType
+   * Sets the {@link ReturnType} of this {@link FunctionImport}.
+   *
+   * @param returnType the return type
    * @return {@link FunctionImport} for method chaining
    */
   public FunctionImport setReturnType(final ReturnType returnType) {
@@ -120,8 +157,9 @@ public class FunctionImport {
   }
 
   /**
-   * Sets the {@link EntitySet} of this {@link FunctionImport}
-   * @param entitySet
+   * Sets the {@link EntitySet} of this {@link FunctionImport}.
+   *
+   * @param entitySet the entity set
    * @return {@link FunctionImport} for method chaining
    */
   public FunctionImport setEntitySet(final String entitySet) {
@@ -130,8 +168,9 @@ public class FunctionImport {
   }
 
   /**
-   * Sets the HTTP method of this {@link FunctionImport}
-   * @param httpMethod
+   * Sets the HTTP method of this {@link FunctionImport}.
+   *
+   * @param httpMethod the http method
    * @return {@link FunctionImport} for method chaining
    */
   public FunctionImport setHttpMethod(final String httpMethod) {
@@ -140,8 +179,9 @@ public class FunctionImport {
   }
 
   /**
-   * Sets the {@link FunctionImportParameter}s of this {@link FunctionImport}
-   * @param parameters
+   * Sets the {@link FunctionImportParameter}s of this {@link FunctionImport}.
+   *
+   * @param parameters the parameters
    * @return {@link FunctionImport} for method chaining
    */
   public FunctionImport setParameters(final List<FunctionImportParameter> parameters) {
@@ -150,8 +190,9 @@ public class FunctionImport {
   }
 
   /**
-   * Sets the {@link Mapping}
-   * @param mapping
+   * Sets the {@link Mapping}.
+   *
+   * @param mapping the mapping
    * @return {@link FunctionImport} for method chaining
    */
   public FunctionImport setMapping(final Mapping mapping) {
@@ -160,8 +201,9 @@ public class FunctionImport {
   }
 
   /**
-   * Sets the {@link Documentation}
-   * @param documentation
+   * Sets the {@link Documentation}.
+   *
+   * @param documentation the documentation
    * @return {@link FunctionImport} for method chaining
    */
   public FunctionImport setDocumentation(final Documentation documentation) {
@@ -170,8 +212,9 @@ public class FunctionImport {
   }
 
   /**
-   * Sets the collection of {@link AnnotationAttribute} for this {@link FunctionImport}
-   * @param annotationAttributes
+   * Sets the collection of {@link AnnotationAttribute} for this {@link FunctionImport}.
+   *
+   * @param annotationAttributes the annotation attributes
    * @return {@link FunctionImport} for method chaining
    */
   public FunctionImport setAnnotationAttributes(final List<AnnotationAttribute> annotationAttributes) {
@@ -180,8 +223,9 @@ public class FunctionImport {
   }
 
   /**
-   * Sets the collection of {@link AnnotationElement} for this {@link FunctionImport}
-   * @param annotationElements
+   * Sets the collection of {@link AnnotationElement} for this {@link FunctionImport}.
+   *
+   * @param annotationElements the annotation elements
    * @return {@link FunctionImport} for method chaining
    */
   public FunctionImport setAnnotationElements(final List<AnnotationElement> annotationElements) {

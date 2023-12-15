@@ -18,19 +18,39 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.jpa.processor.core.mock.data;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SalesOrderLineItem.
+ */
 public class SalesOrderLineItem {
 
+  /** The price. */
   private int price;
 
+  /**
+   * Instantiates a new sales order line item.
+   *
+   * @param price the price
+   */
   public SalesOrderLineItem(final int price) {
     super();
     this.price = price;
   }
 
+  /**
+   * Gets the price.
+   *
+   * @return the price
+   */
   public int getPrice() {
     return price;
   }
 
+  /**
+   * Sets the price.
+   *
+   * @param price the new price
+   */
   public void setPrice(final int price) {
     this.price = price;
   }

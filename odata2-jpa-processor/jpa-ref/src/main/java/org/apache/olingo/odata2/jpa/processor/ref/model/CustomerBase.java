@@ -25,15 +25,31 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.OneToMany;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CustomerBase.
+ */
 @MappedSuperclass
 public class CustomerBase {
+  
+  /** The orders. */
   @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
   private List<SalesOrderHeader> orders = new ArrayList<SalesOrderHeader>();
 
+  /**
+   * Gets the orders.
+   *
+   * @return the orders
+   */
   public List<SalesOrderHeader> getOrders() {
     return orders;
   }
 
+  /**
+   * Sets the orders.
+   *
+   * @param orders the new orders
+   */
   public void setOrders(final List<SalesOrderHeader> orders) {
     this.orders = orders;
   }

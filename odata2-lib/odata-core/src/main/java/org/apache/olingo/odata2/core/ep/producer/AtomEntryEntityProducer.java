@@ -62,20 +62,42 @@ import org.apache.olingo.odata2.core.ep.aggregator.EntityInfoAggregator;
 import org.apache.olingo.odata2.core.ep.aggregator.EntityPropertyInfo;
 import org.apache.olingo.odata2.core.ep.util.FormatXml;
 
+// TODO: Auto-generated Javadoc
 /**
  * Serializes an ATOM entry.
  * 
  */
 public class AtomEntryEntityProducer {
 
+  /** The etag. */
   private String etag;
+  
+  /** The location. */
   private String location;
+  
+  /** The properties. */
   private final EntityProviderWriteProperties properties;
 
+  /**
+   * Instantiates a new atom entry entity producer.
+   *
+   * @param properties the properties
+   * @throws EntityProviderException the entity provider exception
+   */
   public AtomEntryEntityProducer(final EntityProviderWriteProperties properties) throws EntityProviderException {
     this.properties = properties == null ? EntityProviderWriteProperties.serviceRoot(null).build() : properties;
   }
 
+  /**
+   * Append.
+   *
+   * @param writer the writer
+   * @param eia the eia
+   * @param data the data
+   * @param isRootElement the is root element
+   * @param isFeedPart the is feed part
+   * @throws EntityProviderException the entity provider exception
+   */
   public void append(final XMLStreamWriter writer, final EntityInfoAggregator eia, final Map<String, Object> data,
       final boolean isRootElement, final boolean isFeedPart) throws EntityProviderException {
     try {
@@ -148,6 +170,16 @@ public class AtomEntryEntityProducer {
     }
   }
 
+  /**
+   * Append additinal links.
+   *
+   * @param writer the writer
+   * @param eia the eia
+   * @param data the data
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws URISyntaxException the URI syntax exception
+   */
   private void appendAdditinalLinks(final XMLStreamWriter writer, final EntityInfoAggregator eia,
       final Map<String, Object> data)
       throws EntityProviderException, EdmException, URISyntaxException {
@@ -168,6 +200,14 @@ public class AtomEntryEntityProducer {
     }
   }
 
+  /**
+   * Append custom properties.
+   *
+   * @param writer the writer
+   * @param eia the eia
+   * @param data the data
+   * @throws EntityProviderException the entity provider exception
+   */
   private void appendCustomProperties(final XMLStreamWriter writer, final EntityInfoAggregator eia,
       final Map<String, Object> data) throws EntityProviderException {
     List<String> noneSyndicationTargetPaths = eia.getNoneSyndicationTargetPathNames();
@@ -179,6 +219,14 @@ public class AtomEntryEntityProducer {
     }
   }
 
+  /**
+   * Creates the E tag.
+   *
+   * @param eia the eia
+   * @param data the data
+   * @return the string
+   * @throws EntityProviderException the entity provider exception
+   */
   protected static String createETag(final EntityInfoAggregator eia, final Map<String, Object> data)
       throws EntityProviderException {
     String propertyName = "";
@@ -216,6 +264,16 @@ public class AtomEntryEntityProducer {
     }
   }
 
+  /**
+   * Append atom navigation links.
+   *
+   * @param writer the writer
+   * @param eia the eia
+   * @param data the data
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws URISyntaxException the URI syntax exception
+   */
   private void appendAtomNavigationLinks(final XMLStreamWriter writer, final EntityInfoAggregator eia,
       final Map<String, Object> data) throws EntityProviderException, EdmException, URISyntaxException {
     for (String name : eia.getSelectedNavigationPropertyNames()) {
@@ -232,6 +290,19 @@ public class AtomEntryEntityProducer {
     }
   }
 
+  /**
+   * Append atom navigation link.
+   *
+   * @param writer the writer
+   * @param target the target
+   * @param navigationPropertyName the navigation property name
+   * @param isFeed the is feed
+   * @param eia the eia
+   * @param data the data
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   * @throws URISyntaxException the URI syntax exception
+   */
   private void appendAtomNavigationLink(final XMLStreamWriter writer, final String target,
       final String navigationPropertyName, final boolean isFeed, final EntityInfoAggregator eia,
       final Map<String, Object> data) throws EntityProviderException, EdmException, URISyntaxException {
@@ -253,10 +324,30 @@ public class AtomEntryEntityProducer {
     }
   }
 
+  /**
+   * Concat.
+   *
+   * @param s1 the s 1
+   * @param s2 the s 2
+   * @return the string
+   */
   private String concat(String s1, String s2) {
     return s1.concat(".").concat(s2);
   }
 
+  /**
+   * Append inline feed.
+   *
+   * @param writer the writer
+   * @param navigationPropertyName the navigation property name
+   * @param eia the eia
+   * @param data the data
+   * @param self the self
+   * @throws EntityProviderException the entity provider exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws EdmException the edm exception
+   * @throws URISyntaxException the URI syntax exception
+   */
   private void appendInlineFeed(final XMLStreamWriter writer, final String navigationPropertyName,
       final EntityInfoAggregator eia, final Map<String, Object> data, final String self)
       throws EntityProviderException, XMLStreamException, EdmException, URISyntaxException {
@@ -311,6 +402,17 @@ public class AtomEntryEntityProducer {
     }
   }
 
+  /**
+   * Append inline entry.
+   *
+   * @param writer the writer
+   * @param navigationPropertyName the navigation property name
+   * @param eia the eia
+   * @param data the data
+   * @throws EntityProviderException the entity provider exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws EdmException the edm exception
+   */
   private void appendInlineEntry(final XMLStreamWriter writer, final String navigationPropertyName,
       final EntityInfoAggregator eia, final Map<String, Object> data) throws EntityProviderException,
       XMLStreamException, EdmException {
@@ -364,6 +466,14 @@ public class AtomEntryEntityProducer {
 
   }
 
+  /**
+   * Append atom edit link.
+   *
+   * @param writer the writer
+   * @param eia the eia
+   * @param selfLink the self link
+   * @throws EntityProviderException the entity provider exception
+   */
   private void appendAtomEditLink(final XMLStreamWriter writer, final EntityInfoAggregator eia,
       final String selfLink) throws EntityProviderException {
     try {
@@ -379,6 +489,16 @@ public class AtomEntryEntityProducer {
     }
   }
 
+  /**
+   * Append atom content link.
+   *
+   * @param writer the writer
+   * @param eia the eia
+   * @param data the data
+   * @param selfLink the self link
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   */
   private void appendAtomContentLink(final XMLStreamWriter writer, final EntityInfoAggregator eia,
       final Map<String, Object> data, final String selfLink) throws EntityProviderException, EdmException {
     try {
@@ -404,6 +524,16 @@ public class AtomEntryEntityProducer {
     }
   }
 
+  /**
+   * Append atom content part.
+   *
+   * @param writer the writer
+   * @param eia the eia
+   * @param data the data
+   * @param selfLink the self link
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   */
   private void appendAtomContentPart(final XMLStreamWriter writer, final EntityInfoAggregator eia,
       final Map<String, Object> data, final String selfLink) throws EntityProviderException, EdmException {
     try {
@@ -440,6 +570,15 @@ public class AtomEntryEntityProducer {
     }
   }
 
+  /**
+   * Append atom mandatory parts.
+   *
+   * @param writer the writer
+   * @param eia the eia
+   * @param data the data
+   * @param selfLink the self link
+   * @throws EntityProviderException the entity provider exception
+   */
   private void appendAtomMandatoryParts(final XMLStreamWriter writer, final EntityInfoAggregator eia,
       final Map<String, Object> data, final String selfLink) throws EntityProviderException {
     try {
@@ -482,6 +621,15 @@ public class AtomEntryEntityProducer {
     }
   }
 
+  /**
+   * Gets the updated string.
+   *
+   * @param eia the eia
+   * @param data the data
+   * @return the updated string
+   * @throws EdmSimpleTypeException the edm simple type exception
+   * @throws EntityProviderProducerException the entity provider producer exception
+   */
   String getUpdatedString(final EntityInfoAggregator eia, final Map<String, Object> data)
       throws EdmSimpleTypeException, EntityProviderProducerException {
     Object updateDate = null;
@@ -506,6 +654,15 @@ public class AtomEntryEntityProducer {
     }
   }
 
+  /**
+   * Gets the target path value.
+   *
+   * @param eia the eia
+   * @param targetPath the target path
+   * @param data the data
+   * @return the target path value
+   * @throws EntityProviderException the entity provider exception
+   */
   private String getTargetPathValue(final EntityInfoAggregator eia, final String targetPath,
       final Map<String, Object> data) throws EntityProviderException {
     EntityPropertyInfo info = null;
@@ -524,6 +681,14 @@ public class AtomEntryEntityProducer {
     }
   }
 
+  /**
+   * Append atom optional parts.
+   *
+   * @param writer the writer
+   * @param eia the eia
+   * @param data the data
+   * @throws EntityProviderException the entity provider exception
+   */
   private void appendAtomOptionalParts(final XMLStreamWriter writer, final EntityInfoAggregator eia,
       final Map<String, Object> data) throws EntityProviderException {
     try {
@@ -569,6 +734,15 @@ public class AtomEntryEntityProducer {
     }
   }
 
+  /**
+   * Append atom optional part.
+   *
+   * @param writer the writer
+   * @param name the name
+   * @param value the value
+   * @param writeType the write type
+   * @throws EntityProviderException the entity provider exception
+   */
   private void appendAtomOptionalPart(final XMLStreamWriter writer, final String name, final String value,
       final boolean writeType) throws EntityProviderException {
     try {
@@ -585,6 +759,15 @@ public class AtomEntryEntityProducer {
     }
   }
 
+  /**
+   * Creates the self link.
+   *
+   * @param eia the eia
+   * @param data the data
+   * @param extension the extension
+   * @return the string
+   * @throws EntityProviderException the entity provider exception
+   */
   static String createSelfLink(final EntityInfoAggregator eia, final Map<String, Object> data, final String extension)
       throws EntityProviderException {
     StringBuilder sb = new StringBuilder();
@@ -597,6 +780,14 @@ public class AtomEntryEntityProducer {
     return sb.toString();
   }
 
+  /**
+   * Creates the entry key.
+   *
+   * @param entityInfo the entity info
+   * @param data the data
+   * @return the string
+   * @throws EntityProviderException the entity provider exception
+   */
   private static String createEntryKey(final EntityInfoAggregator entityInfo, final Map<String, Object> data)
       throws EntityProviderException {
     final List<EntityPropertyInfo> keyPropertyInfos = entityInfo.getKeyPropertyInfos();
@@ -626,6 +817,14 @@ public class AtomEntryEntityProducer {
     return keys.toString();
   }
 
+  /**
+   * Append properties.
+   *
+   * @param writer the writer
+   * @param eia the eia
+   * @param data the data
+   * @throws EntityProviderException the entity provider exception
+   */
   private void appendProperties(final XMLStreamWriter writer, final EntityInfoAggregator eia,
       final Map<String, Object> data) throws EntityProviderException {
     try {
@@ -656,11 +855,13 @@ public class AtomEntryEntityProducer {
   }
 
   /**
-   * @param writer
-   * @param eia
-   * @param data
-   * @param propertyName
-   * @throws EntityProviderException
+   * Append property name value.
+   *
+   * @param writer the writer
+   * @param eia the eia
+   * @param data the data
+   * @param propertyName the property name
+   * @throws EntityProviderException the entity provider exception
    */
   private void appendPropertyNameValue(final XMLStreamWriter writer, final EntityInfoAggregator eia,
       final Map<String, Object> data, String propertyName) throws EntityProviderException {
@@ -672,6 +873,12 @@ public class AtomEntryEntityProducer {
     }
   }
   
+  /**
+   * Checks if is not mapped via custom mapping.
+   *
+   * @param propertyInfo the property info
+   * @return true, if is not mapped via custom mapping
+   */
   private boolean isNotMappedViaCustomMapping(final EntityPropertyInfo propertyInfo) {
     EdmCustomizableFeedMappings customMapping = propertyInfo.getCustomMapping();
     if (customMapping != null && customMapping.isFcKeepInContent() != null) {
@@ -680,10 +887,20 @@ public class AtomEntryEntityProducer {
     return true;
   }
 
+  /**
+   * Gets the e tag.
+   *
+   * @return the e tag
+   */
   public String getETag() {
     return etag;
   }
 
+  /**
+   * Gets the location.
+   *
+   * @return the location
+   */
   public String getLocation() {
     return location;
   }

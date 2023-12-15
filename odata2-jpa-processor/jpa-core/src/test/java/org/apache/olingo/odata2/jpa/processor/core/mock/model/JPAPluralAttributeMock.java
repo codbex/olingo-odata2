@@ -25,67 +25,126 @@ import jakarta.persistence.metamodel.ManagedType;
 import jakarta.persistence.metamodel.PluralAttribute;
 import jakarta.persistence.metamodel.Type;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAPluralAttributeMock.
+ */
 public class JPAPluralAttributeMock implements PluralAttribute<Object, ArrayList<String>, String> {
 
+  /**
+   * Gets the name.
+   *
+   * @return the name
+   */
   @Override
   public String getName() {
     // TODO Auto-generated method stub
     return null;
   }
 
+  /**
+   * Gets the persistent attribute type.
+   *
+   * @return the persistent attribute type
+   */
   @Override
   public jakarta.persistence.metamodel.Attribute.PersistentAttributeType getPersistentAttributeType() {
     // TODO Auto-generated method stub
     return null;
   }
 
+  /**
+   * Gets the declaring type.
+   *
+   * @return the declaring type
+   */
   @Override
   public ManagedType<Object> getDeclaringType() {
     // TODO Auto-generated method stub
     return null;
   }
 
+  /**
+   * Gets the java type.
+   *
+   * @return the java type
+   */
   @Override
   public Class<ArrayList<String>> getJavaType() {
     // TODO Auto-generated method stub
     return null;
   }
 
+  /**
+   * Gets the java member.
+   *
+   * @return the java member
+   */
   @Override
   public Member getJavaMember() {
     // TODO Auto-generated method stub
     return null;
   }
 
+  /**
+   * Checks if is association.
+   *
+   * @return true, if is association
+   */
   @Override
   public boolean isAssociation() {
     // TODO Auto-generated method stub
     return false;
   }
 
+  /**
+   * Checks if is collection.
+   *
+   * @return true, if is collection
+   */
   @Override
   public boolean isCollection() {
     return false;
   }
 
+  /**
+   * Gets the bindable type.
+   *
+   * @return the bindable type
+   */
   @Override
   public jakarta.persistence.metamodel.Bindable.BindableType getBindableType() {
     // TODO Auto-generated method stub
     return null;
   }
 
+  /**
+   * Gets the bindable java type.
+   *
+   * @return the bindable java type
+   */
   @Override
   public Class<String> getBindableJavaType() {
     // TODO Auto-generated method stub
     return null;
   }
 
+  /**
+   * Gets the collection type.
+   *
+   * @return the collection type
+   */
   @Override
   public jakarta.persistence.metamodel.PluralAttribute.CollectionType getCollectionType() {
     // TODO Auto-generated method stub
     return null;
   }
 
+  /**
+   * Gets the element type.
+   *
+   * @return the element type
+   */
   @Override
   public Type<String> getElementType() {
     // TODO Auto-generated method stub

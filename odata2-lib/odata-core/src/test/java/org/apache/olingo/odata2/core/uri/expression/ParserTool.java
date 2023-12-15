@@ -43,17 +43,36 @@ import org.apache.olingo.odata2.core.exception.MessageService;
 import org.apache.olingo.odata2.core.exception.MessageService.Message;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
  *  Helper for testing the expression parser.
  */
 public class ParserTool {
 
+  /** The expression. */
   private String expression;
+  
+  /** The tree. */
   private CommonExpression tree;
+  
+  /** The cur node. */
   private CommonExpression curNode;
+  
+  /** The cur exception. */
   private Exception curException;
+  
+  /** The Constant DEFAULT_LANGUAGE. */
   private static final Locale DEFAULT_LANGUAGE = new Locale("test", "FOO");
 
+  /**
+   * Instantiates a new parser tool.
+   *
+   * @param expression the expression
+   * @param isOrder the is order
+   * @param addTestfunctions the add testfunctions
+   * @param allowOnlyBinary the allow only binary
+   * @param resourceEntityType the resource entity type
+   */
   public ParserTool(final String expression, final boolean isOrder, final boolean addTestfunctions,
       final boolean allowOnlyBinary, final EdmEntityType resourceEntityType) {
     this.expression = expression;
@@ -77,12 +96,24 @@ public class ParserTool {
     curNode = tree;
   }
 
+  /**
+   * A kind.
+   *
+   * @param kind the kind
+   * @return the parser tool
+   */
   ParserTool aKind(final ExpressionKind kind) {
     String info = "GetInfoKind(" + expression + ")-->";
     assertEquals(info, kind, curNode.getKind());
     return this;
   }
 
+  /**
+   * A uri literal.
+   *
+   * @param uriLiteral the uri literal
+   * @return the parser tool
+   */
   public ParserTool aUriLiteral(final String uriLiteral) {
     String info = "GetUriLiteral(" + expression + ")-->";
     assertEquals(info, uriLiteral, curNode.getUriLiteral());
@@ -90,10 +121,9 @@ public class ParserTool {
   }
 
   /**
-   * Verifies that the thrown exception is of {@paramref expected}
-   * 
-   * @param expected
-   * Expected Exception class
+   * Verifies that the thrown exception is of {@paramref expected}.
+   *
+   * @param expected Expected Exception class
    * @return ParserTool
    */
   public ParserTool aExType(final Class<? extends Exception> expected) {
@@ -105,10 +135,9 @@ public class ParserTool {
   }
 
   /**
-   * Verifies that the message text of the thrown exception serialized is {@paramref messageText}
-   * 
-   * @param messageText
-   * Expected message text
+   * Verifies that the message text of the thrown exception serialized is {@paramref messageText}.
+   *
+   * @param messageText Expected message text
    * @return this
    */
   public ParserTool aExMsgText(final String messageText) {
@@ -124,8 +153,8 @@ public class ParserTool {
 
   /**
    * Verifies that all place holders in the message text definition of the
-   * thrown exception are provided with content
-   * 
+   * thrown exception are provided with content.
+   *
    * @return ParserTool
    */
   public ParserTool aExMsgContentAllSet() {
@@ -140,8 +169,8 @@ public class ParserTool {
   }
 
   /**
-   * Verifies that the message text of the thrown exception is not empty
-   * 
+   * Verifies that the message text of the thrown exception is not empty.
+   *
    * @return ParserTool
    */
   public ParserTool aExMsgNotEmpty() {
@@ -155,6 +184,12 @@ public class ParserTool {
     return this;
   }
 
+  /**
+   * A ex key.
+   *
+   * @param expressionExpectedAtPos the expression expected at pos
+   * @return the parser tool
+   */
   public ParserTool aExKey(final MessageReference expressionExpectedAtPos) {
     String info = "GetExceptionType(" + expression + ")-->";
 
@@ -165,6 +200,11 @@ public class ParserTool {
     return this;
   }
 
+  /**
+   * Gets the exception text.
+   *
+   * @return the exception text
+   */
   public String getExceptionText() {
     ODataMessageException messageException = (ODataMessageException) curException;
     Message ms = MessageService.getMessage(DEFAULT_LANGUAGE, messageException.getMessageReference());
@@ -172,6 +212,12 @@ public class ParserTool {
     return ms.getText();
   }
 
+  /**
+   * A edm type.
+   *
+   * @param type the type
+   * @return the parser tool
+   */
   public ParserTool aEdmType(final EdmType type) {
     assertNull("aEdmType", curException);
     String info = "GetEdmType(" + expression + ")-->";
@@ -181,6 +227,12 @@ public class ParserTool {
     return this;
   }
 
+  /**
+   * A sort order.
+   *
+   * @param orderType the order type
+   * @return the parser tool
+   */
   public ParserTool aSortOrder(final SortOrder orderType) {
     String info = "GetSortOrder(" + expression + ")-->";
 
@@ -189,6 +241,11 @@ public class ParserTool {
     return this;
   }
 
+  /**
+   * A expr.
+   *
+   * @return the parser tool
+   */
   public ParserTool aExpr() {
     String info = "GetExpr(" + expression + ")-->";
 
@@ -199,6 +256,12 @@ public class ParserTool {
     return this;
   }
 
+  /**
+   * A edm property.
+   *
+   * @param property the property
+   * @return the parser tool
+   */
   public ParserTool aEdmProperty(final EdmProperty property) {
     String info = "GetEdmProperty(" + expression + ")-->";
 
@@ -207,11 +270,23 @@ public class ParserTool {
     return this;
   }
 
+  /**
+   * A serialized compr.
+   *
+   * @param expected the expected
+   * @return the parser tool
+   */
   public ParserTool aSerializedCompr(final String expected) {
     aSerialized(compress(expected));
     return this;
   }
 
+  /**
+   * A serialized.
+   *
+   * @param expected the expected
+   * @return the parser tool
+   */
   public ParserTool aSerialized(final String expected) {
     assertNull("aSerialized", curException);
 
@@ -230,6 +305,11 @@ public class ParserTool {
     return this;
   }
 
+  /**
+   * Left.
+   *
+   * @return the parser tool
+   */
   public ParserTool left() {
     String info = "param(" + expression + ")-->";
 
@@ -247,6 +327,11 @@ public class ParserTool {
     return this;
   }
 
+  /**
+   * Right.
+   *
+   * @return the parser tool
+   */
   public ParserTool right() {
     String info = "param(" + expression + ")-->";
 
@@ -264,6 +349,12 @@ public class ParserTool {
     return this;
   }
 
+  /**
+   * Order.
+   *
+   * @param i the i
+   * @return the parser tool
+   */
   public ParserTool order(final int i) {
     String info = "param(" + expression + ")-->";
     aKind(ExpressionKind.ORDERBY);
@@ -275,6 +366,12 @@ public class ParserTool {
     return this;
   }
 
+  /**
+   * Param.
+   *
+   * @param i the i
+   * @return the parser tool
+   */
   public ParserTool param(final int i) {
     String info = "param(" + expression + ")-->";
     aKind(ExpressionKind.METHOD);
@@ -286,11 +383,22 @@ public class ParserTool {
     return this;
   }
 
+  /**
+   * Root.
+   *
+   * @return the parser tool
+   */
   public ParserTool root() {
     curNode = tree;
     return this;
   }
 
+  /**
+   * Compress.
+   *
+   * @param expression the expression
+   * @return the string
+   */
   static public String compress(final String expression) {
     String ret = "";
     char[] charArray = expression.trim().toCharArray();
@@ -307,7 +415,14 @@ public class ParserTool {
     return ret;
   }
 
+  /**
+   * The Class testParserTool.
+   */
   public static class testParserTool {
+    
+    /**
+     * Test compr.
+     */
     @Test
     public void testCompr() {
       // leading and trailing spaces

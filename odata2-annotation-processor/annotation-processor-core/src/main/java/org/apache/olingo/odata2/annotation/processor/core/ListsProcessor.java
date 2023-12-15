@@ -115,6 +115,7 @@ import org.apache.olingo.odata2.api.uri.info.GetSimplePropertyUriInfo;
 import org.apache.olingo.odata2.api.uri.info.PostUriInfo;
 import org.apache.olingo.odata2.api.uri.info.PutMergePatchUriInfo;
 
+// TODO: Auto-generated Javadoc
 /**
  * Implementation of the centralized parts of OData processing,
  * allowing to use the simplified {@link DataSource} for the
@@ -123,13 +124,28 @@ import org.apache.olingo.odata2.api.uri.info.PutMergePatchUriInfo;
  */
 public class ListsProcessor extends DataSourceProcessor {
 
+  /** The Constant SERVER_PAGING_SIZE. */
   // TODO: Paging size should be configurable.
   private static final int SERVER_PAGING_SIZE = 100;
 
+  /**
+   * Instantiates a new lists processor.
+   *
+   * @param dataSource the data source
+   * @param valueAccess the value access
+   */
   public ListsProcessor(final DataSource dataSource, final ValueAccess valueAccess) {
     super(dataSource, valueAccess);
   }
 
+  /**
+   * Read entity set.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse readEntitySet(final GetEntitySetUriInfo uriInfo, final String contentType)
       throws ODataException {
@@ -206,6 +222,12 @@ public class ListsProcessor extends DataSourceProcessor {
     return ODataResponse.fromResponse(response).build();
   }
 
+  /**
+   * Percent encode next link.
+   *
+   * @param link the link
+   * @return the string
+   */
   String percentEncodeNextLink(final String link) {
     if (link == null) {
       return null;
@@ -216,6 +238,14 @@ public class ListsProcessor extends DataSourceProcessor {
         .replaceFirst("(?:\\?|&)$", ""); // Remove potentially trailing "?" or "&" left over from remove actions
   }
 
+  /**
+   * Count entity set.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse countEntitySet(final GetEntitySetCountUriInfo uriInfo, final String contentType)
       throws ODataException {
@@ -244,6 +274,14 @@ public class ListsProcessor extends DataSourceProcessor {
     return ODataResponse.fromResponse(EntityProvider.writeText(String.valueOf(data.size()))).build();
   }
 
+  /**
+   * Read entity links.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse readEntityLinks(final GetEntitySetLinksUriInfo uriInfo, final String contentType)
       throws ODataException {
@@ -296,12 +334,28 @@ public class ListsProcessor extends DataSourceProcessor {
     return ODataResponse.fromResponse(response).build();
   }
 
+  /**
+   * Count entity links.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse countEntityLinks(final GetEntitySetLinksCountUriInfo uriInfo, final String contentType)
       throws ODataException {
     return countEntitySet((GetEntitySetCountUriInfo) uriInfo, contentType);
   }
 
+  /**
+   * Read entity.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse readEntity(final GetEntityUriInfo uriInfo, final String contentType) throws ODataException {
     final Object data = retrieveData(
@@ -324,6 +378,14 @@ public class ListsProcessor extends DataSourceProcessor {
     return odr;
   }
 
+  /**
+   * Exists entity.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse existsEntity(final GetEntityCountUriInfo uriInfo, final String contentType)
       throws ODataException {
@@ -338,6 +400,14 @@ public class ListsProcessor extends DataSourceProcessor {
         .build();
   }
 
+  /**
+   * Delete entity.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse deleteEntity(final DeleteUriInfo uriInfo, final String contentType) throws ODataException {
     dataSource.deleteData(
@@ -346,6 +416,16 @@ public class ListsProcessor extends DataSourceProcessor {
     return ODataResponse.newBuilder().build();
   }
 
+  /**
+   * Creates the entity.
+   *
+   * @param uriInfo the uri info
+   * @param content the content
+   * @param requestContentType the request content type
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse createEntity(final PostUriInfo uriInfo, final InputStream content,
       final String requestContentType, final String contentType) throws ODataException {
@@ -395,6 +475,17 @@ public class ListsProcessor extends DataSourceProcessor {
         .eTag(constructETag(entitySet, data)).build();
   }
 
+  /**
+   * Update entity.
+   *
+   * @param uriInfo the uri info
+   * @param content the content
+   * @param requestContentType the request content type
+   * @param merge the merge
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse updateEntity(final PutMergePatchUriInfo uriInfo, final InputStream content,
       final String requestContentType, final boolean merge, final String contentType) throws ODataException {
@@ -422,6 +513,14 @@ public class ListsProcessor extends DataSourceProcessor {
     return ODataResponse.newBuilder().eTag(constructETag(entitySet, data)).build();
   }
 
+  /**
+   * Read entity link.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse readEntityLink(final GetEntityLinkUriInfo uriInfo, final String contentType)
       throws ODataException {
@@ -457,12 +556,28 @@ public class ListsProcessor extends DataSourceProcessor {
     return ODataResponse.fromResponse(response).build();
   }
 
+  /**
+   * Exists entity link.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse existsEntityLink(final GetEntityLinkCountUriInfo uriInfo, final String contentType)
       throws ODataException {
     return existsEntity((GetEntityCountUriInfo) uriInfo, contentType);
   }
 
+  /**
+   * Delete entity link.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse deleteEntityLink(final DeleteUriInfo uriInfo, final String contentType) throws ODataException {
     final List<NavigationSegment> navigationSegments = uriInfo.getNavigationSegments();
@@ -491,6 +606,16 @@ public class ListsProcessor extends DataSourceProcessor {
     return ODataResponse.newBuilder().build();
   }
 
+  /**
+   * Creates the entity link.
+   *
+   * @param uriInfo the uri info
+   * @param content the content
+   * @param requestContentType the request content type
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse createEntityLink(final PostUriInfo uriInfo, final InputStream content,
       final String requestContentType, final String contentType) throws ODataException {
@@ -515,6 +640,16 @@ public class ListsProcessor extends DataSourceProcessor {
     return ODataResponse.newBuilder().build();
   }
 
+  /**
+   * Update entity link.
+   *
+   * @param uriInfo the uri info
+   * @param content the content
+   * @param requestContentType the request content type
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse updateEntityLink(final PutMergePatchUriInfo uriInfo, final InputStream content,
       final String requestContentType, final String contentType) throws ODataException {
@@ -548,6 +683,14 @@ public class ListsProcessor extends DataSourceProcessor {
     return ODataResponse.newBuilder().build();
   }
 
+  /**
+   * Read entity complex property.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse readEntityComplexProperty(final GetComplexPropertyUriInfo uriInfo, final String contentType)
       throws ODataException {
@@ -579,12 +722,28 @@ public class ListsProcessor extends DataSourceProcessor {
     return ODataResponse.fromResponse(response).eTag(constructETag(uriInfo.getTargetEntitySet(), data)).build();
   }
 
+  /**
+   * Read entity simple property.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse readEntitySimpleProperty(final GetSimplePropertyUriInfo uriInfo, final String contentType)
       throws ODataException {
     return readEntityComplexProperty((GetComplexPropertyUriInfo) uriInfo, contentType);
   }
 
+  /**
+   * Read entity simple property value.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse readEntitySimplePropertyValue(final GetSimplePropertyUriInfo uriInfo, final String contentType)
       throws ODataException {
@@ -608,6 +767,14 @@ public class ListsProcessor extends DataSourceProcessor {
         constructETag(uriInfo.getTargetEntitySet(), data)).build();
   }
 
+  /**
+   * Delete entity simple property value.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse deleteEntitySimplePropertyValue(final DeleteUriInfo uriInfo, final String contentType)
       throws ODataException {
@@ -632,6 +799,17 @@ public class ListsProcessor extends DataSourceProcessor {
     return ODataResponse.newBuilder().build();
   }
 
+  /**
+   * Update entity complex property.
+   *
+   * @param uriInfo the uri info
+   * @param content the content
+   * @param requestContentType the request content type
+   * @param merge the merge
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse updateEntityComplexProperty(final PutMergePatchUriInfo uriInfo, final InputStream content,
       final String requestContentType, final boolean merge, final String contentType) throws ODataException {
@@ -678,12 +856,32 @@ public class ListsProcessor extends DataSourceProcessor {
     return ODataResponse.newBuilder().eTag(constructETag(uriInfo.getTargetEntitySet(), data)).build();
   }
 
+  /**
+   * Update entity simple property.
+   *
+   * @param uriInfo the uri info
+   * @param content the content
+   * @param requestContentType the request content type
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse updateEntitySimpleProperty(final PutMergePatchUriInfo uriInfo, final InputStream content,
       final String requestContentType, final String contentType) throws ODataException {
     return updateEntityComplexProperty(uriInfo, content, requestContentType, false, contentType);
   }
 
+  /**
+   * Update entity simple property value.
+   *
+   * @param uriInfo the uri info
+   * @param content the content
+   * @param requestContentType the request content type
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse updateEntitySimplePropertyValue(final PutMergePatchUriInfo uriInfo, final InputStream content,
       final String requestContentType, final String contentType) throws ODataException {
@@ -721,6 +919,14 @@ public class ListsProcessor extends DataSourceProcessor {
     return ODataResponse.newBuilder().eTag(constructETag(uriInfo.getTargetEntitySet(), data)).build();
   }
 
+  /**
+   * Read entity media.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse readEntityMedia(final GetMediaResourceUriInfo uriInfo, final String contentType)
       throws ODataException {
@@ -748,6 +954,14 @@ public class ListsProcessor extends DataSourceProcessor {
         constructETag(entitySet, data)).build();
   }
 
+  /**
+   * Delete entity media.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse deleteEntityMedia(final DeleteUriInfo uriInfo, final String contentType) throws ODataException {
     final Object data = retrieveData(
@@ -766,6 +980,16 @@ public class ListsProcessor extends DataSourceProcessor {
     return ODataResponse.newBuilder().build();
   }
 
+  /**
+   * Update entity media.
+   *
+   * @param uriInfo the uri info
+   * @param content the content
+   * @param requestContentType the request content type
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse updateEntityMedia(final PutMergePatchUriInfo uriInfo, final InputStream content,
       final String requestContentType, final String contentType) throws ODataException {
@@ -793,6 +1017,14 @@ public class ListsProcessor extends DataSourceProcessor {
     return ODataResponse.newBuilder().eTag(constructETag(entitySet, data)).build();
   }
 
+  /**
+   * Execute function import.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse executeFunctionImport(final GetFunctionImportUriInfo uriInfo, final String contentType)
       throws ODataException {
@@ -837,6 +1069,14 @@ public class ListsProcessor extends DataSourceProcessor {
     return ODataResponse.fromResponse(response).build();
   }
 
+  /**
+   * Execute function import value.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse executeFunctionImportValue(final GetFunctionImportUriInfo uriInfo, final String contentType)
       throws ODataException {
@@ -862,6 +1102,13 @@ public class ListsProcessor extends DataSourceProcessor {
     return ODataResponse.fromResponse(response).build();
   }
 
+  /**
+   * Map key.
+   *
+   * @param keys the keys
+   * @return the map
+   * @throws EdmException the edm exception
+   */
   private static Map<String, Object> mapKey(final List<KeyPredicate> keys) throws EdmException {
     Map<String, Object> keyMap = new HashMap<String, Object>();
     for (final KeyPredicate key : keys) {
@@ -873,6 +1120,13 @@ public class ListsProcessor extends DataSourceProcessor {
     return keyMap;
   }
 
+  /**
+   * Map function parameters.
+   *
+   * @param functionImportParameters the function import parameters
+   * @return the map
+   * @throws EdmSimpleTypeException the edm simple type exception
+   */
   private static Map<String, Object> mapFunctionParameters(final Map<String, EdmLiteral> functionImportParameters)
       throws EdmSimpleTypeException {
     if (functionImportParameters == null) {
@@ -889,6 +1143,17 @@ public class ListsProcessor extends DataSourceProcessor {
     }
   }
 
+  /**
+   * Retrieve data.
+   *
+   * @param startEntitySet the start entity set
+   * @param keyPredicates the key predicates
+   * @param functionImport the function import
+   * @param functionImportParameters the function import parameters
+   * @param navigationSegments the navigation segments
+   * @return the object
+   * @throws ODataException the o data exception
+   */
   private Object retrieveData(final EdmEntitySet startEntitySet, final List<KeyPredicate> keyPredicates,
       final EdmFunctionImport functionImport, final Map<String, Object> functionImportParameters,
       final List<NavigationSegment> navigationSegments) throws ODataException {
@@ -920,6 +1185,15 @@ public class ListsProcessor extends DataSourceProcessor {
     return data;
   }
 
+  /**
+   * Construct E tag.
+   *
+   * @param <T> the generic type
+   * @param entitySet the entity set
+   * @param data the data
+   * @return the string
+   * @throws ODataException the o data exception
+   */
   private <T> String constructETag(final EdmEntitySet entitySet, final T data) throws ODataException {
     final EdmEntityType entityType = entitySet.getEntityType();
     String eTag = null;
@@ -935,6 +1209,15 @@ public class ListsProcessor extends DataSourceProcessor {
     return eTag == null ? null : "W/\"" + eTag + "\"";
   }
 
+  /**
+   * Gets the callbacks.
+   *
+   * @param <T> the generic type
+   * @param data the data
+   * @param entityType the entity type
+   * @return the callbacks
+   * @throws EdmException the edm exception
+   */
   private <T> Map<String, ODataCallback> getCallbacks(final T data, final EdmEntityType entityType)
       throws EdmException {
     final List<String> navigationPropertyNames = entityType.getNavigationPropertyNames();
@@ -950,13 +1233,31 @@ public class ListsProcessor extends DataSourceProcessor {
     }
   }
 
+  /**
+   * The Class WriteCallback.
+   */
   private class WriteCallback implements OnWriteEntryContent, OnWriteFeedContent {
+    
+    /** The data. */
     private final Object data;
 
+    /**
+     * Instantiates a new write callback.
+     *
+     * @param <T> the generic type
+     * @param data the data
+     */
     private <T> WriteCallback(final T data) {
       this.data = data;
     }
 
+    /**
+     * Retrieve feed result.
+     *
+     * @param context the context
+     * @return the write feed callback result
+     * @throws ODataApplicationException the o data application exception
+     */
     @Override
     public WriteFeedCallbackResult retrieveFeedResult(final WriteFeedCallbackContext context)
         throws ODataApplicationException {
@@ -986,6 +1287,13 @@ public class ListsProcessor extends DataSourceProcessor {
       }
     }
 
+    /**
+     * Retrieve entry result.
+     *
+     * @param context the context
+     * @return the write entry callback result
+     * @throws ODataApplicationException the o data application exception
+     */
     @Override
     public WriteEntryCallbackResult retrieveEntryResult(final WriteEntryCallbackContext context)
         throws ODataApplicationException {
@@ -1017,6 +1325,13 @@ public class ListsProcessor extends DataSourceProcessor {
       }
     }
 
+    /**
+     * Read related data.
+     *
+     * @param context the context
+     * @return the object
+     * @throws ODataException the o data exception
+     */
     private Object readRelatedData(final WriteCallbackContext context) throws ODataException {
       final EdmEntitySet entitySet = context.getSourceEntitySet();
       return dataSource.readRelatedData(
@@ -1027,6 +1342,16 @@ public class ListsProcessor extends DataSourceProcessor {
           Collections.<String, Object> emptyMap());
     }
 
+    /**
+     * Read entry data.
+     *
+     * @param <T> the generic type
+     * @param data the data
+     * @param entityType the entity type
+     * @param key the key
+     * @return the t
+     * @throws ODataException the o data exception
+     */
     private <T> T readEntryData(final List<T> data, final EdmEntityType entityType, final Map<String, Object> key)
         throws ODataException {
       for (final T entryData : data) {
@@ -1045,6 +1370,18 @@ public class ListsProcessor extends DataSourceProcessor {
     }
   }
 
+  /**
+   * Write entry.
+   *
+   * @param <T> the generic type
+   * @param entitySet the entity set
+   * @param expandSelectTree the expand select tree
+   * @param data the data
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataException the o data exception
+   * @throws EntityProviderException the entity provider exception
+   */
   private <T> ODataResponse writeEntry(final EdmEntitySet entitySet, final ExpandSelectTreeNode expandSelectTree,
       final T data, final String contentType) throws ODataException, EntityProviderException {
     final EdmEntityType entityType = entitySet.getEntityType();
@@ -1066,6 +1403,16 @@ public class ListsProcessor extends DataSourceProcessor {
     return response;
   }
 
+  /**
+   * Parses the entry.
+   *
+   * @param entitySet the entity set
+   * @param content the content
+   * @param requestContentType the request content type
+   * @param properties the properties
+   * @return the o data entry
+   * @throws ODataBadRequestException the o data bad request exception
+   */
   private ODataEntry parseEntry(final EdmEntitySet entitySet, final InputStream content,
       final String requestContentType, final EntityProviderReadProperties properties) throws ODataBadRequestException {
     ODataContext context = getContext();
@@ -1083,6 +1430,15 @@ public class ListsProcessor extends DataSourceProcessor {
     return entryValues;
   }
 
+  /**
+   * Parses the link.
+   *
+   * @param entitySet the entity set
+   * @param content the content
+   * @param contentType the content type
+   * @return the map
+   * @throws ODataException the o data exception
+   */
   private Map<String, Object> parseLink(final EdmEntitySet entitySet, final InputStream content,
       final String contentType) throws ODataException {
     ODataContext context = getContext();
@@ -1099,6 +1455,14 @@ public class ListsProcessor extends DataSourceProcessor {
     return targetKeys;
   }
 
+  /**
+   * Parses the link uri.
+   *
+   * @param targetEntitySet the target entity set
+   * @param uriString the uri string
+   * @return the map
+   * @throws EdmException the edm exception
+   */
   private Map<String, Object> parseLinkUri(final EdmEntitySet targetEntitySet, final String uriString)
       throws EdmException {
     ODataContext context = getContext();
@@ -1117,6 +1481,15 @@ public class ListsProcessor extends DataSourceProcessor {
     return key == null ? null : mapKey(key);
   }
 
+  /**
+   * Creates the inlined entities.
+   *
+   * @param <T> the generic type
+   * @param entitySet the entity set
+   * @param data the data
+   * @param entryValues the entry values
+   * @throws ODataException the o data exception
+   */
   private <T> void createInlinedEntities(final EdmEntitySet entitySet, final T data, final ODataEntry entryValues)
       throws ODataException {
     final EdmEntityType entityType = entitySet.getEntityType();
@@ -1172,6 +1545,21 @@ public class ListsProcessor extends DataSourceProcessor {
     }
   }
 
+  /**
+   * Apply system query options.
+   *
+   * @param <T> the generic type
+   * @param entitySet the entity set
+   * @param data the data
+   * @param filter the filter
+   * @param inlineCount the inline count
+   * @param orderBy the order by
+   * @param skipToken the skip token
+   * @param skip the skip
+   * @param top the top
+   * @return the integer
+   * @throws ODataException the o data exception
+   */
   private <T> Integer applySystemQueryOptions(final EdmEntitySet entitySet, final List<T> data,
       final FilterExpression filter, final InlineCount inlineCount, final OrderByExpression orderBy,
       final String skipToken, final Integer skip, final Integer top) throws ODataException {
@@ -1223,6 +1611,13 @@ public class ListsProcessor extends DataSourceProcessor {
     return count;
   }
 
+  /**
+   * Sort.
+   *
+   * @param <T> the generic type
+   * @param data the data
+   * @param orderBy the order by
+   */
   private <T> void sort(final List<T> data, final OrderByExpression orderBy) {
     Collections.sort(data, new Comparator<T>() {
       @Override
@@ -1257,6 +1652,13 @@ public class ListsProcessor extends DataSourceProcessor {
     });
   }
 
+  /**
+   * Sort in default order.
+   *
+   * @param <T> the generic type
+   * @param entitySet the entity set
+   * @param data the data
+   */
   private <T> void sortInDefaultOrder(final EdmEntitySet entitySet, final List<T> data) {
     Collections.sort(data, new Comparator<T>() {
       @Override
@@ -1270,6 +1672,15 @@ public class ListsProcessor extends DataSourceProcessor {
     });
   }
 
+  /**
+   * Applies filter.
+   *
+   * @param <T> the generic type
+   * @param data the data
+   * @param filter the filter
+   * @return true, if successful
+   * @throws ODataException the o data exception
+   */
   private <T> boolean appliesFilter(final T data, final FilterExpression filter) throws ODataException {
     ODataContext context = getContext();
     final int timingHandle = context.startRuntimeMeasurement(getClass().getSimpleName(), "appliesFilter");
@@ -1283,6 +1694,15 @@ public class ListsProcessor extends DataSourceProcessor {
     }
   }
 
+  /**
+   * Evaluate expression.
+   *
+   * @param <T> the generic type
+   * @param data the data
+   * @param expression the expression
+   * @return the string
+   * @throws ODataException the o data exception
+   */
   private <T> String evaluateExpression(final T data, final CommonExpression expression) throws ODataException {
     switch (expression.getKind()) {
     case UNARY:
@@ -1490,6 +1910,15 @@ public class ListsProcessor extends DataSourceProcessor {
     }
   }
 
+  /**
+   * Gets the skip token.
+   *
+   * @param <T> the generic type
+   * @param entitySet the entity set
+   * @param data the data
+   * @return the skip token
+   * @throws ODataException the o data exception
+   */
   private <T> String getSkipToken(final EdmEntitySet entitySet, final T data) throws ODataException {
     String skipToken = "";
     for (final EdmProperty property : entitySet.getEntityType().getKeyProperties()) {
@@ -1500,6 +1929,15 @@ public class ListsProcessor extends DataSourceProcessor {
     return skipToken;
   }
 
+  /**
+   * Gets the property value.
+   *
+   * @param <T> the generic type
+   * @param data the data
+   * @param propertyPath the property path
+   * @return the property value
+   * @throws ODataException the o data exception
+   */
   private <T> Object getPropertyValue(final T data, final List<EdmProperty> propertyPath) throws ODataException {
     Object dataObject = data;
     for (final EdmProperty property : propertyPath) {
@@ -1510,6 +1948,14 @@ public class ListsProcessor extends DataSourceProcessor {
     return dataObject;
   }
 
+  /**
+   * Handle mime type.
+   *
+   * @param data the data
+   * @param mapping the mapping
+   * @param valueMap the value map
+   * @throws ODataException the o data exception
+   */
   private void handleMimeType(final Object data, final EdmMapping mapping, final Map<String, Object> valueMap)
       throws ODataException {
     final String mimeTypeName = mapping.getMediaResourceMimeTypeKey();
@@ -1519,6 +1965,15 @@ public class ListsProcessor extends DataSourceProcessor {
     }
   }
 
+  /**
+   * Gets the simple type value map.
+   *
+   * @param <T> the generic type
+   * @param data the data
+   * @param propertyPath the property path
+   * @return the simple type value map
+   * @throws ODataException the o data exception
+   */
   private <T> Map<String, Object> getSimpleTypeValueMap(final T data, final List<EdmProperty> propertyPath)
       throws ODataException {
     final EdmProperty property = propertyPath.get(propertyPath.size() - 1);
@@ -1529,6 +1984,15 @@ public class ListsProcessor extends DataSourceProcessor {
     return valueWithMimeType;
   }
 
+  /**
+   * Gets the structural type value map.
+   *
+   * @param <T> the generic type
+   * @param data the data
+   * @param type the type
+   * @return the structural type value map
+   * @throws ODataException the o data exception
+   */
   private <T> Map<String, Object> getStructuralTypeValueMap(final T data, final EdmStructuralType type)
       throws ODataException {
     ODataContext context = getContext();
@@ -1562,6 +2026,15 @@ public class ListsProcessor extends DataSourceProcessor {
     return valueMap;
   }
 
+  /**
+   * Gets the structural type type map.
+   *
+   * @param <T> the generic type
+   * @param data the data
+   * @param type the type
+   * @return the structural type type map
+   * @throws ODataException the o data exception
+   */
   private <T> Map<String, Object> getStructuralTypeTypeMap(final T data, final EdmStructuralType type)
       throws ODataException {
     ODataContext context = getContext();
@@ -1591,6 +2064,16 @@ public class ListsProcessor extends DataSourceProcessor {
     return typeMap;
   }
 
+  /**
+   * Sets the structural type values from map.
+   *
+   * @param <T> the generic type
+   * @param data the data
+   * @param type the type
+   * @param valueMap the value map
+   * @param merge the merge
+   * @throws ODataException the o data exception
+   */
   private <T> void setStructuralTypeValuesFromMap(final T data, final EdmStructuralType type,
       final Map<String, Object> valueMap, final boolean merge) throws ODataException {
     if (data == null) {
@@ -1631,6 +2114,13 @@ public class ListsProcessor extends DataSourceProcessor {
     context.stopRuntimeMeasurement(timingHandle);
   }
 
+  /**
+   * Creates the instance.
+   *
+   * @param complexClass the complex class
+   * @return the object
+   * @throws ODataException the o data exception
+   */
   private Object createInstance(final Class<?> complexClass) throws ODataException {
     try {
       return complexClass.newInstance();
@@ -1643,6 +2133,15 @@ public class ListsProcessor extends DataSourceProcessor {
     }
   }
 
+  /**
+   * Execute batch.
+   *
+   * @param handler the handler
+   * @param contentType the content type
+   * @param content the content
+   * @return the o data response
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataResponse executeBatch(final BatchHandler handler, final String contentType, final InputStream content)
       throws ODataException {
@@ -1658,6 +2157,14 @@ public class ListsProcessor extends DataSourceProcessor {
     return batchResponse;
   }
 
+  /**
+   * Execute change set.
+   *
+   * @param handler the handler
+   * @param requests the requests
+   * @return the batch response part
+   * @throws ODataException the o data exception
+   */
   @Override
   public BatchResponsePart executeChangeSet(final BatchHandler handler, final List<ODataRequest> requests)
       throws ODataException {

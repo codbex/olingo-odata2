@@ -27,39 +27,42 @@ import org.apache.olingo.odata2.api.uri.info.DeleteUriInfo;
 import org.apache.olingo.odata2.api.uri.info.GetMediaResourceUriInfo;
 import org.apache.olingo.odata2.api.uri.info.PutMergePatchUriInfo;
 
+// TODO: Auto-generated Javadoc
 /**
- * Execute an OData entity media request
- * 
+ * Execute an OData entity media request.
  */
 public interface EntityMediaProcessor extends ODataProcessor {
 
   /**
    * Reads the media resource of an entity.
+   *
    * @param uriInfo information about the request URI
    * @param contentType the content type of the response
    * @return an {@link ODataResponse} object
-   * @throws ODataException
+   * @throws ODataException the o data exception
    */
   ODataResponse readEntityMedia(GetMediaResourceUriInfo uriInfo, String contentType) throws ODataException;
 
   /**
    * Updates the media resource of an entity.
+   *
    * @param uriInfo information about the request URI
    * @param content the content of the request
    * @param requestContentType the content type of the request body
    * @param contentType the content type of the response
    * @return an {@link ODataResponse} object
-   * @throws ODataException
+   * @throws ODataException the o data exception
    */
   ODataResponse updateEntityMedia(PutMergePatchUriInfo uriInfo, InputStream content, String requestContentType,
       String contentType) throws ODataException;
 
   /**
    * Deletes the media resource of an entity.
+   *
    * @param uriInfo information about the request URI
    * @param contentType the content type of the response
    * @return an {@link ODataResponse} object
-   * @throws ODataException
+   * @throws ODataException the o data exception
    */
   ODataResponse deleteEntityMedia(DeleteUriInfo uriInfo, String contentType) throws ODataException;
 }

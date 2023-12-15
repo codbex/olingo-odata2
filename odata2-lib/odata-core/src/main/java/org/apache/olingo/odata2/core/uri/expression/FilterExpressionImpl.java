@@ -26,33 +26,69 @@ import org.apache.olingo.odata2.api.uri.expression.ExpressionKind;
 import org.apache.olingo.odata2.api.uri.expression.ExpressionVisitor;
 import org.apache.olingo.odata2.api.uri.expression.FilterExpression;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class FilterExpressionImpl.
  */
 public class FilterExpressionImpl implements FilterExpression {
+  
+  /** The filter string. */
   private final String filterString;
+  
+  /** The edm type. */
   private EdmType edmType;
+  
+  /** The common expression. */
   private CommonExpression commonExpression;
 
+  /**
+   * Instantiates a new filter expression impl.
+   *
+   * @param filterExpression the filter expression
+   */
   public FilterExpressionImpl(final String filterExpression) {
     filterString = filterExpression;
   }
 
+  /**
+   * Instantiates a new filter expression impl.
+   *
+   * @param filterExpression the filter expression
+   * @param childExpression the child expression
+   */
   public FilterExpressionImpl(final String filterExpression, final CommonExpression childExpression) {
     filterString = filterExpression;
     commonExpression = childExpression;
   }
 
+  /**
+   * Gets the expression string.
+   *
+   * @return the expression string
+   */
   @Override
   public String getExpressionString() {
     return filterString;
   }
 
+  /**
+   * Gets the expression.
+   *
+   * @return the expression
+   */
   @Override
   public CommonExpression getExpression() {
     return commonExpression;
   }
 
+  /**
+   * Accept.
+   *
+   * @param visitor the visitor
+   * @return the object
+   * @throws ExceptionVisitExpression the exception visit expression
+   * @throws ODataApplicationException the o data application exception
+   */
   @Override
   public Object accept(final ExpressionVisitor visitor) throws ExceptionVisitExpression, ODataApplicationException {
     Object retCommonExpression = commonExpression.accept(visitor);
@@ -60,22 +96,43 @@ public class FilterExpressionImpl implements FilterExpression {
     return visitor.visitFilterExpression(this, filterString, retCommonExpression);
   }
 
+  /**
+   * Sets the edm type.
+   *
+   * @param edmType the edm type
+   * @return the common expression
+   */
   @Override
   public CommonExpression setEdmType(final EdmType edmType) {
     this.edmType = edmType;
     return this;
   }
 
+  /**
+   * Gets the edm type.
+   *
+   * @return the edm type
+   */
   @Override
   public EdmType getEdmType() {
     return edmType;
   }
 
+  /**
+   * Gets the kind.
+   *
+   * @return the kind
+   */
   @Override
   public ExpressionKind getKind() {
     return ExpressionKind.FILTER;
   }
 
+  /**
+   * Gets the uri literal.
+   *
+   * @return the uri literal
+   */
   @Override
   public String getUriLiteral() {
     return getExpressionString();

@@ -22,17 +22,25 @@ import junit.framework.Assert;
 
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
+ * The Class ListsProcessorTest.
  */
 public class ListsProcessorTest {
 
+  /** The lists processor. */
   private ListsProcessor listsProcessor;
 
+  /**
+   * Instantiates a new lists processor test.
+   */
   public ListsProcessorTest() {
     listsProcessor = new ListsProcessor(null);
   }
 
+  /**
+   * Test skip and skiptoken.
+   */
   @Test
   public void testSkipAndSkiptoken() {
     String url1 = "Rooms?$orderby=Seats%20desc&$skiptoken=12&$skip=000000&$top=200";
@@ -48,6 +56,9 @@ public class ListsProcessorTest {
     Assert.assertEquals("Rooms", result3);
   }
 
+  /**
+   * Test skip only.
+   */
   @Test
   public void testSkipOnly() {
     String url = "Rooms?$orderby=Seats%20desc&$skip=000000&$top=200";
@@ -63,6 +74,9 @@ public class ListsProcessorTest {
     Assert.assertEquals("Rooms", result3);
   }
 
+  /**
+   * Test skiptoken only.
+   */
   @Test
   public void testSkiptokenOnly() {
     String url = "Rooms?$orderby=Seats%20desc&$skiptoken=213&$top=200";

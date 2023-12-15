@@ -51,17 +51,31 @@ import org.apache.olingo.odata2.core.ODataPathSegmentImpl;
 import org.apache.olingo.odata2.core.commons.ContentType;
 import org.apache.olingo.odata2.core.uri.UriParserImpl;
 
+// TODO: Auto-generated Javadoc
 /**
- * Implementation class to obtain serializers and deserializers based on content type
- *
+ * Implementation class to obtain serializers and deserializers based on content type.
  */
 public class ODataClientImpl extends ODataClient implements DeserializerMetadataProviderInterface{
 
+  /** The Constant AMP. */
   private static final String AMP = "&";
+  
+  /** The Constant EQUAL. */
   private static final String EQUAL = "=";
+  
+  /** The Constant QUESTIONMARK. */
   private static final String QUESTIONMARK = "\\?";
+  
+  /** The Constant SLASH. */
   private static final String SLASH = "/";
   
+  /**
+   * Creates the serializer.
+   *
+   * @param contentType the content type
+   * @return the content type based serializer
+   * @throws EntityProviderException the entity provider exception
+   */
   @Override
   public ContentTypeBasedSerializer createSerializer(final String contentType) 
       throws EntityProviderException {
@@ -69,6 +83,13 @@ public class ODataClientImpl extends ODataClient implements DeserializerMetadata
 
   }
 
+  /**
+   * Creates the serializer.
+   *
+   * @param contentType the content type
+   * @return the content type based serializer
+   * @throws EntityProviderException the entity provider exception
+   */
   private ContentTypeBasedSerializer createSerializer(ContentType contentType)
       throws EntityProviderException {
     try {
@@ -87,6 +108,13 @@ public class ODataClientImpl extends ODataClient implements DeserializerMetadata
     }
   }
   
+  /**
+   * Creates the deserializer.
+   *
+   * @param contentType the content type
+   * @return the content type based deserializer
+   * @throws EntityProviderException the entity provider exception
+   */
   @Override
   public ContentTypeBasedDeserializer createDeserializer(final String contentType) 
       throws EntityProviderException {
@@ -94,6 +122,13 @@ public class ODataClientImpl extends ODataClient implements DeserializerMetadata
 
   }
 
+  /**
+   * Creates the deserializer.
+   *
+   * @param contentType the content type
+   * @return the content type based deserializer
+   * @throws EntityProviderException the entity provider exception
+   */
   private ContentTypeBasedDeserializer createDeserializer(ContentType contentType)
       throws EntityProviderException {
     try {
@@ -112,18 +147,50 @@ public class ODataClientImpl extends ODataClient implements DeserializerMetadata
     }
   }
 
+  /**
+   * Read metadata.
+   *
+   * @param content the content
+   * @param validate the validate
+   * @return the edm data services
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmDataServices readMetadata(InputStream content, boolean validate) 
       throws EntityProviderException, EdmException {
     return new XmlMetadataDeserializer().readMetadata(content, validate);
   }
 
+  /**
+   * Parses the uri.
+   *
+   * @param edm the edm
+   * @param pathSegments the path segments
+   * @param queryParameters the query parameters
+   * @return the uri info
+   * @throws UriSyntaxException the uri syntax exception
+   * @throws UriNotMatchingException the uri not matching exception
+   * @throws EdmException the edm exception
+   */
   @Override
   public UriInfo parseUri(Edm edm, List<PathSegment> pathSegments, Map<String, List<String>> queryParameters)
       throws UriSyntaxException, UriNotMatchingException, EdmException {
     return new UriParserImpl(edm).parseAll(pathSegments, queryParameters);
   }
 
+  /**
+   * Parses the uri.
+   *
+   * @param edm the edm
+   * @param pathSegments the path segments
+   * @param queryParameters the query parameters
+   * @param strictFilter the strict filter
+   * @return the uri info
+   * @throws UriSyntaxException the uri syntax exception
+   * @throws UriNotMatchingException the uri not matching exception
+   * @throws EdmException the edm exception
+   */
   @Override
   public UriInfo parseUri(Edm edm, List<PathSegment> pathSegments,
                           Map<String, String> queryParameters, boolean strictFilter)
@@ -131,6 +198,16 @@ public class ODataClientImpl extends ODataClient implements DeserializerMetadata
     return new UriParserImpl(edm).parse(pathSegments, queryParameters, strictFilter);
   }
 
+  /**
+   * Parses the uri.
+   *
+   * @param edm the edm
+   * @param uri the uri
+   * @return the uri info
+   * @throws UriSyntaxException the uri syntax exception
+   * @throws UriNotMatchingException the uri not matching exception
+   * @throws EdmException the edm exception
+   */
   @Override
   public UriInfo parseUri(Edm edm, String uri) throws UriSyntaxException, UriNotMatchingException, EdmException {
     final String[] path = uri.split(QUESTIONMARK, -1);
@@ -150,6 +227,17 @@ public class ODataClientImpl extends ODataClient implements DeserializerMetadata
     return new UriParserImpl(edm).parseAll(pathSegments, queryParameters);
   }
 
+  /**
+   * Parses the uri.
+   *
+   * @param edm the edm
+   * @param uri the uri
+   * @param strictFilter the strict filter
+   * @return the uri info
+   * @throws UriSyntaxException the uri syntax exception
+   * @throws UriNotMatchingException the uri not matching exception
+   * @throws EdmException the edm exception
+   */
   @Override
   public UriInfo parseUri(Edm edm, String uri, boolean strictFilter)
       throws UriSyntaxException, UriNotMatchingException, EdmException {
@@ -172,9 +260,10 @@ public class ODataClientImpl extends ODataClient implements DeserializerMetadata
   }
 
   /**
-   * Fetch query parameters
-   * @param uri
-   * @return
+   * Fetch query parameters.
+   *
+   * @param uri the uri
+   * @return the query parameters
    */
   private Map<String, List<String>> getQueryParameters(final String uri) {
     Map<String, List<String>> allQueryParameters = new HashMap<String, List<String>>();
@@ -193,9 +282,10 @@ public class ODataClientImpl extends ODataClient implements DeserializerMetadata
   }
 
   /**
-   * Fetch Query parameters
-   * @param uri
-   * @return
+   * Fetch Query parameters.
+   *
+   * @param uri the uri
+   * @return the query parameters with strict filter
    */
   private Map<String, String> getQueryParametersWithStrictFilter(String uri) {
     Map<String, String> queryParameters = new HashMap<String, String>();
@@ -211,10 +301,11 @@ public class ODataClientImpl extends ODataClient implements DeserializerMetadata
   }
 
   /**
-   * Fetch path segments
-   * @param uri
-   * @return
-   * @throws UriSyntaxException
+   * Fetch path segments.
+   *
+   * @param uri the uri
+   * @return the path segments
+   * @throws UriSyntaxException the uri syntax exception
    */
   private List<PathSegment> getPathSegments(final String uri) throws UriSyntaxException {
     List<PathSegment> pathSegments = new ArrayList<PathSegment>();
@@ -226,6 +317,13 @@ public class ODataClientImpl extends ODataClient implements DeserializerMetadata
     return pathSegments;
   }
   
+  /**
+   * Unescape.
+   *
+   * @param s the s
+   * @return the string
+   * @throws UriSyntaxException the uri syntax exception
+   */
   private String unescape(final String s) throws UriSyntaxException {
     try {
       return new URI(s).getPath();
@@ -235,11 +333,23 @@ public class ODataClientImpl extends ODataClient implements DeserializerMetadata
   }
 
 
+/**
+ * Edm uri builder.
+ *
+ * @param serviceRoot the service root
+ * @return the edm URI builder
+ */
 @Override
   public EdmURIBuilder edmUriBuilder(String serviceRoot) {
     return new EdmURIBuilderImpl(serviceRoot);
   }
 
+/**
+ * Uri builder.
+ *
+ * @param serviceRoot the service root
+ * @return the URI builder
+ */
 @Override
   public URIBuilder uriBuilder(String serviceRoot) {
     return new URIBuilderImpl(serviceRoot);

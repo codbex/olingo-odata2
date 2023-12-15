@@ -25,10 +25,17 @@ import javax.xml.stream.XMLOutputFactory;
 
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *
+ * The Class LoadXMLFactoryTest.
  */
 public class LoadXMLFactoryTest {
+  
+  /**
+   * Load woodstock factory.
+   *
+   * @throws Exception the exception
+   */
   // CHECKSTYLE:OFF
   @Test
   public void loadWoodstockFactory() throws Exception {
@@ -38,6 +45,11 @@ public class LoadXMLFactoryTest {
     assertEquals("com.ctc.wstx.stax.WstxOutputFactory", factory.getClass().getName());
   }
 
+  /**
+   * Load sun factory.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void loadSunFactory() throws Exception {
     System.setProperty("javax.xml.stream.XMLOutputFactory", "com.sun.xml.internal.stream.XMLOutputFactoryImpl"); // NOSONAR

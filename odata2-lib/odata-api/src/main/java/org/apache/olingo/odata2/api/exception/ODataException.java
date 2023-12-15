@@ -18,26 +18,47 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.exception;
 
+// TODO: Auto-generated Javadoc
 /**
  * Base exception for all <code>OData</code>-related exceptions.
  * 
  */
 public class ODataException extends Exception {
 
+  /** The Constant serialVersionUID. */
   private static final long serialVersionUID = 1L;
 
+  /**
+   * Instantiates a new o data exception.
+   */
   public ODataException() {
     super();
   }
 
+  /**
+   * Instantiates a new o data exception.
+   *
+   * @param msg the msg
+   */
   public ODataException(final String msg) {
     super(msg);
   }
 
+  /**
+   * Instantiates a new o data exception.
+   *
+   * @param msg the msg
+   * @param e the e
+   */
   public ODataException(final String msg, final Throwable e) {
     super(msg, e);
   }
 
+  /**
+   * Instantiates a new o data exception.
+   *
+   * @param e the e
+   */
   public ODataException(final Throwable e) {
     super(e);
   }
@@ -105,6 +126,13 @@ public class ODataException extends Exception {
     return getSpecificCause(ODataApplicationException.class);
   }
 
+  /**
+   * Gets the specific cause.
+   *
+   * @param <T> the generic type
+   * @param causeClass the cause class
+   * @return the specific cause
+   */
   private <T extends ODataException> T getSpecificCause(final Class<T> causeClass) {
     Throwable cause = this;
     while (cause != null) {

@@ -28,9 +28,21 @@ import org.apache.olingo.odata2.api.edm.provider.ReferentialConstraintRole;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EdmReferentialConstraintRoleImplProvTest.
+ */
 public class EdmReferentialConstraintRoleImplProvTest {
+  
+  /** The referential constraint role prov. */
   private static EdmReferentialConstraintRoleImplProv referentialConstraintRoleProv;
 
+  /**
+   * Gets the edm entity container impl.
+   *
+   * @return the edm entity container impl
+   * @throws Exception the exception
+   */
   @BeforeClass
   public static void getEdmEntityContainerImpl() throws Exception {
     List<PropertyRef> propertyRefs = new ArrayList<PropertyRef>();
@@ -44,6 +56,11 @@ public class EdmReferentialConstraintRoleImplProvTest {
     referentialConstraintRoleProv = new EdmReferentialConstraintRoleImplProv(dependent);
   }
 
+  /**
+   * Test association.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testAssociation() throws Exception {
     EdmReferentialConstraintRoleImplProv referentialConstraintRole = referentialConstraintRoleProv;

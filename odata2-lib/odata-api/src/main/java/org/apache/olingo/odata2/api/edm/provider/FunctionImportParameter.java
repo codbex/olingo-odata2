@@ -23,22 +23,39 @@ import java.util.List;
 import org.apache.olingo.odata2.api.edm.EdmFacets;
 import org.apache.olingo.odata2.api.edm.EdmSimpleTypeKind;
 
+// TODO: Auto-generated Javadoc
 /**
- * Objects of this class represent function import parameters
- * 
+ * Objects of this class represent function import parameters.
  */
 public class FunctionImportParameter {
 
+  /** The name. */
   private String name;
+  
+  /** The mode. */
   private String mode;
+  
+  /** The type. */
   private EdmSimpleTypeKind type;
+  
+  /** The facets. */
   private EdmFacets facets;
+  
+  /** The mapping. */
   private Mapping mapping;
+  
+  /** The documentation. */
   private Documentation documentation;
+  
+  /** The annotation attributes. */
   private List<AnnotationAttribute> annotationAttributes;
+  
+  /** The annotation elements. */
   private List<AnnotationElement> annotationElements;
 
   /**
+   * Gets the name.
+   *
    * @return <b>String</b> name of the parameter
    */
   public String getName() {
@@ -46,6 +63,8 @@ public class FunctionImportParameter {
   }
 
   /**
+   * Gets the mode.
+   *
    * @return <b>String</b> mode of this parameter
    */
   public String getMode() {
@@ -53,6 +72,8 @@ public class FunctionImportParameter {
   }
 
   /**
+   * Gets the type.
+   *
    * @return {@link EdmSimpleTypeKind} of this parameter
    */
   public EdmSimpleTypeKind getType() {
@@ -60,6 +81,8 @@ public class FunctionImportParameter {
   }
 
   /**
+   * Gets the facets.
+   *
    * @return {@link EdmFacets} of this parameter
    */
   public EdmFacets getFacets() {
@@ -67,6 +90,8 @@ public class FunctionImportParameter {
   }
 
   /**
+   * Gets the mapping.
+   *
    * @return {@link Mapping} of this parameter
    */
   public Mapping getMapping() {
@@ -74,6 +99,8 @@ public class FunctionImportParameter {
   }
 
   /**
+   * Gets the documentation.
+   *
    * @return {@link Documentation} documentation
    */
   public Documentation getDocumentation() {
@@ -81,6 +108,8 @@ public class FunctionImportParameter {
   }
 
   /**
+   * Gets the annotation attributes.
+   *
    * @return collection of {@link AnnotationAttribute} annotation attributes
    */
   public List<AnnotationAttribute> getAnnotationAttributes() {
@@ -88,6 +117,8 @@ public class FunctionImportParameter {
   }
 
   /**
+   * Gets the annotation elements.
+   *
    * @return collection of {@link AnnotationElement} annotation elements
    */
   public List<AnnotationElement> getAnnotationElements() {
@@ -95,8 +126,9 @@ public class FunctionImportParameter {
   }
 
   /**
-   * Sets the name of this {@link FunctionImportParameter}
-   * @param name
+   * Sets the name of this {@link FunctionImportParameter}.
+   *
+   * @param name the name
    * @return {@link FunctionImportParameter} for method chaining
    */
   public FunctionImportParameter setName(final String name) {
@@ -105,8 +137,9 @@ public class FunctionImportParameter {
   }
 
   /**
-   * Sets the mode of this {@link FunctionImportParameter}
-   * @param mode
+   * Sets the mode of this {@link FunctionImportParameter}.
+   *
+   * @param mode the mode
    * @return {@link FunctionImportParameter} for method chaining
    */
   public FunctionImportParameter setMode(final String mode) {
@@ -115,8 +148,9 @@ public class FunctionImportParameter {
   }
 
   /**
-   * Sets the {@link EdmSimpleTypeKind} of this {@link FunctionImportParameter}
-   * @param type
+   * Sets the {@link EdmSimpleTypeKind} of this {@link FunctionImportParameter}.
+   *
+   * @param type the type
    * @return {@link FunctionImportParameter} for method chaining
    */
   public FunctionImportParameter setType(final EdmSimpleTypeKind type) {
@@ -125,8 +159,9 @@ public class FunctionImportParameter {
   }
 
   /**
-   * Sets the {@link EdmFacets} of this {@link FunctionImportParameter}
-   * @param facets
+   * Sets the {@link EdmFacets} of this {@link FunctionImportParameter}.
+   *
+   * @param facets the facets
    * @return {@link FunctionImportParameter} for method chaining
    */
   public FunctionImportParameter setFacets(final EdmFacets facets) {
@@ -135,8 +170,9 @@ public class FunctionImportParameter {
   }
 
   /**
-   * Sets the {@link Mapping} of this {@link FunctionImportParameter}
-   * @param mapping
+   * Sets the {@link Mapping} of this {@link FunctionImportParameter}.
+   *
+   * @param mapping the mapping
    * @return {@link FunctionImportParameter} for method chaining
    */
   public FunctionImportParameter setMapping(final Mapping mapping) {
@@ -145,8 +181,9 @@ public class FunctionImportParameter {
   }
 
   /**
-   * Sets the {@link Documentation} of this {@link FunctionImportParameter}
-   * @param documentation
+   * Sets the {@link Documentation} of this {@link FunctionImportParameter}.
+   *
+   * @param documentation the documentation
    * @return {@link FunctionImportParameter} for method chaining
    */
   public FunctionImportParameter setDocumentation(final Documentation documentation) {
@@ -155,8 +192,9 @@ public class FunctionImportParameter {
   }
 
   /**
-   * Sets the collection of {@link AnnotationAttribute} for this {@link FunctionImportParameter}
-   * @param annotationAttributes
+   * Sets the collection of {@link AnnotationAttribute} for this {@link FunctionImportParameter}.
+   *
+   * @param annotationAttributes the annotation attributes
    * @return {@link FunctionImportParameter} for method chaining
    */
   public FunctionImportParameter setAnnotationAttributes(final List<AnnotationAttribute> annotationAttributes) {
@@ -165,8 +203,9 @@ public class FunctionImportParameter {
   }
 
   /**
-   * Sets the collection of {@link AnnotationElement} for this {@link FunctionImportParameter}
-   * @param annotationElements
+   * Sets the collection of {@link AnnotationElement} for this {@link FunctionImportParameter}.
+   *
+   * @param annotationElements the annotation elements
    * @return {@link FunctionImportParameter} for method chaining
    */
   public FunctionImportParameter setAnnotationElements(final List<AnnotationElement> annotationElements) {

@@ -20,13 +20,38 @@ package org.apache.olingo.odata2.jpa.processor.api.access;
 
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Interface JPAPaging.
+ */
 public interface JPAPaging {
+  
+  /**
+   * Gets the page size.
+   *
+   * @return the page size
+   */
   public int getPageSize();
 
+  /**
+   * Gets the paged entities.
+   *
+   * @return the paged entities
+   */
   public List<Object> getPagedEntities();
 
+  /**
+   * Gets the next page.
+   *
+   * @return the next page
+   */
   public int getNextPage();
 
+  /**
+   * Gets the start page.
+   *
+   * @return the start page
+   */
   public int getStartPage();
 
 }

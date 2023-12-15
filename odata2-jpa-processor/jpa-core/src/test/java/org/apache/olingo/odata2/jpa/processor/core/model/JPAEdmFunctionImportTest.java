@@ -52,18 +52,31 @@ import org.apache.olingo.odata2.jpa.processor.core.mock.model.JPACustomProcessor
 import org.junit.Before;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAEdmFunctionImportTest.
+ */
 public class JPAEdmFunctionImportTest extends JPAEdmTestModelView {
+  
+  /** The Constant METHOD_COUNT. */
   private static final int METHOD_COUNT = 7;
+  
+  /** The variant. */
   private static int VARIANT = 0;
+  
+  /** The jpa edmfunction import. */
   private JPAEdmFunctionImport jpaEdmfunctionImport;
 
+  /**
+   * Setup.
+   */
   @Before
   public void setup() {
     jpaEdmfunctionImport = new JPAEdmFunctionImport(this);
   }
 
   /**
-   * Test Case - Function Import Basic test - Positive Case
+   * Test Case - Function Import Basic test - Positive Case.
    */
   @Test
   public void testFunctionImportBasic() {
@@ -99,7 +112,7 @@ public class JPAEdmFunctionImportTest extends JPAEdmTestModelView {
   }
 
   /**
-   * Test Case - Enable a method that does not exists
+   * Test Case - Enable a method that does not exists.
    */
   @Test
   public void testFunctionImportNoSuchMethod() {
@@ -114,7 +127,7 @@ public class JPAEdmFunctionImportTest extends JPAEdmTestModelView {
   }
 
   /**
-   * Test Case - Enable all annotated methods in a class as function imports
+   * Test Case - Enable all annotated methods in a class as function imports.
    */
   @Test
   public void testFunctionImportAllMethods() {
@@ -153,7 +166,7 @@ public class JPAEdmFunctionImportTest extends JPAEdmTestModelView {
   }
 
   /**
-   * Test Case - Function Import with No return type defined - Negative case
+   * Test Case - Function Import with No return type defined - Negative case.
    */
   @Test
   public void testNoReturnType() {
@@ -232,7 +245,7 @@ public class JPAEdmFunctionImportTest extends JPAEdmTestModelView {
 
   /**
    * Test Case - Function Import that returns an Entity Type that is not found
-   * in JPA Model
+   * in JPA Model.
    */
   @Test
   public void testFunctionImportEntityTypeInvalid() {
@@ -250,7 +263,7 @@ public class JPAEdmFunctionImportTest extends JPAEdmTestModelView {
   }
 
   /**
-   * Test Case - Function Import that returns a complex Type
+   * Test Case - Function Import that returns a complex Type.
    */
   @Test
   public void testFunctionImportComplexType() {
@@ -276,7 +289,7 @@ public class JPAEdmFunctionImportTest extends JPAEdmTestModelView {
 
   /**
    * Test Case - Function Import that returns a complex Type with multiplicity
-   * Many
+   * Many.
    */
   @Test
   public void testFunctionImportComplexTypeMany() {
@@ -302,7 +315,7 @@ public class JPAEdmFunctionImportTest extends JPAEdmTestModelView {
 
   /**
    * Test Case - Function Import that returns an Complex Type that is not
-   * found in JPA Model
+   * found in JPA Model.
    */
   @Test
   public void testFunctionImportComplexTypeInvalid() {
@@ -320,7 +333,7 @@ public class JPAEdmFunctionImportTest extends JPAEdmTestModelView {
   }
 
   /**
-   * Test Case - Function Import that returns an scalar Type that is not valid
+   * Test Case - Function Import that returns an scalar Type that is not valid.
    */
   @Test
   public void testFunctionImportScalarTypeInvalid() {
@@ -338,7 +351,7 @@ public class JPAEdmFunctionImportTest extends JPAEdmTestModelView {
   }
 
   /**
-   * Test Case - Function Import that takes a parameter with no name
+   * Test Case - Function Import that takes a parameter with no name.
    */
   @Test
   public void testFunctionImportParamNoName() {
@@ -356,7 +369,7 @@ public class JPAEdmFunctionImportTest extends JPAEdmTestModelView {
   }
 
   /**
-   * Test Case - Function Import test for facets
+   * Test Case - Function Import test for facets.
    */
   @Test
   public void testFunctionImportParamFacets() {
@@ -383,7 +396,7 @@ public class JPAEdmFunctionImportTest extends JPAEdmTestModelView {
   }
 
   /**
-   * Test Case - Function Import test for default facets
+   * Test Case - Function Import test for default facets.
    */
   @Test
   public void testFunctionImportParamFacetsDefault() {
@@ -469,6 +482,9 @@ public class JPAEdmFunctionImportTest extends JPAEdmTestModelView {
 
   }
 
+  /**
+   * Test no function import.
+   */
   @Test
   public void testNoFunctionImport() {
     VARIANT = 99;
@@ -481,6 +497,9 @@ public class JPAEdmFunctionImportTest extends JPAEdmTestModelView {
 
   }
 
+  /**
+   * Test get builder idempotent.
+   */
   @Test
   public void testGetBuilderIdempotent() {
     JPAEdmFunctionImport jpaEdmfunctionImport = new JPAEdmFunctionImport(this);
@@ -491,6 +510,11 @@ public class JPAEdmFunctionImportTest extends JPAEdmTestModelView {
     assertEquals(builder1.hashCode(), builder2.hashCode());
   }
 
+  /**
+   * Gets the registered operations.
+   *
+   * @return the registered operations
+   */
   @Override
   public HashMap<Class<?>, String[]> getRegisteredOperations() {
 
@@ -541,6 +565,11 @@ public class JPAEdmFunctionImportTest extends JPAEdmTestModelView {
     return customOperations;
   }
 
+  /**
+   * Gets the edm schema.
+   *
+   * @return the edm schema
+   */
   @Override
   public Schema getEdmSchema() {
     Schema schema = new Schema();
@@ -554,26 +583,52 @@ public class JPAEdmFunctionImportTest extends JPAEdmTestModelView {
 
   }
 
+  /**
+   * Gets the JPA edm entity container view.
+   *
+   * @return the JPA edm entity container view
+   */
   @Override
   public JPAEdmEntityContainerView getJPAEdmEntityContainerView() {
     return this;
   }
 
+  /**
+   * Gets the JPA edm entity set view.
+   *
+   * @return the JPA edm entity set view
+   */
   @Override
   public JPAEdmEntitySetView getJPAEdmEntitySetView() {
     return this;
   }
 
+  /**
+   * Gets the JPA edm entity type view.
+   *
+   * @return the JPA edm entity type view
+   */
   @Override
   public JPAEdmEntityTypeView getJPAEdmEntityTypeView() {
     return this;
   }
 
+  /**
+   * Gets the JPA edm complex type view.
+   *
+   * @return the JPA edm complex type view
+   */
   @Override
   public JPAEdmComplexTypeView getJPAEdmComplexTypeView() {
     return this;
   }
 
+  /**
+   * Search edm entity type.
+   *
+   * @param arg0 the arg 0
+   * @return the entity type
+   */
   @Override
   public EntityType searchEdmEntityType(final String arg0) {
     if (arg0.equals(JPACustomProcessorMock.class.getSimpleName())) {
@@ -583,6 +638,12 @@ public class JPAEdmFunctionImportTest extends JPAEdmTestModelView {
     }
   }
 
+  /**
+   * Search edm complex type.
+   *
+   * @param arg0 the arg 0
+   * @return the complex type
+   */
   @Override
   public ComplexType searchEdmComplexType(final String arg0) {
     if (arg0.equals(JPACustomProcessorMock.class.getName())) {
@@ -592,11 +653,19 @@ public class JPAEdmFunctionImportTest extends JPAEdmTestModelView {
     }
   }
 
+  /**
+   * Gets the p unit name.
+   *
+   * @return the p unit name
+   */
   @Override
   public String getpUnitName() {
     return ODataJPAContextMock.PERSISTENCE_UNIT_NAME;
   }
 
+  /**
+   * Builds the.
+   */
   private void build() {
     try {
       jpaEdmfunctionImport.getBuilder().build();

@@ -36,19 +36,40 @@ import org.apache.olingo.odata2.api.edm.provider.Schema;
 import org.apache.olingo.odata2.api.edm.provider.SimpleProperty;
 import org.apache.olingo.odata2.api.exception.ODataException;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MapProvider.
+ */
 public class MapProvider extends EdmProvider {
 
+  /** The Constant NAMESPACE. */
   private static final String NAMESPACE = "map";
+  
+  /** The p1. */
   private static int P1 = 0;
+  
+  /** The p2. */
   private static int P2 = 1;
+  
+  /** The p3. */
   private static int P3 = 2;
+  
+  /** The entitytype. */
   private static int ENTITYTYPE = 3;
+  
+  /** The entityset. */
   private static int ENTITYSET = 4;
+  
+  /** The mapping container. */
   private static String MAPPING_CONTAINER = "mappingContainer";
 
+  /** The edm. */
   private static int EDM = 0;
+  
+  /** The backend. */
   private static int BACKEND = 1;
 
+  /** The mapping. */
   private final String[][] mapping = {
       { "p1", "P01" },
       { "p2", "P02" },
@@ -57,26 +78,57 @@ public class MapProvider extends EdmProvider {
       { "mappings", "MAPPINGS" }
   };
 
+  /**
+   * Instantiates a new map provider.
+   */
   public MapProvider() {
     buildSchema();
   }
 
+  /** The schemas. */
   private List<Schema> schemas;
+  
+  /** The property ref. */
   private PropertyRef propertyRef;
+  
+  /** The key. */
   private Key key;
+  
+  /** The property 1. */
   private Property property1;
+  
+  /** The property 2. */
   private Property property2;
+  
+  /** The property 3. */
   private Property property3;
+  
+  /** The entity type. */
   private EntityType entityType;
+  
+  /** The entity set. */
   private EntitySet entitySet;
+  
+  /** The entity container. */
   private EntityContainer entityContainer;
+  
+  /** The schema. */
   private Schema schema;
 
+  /**
+   * Gets the schemas.
+   *
+   * @return the schemas
+   * @throws ODataException the o data exception
+   */
   @Override
   public List<Schema> getSchemas() throws ODataException {
     return schemas;
   }
 
+  /**
+   * Builds the schema.
+   */
   private void buildSchema() {
     propertyRef = new PropertyRef();
     propertyRef.setName("p1");
@@ -119,6 +171,13 @@ public class MapProvider extends EdmProvider {
     schemas = Arrays.asList(schema);
   }
 
+  /**
+   * Gets the entity type.
+   *
+   * @param edmFQName the edm FQ name
+   * @return the entity type
+   * @throws ODataException the o data exception
+   */
   @Override
   public EntityType getEntityType(final FullQualifiedName edmFQName) throws ODataException {
     if (!NAMESPACE.equals(edmFQName.getNamespace()) || !mapping[ENTITYTYPE][EDM].equals(edmFQName.getName())) {
@@ -128,6 +187,14 @@ public class MapProvider extends EdmProvider {
     return entityType;
   }
 
+  /**
+   * Gets the entity set.
+   *
+   * @param entityContainer the entity container
+   * @param name the name
+   * @return the entity set
+   * @throws ODataException the o data exception
+   */
   @Override
   public EntitySet getEntitySet(final String entityContainer, final String name) throws ODataException {
     if (!MAPPING_CONTAINER.equals(entityContainer) || !mapping[ENTITYSET][EDM].equals(name)) {
@@ -137,6 +204,13 @@ public class MapProvider extends EdmProvider {
     return entitySet;
   }
 
+  /**
+   * Gets the entity container info.
+   *
+   * @param name the name
+   * @return the entity container info
+   * @throws ODataException the o data exception
+   */
   @Override
   public EntityContainerInfo getEntityContainerInfo(final String name) throws ODataException {
     EntityContainerInfo entityContainerInfo = null;

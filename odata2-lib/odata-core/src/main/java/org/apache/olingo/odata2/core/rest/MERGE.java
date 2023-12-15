@@ -25,6 +25,9 @@ import java.lang.annotation.Target;
 
 import jakarta.ws.rs.HttpMethod;
 
+/**
+ * The Interface MERGE.
+ */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @HttpMethod("MERGE")

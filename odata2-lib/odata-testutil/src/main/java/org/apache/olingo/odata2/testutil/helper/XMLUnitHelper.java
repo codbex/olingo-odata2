@@ -24,6 +24,7 @@ import java.util.regex.Pattern;
 
 import org.junit.Assert;
 
+// TODO: Auto-generated Javadoc
 /**
  * Helper for XML unit tests.
  * 
@@ -32,8 +33,9 @@ public class XMLUnitHelper {
 
   /**
    * Verifies order of <code>tags</code> in given <code>xmlString</code>.
-   * @param xmlString
-   * @param toCheckTags
+   *
+   * @param xmlString the xml string
+   * @param toCheckTags the to check tags
    */
   public static void verifyTagOrdering(final String xmlString, final String... toCheckTags) {
     int lastTagPos = -1;

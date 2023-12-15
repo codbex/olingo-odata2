@@ -42,9 +42,23 @@ import org.apache.olingo.odata2.api.exception.ODataException;
 import org.apache.olingo.odata2.core.commons.XmlHelper;
 import org.apache.olingo.odata2.core.ep.consumer.XmlMetadataConsumer;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EdmxProvider.
+ */
 public class EdmxProvider extends EdmProvider {
+  
+  /** The data services. */
   private DataServices dataServices;
 
+  /**
+   * Parses the.
+   *
+   * @param in the in
+   * @param validate the validate
+   * @return the edmx provider
+   * @throws EntityProviderException the entity provider exception
+   */
   public EdmxProvider parse(final InputStream in, final boolean validate) throws EntityProviderException {
     XmlMetadataConsumer parser = new XmlMetadataConsumer();
     XMLStreamReader streamReader = XmlHelper.createStreamReader(in);
@@ -52,6 +66,13 @@ public class EdmxProvider extends EdmProvider {
     return this;
   }
 
+  /**
+   * Gets the entity container info.
+   *
+   * @param name the name
+   * @return the entity container info
+   * @throws ODataException the o data exception
+   */
   @Override
   public EntityContainerInfo getEntityContainerInfo(final String name) throws ODataException {
     if (name != null) {
@@ -74,6 +95,13 @@ public class EdmxProvider extends EdmProvider {
     return null;
   }
 
+  /**
+   * Gets the entity type.
+   *
+   * @param edmFQName the edm FQ name
+   * @return the entity type
+   * @throws ODataException the o data exception
+   */
   @Override
   public EntityType getEntityType(final FullQualifiedName edmFQName) throws ODataException {
     for (Schema schema : dataServices.getSchemas()) {
@@ -88,6 +116,13 @@ public class EdmxProvider extends EdmProvider {
     return null;
   }
 
+  /**
+   * Gets the complex type.
+   *
+   * @param edmFQName the edm FQ name
+   * @return the complex type
+   * @throws ODataException the o data exception
+   */
   @Override
   public ComplexType getComplexType(final FullQualifiedName edmFQName) throws ODataException {
     for (Schema schema : dataServices.getSchemas()) {
@@ -102,6 +137,13 @@ public class EdmxProvider extends EdmProvider {
     return null;
   }
 
+  /**
+   * Gets the association.
+   *
+   * @param edmFQName the edm FQ name
+   * @return the association
+   * @throws ODataException the o data exception
+   */
   @Override
   public Association getAssociation(final FullQualifiedName edmFQName) throws ODataException {
     for (Schema schema : dataServices.getSchemas()) {
@@ -116,6 +158,14 @@ public class EdmxProvider extends EdmProvider {
     return null;
   }
 
+  /**
+   * Gets the entity set.
+   *
+   * @param entityContainer the entity container
+   * @param name the name
+   * @return the entity set
+   * @throws ODataException the o data exception
+   */
   @Override
   public EntitySet getEntitySet(final String entityContainer, final String name) throws ODataException {
     for (Schema schema : dataServices.getSchemas()) {
@@ -132,6 +182,16 @@ public class EdmxProvider extends EdmProvider {
     return null;
   }
 
+  /**
+   * Gets the association set.
+   *
+   * @param entityContainer the entity container
+   * @param association the association
+   * @param sourceEntitySetName the source entity set name
+   * @param sourceEntitySetRole the source entity set role
+   * @return the association set
+   * @throws ODataException the o data exception
+   */
   @Override
   public AssociationSet getAssociationSet(final String entityContainer, final FullQualifiedName association,
       final String sourceEntitySetName, final String sourceEntitySetRole) throws ODataException {
@@ -153,6 +213,14 @@ public class EdmxProvider extends EdmProvider {
     return null;
   }
 
+  /**
+   * Gets the function import.
+   *
+   * @param entityContainer the entity container
+   * @param name the name
+   * @return the function import
+   * @throws ODataException the o data exception
+   */
   @Override
   public FunctionImport getFunctionImport(final String entityContainer, final String name) throws ODataException {
     for (Schema schema : dataServices.getSchemas()) {
@@ -169,11 +237,22 @@ public class EdmxProvider extends EdmProvider {
     return null;
   }
 
+  /**
+   * Gets the schemas.
+   *
+   * @return the schemas
+   * @throws ODataException the o data exception
+   */
   @Override
   public List<Schema> getSchemas() throws ODataException {
     return dataServices.getSchemas();
   }
 
+  /**
+   * Gets the alias infos.
+   *
+   * @return the alias infos
+   */
   @Override
   public List<AliasInfo> getAliasInfos() {
     List<AliasInfo> aliasInfos = new ArrayList<AliasInfo>();

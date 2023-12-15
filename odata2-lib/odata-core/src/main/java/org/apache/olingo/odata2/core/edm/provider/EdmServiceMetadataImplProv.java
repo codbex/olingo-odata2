@@ -45,21 +45,42 @@ import org.apache.olingo.odata2.core.commons.XmlHelper;
 import org.apache.olingo.odata2.core.ep.producer.XmlMetadataProducer;
 import org.apache.olingo.odata2.core.ep.util.CircleStreamBuffer;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class EdmServiceMetadataImplProv.
  */
 public class EdmServiceMetadataImplProv implements EdmServiceMetadata {
 
+  /** The Constant EDM_PROVIDER_EXEPTION. */
   private static final String EDM_PROVIDER_EXEPTION = "EdmProvider is not set.";
+  
+  /** The edm provider. */
   private EdmProvider edmProvider;
+  
+  /** The data service version. */
   private String dataServiceVersion;
+  
+  /** The schemas. */
   private List<Schema> schemas;
+  
+  /** The entity set infos. */
   private List<EdmEntitySetInfo> entitySetInfos;
 
+  /**
+   * Instantiates a new edm service metadata impl prov.
+   *
+   * @param edmProvider the edm provider
+   */
   public EdmServiceMetadataImplProv(final EdmProvider edmProvider) {
     this.edmProvider = edmProvider;
   }
 
+  /**
+   * Gets the metadata.
+   *
+   * @return the metadata
+   * @throws ODataException the o data exception
+   */
   @Override
   public InputStream getMetadata() throws ODataException {
     if(edmProvider == null){
@@ -99,6 +120,12 @@ public class EdmServiceMetadataImplProv implements EdmServiceMetadata {
     }
   }
 
+  /**
+   * Gets the data service version.
+   *
+   * @return the data service version
+   * @throws ODataException the o data exception
+   */
   @Override
   public String getDataServiceVersion() throws ODataException {
     if(edmProvider == null){
@@ -139,6 +166,12 @@ public class EdmServiceMetadataImplProv implements EdmServiceMetadata {
     return dataServiceVersion;
   }
 
+  /**
+   * Gets the entity set infos.
+   *
+   * @return the entity set infos
+   * @throws ODataException the o data exception
+   */
   @Override
   public List<EdmEntitySetInfo> getEntitySetInfos() throws ODataException {
     if(edmProvider == null){
@@ -168,8 +201,8 @@ public class EdmServiceMetadataImplProv implements EdmServiceMetadata {
   /**
    * Return original list if parameter is not NULL or an empty list.
    *
-   * @param list list which is checked and probably returned
    * @param <T> type of list
+   * @param list list which is checked and probably returned
    * @return original list if parameter is not NULL or an empty list
    */
   private <T> List<T> listOrEmptyList(List<T> list) {

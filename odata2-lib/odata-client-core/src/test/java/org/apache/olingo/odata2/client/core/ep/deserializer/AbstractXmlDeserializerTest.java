@@ -24,13 +24,29 @@ import java.util.List;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AbstractXmlDeserializerTest.
+ */
 @RunWith(Parameterized.class)
 public abstract class AbstractXmlDeserializerTest extends AbstractDeserializerTest {
 
+  /**
+   * The Enum StreamWriterImplType.
+   */
   public enum StreamWriterImplType {
-    WOODSTOCKIMPL, SUNINTERNALIMPL;
+    
+    /** The woodstockimpl. */
+    WOODSTOCKIMPL, 
+ /** The suninternalimpl. */
+ SUNINTERNALIMPL;
   }
 
+  /**
+   * Instantiates a new abstract xml deserializer test.
+   *
+   * @param type the type
+   */
   // CHECKSTYLE:OFF
   public AbstractXmlDeserializerTest(final StreamWriterImplType type) {
     switch (type) {
@@ -51,6 +67,11 @@ public abstract class AbstractXmlDeserializerTest extends AbstractDeserializerTe
 
   // CHECKSTYLE:On
 
+  /**
+   * Data.
+   *
+   * @return the list
+   */
   @Parameterized.Parameters
   public static List<Object[]> data() {
     // If desired this can be made dependent on runtime variables

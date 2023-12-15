@@ -31,12 +31,26 @@ import org.apache.olingo.odata2.ref.edm.ScenarioEdmProvider;
 import org.apache.olingo.odata2.testutil.server.ServletType;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class URLEncodingTest.
+ */
 public class URLEncodingTest extends AbstractRefTest {
 
+  /**
+   * Instantiates a new URL encoding test.
+   *
+   * @param servletType the servlet type
+   */
   public URLEncodingTest(ServletType servletType) {
     super(servletType);
   }
 
+  /**
+   * Encoding in query part for filter.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void encodingInQueryPartForFilter() throws Exception {
     Edm edm = new EdmImplProv(new ScenarioEdmProvider());
@@ -51,6 +65,11 @@ public class URLEncodingTest extends AbstractRefTest {
     assertEquals(1, feed.getEntries().size());
   }
   
+  /**
+   * Encoding in query part for filter with and encoded.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void encodingInQueryPartForFilterWithAndEncoded() throws Exception {
     Edm edm = new EdmImplProv(new ScenarioEdmProvider());
@@ -65,6 +84,11 @@ public class URLEncodingTest extends AbstractRefTest {
     assertEquals(0, feed.getEntries().size());
   }
   
+  /**
+   * Encoding in query part for filter with hiphon encoded.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void encodingInQueryPartForFilterWithHiphonEncoded() throws Exception {
     Edm edm = new EdmImplProv(new ScenarioEdmProvider());

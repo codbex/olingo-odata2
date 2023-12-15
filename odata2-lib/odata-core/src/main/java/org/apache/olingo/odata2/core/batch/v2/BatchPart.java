@@ -18,8 +18,23 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.core.batch.v2;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Interface BatchPart.
+ */
 public interface BatchPart {
+  
+  /**
+   * Gets the headers.
+   *
+   * @return the headers
+   */
   public Header getHeaders();
 
+  /**
+   * Checks if is strict.
+   *
+   * @return true, if is strict
+   */
   public boolean isStrict();
 }

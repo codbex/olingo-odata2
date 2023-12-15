@@ -21,6 +21,7 @@ package org.apache.olingo.odata2.api.uri;
 import org.apache.olingo.odata2.api.edm.EdmEntitySet;
 import org.apache.olingo.odata2.api.edm.EdmNavigationProperty;
 
+// TODO: Auto-generated Javadoc
 /**
  * Navigation property segment, consisting of a navigation property and its
  * target entity set.

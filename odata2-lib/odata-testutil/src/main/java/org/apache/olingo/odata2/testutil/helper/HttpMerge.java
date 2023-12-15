@@ -22,20 +22,36 @@ import java.net.URI;
 
 import org.apache.http.client.methods.HttpRequestBase;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class HttpMerge.
+ */
 public class HttpMerge extends HttpRequestBase {
 
+  /** The Constant METHOD_NAME. */
   public final static String METHOD_NAME = "MERGE";
 
+  /**
+   * Instantiates a new http merge.
+   */
   public HttpMerge() {
     super();
   }
 
+  /**
+   * Instantiates a new http merge.
+   *
+   * @param uri the uri
+   */
   public HttpMerge(final URI uri) {
     super();
     setURI(uri);
   }
 
   /**
+   * Instantiates a new http merge.
+   *
+   * @param uri the uri
    * @throws IllegalArgumentException if the uri is invalid.
    */
   public HttpMerge(final String uri) {
@@ -43,6 +59,11 @@ public class HttpMerge extends HttpRequestBase {
     setURI(URI.create(uri));
   }
 
+  /**
+   * Gets the method.
+   *
+   * @return the method
+   */
   @Override
   public String getMethod() {
     return METHOD_NAME;

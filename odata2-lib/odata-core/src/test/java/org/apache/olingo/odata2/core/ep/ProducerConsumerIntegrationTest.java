@@ -36,7 +36,13 @@ import org.apache.olingo.odata2.api.processor.ODataResponse;
 import org.apache.olingo.odata2.testutil.mock.MockFacade;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ProducerConsumerIntegrationTest.
+ */
 public class ProducerConsumerIntegrationTest {
+  
+  /** The Constant BASE_URI. */
   protected static final URI BASE_URI;
 
   static {
@@ -46,14 +52,27 @@ public class ProducerConsumerIntegrationTest {
       throw new RuntimeException(e);
     }
   }
+  
+  /** The Constant DEFAULT_READ_PROPERTIES. */
   private static final EntityProviderReadProperties DEFAULT_READ_PROPERTIES = EntityProviderReadProperties.init()
       .build();
+  
+  /** The Constant DEFAULT_WRITE_PROPERTIES. */
   private static final EntityProviderWriteProperties DEFAULT_WRITE_PROPERTIES = EntityProviderWriteProperties
       .serviceRoot(
           BASE_URI).build();
+  
+  /** The Constant XML. */
   private static final String XML = "application/xml";
+  
+  /** The Constant JSON. */
   private static final String JSON = "application/json";
 
+  /**
+   * Produce room and then consume it.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void produceRoomAndThenConsumeIt() throws Exception {
     EdmEntitySet roomSet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");
@@ -70,6 +89,15 @@ public class ProducerConsumerIntegrationTest {
     assertEquals("Neu \n Schwanstein蝴蝶", properties2.get("Name"));
   }
 
+  /**
+   * Execute.
+   *
+   * @param localRoomData the local room data
+   * @param roomSet the room set
+   * @param contentType the content type
+   * @return the map
+   * @throws EntityProviderException the entity provider exception
+   */
   private Map<String, Object> execute(final Map<String, Object> localRoomData, final EdmEntitySet roomSet,
       final String contentType)
       throws EntityProviderException {

@@ -20,6 +20,7 @@ package org.apache.olingo.odata2.api.uri.expression;
 
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
 /**
  * Represents a method expression in the expression tree
  * <br>
@@ -33,17 +34,23 @@ import java.util.List;
 public interface MethodExpression extends CommonExpression {
 
   /**
+   * Gets the method.
+   *
    * @return Returns the method object that represents the used method
    * @see MethodOperator
    */
   public MethodOperator getMethod();
 
   /**
+   * Gets the parameter count.
+   *
    * @return Returns the number of provided method parameters
    */
   public int getParameterCount();
 
   /**
+   * Gets the parameters.
+   *
    * @return Returns a ordered list of expressions defining the input parameters for the used method
    * @see CommonExpression
    */

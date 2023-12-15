@@ -30,17 +30,19 @@ import org.apache.olingo.odata2.api.edm.EdmEntitySet;
 import org.apache.olingo.odata2.api.ep.EntityProviderException;
 import org.apache.olingo.odata2.core.ep.util.FormatXml;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class XmlLinkConsumer.
  */
 public class XmlLinkConsumer {
 
   /**
    * Reads single link with format {@code <uri>http://somelink</uri>}.
-   * @param reader
-   * @param entitySet
+   *
+   * @param reader the reader
+   * @param entitySet the entity set
    * @return link as string object
-   * @throws EntityProviderException
+   * @throws EntityProviderException the entity provider exception
    */
   public String readLink(final XMLStreamReader reader, final EdmEntitySet entitySet) throws EntityProviderException {
     try {
@@ -52,10 +54,26 @@ public class XmlLinkConsumer {
     }
   }
 
+  /**
+   * Read link.
+   *
+   * @param reader the reader
+   * @return the string
+   * @throws XMLStreamException the XML stream exception
+   */
   private String readLink(final XMLStreamReader reader) throws XMLStreamException {
     return readTag(reader, Edm.NAMESPACE_D_2007_08, FormatXml.D_URI);
   }
 
+  /**
+   * Read tag.
+   *
+   * @param reader the reader
+   * @param namespaceURI the namespace URI
+   * @param localName the local name
+   * @return the string
+   * @throws XMLStreamException the XML stream exception
+   */
   private String readTag(final XMLStreamReader reader, final String namespaceURI, final String localName)
       throws XMLStreamException {
     reader.require(XMLStreamConstants.START_ELEMENT, namespaceURI, localName);
@@ -73,11 +91,12 @@ public class XmlLinkConsumer {
    *  <uri>http://anotherLink</uri>
    *  <uri>http://somelink/yetAnotherLink</uri>
    * </links>
-   * } </pre>
-   * @param reader
-   * @param entitySet
+   * } </pre>.
+   *
+   * @param reader the reader
+   * @param entitySet the entity set
    * @return list of string based links
-   * @throws EntityProviderException
+   * @throws EntityProviderException the entity provider exception
    */
   public List<String> readLinks(final XMLStreamReader reader, final EdmEntitySet entitySet)
       throws EntityProviderException {

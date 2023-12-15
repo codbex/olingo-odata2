@@ -20,18 +20,27 @@ package org.apache.olingo.odata2.api.edm.provider;
 
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
 /**
- * Objects of this Class represent a referential constraint role
- * 
+ * Objects of this Class represent a referential constraint role.
  */
 public class ReferentialConstraintRole {
 
+  /** The role. */
   private String role;
+  
+  /** The property refs. */
   private List<PropertyRef> propertyRefs;
+  
+  /** The annotation attributes. */
   private List<AnnotationAttribute> annotationAttributes;
+  
+  /** The annotation elements. */
   private List<AnnotationElement> annotationElements;
 
   /**
+   * Gets the role.
+   *
    * @return <b>String</b> role of this {@link ReferentialConstraintRole}
    */
   public String getRole() {
@@ -39,6 +48,8 @@ public class ReferentialConstraintRole {
   }
 
   /**
+   * Gets the property refs.
+   *
    * @return List<{@link PropertyRef}> for this {@link ReferentialConstraintRole}
    */
   public List<PropertyRef> getPropertyRefs() {
@@ -46,6 +57,8 @@ public class ReferentialConstraintRole {
   }
 
   /**
+   * Gets the annotation attributes.
+   *
    * @return List of {@link AnnotationAttribute} annotation attributes
    */
   public List<AnnotationAttribute> getAnnotationAttributes() {
@@ -53,6 +66,8 @@ public class ReferentialConstraintRole {
   }
 
   /**
+   * Gets the annotation elements.
+   *
    * @return List of {@link AnnotationElement} annotation elements
    */
   public List<AnnotationElement> getAnnotationElements() {
@@ -60,8 +75,9 @@ public class ReferentialConstraintRole {
   }
 
   /**
-   * Sets the role of this {@link ReferentialConstraintRole}
-   * @param role
+   * Sets the role of this {@link ReferentialConstraintRole}.
+   *
+   * @param role the role
    * @return {@link ReferentialConstraintRole} for method chaining
    */
   public ReferentialConstraintRole setRole(final String role) {
@@ -70,8 +86,9 @@ public class ReferentialConstraintRole {
   }
 
   /**
-   * Sets the {@link PropertyRef}s of this {@link ReferentialConstraintRole}
-   * @param propertyRef
+   * Sets the {@link PropertyRef}s of this {@link ReferentialConstraintRole}.
+   *
+   * @param propertyRef the property ref
    * @return {@link ReferentialConstraintRole} for method chaining
    */
   public ReferentialConstraintRole setPropertyRefs(final List<PropertyRef> propertyRef) {
@@ -80,8 +97,9 @@ public class ReferentialConstraintRole {
   }
 
   /**
-   * Sets the List of {@link AnnotationAttribute} for this {@link ReferentialConstraintRole}
-   * @param annotationAttributes
+   * Sets the List of {@link AnnotationAttribute} for this {@link ReferentialConstraintRole}.
+   *
+   * @param annotationAttributes the annotation attributes
    * @return {@link ReferentialConstraintRole} for method chaining
    */
   public ReferentialConstraintRole setAnnotationAttributes(final List<AnnotationAttribute> annotationAttributes) {
@@ -90,8 +108,9 @@ public class ReferentialConstraintRole {
   }
 
   /**
-   * Sets the List of {@link AnnotationElement} for this {@link ReferentialConstraintRole}
-   * @param annotationElements
+   * Sets the List of {@link AnnotationElement} for this {@link ReferentialConstraintRole}.
+   *
+   * @param annotationElements the annotation elements
    * @return {@link ReferentialConstraintRole} for method chaining
    */
   public ReferentialConstraintRole setAnnotationElements(final List<AnnotationElement> annotationElements) {

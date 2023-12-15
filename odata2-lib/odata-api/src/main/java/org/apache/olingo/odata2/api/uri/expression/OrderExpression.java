@@ -18,6 +18,7 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.uri.expression;
 
+// TODO: Auto-generated Javadoc
 /**
  * Represents a order expression in the expression tree
  * <br>
@@ -32,11 +33,15 @@ package org.apache.olingo.odata2.api.uri.expression;
 public interface OrderExpression extends CommonExpression {
 
   /**
+   * Gets the sort order.
+   *
    * @return Returns the sort order (ascending or descending) of the order expression
    */
   SortOrder getSortOrder();
 
   /**
+   * Gets the expression.
+   *
    * @return Returns the expression node which defines the data used to order the output
    * send back to the client. In the simplest case this would be a {@link PropertyExpression}.
    * @see CommonExpression

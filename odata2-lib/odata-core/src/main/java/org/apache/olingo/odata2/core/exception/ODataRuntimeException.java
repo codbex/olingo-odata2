@@ -18,6 +18,7 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.core.exception;
 
+// TODO: Auto-generated Javadoc
 /**
  * Common un-checked exception for the <code>OData</code> library and
  * base exception for all <code>OData</code>-related exceptions
@@ -26,20 +27,40 @@ package org.apache.olingo.odata2.core.exception;
  */
 public final class ODataRuntimeException extends RuntimeException {
 
+  /** The Constant serialVersionUID. */
   private static final long serialVersionUID = 1L;
 
+  /**
+   * Instantiates a new o data runtime exception.
+   */
   public ODataRuntimeException() {
     super();
   }
 
+  /**
+   * Instantiates a new o data runtime exception.
+   *
+   * @param throwable the throwable
+   */
   public ODataRuntimeException(final Throwable throwable) {
     super(throwable);
   }
 
+  /**
+   * Instantiates a new o data runtime exception.
+   *
+   * @param message the message
+   */
   public ODataRuntimeException(final String message) {
     super(message);
   }
 
+  /**
+   * Instantiates a new o data runtime exception.
+   *
+   * @param message the message
+   * @param throwable the throwable
+   */
   public ODataRuntimeException(final String message, final Throwable throwable) {
     super(message, throwable);
   }

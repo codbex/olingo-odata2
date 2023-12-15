@@ -20,52 +20,53 @@ package org.apache.olingo.odata2.api.edm;
 
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
 /**
- * @org.apache.olingo.odata2.DoNotImplement
- * A CSDL AnnotationElement element
+ * The Interface EdmAnnotationElement.
+ *
+ * @org.apache.olingo.odata2.DoNotImplement A CSDL AnnotationElement element
  * <p>EdmAnnotationElement is a custom XML element which can be applied to a CSDL element.
- * 
  */
 public interface EdmAnnotationElement {
 
   /**
-   * Get the namespace of the custom element
-   * 
+   * Get the namespace of the custom element.
+   *
    * @return String
    */
   String getNamespace();
 
   /**
-   * Get the prefix of the custom element
-   * 
+   * Get the prefix of the custom element.
+   *
    * @return String
    */
   String getPrefix();
 
   /**
-   * Get the name of the custom element
-   * 
+   * Get the name of the custom element.
+   *
    * @return String
    */
   String getName();
 
   /**
-   * Get the XML data of the custom element
-   * 
+   * Get the XML data of the custom element.
+   *
    * @return String
    */
   String getText();
 
   /**
-   * Get the child elements of the custom element
-   * 
+   * Get the child elements of the custom element.
+   *
    * @return child elements of this {@link EdmAnnotationElement} or null if no child elements exist
    */
   List<EdmAnnotationElement> getChildElements();
 
   /**
-   * Get the attributes of this custom element
-   * 
+   * Get the attributes of this custom element.
+   *
    * @return the attributes of this {@link EdmAnnotationElement} or null if no attributes exist
    */
   List<EdmAnnotationAttribute> getAttributes();

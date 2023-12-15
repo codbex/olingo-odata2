@@ -46,16 +46,23 @@ import org.apache.olingo.odata2.core.edm.Uint7;
 import org.apache.olingo.odata2.core.edm.provider.EdmComplexPropertyImplProv;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class TestParser.
  */
 public class TestParser extends TestBase {
 
+  /**
+   * Quick.
+   */
   @Test
   public void quick() {
     GetPTF("substring('Test', 1 add 2)").aSerialized("{substring('Test',{1 add 2})}");
   }
 
+  /**
+   * Order by.
+   */
   @Test
   public void orderBy() {
 
@@ -83,6 +90,9 @@ public class TestParser extends TestBase {
 
   }
 
+  /**
+   * Promotion.
+   */
   @Test
   public void promotion() {
     // SByte <--> SByte
@@ -121,6 +131,9 @@ public class TestParser extends TestBase {
     GetPTF("concat('a','b','c')").aEdmType(EdmString.getInstance());
   }
 
+  /**
+   * Properties.
+   */
   @Test
   public void properties() {
     GetPTF("name1 add name2").aSerialized("{name1 add name2}").aKind(ExpressionKind.BINARY).root().left().aKind(
@@ -128,6 +141,9 @@ public class TestParser extends TestBase {
         .aUriLiteral("name2");
   }
 
+  /**
+   * Deep properties.
+   */
   @Test
   public void deepProperties() {
     GetPTF("a/b").aSerialized("{a/b}").aKind(ExpressionKind.MEMBER);
@@ -137,6 +153,11 @@ public class TestParser extends TestBase {
         .aUriLiteral("c");
   }
 
+  /**
+   * Properties with edm.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void propertiesWithEdm() throws Exception {
     EdmEntityType edmEtAllTypes = edmInfo.getTypeEtAllTypes();
@@ -174,6 +195,9 @@ public class TestParser extends TestBase {
         boolean_).aEdmType(boolean_Type);
   }
 
+  /**
+   * Simple method.
+   */
   @Test
   public void simpleMethod() {
     GetPTF("startswith('Test','Te')").aSerialized("{startswith('Test','Te')}");
@@ -182,6 +206,9 @@ public class TestParser extends TestBase {
     GetPTF("replace('Test', ' ', '')").aSerialized("{replace('Test',' ','')}");
   }
 
+  /**
+   * Method variable parameters.
+   */
   @Test
   public void methodVariableParameters() {
     GetPTF("concat('Test', 'A' )").aSerialized("{concat('Test','A')}");
@@ -189,6 +216,9 @@ public class TestParser extends TestBase {
     GetPTF("concat('Test', 'A', 'B', 'C' )").aSerialized("{concat('Test','A','B','C')}");
   }
 
+  /**
+   * Simple same binary.
+   */
   @Test
   public void simpleSameBinary() {
     GetPTF("1d add 2d").aSerialized("{1d add 2d}");
@@ -198,18 +228,27 @@ public class TestParser extends TestBase {
         ExpressionKind.LITERAL).root().right().aKind(ExpressionKind.LITERAL);
   }
 
+  /**
+   * Simple same binary binary.
+   */
   @Test
   public void simpleSameBinaryBinary() {
     GetPTF("1d add 2d add 3d").aSerialized("{{1d add 2d} add 3d}");
     GetPTF("1d div 2d div 3d").aSerialized("{{1d div 2d} div 3d}");
   }
 
+  /**
+   * Simple same binary binary priority.
+   */
   @Test
   public void simpleSameBinaryBinaryPriority() {
     GetPTF("1d add 2d div 3d").aSerialized("{1d add {2d div 3d}}");
     GetPTF("1d div 2d add 3d").aSerialized("{{1d div 2d} add 3d}");
   }
 
+  /**
+   * Simple same binary binary binary priority.
+   */
   @Test
   public void simpleSameBinaryBinaryBinaryPriority() {
     GetPTF("1d add 2d add 3d add 4d").aSerialized("{{{1d add 2d} add 3d} add 4d}");
@@ -222,6 +261,9 @@ public class TestParser extends TestBase {
     GetPTF("1d div 2d div 3d div 4d").aSerialized("{{{1d div 2d} div 3d} div 4d}");
   }
 
+  /**
+   * Complex mixed priority.
+   */
   @Test
   public void complexMixedPriority() {
     GetPTF("a      or c      and e     ").aSerializedCompr("{ a       or { c       and  e      }}");
@@ -237,6 +279,9 @@ public class TestParser extends TestBase {
     GetPTF("(a eq b) or (c eq d) and (e eq f)").aSerialized("{{a eq b} or {{c eq d} and {e eq f}}}");
   }
 
+  /**
+   * Deep parenthesis.
+   */
   @Test
   public void deepParenthesis() {
     GetPTF("2d").aSerialized("2d");
@@ -245,6 +290,9 @@ public class TestParser extends TestBase {
     GetPTF("(((2d)))").aSerialized("2d");
   }
 
+  /**
+   * Parenthesis with binary binary.
+   */
   @Test
   public void parenthesisWithBinaryBinary() {
     GetPTF("1d add 2d add 3d").aSerialized("{{1d add 2d} add 3d}");
@@ -263,6 +311,9 @@ public class TestParser extends TestBase {
     GetPTF("(1d div 2d div 3d)").aSerialized("{{1d div 2d} div 3d}");
   }
 
+  /**
+   * Simple unary operator.
+   */
   @Test
   public void simpleUnaryOperator() {
     GetPTF("not true").aSerialized("{not true}");
@@ -275,6 +326,9 @@ public class TestParser extends TestBase {
     GetPTF(edmEtAllTypes, "not (Boolean)").aSerialized("{not Boolean}");
   }
 
+  /**
+   * Deep unary operator.
+   */
   @Test
   public void deepUnaryOperator() {
     GetPTF("not not true").aSerialized("{not {not true}}");
@@ -288,18 +342,27 @@ public class TestParser extends TestBase {
     GetPTF("not(not(not 2d))").aSerialized("{not {not {not 2d}}}");
   }
 
+  /**
+   * Mixed unary operators.
+   */
   @Test
   public void mixedUnaryOperators() {
     GetPTF("not - true").aSerialized("{not {- true}}");
     GetPTF("- not true").aSerialized("{- {not true}}");
   }
 
+  /**
+   * Deep mixed unary operators.
+   */
   @Test
   public void deepMixedUnaryOperators() {
     GetPTF("- not - true").aSerialized("{- {not {- true}}}");
     GetPTF("not - not true").aSerialized("{not {- {not true}}}");
   }
 
+  /**
+   * Strings.
+   */
   @Test
   public void strings() {
     GetPTF("'TEST'").aSerialized("'TEST'");
@@ -309,6 +372,9 @@ public class TestParser extends TestBase {
     GetPTF("'A''B''C'").aSerialized("'A''B''C'");
   }
 
+  /**
+   * Single plain literals.
+   */
   @Test
   public void singlePlainLiterals() {
     // assertEquals("Hier", 44, 33);
@@ -385,6 +451,9 @@ public class TestParser extends TestBase {
     GetPTF("time'PT120S'").aUriLiteral("time'PT120S'").aKind(ExpressionKind.LITERAL).aEdmType(timeInst);
   }
 
+  /**
+   * Navigation properties.
+   */
   @Test
   public void navigationProperties() {
     final EdmEntityType entityType = edmInfo.getTypeEtKeyTypeInteger();

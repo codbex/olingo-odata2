@@ -20,6 +20,7 @@ import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
 
+// TODO: Auto-generated Javadoc
 /**
  *
  * The default name for EDM entity type is derived from JPA entity type name. This can be overriden
@@ -57,16 +58,27 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "JPAEntityTypeMapType", propOrder = {"edmEntityType", "edmEntitySet", "jpaAttributes", "jpaRelationships"})
 public class JPAEntityTypeMapType {
 
+    /** The edm entity type. */
     @XmlElement(name = "EDMEntityType")
     protected String edmEntityType;
+    
+    /** The edm entity set. */
     @XmlElement(name = "EDMEntitySet")
     protected String edmEntitySet;
+    
+    /** The jpa attributes. */
     @XmlElement(name = "JPAAttributes", required = true)
     protected JPAAttributeMapType jpaAttributes;
+    
+    /** The jpa relationships. */
     @XmlElement(name = "JPARelationships", required = true)
     protected JPARelationshipMapType jpaRelationships;
+    
+    /** The name. */
     @XmlAttribute(name = "name", required = true)
     protected String name;
+    
+    /** The exclude. */
     @XmlAttribute(name = "exclude")
     protected Boolean exclude;
 

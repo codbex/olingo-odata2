@@ -44,10 +44,25 @@ import org.apache.olingo.odata2.core.servicedocument.ServiceDocumentImpl;
 import org.apache.olingo.odata2.core.servicedocument.TitleImpl;
 import org.apache.olingo.odata2.core.servicedocument.WorkspaceImpl;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AtomServiceDocumentConsumer.
+ */
 public class AtomServiceDocumentConsumer {
+    
+    /** The current handled start tag name. */
     private String currentHandledStartTagName;
+    
+    /** The Constant DEFAULT_PREFIX. */
     private static final String DEFAULT_PREFIX = "";
 
+    /**
+     * Read service dokument.
+     *
+     * @param reader the reader
+     * @return the service document impl
+     * @throws EntityProviderException the entity provider exception
+     */
     public ServiceDocumentImpl readServiceDokument(final XMLStreamReader reader) throws EntityProviderException {
         AtomInfoImpl atomInfo = new AtomInfoImpl();
         ServiceDocumentImpl serviceDocument = new ServiceDocumentImpl();
@@ -90,6 +105,12 @@ public class AtomServiceDocumentConsumer {
         }
     }
 
+    /**
+     * Parses the common attribute.
+     *
+     * @param reader the reader
+     * @return the common attributes impl
+     */
     private CommonAttributesImpl parseCommonAttribute(final XMLStreamReader reader) {
         CommonAttributesImpl attribute = new CommonAttributesImpl();
         List<ExtensionAttribute> extAttributes = new ArrayList<ExtensionAttribute>();
@@ -107,6 +128,14 @@ public class AtomServiceDocumentConsumer {
         return attribute.setAttributes(extAttributes);
     }
 
+    /**
+     * Parses the workspace.
+     *
+     * @param reader the reader
+     * @return the workspace impl
+     * @throws XMLStreamException the XML stream exception
+     * @throws EntityProviderException the entity provider exception
+     */
     private WorkspaceImpl parseWorkspace(final XMLStreamReader reader) throws XMLStreamException, EntityProviderException {
         reader.require(XMLStreamConstants.START_ELEMENT, Edm.NAMESPACE_APP_2007, FormatXml.APP_WORKSPACE);
 
@@ -136,6 +165,14 @@ public class AtomServiceDocumentConsumer {
                                   .setExtesionElements(extElements);
     }
 
+    /**
+     * Parses the collection.
+     *
+     * @param reader the reader
+     * @return the collection impl
+     * @throws XMLStreamException the XML stream exception
+     * @throws EntityProviderException the entity provider exception
+     */
     private CollectionImpl parseCollection(final XMLStreamReader reader) throws XMLStreamException, EntityProviderException {
         reader.require(XMLStreamConstants.START_ELEMENT, Edm.NAMESPACE_APP_2007, FormatXml.APP_COLLECTION);
         TitleImpl title = null;
@@ -170,6 +207,13 @@ public class AtomServiceDocumentConsumer {
                                    .setCategories(categories);
     }
 
+    /**
+     * Parses the title.
+     *
+     * @param reader the reader
+     * @return the title impl
+     * @throws XMLStreamException the XML stream exception
+     */
     private TitleImpl parseTitle(final XMLStreamReader reader) throws XMLStreamException {
         reader.require(XMLStreamConstants.START_ELEMENT, Edm.NAMESPACE_ATOM_2005, FormatXml.ATOM_TITLE);
         String text = reader.getElementText();
@@ -177,6 +221,13 @@ public class AtomServiceDocumentConsumer {
         return new TitleImpl().setText(text);
     }
 
+    /**
+     * Parses the accept.
+     *
+     * @param reader the reader
+     * @return the accept impl
+     * @throws XMLStreamException the XML stream exception
+     */
     private AcceptImpl parseAccept(final XMLStreamReader reader) throws XMLStreamException {
         reader.require(XMLStreamConstants.START_ELEMENT, Edm.NAMESPACE_APP_2007, FormatXml.APP_ACCEPT);
         CommonAttributesImpl commonAttributes = parseCommonAttribute(reader);
@@ -186,6 +237,14 @@ public class AtomServiceDocumentConsumer {
                                .setText(text);
     }
 
+    /**
+     * Parses the categories.
+     *
+     * @param reader the reader
+     * @return the categories impl
+     * @throws XMLStreamException the XML stream exception
+     * @throws EntityProviderException the entity provider exception
+     */
     private CategoriesImpl parseCategories(final XMLStreamReader reader) throws XMLStreamException, EntityProviderException {
         reader.require(XMLStreamConstants.START_ELEMENT, Edm.NAMESPACE_APP_2007, FormatXml.APP_CATEGORIES);
         CategoriesImpl categories = new CategoriesImpl();
@@ -222,6 +281,13 @@ public class AtomServiceDocumentConsumer {
         return categories;
     }
 
+    /**
+     * Parses the category.
+     *
+     * @param reader the reader
+     * @return the category impl
+     * @throws XMLStreamException the XML stream exception
+     */
     private CategoryImpl parseCategory(final XMLStreamReader reader) throws XMLStreamException {
         reader.require(XMLStreamConstants.START_ELEMENT, Edm.NAMESPACE_ATOM_2005, FormatXml.ATOM_CATEGORY);
         CategoryImpl category = new CategoryImpl();
@@ -232,6 +298,14 @@ public class AtomServiceDocumentConsumer {
         return category.setCommonAttributes(attributes);
     }
 
+    /**
+     * Parses the extension sans title element.
+     *
+     * @param reader the reader
+     * @return the extension element impl
+     * @throws XMLStreamException the XML stream exception
+     * @throws EntityProviderException the entity provider exception
+     */
     private ExtensionElementImpl parseExtensionSansTitleElement(final XMLStreamReader reader)
             throws XMLStreamException, EntityProviderException {
         ExtensionElementImpl extElement = new ExtensionElementImpl();
@@ -241,6 +315,14 @@ public class AtomServiceDocumentConsumer {
         return extElement;
     }
 
+    /**
+     * Parses the extension element.
+     *
+     * @param reader the reader
+     * @return the extension element impl
+     * @throws XMLStreamException the XML stream exception
+     * @throws EntityProviderException the entity provider exception
+     */
     private ExtensionElementImpl parseExtensionElement(final XMLStreamReader reader) throws XMLStreamException, EntityProviderException {
         ExtensionElementImpl extElement = null;
         if (!Edm.NAMESPACE_APP_2007.equals(reader.getNamespaceURI())) {
@@ -249,6 +331,14 @@ public class AtomServiceDocumentConsumer {
         return extElement;
     }
 
+    /**
+     * Parses the element.
+     *
+     * @param reader the reader
+     * @return the extension element impl
+     * @throws XMLStreamException the XML stream exception
+     * @throws EntityProviderException the entity provider exception
+     */
     private ExtensionElementImpl parseElement(final XMLStreamReader reader) throws XMLStreamException, EntityProviderException {
         List<ExtensionElement> extensionElements = new ArrayList<ExtensionElement>();
         ExtensionElementImpl extElement = new ExtensionElementImpl().setName(reader.getLocalName())
@@ -279,6 +369,12 @@ public class AtomServiceDocumentConsumer {
         return extElement;
     }
 
+    /**
+     * Parses the attribute.
+     *
+     * @param reader the reader
+     * @return the list
+     */
     private List<ExtensionAttribute> parseAttribute(final XMLStreamReader reader) {
         List<ExtensionAttribute> extAttributes = new ArrayList<ExtensionAttribute>();
         for (int i = 0; i < reader.getAttributeCount(); i++) {
@@ -293,6 +389,13 @@ public class AtomServiceDocumentConsumer {
         return extAttributes;
     }
 
+    /**
+     * Parses the xml.
+     *
+     * @param in the in
+     * @return the service document impl
+     * @throws EntityProviderException the entity provider exception
+     */
     public ServiceDocumentImpl parseXml(final InputStream in) throws EntityProviderException {
         return readServiceDokument(XmlHelper.createStreamReader(in));
     }

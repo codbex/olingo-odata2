@@ -45,27 +45,49 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class BasicContentNegotiationTest.
  */
 public class BasicContentNegotiationTest extends AbstractContentNegotiationTest {
 
+  /**
+   * Instantiates a new basic content negotiation test.
+   *
+   * @param servletType the servlet type
+   */
   public BasicContentNegotiationTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /** The Constant LOG. */
   private static final Logger LOG = LoggerFactory.getLogger(BasicContentNegotiationTest.class);
 
+  /**
+   * Accept header app atom xml.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void acceptHeaderAppAtomXml() throws Exception {
     performRequestAndValidateResponseForAcceptHeader("Rooms('1')", APPLICATION_ATOM_XML, APPLICATION_ATOM_XML_UTF8);
   }
 
+  /**
+   * Accept header app xml.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void acceptHeaderAppXml() throws Exception {
     performRequestAndValidateResponseForAcceptHeader("Rooms('1')", APPLICATION_XML, APPLICATION_XML_UTF8);
   }
 
+  /**
+   * Accept header app xml charset utf 8.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void acceptHeaderAppXmlCharsetUtf8() throws Exception {
     performRequestAndValidateResponseForAcceptHeader("Rooms('1')", APPLICATION_XML_UTF8, APPLICATION_XML_UTF8);
@@ -73,6 +95,11 @@ public class BasicContentNegotiationTest extends AbstractContentNegotiationTest 
     performRequestAndValidateResponseForAcceptHeader("Employees('1')/$count", APPLICATION_XML_UTF8, TEXT_PLAIN_UTF8);
   }
 
+  /**
+   * Accept header to content type O data verbose parameter.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void acceptHeaderToContentTypeODataVerboseParameter() throws Exception {
     final String parameter = ";odata=verbose";
@@ -97,6 +124,11 @@ public class BasicContentNegotiationTest extends AbstractContentNegotiationTest 
     performRequestAndValidateResponseForAcceptHeader("Buildings/$count", APPLICATION_JSON + parameter, TEXT_PLAIN_UTF8);
   }
 
+  /**
+   * Accept header to content type ignored accept headers.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void acceptHeaderToContentTypeIgnoredAcceptHeaders() throws Exception {
     performRequestAndValidateResponseForAcceptHeader("Employees('1')/$count", APPLICATION_XML_UTF8, TEXT_PLAIN_UTF8);
@@ -131,6 +163,11 @@ public class BasicContentNegotiationTest extends AbstractContentNegotiationTest 
     performRequestAndValidateResponseForAcceptHeader("Buildings/$count", APPLICATION_JSON + parameter, TEXT_PLAIN_UTF8);
   }
 
+  /**
+   * Accept header to content type ignored accept headers value.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void acceptHeaderToContentTypeIgnoredAcceptHeadersValue() throws Exception {
     final String expectedImageContentType = "image/jpeg";
@@ -146,6 +183,11 @@ public class BasicContentNegotiationTest extends AbstractContentNegotiationTest 
         expectedTextContentType);
   }
 
+  /**
+   * Accept header to content type not acceptable.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void acceptHeaderToContentTypeNotAcceptable() throws Exception {
     final String parameterUnknown = ";someUnknownParameter=withAValue";
@@ -156,12 +198,13 @@ public class BasicContentNegotiationTest extends AbstractContentNegotiationTest 
   }
 
   /**
-   * 
-   * @param endPointPostfix
-   * @param requestAcceptHeader
-   * @param expectedResponseContentType
-   * @throws IOException
-   * @throws ClientProtocolException
+   * Perform request and validate response for accept header.
+   *
+   * @param endPointPostfix the end point postfix
+   * @param requestAcceptHeader the request accept header
+   * @param expectedResponseContentType the expected response content type
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws ClientProtocolException the client protocol exception
    */
   private void performRequestAndValidateResponseForAcceptHeader(final String endPointPostfix,
       final String requestAcceptHeader, final String expectedResponseContentType) throws IOException,
@@ -183,12 +226,12 @@ public class BasicContentNegotiationTest extends AbstractContentNegotiationTest 
   }
 
   /**
-   * 
-   * @param endPointPostfix
-   * @param requestAcceptHeader
-   * @param expectedResponseContentType
-   * @throws IOException
-   * @throws ClientProtocolException
+   * Perform request and validate response for not acceptable.
+   *
+   * @param endPointPostfix the end point postfix
+   * @param requestAcceptHeader the request accept header
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws ClientProtocolException the client protocol exception
    */
   private void performRequestAndValidateResponseForNotAcceptable(final String endPointPostfix,
       final String requestAcceptHeader) throws IOException, ClientProtocolException {

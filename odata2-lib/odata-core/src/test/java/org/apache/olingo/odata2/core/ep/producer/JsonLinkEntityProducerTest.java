@@ -35,14 +35,24 @@ import org.apache.olingo.odata2.testutil.helper.StringHelper;
 import org.apache.olingo.odata2.testutil.mock.MockFacade;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class JsonLinkEntityProducerTest.
  */
 public class JsonLinkEntityProducerTest extends BaseTest {
+  
+  /** The Constant BASE_URI. */
   protected static final String BASE_URI = "http://host:80/service/";
+  
+  /** The Constant DEFAULT_PROPERTIES. */
   protected static final EntityProviderWriteProperties DEFAULT_PROPERTIES =
       EntityProviderWriteProperties.serviceRoot(URI.create(BASE_URI)).build();
 
+  /**
+   * Omit json wrapper on link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void omitJsonWrapperOnLink() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Employees");
@@ -60,6 +70,11 @@ public class JsonLinkEntityProducerTest extends BaseTest {
     assertEquals("{\"uri\":\"" + BASE_URI + "Employees('1')\"}", json);
   }
 
+  /**
+   * Serialize employee link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serializeEmployeeLink() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Employees");
@@ -75,6 +90,11 @@ public class JsonLinkEntityProducerTest extends BaseTest {
     assertEquals("{\"d\":{\"uri\":\"" + BASE_URI + "Employees('1')\"}}", json);
   }
 
+  /**
+   * Serialize photo link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serializePhotoLink() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getEntityContainer("Container2").getEntitySet("Photos");

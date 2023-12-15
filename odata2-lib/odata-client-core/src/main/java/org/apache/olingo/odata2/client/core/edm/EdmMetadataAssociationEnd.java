@@ -20,17 +20,20 @@ package org.apache.olingo.odata2.client.core.edm;
 
 import org.apache.olingo.odata2.api.edm.EdmAssociationEnd;
 
+// TODO: Auto-generated Javadoc
 /**
- * @org.apache.olingo.odata2.DoNotImplement
- * A CSDL AssociationEnd element
+ * The Interface EdmMetadataAssociationEnd.
+ *
+ * @org.apache.olingo.odata2.DoNotImplement A CSDL AssociationEnd element
  * 
  * <p>EdmAssociationEnd defines one side of the relationship of two entity types.
- * 
  */
 public interface EdmMetadataAssociationEnd extends EdmAssociationEnd {
 
 
   /**
+   * Gets the on delete.
+   *
    * @return {@link OnDelete} on delete
    */
   public EdmOnDelete getOnDelete() ;

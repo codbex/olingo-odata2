@@ -26,23 +26,27 @@ import org.apache.olingo.odata2.api.processor.ODataResponse;
 import org.apache.olingo.odata2.api.uri.info.GetComplexPropertyUriInfo;
 import org.apache.olingo.odata2.api.uri.info.PutMergePatchUriInfo;
 
+// TODO: Auto-generated Javadoc
 /**
  * Execute a OData complex property request.
  * 
  * 
  */
 public interface EntityComplexPropertyProcessor extends ODataProcessor {
+  
   /**
    * Reads a complex property of an entity.
+   *
    * @param uriInfo information about the request URI
    * @param contentType the content type of the response
    * @return a {@link ODataResponse} object
-   * @throws ODataException
+   * @throws ODataException the o data exception
    */
   ODataResponse readEntityComplexProperty(GetComplexPropertyUriInfo uriInfo, String contentType) throws ODataException;
 
   /**
    * Updates a complex property of an entity.
+   *
    * @param uriInfo information about the request URI
    * @param content the content of the request, containing the updated property data
    * @param requestContentType the content type of the request body
@@ -50,7 +54,7 @@ public interface EntityComplexPropertyProcessor extends ODataProcessor {
    * if <code>false</code>, they are reset
    * @param contentType the content type of the response
    * @return a {@link ODataResponse} object
-   * @throws ODataException
+   * @throws ODataException the o data exception
    */
   ODataResponse updateEntityComplexProperty(PutMergePatchUriInfo uriInfo, InputStream content,
       String requestContentType, boolean merge, String contentType) throws ODataException;

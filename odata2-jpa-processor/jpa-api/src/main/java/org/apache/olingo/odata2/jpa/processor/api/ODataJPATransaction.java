@@ -20,29 +20,33 @@ package org.apache.olingo.odata2.jpa.processor.api;
 
 import org.apache.olingo.odata2.api.ODataCallback;
 
+// TODO: Auto-generated Javadoc
 /**
  * Interface for JPA-Transaction abstraction. Default implementation is Resource local, while additional
  * an override may used to insert JTA compatible transactions as well.
  *
  */
 public interface ODataJPATransaction extends ODataCallback {
+  
   /**
-   * implement the start of the transaction
+   * implement the start of the transaction.
    */
   public void begin();
 
   /**
-   * implement the commit of the transaction
+   * implement the commit of the transaction.
    */
   public void commit();
 
   /**
-   * implement the rollback of the transaction
+   * implement the rollback of the transaction.
    */
   public void rollback();
 
   /**
-   * implement status of the transaction context
+   * implement status of the transaction context.
+   *
+   * @return true, if is active
    */
   public boolean isActive();
 }

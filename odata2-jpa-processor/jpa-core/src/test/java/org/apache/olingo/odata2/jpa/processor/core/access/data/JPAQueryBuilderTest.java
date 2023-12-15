@@ -82,9 +82,18 @@ import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAQueryBuilderTest.
+ */
 public class JPAQueryBuilderTest {
+  
+  /** The builder. */
   JPAQueryBuilder builder = null;
 
+  /**
+   * Setup.
+   */
   @Before
   public void setup() {
     ODataContextMock odataContextMock = new ODataContextMock();
@@ -98,6 +107,9 @@ public class JPAQueryBuilderTest {
     }
   }
 
+  /**
+   * Builds the get entity test.
+   */
   @Test
   public void buildGetEntityTest() {
     try {
@@ -107,6 +119,9 @@ public class JPAQueryBuilderTest {
     }
   }
 
+  /**
+   * Builds the get entity set test.
+   */
   @Test
   public void buildGetEntitySetTest() {
     try {
@@ -117,6 +132,10 @@ public class JPAQueryBuilderTest {
       fail(ODataJPATestConstants.EXCEPTION_MSG_PART_1 + e.getMessage() + ODataJPATestConstants.EXCEPTION_MSG_PART_2);
     }
   }
+  
+  /**
+   * Builds the delete entity test.
+   */
   @Test
   public void buildDeleteEntityTest() {
     try {
@@ -126,6 +145,9 @@ public class JPAQueryBuilderTest {
     }
   }
   
+  /**
+   * Builds the delete entity test without listener.
+   */
   @Test
   public void buildDeleteEntityTestWithoutListener() {
     try {
@@ -136,6 +158,9 @@ public class JPAQueryBuilderTest {
     }
   }
   
+  /**
+   * Builds the put entity test without listener.
+   */
   @Test
   public void buildPutEntityTestWithoutListener() {
     try {
@@ -146,6 +171,13 @@ public class JPAQueryBuilderTest {
     }
   }
 
+  /**
+   * Mock URI info for delete and put.
+   *
+   * @param mapping the mapping
+   * @return the delete uri info
+   * @throws EdmException the edm exception
+   */
   private DeleteUriInfo mockURIInfoForDeleteAndPut(EdmMapping mapping) throws EdmException {
     UriInfo uriInfo = EasyMock.createMock(UriInfo.class);
     List<NavigationSegment> navSegments = new ArrayList<NavigationSegment>();
@@ -187,6 +219,11 @@ public class JPAQueryBuilderTest {
     return uriInfo;
   }
 
+  /**
+   * Gets the binary data.
+   *
+   * @return the binary data
+   */
   private String getBinaryData() {
     byte[] content = new byte[Byte.MAX_VALUE - Byte.MIN_VALUE + 1];
     // binary content, not a valid UTF-8 representation of a string
@@ -195,9 +232,13 @@ public class JPAQueryBuilderTest {
     }
     return content.toString();
   }
+  
   /**
-   * @param edmProperty1
-   * @return
+   * Mock key predicate.
+   *
+   * @param edmProperty the edm property
+   * @param value the value
+   * @return the key predicate
    */
   private KeyPredicate mockKeyPredicate(EdmProperty edmProperty, String value) {
     KeyPredicate keyPredicate = EasyMock.createMock(KeyPredicate.class);
@@ -208,9 +249,12 @@ public class JPAQueryBuilderTest {
   }
 
   /**
-   * @param mapping
-   * @return
-   * @throws EdmException
+   * Mock edm property.
+   *
+   * @param mapping the mapping
+   * @param type the type
+   * @return the edm property
+   * @throws EdmException the edm exception
    */
   private EdmProperty mockEdmProperty(EdmMapping mapping, String type) throws EdmException {
     EdmProperty edmProperty = EasyMock.createMock(EdmProperty.class);
@@ -244,6 +288,9 @@ public class JPAQueryBuilderTest {
     return edmProperty;
   }
 
+  /**
+   * Builds the get entity set count test.
+   */
   @Test
   public void buildGetEntitySetCountTest() {
     try {
@@ -253,6 +300,9 @@ public class JPAQueryBuilderTest {
     }
   }
 
+  /**
+   * Builds the get entity count test.
+   */
   @Test
   public void buildGetEntityCountTest() {
     try {
@@ -262,6 +312,9 @@ public class JPAQueryBuilderTest {
     }
   }
 
+  /**
+   * Builds the put merge patch test.
+   */
   @Test
   public void buildPutMergePatchTest() {
     try {
@@ -271,6 +324,9 @@ public class JPAQueryBuilderTest {
     }
   }
 
+  /**
+   * Determine get entity test.
+   */
   @Test
   public void determineGetEntityTest() {
     try {
@@ -281,6 +337,9 @@ public class JPAQueryBuilderTest {
     }
   }
 
+  /**
+   * Determine get entity count test.
+   */
   @Test
   public void determineGetEntityCountTest() {
     try {
@@ -291,6 +350,9 @@ public class JPAQueryBuilderTest {
     }
   }
 
+  /**
+   * Determine get entity set test.
+   */
   @Test
   public void determineGetEntitySetTest() {
     try {
@@ -301,6 +363,9 @@ public class JPAQueryBuilderTest {
     }
   }
 
+  /**
+   * Determine get entity set count test.
+   */
   @Test
   public void determineGetEntitySetCountTest() {
     try {
@@ -311,6 +376,9 @@ public class JPAQueryBuilderTest {
     }
   }
 
+  /**
+   * Determine put merge patch test.
+   */
   @Test
   public void determinePutMergePatchTest() {
     try {
@@ -321,6 +389,9 @@ public class JPAQueryBuilderTest {
     }
   }
 
+  /**
+   * Determine delete test.
+   */
   @Test
   public void determineDeleteTest() {
     try {
@@ -331,6 +402,9 @@ public class JPAQueryBuilderTest {
     }
   }
 
+  /**
+   * Builds the query get entity test.
+   */
   @Test
   public void buildQueryGetEntityTest() {
     EdmMapping mapping = (EdmMapping) mockMapping();
@@ -341,6 +415,9 @@ public class JPAQueryBuilderTest {
     }
   }
   
+  /**
+   * Builds the query get entity set test with no normalization with substringof.
+   */
   @Test
   public void buildQueryGetEntitySetTestWithNoNormalizationWithSubstringof() {
     EdmMapping mapping = (EdmMapping) mockNormalizedValueMapping();
@@ -351,6 +428,9 @@ public class JPAQueryBuilderTest {
     }
   }
   
+  /**
+   * Builds the query get entity set test with normalization with substringof.
+   */
   @Test
   public void buildQueryGetEntitySetTestWithNormalizationWithSubstringof() {
     EdmMapping mapping = (EdmMapping) mockNormalizedMapping();
@@ -361,6 +441,9 @@ public class JPAQueryBuilderTest {
     }
   }
   
+  /**
+   * Builds the query get entity set test with normalization with starts with.
+   */
   @Test
   public void buildQueryGetEntitySetTestWithNormalizationWithStartsWith() {
     EdmMapping mapping = (EdmMapping) mockNormalizedMapping();
@@ -371,6 +454,9 @@ public class JPAQueryBuilderTest {
     }
   }
   
+  /**
+   * Builds the query get entity set test with no normalization with starts with.
+   */
   @Test
   public void buildQueryGetEntitySetTestWithNoNormalizationWithStartsWith() {
     EdmMapping mapping = (EdmMapping) mockNormalizedValueMapping();
@@ -381,6 +467,9 @@ public class JPAQueryBuilderTest {
     }
   }
   
+  /**
+   * Builds the query get entity set test with normalization with ends with.
+   */
   @Test
   public void buildQueryGetEntitySetTestWithNormalizationWithEndsWith() {
     EdmMapping mapping = (EdmMapping) mockNormalizedMapping();
@@ -391,6 +480,9 @@ public class JPAQueryBuilderTest {
     }
   }
   
+  /**
+   * Builds the query get entity set test with no normalization with ends with.
+   */
   @Test
   public void buildQueryGetEntitySetTestWithNoNormalizationWithEndsWith() {
     EdmMapping mapping = (EdmMapping) mockNormalizedValueMapping();
@@ -401,6 +493,9 @@ public class JPAQueryBuilderTest {
     }
   }
   
+  /**
+   * Builds the query get entity set test with normalization with substring.
+   */
   @Test
   public void buildQueryGetEntitySetTestWithNormalizationWithSubstring() {
     EdmMapping mapping = (EdmMapping) mockNormalizedMapping();
@@ -412,6 +507,9 @@ public class JPAQueryBuilderTest {
     }
   }
   
+  /**
+   * Builds the query get entity set test with no normalization with substring.
+   */
   @Test
   public void buildQueryGetEntitySetTestWithNoNormalizationWithSubstring() {
     EdmMapping mapping = (EdmMapping) mockNormalizedValueMapping();
@@ -423,6 +521,9 @@ public class JPAQueryBuilderTest {
     }
   }
 
+  /**
+   * Builds the query get entity set test with normalization withto lower.
+   */
   @Test
   public void buildQueryGetEntitySetTestWithNormalizationWithtoLower() {
     EdmMapping mapping = (EdmMapping) mockNormalizedMapping();
@@ -434,6 +535,9 @@ public class JPAQueryBuilderTest {
     }
   }
   
+  /**
+   * Builds the query get entity set test with no normalization withto lower.
+   */
   @Test
   public void buildQueryGetEntitySetTestWithNoNormalizationWithtoLower() {
     EdmMapping mapping = (EdmMapping) mockNormalizedValueMapping();
@@ -445,6 +549,9 @@ public class JPAQueryBuilderTest {
     }
   }
 
+  /**
+   * Builds the query get entity set test with normalization withto upper.
+   */
   @Test
   public void buildQueryGetEntitySetTestWithNormalizationWithtoUpper() {
     EdmMapping mapping = (EdmMapping) mockNormalizedMapping();
@@ -456,6 +563,9 @@ public class JPAQueryBuilderTest {
     }
   }
   
+  /**
+   * Builds the query get entity set test with no normalization withto upper.
+   */
   @Test
   public void buildQueryGetEntitySetTestWithNoNormalizationWithtoUpper() {
     EdmMapping mapping = (EdmMapping) mockNormalizedValueMapping();
@@ -467,6 +577,9 @@ public class JPAQueryBuilderTest {
     }
   }
     
+  /**
+   * Builds the query get entity set test with normalization with substringof 1.
+   */
   @Test
   public void buildQueryGetEntitySetTestWithNormalizationWithSubstringof1() {
     EdmMapping mapping = (EdmMapping) mockNormalizedMapping1();
@@ -478,6 +591,9 @@ public class JPAQueryBuilderTest {
     }
   }
   
+  /**
+   * Builds the query value normalize test.
+   */
   @Test
   public void buildQueryValueNormalizeTest() {
     EdmMapping mapping = (EdmMapping) mockNormalizedValueMapping();
@@ -488,6 +604,9 @@ public class JPAQueryBuilderTest {
     }
   }
 
+  /**
+   * Builds the query normalize test.
+   */
   @Test
   public void buildQueryNormalizeTest() {
     EdmMapping mapping = (EdmMapping) mockNormalizedMapping();
@@ -498,6 +617,9 @@ public class JPAQueryBuilderTest {
     }
   }
   
+  /**
+   * Builds the query count entity set.
+   */
   @Test
   public void buildQueryCountEntitySet() {
     EdmMapping mapping = (EdmMapping) mockMapping();
@@ -508,6 +630,9 @@ public class JPAQueryBuilderTest {
     }
   }
   
+  /**
+   * Builds the query count entity.
+   */
   @Test
   public void buildQueryCountEntity() {
     EdmMapping mapping = (EdmMapping) mockMapping();
@@ -518,6 +643,9 @@ public class JPAQueryBuilderTest {
     }
   }
   
+  /**
+   * Builds the query with multiple keys.
+   */
   @Test
   public void buildQueryWithMultipleKeys() {
     EdmMapping mapping = (EdmMapping) mockMapping();
@@ -528,6 +656,9 @@ public class JPAQueryBuilderTest {
     }
   }
   
+  /**
+   * Builds the query with top skip.
+   */
   @Test
   public void buildQueryWithTopSkip() {
     EdmMapping mapping = (EdmMapping) mockMapping();
@@ -538,6 +669,9 @@ public class JPAQueryBuilderTest {
     }
   }
   
+  /**
+   * Builds the query with top skip inline.
+   */
   @Test
   public void buildQueryWithTopSkipInline() {
     EdmMapping mapping = (EdmMapping) mockMapping();
@@ -550,6 +684,9 @@ public class JPAQueryBuilderTest {
     }
   }
 
+  /**
+   * Builds the query with top skip inline with listener.
+   */
   @Test
   public void buildQueryWithTopSkipInlineWithListener() {
     try {
@@ -560,6 +697,9 @@ public class JPAQueryBuilderTest {
     }
   }
   
+  /**
+   * Builds the query with key nav segment and filter.
+   */
   @Test
   public void buildQueryWithKeyNavSegmentAndFilter() {
     EdmMapping mapping = (EdmMapping) mockMapping();
@@ -570,6 +710,13 @@ public class JPAQueryBuilderTest {
     }
   }
   
+  /**
+   * Mock URI info with top skip.
+   *
+   * @param mapping the mapping
+   * @return the gets the entity uri info
+   * @throws EdmException the edm exception
+   */
   @SuppressWarnings("unchecked")
   private GetEntityUriInfo mockURIInfoWithTopSkip(EdmMapping mapping) throws EdmException {
     UriInfo uriInfo = EasyMock.createMock(UriInfo.class);
@@ -593,6 +740,13 @@ public class JPAQueryBuilderTest {
     return uriInfo;
   }
   
+  /**
+   * Mock URI info with top skip inline.
+   *
+   * @param mapping the mapping
+   * @return the gets the entity uri info
+   * @throws EdmException the edm exception
+   */
   @SuppressWarnings("unchecked")
   private GetEntityUriInfo mockURIInfoWithTopSkipInline(EdmMapping mapping) throws EdmException {
     UriInfoImpl uriInfo = EasyMock.createMock(UriInfoImpl.class);
@@ -628,6 +782,12 @@ public class JPAQueryBuilderTest {
   }
 
   
+  /**
+   * Mock URI info with top skip inline listener.
+   *
+   * @return the uri info
+   * @throws EdmException the edm exception
+   */
   private UriInfo mockURIInfoWithTopSkipInlineListener() throws EdmException {
     UriInfoImpl uriInfo = EasyMock.createMock(UriInfoImpl.class);
     EdmEntityType edmEntityType = EasyMock.createMock(EdmEntityType.class);
@@ -657,6 +817,13 @@ public class JPAQueryBuilderTest {
 
   }
   
+  /**
+   * Mock URI info with listener.
+   *
+   * @param isNavigationEnabled the is navigation enabled
+   * @return the uri info
+   * @throws EdmException the edm exception
+   */
   private UriInfo mockURIInfoWithListener(boolean isNavigationEnabled) throws EdmException {
     UriInfo uriInfo = EasyMock.createMock(UriInfo.class);
     if (isNavigationEnabled) {
@@ -683,6 +850,13 @@ public class JPAQueryBuilderTest {
 
   }
   
+  /**
+   * Mock URI info with key nav seg and filter.
+   *
+   * @param mapping the mapping
+   * @return the uri info
+   * @throws EdmException the edm exception
+   */
   private UriInfo mockURIInfoWithKeyNavSegAndFilter(EdmMapping mapping) throws EdmException {
     UriInfo uriInfo = EasyMock.createMock(UriInfo.class);
     
@@ -757,6 +931,13 @@ public class JPAQueryBuilderTest {
 
   }
   
+  /**
+   * Mock URI info.
+   *
+   * @param mapping the mapping
+   * @return the uri info
+   * @throws EdmException the edm exception
+   */
   @SuppressWarnings("unchecked")
   private UriInfo mockURIInfo(EdmMapping mapping) throws EdmException {
     
@@ -787,6 +968,13 @@ public class JPAQueryBuilderTest {
 
   }
   
+  /**
+   * Mock URI info with multiple key predicates.
+   *
+   * @param mapping the mapping
+   * @return the uri info
+   * @throws EdmException the edm exception
+   */
   private UriInfo mockURIInfoWithMultipleKeyPredicates(EdmMapping mapping) throws EdmException {
     
     UriInfo uriInfo = EasyMock.createMock(UriInfo.class);
@@ -829,6 +1017,16 @@ public class JPAQueryBuilderTest {
 
   }
   
+  /**
+   * Mock navigation segments.
+   *
+   * @param edmEntityType the edm entity type
+   * @param uriInfo the uri info
+   * @param navEntitySet the nav entity set
+   * @param navEntityType the nav entity type
+   * @return the list
+   * @throws EdmException the edm exception
+   */
   private List<NavigationSegment> mockNavigationSegments(EdmEntityType edmEntityType, 
       UriInfo uriInfo, EdmEntitySet navEntitySet, EdmEntityType navEntityType) throws EdmException {
     List<NavigationSegment> navSegments = new ArrayList<NavigationSegment>();
@@ -851,6 +1049,13 @@ public class JPAQueryBuilderTest {
     return navSegments;
   }
   
+  /**
+   * Mock URI info for entity count.
+   *
+   * @param mapping the mapping
+   * @return the uri info
+   * @throws EdmException the edm exception
+   */
   private UriInfo mockURIInfoForEntityCount(EdmMapping mapping) throws EdmException {
     
     EdmEntityType edmEntityType = EasyMock.createMock(EdmEntityType.class);
@@ -882,8 +1087,10 @@ public class JPAQueryBuilderTest {
   }
 
   /**
-   * @param uriInfo
-   * @return
+   * Mock order by expressions.
+   *
+   * @param uriInfo the uri info
+   * @return the order by expression
    */
   private OrderByExpression mockOrderByExpressions(UriInfo uriInfo) {
     OrderByExpression orderbyExpression = EasyMock.createMock(OrderByExpression.class);
@@ -893,6 +1100,13 @@ public class JPAQueryBuilderTest {
     return orderbyExpression;
   }
   
+  /**
+   * Mock URI info for entity set count.
+   *
+   * @param mapping the mapping
+   * @return the uri info
+   * @throws EdmException the edm exception
+   */
   @SuppressWarnings("unchecked")
   private UriInfo mockURIInfoForEntitySetCount(EdmMapping mapping) throws EdmException {
     
@@ -914,6 +1128,14 @@ public class JPAQueryBuilderTest {
 
   }
   
+  /**
+   * Mock URI info for entity set.
+   *
+   * @param mapping the mapping
+   * @param methodName the method name
+   * @return the uri info
+   * @throws EdmException the edm exception
+   */
   private UriInfo mockURIInfoForEntitySet(EdmMapping mapping, String methodName) throws EdmException {
     
     UriInfo uriInfo = EasyMock.createMock(UriInfo.class);
@@ -1008,6 +1230,14 @@ public class JPAQueryBuilderTest {
 
   }
   
+  /**
+   * Mock URI info for entity set with binary filter expression.
+   *
+   * @param mapping the mapping
+   * @param methodName the method name
+   * @return the uri info
+   * @throws EdmException the edm exception
+   */
   private UriInfo mockURIInfoForEntitySetWithBinaryFilterExpression
   (EdmMapping mapping, String methodName) throws EdmException {
     
@@ -1088,36 +1318,67 @@ public class JPAQueryBuilderTest {
 
   }
 
+  /**
+   * Mock edm mapping.
+   *
+   * @return the JPA edm mapping
+   */
   private JPAEdmMapping mockEdmMapping() {
     JPAEdmMappingImpl mockedEdmMapping = new JPAEdmMappingImpl();
     mockedEdmMapping.setODataJPATombstoneEntityListener(JPAQueryExtensionMock.class);
     return mockedEdmMapping;
   }
   
+  /**
+   * Mock edm mapping for property.
+   *
+   * @return the JPA edm mapping
+   */
   private JPAEdmMapping mockEdmMappingForProperty() {
     JPAEdmMappingImpl mockedEdmMapping = new JPAEdmMappingImpl();
     mockedEdmMapping.setInternalName("CustomerName");
     return mockedEdmMapping;
   }
   
+  /**
+   * Mock edm mapping for property 1.
+   *
+   * @return the JPA edm mapping
+   */
   private JPAEdmMapping mockEdmMappingForProperty1() {
     JPAEdmMappingImpl mockedEdmMapping = new JPAEdmMappingImpl();
     mockedEdmMapping.setInternalName("SalesOrderHeader.CustomerName");
     return mockedEdmMapping;
   }
   
+  /**
+   * Mock nav edm mapping for property.
+   *
+   * @return the JPA edm mapping
+   */
   private JPAEdmMapping mockNavEdmMappingForProperty() {
     JPAEdmMappingImpl mockedEdmMapping = new JPAEdmMappingImpl();
     mockedEdmMapping.setInternalName("SalesOrderHeader");
     return mockedEdmMapping;
   }
   
+  /**
+   * Mock mapping.
+   *
+   * @return the JPA edm mapping
+   */
   private JPAEdmMapping mockMapping() {
     JPAEdmMappingImpl mockedEdmMapping = new JPAEdmMappingImpl();
     mockedEdmMapping.setInternalName("Customer");
     return mockedEdmMapping;
   }
   
+  /**
+   * Mock mapping with type.
+   *
+   * @param type the type
+   * @return the JPA edm mapping
+   */
   private JPAEdmMapping mockMappingWithType(String type) {
     JPAEdmMappingImpl mockedEdmMapping = new JPAEdmMappingImpl();
     mockedEdmMapping.setInternalName("Customer");
@@ -1136,57 +1397,124 @@ public class JPAQueryBuilderTest {
   }
   
 
+  /**
+   * Mock normalized mapping.
+   *
+   * @return the JPA edm mapping
+   */
   private JPAEdmMapping mockNormalizedMapping() {
     JPAEdmMappingImpl mockedEdmMapping = new JPAEdmMappingImpl();
     mockedEdmMapping.setInternalName("C1.Customer.Name");
     return mockedEdmMapping;
   }
   
+  /**
+   * Mock normalized mapping 1.
+   *
+   * @return the JPA edm mapping
+   */
   private JPAEdmMapping mockNormalizedMapping1() {
     JPAEdmMappingImpl mockedEdmMapping = new JPAEdmMappingImpl();
     mockedEdmMapping.setInternalName("E1.SalesOrderItem");
     return mockedEdmMapping;
   }
   
+  /**
+   * Mock normalized value mapping.
+   *
+   * @return the JPA edm mapping
+   */
   private JPAEdmMapping mockNormalizedValueMapping() {
     JPAEdmMappingImpl mockedEdmMapping = new JPAEdmMappingImpl();
     mockedEdmMapping.setInternalName("'C1.Customer.Name'");
     return mockedEdmMapping;
   }
   
+  /**
+   * The Class JPAQueryExtensionMock.
+   */
   public static final class JPAQueryExtensionMock extends ODataJPAQueryExtensionEntityListener {
+    
+    /** The query. */
     Query query = EasyMock.createMock(Query.class);
 
+    /**
+     * Gets the query.
+     *
+     * @param uriInfo the uri info
+     * @param em the em
+     * @return the query
+     */
     @Override
     public Query getQuery(GetEntityUriInfo uriInfo, EntityManager em) {
       return query;
     }
 
+    /**
+     * Gets the query.
+     *
+     * @param uriInfo the uri info
+     * @param em the em
+     * @return the query
+     */
     @Override
     public Query getQuery(GetEntitySetUriInfo uriInfo, EntityManager em) {
       return query;
     }
 
+    /**
+     * Gets the query.
+     *
+     * @param uriInfo the uri info
+     * @param em the em
+     * @return the query
+     */
     @Override
     public Query getQuery(GetEntitySetCountUriInfo uriInfo, EntityManager em) {
       return query;
     }
 
+    /**
+     * Gets the query.
+     *
+     * @param uriInfo the uri info
+     * @param em the em
+     * @return the query
+     */
     @Override
     public Query getQuery(DeleteUriInfo uriInfo, EntityManager em) {
       return query;
     }
 
+    /**
+     * Gets the query.
+     *
+     * @param uriInfo the uri info
+     * @param em the em
+     * @return the query
+     */
     @Override
     public Query getQuery(GetEntityCountUriInfo uriInfo, EntityManager em) {
       return query;
     }
 
+    /**
+     * Gets the query.
+     *
+     * @param uriInfo the uri info
+     * @param em the em
+     * @return the query
+     */
     @Override
     public Query getQuery(PutMergePatchUriInfo uriInfo, EntityManager em) {
       return query;
     }
 
+    /**
+     * Checks if is tombstone supported.
+     *
+     * @return true, if is tombstone supported
+     */
     @Override
     public boolean isTombstoneSupported() {
       return false;

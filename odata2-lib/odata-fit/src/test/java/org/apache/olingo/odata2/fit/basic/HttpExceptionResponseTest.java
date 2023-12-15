@@ -47,17 +47,30 @@ import org.custommonkey.xmlunit.XMLUnit;
 import org.junit.Test;
 import org.mockito.ArgumentMatcher;
 
+// TODO: Auto-generated Javadoc
 /**
- *
+ * The Class HttpExceptionResponseTest.
  */
 public class HttpExceptionResponseTest extends AbstractBasicTest {
 
+    /**
+     * Instantiates a new http exception response test.
+     *
+     * @param servletType the servlet type
+     */
     public HttpExceptionResponseTest(final ServletType servletType) {
         super(servletType);
     }
 
+    /** The processor. */
     private ODataSingleProcessor processor;
 
+    /**
+     * Creates the processor.
+     *
+     * @return the o data single processor
+     * @throws ODataException the o data exception
+     */
     @Override
     protected ODataSingleProcessor createProcessor() throws ODataException {
         processor = mock(ODataSingleProcessor.class);
@@ -65,11 +78,21 @@ public class HttpExceptionResponseTest extends AbstractBasicTest {
         return processor;
     }
 
+    /**
+     * Creates the edm provider.
+     *
+     * @return the edm provider
+     */
     @Override
     protected EdmProvider createEdmProvider() {
         return new ScenarioEdmProvider();
     }
 
+  /**
+   * Test 404 http not found.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void test404HttpNotFound() throws Exception {
     when(processor.readEntity(any(GetEntityUriInfo.class), any(String.class))).thenThrow(
@@ -87,6 +110,11 @@ public class HttpExceptionResponseTest extends AbstractBasicTest {
         + "\"", "/a:error/a:message", content);
   }
 
+    /**
+     * Test 400 bad request redundant system query options.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void test400BadRequestRedundantSystemQueryOptions() throws Exception {
         HttpResponse response = executeGetRequest("Employees?$top=1&$top=3");
@@ -100,6 +128,11 @@ public class HttpExceptionResponseTest extends AbstractBasicTest {
                 + "'$top'.</message></error>", content);
     }
 
+    /**
+     * Generic http exceptions.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void genericHttpExceptions() throws Exception {
         disableLogging();
@@ -132,6 +165,12 @@ public class HttpExceptionResponseTest extends AbstractBasicTest {
 
     }
 
+    /**
+     * Gets the http exceptions for test.
+     *
+     * @return the http exceptions for test
+     * @throws Exception the exception
+     */
     private List<ODataHttpException> getHttpExceptionsForTest() throws Exception {
         final List<Class<ODataHttpException>> exClasses =
                 ClassHelper.getAssignableClasses("org.apache.olingo.odata2.api.exception", ODataHttpException.class);
@@ -140,10 +179,19 @@ public class HttpExceptionResponseTest extends AbstractBasicTest {
         return ClassHelper.getClassInstances(exClasses, new Class<?>[] {MessageReference.class}, new Object[] {mr});
     }
 
+    /**
+     * The Class EntityKeyMatcher.
+     */
     private class EntityKeyMatcher implements ArgumentMatcher<GetEntityUriInfo> {
 
+        /** The key literal. */
         private final String keyLiteral;
 
+        /**
+         * Instantiates a new entity key matcher.
+         *
+         * @param keyLiteral the key literal
+         */
         public EntityKeyMatcher(final String keyLiteral) {
             if (keyLiteral == null) {
                 throw new IllegalArgumentException("Key parameter MUST NOT be NULL.");
@@ -152,6 +200,12 @@ public class HttpExceptionResponseTest extends AbstractBasicTest {
         }
 
 
+        /**
+         * Matches.
+         *
+         * @param item the item
+         * @return true, if successful
+         */
         @Override
         public boolean matches(GetEntityUriInfo item) {
             if (item instanceof UriInfoImpl) {

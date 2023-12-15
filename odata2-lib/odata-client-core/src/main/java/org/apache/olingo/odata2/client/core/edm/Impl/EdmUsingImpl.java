@@ -26,20 +26,31 @@ import org.apache.olingo.odata2.api.edm.EdmAnnotationAttribute;
 import org.apache.olingo.odata2.api.edm.EdmAnnotationElement;
 import org.apache.olingo.odata2.client.api.edm.EdmUsing;
 
+// TODO: Auto-generated Javadoc
 /**
- *  Objects of this class represent EdmUsing
+ *  Objects of this class represent EdmUsing.
  */
 public class EdmUsingImpl implements EdmUsing{
 
+  /** The namespace. */
   private String namespace;
+  
+  /** The alias. */
   private String alias;
+  
+  /** The documentation. */
   private EdmDocumentationImpl documentation;
+  
+  /** The annotation attributes. */
   private List<EdmAnnotationAttribute> annotationAttributes;
+  
+  /** The annotation elements. */
   private List<EdmAnnotationElement> annotationElements;
 
   /**
-   * Sets the namespace for this {@link EdmUsingImpl}
-   * @param namespace
+   * Sets the namespace for this {@link EdmUsingImpl}.
+   *
+   * @param namespace the namespace
    * @return {@link EdmUsingImpl} for method chaining
    */
   public EdmUsingImpl setNamespace(final String namespace) {
@@ -48,8 +59,9 @@ public class EdmUsingImpl implements EdmUsing{
   }
 
   /**
-   * Sets the alias for this {@link EdmUsingImpl}
-   * @param alias
+   * Sets the alias for this {@link EdmUsingImpl}.
+   *
+   * @param alias the alias
    * @return {@link EdmUsingImpl} for method chaining
    */
   public EdmUsingImpl setAlias(final String alias) {
@@ -58,8 +70,9 @@ public class EdmUsingImpl implements EdmUsing{
   }
 
   /**
-   * Sets the {@link EdmDocumentation} for this {@link EdmUsingImpl}
-   * @param documentation
+   * Sets the {@link EdmDocumentation} for this {@link EdmUsingImpl}.
+   *
+   * @param documentation the documentation
    * @return {@link EdmUsingImpl} for method chaining
    */
   public EdmUsingImpl setDocumentation(final EdmDocumentationImpl documentation) {
@@ -68,8 +81,9 @@ public class EdmUsingImpl implements EdmUsing{
   }
 
   /**
-   * Sets the collection of {@link AnnotationAttribute} for this {@link EdmUsingImpl}
-   * @param annotationAttributes
+   * Sets the collection of {@link AnnotationAttribute} for this {@link EdmUsingImpl}.
+   *
+   * @param annotationAttributes the annotation attributes
    * @return {@link EdmUsingImpl} for method chaining
    */
   public EdmUsingImpl setAnnotationAttributes(final List<EdmAnnotationAttribute> annotationAttributes) {
@@ -78,8 +92,9 @@ public class EdmUsingImpl implements EdmUsing{
   }
 
   /**
-   * Sets the collection of {@link AnnotationElement} for this {@link EdmUsingImpl}
-   * @param annotationElements
+   * Sets the collection of {@link AnnotationElement} for this {@link EdmUsingImpl}.
+   *
+   * @param annotationElements the annotation elements
    * @return {@link EdmUsingImpl} for method chaining
    */
   public EdmUsingImpl setAnnotationElements(final List<EdmAnnotationElement> annotationElements) {
@@ -88,6 +103,8 @@ public class EdmUsingImpl implements EdmUsing{
   }
 
   /**
+   * Gets the namespace.
+   *
    * @return <b>String</b> namespace
    */
   public String getNamespace() {
@@ -95,6 +112,8 @@ public class EdmUsingImpl implements EdmUsing{
   }
 
   /**
+   * Gets the alias.
+   *
    * @return <b>String</b> alias
    */
   public String getAlias() {
@@ -102,6 +121,8 @@ public class EdmUsingImpl implements EdmUsing{
   }
 
   /**
+   * Gets the documentation.
+   *
    * @return {@link EdmDocumentation} documentation
    */
   public EdmDocumentationImpl getDocumentation() {
@@ -109,6 +130,8 @@ public class EdmUsingImpl implements EdmUsing{
   }
 
   /**
+   * Gets the annotation attributes.
+   *
    * @return collection of {@link AnnotationAttribute} annotation attributes
    */
   public Collection<EdmAnnotationAttribute> getAnnotationAttributes() {
@@ -116,12 +139,19 @@ public class EdmUsingImpl implements EdmUsing{
   }
 
   /**
+   * Gets the annotation elements.
+   *
    * @return collection of {@link AnnotationElement} annotation elements
    */
   public Collection<EdmAnnotationElement> getAnnotationElements() {
     return annotationElements;
   }
   
+  /**
+   * To string.
+   *
+   * @return the string
+   */
   @Override
   public String toString() {
     return namespace + Edm.DELIMITER + alias;

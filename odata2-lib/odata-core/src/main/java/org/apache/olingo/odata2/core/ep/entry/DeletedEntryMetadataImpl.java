@@ -22,25 +22,52 @@ import java.util.Date;
 
 import org.apache.olingo.odata2.api.ep.entry.DeletedEntryMetadata;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class DeletedEntryMetadataImpl.
+ */
 public class DeletedEntryMetadataImpl implements DeletedEntryMetadata {
 
+  /** The uri. */
   private String uri;
+  
+  /** The when. */
   private Date when;
 
+  /**
+   * Gets the uri.
+   *
+   * @return the uri
+   */
   @Override
   public String getUri() {
     return uri;
   }
 
+  /**
+   * Gets the when.
+   *
+   * @return the when
+   */
   @Override
   public Date getWhen() {
     return when;
   }
 
+  /**
+   * Sets the uri.
+   *
+   * @param uri the new uri
+   */
   public void setUri(final String uri) {
     this.uri = uri;
   }
 
+  /**
+   * Sets the when.
+   *
+   * @param when the new when
+   */
   public void setWhen(final Date when) {
     this.when = when;
   }

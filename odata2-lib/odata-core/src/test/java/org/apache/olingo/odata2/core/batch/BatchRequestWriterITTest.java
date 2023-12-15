@@ -44,14 +44,35 @@ import org.apache.olingo.odata2.testutil.helper.StringHelper;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BatchRequestWriterITTest.
+ */
 public class BatchRequestWriterITTest {
+  
+  /** The Constant POST. */
   private static final String POST = "POST";
+  
+  /** The Constant GET. */
   private static final String GET = "GET";
+  
+  /** The Constant BOUNDARY. */
   private static final String BOUNDARY = "batch_123";
+  
+  /** The Constant CONTENT_TYPE. */
   private static final String CONTENT_TYPE = "multipart/mixed ;boundary=" + BOUNDARY;
+  
+  /** The Constant SERVICE_ROOT. */
   private static final String SERVICE_ROOT = "http://localhost/odata/";
+  
+  /** The batch properties. */
   private static EntityProviderBatchProperties batchProperties;
 
+  /**
+   * Sets the properties.
+   *
+   * @throws URISyntaxException the URI syntax exception
+   */
   @BeforeClass
   public static void setProperties() throws URISyntaxException {
     PathInfoImpl pathInfo = new PathInfoImpl();
@@ -59,6 +80,11 @@ public class BatchRequestWriterITTest {
     batchProperties = EntityProviderBatchProperties.init().pathInfo(pathInfo).build();
   }
 
+  /**
+   * Test query part.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testQueryPart() throws Exception {
     List<BatchPart> batch = new ArrayList<BatchPart>();
@@ -81,6 +107,11 @@ public class BatchRequestWriterITTest {
     assertEquals("application/json", oDataRequest.getAcceptHeaders().get(0));
   }
 
+  /**
+   * Test change set.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testChangeSet() throws Exception {
     List<BatchPart> batch = new ArrayList<BatchPart>();
@@ -126,16 +157,32 @@ public class BatchRequestWriterITTest {
     assertEquals("application/json", oDataRequestPost.getRequestHeaderValue(HttpHeaders.CONTENT_TYPE));
   }
 
+  /**
+   * Test change set iso.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testChangeSetIso() throws Exception {
     testChangeSetWithCharset("iso-8859-1");
   }
 
+  /**
+   * Test change set utf 8.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testChangeSetUtf8() throws Exception {
     testChangeSetWithCharset("utf-8");
   }
 
+  /**
+   * Test change set with charset.
+   *
+   * @param charset the charset
+   * @throws Exception the exception
+   */
   private void testChangeSetWithCharset(final String charset) throws Exception {
     List<BatchPart> batch = new ArrayList<BatchPart>();
     Map<String, String> headers = new HashMap<String, String>();
@@ -185,6 +232,11 @@ public class BatchRequestWriterITTest {
         oDataRequestPost.getRequestHeaderValue(HttpHeaders.CONTENT_TYPE));
   }
 
+  /**
+   * Test two change sets.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testTwoChangeSets() throws Exception {
     List<BatchPart> batch = new ArrayList<BatchPart>();
@@ -281,15 +333,36 @@ public class BatchRequestWriterITTest {
     assertEquals("application/json", oDataRequestPost22.getRequestHeaderValue(HttpHeaders.CONTENT_TYPE));
   }
 
+  /**
+   * Parses the batch request.
+   *
+   * @param batchRequest the batch request
+   * @return the list
+   * @throws BatchException the batch exception
+   */
   private List<BatchRequestPart> parseBatchRequest(InputStream batchRequest) throws BatchException {
     final BatchParser parser = new BatchParser(CONTENT_TYPE, batchProperties, true);
     return parser.parseBatchRequest(batchRequest);
   }
 
+  /**
+   * Stream to string.
+   *
+   * @param in the in
+   * @return the string
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private String streamToString(final InputStream in) throws IOException {
     return StringHelper.toStream(in).asString();
   }
 
+  /**
+   * Validate header.
+   *
+   * @param request the request
+   * @param headerName the header name
+   * @param expectedValue the expected value
+   */
   private void validateHeader(ODataRequest request, String headerName, String expectedValue) {
     String actualValue = request.getRequestHeaderValue(headerName);
     assertNotNull("Expected header '" + headerName + "' is not available.", actualValue);

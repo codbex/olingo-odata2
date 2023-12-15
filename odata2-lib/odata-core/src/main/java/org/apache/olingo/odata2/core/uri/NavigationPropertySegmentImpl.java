@@ -22,32 +22,61 @@ import org.apache.olingo.odata2.api.edm.EdmEntitySet;
 import org.apache.olingo.odata2.api.edm.EdmNavigationProperty;
 import org.apache.olingo.odata2.api.uri.NavigationPropertySegment;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class NavigationPropertySegmentImpl.
  */
 public class NavigationPropertySegmentImpl implements NavigationPropertySegment {
 
+  /** The navigation property. */
   private EdmNavigationProperty navigationProperty;
+  
+  /** The target entity set. */
   private EdmEntitySet targetEntitySet;
 
+  /**
+   * Gets the navigation property.
+   *
+   * @return the navigation property
+   */
   @Override
   public EdmNavigationProperty getNavigationProperty() {
     return navigationProperty;
   }
 
+  /**
+   * Sets the navigation property.
+   *
+   * @param navigationProperty the new navigation property
+   */
   public void setNavigationProperty(final EdmNavigationProperty navigationProperty) {
     this.navigationProperty = navigationProperty;
   }
 
+  /**
+   * Gets the target entity set.
+   *
+   * @return the target entity set
+   */
   @Override
   public EdmEntitySet getTargetEntitySet() {
     return targetEntitySet;
   }
 
+  /**
+   * Sets the target entity set.
+   *
+   * @param targetEntitySet the new target entity set
+   */
   public void setTargetEntitySet(final EdmEntitySet targetEntitySet) {
     this.targetEntitySet = targetEntitySet;
   }
 
+  /**
+   * To string.
+   *
+   * @return the string
+   */
   @Override
   public String toString() {
     return "Navigation Property: " + navigationProperty + ", Target Entity Set: " + targetEntitySet;

@@ -21,6 +21,7 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
 
+// TODO: Auto-generated Javadoc
 /**
  * <p>
  * Java class for JPAEntityTypesMapType complex type.
@@ -48,6 +49,7 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "JPAEntityTypesMapType", propOrder = {"jpaEntityType"})
 public class JPAEntityTypesMapType {
 
+    /** The jpa entity type. */
     @XmlElement(name = "JPAEntityType")
     protected List<JPAEntityTypeMapType> jpaEntityType;
 
@@ -69,8 +71,8 @@ public class JPAEntityTypesMapType {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list {@link JPAEntityTypeMapType }
-     * 
-     * 
+     *
+     * @return the JPA entity type
      */
     public List<JPAEntityTypeMapType> getJPAEntityType() {
         if (jpaEntityType == null) {

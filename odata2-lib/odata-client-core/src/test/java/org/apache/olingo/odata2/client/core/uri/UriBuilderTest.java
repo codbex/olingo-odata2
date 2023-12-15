@@ -30,10 +30,21 @@ import org.apache.olingo.odata2.api.edm.EdmException;
 import org.apache.olingo.odata2.client.api.uri.QueryOption;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class UriBuilderTest.
+ */
 public class UriBuilderTest {
+  
+  /** The Constant SERVICE_ROOT_URI. */
   protected static final String SERVICE_ROOT_URI = "http://host:80/service/";
+  
+  /** The Constant SERVICE_ROOT_URI_1. */
   protected static final String SERVICE_ROOT_URI_1 = "http://host:80/service";
   
+  /**
+   * Test uri simple ES.
+   */
   @Test
   public void testUriSimpleES() {
     URI uri = new URIBuilderImpl(SERVICE_ROOT_URI).
@@ -43,6 +54,9 @@ public class UriBuilderTest {
     assertEquals("http://host:80/service/Employees", uri.toASCIIString());
   }
   
+  /**
+   * Test simple ES with count uri 1.
+   */
   @Test
   public void testSimpleESWithCountUri1() {
     URI uri = new URIBuilderImpl(SERVICE_ROOT_URI).
@@ -53,6 +67,9 @@ public class UriBuilderTest {
     assertEquals("http://host:80/service/Employees/$count", uri.toASCIIString());
   }
   
+  /**
+   * Test simple ES with count uri 2.
+   */
   @Test
   public void testSimpleESWithCountUri2() {
     URI uri = new URIBuilderImpl(SERVICE_ROOT_URI).
@@ -65,6 +82,9 @@ public class UriBuilderTest {
     assertEquals("http://host:80/service/Managers('1')/nm_Employees/$count", uri.toASCIIString());
   }
   
+  /**
+   * Test simple ES with count and filter.
+   */
   @Test
   public void testSimpleESWithCountAndFilter() {
     URI uri = new URIBuilderImpl(SERVICE_ROOT_URI).
@@ -79,6 +99,9 @@ public class UriBuilderTest {
         + "$count?$filter=TeamId%20eq%20'1'", uri.toASCIIString());
   }
   
+  /**
+   * Test metadata uri.
+   */
   @Test
   public void testMetadataUri() {
     URI uri = new URIBuilderImpl(SERVICE_ROOT_URI).
@@ -88,6 +111,9 @@ public class UriBuilderTest {
     assertEquals("http://host:80/service/$metadata", uri.toASCIIString());
   }
   
+  /**
+   * Test simple ES with key uri.
+   */
   @Test
   public void testSimpleESWithKeyUri() {
     URI uri = new URIBuilderImpl(SERVICE_ROOT_URI).
@@ -98,6 +124,9 @@ public class UriBuilderTest {
     assertEquals("http://host:80/service/Employees('1')", uri.toASCIIString());
   }
   
+  /**
+   * Test simple ES with key uri 1.
+   */
   @Test
   public void testSimpleESWithKeyUri1() {
     URI uri = new URIBuilderImpl(SERVICE_ROOT_URI).
@@ -108,6 +137,9 @@ public class UriBuilderTest {
     assertEquals("http://host:80/service/Employees(1)", uri.toASCIIString());
   }
   
+  /**
+   * Test composite keys uri.
+   */
   @Test
   public void testCompositeKeysUri() {
     Map<String, Object> keyMap = new LinkedHashMap<String,Object>();
@@ -121,6 +153,9 @@ public class UriBuilderTest {
     assertEquals("http://host:80/service/Photos(Id=4,Type='foo')", uri.toASCIIString());
   }
   
+  /**
+   * Test filter uri.
+   */
   @Test
   public void testFilterUri() {
     URI uri = new URIBuilderImpl(SERVICE_ROOT_URI).
@@ -131,6 +166,9 @@ public class UriBuilderTest {
     assertEquals("http://host:80/service/Photos?$filter=Name%20eq%20'Photo%201'", uri.toASCIIString());
   }
   
+  /**
+   * Test top uri 1.
+   */
   @Test
   public void testTopUri1() {
     URI uri = new URIBuilderImpl(SERVICE_ROOT_URI).
@@ -141,6 +179,9 @@ public class UriBuilderTest {
     assertEquals("http://host:80/service/Photos?$top=2", uri.toASCIIString());
   }
   
+  /**
+   * Test top uri 2.
+   */
   @Test
   public void testTopUri2() {
     URI uri = new URIBuilderImpl(SERVICE_ROOT_URI).
@@ -155,6 +196,9 @@ public class UriBuilderTest {
         + "?$filter=TeamId%20eq%20'1'&$top=2", uri.toASCIIString());
   }
   
+  /**
+   * Test skip uri.
+   */
   @Test
   public void testSkipUri() {
     URI uri = new URIBuilderImpl(SERVICE_ROOT_URI).
@@ -165,6 +209,9 @@ public class UriBuilderTest {
     assertEquals("http://host:80/service/Photos?$skip=2", uri.toASCIIString());
   }
   
+  /**
+   * Test uri with query options.
+   */
   @Test
   public void testUriWithQueryOptions() {
     URI uri = new URIBuilderImpl(SERVICE_ROOT_URI).
@@ -176,6 +223,9 @@ public class UriBuilderTest {
     assertEquals("http://host:80/service/Photos?$filter=Name%20eq%20'Photo%201'&$top=2", uri.toASCIIString());
   }
   
+  /**
+   * Test uri with navigation segment 2.
+   */
   @Test
   public void testUriWithNavigationSegment2() {
     URI uri = new URIBuilderImpl(SERVICE_ROOT_URI).
@@ -188,6 +238,10 @@ public class UriBuilderTest {
     assertNotNull(uri);
     assertEquals("http://host:80/service/Managers('1')/nm_Employees('1')/ne_Team", uri.toASCIIString());
   }
+  
+  /**
+   * Test uri with simple property segment.
+   */
   @Test
   public void testUriWithSimplePropertySegment() {
     URI uri = new URIBuilderImpl(SERVICE_ROOT_URI).
@@ -200,6 +254,9 @@ public class UriBuilderTest {
     assertEquals("http://host:80/service/Employees('1')/EmployeeName/$value", uri.toASCIIString());
   }
   
+  /**
+   * Test uri with complex property segment.
+   */
   @Test
   public void testUriWithComplexPropertySegment() {
     URI uri = new URIBuilderImpl(SERVICE_ROOT_URI).
@@ -211,6 +268,9 @@ public class UriBuilderTest {
     assertEquals("http://host:80/service/Employees('1')/Location", uri.toASCIIString());
   }
   
+  /**
+   * Test uri with complex property segment 1.
+   */
   @Test
   public void testUriWithComplexPropertySegment1() {
     URI uri = new URIBuilderImpl(SERVICE_ROOT_URI).
@@ -223,6 +283,9 @@ public class UriBuilderTest {
     assertEquals("http://host:80/service/Employees('1')/Location/City", uri.toASCIIString());
   }
   
+  /**
+   * Test uri with orderby.
+   */
   @Test
   public void testUriWithOrderby() {
     URI uri = new URIBuilderImpl(SERVICE_ROOT_URI).
@@ -235,6 +298,9 @@ public class UriBuilderTest {
     assertEquals("http://host:80/service/Managers('1')/nm_Employees?$orderby=EmployeeId", uri.toASCIIString());
   }
   
+  /**
+   * Test uri with orderby and format.
+   */
   @Test
   public void testUriWithOrderbyAndFormat() {
     URI uri = new URIBuilderImpl(SERVICE_ROOT_URI).
@@ -249,6 +315,9 @@ public class UriBuilderTest {
         + "?$orderby=EmployeeId&$format=application%2Fjson", uri.toASCIIString());
   }
   
+  /**
+   * Test uri with select.
+   */
   @Test
   public void testUriWithSelect() {
     URI uri = new URIBuilderImpl(SERVICE_ROOT_URI).
@@ -262,6 +331,9 @@ public class UriBuilderTest {
         + "?$select=EmployeeId%2CEmployeeName%2CRoomId%2CTeamId", uri.toASCIIString());
   }
   
+  /**
+   * Test uri with select and filter.
+   */
   @Test
   public void testUriWithSelectAndFilter() {
     URI uri = new URIBuilderImpl(SERVICE_ROOT_URI).
@@ -276,6 +348,9 @@ public class UriBuilderTest {
         + "EmployeeId%20eq%201&$select=EmployeeId%2CEmployeeName%2CRoomId%2CTeamId", uri.toASCIIString());
   }
   
+  /**
+   * Test uri with expand.
+   */
   @Test
   public void testUriWithExpand() {
     URI uri = new URIBuilderImpl(SERVICE_ROOT_URI).
@@ -287,6 +362,9 @@ public class UriBuilderTest {
     assertEquals("http://host:80/service/Managers('1')?$expand=nm_Employees", uri.toASCIIString());
   }
   
+  /**
+   * Test uri with expand and filter.
+   */
   @Test
   public void testUriWithExpandAndFilter() {
     URI uri = new URIBuilderImpl(SERVICE_ROOT_URI).
@@ -299,6 +377,9 @@ public class UriBuilderTest {
         + "EmployeeName%20eq%20'Walter%20Winter'", uri.toASCIIString());
   }
   
+  /**
+   * Test uri with custom query option.
+   */
   @Test
   public void testUriWithCustomQueryOption() {
     URI uri = new URIBuilderImpl(SERVICE_ROOT_URI).
@@ -310,6 +391,9 @@ public class UriBuilderTest {
     assertEquals("http://host:80/service/Employees?$top=2&x=y", uri.toASCIIString());
   }
   
+  /**
+   * Test uri with custom query option with format.
+   */
   @Test
   public void testUriWithCustomQueryOptionWithFormat() {
     URI uri = new URIBuilderImpl(SERVICE_ROOT_URI).
@@ -322,6 +406,9 @@ public class UriBuilderTest {
     assertEquals("http://host:80/service/Employees?$top=2&$format=application%2Fjson&x=y", uri.toASCIIString());
   }
   
+  /**
+   * Test uri with filters.
+   */
   @Test
   public void testUriWithFilters() {
     URI uri = new URIBuilderImpl(SERVICE_ROOT_URI).
@@ -333,6 +420,9 @@ public class UriBuilderTest {
         + "and%20EmployeeId%20le%20'10'", uri.toASCIIString());
   }
   
+  /**
+   * Test uri with duplicate expands.
+   */
   @Test
   public void testUriWithDuplicateExpands() {
     URI uri = new URIBuilderImpl(SERVICE_ROOT_URI).
@@ -344,6 +434,9 @@ public class UriBuilderTest {
     assertEquals("http://host:80/service/Managers?$expand=nm_Employees%2Cnm_Employees", uri.toASCIIString());
   }
   
+  /**
+   * Test uri with two custom query options.
+   */
   @Test
   public void testUriWithTwoCustomQueryOptions() {
     URI uri = new URIBuilderImpl(SERVICE_ROOT_URI).
@@ -358,6 +451,9 @@ public class UriBuilderTest {
         + "format=application%2Fjson&x=y&z=y", uri.toASCIIString());
   }
   
+  /**
+   * Test uri with duplicate orderby.
+   */
   @Test
   public void testUriWithDuplicateOrderby() {
     URI uri = new URIBuilderImpl(SERVICE_ROOT_URI).
@@ -369,6 +465,9 @@ public class UriBuilderTest {
     assertEquals("http://host:80/service/Managers?$orderby=EmployeeId%2CEmployeeId", uri.toASCIIString());
   }
   
+  /**
+   * Test uri with two orderby.
+   */
   @Test
   public void testUriWithTwoOrderby() {
     URI uri = new URIBuilderImpl(SERVICE_ROOT_URI).
@@ -380,6 +479,9 @@ public class UriBuilderTest {
     assertEquals("http://host:80/service/Employees?$orderby=EmployeeId%2CEmployeeName%20desc", uri.toASCIIString());
   }
   
+  /**
+   * Test uri with navigation to many with key with simple property.
+   */
   @Test
   public void testUriWithNavigationToManyWithKeyWithSimpleProperty() {
     URI uri = new URIBuilderImpl(SERVICE_ROOT_URI).
@@ -393,6 +495,9 @@ public class UriBuilderTest {
     assertEquals("http://host:80/service/Managers('1')/nm_Employees('1')/EmployeeName", uri.toASCIIString());
   }
   
+  /**
+   * Test simple ES with encoded key uri.
+   */
   @Test
   public void testSimpleESWithEncodedKeyUri() {
     URI uri = new URIBuilderImpl(SERVICE_ROOT_URI).
@@ -403,6 +508,9 @@ public class UriBuilderTest {
     assertEquals("http://host:80/service/Employees('abc%2Fdef')", uri.toASCIIString());
   }
   
+  /**
+   * Test composite keys encoded uri.
+   */
   @Test
   public void testCompositeKeysEncodedUri() {
     Map<String, Object> keyMap = new LinkedHashMap<String,Object>();
@@ -416,6 +524,11 @@ public class UriBuilderTest {
     assertEquals("http://host:80/service/Photos(Id=4,Type='foo%2Cfoo%3B')", uri.toASCIIString());
   }
   
+  /**
+   * Test uri with navigation to many with key encoded.
+   *
+   * @throws EdmException the edm exception
+   */
   @Test
   public void testUriWithNavigationToManyWithKeyEncoded() throws EdmException {
     URI uri = new URIBuilderImpl(SERVICE_ROOT_URI).
@@ -428,6 +541,11 @@ public class UriBuilderTest {
     assertEquals("http://host:80/service/Managers('1%28%29%2A%3B')/nm_Employees('%40%23%24%25')", uri.toASCIIString());
   }
   
+  /**
+   * Test function import with empty params.
+   *
+   * @throws EdmException the edm exception
+   */
   @Test
   public void testFunctionImportWithEmptyParams() throws EdmException {
     Map<String, Object> functionImportParams = new HashMap<String, Object>();
@@ -437,6 +555,11 @@ public class UriBuilderTest {
     assertEquals("http://host:80/service/AllLocations", uri.toASCIIString());
   }
   
+  /**
+   * Test function import with null params.
+   *
+   * @throws EdmException the edm exception
+   */
   @Test
   public void testFunctionImportWithNullParams() throws EdmException {
     URI uri = new URIBuilderImpl(SERVICE_ROOT_URI).
@@ -445,6 +568,11 @@ public class UriBuilderTest {
     assertEquals("http://host:80/service/AllLocations", uri.toASCIIString());
   }
   
+  /**
+   * Test function import with params.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testFunctionImportWithParams() throws Exception {
     Map<String, Object> functionImportParams = new HashMap<String, Object>();
@@ -455,6 +583,11 @@ public class UriBuilderTest {
     assertEquals("http://host:80/service/EmployeeSearch?q='Emp1'", uri.toASCIIString());
   }
   
+  /**
+   * Test function import with params with null facets.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testFunctionImportWithParamsWithNullFacets() throws Exception {
     Map<String, Object> functionImportParams = new HashMap<String, Object>();
@@ -465,6 +598,11 @@ public class UriBuilderTest {
     assertEquals("http://host:80/service/FINullableParameter?Id='1'", uri.toASCIIString());
   }
   
+  /**
+   * Test function import with params with false null facets.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testFunctionImportWithParamsWithFalseNullFacets() throws Exception {
     Map<String, Object> functionImportParams = new HashMap<String, Object>();
@@ -475,6 +613,11 @@ public class UriBuilderTest {
     assertEquals("http://host:80/service/ManagerPhoto?Id='1'", uri.toASCIIString());
   }
   
+  /**
+   * Test function import with multiple params.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testFunctionImportWithMultipleParams() throws Exception {
     Map<String, Object> functionImportParams = new LinkedHashMap<String, Object>();
@@ -486,6 +629,11 @@ public class UriBuilderTest {
     assertEquals("http://host:80/service/BuildingSearch?q='1'&r=1", uri.toASCIIString());
   }
   
+  /**
+   * Test function import with multiple params with more segments.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testFunctionImportWithMultipleParamsWithMoreSegments() throws Exception {
     Map<String, Object> functionImportParams = new LinkedHashMap<String, Object>();
@@ -499,6 +647,11 @@ public class UriBuilderTest {
     assertEquals("http://host:80/service/BuildingSearch('1')/nb_Rooms?q='1'&r=1", uri.toASCIIString());
   }
   
+  /**
+   * Test function import with multiple params with count.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testFunctionImportWithMultipleParamsWithCount() throws Exception {
     Map<String, Object> functionImportParams = new LinkedHashMap<String, Object>();
@@ -513,6 +666,11 @@ public class UriBuilderTest {
     assertEquals("http://host:80/service/BuildingSearch('1')/nb_Rooms/$count?q='1'&r=1", uri.toASCIIString());
   }
   
+  /**
+   * Test function import with count.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testFunctionImportWithCount() throws Exception {
     Map<String, Object> functionImportParams = new LinkedHashMap<String, Object>();
@@ -526,6 +684,11 @@ public class UriBuilderTest {
     assertEquals("http://host:80/service/BuildingSearch/$count?q='1'&r=1", uri.toASCIIString());
   }
   
+  /**
+   * Test function import with multiple params with property segment.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testFunctionImportWithMultipleParamsWithPropertySegment() throws Exception {
     Map<String, Object> functionImportParams = new LinkedHashMap<String, Object>();
@@ -540,6 +703,11 @@ public class UriBuilderTest {
     assertEquals("http://host:80/service/BuildingSearch('1')/nb_Rooms('1')/Name?q='1'&r=1", uri.toASCIIString());
   }
   
+  /**
+   * Test function import with key segment.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testFunctionImportWithKeySegment() throws Exception {
     Map<String, Object> keySegments = new LinkedHashMap<String, Object>();
@@ -558,6 +726,11 @@ public class UriBuilderTest {
     }
   }
   
+  /**
+   * Test custom query with system query.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testCustomQueryWithSystemQuery() throws Exception {
     URI uri = new URIBuilderImpl(SERVICE_ROOT_URI).appendEntitySetSegment("Managers").
@@ -566,6 +739,11 @@ public class UriBuilderTest {
         + "EmployeeName%20eq%20'Walter%20Winter'&x=y", uri.toASCIIString());
   }
   
+  /**
+   * Test uri with only custom query option.
+   *
+   * @throws EdmException the edm exception
+   */
   @Test
   public void testUriWithOnlyCustomQueryOption() throws EdmException {
     URI uri = new URIBuilderImpl(SERVICE_ROOT_URI_1).
@@ -575,18 +753,33 @@ public class UriBuilderTest {
     assertEquals("http://host:80/service?x=y", uri.toASCIIString());
   }
   
+  /**
+   * Test service document.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testServiceDocument() throws Exception {
     URI uri = new URIBuilderImpl(SERVICE_ROOT_URI).build();
     assertEquals("http://host:80/service/", uri.toASCIIString());
   }
   
+  /**
+   * Test service document 1.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testServiceDocument1() throws Exception {
     URI uri = new URIBuilderImpl(SERVICE_ROOT_URI_1).build();
     assertEquals("http://host:80/service/", uri.toASCIIString());
   }
   
+  /**
+   * Adds the same filter option twice.
+   *
+   * @throws EdmException the edm exception
+   */
   @Test
   public void addSameFilterOptionTwice() throws EdmException {
     URI uri = new URIBuilderImpl(SERVICE_ROOT_URI).

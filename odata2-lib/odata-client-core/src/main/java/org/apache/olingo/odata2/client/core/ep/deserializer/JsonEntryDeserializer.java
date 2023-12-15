@@ -50,27 +50,42 @@ import org.apache.olingo.odata2.core.ep.util.FormatJson;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 
+// TODO: Auto-generated Javadoc
 /**
- *  This class Deserializes JsonEntry payloads
+ *  This class Deserializes JsonEntry payloads.
  */
 public class JsonEntryDeserializer {
 
+  /** The eia. */
   private final EntityInfoAggregator eia;
+  
+  /** The reader. */
   private final JsonReader reader;
+  
+  /** The read properties. */
   private final DeserializerProperties readProperties;
 
+  /** The result entry. */
   private ODataEntryImpl resultEntry;
+  
+  /** The properties. */
   private Map<String, Object> properties;
+  
+  /** The media metadata. */
   private MediaMetadataImpl mediaMetadata;
+  
+  /** The entry metadata. */
   private EntryMetadataImpl entryMetadata;
 
+  /** The result deleted entry. */
   private DeletedEntryMetadataImpl resultDeletedEntry;
 
   /**
-   * 
-   * @param reader
-   * @param eia
-   * @param readProperties
+   * Instantiates a new json entry deserializer.
+   *
+   * @param reader the reader
+   * @param eia the eia
+   * @param readProperties the read properties
    */
   public JsonEntryDeserializer(final JsonReader reader, final EntityInfoAggregator eia,
       final DeserializerProperties readProperties) {
@@ -80,9 +95,10 @@ public class JsonEntryDeserializer {
   }
 
   /**
-   * Returns ODataEntry deserializing a single entry
+   * Returns ODataEntry deserializing a single entry.
+   *
    * @return ODataEntry
-   * @throws EntityProviderException
+   * @throws EntityProviderException the entity provider exception
    */
   public ODataEntry readSingleEntry() throws EntityProviderException {
     try {
@@ -117,11 +133,12 @@ public class JsonEntryDeserializer {
   }
 
   /**
-   * Returns Feed deserializing feed entry
+   * Returns Feed deserializing feed entry.
+   *
    * @return JsonFeedEntry
-   * @throws EdmException
-   * @throws EntityProviderException
-   * @throws IOException
+   * @throws EdmException the edm exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public JsonFeedEntry readFeedEntry() throws EdmException, EntityProviderException, IOException {//NOSONAR
     reader.beginObject();
@@ -136,10 +153,11 @@ public class JsonEntryDeserializer {
   }
 
   /**
-   * 
-   * @throws IOException
-   * @throws EdmException
-   * @throws EntityProviderException
+   * Read entry content.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws EdmException the edm exception
+   * @throws EntityProviderException the entity provider exception
    */
   private void readEntryContent() throws IOException, EdmException, EntityProviderException {
     while (reader.hasNext()) {
@@ -174,11 +192,12 @@ public class JsonEntryDeserializer {
   }
 
   /**
-   * 
-   * @param name
-   * @throws IOException
-   * @throws EdmException
-   * @throws EntityProviderException
+   * Handle name.
+   *
+   * @param name the name
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws EdmException the edm exception
+   * @throws EntityProviderException the entity provider exception
    */
   private void handleName(final String name) throws IOException, EdmException, EntityProviderException {
     if (FormatJson.METADATA.equals(name)) {
@@ -203,10 +222,12 @@ public class JsonEntryDeserializer {
       }
     }
   }
+  
   /**
-   * 
-   * @throws IOException
-   * @throws EntityProviderException
+   * Read O data context.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws EntityProviderException the entity provider exception
    */
   private void readODataContext() throws IOException, EntityProviderException {
     String contextValue = reader.nextString();
@@ -232,10 +253,11 @@ public class JsonEntryDeserializer {
   }
 
   /**
-   * 
-   * @param value
+   * Parses the when.
+   *
+   * @param value the value
    * @return Date
-   * @throws EntityProviderException
+   * @throws EntityProviderException the entity provider exception
    */
   private Date parseWhen(final String value) throws EntityProviderException {
     try {
@@ -247,10 +269,11 @@ public class JsonEntryDeserializer {
   }
 
   /**
-   * 
-   * @throws IOException
-   * @throws EdmException
-   * @throws EntityProviderException
+   * Read metadata.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws EdmException the edm exception
+   * @throws EntityProviderException the entity provider exception
    */
   private void readMetadata() throws IOException, EdmException, EntityProviderException {//NOSONAR
     String name = null;
@@ -295,9 +318,10 @@ public class JsonEntryDeserializer {
   }
 
   /**
-   * 
-   * @throws EdmException
-   * @throws EntityProviderException
+   * Validate metadata.
+   *
+   * @throws EdmException the edm exception
+   * @throws EntityProviderException the entity provider exception
    */
   private void validateMetadata() throws EdmException, EntityProviderException {
     if (eia.getEntityType().hasStream()) {
@@ -318,11 +342,12 @@ public class JsonEntryDeserializer {
   }
 
   /**
-   * 
-   * @param navigationPropertyName
-   * @throws IOException
-   * @throws EntityProviderException
-   * @throws EdmException
+   * Read navigation property.
+   *
+   * @param navigationPropertyName the navigation property name
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
    */
   private void readNavigationProperty(final String navigationPropertyName) throws IOException, EntityProviderException,
       EdmException {
@@ -357,10 +382,12 @@ public class JsonEntryDeserializer {
    }
 
   /**
-   * @param navigationPropertyName
-   * @throws EdmException
-   * @throws EntityProviderException
-   * @throws IOException
+   * Handle array.
+   *
+   * @param navigationPropertyName the navigation property name
+   * @throws EdmException the edm exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   private void handleArray(final String navigationPropertyName) throws EdmException, EntityProviderException,
       IOException {
@@ -391,11 +418,13 @@ public class JsonEntryDeserializer {
   }
 
   /**
-   * @param navigationPropertyName
-   * @param name
-   * @throws EdmException
-   * @throws EntityProviderException
-   * @throws IOException
+   * Handle inline entries.
+   *
+   * @param navigationPropertyName the navigation property name
+   * @param name the name
+   * @throws EdmException the edm exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   private void handleInlineEntries(final String navigationPropertyName, String name) throws EdmException,
       EntityProviderException, IOException {
@@ -433,12 +462,13 @@ public class JsonEntryDeserializer {
   }
   
   /**
-   * 
-   * @param name
+   * Read inline entry.
+   *
+   * @param name the name
    * @return ODataEntry
-   * @throws EdmException
-   * @throws EntityProviderException
-   * @throws IOException
+   * @throws EdmException the edm exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   private ODataEntry readInlineEntry(final String name) throws EdmException, EntityProviderException, IOException {
     // consume the already started content

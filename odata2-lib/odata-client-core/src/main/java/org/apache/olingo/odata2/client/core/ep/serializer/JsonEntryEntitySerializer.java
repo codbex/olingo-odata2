@@ -43,6 +43,7 @@ import org.apache.olingo.odata2.core.ep.aggregator.EntityInfoAggregator;
 import org.apache.olingo.odata2.core.ep.util.FormatJson;
 import org.apache.olingo.odata2.core.ep.util.JsonStreamWriter;
 
+// TODO: Auto-generated Javadoc
 /**
  * Producer for writing an entity in JSON, also usable for function imports
  * returning a single instance of an entity type.
@@ -50,28 +51,37 @@ import org.apache.olingo.odata2.core.ep.util.JsonStreamWriter;
  */
 public class JsonEntryEntitySerializer {
 
+  /** The properties. */
   private final EntitySerializerProperties properties;
+  
+  /** The location. */
   private String location;
+  
+  /** The idlocation. */
   private String idlocation;
+  
+  /** The json stream writer. */
   private JsonStreamWriter jsonStreamWriter;
+  
+  /** The Constant VALUE. */
   private static final String VALUE = "/$value";
 
   /**
-   * 
-   * @param properties
-   * @throws EntityProviderException
+   * Instantiates a new json entry entity serializer.
+   *
+   * @param properties the properties
    */
   public JsonEntryEntitySerializer(final EntitySerializerProperties properties) {
     this.properties = properties == null ? EntitySerializerProperties.serviceRoot(null).build() : properties;
   }
 
   /**
-   * This serializes the json payload entry
-   * @param writer
-   * @param entityInfo
-   * @param data
-   * @param isRootElement
-   * @throws EntityProviderException
+   * This serializes the json payload entry.
+   *
+   * @param writer the writer
+   * @param entityInfo the entity info
+   * @param data the data
+   * @throws EntityProviderException the entity provider exception
    */
   public void append(final Writer writer, final EntityInfoAggregator entityInfo, final Entity data) 
       throws EntityProviderException {
@@ -105,6 +115,18 @@ public class JsonEntryEntitySerializer {
     }
   }
 
+  /**
+   * Write navigation properties.
+   *
+   * @param writer the writer
+   * @param entityInfo the entity info
+   * @param data the data
+   * @param type the type
+   * @param emptyData the empty data
+   * @throws EdmException the edm exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private void writeNavigationProperties(final Writer writer, final EntityInfoAggregator entityInfo,
       final Map<String, Object> data,
       final EdmEntityType type, boolean emptyData) throws EdmException, EntityProviderException, IOException {
@@ -130,6 +152,18 @@ public class JsonEntryEntitySerializer {
     }
   }
 
+  /**
+   * Write expanded navigation property.
+   *
+   * @param writer the writer
+   * @param entityInfo the entity info
+   * @param data the data
+   * @param type the type
+   * @param navigationPropertyName the navigation property name
+   * @throws EdmException the edm exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private void writeExpandedNavigationProperty(final Writer writer, final EntityInfoAggregator entityInfo,
       final Map<String, Object> data,
       final EdmEntityType type, final String navigationPropertyName) throws EdmException, EntityProviderException,
@@ -174,6 +208,17 @@ public class JsonEntryEntitySerializer {
     }
    }
 
+  /**
+   * Write properties.
+   *
+   * @param entityInfo the entity info
+   * @param data the data
+   * @param type the type
+   * @param containsMetadata the contains metadata
+   * @throws EdmException the edm exception
+   * @throws EntityProviderException the entity provider exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private void writeProperties(final EntityInfoAggregator entityInfo, final Map<String, Object> data,
       final EdmEntityType type, boolean containsMetadata) throws EdmException, EntityProviderException, IOException {
     // if the payload contains metadata we must not omit the first comm as it separates the _metadata object form the
@@ -189,14 +234,16 @@ public class JsonEntryEntitySerializer {
   }
 
   /**
-   * @param entityInfo
-   * @param data
-   * @param omitComma
-   * @param propertyName
-   * @return
-   * @throws IOException
-   * @throws EdmException
-   * @throws EntityProviderException
+   * Append property name value.
+   *
+   * @param entityInfo the entity info
+   * @param data the data
+   * @param omitComma the omit comma
+   * @param propertyName the property name
+   * @return true, if successful
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws EdmException the edm exception
+   * @throws EntityProviderException the entity provider exception
    */
   private boolean appendPropertyNameValue(final EntityInfoAggregator entityInfo, final Map<String, Object> data,
       boolean omitComma, String propertyName) throws IOException, EdmException, EntityProviderException {
@@ -214,6 +261,16 @@ public class JsonEntryEntitySerializer {
     return omitComma;
   }
   
+  /**
+   * Write metadata.
+   *
+   * @param entityInfo the entity info
+   * @param data the data
+   * @param type the type
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   */
   private void writeMetadata(final EntityInfoAggregator entityInfo, final Map<String, Object> data,
       final EdmEntityType type) throws IOException, EntityProviderException, EdmException {
     if (properties.getServiceRoot() == null) {
@@ -271,6 +328,16 @@ public class JsonEntryEntitySerializer {
     jsonStreamWriter.endObject();
   }
 
+  /**
+   * Creates the custom target link.
+   *
+   * @param entityInfo the entity info
+   * @param navigationPropertyName the navigation property name
+   * @param key the key
+   * @return the string
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   */
   private String createCustomTargetLink(final EntityInfoAggregator entityInfo, final String navigationPropertyName,
       final Map<String, Object> key) throws EntityProviderException, EdmException {
     String target;
@@ -282,6 +349,15 @@ public class JsonEntryEntitySerializer {
     return target;
   }
 
+  /**
+   * Write navigation links.
+   *
+   * @param entityInfo the entity info
+   * @param navigationLinks the navigation links
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws EntityProviderException the entity provider exception
+   * @throws EdmException the edm exception
+   */
   private void writeNavigationLinks(final EntityInfoAggregator entityInfo,
       Map<String, Object> navigationLinks) throws IOException, 
   EntityProviderException, EdmException {
@@ -305,6 +381,11 @@ public class JsonEntryEntitySerializer {
     }
   }
 
+  /**
+   * Gets the location.
+   *
+   * @return the location
+   */
   public String getLocation() {
     return location;
   }

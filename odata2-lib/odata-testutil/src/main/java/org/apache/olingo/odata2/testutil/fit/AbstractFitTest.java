@@ -35,22 +35,36 @@ import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class AbstractFitTest.
  */
 @RunWith(Parameterized.class)
 public abstract class AbstractFitTest extends BaseTest {
 
+  /** The server. */
   private final TestServer server;
 
+  /** The service. */
   private ODataService service;
 
+  /** The http client. */
   private final HttpClient httpClient = new DefaultHttpClient();
 
+  /**
+   * Instantiates a new abstract fit test.
+   *
+   * @param servletType the servlet type
+   */
   public AbstractFitTest(final ServletType servletType) {
     server = new TestServer(this.getClass().getSimpleName(), servletType);
   }
 
+  /**
+   * Data.
+   *
+   * @return the list
+   */
   @Parameterized.Parameters
   public static List<Object[]> data() {
     // If desired this can be made dependent on runtime variables
@@ -65,18 +79,38 @@ public abstract class AbstractFitTest extends BaseTest {
   // public AbstractFitTest() {
   // }
 
+  /**
+   * Gets the endpoint.
+   *
+   * @return the endpoint
+   */
   protected URI getEndpoint() {
     return server.getEndpoint();
   }
 
+  /**
+   * Gets the http client.
+   *
+   * @return the http client
+   */
   protected HttpClient getHttpClient() {
     return httpClient;
   }
 
+  /**
+   * Gets the service.
+   *
+   * @return the service
+   */
   protected ODataService getService() {
     return service;
   }
 
+  /**
+   * Start custom server.
+   *
+   * @param factoryClass the factory class
+   */
   protected void startCustomServer(Class<? extends FitStaticServiceFactory> factoryClass){
     try {
       service = createService();
@@ -86,6 +120,9 @@ public abstract class AbstractFitTest extends BaseTest {
     }
   }
   
+  /**
+   * Stop custom server.
+   */
   protected void stopCustomServer(){
     try {
       server.stopServer();
@@ -94,8 +131,17 @@ public abstract class AbstractFitTest extends BaseTest {
     }
   }
   
+  /**
+   * Creates the service.
+   *
+   * @return the o data service
+   * @throws ODataException the o data exception
+   */
   protected abstract ODataService createService() throws ODataException;
 
+  /**
+   * Before.
+   */
   @Before
   public void before() {
     try {
@@ -106,6 +152,9 @@ public abstract class AbstractFitTest extends BaseTest {
     }
   }
 
+  /**
+   * After.
+   */
   @After
   public void after() {
     try {

@@ -27,23 +27,49 @@ import org.apache.olingo.odata2.jpa.processor.api.exception.ODataJPARuntimeExcep
 import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmModelView;
 import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmSchemaView;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAEdmModel.
+ */
 public class JPAEdmModel extends JPAEdmBaseViewImpl implements JPAEdmModelView {
 
+  /** The schema view. */
   protected JPAEdmSchemaView schemaView;
 
+  /**
+   * Instantiates a new JPA edm model.
+   *
+   * @param metaModel the meta model
+   * @param pUnitName the unit name
+   */
   public JPAEdmModel(final Metamodel metaModel, final String pUnitName) {
     super(metaModel, pUnitName);
   }
 
+  /**
+   * Instantiates a new JPA edm model.
+   *
+   * @param ctx the ctx
+   */
   public JPAEdmModel(final ODataJPAContext ctx) {
     super(ctx);
   }
 
+  /**
+   * Gets the edm schema view.
+   *
+   * @return the edm schema view
+   */
   @Override
   public JPAEdmSchemaView getEdmSchemaView() {
     return schemaView;
   }
 
+  /**
+   * Gets the builder.
+   *
+   * @return the builder
+   */
   @Override
   public JPAEdmBuilder getBuilder() {
     if (builder == null) {
@@ -53,8 +79,17 @@ public class JPAEdmModel extends JPAEdmBaseViewImpl implements JPAEdmModelView {
     return builder;
   }
 
+  /**
+   * The Class JPAEdmModelBuilder.
+   */
   private class JPAEdmModelBuilder implements JPAEdmBuilder {
 
+    /**
+     * Builds the.
+     *
+     * @throws ODataJPAModelException the o data JPA model exception
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
+     */
     @Override
     public void build() throws ODataJPAModelException, ODataJPARuntimeException {
       schemaView = new JPAEdmSchema(JPAEdmModel.this);

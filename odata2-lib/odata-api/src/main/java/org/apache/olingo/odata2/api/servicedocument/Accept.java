@@ -18,23 +18,23 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.servicedocument;
 
+// TODO: Auto-generated Javadoc
 /**
  * An Accept element
- * <p>Accept element indicates the types of representation accepted by the Collection
- * 
+ * <p>Accept element indicates the types of representation accepted by the Collection.
  */
 public interface Accept {
 
   /**
-   * Get the media range
-   * 
+   * Get the media range.
+   *
    * @return value as String
    */
   public String getValue();
 
   /**
-   * Get common attributes
-   * 
+   * Get common attributes.
+   *
    * @return {@link CommonAttributes}
    */
   public CommonAttributes getCommonAttributes();

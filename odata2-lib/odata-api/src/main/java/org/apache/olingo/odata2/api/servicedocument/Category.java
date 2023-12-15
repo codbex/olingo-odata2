@@ -18,36 +18,37 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.servicedocument;
 
+// TODO: Auto-generated Javadoc
 /**
  * A Category element
- * <p>Category element
- * 
+ * <p>Category element.
  */
 public interface Category {
+  
   /**
-   * Get the scheme
-   * 
+   * Get the scheme.
+   *
    * @return scheme as String
    */
   public String getScheme();
 
   /**
-   * Get the term
-   * 
+   * Get the term.
+   *
    * @return term as String
    */
   public String getTerm();
 
   /**
-   * Get common attributes
-   * 
+   * Get common attributes.
+   *
    * @return {@link CommonAttributes}
    */
   public CommonAttributes getCommonAttributes();
 
   /**
-   * Get the label
-   * 
+   * Get the label.
+   *
    * @return label as String
    */
   public String getLabel();

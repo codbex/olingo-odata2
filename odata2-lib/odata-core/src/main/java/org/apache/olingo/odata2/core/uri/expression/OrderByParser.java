@@ -22,6 +22,7 @@ import org.apache.olingo.odata2.api.exception.ODataMessageException;
 import org.apache.olingo.odata2.api.uri.expression.ExpressionParserException;
 import org.apache.olingo.odata2.api.uri.expression.OrderByExpression;
 
+// TODO: Auto-generated Javadoc
 /**
  * Interface which defines a method for parsing a $orderby expression to allow different parser implementations
  * <p>
@@ -46,16 +47,14 @@ import org.apache.olingo.odata2.api.uri.expression.OrderByExpression;
  * 
  */
 public interface OrderByParser {
+  
   /**
-   * Parses a $orderby expression string and creates an $orderby expression tree
-   * @param orderByExpression
-   * The $orderby expression string ( for example "name asc" ) to be parsed
-   * @return
-   * The $orderby expression tree
-   * @throws ExpressionParserException
-   * Exception thrown due to errors while parsing the $orderby expression string
-   * @throws ODataMessageException
-   * Used for extensibility
+   * Parses a $orderby expression string and creates an $orderby expression tree.
+   *
+   * @param orderByExpression The $orderby expression string ( for example "name asc" ) to be parsed
+   * @return The $orderby expression tree
+   * @throws ExpressionParserException Exception thrown due to errors while parsing the $orderby expression string
+   * @throws ODataMessageException Used for extensibility
    */
   abstract OrderByExpression parseOrderByString(String orderByExpression) throws ExpressionParserException,
       ODataMessageException;

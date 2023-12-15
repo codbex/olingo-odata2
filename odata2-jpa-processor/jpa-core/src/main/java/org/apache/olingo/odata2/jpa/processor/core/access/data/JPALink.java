@@ -51,51 +51,122 @@ import org.apache.olingo.odata2.jpa.processor.api.factory.ODataJPAFactory;
 import org.apache.olingo.odata2.jpa.processor.core.ODataEntityParser;
 import org.apache.olingo.odata2.jpa.processor.core.model.JPAEdmMappingImpl;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPALink.
+ */
 public class JPALink {
 
+  /** The Constant SPACE. */
   private static final String SPACE = " ";
+  
+  /** The Constant ODATA_COMMAND_FILTER. */
   private static final String ODATA_COMMAND_FILTER = "$filter";
+  
+  /** The Constant ODATA_OPERATOR_OR. */
   private static final String ODATA_OPERATOR_OR = "or";
+  
+  /** The Constant ODATA_OPERATOR_NE. */
   private static final String ODATA_OPERATOR_NE = "ne";
 
+  /** The context. */
   private ODataJPAContext context;
+  
+  /** The jpa processor. */
   private JPAProcessor jpaProcessor;
+  
+  /** The parser. */
   private ODataEntityParser parser;
+  
+  /** The target JPA entity. */
   private Object targetJPAEntity;
+  
+  /** The source JPA entity. */
   private Object sourceJPAEntity;
 
+  /**
+   * Instantiates a new JPA link.
+   *
+   * @param context the context
+   */
   public JPALink(final ODataJPAContext context) {
     this.context = context;
     jpaProcessor = ODataJPAFactory.createFactory().getJPAAccessFactory().getJPAProcessor(this.context);
     parser = new ODataEntityParser(this.context);
   }
 
+  /**
+   * Sets the source JPA entity.
+   *
+   * @param jpaEntity the new source JPA entity
+   */
   public void setSourceJPAEntity(final Object jpaEntity) {
     sourceJPAEntity = jpaEntity;
   }
 
+  /**
+   * Sets the target JPA entity.
+   *
+   * @param jpaEntity the new target JPA entity
+   */
   public void setTargetJPAEntity(final Object jpaEntity) {
     targetJPAEntity = jpaEntity;
   }
 
+  /**
+   * Gets the target JPA entity.
+   *
+   * @return the target JPA entity
+   */
   public Object getTargetJPAEntity() {
     return targetJPAEntity;
   }
 
+  /**
+   * Gets the source JPA entity.
+   *
+   * @return the source JPA entity
+   */
   public Object getSourceJPAEntity() {
     return sourceJPAEntity;
   }
 
+  /**
+   * Creates the.
+   *
+   * @param uriInfo the uri info
+   * @param content the content
+   * @param requestContentType the request content type
+   * @param contentType the content type
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   * @throws ODataJPAModelException the o data JPA model exception
+   */
   public void create(final PostUriInfo uriInfo, final InputStream content, final String requestContentType,
       final String contentType) throws ODataJPARuntimeException, ODataJPAModelException {
     modifyLink((UriInfo) uriInfo, content, requestContentType);
   }
 
+  /**
+   * Update.
+   *
+   * @param putUriInfo the put uri info
+   * @param content the content
+   * @param requestContentType the request content type
+   * @param contentType the content type
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   * @throws ODataJPAModelException the o data JPA model exception
+   */
   public void update(final PutMergePatchUriInfo putUriInfo, final InputStream content, final String requestContentType,
       final String contentType) throws ODataJPARuntimeException, ODataJPAModelException {
     modifyLink((UriInfo) putUriInfo, content, requestContentType);
   }
 
+  /**
+   * Delete.
+   *
+   * @param uriInfo the uri info
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   public void delete(final DeleteUriInfo uriInfo) throws ODataJPARuntimeException {
     try {
 
@@ -150,6 +221,9 @@ public class JPALink {
     }
   }
 
+  /**
+   * Save.
+   */
   public void save() {
     EntityManager em = context.getEntityManager();
     ODataJPATransaction tx = context.getODataJPATransaction();
@@ -171,6 +245,15 @@ public class JPALink {
     }
   }
 
+  /**
+   * Creates the.
+   *
+   * @param entitySet the entity set
+   * @param oDataEntry the o data entry
+   * @param navigationPropertyNames the navigation property names
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   * @throws ODataJPAModelException the o data JPA model exception
+   */
   public void create(final EdmEntitySet entitySet, final ODataEntry oDataEntry,
       final List<String> navigationPropertyNames)
       throws ODataJPARuntimeException,
@@ -212,6 +295,14 @@ public class JPALink {
 
   }
 
+  /**
+   * Link JPA entities.
+   *
+   * @param targetJPAEntities the target JPA entities
+   * @param sourceJPAEntity the source JPA entity
+   * @param navigationProperty the navigation property
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   @SuppressWarnings("unchecked")
   public static void linkJPAEntities(final Collection<Object> targetJPAEntities, final Object sourceJPAEntity,
       final EdmNavigationProperty navigationProperty) throws ODataJPARuntimeException {
@@ -262,6 +353,13 @@ public class JPALink {
     }
   }
 
+  /**
+   * Extract link URI.
+   *
+   * @param oDataEntry the o data entry
+   * @param navigationPropertyName the navigation property name
+   * @return the list
+   */
   @SuppressWarnings("unchecked")
   private List<String> extractLinkURI(ODataEntry oDataEntry, String navigationPropertyName) {
 
@@ -289,6 +387,15 @@ public class JPALink {
     return links;
   }
 
+  /**
+   * Modify link.
+   *
+   * @param uriInfo the uri info
+   * @param content the content
+   * @param requestContentType the request content type
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   * @throws ODataJPAModelException the o data JPA model exception
+   */
   private void modifyLink(final UriInfo uriInfo, final InputStream content, final String requestContentType)
       throws ODataJPARuntimeException, ODataJPAModelException {
     try {
@@ -338,6 +445,14 @@ public class JPALink {
     }
   }
 
+  /**
+   * Delink JPA entities.
+   *
+   * @param jpaEntity the jpa entity
+   * @param relatedJPAEntities the related JPA entities
+   * @param targetNavigationProperty the target navigation property
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   private void delinkJPAEntities(final Object jpaEntity,
       final List<Object> relatedJPAEntities,
       final EdmNavigationProperty targetNavigationProperty)

@@ -32,14 +32,24 @@ import org.apache.olingo.odata2.api.uri.NavigationPropertySegment;
 import org.apache.olingo.odata2.api.uri.SelectItem;
 import org.apache.olingo.odata2.core.uri.ExpandSelectTreeNodeImpl.AllKinds;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class ExpandSelectTreeCreator.
  */
 public class ExpandSelectTreeCreator {
 
+  /** The initial select. */
   private List<SelectItem> initialSelect;
+  
+  /** The initial expand. */
   private List<ArrayList<NavigationPropertySegment>> initialExpand;
 
+  /**
+   * Instantiates a new expand select tree creator.
+   *
+   * @param select the select
+   * @param expand the expand
+   */
   public ExpandSelectTreeCreator(final List<SelectItem> select,
       final List<ArrayList<NavigationPropertySegment>> expand) {
     if (select != null) {
@@ -55,6 +65,12 @@ public class ExpandSelectTreeCreator {
     }
   }
 
+  /**
+   * Creates the.
+   *
+   * @return the expand select tree node impl
+   * @throws EdmException the edm exception
+   */
   public ExpandSelectTreeNodeImpl create() throws EdmException {
 
     // Initial node
@@ -74,6 +90,11 @@ public class ExpandSelectTreeCreator {
     return root;
   }
 
+  /**
+   * Consolidate.
+   *
+   * @param node the node
+   */
   private void consolidate(final ExpandSelectTreeNodeImpl node) {
     switch (node.getAllKind()) {
     case EXPLICITLYTRUE:
@@ -86,6 +107,11 @@ public class ExpandSelectTreeCreator {
 
   }
 
+  /**
+   * Consolidate false node.
+   *
+   * @param node the node
+   */
   private void consolidateFalseNode(final ExpandSelectTreeNodeImpl node) {
     Iterator<Map.Entry<String, ExpandSelectTreeNode>> iterator = node.getLinks().entrySet().iterator();
     while (iterator.hasNext()) {
@@ -99,6 +125,11 @@ public class ExpandSelectTreeCreator {
     }
   }
 
+  /**
+   * Consolidate true node.
+   *
+   * @param node the node
+   */
   private void consolidateTrueNode(final ExpandSelectTreeNodeImpl node) {
     Map<String, ExpandSelectTreeNode> links = node.getLinks();
     Set<Entry<String, ExpandSelectTreeNode>> linkEntries = links.entrySet();
@@ -122,6 +153,12 @@ public class ExpandSelectTreeCreator {
     }
   }
 
+  /**
+   * Creates the select tree.
+   *
+   * @param root the root
+   * @throws EdmException the edm exception
+   */
   private void createSelectTree(final ExpandSelectTreeNodeImpl root) throws EdmException {
     for (SelectItem item : initialSelect) {
       ExpandSelectTreeNodeImpl actualNode = root;
@@ -141,6 +178,13 @@ public class ExpandSelectTreeCreator {
     }
   }
 
+  /**
+   * Adds the select node.
+   *
+   * @param actualNode the actual node
+   * @param navigationPropertyName the navigation property name
+   * @return the expand select tree node impl
+   */
   private ExpandSelectTreeNodeImpl addSelectNode(final ExpandSelectTreeNodeImpl actualNode,
       final String navigationPropertyName) {
     Map<String, ExpandSelectTreeNode> links = actualNode.getLinks();
@@ -161,6 +205,12 @@ public class ExpandSelectTreeCreator {
     }
   }
 
+  /**
+   * Merge expand tree.
+   *
+   * @param root the root
+   * @throws EdmException the edm exception
+   */
   private void mergeExpandTree(final ExpandSelectTreeNodeImpl root) throws EdmException {
     for (ArrayList<NavigationPropertySegment> singleExpand : initialExpand) {
       ExpandSelectTreeNodeImpl actualNode = root;
@@ -174,6 +224,13 @@ public class ExpandSelectTreeCreator {
 
   }
 
+  /**
+   * Adds the expand node.
+   *
+   * @param actualNode the actual node
+   * @param navigationPropertyName the navigation property name
+   * @return the expand select tree node impl
+   */
   private ExpandSelectTreeNodeImpl addExpandNode(final ExpandSelectTreeNodeImpl actualNode,
       final String navigationPropertyName) {
     Map<String, ExpandSelectTreeNode> links = actualNode.getLinks();

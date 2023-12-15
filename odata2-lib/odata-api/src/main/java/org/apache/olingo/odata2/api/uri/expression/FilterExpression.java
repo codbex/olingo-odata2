@@ -18,6 +18,7 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.uri.expression;
 
+// TODO: Auto-generated Javadoc
 /**
  * Represents a $filter expression in the expression tree
  * Used to define the <b>root</b> expression node in an $filter expression tree.
@@ -27,11 +28,15 @@ package org.apache.olingo.odata2.api.uri.expression;
 public interface FilterExpression extends CommonExpression {
 
   /**
+   * Gets the expression string.
+   *
    * @return Returns the $filter expression string used to build the expression tree
    */
   String getExpressionString();
 
   /**
+   * Gets the expression.
+   *
    * @return Returns the expression node representing the first <i>operator</i>,<i>method</i>,<i>literal</i> or
    * <i>property</i> of the expression tree
    */

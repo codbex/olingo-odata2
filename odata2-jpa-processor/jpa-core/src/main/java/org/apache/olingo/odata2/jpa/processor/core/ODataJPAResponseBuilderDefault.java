@@ -73,15 +73,36 @@ import org.apache.olingo.odata2.jpa.processor.core.callback.JPAExpandCallBack;
 import org.apache.olingo.odata2.jpa.processor.core.callback.JPATombstoneCallBack;
 import org.apache.olingo.odata2.jpa.processor.core.callback.JPATombstoneCallBackFI;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ODataJPAResponseBuilderDefault.
+ */
 public final class ODataJPAResponseBuilderDefault implements ODataJPAResponseBuilder {
 
+  /** The Constant COUNT. */
   private static final String COUNT = "count";
+  
+  /** The o data JPA context. */
   private final ODataJPAContext oDataJPAContext;
 
+  /**
+   * Instantiates a new o data JPA response builder default.
+   *
+   * @param context the context
+   */
   public ODataJPAResponseBuilderDefault(final ODataJPAContext context) {
     oDataJPAContext = context;
   }
 
+  /**
+   * Builds the.
+   *
+   * @param resultsView the results view
+   * @param jpaEntities the jpa entities
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   /* Response for Read Entity Set */
   @Override
   public ODataResponse build(final GetEntitySetUriInfo resultsView, final List<Object> jpaEntities,
@@ -131,6 +152,16 @@ public final class ODataJPAResponseBuilderDefault implements ODataJPAResponseBui
     return odataResponse;
   }
 
+  /**
+   * Builds the.
+   *
+   * @param resultsView the results view
+   * @param jpaEntity the jpa entity
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   * @throws ODataNotFoundException the o data not found exception
+   */
   /* Response for Read Entity */
   @Override
   public ODataResponse build(final GetEntityUriInfo resultsView, final Object jpaEntity,
@@ -181,6 +212,13 @@ public final class ODataJPAResponseBuilderDefault implements ODataJPAResponseBui
     return odataResponse;
   }
 
+  /**
+   * Builds the.
+   *
+   * @param jpaEntityCount the jpa entity count
+   * @return the o data response
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   /* Response for $count */
   @Override
   public ODataResponse build(final long jpaEntityCount)
@@ -196,6 +234,16 @@ public final class ODataJPAResponseBuilderDefault implements ODataJPAResponseBui
     return odataResponse;
   }
 
+  /**
+   * Builds the.
+   *
+   * @param uriInfo the uri info
+   * @param createdObject the created object
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   * @throws ODataNotFoundException the o data not found exception
+   */
   /* Response for Create Entity */
   @Override
   public ODataResponse build(final PostUriInfo uriInfo, final Object createdObject,
@@ -238,6 +286,15 @@ public final class ODataJPAResponseBuilderDefault implements ODataJPAResponseBui
     return odataResponse;
   }
 
+  /**
+   * Builds the.
+   *
+   * @param putUriInfo the put uri info
+   * @param updatedObject the updated object
+   * @return the o data response
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   * @throws ODataNotFoundException the o data not found exception
+   */
   /* Response for Update Entity */
   @Override
   public ODataResponse build(final PutMergePatchUriInfo putUriInfo, final Object updatedObject)
@@ -248,6 +305,15 @@ public final class ODataJPAResponseBuilderDefault implements ODataJPAResponseBui
     return ODataResponse.status(HttpStatusCodes.NO_CONTENT).build();
   }
 
+  /**
+   * Builds the.
+   *
+   * @param deleteUriInfo the delete uri info
+   * @param deletedObject the deleted object
+   * @return the o data response
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   * @throws ODataNotFoundException the o data not found exception
+   */
   /* Response for Delete Entity */
   @Override
   public ODataResponse build(final DeleteUriInfo deleteUriInfo, final Object deletedObject)
@@ -259,6 +325,14 @@ public final class ODataJPAResponseBuilderDefault implements ODataJPAResponseBui
     return ODataResponse.status(HttpStatusCodes.NO_CONTENT).build();
   }
 
+  /**
+   * Builds the.
+   *
+   * @param resultsView the results view
+   * @param result the result
+   * @return the o data response
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   /* Response for Function Import Single Result */
   @Override
   public ODataResponse build(final GetFunctionImportUriInfo resultsView, final Object result)
@@ -290,6 +364,16 @@ public final class ODataJPAResponseBuilderDefault implements ODataJPAResponseBui
     }
   }
 
+  /**
+   * Builds the.
+   *
+   * @param resultsView the results view
+   * @param resultList the result list
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   * @throws ODataNotFoundException the o data not found exception
+   */
   /* Response for Function Import Multiple Result */
   @Override
   public ODataResponse build(final GetFunctionImportUriInfo resultsView, final List<Object> resultList,
@@ -369,6 +453,16 @@ public final class ODataJPAResponseBuilderDefault implements ODataJPAResponseBui
     return odataResponse;
   }
 
+  /**
+   * Builds the.
+   *
+   * @param resultsView the results view
+   * @param jpaEntity the jpa entity
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataNotFoundException the o data not found exception
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   /* Response for Read Entity Link */
   @Override
   public ODataResponse build(final GetEntityLinkUriInfo resultsView, final Object jpaEntity,
@@ -406,6 +500,15 @@ public final class ODataJPAResponseBuilderDefault implements ODataJPAResponseBui
     return odataResponse;
   }
 
+  /**
+   * Builds the.
+   *
+   * @param resultsView the results view
+   * @param jpaEntities the jpa entities
+   * @param contentType the content type
+   * @return the o data response
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   /* Response for Read Entity Links */
   @Override
   public ODataResponse build(final GetEntitySetLinksUriInfo resultsView, final List<Object> jpaEntities,
@@ -456,6 +559,13 @@ public final class ODataJPAResponseBuilderDefault implements ODataJPAResponseBui
 
   }
 
+  /**
+   * Gets the inline count for non filter query links.
+   *
+   * @param edmEntityList the edm entity list
+   * @param resultsView the results view
+   * @return the inline count for non filter query links
+   */
   /*
    * This method handles $inlinecount request. It also modifies the list of results in case of
    * $inlinecount and $top/$skip combinations. Specific to LinksUriInfo.
@@ -490,6 +600,15 @@ public final class ODataJPAResponseBuilderDefault implements ODataJPAResponseBui
     return count;
   }
   
+  /**
+   * Gets the entity provider properties.
+   *
+   * @param odataJPAContext the odata JPA context
+   * @param resultsView the results view
+   * @param edmEntityList the edm entity list
+   * @return the entity provider properties
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   /*
    * Method to build the entity provider Property.Callbacks for $expand would
    * be registered here
@@ -547,6 +666,15 @@ public final class ODataJPAResponseBuilderDefault implements ODataJPAResponseBui
     return entityFeedPropertiesBuilder.build();
   }
 
+  /**
+   * Gets the entity provider properties.
+   *
+   * @param odataJPAContext the odata JPA context
+   * @param resultsView the results view
+   * @param edmEntityList the edm entity list
+   * @return the entity provider properties
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   /*
    * Method to build the entity provider Property.Callbacks for $expand would
    * be registered here
@@ -604,6 +732,12 @@ public final class ODataJPAResponseBuilderDefault implements ODataJPAResponseBui
     return entityFeedPropertiesBuilder.build();
   }
 
+  /**
+   * Percent encode next link.
+   *
+   * @param link the link
+   * @return the string
+   */
   private static String percentEncodeNextLink(final String link) {
     if (link == null) {
       return null;
@@ -614,10 +748,23 @@ public final class ODataJPAResponseBuilderDefault implements ODataJPAResponseBui
         .replaceFirst("(?:\\?|&)$", ""); // Remove potentially trailing "?" or "&" left over from remove actions
   }
   
+  /**
+   * Checks if is numeric.
+   *
+   * @param strNum the str num
+   * @return true, if is numeric
+   */
   public static boolean isNumeric(String strNum) {
     return strNum.matches("-?\\d+(\\.\\d+)?");
 }
 
+  /**
+   * Gets the inline count for non filter query entity set.
+   *
+   * @param edmEntityList the edm entity list
+   * @param resultsView the results view
+   * @return the inline count for non filter query entity set
+   */
   /*
    * This method handles $inlinecount request. It also modifies the list of results in case of
    * $inlinecount and $top/$skip combinations. Specific to Entity Set.
@@ -642,6 +789,13 @@ public final class ODataJPAResponseBuilderDefault implements ODataJPAResponseBui
     return count;
   }
   
+  /**
+   * Gets the inline count for non filter query entity set.
+   *
+   * @param edmEntityList the edm entity list
+   * @param resultsView the results view
+   * @return the inline count for non filter query entity set
+   */
   /*
    * This method handles $inlinecount request. It also modifies the list of results in case of
    * $inlinecount and $top/$skip combinations. Specific to Entity Set.
@@ -666,6 +820,14 @@ public final class ODataJPAResponseBuilderDefault implements ODataJPAResponseBui
     return count;
   }
 
+  /**
+   * Gets the entity provider properties.
+   *
+   * @param odataJPAContext the odata JPA context
+   * @param resultsView the results view
+   * @return the entity provider properties
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   private static EntityProviderWriteProperties getEntityProviderProperties(final ODataJPAContext odataJPAContext,
       final GetEntityUriInfo resultsView) throws ODataJPARuntimeException {
     ODataEntityProviderPropertiesBuilder entityFeedPropertiesBuilder = null;
@@ -684,6 +846,13 @@ public final class ODataJPAResponseBuilderDefault implements ODataJPAResponseBui
     return entityFeedPropertiesBuilder.build();
   }
 
+  /**
+   * Gets the entity provider propertiesfor post.
+   *
+   * @param odataJPAContext the odata JPA context
+   * @return the entity provider propertiesfor post
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   private static EntityProviderWriteProperties getEntityProviderPropertiesforPost(
       final ODataJPAContext odataJPAContext) throws ODataJPARuntimeException {
     ODataEntityProviderPropertiesBuilder entityFeedPropertiesBuilder = null;
@@ -697,6 +866,14 @@ public final class ODataJPAResponseBuilderDefault implements ODataJPAResponseBui
     return entityFeedPropertiesBuilder.build();
   }
 
+  /**
+   * Builds the select item list.
+   *
+   * @param selectItems the select items
+   * @param entity the entity
+   * @return the list
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   private static List<EdmProperty> buildSelectItemList(final List<SelectItem> selectItems, 
 		  final EdmStructuralType entity) throws ODataJPARuntimeException {
     boolean flag = false;
@@ -733,6 +910,12 @@ public final class ODataJPAResponseBuilderDefault implements ODataJPAResponseBui
     return selectPropertyList;
   }
 
+  /**
+   * Construct listof nav property.
+   *
+   * @param expandList the expand list
+   * @return the list
+   */
   private static List<EdmNavigationProperty> constructListofNavProperty(
       final List<ArrayList<NavigationPropertySegment>> expandList) {
     List<EdmNavigationProperty> navigationPropertyList = new ArrayList<EdmNavigationProperty>();
@@ -742,6 +925,13 @@ public final class ODataJPAResponseBuilderDefault implements ODataJPAResponseBui
     return navigationPropertyList;
   }
 
+  /**
+   * Gets the edm properties.
+   *
+   * @param structuralType the structural type
+   * @return the edm properties
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   private static List<EdmProperty> getEdmProperties(final EdmStructuralType structuralType)
       throws ODataJPARuntimeException {
     List<EdmProperty> edmProperties = new ArrayList<EdmProperty>();

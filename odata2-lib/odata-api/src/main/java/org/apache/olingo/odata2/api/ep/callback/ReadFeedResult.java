@@ -22,6 +22,7 @@ import org.apache.olingo.odata2.api.edm.EdmNavigationProperty;
 import org.apache.olingo.odata2.api.ep.EntityProviderReadProperties;
 import org.apache.olingo.odata2.api.ep.feed.ODataFeed;
 
+// TODO: Auto-generated Javadoc
 /**
  * A {@link ReadFeedResult} represents an inlined navigation property which points to a feed (in the form of a list of
  * {@link org.apache.olingo.odata2.api.ep.entry.ODataEntry ODataEntry} instances).
@@ -34,16 +35,20 @@ import org.apache.olingo.odata2.api.ep.feed.ODataFeed;
  */
 public class ReadFeedResult extends ReadResult {
 
+  /** The feed. */
   private final ODataFeed feed;
+  
+  /** The parent entry id. */
   private final String parentEntryId;
 
   /**
    * Constructor.
    * Parameters <b>MUST NOT BE NULL</b>.
-   * 
+   *
    * @param properties read properties which are used to read enclosing parent entity
    * @param navigationProperty emd navigation property information of found inline navigation property
    * @param entry read entities as list of {@link org.apache.olingo.odata2.api.ep.entry.ODataEntry ODataEntry}
+   * @param entryMetadataId the entry metadata id
    */
   public ReadFeedResult(final EntityProviderReadProperties properties, final EdmNavigationProperty navigationProperty,
       final ODataFeed entry, final String entryMetadataId) {
@@ -52,21 +57,39 @@ public class ReadFeedResult extends ReadResult {
     parentEntryId = entryMetadataId;
   }
 
+  /**
+   * Gets the result.
+   *
+   * @return the result
+   */
   @Override
   public ODataFeed getResult() {
     return feed;
   }
 
+  /**
+   * Checks if is feed.
+   *
+   * @return true, if is feed
+   */
   @Override
   public boolean isFeed() {
     return true;
   }
 
+  /**
+   * To string.
+   *
+   * @return the string
+   */
   @Override
   public String toString() {
     return super.toString() + "\n\t" + feed.toString();
   }
+  
   /**
+   * Gets the parent entry id.
+   *
    * @return the rootEntryId
    */
   public String getParentEntryId() {

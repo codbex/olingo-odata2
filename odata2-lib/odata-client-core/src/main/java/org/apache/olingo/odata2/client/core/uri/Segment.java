@@ -20,30 +20,43 @@ package org.apache.olingo.odata2.client.core.uri;
 
 import org.apache.olingo.odata2.client.api.uri.SegmentType;
 
+// TODO: Auto-generated Javadoc
 /**
- * The objects of this class provide the uri segment type and value
- *
+ * The objects of this class provide the uri segment type and value.
  */
 public class Segment {
 
+  /** The type. */
   private final SegmentType type;
 
+  /** The value. */
   private final String value;
 
   /**
-   * 
-   * @param type
-   * @param value
+   * Instantiates a new segment.
+   *
+   * @param type the type
+   * @param value the value
    */
   public Segment(final SegmentType type, final String value) {
     this.type = type;
     this.value = value;
   }
 
+  /**
+   * Gets the type.
+   *
+   * @return the type
+   */
   public SegmentType getType() {
     return type;
   }
 
+  /**
+   * Gets the value.
+   *
+   * @return the value
+   */
   public String getValue() {
     return value;
   }

@@ -43,11 +43,17 @@ import org.apache.olingo.odata2.api.uri.ExpandSelectTreeNode;
 import org.apache.olingo.odata2.testutil.mock.MockFacade;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class JsonFeedConsumerTest.
  */
 public class JsonFeedConsumerTest extends AbstractConsumerTest {
 
+  /**
+   * Teams feed.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void teamsFeed() throws Exception {
     ODataFeed feed = prepareAndExecuteFeed("JsonTeams.json", "Teams", DEFAULT_PROPERTIES);
@@ -93,6 +99,11 @@ public class JsonFeedConsumerTest extends AbstractConsumerTest {
     assertNull(feedMetadata.getNextLink());
   }
 
+  /**
+   * Teams feed without D.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void teamsFeedWithoutD() throws Exception {
     ODataFeed feed = prepareAndExecuteFeed("JsonTeamsWithoutD.json", "Teams", DEFAULT_PROPERTIES);
@@ -138,6 +149,11 @@ public class JsonFeedConsumerTest extends AbstractConsumerTest {
     assertNull(feedMetadata.getNextLink());
   }
 
+  /**
+   * Invalid double closing brackets.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void invalidDoubleClosingBrackets() throws Exception {
     EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -149,6 +165,11 @@ public class JsonFeedConsumerTest extends AbstractConsumerTest {
     xec.readFeed(entitySet, contentBody, DEFAULT_PROPERTIES);
   }
 
+  /**
+   * Empty feed.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void emptyFeed() throws Exception {
     EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -170,6 +191,11 @@ public class JsonFeedConsumerTest extends AbstractConsumerTest {
     assertNull(feedMetadata.getNextLink());
   }
 
+  /**
+   * Empty feed without D and results.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void emptyFeedWithoutDAndResults() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -185,6 +211,11 @@ public class JsonFeedConsumerTest extends AbstractConsumerTest {
     assertNull(feedMetadata.getNextLink());
   }
 
+  /**
+   * Empty feed without results.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void emptyFeedWithoutResults() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -200,6 +231,11 @@ public class JsonFeedConsumerTest extends AbstractConsumerTest {
     assertNull(feedMetadata.getNextLink());
   }
 
+  /**
+   * Results not present.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void resultsNotPresent() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -207,6 +243,11 @@ public class JsonFeedConsumerTest extends AbstractConsumerTest {
     new JsonEntityConsumer().readFeed(entitySet, contentBody, DEFAULT_PROPERTIES);
   }
 
+  /**
+   * Count but no results.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void countButNoResults() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -214,6 +255,11 @@ public class JsonFeedConsumerTest extends AbstractConsumerTest {
     new JsonEntityConsumer().readFeed(entitySet, contentBody, DEFAULT_PROPERTIES);
   }
 
+  /**
+   * Wrong count type.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void wrongCountType() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -221,6 +267,11 @@ public class JsonFeedConsumerTest extends AbstractConsumerTest {
     new JsonEntityConsumer().readFeed(entitySet, contentBody, DEFAULT_PROPERTIES);
   }
 
+  /**
+   * Wrong count content.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void wrongCountContent() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -228,6 +279,11 @@ public class JsonFeedConsumerTest extends AbstractConsumerTest {
     new JsonEntityConsumer().readFeed(entitySet, contentBody, DEFAULT_PROPERTIES);
   }
 
+  /**
+   * Negative count.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void negativeCount() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -235,6 +291,11 @@ public class JsonFeedConsumerTest extends AbstractConsumerTest {
     new JsonEntityConsumer().readFeed(entitySet, contentBody, DEFAULT_PROPERTIES);
   }
 
+  /**
+   * Wrong next type.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void wrongNextType() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -242,6 +303,11 @@ public class JsonFeedConsumerTest extends AbstractConsumerTest {
     new JsonEntityConsumer().readFeed(entitySet, contentBody, DEFAULT_PROPERTIES);
   }
 
+  /**
+   * Wrong tag.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void wrongTag() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -249,6 +315,11 @@ public class JsonFeedConsumerTest extends AbstractConsumerTest {
     new JsonEntityConsumer().readFeed(entitySet, contentBody, DEFAULT_PROPERTIES);
   }
 
+  /**
+   * Double count.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void doubleCount() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -256,6 +327,11 @@ public class JsonFeedConsumerTest extends AbstractConsumerTest {
     new JsonEntityConsumer().readFeed(entitySet, contentBody, DEFAULT_PROPERTIES);
   }
 
+  /**
+   * Double next.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void doubleNext() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -263,6 +339,11 @@ public class JsonFeedConsumerTest extends AbstractConsumerTest {
     new JsonEntityConsumer().readFeed(entitySet, contentBody, DEFAULT_PROPERTIES);
   }
 
+  /**
+   * Double results.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void doubleResults() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -270,6 +351,11 @@ public class JsonFeedConsumerTest extends AbstractConsumerTest {
     new JsonEntityConsumer().readFeed(entitySet, contentBody, DEFAULT_PROPERTIES);
   }
 
+  /**
+   * Double D.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void doubleD() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -277,6 +363,11 @@ public class JsonFeedConsumerTest extends AbstractConsumerTest {
     new JsonEntityConsumer().readFeed(entitySet, contentBody, DEFAULT_PROPERTIES);
   }
 
+  /**
+   * Teams feed with count.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void teamsFeedWithCount() throws Exception {
     ODataFeed feed = prepareAndExecuteFeed("JsonTeamsWithCount.json", "Teams", DEFAULT_PROPERTIES);
@@ -292,6 +383,11 @@ public class JsonFeedConsumerTest extends AbstractConsumerTest {
     assertNull(feedMetadata.getNextLink());
   }
 
+  /**
+   * Teams feed with count without D.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void teamsFeedWithCountWithoutD() throws Exception {
     ODataFeed feed = prepareAndExecuteFeed("JsonTeamsWithCountWithoutD.json", "Teams", DEFAULT_PROPERTIES);
@@ -307,6 +403,11 @@ public class JsonFeedConsumerTest extends AbstractConsumerTest {
     assertNull(feedMetadata.getNextLink());
   }
 
+  /**
+   * Feed with inline count and next and delta.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void feedWithInlineCountAndNextAndDelta() throws Exception {
     EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -336,6 +437,11 @@ public class JsonFeedConsumerTest extends AbstractConsumerTest {
     assertEquals("deltalink", feedMetadata.getDeltaLink());
   }
 
+  /**
+   * Feed with team and next and delta.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void feedWithTeamAndNextAndDelta() throws Exception {
     EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -365,6 +471,11 @@ public class JsonFeedConsumerTest extends AbstractConsumerTest {
     assertEquals("http://localhost:8080/ReferenceScenario.svc/Teams?!deltatoken=4711", feedMetadata.getDeltaLink());
   }
 
+  /**
+   * Feed with team and delta and deleted entries without when.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void feedWithTeamAndDeltaAndDeletedEntriesWithoutWhen() throws Exception {
     EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -399,6 +510,11 @@ public class JsonFeedConsumerTest extends AbstractConsumerTest {
     assertNull(deletedEntries.get(0).getWhen());
   }
 
+  /**
+   * Feed with team and delta and deleted entries.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void feedWithTeamAndDeltaAndDeletedEntries() throws Exception {
     EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -435,6 +551,11 @@ public class JsonFeedConsumerTest extends AbstractConsumerTest {
     assertEquals(new Date(1297187419617l), deletedEntries.get(0).getWhen());
   }
 
+  /**
+   * Feed with only deleted entries.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void feedWithOnlyDeletedEntries() throws Exception {
     EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -467,6 +588,11 @@ public class JsonFeedConsumerTest extends AbstractConsumerTest {
     assertEquals(new Date(1297187419617l), deletedEntries.get(0).getWhen());
   }
 
+  /**
+   * Feed with invalid deleted entry when value.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void feedWithInvalidDeletedEntryWhenValue() throws Exception {
     EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -490,6 +616,11 @@ public class JsonFeedConsumerTest extends AbstractConsumerTest {
     }
   }
 
+  /**
+   * Feed with room and delta and deleted entries.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void feedWithRoomAndDeltaAndDeletedEntries() throws Exception {
     EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");
@@ -528,17 +659,24 @@ public class JsonFeedConsumerTest extends AbstractConsumerTest {
     }
   }
 
+  /**
+   * Check media data initial.
+   *
+   * @param mediaMetadata the media metadata
+   */
   private void checkMediaDataInitial(final MediaMetadata mediaMetadata) {
     assertNull(mediaMetadata.getContentType());
     assertNull(mediaMetadata.getEditLink());
     assertNull(mediaMetadata.getEtag());
     assertNull(mediaMetadata.getSourceLink());
   }
+  
   /**
    * Room has an Inline Feed Employees and Employee has an inline Entry Team
    * E.g: Rooms?$expand=nr_Employees/ne_Team
    * Empty Inline entity is also part of payload
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test
   public void roomsFeedWithRoomInlineEmployeesWithTeams() throws Exception {
@@ -571,7 +709,8 @@ public class JsonFeedConsumerTest extends AbstractConsumerTest {
    * Rooms has an inline feed Employees and Rooms has Inline entry Buildings
    * E.g: Rooms?$expand=nr_Employees,nr_Building
    * Empty Inline entity is also part of payload
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test
   public void roomsFeedWithRoomInlineEmployeesInlineBuildings() throws Exception {
@@ -602,7 +741,8 @@ public class JsonFeedConsumerTest extends AbstractConsumerTest {
   /**
    * Rooms navigate to Employees and has inline entry Teams
    * E.g: Rooms('1')/nr_Employees?$expand=ne_Team
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test
   public void roomsFeedWithRoomsToEmployeesInlineTeams() throws Exception {
@@ -626,10 +766,13 @@ public class JsonFeedConsumerTest extends AbstractConsumerTest {
       assertEquals(3, ((ODataEntry)entry.getProperties().get("ne_Team")).getProperties().size());
     }
   }
+  
   /**
-   * @param inlineEntries
-   * @param feed
-   * @param entry
+   * Gets the expanded data.
+   *
+   * @param inlineEntries the inline entries
+   * @param entry the entry
+   * @return the expanded data
    */
   private void getExpandedData(Map<String, Object> inlineEntries, ODataEntry entry) {
     assertNotNull(entry);
@@ -653,9 +796,11 @@ public class JsonFeedConsumerTest extends AbstractConsumerTest {
   }
   
   /**
-   * @param inlineEntries
-   * @param feed
-   * @param entry
+   * Gets the expanded data.
+   *
+   * @param inlineEntries the inline entries
+   * @param feed the feed
+   * @return the expanded data
    */
   private void getExpandedData(Map<String, Object> inlineEntries, ODataFeed feed) {
     assertNotNull(feed.getEntries());

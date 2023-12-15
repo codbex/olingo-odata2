@@ -42,18 +42,39 @@ import org.apache.olingo.odata2.jpa.processor.api.exception.ODataJPAModelExcepti
 import org.apache.olingo.odata2.jpa.processor.api.factory.ODataJPAFactory;
 import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmModelView;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ODataJPAEdmProvider.
+ */
 public class ODataJPAEdmProvider extends EdmProvider {
 
+  /** The o data JPA context. */
   private ODataJPAContext oDataJPAContext;
+  
+  /** The jpa edm model. */
   private JPAEdmModelView jpaEdmModel;
 
+  /** The schemas. */
   private List<Schema> schemas;
+  
+  /** The entity types. */
   private HashMap<String, EntityType> entityTypes;
+  
+  /** The entity container infos. */
   private HashMap<String, EntityContainerInfo> entityContainerInfos;
+  
+  /** The complex types. */
   private HashMap<String, ComplexType> complexTypes;
+  
+  /** The associations. */
   private HashMap<String, Association> associations;
+  
+  /** The function imports. */
   private HashMap<String, FunctionImport> functionImports;
 
+  /**
+   * Instantiates a new o data JPA edm provider.
+   */
   public ODataJPAEdmProvider() {
     entityTypes = new LinkedHashMap<String, EntityType>();
     entityContainerInfos = new LinkedHashMap<String, EntityContainerInfo>();
@@ -62,6 +83,11 @@ public class ODataJPAEdmProvider extends EdmProvider {
     functionImports = new LinkedHashMap<String, FunctionImport>();
   }
 
+  /**
+   * Instantiates a new o data JPA edm provider.
+   *
+   * @param oDataJPAContext the o data JPA context
+   */
   public ODataJPAEdmProvider(final ODataJPAContext oDataJPAContext) {
     if (oDataJPAContext == null) {
       throw new IllegalArgumentException(ODataJPAException.ODATA_JPACTX_NULL);
@@ -74,14 +100,31 @@ public class ODataJPAEdmProvider extends EdmProvider {
     jpaEdmModel = ODataJPAFactory.createFactory().getJPAAccessFactory().getJPAEdmModelView(oDataJPAContext);
   }
 
+  /**
+   * Gets the o data JPA context.
+   *
+   * @return the o data JPA context
+   */
   public ODataJPAContext getODataJPAContext() {
     return oDataJPAContext;
   }
 
+  /**
+   * Sets the o data JPA context.
+   *
+   * @param jpaContext the new o data JPA context
+   */
   public void setODataJPAContext(final ODataJPAContext jpaContext) {
     oDataJPAContext = jpaContext;
   }
 
+  /**
+   * Gets the entity container info.
+   *
+   * @param name the name
+   * @return the entity container info
+   * @throws ODataException the o data exception
+   */
   @Override
   public EntityContainerInfo getEntityContainerInfo(final String name) throws ODataException {
 
@@ -108,6 +151,13 @@ public class ODataJPAEdmProvider extends EdmProvider {
     return null;
   }
 
+  /**
+   * Gets the entity type.
+   *
+   * @param edmFQName the edm FQ name
+   * @return the entity type
+   * @throws ODataException the o data exception
+   */
   @Override
   public EntityType getEntityType(final FullQualifiedName edmFQName) throws ODataException {
 
@@ -143,6 +193,13 @@ public class ODataJPAEdmProvider extends EdmProvider {
     return null;
   }
 
+  /**
+   * Gets the complex type.
+   *
+   * @param edmFQName the edm FQ name
+   * @return the complex type
+   * @throws ODataException the o data exception
+   */
   @Override
   public ComplexType getComplexType(final FullQualifiedName edmFQName) throws ODataException {
 
@@ -171,6 +228,13 @@ public class ODataJPAEdmProvider extends EdmProvider {
     return null;
   }
 
+  /**
+   * Gets the association.
+   *
+   * @param edmFQName the edm FQ name
+   * @return the association
+   * @throws ODataException the o data exception
+   */
   @Override
   public Association getAssociation(final FullQualifiedName edmFQName) throws ODataException {
     if (edmFQName != null) {
@@ -198,6 +262,14 @@ public class ODataJPAEdmProvider extends EdmProvider {
     return null;
   }
 
+  /**
+   * Gets the entity set.
+   *
+   * @param entityContainer the entity container
+   * @param name the name
+   * @return the entity set
+   * @throws ODataException the o data exception
+   */
   @Override
   public EntitySet getEntitySet(final String entityContainer, final String name) throws ODataException {
 
@@ -221,6 +293,16 @@ public class ODataJPAEdmProvider extends EdmProvider {
     return returnedSet;
   }
 
+  /**
+   * Gets the association set.
+   *
+   * @param entityContainer the entity container
+   * @param association the association
+   * @param sourceEntitySetName the source entity set name
+   * @param sourceEntitySetRole the source entity set role
+   * @return the association set
+   * @throws ODataException the o data exception
+   */
   @Override
   public AssociationSet getAssociationSet(final String entityContainer, final FullQualifiedName association,
       final String sourceEntitySetName, final String sourceEntitySetRole) throws ODataException {
@@ -250,6 +332,14 @@ public class ODataJPAEdmProvider extends EdmProvider {
     return null;
   }
 
+  /**
+   * Gets the function import.
+   *
+   * @param entityContainer the entity container
+   * @param name the name
+   * @return the function import
+   * @throws ODataException the o data exception
+   */
   @Override
   public FunctionImport getFunctionImport(final String entityContainer, final String name) throws ODataException {
 
@@ -278,6 +368,12 @@ public class ODataJPAEdmProvider extends EdmProvider {
     return null;
   }
 
+  /**
+   * Gets the schemas.
+   *
+   * @return the schemas
+   * @throws ODataException the o data exception
+   */
   @Override
   public List<Schema> getSchemas() throws ODataException {
     if (schemas == null && jpaEdmModel != null) {

@@ -23,14 +23,21 @@ import org.apache.olingo.odata2.api.edm.EdmSimpleTypeKind;
 import org.apache.olingo.odata2.api.edm.EdmType;
 import org.apache.olingo.odata2.core.edm.EdmSimpleTypeFacadeImpl;
 
+// TODO: Auto-generated Javadoc
 /**
- * Objects of this class represent EdmSimpleProperty
- *
+ * Objects of this class represent EdmSimpleProperty.
  */
 public class EdmSimplePropertyImpl extends EdmPropertyImpl {
 
+  /** The simple type. */
   private EdmSimpleTypeKind simpleType;
 
+  /**
+   * Gets the type.
+   *
+   * @return the type
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmType getType() throws EdmException {
     if (edmType == null) {
@@ -42,19 +49,39 @@ public class EdmSimplePropertyImpl extends EdmPropertyImpl {
     return edmType;
   }
 
+  /**
+   * Gets the simple type.
+   *
+   * @return the simple type
+   */
   public EdmSimpleTypeKind getSimpleType() {
     return simpleType;
   }
 
+  /**
+   * Sets the simple type.
+   *
+   * @param simpleType the new simple type
+   */
   public void setSimpleType(EdmSimpleTypeKind simpleType) {
     this.simpleType = simpleType;
   }
 
+  /**
+   * Checks if is simple.
+   *
+   * @return true, if is simple
+   */
   @Override
   public boolean isSimple() {
     return true;
   }
   
+  /**
+   * To string.
+   *
+   * @return the string
+   */
   @Override
   public String toString() {
       return String.format(name);

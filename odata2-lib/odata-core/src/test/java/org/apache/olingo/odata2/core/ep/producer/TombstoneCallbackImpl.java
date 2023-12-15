@@ -24,16 +24,34 @@ import java.util.Map;
 import org.apache.olingo.odata2.api.ep.callback.TombstoneCallback;
 import org.apache.olingo.odata2.api.ep.callback.TombstoneCallbackResult;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TombstoneCallbackImpl.
+ */
 public class TombstoneCallbackImpl implements TombstoneCallback {
 
+  /** The deleted entries data. */
   private ArrayList<Map<String, Object>> deletedEntriesData;
+  
+  /** The delta link. */
   private String deltaLink = null;
 
+  /**
+   * Instantiates a new tombstone callback impl.
+   *
+   * @param deletedEntriesData the deleted entries data
+   * @param deltaLink the delta link
+   */
   public TombstoneCallbackImpl(final ArrayList<Map<String, Object>> deletedEntriesData, final String deltaLink) {
     this.deletedEntriesData = deletedEntriesData;
     this.deltaLink = deltaLink;
   }
 
+  /**
+   * Gets the tombstone callback result.
+   *
+   * @return the tombstone callback result
+   */
   @Override
   public TombstoneCallbackResult getTombstoneCallbackResult() {
     TombstoneCallbackResult result = new TombstoneCallbackResult();

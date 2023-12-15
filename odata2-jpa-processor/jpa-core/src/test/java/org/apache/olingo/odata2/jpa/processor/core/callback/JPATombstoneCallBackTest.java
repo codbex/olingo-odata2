@@ -28,8 +28,15 @@ import org.apache.olingo.odata2.api.uri.info.GetEntitySetUriInfo;
 import org.easymock.EasyMock;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPATombstoneCallBackTest.
+ */
 public class JPATombstoneCallBackTest {
 
+  /**
+   * Test.
+   */
   @Test
   public void Test() {
 
@@ -49,6 +56,9 @@ public class JPATombstoneCallBackTest {
     assertEquals("/sample/SalesOrder?!deltatoken=1", result.getDeltaLink());
   }
 
+  /**
+   * Test null.
+   */
   @Test
   public void TestNull() {
 

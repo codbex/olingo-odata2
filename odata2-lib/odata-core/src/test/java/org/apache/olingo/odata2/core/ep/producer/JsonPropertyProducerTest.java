@@ -40,11 +40,17 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class JsonPropertyProducerTest.
  */
 public class JsonPropertyProducerTest extends BaseTest {
 
+  /**
+   * Serialize string.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serializeString() throws Exception {
     final EdmProperty property =
@@ -61,6 +67,11 @@ public class JsonPropertyProducerTest extends BaseTest {
     assertEquals("{\"d\":{\"EmployeeName\":\"\\\"Игорь\\tНиколаевич\\tЛарионов\\\"\"}}", json);
   }
 
+  /**
+   * Serialize very long string.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serializeVeryLongString() throws Exception {
     char[] chars = new char[32768];
@@ -80,6 +91,11 @@ public class JsonPropertyProducerTest extends BaseTest {
     assertEquals("{\"d\":{\"EmployeeName\":\"" + propertyValue + "\"}}", json);
   }
 
+  /**
+   * Serialize room id with facets.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serializeRoomIdWithFacets() throws Exception {
     EdmTyped edmTyped = MockFacade.getMockEdm().getEntityType("RefScenario", "Room").getProperty("Id");
@@ -96,6 +112,11 @@ public class JsonPropertyProducerTest extends BaseTest {
   }
 
 
+  /**
+   * Serialize number.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serializeNumber() throws Exception {
     final EdmProperty property =
@@ -104,6 +125,11 @@ public class JsonPropertyProducerTest extends BaseTest {
     assertEquals("{\"d\":{\"Age\":42}}", StringHelper.inputStreamToString((InputStream) response.getEntity()));
   }
 
+  /**
+   * Serialize binary.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serializeBinary() throws Exception {
     final EdmProperty property =
@@ -112,6 +138,11 @@ public class JsonPropertyProducerTest extends BaseTest {
     assertEquals("{\"d\":{\"Image\":\"KtY=\"}}", StringHelper.inputStreamToString((InputStream) response.getEntity()));
   }
 
+  /**
+   * Serialize binary with content type.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serializeBinaryWithContentType() throws Exception {
     final EdmProperty property =
@@ -123,6 +154,11 @@ public class JsonPropertyProducerTest extends BaseTest {
     assertEquals("{\"d\":{\"Image\":\"AQID\"}}", StringHelper.inputStreamToString((InputStream) response.getEntity()));
   }
 
+  /**
+   * Serialize boolean.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serializeBoolean() throws Exception {
     final EdmProperty property =
@@ -132,6 +168,11 @@ public class JsonPropertyProducerTest extends BaseTest {
         .inputStreamToString((InputStream) response.getEntity()));
   }
 
+  /**
+   * Serialize null.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serializeNull() throws Exception {
     EdmProperty property =
@@ -152,6 +193,11 @@ public class JsonPropertyProducerTest extends BaseTest {
     assertEquals("{\"d\":{\"Image\":null}}", StringHelper.inputStreamToString((InputStream) response.getEntity()));
   }
 
+  /**
+   * Serialize date time.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serializeDateTime() throws Exception {
     final EdmProperty property =
@@ -163,6 +209,11 @@ public class JsonPropertyProducerTest extends BaseTest {
         .getEntity()));
   }
 
+  /**
+   * Serialize complex property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serializeComplexProperty() throws Exception {
     final EdmProperty property =
@@ -181,6 +232,11 @@ public class JsonPropertyProducerTest extends BaseTest {
         StringHelper.inputStreamToString((InputStream) response.getEntity()));
   }
 
+  /**
+   * Serialize complex property null.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serializeComplexPropertyNull() throws Exception {
     final EdmProperty property =

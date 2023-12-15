@@ -20,6 +20,7 @@ package org.apache.olingo.odata2.client.api.ep;
 
 import java.net.URI;
 
+// TODO: Auto-generated Javadoc
 /**
  * {@link EntityCollectionSerializerProperties} contains all additional properties which are necessary to <b>write
  * (serialize)</b> an {@link org.apache.olingo.odata2.api.ep.entry.ODataEntry} into an specific format (e.g.
@@ -27,9 +28,15 @@ import java.net.URI;
  */
 public class EntityCollectionSerializerProperties {
 
+  /** The service root. */
   private URI serviceRoot;
+  
+  /** The self link. */
   private URI selfLink;
   
+  /**
+   * Instantiates a new entity collection serializer properties.
+   */
   private EntityCollectionSerializerProperties() {}
   
   /**
@@ -49,8 +56,9 @@ public class EntityCollectionSerializerProperties {
   }
 
   /**
-   * 
-   * @param serviceRoot
+   * Service root.
+   *
+   * @param serviceRoot the service root
    * @return EntityCollectionPropertiesBuilder
    */
   public static EntityCollectionPropertiesBuilder serviceRoot(final URI serviceRoot) {
@@ -58,15 +66,19 @@ public class EntityCollectionSerializerProperties {
   }
 
   /**
-   * This class builds the Entity collection properties
-   *
+   * This class builds the Entity collection properties.
    */
   public static class EntityCollectionPropertiesBuilder {
+    
+    /** The properties. */
     private final EntityCollectionSerializerProperties properties = 
         new EntityCollectionSerializerProperties();
 
     /**
-     * @param serviceRoot
+     * Service root.
+     *
+     * @param serviceRoot the service root
+     * @return the entity collection properties builder
      */
     public final EntityCollectionPropertiesBuilder serviceRoot(final URI serviceRoot) {
       properties.serviceRoot = serviceRoot;
@@ -83,8 +95,9 @@ public class EntityCollectionSerializerProperties {
     }
 
     /**
-     * 
-     * @param selfLink
+     * Self link.
+     *
+     * @param selfLink the self link
      * @return EntityCollectionPropertiesBuilder
      */
     public EntityCollectionPropertiesBuilder selfLink(final URI selfLink) {
@@ -93,8 +106,9 @@ public class EntityCollectionSerializerProperties {
     }
 
     /**
-     * 
-     * @param properties
+     * From properties.
+     *
+     * @param properties the properties
      * @return EntityCollectionPropertiesBuilder
      */
     public EntityCollectionPropertiesBuilder fromProperties
@@ -106,8 +120,9 @@ public class EntityCollectionSerializerProperties {
   }
 
   /**
-   * 
-   * @param properties
+   * From properties.
+   *
+   * @param properties the properties
    * @return EntityCollectionPropertiesBuilder
    */
   public static EntityCollectionPropertiesBuilder fromProperties

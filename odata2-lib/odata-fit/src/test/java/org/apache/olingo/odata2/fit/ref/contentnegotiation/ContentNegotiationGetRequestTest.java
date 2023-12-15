@@ -38,16 +38,27 @@ import org.apache.olingo.odata2.testutil.server.ServletType;
 import org.junit.Ignore;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class ContentNegotiationGetRequestTest.
  */
 @Ignore
 public class ContentNegotiationGetRequestTest extends AbstractContentNegotiationTest {
 
+  /**
+   * Instantiates a new content negotiation get request test.
+   *
+   * @param servletType the servlet type
+   */
   public ContentNegotiationGetRequestTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /**
+   * Accept header app atom xml.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void acceptHeaderAppAtomXml() throws Exception {
     HttpGet get = new HttpGet(URI.create(getEndpoint() + "Rooms('1')"));
@@ -60,6 +71,11 @@ public class ContentNegotiationGetRequestTest extends AbstractContentNegotiation
     assertNotNull(StringHelper.inputStreamToString(response.getEntity().getContent()));
   }
 
+  /**
+   * Accept header app xml.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void acceptHeaderAppXml() throws Exception {
     HttpGet get = new HttpGet(URI.create(getEndpoint() + "Rooms('1')"));
@@ -73,6 +89,11 @@ public class ContentNegotiationGetRequestTest extends AbstractContentNegotiation
     assertNotNull(StringHelper.inputStreamToString(response.getEntity().getContent()));
   }
 
+  /**
+   * Accept header app xml charset utf 8.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void acceptHeaderAppXmlCharsetUtf8() throws Exception {
     HttpGet get = new HttpGet(URI.create(getEndpoint() + "Rooms('1')"));
@@ -86,6 +107,11 @@ public class ContentNegotiationGetRequestTest extends AbstractContentNegotiation
     assertNotNull(StringHelper.inputStreamToString(response.getEntity().getContent()));
   }
 
+  /**
+   * Test UR I 0 service document.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testURI_0_ServiceDocument() throws Exception {
     // create test set
@@ -118,6 +144,11 @@ public class ContentNegotiationGetRequestTest extends AbstractContentNegotiation
     testSet.execute(getEndpoint());
   }
 
+  /**
+   * Test UR I 1 entity set.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testURI_1_EntitySet() throws Exception {
     // create test set
@@ -152,6 +183,11 @@ public class ContentNegotiationGetRequestTest extends AbstractContentNegotiation
     testSet.execute(getEndpoint());
   }
 
+  /**
+   * Test UR I 2 entity.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testURI_2_Entity() throws Exception {
     // create test set
@@ -190,6 +226,11 @@ public class ContentNegotiationGetRequestTest extends AbstractContentNegotiation
     testSet.execute(getEndpoint());
   }
 
+  /**
+   * Test UR I 3 entity complex property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testURI_3_EntityComplexProperty() throws Exception {
     // create test set
@@ -229,6 +270,11 @@ public class ContentNegotiationGetRequestTest extends AbstractContentNegotiation
     testSet.execute(getEndpoint());
   }
 
+  /**
+   * Test UR I 4 entity complex property simple property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testURI_4_EntityComplexPropertySimpleProperty() throws Exception {
     // create test set
@@ -268,6 +314,11 @@ public class ContentNegotiationGetRequestTest extends AbstractContentNegotiation
     testSet.execute(getEndpoint());
   }
 
+  /**
+   * Test UR I 5 entity simple property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testURI_5_EntitySimpleProperty() throws Exception {
     // create test set
@@ -307,6 +358,11 @@ public class ContentNegotiationGetRequestTest extends AbstractContentNegotiation
     testSet.execute(getEndpoint());
   }
 
+  /**
+   * Test UR I 6 A entity navigation property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testURI_6A_EntityNavigationProperty() throws Exception {
     // create test set
@@ -345,6 +401,11 @@ public class ContentNegotiationGetRequestTest extends AbstractContentNegotiation
     testSet.execute(getEndpoint());
   }
 
+  /**
+   * Test UR I 7 A entity navigation property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testURI_7A_EntityNavigationProperty() throws Exception {
     // create test set
@@ -381,6 +442,11 @@ public class ContentNegotiationGetRequestTest extends AbstractContentNegotiation
     testSet.execute(getEndpoint());
   }
 
+  /**
+   * Test UR I 8 metadata.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testURI_8_Metadata() throws Exception {
     // create test set
@@ -418,6 +484,11 @@ public class ContentNegotiationGetRequestTest extends AbstractContentNegotiation
     testSet.execute(getEndpoint());
   }
 
+  /**
+   * Test UR I 17 entity media resource dollar value.
+   *
+   * @throws Exception the exception
+   */
   @Test
   @Ignore("Currently ignored because of a BUG")
   public void testURI_17_EntityMediaResourceDollarValue() throws Exception {
@@ -441,6 +512,11 @@ public class ContentNegotiationGetRequestTest extends AbstractContentNegotiation
     testSet.execute(getEndpoint());
   }
 
+  /**
+   * Test UR I 17 entity simple type dollar value.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testURI_17_EntitySimpleTypeDollarValue() throws Exception {
     // create test set

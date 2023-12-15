@@ -26,20 +26,37 @@ import org.apache.olingo.odata2.api.edm.EdmType;
 import org.apache.olingo.odata2.api.edm.provider.FunctionImportParameter;
 import org.apache.olingo.odata2.core.edm.EdmSimpleTypeFacadeImpl;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class EdmParameterImplProv.
  */
 public class EdmParameterImplProv extends EdmElementImplProv implements EdmParameter, EdmAnnotatable {
 
+  /** The parameter. */
   FunctionImportParameter parameter;
+  
+  /** The annotations. */
   private EdmAnnotations annotations;
 
+  /**
+   * Instantiates a new edm parameter impl prov.
+   *
+   * @param edm the edm
+   * @param parameter the parameter
+   * @throws EdmException the edm exception
+   */
   public EdmParameterImplProv(final EdmImplProv edm, final FunctionImportParameter parameter) throws EdmException {
     super(edm, parameter.getName(), parameter.getType().getFullQualifiedName(), parameter.getFacets(), parameter
         .getMapping());
     this.parameter = parameter;
   }
 
+  /**
+   * Gets the type.
+   *
+   * @return the type
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmType getType() throws EdmException {
     if (edmType == null) {
@@ -51,6 +68,12 @@ public class EdmParameterImplProv extends EdmElementImplProv implements EdmParam
     return edmType;
   }
 
+  /**
+   * Gets the annotations.
+   *
+   * @return the annotations
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmAnnotations getAnnotations() throws EdmException {
     if (annotations == null) {

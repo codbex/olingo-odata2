@@ -20,46 +20,89 @@ package org.apache.olingo.odata2.api.edm.provider;
 
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
 /**
  * Objects of this class represent an annotation element.
  * 
  */
 public class AnnotationElement {
 
+  /** The namespace. */
   private String namespace;
+  
+  /** The prefix. */
   private String prefix;
+  
+  /** The name. */
   private String name;
+  
+  /** The text. */
   private String text;
+  
+  /** The child elements. */
   private List<AnnotationElement> childElements;
+  
+  /** The attributes. */
   private List<AnnotationAttribute> attributes;
 
+  /**
+   * Gets the namespace.
+   *
+   * @return the namespace
+   */
   public String getNamespace() {
     return namespace;
   }
 
+  /**
+   * Gets the prefix.
+   *
+   * @return the prefix
+   */
   public String getPrefix() {
     return prefix;
   }
 
+  /**
+   * Gets the name.
+   *
+   * @return the name
+   */
   public String getName() {
     return name;
   }
 
+  /**
+   * Gets the text.
+   *
+   * @return the text
+   */
   public String getText() {
     return text;
   }
 
+  /**
+   * Gets the child elements.
+   *
+   * @return the child elements
+   */
   public List<AnnotationElement> getChildElements() {
     return childElements;
   }
 
+  /**
+   * Gets the attributes.
+   *
+   * @return the attributes
+   */
   public List<AnnotationAttribute> getAttributes() {
     return attributes;
   }
 
   /**
    * Sets the attributes for this {@link AnnotationElement}.
-   * @param attributes
+   *
+   * @param attributes the attributes
    * @return {@link AnnotationElement} for method chaining
    */
   public AnnotationElement setAttributes(final List<AnnotationAttribute> attributes) {
@@ -70,7 +113,8 @@ public class AnnotationElement {
   /**
    * Sets the child elements for this {@link AnnotationElement}.
    * Does not set child elements and characterData for one element.
-   * @param childElements
+   *
+   * @param childElements the child elements
    * @return {@link AnnotationElement} for method chaining
    */
   public AnnotationElement setChildElements(final List<AnnotationElement> childElements) {
@@ -80,7 +124,8 @@ public class AnnotationElement {
 
   /**
    * Sets the namespace for this {@link AnnotationElement}.
-   * @param namespace
+   *
+   * @param namespace the namespace
    * @return {@link AnnotationElement} for method chaining
    */
   public AnnotationElement setNamespace(final String namespace) {
@@ -90,7 +135,8 @@ public class AnnotationElement {
 
   /**
    * Sets the prefix for this {@link AnnotationElement}.
-   * @param prefix
+   *
+   * @param prefix the prefix
    * @return {@link AnnotationElement} for method chaining
    */
   public AnnotationElement setPrefix(final String prefix) {
@@ -100,7 +146,8 @@ public class AnnotationElement {
 
   /**
    * Sets the name for this {@link AnnotationElement}.
-   * @param name
+   *
+   * @param name the name
    * @return {@link AnnotationElement} for method chaining
    */
   public AnnotationElement setName(final String name) {
@@ -111,7 +158,8 @@ public class AnnotationElement {
   /**
    * Sets the text for this {@link AnnotationElement} which will be displayed inside the tags.
    * Must NOT be set if child elements are set!
-   * @param text
+   *
+   * @param text the text
    * @return {@link AnnotationElement} for method chaining
    */
   public AnnotationElement setText(final String text) {

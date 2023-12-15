@@ -60,27 +60,32 @@ import org.apache.olingo.odata2.core.ep.aggregator.EntityInfoAggregator;
 import org.apache.olingo.odata2.core.ep.aggregator.EntityPropertyInfo;
 import org.apache.olingo.odata2.core.ep.util.CircleStreamBuffer;
 
+// TODO: Auto-generated Javadoc
 /**
- *  This class includes methods to serialize deserialize XML Content type
+ *  This class includes methods to serialize deserialize XML Content type.
  */
 public class AtomSerializerDeserializer implements ContentTypeBasedSerializer, ContentTypeBasedDeserializer {
 
-  /** Default used charset for writer and response content header */
+  /**  Default used charset for writer and response content header. */
   private static final String DEFAULT_CHARSET = ContentType.CHARSET_UTF_8;
+  
+  /** The Constant XML_VERSION. */
   private static final String XML_VERSION = "1.0";
 
   /**
-   * 
-   * @throws EntityProviderException
+   * Instantiates a new atom serializer deserializer.
+   *
+   * @throws EntityProviderException the entity provider exception
    */
   public AtomSerializerDeserializer() throws EntityProviderException {
     this(ODataFormat.ATOM);
   }
 
   /**
-   * 
-   * @param odataFormat
-   * @throws EntityProviderException
+   * Instantiates a new atom serializer deserializer.
+   *
+   * @param odataFormat the odata format
+   * @throws EntityProviderException the entity provider exception
    */
   public AtomSerializerDeserializer(final ODataFormat odataFormat) throws EntityProviderException {
     if (odataFormat != ODataFormat.ATOM && odataFormat != ODataFormat.XML) {
@@ -90,6 +95,14 @@ public class AtomSerializerDeserializer implements ContentTypeBasedSerializer, C
   }
 
 
+  /**
+   * Write entry.
+   *
+   * @param entitySet the entity set
+   * @param data the data
+   * @return the o data response
+   * @throws EntityProviderException the entity provider exception
+   */
   @Override
   public ODataResponse writeEntry( EdmEntitySet entitySet, Entity data
       ) throws EntityProviderException {
@@ -124,6 +137,14 @@ public class AtomSerializerDeserializer implements ContentTypeBasedSerializer, C
   
   }
 
+  /**
+   * Read feed.
+   *
+   * @param entitySet the entity set
+   * @param content the content
+   * @return the o data feed
+   * @throws EntityProviderException the entity provider exception
+   */
   @Override
   public ODataFeed readFeed( EdmEntitySet entitySet, EntityStream content)
       throws EntityProviderException {
@@ -131,6 +152,14 @@ public class AtomSerializerDeserializer implements ContentTypeBasedSerializer, C
     return xec.readFeed(entitySet, content);
   }
 
+  /**
+   * Read entry.
+   *
+   * @param entitySet the entity set
+   * @param content the content
+   * @return the o data entry
+   * @throws EntityProviderException the entity provider exception
+   */
   @Override
   public ODataEntry readEntry( EdmEntitySet entitySet, EntityStream content)
       throws EntityProviderException {
@@ -140,12 +169,27 @@ public class AtomSerializerDeserializer implements ContentTypeBasedSerializer, C
   
   }
 
+  /**
+   * Read error document.
+   *
+   * @param errorDocument the error document
+   * @return the o data error context
+   * @throws EntityProviderException the entity provider exception
+   */
   @Override
   public ODataErrorContext readErrorDocument(InputStream errorDocument) throws EntityProviderException {
     XmlErrorDocumentDeserializer xmlErrorDocumentConsumer = new XmlErrorDocumentDeserializer();
     return xmlErrorDocumentConsumer.readError(errorDocument);
   }
 
+  /**
+   * Write feed.
+   *
+   * @param entitySet the entity set
+   * @param data the data
+   * @return the o data response
+   * @throws EntityProviderException the entity provider exception
+   */
   @Override
   public ODataResponse writeFeed(EdmEntitySet entitySet, EntityCollection data) throws EntityProviderException {
     CircleStreamBuffer csb = new CircleStreamBuffer();
@@ -178,18 +222,40 @@ public class AtomSerializerDeserializer implements ContentTypeBasedSerializer, C
     }
   }
 
+  /**
+   * Read batch request.
+   *
+   * @param batchParts the batch parts
+   * @param boundary the boundary
+   * @return the input stream
+   */
   @Override
   public InputStream readBatchRequest(List<BatchPart> batchParts, String boundary) {
     BatchRequestWriter batchWriter = new BatchRequestWriter();
     return batchWriter.writeBatchRequest(batchParts, boundary);
   }
 
+  /**
+   * Write batch response.
+   *
+   * @param batchResponseParts the batch response parts
+   * @return the o data response
+   * @throws BatchException the batch exception
+   */
   @Override
   public ODataResponse writeBatchResponse(List<BatchResponsePart> batchResponseParts) throws BatchException {
     BatchResponseWriter batchWriter = new BatchResponseWriter();
     return batchWriter.writeResponse(batchResponseParts);
   }
 
+  /**
+   * Read function import.
+   *
+   * @param functionImport the function import
+   * @param content the content
+   * @return the object
+   * @throws EntityProviderException the entity provider exception
+   */
   @Override
   public Object readFunctionImport(EdmFunctionImport functionImport, EntityStream content)
       throws EntityProviderException {

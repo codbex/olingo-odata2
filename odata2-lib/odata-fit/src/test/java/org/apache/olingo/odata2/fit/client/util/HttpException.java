@@ -20,17 +20,34 @@ package org.apache.olingo.odata2.fit.client.util;
 
 import org.apache.olingo.odata2.api.commons.HttpStatusCodes;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class HttpException.
+ */
 public class HttpException extends Exception {
 
+  /** The Constant serialVersionUID. */
   private static final long serialVersionUID = 1L;
 
+  /** The http status code. */
   private HttpStatusCodes httpStatusCode;
 
+  /**
+   * Instantiates a new http exception.
+   *
+   * @param httpStatusCode the http status code
+   * @param message the message
+   */
   public HttpException(final HttpStatusCodes httpStatusCode, final String message) {
     super(message);
     this.httpStatusCode = httpStatusCode;
   }
 
+  /**
+   * Gets the http status code.
+   *
+   * @return the http status code
+   */
   public HttpStatusCodes getHttpStatusCode() {
     return httpStatusCode;
   }

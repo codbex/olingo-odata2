@@ -18,38 +18,39 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.edm;
 
+// TODO: Auto-generated Javadoc
 /**
- * @org.apache.olingo.odata2.DoNotImplement
- * A CSDL AnnotationAttribute element.
+ * The Interface EdmAnnotationAttribute.
+ *
+ * @org.apache.olingo.odata2.DoNotImplement A CSDL AnnotationAttribute element.
  * <p>EdmAnnotationAttribute is a custom XML attribute which can be applied to a CSDL element.
- * 
  */
 public interface EdmAnnotationAttribute {
 
   /**
-   * Get the namespace of the custom attribute
-   * 
+   * Get the namespace of the custom attribute.
+   *
    * @return String
    */
   String getNamespace();
 
   /**
-   * Get the prefix of the custom attribute
-   * 
+   * Get the prefix of the custom attribute.
+   *
    * @return String
    */
   String getPrefix();
 
   /**
-   * Get the name of the custom attribute
-   * 
+   * Get the name of the custom attribute.
+   *
    * @return String
    */
   String getName();
 
   /**
-   * Get the text of the custom attribute
-   * 
+   * Get the text of the custom attribute.
+   *
    * @return String
    */
   String getText();

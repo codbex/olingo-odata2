@@ -20,29 +20,57 @@ package org.apache.olingo.odata2.api.exception;
 
 import org.apache.olingo.odata2.api.commons.HttpStatusCodes;
 
+// TODO: Auto-generated Javadoc
 /**
- * Exceptions of this class will result in a HTTP status 404 not found
- * 
+ * Exceptions of this class will result in a HTTP status 404 not found.
  */
 public class ODataNotFoundException extends ODataHttpException {
 
+  /** The Constant serialVersionUID. */
   private static final long serialVersionUID = 1L;
 
+  /** The Constant ENTITY. */
   public static final MessageReference ENTITY = createMessageReference(ODataNotFoundException.class, "ENTITY");
+  
+  /** The Constant MATRIX. */
   public static final MessageReference MATRIX = createMessageReference(ODataNotFoundException.class, "MATRIX");
 
+  /**
+   * Instantiates a new o data not found exception.
+   *
+   * @param messageReference the message reference
+   */
   public ODataNotFoundException(final MessageReference messageReference) {
     super(messageReference, HttpStatusCodes.NOT_FOUND);
   }
 
+  /**
+   * Instantiates a new o data not found exception.
+   *
+   * @param messageReference the message reference
+   * @param errorCode the error code
+   */
   public ODataNotFoundException(final MessageReference messageReference, final String errorCode) {
     super(messageReference, HttpStatusCodes.NOT_FOUND, errorCode);
   }
 
+  /**
+   * Instantiates a new o data not found exception.
+   *
+   * @param messageReference the message reference
+   * @param cause the cause
+   */
   public ODataNotFoundException(final MessageReference messageReference, final Throwable cause) {
     super(messageReference, cause, HttpStatusCodes.NOT_FOUND);
   }
 
+  /**
+   * Instantiates a new o data not found exception.
+   *
+   * @param messageReference the message reference
+   * @param cause the cause
+   * @param errorCode the error code
+   */
   public ODataNotFoundException(final MessageReference messageReference, final Throwable cause,
       final String errorCode) {
     super(messageReference, cause, HttpStatusCodes.NOT_FOUND, errorCode);

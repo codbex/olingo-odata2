@@ -21,6 +21,7 @@ package org.apache.olingo.odata2.api.ep;
 import org.apache.olingo.odata2.api.exception.MessageReference;
 import org.apache.olingo.odata2.api.exception.ODataMessageException;
 
+// TODO: Auto-generated Javadoc
 /**
  * An {@link EntityProviderException} is the base exception for all <code>EntityProvider</code> related exceptions.
  * It extends the {@link ODataMessageException} and provides several {@link MessageReference} for specification of
@@ -28,108 +29,164 @@ import org.apache.olingo.odata2.api.exception.ODataMessageException;
  */
 public class EntityProviderException extends ODataMessageException {
 
+  /** The Constant serialVersionUID. */
   private static final long serialVersionUID = 1L;
 
-  /** INVALID_STATE requires no content value */
+  /**  INVALID_STATE requires no content value. */
   public static final MessageReference COMMON = createMessageReference(EntityProviderException.class, "COMMON");
-  /** EXCEPTION_OCCURRED requires 1 content value ('exception name') */
+  
+  /**  EXCEPTION_OCCURRED requires 1 content value ('exception name'). */
   public static final MessageReference EXCEPTION_OCCURRED = createMessageReference(EntityProviderException.class,
       "EXCEPTION_OCCURRED");
-  /** INVALIDMAPPING requires 1 content value ('propertyName') */
+  
+  /**  INVALIDMAPPING requires 1 content value ('propertyName'). */
   public static final MessageReference INVALID_MAPPING = createMessageReference(EntityProviderException.class,
       "INVALID_MAPPING");
-  /** INVALID_ENTITYTYPE requires 2 content values ('supplied entity type' and 'content entity type') */
+  
+  /**  INVALID_ENTITYTYPE requires 2 content values ('supplied entity type' and 'content entity type'). */
   public static final MessageReference INVALID_ENTITYTYPE = createMessageReference(EntityProviderException.class,
       "INVALID_ENTITYTYPE");
-  /** INVALID_COMPLEX_TYPE requires 2 content values ('supplied complex type' and 'content complex type') */
+  
+  /**  INVALID_COMPLEX_TYPE requires 2 content values ('supplied complex type' and 'content complex type'). */
   public static final MessageReference INVALID_COMPLEX_TYPE = createMessageReference(EntityProviderException.class,
       "INVALID_COMPLEX_TYPE");
-  /** INVALID_CONTENT requires 2 content values ('invalid tag' and 'parent tag') */
+  
+  /**  INVALID_CONTENT requires 2 content values ('invalid tag' and 'parent tag'). */
   public static final MessageReference INVALID_CONTENT = createMessageReference(EntityProviderException.class,
       "INVALID_CONTENT");
-  /** INVALID_PROPERTY_VALUE requires 1 content value ('invalid value') */
+  
+  /**  INVALID_PROPERTY_VALUE requires 1 content value ('invalid value'). */
   public static final MessageReference INVALID_PROPERTY_VALUE = createMessageReference(EntityProviderException.class,
       "INVALID_PROPERTY_VALUE");
-  /** MISSING_PROPERTY requires 1 content value ('invalid value') */
+  
+  /**  MISSING_PROPERTY requires 1 content value ('invalid value'). */
   public static final MessageReference MISSING_PROPERTY = createMessageReference(EntityProviderException.class,
       "MISSING_PROPERTY");
-  /** INVALID_PARENT_TAG requires 2 content values ('missing attribute name' and 'tag name') */
+  
+  /**  INVALID_PARENT_TAG requires 2 content values ('missing attribute name' and 'tag name'). */
   public static final MessageReference MISSING_ATTRIBUTE = createMessageReference(EntityProviderException.class,
       "MISSING_ATTRIBUTE");
-  /** MISSING_TAG requires 1 content values ('tag name') */
+  
+  /**  MISSING_TAG requires 1 content values ('tag name'). */
   public static final MessageReference MISSING_TAG = createMessageReference(EntityProviderException.class,
       "MISSING_TAG");
-  /** UNSUPPORTED_PROPERTY_TYPE requires 1 content values ('property type') */
+  
+  /**  UNSUPPORTED_PROPERTY_TYPE requires 1 content values ('property type'). */
   public static final MessageReference UNSUPPORTED_PROPERTY_TYPE = createMessageReference(
       EntityProviderException.class, "UNSUPPORTED_PROPERTY_TYPE");
+  
+  /** The Constant INLINECOUNT_INVALID. */
   public static final MessageReference INLINECOUNT_INVALID = createMessageReference(EntityProviderException.class,
       "INLINECOUNT_INVALID");
-  /** INVALID_STATE requires 1 content value ('message') */
+  
+  /**  INVALID_STATE requires 1 content value ('message'). */
   public static final MessageReference INVALID_STATE = createMessageReference(EntityProviderException.class,
       "INVALID_STATE");
-  /** INVALID_INLINE_CONTENT requires 1 content value ('invalid inline message') */
+  
+  /**  INVALID_INLINE_CONTENT requires 1 content value ('invalid inline message'). */
   public static final MessageReference INVALID_INLINE_CONTENT = createMessageReference(EntityProviderException.class,
       "INVALID_INLINE_CONTENT");
-  /** INVALID_PROPERTY requires 1 content value ('invalid property name') */
+  
+  /**  INVALID_PROPERTY requires 1 content value ('invalid property name'). */
   public static final MessageReference INVALID_PROPERTY = createMessageReference(EntityProviderException.class,
       "INVALID_PROPERTY");
-  /** ILLEGAL_ARGUMENT requires 1 content value ('message') */
+  
+  /**  ILLEGAL_ARGUMENT requires 1 content value ('message'). */
   public static final MessageReference ILLEGAL_ARGUMENT = createMessageReference(EntityProviderException.class,
       "ILLEGAL_ARGUMENT");
-  /** INVALID_NAMESPACE requires 1 content value ('invalid tag/namespace') */
+  
+  /**  INVALID_NAMESPACE requires 1 content value ('invalid tag/namespace'). */
   public static final MessageReference INVALID_NAMESPACE = createMessageReference(EntityProviderException.class,
       "INVALID_NAMESPACE");
-  /** INVALID_PARENT_TAG requires 2 content values ('expected parent tag' and 'found parent tag') */
+  
+  /**  INVALID_PARENT_TAG requires 2 content values ('expected parent tag' and 'found parent tag'). */
   public static final MessageReference INVALID_PARENT_TAG = createMessageReference(EntityProviderException.class,
       "INVALID_PARENT_TAG");
+  
+  /** The Constant EXPANDNOTSUPPORTED. */
   public static final MessageReference EXPANDNOTSUPPORTED = createMessageReference(EntityProviderException.class,
       "EXPANDNOTSUPPORTED");
-  /** DOUBLE_PROPERTY requires 1 content value ('double tag/property') */
+  
+  /**  DOUBLE_PROPERTY requires 1 content value ('double tag/property'). */
   public static final MessageReference DOUBLE_PROPERTY = createMessageReference(EntityProviderException.class,
       "DOUBLE_PROPERTY");
-  /** NOT_SET_CHARACTER_ENCODING requires no content value */
+  
+  /**  NOT_SET_CHARACTER_ENCODING requires no content value. */
   public static final MessageReference NOT_SET_CHARACTER_ENCODING = createMessageReference(
       EntityProviderException.class, "NOT_SET_CHARACTER_ENCODING");
-  /** UNSUPPORTED_CHARACTER_ENCODING requires 1 content value ('found but unsupported character encoding') */
+  
+  /**  UNSUPPORTED_CHARACTER_ENCODING requires 1 content value ('found but unsupported character encoding'). */
   public static final MessageReference UNSUPPORTED_CHARACTER_ENCODING = createMessageReference(
       EntityProviderException.class, "UNSUPPORTED_CHARACTER_ENCODING");
-  /** MEDIA_DATA_NOT_INITIAL requires no content value */
+  
+  /**  MEDIA_DATA_NOT_INITIAL requires no content value. */
   public static final MessageReference MEDIA_DATA_NOT_INITIAL = createMessageReference(EntityProviderException.class,
       "MEDIA_DATA_NOT_INITIAL");
-  /** END_DOCUMENT_EXPECTED requires 1 content value ('actual token') */
+  
+  /**  END_DOCUMENT_EXPECTED requires 1 content value ('actual token'). */
   public static final MessageReference END_DOCUMENT_EXPECTED = createMessageReference(EntityProviderException.class,
       "END_DOCUMENT_EXPECTED");
-  /** MISSING_RESULTS_ARRAY requires no content value */
+  
+  /**  MISSING_RESULTS_ARRAY requires no content value. */
   public static final MessageReference MISSING_RESULTS_ARRAY = createMessageReference(EntityProviderException.class,
       "MISSING_RESULTS_ARRAY");
+  
+  /** The Constant NULL_VALUE. */
   public static final MessageReference NULL_VALUE = createMessageReference(EntityProviderException.class, 
       "NULL_VALUE");
-  /** Navigation Property has incorrect type */
+  
+  /**  Navigation Property has incorrect type. */
   public static final MessageReference INCORRECT_NAVIGATION_TYPE = createMessageReference(
       EntityProviderException.class, "INCORRECT_NAVIGATION_TYPE");
-  /** MANDATORY_WRITE_PROPERTY requires no content value */
+  
+  /**  MANDATORY_WRITE_PROPERTY requires no content value. */
   public static final MessageReference MANDATORY_WRITE_PROPERTY = createMessageReference(EntityProviderException.class, 
       "MANDATORY_WRITE_PROPERTY");
 
+  /** The Constant INVALID_DELETED_ENTRY_METADATA. */
   public static final MessageReference INVALID_DELETED_ENTRY_METADATA = createMessageReference(
       EntityProviderException.class, "INVALID_DELETED_ENTRY_METADATA");
   
-  /** INVALID_ATTRIBUTE found ('invalid attribute name') */
+  /**  INVALID_ATTRIBUTE found ('invalid attribute name'). */
   public static final MessageReference INVALID_ATTRIBUTE = createMessageReference(EntityProviderException.class,
       "INVALID_ATTRIBUTE");
   
+  /**
+   * Instantiates a new entity provider exception.
+   *
+   * @param messageReference the message reference
+   */
   public EntityProviderException(final MessageReference messageReference) {
     super(messageReference);
   }
 
+  /**
+   * Instantiates a new entity provider exception.
+   *
+   * @param messageReference the message reference
+   * @param cause the cause
+   */
   public EntityProviderException(final MessageReference messageReference, final Throwable cause) {
     super(messageReference, cause);
   }
 
+  /**
+   * Instantiates a new entity provider exception.
+   *
+   * @param messageReference the message reference
+   * @param errorCode the error code
+   */
   public EntityProviderException(final MessageReference messageReference, final String errorCode) {
     super(messageReference, errorCode);
   }
 
+  /**
+   * Instantiates a new entity provider exception.
+   *
+   * @param messageReference the message reference
+   * @param cause the cause
+   * @param errorCode the error code
+   */
   public EntityProviderException(final MessageReference messageReference, final Throwable cause,
       final String errorCode) {
     super(messageReference, cause, errorCode);

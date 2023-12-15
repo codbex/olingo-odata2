@@ -18,34 +18,77 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.uri.expression;
 
+// TODO: Auto-generated Javadoc
 /**
  * Enumerations for supported binary operators of the ODATA expression parser
  * for ODATA version 2.0 (with some restrictions)
  * 
  */
 public enum BinaryOperator {
-  AND("and"), OR("or"), EQ("eq"), NE("ne"), LT("lt"), LE("le"), GT("gt"), GE("ge"), ADD("add"), SUB("sub"),
-  MUL("mul"), DIV("div"), MODULO("mod"),
+  
+  /** The and. */
+  AND("and"), 
+ /** The or. */
+ OR("or"), 
+ /** The eq. */
+ EQ("eq"), 
+ /** The ne. */
+ NE("ne"), 
+ /** The lt. */
+ LT("lt"), 
+ /** The le. */
+ LE("le"), 
+ /** The gt. */
+ GT("gt"), 
+ /** The ge. */
+ GE("ge"), 
+ /** The add. */
+ ADD("add"), 
+ /** The sub. */
+ SUB("sub"),
+  
+  /** The mul. */
+  MUL("mul"), 
+ /** The div. */
+ DIV("div"), 
+ /** The modulo. */
+ MODULO("mod"),
 
   /**
    * Property access operator. E.g. $filter=address/city eq "Sydney"
    */
   PROPERTY_ACCESS("/", "property access");
 
+  /** The uri syntax. */
   private String uriSyntax;
+  
+  /** The string respresentation. */
   private String stringRespresentation;
 
+  /**
+   * Instantiates a new binary operator.
+   *
+   * @param uriSyntax the uri syntax
+   */
   private BinaryOperator(final String uriSyntax) {
     this.uriSyntax = uriSyntax;
     stringRespresentation = uriSyntax;
   }
 
+  /**
+   * Instantiates a new binary operator.
+   *
+   * @param syntax the syntax
+   * @param stringRespresentation the string respresentation
+   */
   private BinaryOperator(final String syntax, final String stringRespresentation) {
     uriSyntax = syntax;
     this.stringRespresentation = stringRespresentation;
   }
 
   /**
+   * To string.
+   *
    * @return Operator name for usage in text
    */
   @Override
@@ -54,6 +97,8 @@ public enum BinaryOperator {
   }
 
   /**
+   * To uri literal.
+   *
    * @return URI literal of the binary operator as used in the URL.
    */
   public String toUriLiteral() {

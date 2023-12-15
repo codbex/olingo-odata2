@@ -18,14 +18,18 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.edm;
 
+// TODO: Auto-generated Javadoc
 /**
- * @org.apache.olingo.odata2.DoNotImplement
- * EdmContentType is used for Feed Customization.
+ * The Enum EdmContentKind.
+ *
+ * @org.apache.olingo.odata2.DoNotImplement EdmContentType is used for Feed Customization.
  * <p>It specifies the content type of the value of the property being mapped via a customizable feed mapping.
  * This value can be "text", "html" or "xhtml".
- * 
  */
 public enum EdmContentKind {
 
-  text, html, xhtml;
+  /** The text. */
+  text, /** The html. */
+ html, /** The xhtml. */
+ xhtml;
 }

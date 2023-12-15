@@ -18,13 +18,20 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.servicedocument;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class ServiceDocumentParserException.
  */
 public class ServiceDocumentParserException extends Exception {
 
+  /** The Constant serialVersionUID. */
   private static final long serialVersionUID = 1L;
 
+  /**
+   * Instantiates a new service document parser exception.
+   *
+   * @param message the message
+   */
   public ServiceDocumentParserException(final String message) {
     super(message);
   }

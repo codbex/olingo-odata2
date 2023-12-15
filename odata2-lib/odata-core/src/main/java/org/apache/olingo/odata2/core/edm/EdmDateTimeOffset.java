@@ -30,6 +30,7 @@ import org.apache.olingo.odata2.api.edm.EdmFacets;
 import org.apache.olingo.odata2.api.edm.EdmLiteralKind;
 import org.apache.olingo.odata2.api.edm.EdmSimpleTypeException;
 
+// TODO: Auto-generated Javadoc
 /**
  * Implementation of the EDM simple type DateTimeOffset.
  * 
@@ -38,23 +39,49 @@ import org.apache.olingo.odata2.api.edm.EdmSimpleTypeException;
  */
 public class EdmDateTimeOffset extends AbstractSimpleType {
 
+  /** The Constant PATTERN. */
   private static final Pattern PATTERN = Pattern.compile(
       "\\p{Digit}{1,4}-\\p{Digit}{1,2}-\\p{Digit}{1,2}"
           + "T\\p{Digit}{1,2}:\\p{Digit}{1,2}(?::\\p{Digit}{1,2}(?:\\.\\p{Digit}{1,7})?)?"
           + "(Z|([-+]\\p{Digit}{1,2}:\\p{Digit}{2}))?");
+  
+  /** The Constant JSON_PATTERN. */
   private static final Pattern JSON_PATTERN = Pattern.compile(
       "/Date\\((-?\\p{Digit}+)(?:(\\+|-)(\\p{Digit}{1,4}))?\\)/");
+  
+  /** The Constant instance. */
   private static final EdmDateTimeOffset instance = new EdmDateTimeOffset();
 
+  /**
+   * Gets the single instance of EdmDateTimeOffset.
+   *
+   * @return single instance of EdmDateTimeOffset
+   */
   public static EdmDateTimeOffset getInstance() {
     return instance;
   }
 
+  /**
+   * Gets the default type.
+   *
+   * @return the default type
+   */
   @Override
   public Class<?> getDefaultType() {
     return Calendar.class;
   }
 
+  /**
+   * Internal value of string.
+   *
+   * @param <T> the generic type
+   * @param value the value
+   * @param literalKind the literal kind
+   * @param facets the facets
+   * @param returnType the return type
+   * @return the t
+   * @throws EdmSimpleTypeException the edm simple type exception
+   */
   @Override
   protected <T> T internalValueOfString(final String value, final EdmLiteralKind literalKind, final EdmFacets facets,
       final Class<T> returnType) throws EdmSimpleTypeException {
@@ -140,6 +167,16 @@ public class EdmDateTimeOffset extends AbstractSimpleType {
     }
   }
 
+  /**
+   * Internal value to string.
+   *
+   * @param <T> the generic type
+   * @param value the value
+   * @param literalKind the literal kind
+   * @param facets the facets
+   * @return the string
+   * @throws EdmSimpleTypeException the edm simple type exception
+   */
   @Override
   protected <T> String internalValueToString(final T value, final EdmLiteralKind literalKind, final EdmFacets facets)
       throws EdmSimpleTypeException {
@@ -173,6 +210,13 @@ public class EdmDateTimeOffset extends AbstractSimpleType {
     }
   }
 
+  /**
+   * To uri literal.
+   *
+   * @param literal the literal
+   * @return the string
+   * @throws EdmSimpleTypeException the edm simple type exception
+   */
   @Override
   public String toUriLiteral(final String literal) throws EdmSimpleTypeException {
     return "datetimeoffset'" + literal + "'";

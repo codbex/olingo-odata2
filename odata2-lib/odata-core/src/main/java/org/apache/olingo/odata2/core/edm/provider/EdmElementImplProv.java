@@ -25,14 +25,28 @@ import org.apache.olingo.odata2.api.edm.EdmMapping;
 import org.apache.olingo.odata2.api.edm.EdmMultiplicity;
 import org.apache.olingo.odata2.api.edm.FullQualifiedName;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class EdmElementImplProv.
  */
 public abstract class EdmElementImplProv extends EdmTypedImplProv implements EdmElement {
 
+  /** The edm facets. */
   private EdmFacets edmFacets;
+  
+  /** The edm mapping. */
   private EdmMapping edmMapping;
 
+  /**
+   * Instantiates a new edm element impl prov.
+   *
+   * @param edm the edm
+   * @param name the name
+   * @param typeName the type name
+   * @param edmFacets the edm facets
+   * @param edmMapping the edm mapping
+   * @throws EdmException the edm exception
+   */
   public EdmElementImplProv(final EdmImplProv edm, final String name, final FullQualifiedName typeName,
       final EdmFacets edmFacets, final EdmMapping edmMapping) throws EdmException {
     super(edm, name, typeName, (edmFacets == null || edmFacets.isNullable() == null) || edmFacets.isNullable()
@@ -41,11 +55,23 @@ public abstract class EdmElementImplProv extends EdmTypedImplProv implements Edm
     this.edmMapping = edmMapping;
   }
 
+  /**
+   * Gets the mapping.
+   *
+   * @return the mapping
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmMapping getMapping() throws EdmException {
     return edmMapping;
   }
 
+  /**
+   * Gets the facets.
+   *
+   * @return the facets
+   * @throws EdmException the edm exception
+   */
   @Override
   public EdmFacets getFacets() throws EdmException {
     return edmFacets;

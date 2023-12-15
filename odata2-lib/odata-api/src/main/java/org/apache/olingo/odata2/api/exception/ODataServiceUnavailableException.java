@@ -20,29 +20,55 @@ package org.apache.olingo.odata2.api.exception;
 
 import org.apache.olingo.odata2.api.commons.HttpStatusCodes;
 
+// TODO: Auto-generated Javadoc
 /**
- * Exceptions of this class will result in a HTTP status 503 service unavailable
- * 
+ * Exceptions of this class will result in a HTTP status 503 service unavailable.
  */
 public class ODataServiceUnavailableException extends ODataHttpException {
 
+  /** The Constant serialVersionUID. */
   private static final long serialVersionUID = 1L;
 
+  /** The Constant COMMON. */
   public static final MessageReference COMMON =
       createMessageReference(ODataServiceUnavailableException.class, "COMMON");
 
+  /**
+   * Instantiates a new o data service unavailable exception.
+   *
+   * @param context the context
+   */
   public ODataServiceUnavailableException(final MessageReference context) {
     super(context, HttpStatusCodes.SERVICE_UNAVAILABLE);
   }
 
+  /**
+   * Instantiates a new o data service unavailable exception.
+   *
+   * @param context the context
+   * @param cause the cause
+   */
   public ODataServiceUnavailableException(final MessageReference context, final Throwable cause) {
     super(context, cause, HttpStatusCodes.SERVICE_UNAVAILABLE);
   }
 
+  /**
+   * Instantiates a new o data service unavailable exception.
+   *
+   * @param context the context
+   * @param errorCode the error code
+   */
   public ODataServiceUnavailableException(final MessageReference context, final String errorCode) {
     super(context, HttpStatusCodes.SERVICE_UNAVAILABLE, errorCode);
   }
 
+  /**
+   * Instantiates a new o data service unavailable exception.
+   *
+   * @param context the context
+   * @param cause the cause
+   * @param errorCode the error code
+   */
   public ODataServiceUnavailableException(final MessageReference context, final Throwable cause,
       final String errorCode) {
     super(context, cause, HttpStatusCodes.SERVICE_UNAVAILABLE, errorCode);

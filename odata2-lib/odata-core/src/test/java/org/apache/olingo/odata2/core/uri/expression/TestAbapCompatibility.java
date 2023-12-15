@@ -36,14 +36,16 @@ import org.apache.olingo.odata2.core.edm.EdmTime;
 import org.apache.olingo.odata2.core.edm.Uint7;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *
  * Differences to ABAP Parser - for $orderBy it the sortorder (asc/desc) not case insensitive
- * anymore, so ASC/DESC is not allowed
- *
+ * anymore, so ASC/DESC is not allowed.
  */
 public class TestAbapCompatibility extends TestBase {
 
+    /**
+     * Null tests.
+     */
     @Test
     public void nullTests() {
 
@@ -299,6 +301,9 @@ public class TestAbapCompatibility extends TestBase {
 
     }
 
+    /**
+     * Abap test parameter promotion.
+     */
     @Test
     public void abapTestParameterPromotion() // copy of ABAP method test_parameter_promotion
     {
@@ -471,6 +476,9 @@ public class TestAbapCompatibility extends TestBase {
         GetPTF("replace('aBa','B','CCC')").aEdmType(EdmString.getInstance());
     }
 
+    /**
+     * Abap test order by parser.
+     */
     @Test
     public void abapTestOrderByParser() // copy of ABAP method test_orderby_parser
     {
@@ -516,6 +524,9 @@ public class TestAbapCompatibility extends TestBase {
 
     }
 
+    /**
+     * Abap test filter parser.
+     */
     @Test
     public void abapTestFilterParser() { // copy of ABAP method test_filter_parser
         // lcl_helper=>veri_expression( iv_expression = 'W/X' iv_expected = '{W/X}' ).

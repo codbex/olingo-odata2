@@ -38,14 +38,29 @@ import org.apache.olingo.odata2.core.ep.AbstractXmlProducerTestHelper;
 import org.junit.Before;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ServiceDocumentProducerTest.
+ */
 public class ServiceDocumentProducerTest extends AbstractXmlProducerTestHelper {
 
+  /** The edm. */
   private EdmImplProv edm;
 
+  /**
+   * Instantiates a new service document producer test.
+   *
+   * @param type the type
+   */
   public ServiceDocumentProducerTest(final StreamWriterImplType type) {
     super(type);
   }
 
+  /**
+   * Before.
+   *
+   * @throws ODataException the o data exception
+   */
   @Before
   public void before() throws ODataException {
     EdmProvider edmProvider = mock(EdmProvider.class);
@@ -67,6 +82,12 @@ public class ServiceDocumentProducerTest extends AbstractXmlProducerTestHelper {
 
   }
 
+  /**
+   * Test service document xml.
+   *
+   * @throws EntityProviderException the entity provider exception
+   * @throws ODataException the o data exception
+   */
   @Test
   public void testServiceDocumentXml() throws EntityProviderException, ODataException {
     ODataResponse response =

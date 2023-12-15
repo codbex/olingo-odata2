@@ -22,11 +22,12 @@ import java.util.List;
 
 import org.apache.olingo.odata2.api.edm.Edm;
 
+// TODO: Auto-generated Javadoc
 /**
- * @org.apache.olingo.odata2.DoNotImplement
- * Entity Data Model (EDM)
+ * The Interface ClientEdm.
+ *
+ * @org.apache.olingo.odata2.DoNotImplement Entity Data Model (EDM)
  * <p>Interface representing a Entity Data Model as described in the Conceptual Schema Definition.
- * 
  */
 public interface ClientEdm extends Edm{
 

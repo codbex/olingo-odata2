@@ -20,23 +20,28 @@ package org.apache.olingo.odata2.api.uri.expression;
 
 import org.apache.olingo.odata2.api.edm.EdmType;
 
+// TODO: Auto-generated Javadoc
 /**
  * Parent class of all classes used to build the expression tree
  * <br>
  * <br>
  * <p>This interface defines the default methods for all expression tree nodes
  * <br>
- * <br>
- * 
+ * <br>.
  */
 public interface CommonExpression extends Visitable {
+  
   /**
+   * Gets the kind.
+   *
    * @return Kind of this expression
    * @see ExpressionKind
    */
   ExpressionKind getKind();
 
   /**
+   * Gets the edm type.
+   *
    * @return The return type of the value represented with
    * this expression. For example the {@link #getEdmType()} method
    * for an expression representing the "concat" method will return always
@@ -57,7 +62,8 @@ public interface CommonExpression extends Visitable {
   EdmType getEdmType();
 
   /**
-   * Set the edmType of this expression node
+   * Set the edmType of this expression node.
+   *
    * @param edmType Type to be set
    * @return A self reference for method chaining"
    */

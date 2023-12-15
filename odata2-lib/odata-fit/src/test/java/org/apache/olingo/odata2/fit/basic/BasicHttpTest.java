@@ -49,15 +49,27 @@ import org.apache.olingo.odata2.testutil.server.ServletType;
 import org.junit.Test;
 import jakarta.ws.rs.HttpMethod;
 
+// TODO: Auto-generated Javadoc
 /**
- *
+ * The Class BasicHttpTest.
  */
 public class BasicHttpTest extends AbstractBasicTest {
 
+    /**
+     * Instantiates a new basic http test.
+     *
+     * @param servletType the servlet type
+     */
     public BasicHttpTest(final ServletType servletType) {
         super(servletType);
     }
 
+    /**
+     * Creates the processor.
+     *
+     * @return the o data single processor
+     * @throws ODataException the o data exception
+     */
     @Override
     protected ODataSingleProcessor createProcessor() throws ODataException {
         final ODataSingleProcessor processor = mock(ODataSingleProcessor.class);
@@ -72,6 +84,12 @@ public class BasicHttpTest extends AbstractBasicTest {
         return processor;
     }
 
+    /**
+     * Gets the service document.
+     *
+     * @return the service document
+     * @throws Exception the exception
+     */
     @Test
     public void getServiceDocument() throws Exception {
         final HttpResponse response = executeGetRequest("/");
@@ -81,6 +99,12 @@ public class BasicHttpTest extends AbstractBasicTest {
                                                                                   .getContent()));
     }
 
+    /**
+     * Gets the service document with redirect.
+     *
+     * @return the service document with redirect
+     * @throws Exception the exception
+     */
     @Test
     public void getServiceDocumentWithRedirect() throws Exception {
         final HttpResponse response = executeGetRequest("");
@@ -90,6 +114,11 @@ public class BasicHttpTest extends AbstractBasicTest {
                                                                                   .getContent()));
     }
 
+    /**
+     * Gets the.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void get() throws Exception {
         HttpResponse response = executeGetRequest("$metadata");
@@ -114,6 +143,11 @@ public class BasicHttpTest extends AbstractBasicTest {
                                                                           .getStatusCode());
     }
 
+    /**
+     * Head.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void head() throws Exception {
         HttpResponse response = executeHeadRequest("/");
@@ -140,6 +174,11 @@ public class BasicHttpTest extends AbstractBasicTest {
     }
 
 
+    /**
+     * Put.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void put() throws Exception {
         final HttpPut put = new HttpPut(URI.create(getEndpoint().toString() + "aaa/bbb/ccc"));
@@ -152,6 +191,11 @@ public class BasicHttpTest extends AbstractBasicTest {
         assertTrue(payload.contains("error"));
     }
 
+    /**
+     * Put with content.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void putWithContent() throws Exception {
         final HttpPut put = new HttpPut(URI.create(getEndpoint().toString()));
@@ -169,6 +213,11 @@ public class BasicHttpTest extends AbstractBasicTest {
         assertTrue(payload.contains("error"));
     }
 
+    /**
+     * Post method not allowed with content.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void postMethodNotAllowedWithContent() throws Exception {
         final HttpPost post = new HttpPost(URI.create(getEndpoint().toString()));
@@ -186,6 +235,11 @@ public class BasicHttpTest extends AbstractBasicTest {
         assertTrue(payload.contains("error"));
     }
 
+    /**
+     * Post not found.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void postNotFound() throws Exception {
         final HttpPost post = new HttpPost(URI.create(getEndpoint().toString() + "aaa/bbb/ccc"));
@@ -198,6 +252,11 @@ public class BasicHttpTest extends AbstractBasicTest {
         assertTrue(payload.contains("error"));
     }
 
+    /**
+     * Delete.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void delete() throws Exception {
         final HttpDelete delete = new HttpDelete(URI.create(getEndpoint().toString() + "aaa/bbb/ccc"));
@@ -210,6 +269,11 @@ public class BasicHttpTest extends AbstractBasicTest {
         assertTrue(payload.contains("error"));
     }
 
+    /**
+     * Merge.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void merge() throws Exception {
         final HttpMerge merge = new HttpMerge(URI.create(getEndpoint().toString() + "aaa/bbb/ccc"));
@@ -222,6 +286,11 @@ public class BasicHttpTest extends AbstractBasicTest {
         assertTrue(payload.contains("error"));
     }
 
+    /**
+     * Patch.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void patch() throws Exception {
         HttpPatch get = new HttpPatch(URI.create(getEndpoint().toString() + "aaa/bbb/ccc"));
@@ -234,6 +303,11 @@ public class BasicHttpTest extends AbstractBasicTest {
         assertTrue(payload.contains("error"));
     }
 
+    /**
+     * Unsupported method.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void unsupportedMethod() throws Exception {
         URI endpoint = getEndpoint();
@@ -244,6 +318,11 @@ public class BasicHttpTest extends AbstractBasicTest {
                                                                         .getStatusCode());
     }
 
+    /**
+     * Unknown method.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void unknownMethod() throws Exception {
         HttpSomethingUnsupported request = new HttpSomethingUnsupported(getEndpoint() + "aaa/bbb/ccc");
@@ -252,6 +331,11 @@ public class BasicHttpTest extends AbstractBasicTest {
                                                                               .getStatusCode());
     }
 
+    /**
+     * Tunneled by post.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void tunneledByPost() throws Exception {
         tunnelPost("X-HTTP-Method", ODataHttpMethod.MERGE);
@@ -271,10 +355,25 @@ public class BasicHttpTest extends AbstractBasicTest {
         tunnelPost("X-HTTP-Method-Override", "HEAD", HttpStatusCodes.NOT_FOUND);
     }
 
+    /**
+     * Tunnel post.
+     *
+     * @param header the header
+     * @param method the method
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     private void tunnelPost(final String header, final ODataHttpMethod method) throws IOException {
         tunnelPost(header, method.toString(), HttpStatusCodes.NOT_FOUND);
     }
 
+    /**
+     * Tunnel post.
+     *
+     * @param header the header
+     * @param method the method
+     * @param expectedStatus the expected status
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     private void tunnelPost(final String header, final String method, final HttpStatusCodes expectedStatus) throws IOException {
         HttpPost post = new HttpPost(URI.create(getEndpoint().toString() + "aaa/bbb/ccc"));
         post.setHeader(header, method);
@@ -287,6 +386,11 @@ public class BasicHttpTest extends AbstractBasicTest {
         assertTrue(payload.contains("error"));
     }
 
+    /**
+     * Tunneled bad request.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void tunneledBadRequest() throws Exception {
         final HttpPost post = new HttpPost(URI.create(getEndpoint().toString() + "aaa/bbb/ccc"));
@@ -301,22 +405,44 @@ public class BasicHttpTest extends AbstractBasicTest {
         assertTrue(payload.contains("error"));
     }
 
+    /**
+     * Tunneled unsupported method.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void tunneledUnsupportedMethod() throws Exception {
         tunnelPost("X-HTTP-Method", HttpMethod.OPTIONS, HttpStatusCodes.NOT_IMPLEMENTED);
         tunnelPost("X-HTTP-Method-Override", HttpMethod.OPTIONS, HttpStatusCodes.NOT_IMPLEMENTED);
     }
 
+    /**
+     * Tunneled unknown method.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void tunneledUnknownMethod() throws Exception {
         tunnelPost("X-HTTP-Method", "xxx", HttpStatusCodes.NOT_IMPLEMENTED);
     }
 
+    /**
+     * Tunneled unknown method override.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void tunneledUnknownMethodOverride() throws Exception {
         tunnelPost("X-HTTP-Method-Override", "xxx", HttpStatusCodes.NOT_IMPLEMENTED);
     }
 
+    /**
+     * Execute head request.
+     *
+     * @param request the request
+     * @return the http response
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     protected HttpResponse executeHeadRequest(final String request) throws IOException {
         final HttpHead head = new HttpHead(URI.create(getEndpoint().toString() + request));
         return getHttpClient().execute(head);

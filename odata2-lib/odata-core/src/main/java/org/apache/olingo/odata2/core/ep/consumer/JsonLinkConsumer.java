@@ -30,18 +30,20 @@ import org.apache.olingo.odata2.core.ep.util.FormatJson;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class JsonLinkConsumer.
  */
 public class JsonLinkConsumer {
 
   /**
    * Reads single link with format <code>{"d":{"uri":"http://somelink"}}</code>
    * or <code>{"uri":"http://somelink"}</code>.
-   * @param reader
-   * @param entitySet
+   *
+   * @param reader the reader
+   * @param entitySet the entity set
    * @return link as string object
-   * @throws EntityProviderException
+   * @throws EntityProviderException the entity provider exception
    */
   public String readLink(final JsonReader reader, final EdmEntitySet entitySet) throws EntityProviderException {
     try {
@@ -80,10 +82,11 @@ public class JsonLinkConsumer {
    * Reads a collection of links, optionally wrapped in a "d" object,
    * and optionally wrapped in an "results" object, where an additional "__count"
    * object could appear on the same level as the "results".
-   * @param reader
-   * @param entitySet
+   *
+   * @param reader the reader
+   * @param entitySet the entity set
    * @return links as List of Strings
-   * @throws EntityProviderException
+   * @throws EntityProviderException the entity provider exception
    */
   public List<String> readLinks(final JsonReader reader, final EdmEntitySet entitySet) throws EntityProviderException {
     List<String> links = null;
@@ -142,6 +145,14 @@ public class JsonLinkConsumer {
     return links;
   }
 
+  /**
+   * Read links array.
+   *
+   * @param reader the reader
+   * @return the list
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws EntityProviderException the entity provider exception
+   */
   private List<String> readLinksArray(final JsonReader reader) throws IOException, EntityProviderException {
     List<String> links = new ArrayList<String>();
 

@@ -18,6 +18,7 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.client.api.edm;
 
+// TODO: Auto-generated Javadoc
 /**
  * Objects of this class represent the data service. They contain all schemas of the EDM as well as the
  * dataServiceVersion
@@ -25,14 +26,20 @@ package org.apache.olingo.odata2.client.api.edm;
  */
 public class EdmDataServices {
 
+  /** The edm. */
   private ClientEdm edm;
+  
+  /** The data service version. */
   private String dataServiceVersion;
+  
+  /** The custom edmx version. */
   private String customEdmxVersion;
 
  
   /**
-   * Sets the Edm for this {@link EdmDataServices}
-   * @param edm
+   * Sets the Edm for this {@link EdmDataServices}.
+   *
+   * @param edm the edm
    * @return {@link EdmDataServices} for method chaining
    */
   public EdmDataServices setClientEdm(final ClientEdm edm) {
@@ -42,8 +49,9 @@ public class EdmDataServices {
 
 
   /**
-   * Sets the data service version for this {@link EdmDataServices}
-   * @param dataServiceVersion
+   * Sets the data service version for this {@link EdmDataServices}.
+   *
+   * @param dataServiceVersion the data service version
    * @return {@link EdmDataServices} for method chaining
    */
   public EdmDataServices setDataServiceVersion(final String dataServiceVersion) {
@@ -53,8 +61,9 @@ public class EdmDataServices {
 
   
   /**
-   * Sets a custom edmx version which is used in the metadata document
-   * @param customEdmxVersion
+   * Sets a custom edmx version which is used in the metadata document.
+   *
+   * @param customEdmxVersion the custom edmx version
    * @return {@link ComplexType} for method chaining
    */
   public EdmDataServices setCustomEdmxVersion(String customEdmxVersion) {
@@ -63,6 +72,8 @@ public class EdmDataServices {
   }
 
   /**
+   * Gets the data service version.
+   *
    * @return <b>String</b> data service version
    */
   public String getDataServiceVersion() {
@@ -70,6 +81,8 @@ public class EdmDataServices {
   }
 
   /**
+   * Gets the custom edmx version.
+   *
    * @return <b>String</b> custom edmx version
    */
   public String getCustomEdmxVersion() {
@@ -77,6 +90,8 @@ public class EdmDataServices {
   }
   
   /**
+   * Gets the edm.
+   *
    * @return <b>Edm</b> edm
    */
   public ClientEdm getEdm() {

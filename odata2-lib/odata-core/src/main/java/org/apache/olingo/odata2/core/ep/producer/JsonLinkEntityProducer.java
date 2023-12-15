@@ -29,18 +29,34 @@ import org.apache.olingo.odata2.core.ep.aggregator.EntityInfoAggregator;
 import org.apache.olingo.odata2.core.ep.util.FormatJson;
 import org.apache.olingo.odata2.core.ep.util.JsonStreamWriter;
 
+// TODO: Auto-generated Javadoc
 /**
  * Producer for writing a link in JSON.
  * 
  */
 public class JsonLinkEntityProducer {
 
+  /** The properties. */
   private final EntityProviderWriteProperties properties;
 
+  /**
+   * Instantiates a new json link entity producer.
+   *
+   * @param properties the properties
+   * @throws EntityProviderException the entity provider exception
+   */
   public JsonLinkEntityProducer(final EntityProviderWriteProperties properties) throws EntityProviderException {
     this.properties = properties == null ? EntityProviderWriteProperties.serviceRoot(null).build() : properties;
   }
 
+  /**
+   * Append.
+   *
+   * @param writer the writer
+   * @param entityInfo the entity info
+   * @param data the data
+   * @throws EntityProviderException the entity provider exception
+   */
   public void append(final Writer writer, final EntityInfoAggregator entityInfo, final Map<String, Object> data)
       throws EntityProviderException {
     JsonStreamWriter jsonStreamWriter = new JsonStreamWriter(writer);
@@ -62,6 +78,13 @@ public class JsonLinkEntityProducer {
     }
   }
 
+  /**
+   * Append uri.
+   *
+   * @param jsonStreamWriter the json stream writer
+   * @param uri the uri
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   protected static void appendUri(final JsonStreamWriter jsonStreamWriter, final String uri) throws IOException {
     jsonStreamWriter.beginObject()
         .namedStringValue(FormatJson.URI, uri)

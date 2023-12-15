@@ -32,11 +32,17 @@ import org.apache.olingo.odata2.client.api.ep.EntitySerializerProperties;
 import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class SerializerPropertiesTest.
  */
 public class SerializerPropertiesTest extends BaseTest {
 
+  /**
+   * Builds the feed properties.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void buildFeedProperties() throws Exception {
     URI serviceRoot = new URI("http://localhost:80/");
@@ -46,6 +52,11 @@ public class SerializerPropertiesTest extends BaseTest {
     assertEquals("Wrong base uri.", "http://localhost:80/", properties.getServiceRoot().toASCIIString());
    }
 
+  /**
+   * Builds the properties default.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void buildPropertiesDefault() throws Exception {
     URI serviceRoot = new URI("http://localhost:80/");
@@ -56,6 +67,11 @@ public class SerializerPropertiesTest extends BaseTest {
     assertTrue(properties.isValidatingFacets());
   }
 
+  /**
+   * Builds the properties all set.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void buildPropertiesAllSet() throws Exception {
     URI serviceRoot = new URI("http://localhost:80/");
@@ -72,6 +88,11 @@ public class SerializerPropertiesTest extends BaseTest {
     assertFalse("validating facets should be not set", properties.isValidatingFacets());
   }
 
+  /**
+   * Builds the properties for entity collection all set.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void buildPropertiesForEntityCollectionAllSet() throws Exception {
     URI serviceRoot = new URI("http://localhost:80/");

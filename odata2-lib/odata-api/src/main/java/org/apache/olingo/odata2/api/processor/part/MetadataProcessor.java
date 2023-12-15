@@ -23,6 +23,7 @@ import org.apache.olingo.odata2.api.processor.ODataProcessor;
 import org.apache.olingo.odata2.api.processor.ODataResponse;
 import org.apache.olingo.odata2.api.uri.info.GetMetadataUriInfo;
 
+// TODO: Auto-generated Javadoc
 /**
  * Execute a OData metadata request.
  * 
@@ -31,9 +32,12 @@ import org.apache.olingo.odata2.api.uri.info.GetMetadataUriInfo;
 public interface MetadataProcessor extends ODataProcessor {
 
   /**
-   * @param contentType
+   * Read metadata.
+   *
+   * @param uriInfo the uri info
+   * @param contentType the content type
    * @return a {@link ODataResponse} object
-   * @throws ODataException
+   * @throws ODataException the o data exception
    */
   ODataResponse readMetadata(GetMetadataUriInfo uriInfo, String contentType) throws ODataException;
 

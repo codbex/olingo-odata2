@@ -29,19 +29,39 @@ import org.apache.olingo.odata2.api.edm.EdmFacets;
 import org.apache.olingo.odata2.api.edm.EdmProperty;
 import org.apache.olingo.odata2.api.edm.EdmType;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
+ * The Class EntityComplexPropertyInfo.
  */
 public class EntityComplexPropertyInfo extends EntityPropertyInfo {
 
+  /** The entity property info. */
   protected List<EntityPropertyInfo> entityPropertyInfo;
 
+  /**
+   * Instantiates a new entity complex property info.
+   *
+   * @param name the name
+   * @param type the type
+   * @param facets the facets
+   * @param customizableFeedMapping the customizable feed mapping
+   * @param childEntityInfos the child entity infos
+   */
   EntityComplexPropertyInfo(final String name, final EdmType type, final EdmFacets facets,
       final EdmCustomizableFeedMappings customizableFeedMapping, final List<EntityPropertyInfo> childEntityInfos) {
     super(name, type, facets, customizableFeedMapping, null, null);
     entityPropertyInfo = childEntityInfos;
   }
 
+  /**
+   * Creates the.
+   *
+   * @param property the property
+   * @param propertyNames the property names
+   * @param childEntityInfos the child entity infos
+   * @return the entity complex property info
+   * @throws EdmException the edm exception
+   */
   static EntityComplexPropertyInfo create(final EdmProperty property, final List<String> propertyNames,
       final Map<String, EntityPropertyInfo> childEntityInfos) throws EdmException {
     List<EntityPropertyInfo> childEntityInfoList = new ArrayList<EntityPropertyInfo>(childEntityInfos.size());
@@ -58,15 +78,31 @@ public class EntityComplexPropertyInfo extends EntityPropertyInfo {
     return info;
   }
 
+  /**
+   * Checks if is complex.
+   *
+   * @return true, if is complex
+   */
   @Override
   public boolean isComplex() {
     return true;
   }
 
+  /**
+   * Gets the property infos.
+   *
+   * @return the property infos
+   */
   public List<EntityPropertyInfo> getPropertyInfos() {
     return Collections.unmodifiableList(entityPropertyInfo);
   }
 
+  /**
+   * Gets the property info.
+   *
+   * @param name the name
+   * @return the property info
+   */
   public EntityPropertyInfo getPropertyInfo(final String name) {
     for (EntityPropertyInfo info : entityPropertyInfo) {
       if (info.getName().equals(name)) {
@@ -76,6 +112,11 @@ public class EntityComplexPropertyInfo extends EntityPropertyInfo {
     return null;
   }
 
+  /**
+   * To string.
+   *
+   * @return the string
+   */
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();

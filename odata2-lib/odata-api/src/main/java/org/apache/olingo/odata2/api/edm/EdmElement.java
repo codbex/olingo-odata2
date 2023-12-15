@@ -18,19 +18,20 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.edm;
 
+// TODO: Auto-generated Javadoc
 /**
- * @org.apache.olingo.odata2.DoNotImplement
- * EdmElement is the base interface for {@link EdmParameter} and {@link EdmProperty} and provides
+ * The Interface EdmElement.
+ *
+ * @org.apache.olingo.odata2.DoNotImplement EdmElement is the base interface for {@link EdmParameter} and {@link EdmProperty} and provides
  * the information by which facets further specialize the usage of the type.
- * 
  */
 public interface EdmElement extends EdmMappable, EdmTyped {
 
   /**
-   * Get the facet information for an element
-   * 
+   * Get the facet information for an element.
+   *
    * @return {@link EdmFacets}
-   * @throws EdmException
+   * @throws EdmException the edm exception
    */
   EdmFacets getFacets() throws EdmException;
 }

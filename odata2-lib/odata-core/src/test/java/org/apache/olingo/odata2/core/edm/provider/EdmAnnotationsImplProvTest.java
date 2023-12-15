@@ -33,11 +33,24 @@ import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.junit.Before;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EdmAnnotationsImplProvTest.
+ */
 public class EdmAnnotationsImplProvTest extends BaseTest {
 
+  /** The annotations provider. */
   private EdmAnnotationsImplProv annotationsProvider;
+  
+  /** The annotations provider with null eement and attributes. */
   private EdmAnnotationsImplProv annotationsProviderWithNullEementAndAttributes;
 
+  /**
+   * Gets the edm entity container impl.
+   *
+   * @return the edm entity container impl
+   * @throws Exception the exception
+   */
   @Before
   public void getEdmEntityContainerImpl() throws Exception {
 
@@ -57,6 +70,9 @@ public class EdmAnnotationsImplProvTest extends BaseTest {
     annotationsProviderWithNullEementAndAttributes = new EdmAnnotationsImplProv(null, null);
   }
 
+  /**
+   * Null elments and attributes.
+   */
   @Test
   public void nullElmentsAndAttributes() {
     assertNull(annotationsProviderWithNullEementAndAttributes.getAnnotationAttributes());
@@ -65,6 +81,9 @@ public class EdmAnnotationsImplProvTest extends BaseTest {
     assertNull(annotationsProviderWithNullEementAndAttributes.getAnnotationElement("name", "namespace"));
   }
 
+  /**
+   * Test attributes.
+   */
   @Test
   public void testAttributes() {
     List<? extends EdmAnnotationAttribute> annotations = annotationsProvider.getAnnotationAttributes();
@@ -80,6 +99,9 @@ public class EdmAnnotationsImplProvTest extends BaseTest {
     }
   }
 
+  /**
+   * Test attribute.
+   */
   @Test
   public void testAttribute() {
     EdmAnnotationAttribute attribute = annotationsProvider.getAnnotationAttribute("attributeName", "namespace");
@@ -89,6 +111,9 @@ public class EdmAnnotationsImplProvTest extends BaseTest {
     assertEquals("Text", attribute.getText());
   }
 
+  /**
+   * Test attribute null.
+   */
   @Test
   public void testAttributeNull() {
     EdmAnnotationAttribute attribute =
@@ -96,6 +121,9 @@ public class EdmAnnotationsImplProvTest extends BaseTest {
     assertNull(attribute);
   }
 
+  /**
+   * Test elements.
+   */
   @Test
   public void testElements() {
     List<? extends EdmAnnotationElement> annotations = annotationsProvider.getAnnotationElements();
@@ -111,6 +139,9 @@ public class EdmAnnotationsImplProvTest extends BaseTest {
     }
   }
 
+  /**
+   * Test element.
+   */
   @Test
   public void testElement() {
     EdmAnnotationElement element = annotationsProvider.getAnnotationElement("elementName", "namespace");
@@ -122,6 +153,9 @@ public class EdmAnnotationsImplProvTest extends BaseTest {
     assertNull(element.getChildElements());
   }
 
+  /**
+   * Test element null.
+   */
   @Test
   public void testElementNull() {
     EdmAnnotationElement element = annotationsProvider.getAnnotationElement("elementNameWrong", "namespaceWrong");

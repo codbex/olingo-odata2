@@ -21,15 +21,29 @@ import java.io.IOException;
 import java.io.InputStream;
 import javax.imageio.ImageIO;
 
+// TODO: Auto-generated Javadoc
 /**
- *
+ * The Class ResourceHelper.
  */
 public class ResourceHelper {
 
+    /**
+     * Load as byte.
+     *
+     * @param resource the resource
+     * @return the byte[]
+     */
     public static byte[] loadAsByte(final String resource) {
         return load(resource, new byte[0]);
     }
 
+    /**
+     * Load.
+     *
+     * @param resource the resource
+     * @param defaultResult the default result
+     * @return the byte[]
+     */
     public static byte[] load(final String resource, final byte[] defaultResult) {
         InputStream instream = null;
         try {
@@ -58,14 +72,36 @@ public class ResourceHelper {
         }
     }
 
+    /**
+     * The Enum Format.
+     */
     public enum Format {
-        BMP, JPEG, PNG, GIF
+        
+        /** The bmp. */
+        BMP, 
+ /** The jpeg. */
+ JPEG, 
+ /** The png. */
+ PNG, 
+ /** The gif. */
+ GIF
     }
 
+    /**
+     * Generate image.
+     *
+     * @return the byte[]
+     */
     public static byte[] generateImage() {
         return generateImage(Format.PNG);
     }
 
+    /**
+     * Generate image.
+     *
+     * @param format the format
+     * @return the byte[]
+     */
     public static byte[] generateImage(final Format format) {
         try {
             int width = 320;

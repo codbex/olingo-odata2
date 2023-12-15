@@ -37,6 +37,7 @@ import org.apache.olingo.odata2.core.ep.aggregator.EntityPropertyInfo;
 import org.apache.olingo.odata2.core.ep.util.FormatJson;
 import org.apache.olingo.odata2.core.ep.util.JsonStreamWriter;
 
+// TODO: Auto-generated Javadoc
 /**
  * Producer for writing a single simple or complex property in JSON, also usable
  * for function imports returning a single instance of a simple or complex type.
@@ -44,6 +45,14 @@ import org.apache.olingo.odata2.core.ep.util.JsonStreamWriter;
  */
 public class JsonPropertyEntityProducer {
 
+  /**
+   * Append.
+   *
+   * @param writer the writer
+   * @param propertyInfo the property info
+   * @param value the value
+   * @throws EntityProviderException the entity provider exception
+   */
   public void append(final Writer writer, final EntityPropertyInfo propertyInfo, final Object value)
       throws EntityProviderException {
     JsonStreamWriter jsonStreamWriter = new JsonStreamWriter(writer);
@@ -67,6 +76,18 @@ public class JsonPropertyEntityProducer {
     }
   }
 
+  /**
+   * Append property value.
+   *
+   * @param jsonStreamWriter the json stream writer
+   * @param propertyInfo the property info
+   * @param value the value
+   * @param validatingFacets the validating facets
+   * @param isDataBasedPropertySerialization the is data based property serialization
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws EdmException the edm exception
+   * @throws EntityProviderException the entity provider exception
+   */
   protected static void appendPropertyValue(final JsonStreamWriter jsonStreamWriter,
                                             final EntityPropertyInfo propertyInfo, final Object value,
                                             boolean validatingFacets,
@@ -133,6 +154,14 @@ public class JsonPropertyEntityProducer {
     }
   }
 
+  /**
+   * Append property metadata.
+   *
+   * @param jsonStreamWriter the json stream writer
+   * @param type the type
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws EdmException the edm exception
+   */
   protected static void appendPropertyMetadata(final JsonStreamWriter jsonStreamWriter, final EdmType type)
       throws IOException, EdmException {
     jsonStreamWriter.name(FormatJson.METADATA)

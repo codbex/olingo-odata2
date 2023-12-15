@@ -27,16 +27,35 @@ import org.apache.olingo.odata2.api.uri.expression.ExceptionVisitExpression;
 import org.apache.olingo.odata2.api.uri.expression.ExpressionKind;
 import org.apache.olingo.odata2.api.uri.expression.ExpressionVisitor;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class BinaryExpressionImpl.
  */
 public class BinaryExpressionImpl implements BinaryExpression {
+  
+  /** The operator info. */
   final protected InfoBinaryOperator operatorInfo;
+  
+  /** The left side. */
   final protected CommonExpression leftSide;
+  
+  /** The right side. */
   final protected CommonExpression rightSide;
+  
+  /** The token. */
   final protected Token token;
+  
+  /** The edm type. */
   protected EdmType edmType;
 
+  /**
+   * Instantiates a new binary expression impl.
+   *
+   * @param operatorInfo the operator info
+   * @param leftSide the left side
+   * @param rightSide the right side
+   * @param token the token
+   */
   public BinaryExpressionImpl(final InfoBinaryOperator operatorInfo, final CommonExpression leftSide,
       final CommonExpression rightSide, final Token token) {
     this.operatorInfo = operatorInfo;
@@ -46,42 +65,86 @@ public class BinaryExpressionImpl implements BinaryExpression {
     edmType = null;
   }
 
+  /**
+   * Gets the operator.
+   *
+   * @return the operator
+   */
   @Override
   public BinaryOperator getOperator() {
     return operatorInfo.getOperator();
   }
 
+  /**
+   * Gets the left operand.
+   *
+   * @return the left operand
+   */
   @Override
   public CommonExpression getLeftOperand() {
     return leftSide;
   }
 
+  /**
+   * Gets the right operand.
+   *
+   * @return the right operand
+   */
   @Override
   public CommonExpression getRightOperand() {
     return rightSide;
   }
 
+  /**
+   * Gets the edm type.
+   *
+   * @return the edm type
+   */
   @Override
   public EdmType getEdmType() {
     return edmType;
   }
 
+  /**
+   * Sets the edm type.
+   *
+   * @param edmType the edm type
+   * @return the common expression
+   */
   @Override
   public CommonExpression setEdmType(final EdmType edmType) {
     this.edmType = edmType;
     return this;
   }
 
+  /**
+   * Gets the kind.
+   *
+   * @return the kind
+   */
   @Override
   public ExpressionKind getKind() {
     return ExpressionKind.BINARY;
   }
 
+  /**
+   * Gets the uri literal.
+   *
+   * @return the uri literal
+   */
   @Override
   public String getUriLiteral() {
     return operatorInfo.getSyntax();
   }
 
+  /**
+   * Accept.
+   *
+   * @param visitor the visitor
+   * @return the object
+   * @throws ExceptionVisitExpression the exception visit expression
+   * @throws ODataApplicationException the o data application exception
+   */
   @Override
   public Object accept(final ExpressionVisitor visitor) throws ExceptionVisitExpression, ODataApplicationException {
     Object retLeftSide = leftSide.accept(visitor);
@@ -90,6 +153,11 @@ public class BinaryExpressionImpl implements BinaryExpression {
     return visitor.visitBinary(this, operatorInfo.getOperator(), retLeftSide, retRightSide);
   }
 
+  /**
+   * Gets the token.
+   *
+   * @return the token
+   */
   public Token getToken() {
     return token;
   }

@@ -24,13 +24,29 @@ import java.util.List;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AbstractXmlConsumerTest.
+ */
 @RunWith(Parameterized.class)
 public abstract class AbstractXmlConsumerTest extends AbstractConsumerTest {
 
+  /**
+   * The Enum StreamWriterImplType.
+   */
   public enum StreamWriterImplType {
-    WOODSTOCKIMPL, SUNINTERNALIMPL;
+    
+    /** The woodstockimpl. */
+    WOODSTOCKIMPL, 
+ /** The suninternalimpl. */
+ SUNINTERNALIMPL;
   }
 
+  /**
+   * Instantiates a new abstract xml consumer test.
+   *
+   * @param type the type
+   */
   // CHECKSTYLE:OFF
   public AbstractXmlConsumerTest(final StreamWriterImplType type) {
     switch (type) {
@@ -51,6 +67,11 @@ public abstract class AbstractXmlConsumerTest extends AbstractConsumerTest {
 
   // CHECKSTYLE:On
 
+  /**
+   * Data.
+   *
+   * @return the list
+   */
   @Parameterized.Parameters
   public static List<Object[]> data() {
     // If desired this can be made dependent on runtime variables

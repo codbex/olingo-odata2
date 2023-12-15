@@ -26,15 +26,34 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.regex.Pattern;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Header.
+ */
 public class Header implements Cloneable {
 
+  /** The headers. */
   private final Map<String, HeaderField> headers = new HashMap<String, HeaderField>();
+  
+  /** The line number. */
   private int lineNumber;
 
+  /**
+   * Instantiates a new header.
+   *
+   * @param lineNumer the line numer
+   */
   public Header(final int lineNumer) {
     lineNumber = lineNumer;
   }
 
+  /**
+   * Adds the header.
+   *
+   * @param name the name
+   * @param value the value
+   * @param lineNumber the line number
+   */
   public void addHeader(final String name, final String value, final int lineNumber) {
     final HeaderField headerField = getHeaderFieldOrDefault(name, lineNumber);
     final List<String> headerValues = headerField.getValues();
@@ -44,6 +63,13 @@ public class Header implements Cloneable {
     }
   }
 
+  /**
+   * Adds the header.
+   *
+   * @param name the name
+   * @param values the values
+   * @param lineNumber the line number
+   */
   public void addHeader(final String name, final List<String> values, final int lineNumber) {
     final HeaderField headerField = getHeaderFieldOrDefault(name, lineNumber);
     final List<String> headerValues = headerField.getValues();
@@ -55,6 +81,13 @@ public class Header implements Cloneable {
     }
   }
 
+  /**
+   * Checks if is header matching.
+   *
+   * @param name the name
+   * @param pattern the pattern
+   * @return true, if is header matching
+   */
   public boolean isHeaderMatching(final String name, final Pattern pattern) {
     if (getHeaders(name).size() != 1) {
       return false;
@@ -63,36 +96,75 @@ public class Header implements Cloneable {
     }
   }
 
+  /**
+   * Removes the header.
+   *
+   * @param name the name
+   */
   public void removeHeader(final String name) {
     headers.remove(name.toLowerCase(Locale.ENGLISH));
   }
 
+  /**
+   * Gets the header.
+   *
+   * @param name the name
+   * @return the header
+   */
   public String getHeader(final String name) {
     final HeaderField headerField = getHeaderField(name);
 
     return (headerField == null) ? null : headerField.getValue();
   }
 
+  /**
+   * Gets the header not null.
+   *
+   * @param name the name
+   * @return the header not null
+   */
   public String getHeaderNotNull(final String name) {
     final HeaderField headerField = getHeaderField(name);
 
     return (headerField == null) ? "" : headerField.getValueNotNull();
   }
 
+  /**
+   * Gets the headers.
+   *
+   * @param name the name
+   * @return the headers
+   */
   public List<String> getHeaders(final String name) {
     final HeaderField headerField = getHeaderField(name);
 
     return (headerField == null) ? new ArrayList<String>() : headerField.getValues();
   }
 
+  /**
+   * Gets the header field.
+   *
+   * @param name the name
+   * @return the header field
+   */
   public HeaderField getHeaderField(final String name) {
     return headers.get(name.toLowerCase(Locale.ENGLISH));
   }
 
+  /**
+   * Gets the line number.
+   *
+   * @return the line number
+   */
   public int getLineNumber() {
     return lineNumber;
   }
 
+  /**
+   * To single map.
+   *
+   * @return the map
+   */
   public Map<String, String> toSingleMap() {
     final Map<String, String> singleMap = new HashMap<String, String>();
 
@@ -104,6 +176,11 @@ public class Header implements Cloneable {
     return singleMap;
   }
 
+  /**
+   * To multi map.
+   *
+   * @return the map
+   */
   public Map<String, List<String>> toMultiMap() {
     final Map<String, List<String>> singleMap = new HashMap<String, List<String>>();
 
@@ -115,6 +192,13 @@ public class Header implements Cloneable {
     return singleMap;
   }
 
+  /**
+   * Gets the header field or default.
+   *
+   * @param name the name
+   * @param lineNumber the line number
+   * @return the header field or default
+   */
   private HeaderField getHeaderFieldOrDefault(final String name, final int lineNumber) {
     HeaderField headerField = headers.get(name.toLowerCase(Locale.ENGLISH));
 
@@ -126,6 +210,11 @@ public class Header implements Cloneable {
     return headerField;
   }
 
+  /**
+   * Clone.
+   *
+   * @return the header
+   */
   @Override
   public Header clone() {
     final Header newInstance = new Header(lineNumber);
@@ -137,6 +226,12 @@ public class Header implements Cloneable {
     return newInstance;
   }
 
+  /**
+   * Split values by comma.
+   *
+   * @param headerValue the header value
+   * @return the list
+   */
   public static List<String> splitValuesByComma(final String headerValue) {
     final List<String> singleValues = new ArrayList<String>();
 
@@ -148,29 +243,66 @@ public class Header implements Cloneable {
     return singleValues;
   }
 
+  /**
+   * The Class HeaderField.
+   */
   public static class HeaderField implements Cloneable {
+    
+    /** The field name. */
     private final String fieldName;
+    
+    /** The values. */
     private final List<String> values;
+    
+    /** The line number. */
     private final int lineNumber;
 
+    /**
+     * Instantiates a new header field.
+     *
+     * @param fieldName the field name
+     * @param lineNumber the line number
+     */
     public HeaderField(final String fieldName, final int lineNumber) {
       this(fieldName, new ArrayList<String>(), lineNumber);
     }
 
+    /**
+     * Instantiates a new header field.
+     *
+     * @param fieldName the field name
+     * @param values the values
+     * @param lineNumber the line number
+     */
     public HeaderField(final String fieldName, final List<String> values, final int lineNumber) {
       this.fieldName = fieldName;
       this.values = values;
       this.lineNumber = lineNumber;
     }
 
+    /**
+     * Gets the field name.
+     *
+     * @return the field name
+     */
     public String getFieldName() {
       return fieldName;
     }
 
+    /**
+     * Gets the values.
+     *
+     * @return the values
+     */
     public List<String> getValues() {
       return values;
     }
 
+    /**
+     * Gets the value.
+     *
+     * @return the value
+     */
     public String getValue() {
       final StringBuilder result = new StringBuilder();
 
@@ -186,12 +318,22 @@ public class Header implements Cloneable {
       return result.toString();
     }
 
+    /**
+     * Gets the value not null.
+     *
+     * @return the value not null
+     */
     public String getValueNotNull() {
       final String value = getValue();
 
       return (value == null) ? "" : value;
     }
 
+    /**
+     * Clone.
+     *
+     * @return the header field
+     */
     @Override
     public HeaderField clone() {
       List<String> newValues = new ArrayList<String>();
@@ -200,10 +342,20 @@ public class Header implements Cloneable {
       return new HeaderField(fieldName, newValues, lineNumber);
     }
 
+    /**
+     * Gets the line number.
+     *
+     * @return the line number
+     */
     public int getLineNumber() {
       return lineNumber;
     }
 
+    /**
+     * Hash code.
+     *
+     * @return the int
+     */
     @Override
     public int hashCode() {
       final int prime = 31;
@@ -214,6 +366,12 @@ public class Header implements Cloneable {
       return result;
     }
 
+    /**
+     * Equals.
+     *
+     * @param obj the obj
+     * @return true, if successful
+     */
     @Override
     public boolean equals(final Object obj) {
       if (this == obj) {

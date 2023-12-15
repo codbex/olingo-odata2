@@ -42,23 +42,59 @@ import org.apache.olingo.odata2.api.edm.provider.SimpleProperty;
 import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmMapping;
 import org.apache.olingo.odata2.jpa.processor.core.model.JPAEdmMappingImpl;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EdmSchemaMock.
+ */
 public class EdmSchemaMock {
 
+  /** The Constant ASSOCIATION_ROLE_NAME_ONE. */
   private static final String ASSOCIATION_ROLE_NAME_ONE = "SalesOrderHeader";
+  
+  /** The Constant ASSOCIATION_NAME. */
   private static final String ASSOCIATION_NAME = "SalesOrderHeader_SalesOrderItem";
+  
+  /** The Constant ASSOCIATION_SET_NAME. */
   private static final String ASSOCIATION_SET_NAME = "SalesOrderHeader_SalesOrderItemSet";
+  
+  /** The Constant ASSOCIATION_ROLE_NAME_TWO. */
   private static final String ASSOCIATION_ROLE_NAME_TWO = "SalesOrderItem";
+  
+  /** The Constant NAMESPACE. */
   private static final String NAMESPACE = "salesorderprocessing";
+  
+  /** The Constant ENTITY_CONTAINER_NAME. */
   private static final String ENTITY_CONTAINER_NAME = "salesorderprocessingContainer";
+  
+  /** The Constant ENTITY_NAME_ONE. */
   private static final String ENTITY_NAME_ONE = "SalesOrderHeader";
+  
+  /** The Constant ENTITY_NAME_TWO. */
   private static final String ENTITY_NAME_TWO = "SalesOrderItem";
+  
+  /** The Constant ENTITY_SET_NAME_ONE. */
   private static final String ENTITY_SET_NAME_ONE = "SalesOrderHeaders";
+  
+  /** The Constant FUNCTION_IMPORT_NAME_ONE. */
   private static final String FUNCTION_IMPORT_NAME_ONE = "SalesOrder_FunctionImport1";
+  
+  /** The Constant FUNCTION_IMPORT_NAME_TWO. */
   private static final String FUNCTION_IMPORT_NAME_TWO = "SalesOrder_FunctionImport2";
+  
+  /** The Constant ENTITY_SET_NAME_TWO. */
   private static final String ENTITY_SET_NAME_TWO = "SalesOrderItems";
+  
+  /** The Constant COMPLEX_TYPE_NAME_ONE. */
   private static final String COMPLEX_TYPE_NAME_ONE = "Address";
+  
+  /** The Constant COMPLEX_TYPE_NAME_TWO. */
   private static final String COMPLEX_TYPE_NAME_TWO = "SalesOrderItemKey";
 
+  /**
+   * Creates the mock edm schema.
+   *
+   * @return the schema
+   */
   public static Schema createMockEdmSchema() {
     Schema schema = new Schema();
     schema.setNamespace(NAMESPACE);
@@ -69,6 +105,11 @@ public class EdmSchemaMock {
     return schema;
   }
 
+  /**
+   * Creates the entity container.
+   *
+   * @return the list
+   */
   private static List<EntityContainer> createEntityContainer() {
     List<EntityContainer> entityContainers = new ArrayList<EntityContainer>();
     EntityContainer entityContainer = new EntityContainer();
@@ -81,6 +122,11 @@ public class EdmSchemaMock {
     return entityContainers;
   }
 
+  /**
+   * Creates the association sets.
+   *
+   * @return the list
+   */
   private static List<AssociationSet> createAssociationSets() {
     List<AssociationSet> associationSets = new ArrayList<AssociationSet>();
     AssociationSet associationSet = new AssociationSet();
@@ -94,6 +140,11 @@ public class EdmSchemaMock {
     return associationSets;
   }
 
+  /**
+   * Creates the entity sets.
+   *
+   * @return the list
+   */
   private static List<EntitySet> createEntitySets() {
     List<EntitySet> entitySets = new ArrayList<EntitySet>();
     EntitySet entitySet = new EntitySet();
@@ -107,6 +158,11 @@ public class EdmSchemaMock {
     return entitySets;
   }
 
+  /**
+   * Creates the function imports.
+   *
+   * @return the list
+   */
   private static List<FunctionImport> createFunctionImports() {
     List<FunctionImport> functionImports = new ArrayList<FunctionImport>();
     FunctionImport functionImport = new FunctionImport();
@@ -118,6 +174,11 @@ public class EdmSchemaMock {
     return functionImports;
   }
 
+  /**
+   * Creates the associations.
+   *
+   * @return the list
+   */
   private static List<Association> createAssociations() {
     List<Association> associations = new ArrayList<Association>();
     Association association = new Association();
@@ -130,6 +191,11 @@ public class EdmSchemaMock {
     return associations;
   }
 
+  /**
+   * Creates the entity types.
+   *
+   * @return the list
+   */
   private static List<EntityType> createEntityTypes() {
     List<EntityType> entityTypes = new ArrayList<EntityType>();
     EntityType entityType = new EntityType();
@@ -147,6 +213,12 @@ public class EdmSchemaMock {
 
   }
 
+  /**
+   * Creates the key.
+   *
+   * @param keyNames the key names
+   * @return the key
+   */
   private static Key createKey(final String[] keyNames) {
     Key key = new Key();
     List<PropertyRef> keys = new ArrayList<PropertyRef>();
@@ -157,6 +229,11 @@ public class EdmSchemaMock {
     return null;
   }
 
+  /**
+   * Creates the complex types.
+   *
+   * @return the list
+   */
   private static List<ComplexType> createComplexTypes() {
     List<ComplexType> complexTypes = new ArrayList<ComplexType>();
     ComplexType complexTypeOne = new ComplexType();
@@ -170,6 +247,11 @@ public class EdmSchemaMock {
     return complexTypes;
   }
 
+  /**
+   * Creates the complex type properties two.
+   *
+   * @return the list
+   */
   private static List<Property> createComplexTypePropertiesTwo() {
     List<Property> properties = new ArrayList<Property>();
     SimpleProperty property = new SimpleProperty();
@@ -191,6 +273,11 @@ public class EdmSchemaMock {
 
   }
 
+  /**
+   * Creates the complex type properties one.
+   *
+   * @return the list
+   */
   private static List<Property> createComplexTypePropertiesOne() {
     List<Property> properties = new ArrayList<Property>();
     SimpleProperty property = new SimpleProperty();

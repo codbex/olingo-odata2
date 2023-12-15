@@ -36,22 +36,42 @@ import org.apache.olingo.odata2.core.commons.XmlHelper;
 import org.apache.olingo.odata2.core.ep.EntityProviderProducerException;
 import org.apache.olingo.odata2.core.ep.util.FormatXml;
 
+// TODO: Auto-generated Javadoc
 /**
  * Writes the OData service document in XML.
  * 
  */
 public class AtomServiceDocumentProducer {
 
+  /** The Constant DEFAULT_CHARSET. */
   private static final String DEFAULT_CHARSET = ContentType.CHARSET_UTF_8;
+  
+  /** The Constant XML_VERSION. */
   private static final String XML_VERSION = "1.0";
+  
+  /** The edm. */
   private final Edm edm;
+  
+  /** The service root. */
   private final String serviceRoot;
 
+  /**
+   * Instantiates a new atom service document producer.
+   *
+   * @param edm the edm
+   * @param serviceRoot the service root
+   */
   public AtomServiceDocumentProducer(final Edm edm, final String serviceRoot) {
     this.edm = edm;
     this.serviceRoot = serviceRoot;
   }
 
+  /**
+   * Write service document.
+   *
+   * @param writer the writer
+   * @throws EntityProviderException the entity provider exception
+   */
   public void writeServiceDocument(final Writer writer) throws EntityProviderException {
 
     EdmServiceMetadata serviceMetadata = edm.getServiceMetadata();

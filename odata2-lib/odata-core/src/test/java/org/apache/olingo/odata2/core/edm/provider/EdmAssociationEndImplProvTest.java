@@ -34,13 +34,24 @@ import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class EdmAssociationEndImplProvTest.
  */
 public class EdmAssociationEndImplProvTest extends BaseTest {
+  
+  /** The association end prov. */
   private static EdmAssociationEndImplProv associationEndProv;
+  
+  /** The edm provider. */
   private static EdmProvider edmProvider;
 
+  /**
+   * Gets the edm entity container impl.
+   *
+   * @return the edm entity container impl
+   * @throws Exception the exception
+   */
   @BeforeClass
   public static void getEdmEntityContainerImpl() throws Exception {
 
@@ -54,6 +65,11 @@ public class EdmAssociationEndImplProvTest extends BaseTest {
     associationEndProv = new EdmAssociationEndImplProv(edmImplProv, end1);
   }
 
+  /**
+   * Test association end.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testAssociationEnd() throws Exception {
     EdmAssociationEnd associationEnd = associationEndProv;
@@ -62,12 +78,23 @@ public class EdmAssociationEndImplProvTest extends BaseTest {
     assertEquals(EdmMultiplicity.ONE, associationEnd.getMultiplicity());
   }
 
+  /**
+   * Test association entity type.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EdmException.class)
   public void testAssociationEntityType() throws Exception {
     EdmAssociationEnd associationEnd = associationEndProv;
     associationEnd.getEntityType();
   }
 
+  /**
+   * Gets the annotations.
+   *
+   * @return the annotations
+   * @throws Exception the exception
+   */
   @Test
   public void getAnnotations() throws Exception {
     EdmAnnotatable annotatable = associationEndProv;

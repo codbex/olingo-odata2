@@ -21,8 +21,17 @@ package org.apache.olingo.odata2.fit.misc;
 import org.apache.olingo.odata2.api.ODataServiceFactory;
 import org.apache.olingo.odata2.core.rest.app.AbstractODataApplication;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ODataApplication_.
+ */
 public class ODataApplication_ extends AbstractODataApplication {
 
+  /**
+   * Gets the service factory class.
+   *
+   * @return the service factory class
+   */
   @Override
   public Class<? extends ODataServiceFactory> getServiceFactoryClass() {
     return ODataApplicationFactory.class;

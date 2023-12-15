@@ -45,8 +45,18 @@ import org.apache.olingo.odata2.api.processor.ODataResponse;
 import org.apache.olingo.odata2.testutil.mock.EdmTestProvider;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EdmxProviderTest.
+ */
 public class EdmxProviderTest {
 
+  /**
+   * Gets the elements with alias.
+   *
+   * @return the elements with alias
+   * @throws Exception the exception
+   */
   @Test
   public void getElementsWithAlias() throws Exception {
     Edm edm = createEdm();
@@ -67,6 +77,11 @@ public class EdmxProviderTest {
     assertNotNull(edm.getComplexType("Self", "c_City"));
   }
 
+  /**
+   * Annotations at simple property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void annotationsAtSimpleProperty() throws Exception {
     Edm edm = createEdm();
@@ -86,6 +101,11 @@ public class EdmxProviderTest {
     assertNull(annotationElements.get(0).getChildElements());
   }
 
+  /**
+   * Null annotations at entity type.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void nullAnnotationsAtEntityType() throws Exception {
     Edm edm = createEdm();
@@ -94,6 +114,11 @@ public class EdmxProviderTest {
     checkNullAnnotations(annotations);
   }
 
+  /**
+   * Null annotations at complex type.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void nullAnnotationsAtComplexType() throws Exception {
     Edm edm = createEdm();
@@ -102,6 +127,11 @@ public class EdmxProviderTest {
     checkNullAnnotations(annotations);
   }
 
+  /**
+   * Null annotations at simple property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void nullAnnotationsAtSimpleProperty() throws Exception {
     Edm edm = createEdm();
@@ -111,6 +141,11 @@ public class EdmxProviderTest {
     checkNullAnnotations(annotations);
   }
 
+  /**
+   * Null annotations at complex property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void nullAnnotationsAtComplexProperty() throws Exception {
     Edm edm = createEdm();
@@ -120,6 +155,11 @@ public class EdmxProviderTest {
     checkNullAnnotations(annotations);
   }
 
+  /**
+   * Null annotations at association.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void nullAnnotationsAtAssociation() throws Exception {
     Edm edm = createEdm();
@@ -128,6 +168,11 @@ public class EdmxProviderTest {
     checkNullAnnotations(annotations);
   }
 
+  /**
+   * Null annotations at association set.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void nullAnnotationsAtAssociationSet() throws Exception {
     Edm edm = createEdm();
@@ -139,6 +184,11 @@ public class EdmxProviderTest {
     checkNullAnnotations(annotations);
   }
 
+  /**
+   * Null annotations at edm container.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void nullAnnotationsAtEdmContainer() throws Exception {
     Edm edm = createEdm();
@@ -147,6 +197,11 @@ public class EdmxProviderTest {
     checkNullAnnotations(annotations);
   }
 
+  /**
+   * Null annotations at function import.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void nullAnnotationsAtFunctionImport() throws Exception {
     Edm edm = createEdm();
@@ -155,6 +210,11 @@ public class EdmxProviderTest {
     checkNullAnnotations(annotations);
   }
 
+  /**
+   * Null annotations at function import parameter.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void nullAnnotationsAtFunctionImportParameter() throws Exception {
     Edm edm = createEdm();
@@ -164,6 +224,11 @@ public class EdmxProviderTest {
     checkNullAnnotations(annotations);
   }
 
+  /**
+   * Null annotations at navigation property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void nullAnnotationsAtNavigationProperty() throws Exception {
     Edm edm = createEdm();
@@ -174,6 +239,11 @@ public class EdmxProviderTest {
     checkNullAnnotations(annotations);
   }
 
+  /**
+   * Check null annotations.
+   *
+   * @param annotations the annotations
+   */
   private void checkNullAnnotations(final EdmAnnotations annotations) {
     assertNotNull(annotations);
 
@@ -184,6 +254,11 @@ public class EdmxProviderTest {
     assertNull(annotationElements);
   }
 
+  /**
+   * Test entity type.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testEntityType() throws Exception {
     Edm edm = createEdm();
@@ -201,6 +276,11 @@ public class EdmxProviderTest {
 
   }
 
+  /**
+   * Test association.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testAssociation() throws Exception {
     Edm edm = createEdm();
@@ -218,6 +298,11 @@ public class EdmxProviderTest {
 
   }
 
+  /**
+   * Test association set.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testAssociationSet() throws Exception {
     EdmProvider testProvider = new EdmTestProvider();
@@ -237,6 +322,11 @@ public class EdmxProviderTest {
 
   }
 
+  /**
+   * Test schema.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testSchema() throws Exception {
     EdmProvider testProvider = new EdmTestProvider();
@@ -257,6 +347,11 @@ public class EdmxProviderTest {
     }
   }
 
+  /**
+   * Test container.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testContainer() throws Exception {
     EdmProvider testProvider = new EdmTestProvider();
@@ -276,6 +371,11 @@ public class EdmxProviderTest {
     assertEquals(testContainer.isDefaultEntityContainer(), container.isDefaultEntityContainer());
   }
 
+  /**
+   * Test entity sets.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testEntitySets() throws Exception {
     Edm edm = createEdm();
@@ -285,6 +385,11 @@ public class EdmxProviderTest {
     assertEquals(6, entitySets.size());
   }
 
+  /**
+   * Test function imports.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testFunctionImports() throws Exception {
     Edm edm = createEdm();
@@ -294,6 +399,12 @@ public class EdmxProviderTest {
     assertEquals(7, functionImports.size());
   }
 
+  /**
+   * Creates the edm.
+   *
+   * @return the edm
+   * @throws Exception the exception
+   */
   private Edm createEdm() throws Exception {
     EdmProvider testProvider = new EdmTestProvider();
     ODataResponse response = EntityProvider.writeMetadata(testProvider.getSchemas(), null);

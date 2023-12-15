@@ -46,11 +46,21 @@ import org.apache.olingo.odata2.jpa.processor.core.mock.model.JPASingularAttribu
 import org.junit.Before;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAEdmEntityContainerTest.
+ */
 public class JPAEdmEntityContainerTest extends JPAEdmTestModelView {
 
+  /** The obj JPA edm entity container. */
   private JPAEdmEntityContainer objJPAEdmEntityContainer;
+  
+  /** The obj JPA edm entity container test. */
   private JPAEdmEntityContainerTest objJPAEdmEntityContainerTest;
 
+  /**
+   * Sets the up.
+   */
   @Before
   public void setUp() {
     objJPAEdmEntityContainerTest = new JPAEdmEntityContainerTest();
@@ -64,17 +74,26 @@ public class JPAEdmEntityContainerTest extends JPAEdmTestModelView {
     }
   }
 
+  /**
+   * Test get builder.
+   */
   @Test
   public void testGetBuilder() {
     assertNotNull(objJPAEdmEntityContainer.getBuilder());
   }
 
+  /**
+   * Test get edm entity container.
+   */
   @Test
   public void testGetEdmEntityContainer() {
     assertNotNull(objJPAEdmEntityContainer.getEdmEntityContainer());
     assertTrue(objJPAEdmEntityContainer.getEdmEntityContainer().getEntitySets().size() > 0);
   }
 
+  /**
+   * Test get consistent edm entity container list.
+   */
   @Test
   public void testGetConsistentEdmEntityContainerList() {
     assertNotNull(objJPAEdmEntityContainer.getConsistentEdmEntityContainerList());
@@ -82,12 +101,18 @@ public class JPAEdmEntityContainerTest extends JPAEdmTestModelView {
 
   }
 
+  /**
+   * Test get JPA edm entity set view.
+   */
   @Test
   public void testGetJPAEdmEntitySetView() {
     assertNotNull(objJPAEdmEntityContainer.getJPAEdmEntitySetView());
     assertEquals("salesorderprocessing", objJPAEdmEntityContainer.getJPAEdmEntitySetView().getpUnitName());
   }
 
+  /**
+   * Test is consistent.
+   */
   @Test
   public void testIsConsistent() {
     assertTrue(objJPAEdmEntityContainer.isConsistent());
@@ -95,11 +120,17 @@ public class JPAEdmEntityContainerTest extends JPAEdmTestModelView {
     assertFalse(objJPAEdmEntityContainer.isConsistent());
   }
 
+  /**
+   * Test get edm association set view.
+   */
   @Test
   public void testGetEdmAssociationSetView() {
     assertNotNull(objJPAEdmEntityContainer.getEdmAssociationSetView());
   }
 
+  /**
+   * Test get builder idempotent.
+   */
   @Test
   public void testGetBuilderIdempotent() {
     JPAEdmBuilder builder1 = objJPAEdmEntityContainer.getBuilder();
@@ -108,31 +139,61 @@ public class JPAEdmEntityContainerTest extends JPAEdmTestModelView {
     assertEquals(builder1.hashCode(), builder2.hashCode());
   }
 
+  /**
+   * Gets the JPA meta model.
+   *
+   * @return the JPA meta model
+   */
   @Override
   public Metamodel getJPAMetaModel() {
     return new JPAEdmMetaModel();
   }
 
+  /**
+   * Gets the JPA edm entity set view.
+   *
+   * @return the JPA edm entity set view
+   */
   @Override
   public JPAEdmEntitySetView getJPAEdmEntitySetView() {
     return this;
   }
 
+  /**
+   * Gets the JPA edm entity container view.
+   *
+   * @return the JPA edm entity container view
+   */
   @Override
   public JPAEdmEntityContainerView getJPAEdmEntityContainerView() {
     return this;
   }
 
+  /**
+   * Gets the JPA entity type.
+   *
+   * @return the JPA entity type
+   */
   @Override
   public EntityType<?> getJPAEntityType() {
     return new JPAEdmEntityType<String>();
   }
 
+  /**
+   * Gets the JPA edm entity type view.
+   *
+   * @return the JPA edm entity type view
+   */
   @Override
   public JPAEdmEntityTypeView getJPAEdmEntityTypeView() {
     return this;
   }
 
+  /**
+   * Gets the edm schema.
+   *
+   * @return the edm schema
+   */
   @Override
   public Schema getEdmSchema() {
     Schema schema = new Schema();
@@ -140,16 +201,31 @@ public class JPAEdmEntityContainerTest extends JPAEdmTestModelView {
     return schema;
   }
 
+  /**
+   * Gets the p unit name.
+   *
+   * @return the p unit name
+   */
   @Override
   public String getpUnitName() {
     return "salesorderprocessing";
   }
 
+  /**
+   * Gets the JPA edm association view.
+   *
+   * @return the JPA edm association view
+   */
   @Override
   public JPAEdmAssociationView getJPAEdmAssociationView() {
     return this;
   }
 
+  /**
+   * Gets the builder.
+   *
+   * @return the builder
+   */
   @Override
   public JPAEdmBuilder getBuilder() {
     return new JPAEdmBuilder() {
@@ -161,25 +237,52 @@ public class JPAEdmEntityContainerTest extends JPAEdmTestModelView {
     };
   }
 
+  /**
+   * The Class JPAEdmMetaModel.
+   */
   private class JPAEdmMetaModel extends JPAMetaModelMock {
+    
+    /** The entities. */
     Set<EntityType<?>> entities;
 
+    /**
+     * Instantiates a new JPA edm meta model.
+     */
     public JPAEdmMetaModel() {
       entities = new HashSet<EntityType<?>>();
     }
 
+    /**
+     * Gets the entities.
+     *
+     * @return the entities
+     */
     @Override
     public Set<EntityType<?>> getEntities() {
       entities.add(new JPAEdmEntityType());
       return entities;
     }
 
+    /**
+     * The Class JPAEdmEntityType.
+     */
     private class JPAEdmEntityType extends JPAEntityTypeMock<String> {
+      
+      /**
+       * Gets the name.
+       *
+       * @return the name
+       */
       @Override
       public String getName() {
         return "SalesOrderHeader";
       }
 
+      /**
+       * Gets the java type.
+       *
+       * @return the java type
+       */
       @Override
       public Class<String> getJavaType() {
         return (Class<String>) java.lang.String.class;
@@ -187,48 +290,98 @@ public class JPAEdmEntityContainerTest extends JPAEdmTestModelView {
     }
   }
 
+  /**
+   * The Class JPAEdmEntityType.
+   *
+   * @param <String> the generic type
+   */
   @SuppressWarnings("hiding")
   private class JPAEdmEntityType<String> extends JPAEntityTypeMock<String> {
+    
+    /** The attribute set. */
     Set<Attribute<? super String, ?>> attributeSet = new HashSet<Attribute<? super String, ?>>();
 
+    /**
+     * Sets the values to set.
+     */
     @SuppressWarnings({ "unchecked", "rawtypes" })
     private void setValuesToSet() {
       attributeSet.add((Attribute<? super String, String>) new JPAEdmAttribute(java.lang.String.class, "SOID"));
       attributeSet.add((Attribute<? super String, String>) new JPAEdmAttribute(java.lang.String.class, "SONAME"));
     }
 
+    /**
+     * Gets the attributes.
+     *
+     * @return the attributes
+     */
     @Override
     public Set<Attribute<? super String, ?>> getAttributes() {
       setValuesToSet();
       return attributeSet;
     }
 
+    /**
+     * The Class JPAEdmAttribute.
+     *
+     * @param <Object> the generic type
+     * @param <String> the generic type
+     */
     private class JPAEdmAttribute<Object, String> extends JPASingularAttributeMock<Object, String> {
 
+      /**
+       * Gets the persistent attribute type.
+       *
+       * @return the persistent attribute type
+       */
       @Override
       public PersistentAttributeType getPersistentAttributeType() {
         return PersistentAttributeType.BASIC;
       }
 
+      /** The clazz. */
       Class<String> clazz;
+      
+      /** The attribute name. */
       java.lang.String attributeName;
 
+      /**
+       * Instantiates a new JPA edm attribute.
+       *
+       * @param javaType the java type
+       * @param name the name
+       */
       public JPAEdmAttribute(final Class<String> javaType, final java.lang.String name) {
         this.clazz = javaType;
         this.attributeName = name;
 
       }
 
+      /**
+       * Gets the java type.
+       *
+       * @return the java type
+       */
       @Override
       public Class<String> getJavaType() {
         return clazz;
       }
 
+      /**
+       * Gets the name.
+       *
+       * @return the name
+       */
       @Override
       public java.lang.String getName() {
         return this.attributeName;
       }
 
+      /**
+       * Checks if is id.
+       *
+       * @return true, if is id
+       */
       @Override
       public boolean isId() {
         return true;

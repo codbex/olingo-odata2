@@ -25,18 +25,41 @@ import org.apache.olingo.odata2.api.edm.EdmMapping;
 import org.apache.olingo.odata2.api.edm.EdmProperty;
 import org.apache.olingo.odata2.api.edm.EdmType;
 
+// TODO: Auto-generated Javadoc
 /**
  * Collects informations about a property of an entity.
  * 
  */
 public class EntityPropertyInfo {
+  
+  /** The name. */
   private final String name;
+  
+  /** The type. */
   private final EdmType type;
+  
+  /** The facets. */
   private final EdmFacets facets;
+  
+  /** The custom mapping. */
   private final EdmCustomizableFeedMappings customMapping;
+  
+  /** The mime type. */
   private final String mimeType;
+  
+  /** The mapping. */
   private final EdmMapping mapping;
 
+  /**
+   * Instantiates a new entity property info.
+   *
+   * @param name the name
+   * @param type the type
+   * @param facets the facets
+   * @param customizableFeedMapping the customizable feed mapping
+   * @param mimeType the mime type
+   * @param mapping the mapping
+   */
   EntityPropertyInfo(final String name, final EdmType type, final EdmFacets facets,
       final EdmCustomizableFeedMappings customizableFeedMapping, final String mimeType, final EdmMapping mapping) {
     this.name = name;
@@ -47,6 +70,13 @@ public class EntityPropertyInfo {
     this.mapping = mapping;
   }
 
+  /**
+   * Creates the.
+   *
+   * @param property the property
+   * @return the entity property info
+   * @throws EdmException the edm exception
+   */
   static EntityPropertyInfo create(final EdmProperty property) throws EdmException {
     return new EntityPropertyInfo(
         property.getName(),
@@ -57,38 +87,83 @@ public class EntityPropertyInfo {
         property.getMapping());
   }
 
+  /**
+   * Checks if is mandatory.
+   *
+   * @return true, if is mandatory
+   */
   public boolean isMandatory() {
     return !(facets == null || facets.isNullable() == null || facets.isNullable());
   }
 
+  /**
+   * Checks if is complex.
+   *
+   * @return true, if is complex
+   */
   public boolean isComplex() {
     return false;
   }
 
+  /**
+   * Gets the name.
+   *
+   * @return the name
+   */
   public String getName() {
     return name;
   }
 
+  /**
+   * Gets the type.
+   *
+   * @return the type
+   */
   public EdmType getType() {
     return type;
   }
 
+  /**
+   * Gets the facets.
+   *
+   * @return the facets
+   */
   public EdmFacets getFacets() {
     return facets;
   }
 
+  /**
+   * Gets the custom mapping.
+   *
+   * @return the custom mapping
+   */
   public EdmCustomizableFeedMappings getCustomMapping() {
     return customMapping;
   }
 
+  /**
+   * Gets the mime type.
+   *
+   * @return the mime type
+   */
   public String getMimeType() {
     return mimeType;
   }
 
+  /**
+   * Gets the mapping.
+   *
+   * @return the mapping
+   */
   public EdmMapping getMapping() {
     return mapping;
   }
 
+  /**
+   * To string.
+   *
+   * @return the string
+   */
   @Override
   public String toString() {
     return name;

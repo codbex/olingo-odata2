@@ -42,14 +42,24 @@ import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class EdmAssociationImplProvTest.
  */
 public class EdmAssociationImplProvTest extends BaseTest {
 
+  /** The association prov. */
   private static EdmAssociationImplProv associationProv;
+  
+  /** The edm provider. */
   private static EdmProvider edmProvider;
 
+  /**
+   * Gets the edm entity container impl.
+   *
+   * @return the edm entity container impl
+   * @throws Exception the exception
+   */
   @BeforeClass
   public static void getEdmEntityContainerImpl() throws Exception {
 
@@ -80,6 +90,11 @@ public class EdmAssociationImplProvTest extends BaseTest {
     associationProv = new EdmAssociationImplProv(edmImplProv, association, "namespace");
   }
 
+  /**
+   * Test association.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testAssociation() throws Exception {
     EdmAssociation association = associationProv;
@@ -91,6 +106,11 @@ public class EdmAssociationImplProvTest extends BaseTest {
     assertEquals(null, association.getEnd("endWrongRole"));
   }
 
+  /**
+   * Test association ends.
+   *
+   * @throws EdmException the edm exception
+   */
   @Test
   public void testAssociationEnds() throws EdmException {
     EdmAssociation association = associationProv;
@@ -98,12 +118,22 @@ public class EdmAssociationImplProvTest extends BaseTest {
     assertEquals("end2Role", association.getEnd2().getRole());
   }
 
+  /**
+   * Test referential constraint.
+   *
+   * @throws EdmException the edm exception
+   */
   @Test
   public void testReferentialConstraint() throws EdmException {
     assertEquals("end1Role", associationProv.getReferentialConstraint().getDependent().getRole());
     assertEquals("end2Role", associationProv.getReferentialConstraint().getPrincipal().getRole());
   }
 
+  /**
+   * Test referential constraint null.
+   *
+   * @throws EdmException the edm exception
+   */
   @Test
   public void testReferentialConstraintNull() throws EdmException {
     Association association = new Association().setName("association");
@@ -111,6 +141,12 @@ public class EdmAssociationImplProvTest extends BaseTest {
     assertNull(edmAssociation.getReferentialConstraint());
   }
 
+  /**
+   * Gets the annotations.
+   *
+   * @return the annotations
+   * @throws Exception the exception
+   */
   @Test
   public void getAnnotations() throws Exception {
     EdmAnnotatable annotatable = associationProv;

@@ -35,28 +35,62 @@ import org.apache.olingo.odata2.jpa.processor.api.jpql.JPQLContextType;
 import org.apache.olingo.odata2.jpa.processor.api.jpql.JPQLSelectContextView;
 import org.apache.olingo.odata2.jpa.processor.core.ODataExpressionParser;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPQLSelectContext.
+ */
 public class JPQLSelectContext extends JPQLContext implements JPQLSelectContextView {
 
+  /** The select expression. */
   protected String selectExpression;
+  
+  /** The order by collection. */
   protected String orderByCollection;
+  
+  /** The where condition. */
   protected String whereCondition;
+  
+  /** The parameterized query map. */
   protected Map<String, Map<Integer, Object>> parameterizedQueryMap;
+  
+  /** The jpql statement. */
   protected String jpqlStatement;
 
+  /** The is count only. */
   protected boolean isCountOnly = false;// Support for $count
 
+  /**
+   * Instantiates a new JPQL select context.
+   *
+   * @param isCountOnly the is count only
+   */
   public JPQLSelectContext(final boolean isCountOnly) {
     this.isCountOnly = isCountOnly;
   }
 
+  /**
+   * Sets the order by collection.
+   *
+   * @param orderByCollection the new order by collection
+   */
   protected final void setOrderByCollection(final String orderByCollection) {
     this.orderByCollection = orderByCollection;
   }
 
+  /**
+   * Sets the where expression.
+   *
+   * @param filterExpression the new where expression
+   */
   protected final void setWhereExpression(final String filterExpression) {
     whereCondition = filterExpression;
   }
   
+  /**
+   * Sets the parameterized query map.
+   *
+   * @param parameterizedQueryMap the parameterized query map
+   */
   protected final void setParameterizedQueryMap(
       final Map<String, Map<Integer, Object>> parameterizedQueryMap) {
     if (null == this.parameterizedQueryMap || this.parameterizedQueryMap.isEmpty()) {
@@ -66,30 +100,61 @@ public class JPQLSelectContext extends JPQLContext implements JPQLSelectContextV
     }
   }
 
+  /**
+   * Sets the select expression.
+   *
+   * @param selectExpression the new select expression
+   */
   protected final void setSelectExpression(final String selectExpression) {
     this.selectExpression = selectExpression;
   }
 
+  /**
+   * Gets the select expression.
+   *
+   * @return the select expression
+   */
   @Override
   public String getSelectExpression() {
     return selectExpression;
   }
 
+  /**
+   * Gets the order by collection.
+   *
+   * @return the order by collection
+   */
   @Override
   public String getOrderByCollection() {
     return orderByCollection;
   }
 
+  /**
+   * Gets the where expression.
+   *
+   * @return the where expression
+   */
   @Override
   public String getWhereExpression() {
     return whereCondition;
   }
 
+  /**
+   * The Class JPQLSelectContextBuilder.
+   */
   public class JPQLSelectContextBuilder extends
   org.apache.olingo.odata2.jpa.processor.api.jpql.JPQLContext.JPQLContextBuilder {
 
+    /** The entity set view. */
     protected GetEntitySetUriInfo entitySetView;
 
+    /**
+     * Builds the.
+     *
+     * @return the JPQL context
+     * @throws ODataJPAModelException the o data JPA model exception
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
+     */
     @Override
     public JPQLContext build() throws ODataJPAModelException, ODataJPARuntimeException {
       if (entitySetView != null) {
@@ -133,6 +198,11 @@ public class JPQLSelectContext extends JPQLContext implements JPQLSelectContextV
 
     }
 
+    /**
+     * Sets the results view.
+     *
+     * @param resultsView the new results view
+     */
     @Override
     protected void setResultsView(final Object resultsView) {
       if (resultsView instanceof GetEntitySetUriInfo) {
@@ -141,6 +211,12 @@ public class JPQLSelectContext extends JPQLContext implements JPQLSelectContextV
 
     }
 
+    /**
+     * Generate select expression.
+     *
+     * @return the string
+     * @throws EdmException the edm exception
+     */
     /*
      * Generate Select Clause
      */
@@ -148,6 +224,13 @@ public class JPQLSelectContext extends JPQLContext implements JPQLSelectContextV
       return getJPAEntityAlias();
     }
 
+    /**
+     * Generate order by fileds.
+     *
+     * @return the string
+     * @throws ODataJPARuntimeException the o data JPA runtime exception
+     * @throws EdmException the edm exception
+     */
     /*
      * Generate Order By Clause Fields
      */
@@ -168,6 +251,12 @@ public class JPQLSelectContext extends JPQLContext implements JPQLSelectContextV
 
     }
 
+    /**
+     * Generate where expression.
+     *
+     * @return the string
+     * @throws ODataException the o data exception
+     */
     /*
      * Generate Where Clause Expression
      */
@@ -201,6 +290,12 @@ public class JPQLSelectContext extends JPQLContext implements JPQLSelectContextV
     }
   }
   
+  /**
+   * Gets the index value.
+   *
+   * @param map the map
+   * @return the index value
+   */
   private int getIndexValue(Map<Integer, Object> map) {
     int index = 1;
     if (map != null) {
@@ -213,16 +308,31 @@ public class JPQLSelectContext extends JPQLContext implements JPQLSelectContextV
     }
   }
 
+  /**
+   * Gets the parameterized query map.
+   *
+   * @return the parameterized query map
+   */
   @Override
   public Map<String, Map<Integer, Object>> getParameterizedQueryMap() {
     return parameterizedQueryMap;
   }
 
+  /**
+   * Sets the JPQL statement.
+   *
+   * @param jpqlStatement the new JPQL statement
+   */
   @Override
   public void setJPQLStatement(String jpqlStatement) {
     this.jpqlStatement = jpqlStatement;
   }
 
+  /**
+   * Gets the JPQL statement.
+   *
+   * @return the JPQL statement
+   */
   @Override
   public String getJPQLStatement() {
     return jpqlStatement;

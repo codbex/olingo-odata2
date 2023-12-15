@@ -21,16 +21,24 @@ package org.apache.olingo.odata2.client.api.ep;
 import java.util.ArrayList;
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
 /**
  * Data representation for a single entity.
  */
 public class EntityCollection {
 
+  /** The entities. */
   private final List<Entity> entities = new ArrayList<Entity>();
+  
+  /** The collection properties. */
   private EntityCollectionSerializerProperties collectionProperties;
+  
+  /** The global entity properties. */
   private EntitySerializerProperties globalEntityProperties;
  
   /**
+   * Gets the global entity properties.
+   *
    * @return the globalWriteProperties
    */
   public EntitySerializerProperties getGlobalEntityProperties() {
@@ -38,14 +46,17 @@ public class EntityCollection {
   }
 
   /**
-   * @param globalWriteProperties the globalWriteProperties to set
+   * Sets the global entity properties.
+   *
+   * @param globalEntityProperties the new global entity properties
    */
   public void setGlobalEntityProperties(EntitySerializerProperties globalEntityProperties) {
     this.globalEntityProperties = globalEntityProperties;
   }
 
   /**
-   * 
+   * Gets the entities.
+   *
    * @return List of Entities
    */
   public List<Entity> getEntities() {
@@ -53,15 +64,17 @@ public class EntityCollection {
   }
   
   /**
-   * Add an Entity to collection of entities
-   * @param entity
+   * Add an Entity to collection of entities.
+   *
+   * @param entity the entity
    */
   public void addEntity(Entity entity) {
     entities.add(entity);
   }
 
   /**
-   * Return collection write properties
+   * Return collection write properties.
+   *
    * @return EntityCollectionSerializerProperties
    */
   public EntityCollectionSerializerProperties getCollectionProperties() {
@@ -69,8 +82,9 @@ public class EntityCollection {
   }
 
   /**
-   * Set collection write properties
-   * @param collectionProperties
+   * Set collection write properties.
+   *
+   * @param collectionProperties the new collection properties
    */
   public void setCollectionProperties(EntityCollectionSerializerProperties collectionProperties) {
     this.collectionProperties = collectionProperties;

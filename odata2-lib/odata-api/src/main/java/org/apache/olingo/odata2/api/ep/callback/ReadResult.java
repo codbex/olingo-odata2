@@ -21,6 +21,7 @@ package org.apache.olingo.odata2.api.ep.callback;
 import org.apache.olingo.odata2.api.edm.EdmNavigationProperty;
 import org.apache.olingo.odata2.api.ep.EntityProviderReadProperties;
 
+// TODO: Auto-generated Javadoc
 /**
  * A {@link ReadResult} represents an inlined navigation property which points to an entry or feed.
  * The {@link ReadResult} contains the {@link EntityProviderReadProperties} which were used for read,
@@ -35,7 +36,10 @@ import org.apache.olingo.odata2.api.ep.EntityProviderReadProperties;
  */
 public abstract class ReadResult {
 
+  /** The read properties. */
   protected final EntityProviderReadProperties readProperties;
+  
+  /** The navigation property. */
   protected final EdmNavigationProperty navigationProperty;
 
   /**
@@ -51,6 +55,8 @@ public abstract class ReadResult {
   }
 
   /**
+   * Gets the read properties.
+   *
    * @return read properties which were used to read enclosing parent entity
    */
   public EntityProviderReadProperties getReadProperties() {
@@ -58,6 +64,8 @@ public abstract class ReadResult {
   }
 
   /**
+   * Gets the navigation property.
+   *
    * @return emd navigation property information of found inline navigation property
    */
   public EdmNavigationProperty getNavigationProperty() {
@@ -72,6 +80,11 @@ public abstract class ReadResult {
    */
   public abstract Object getResult();
 
+  /**
+   * To string.
+   *
+   * @return the string
+   */
   @Override
   public String toString() {
     return this.getClass().getSimpleName() + " [readProperties=" + readProperties + ", navigationProperty="

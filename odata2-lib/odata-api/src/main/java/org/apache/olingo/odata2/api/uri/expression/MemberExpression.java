@@ -18,6 +18,7 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.uri.expression;
 
+// TODO: Auto-generated Javadoc
 /**
  * Represents a member expression in the expression tree
  * <br>
@@ -33,16 +34,19 @@ package org.apache.olingo.odata2.api.uri.expression;
  * 
  */
 public interface MemberExpression extends CommonExpression {
+  
   /**
-   * @return
-   * Returns the CommonExpression forming the path (the left side of '/') of the method operator.
+   * Gets the path.
+   *
+   * @return Returns the CommonExpression forming the path (the left side of '/') of the method operator.
    * For OData 2.0 the value returned by {@link #getPath()} is a {@link PropertyExpression}
    */
   public CommonExpression getPath();
 
   /**
-   * @return
-   * Return the CommonExpression forming the property (the right side of '/') of the method operator.
+   * Gets the property.
+   *
+   * @return Return the CommonExpression forming the property (the right side of '/') of the method operator.
    * For OData 2.0 the value returned by {@link #getProperty()} is a {@link PropertyExpression}
    */
   public CommonExpression getProperty();

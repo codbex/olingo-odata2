@@ -27,11 +27,19 @@ import org.apache.olingo.odata2.api.processor.ODataContext;
 import org.apache.olingo.odata2.ref.edm.ScenarioEdmProvider;
 import org.apache.olingo.odata2.ref.model.DataContainer;
 
+// TODO: Auto-generated Javadoc
 /**
  * Service Factory for the reference scenario.
  */
 public class ScenarioServiceFactory extends ODataServiceFactory {
 
+  /**
+   * Creates a new ScenarioService object.
+   *
+   * @param context the context
+   * @return the o data service
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataService createService(final ODataContext context) throws ODataException {
     DataContainer dataContainer = new DataContainer();
@@ -42,6 +50,13 @@ public class ScenarioServiceFactory extends ODataServiceFactory {
         new ListsProcessor(new ScenarioDataSource(dataContainer)));
   }
 
+  /**
+   * Gets the callback.
+   *
+   * @param <T> the generic type
+   * @param callbackInterface the callback interface
+   * @return the callback
+   */
   @SuppressWarnings("unchecked")
   @Override
   public <T extends ODataCallback> T getCallback(final Class<T> callbackInterface) {
@@ -50,7 +65,16 @@ public class ScenarioServiceFactory extends ODataServiceFactory {
             new ScenarioDebugCallback() : super.getCallback(callbackInterface));
   }
 
+  /**
+   * The Class ScenarioDebugCallback.
+   */
   private final class ScenarioDebugCallback implements ODataDebugCallback {
+    
+    /**
+     * Checks if is debug enabled.
+     *
+     * @return true, if is debug enabled
+     */
     @Override
     public boolean isDebugEnabled() {
       return true;

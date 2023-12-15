@@ -40,15 +40,30 @@ import org.apache.olingo.odata2.jpa.processor.core.mock.model.JPAEdmMockData.Sim
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAEdmAssociationEndTest.
+ */
 public class JPAEdmAssociationEndTest extends JPAEdmTestModelView {
 
+  /** The Constant VARIANT1. */
   private final static int VARIANT1 = 1;
+  
+  /** The Constant VARIANT2. */
   private final static int VARIANT2 = 2;
+  
+  /** The Constant VARIANT3. */
   private final static int VARIANT3 = 3;
 
+  /** The Constant PUNIT_NAME. */
   private static final String PUNIT_NAME = "salesorderprocessing";
+  
+  /** The obj JPA edm association end. */
   private static JPAEdmAssociationEnd objJPAEdmAssociationEnd = null;
 
+  /**
+   * Setup.
+   */
   @BeforeClass
   public static void setup() {
     InnerMock objJPAEdmAssociationEndTest = new InnerMock(Attribute.PersistentAttributeType.MANY_TO_MANY);
@@ -62,6 +77,9 @@ public class JPAEdmAssociationEndTest extends JPAEdmTestModelView {
     }
   }
 
+  /**
+   * Test get builder.
+   */
   @Test
   public void testGetBuilder() {
     JPAEdmBuilder builder = objJPAEdmAssociationEnd.getBuilder();
@@ -69,6 +87,9 @@ public class JPAEdmAssociationEndTest extends JPAEdmTestModelView {
 
   }
 
+  /**
+   * Test get builder idempotent.
+   */
   @Test
   public void testGetBuilderIdempotent() {
     JPAEdmBuilder builder1 = objJPAEdmAssociationEnd.getBuilder();
@@ -77,24 +98,36 @@ public class JPAEdmAssociationEndTest extends JPAEdmTestModelView {
     assertEquals(builder1.hashCode(), builder2.hashCode());
   }
 
+  /**
+   * Test get association end 1.
+   */
   @Test
   public void testGetAssociationEnd1() {
     AssociationEnd associationEnd = objJPAEdmAssociationEnd.getEdmAssociationEnd1();
     assertEquals(associationEnd.getType().getName(), "SOID");
   }
 
+  /**
+   * Test get association end 2.
+   */
   @Test
   public void testGetAssociationEnd2() {
     AssociationEnd associationEnd = objJPAEdmAssociationEnd.getEdmAssociationEnd2();
     assertEquals(associationEnd.getType().getName(), "String");
   }
 
+  /**
+   * Test compare.
+   */
   @Test
   public void testCompare() {
     assertTrue(objJPAEdmAssociationEnd.compare(getAssociationEnd("SOID", 1), getAssociationEnd("String", 1)));
     assertFalse(objJPAEdmAssociationEnd.compare(getAssociationEnd("String", 2), getAssociationEnd("SOID", 1)));
   }
 
+  /**
+   * Test build association end.
+   */
   @Test
   public void testBuildAssociationEnd() {
     assertEquals("SOID", objJPAEdmAssociationEnd.getEdmAssociationEnd1().getType().getName());
@@ -103,6 +136,11 @@ public class JPAEdmAssociationEndTest extends JPAEdmTestModelView {
     assertTrue(objJPAEdmAssociationEnd.isConsistent());
   }
 
+  /**
+   * Test build association end many to one.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testBuildAssociationEndManyToOne() throws Exception {
     InnerMock mockFirst = new InnerMock(Attribute.PersistentAttributeType.ONE_TO_MANY);
@@ -117,6 +155,11 @@ public class JPAEdmAssociationEndTest extends JPAEdmTestModelView {
     assertTrue(associationEnd.isConsistent());
   }
 
+  /**
+   * Test build association end one to many.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testBuildAssociationEndOneToMany() throws Exception {
     InnerMock mockFirst = new InnerMock(Attribute.PersistentAttributeType.MANY_TO_ONE);
@@ -131,6 +174,11 @@ public class JPAEdmAssociationEndTest extends JPAEdmTestModelView {
     assertTrue(associationEnd.isConsistent());
   }
 
+  /**
+   * Test build association end one to one.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testBuildAssociationEndOneToOne() throws Exception {
     InnerMock mockFirst = new InnerMock(Attribute.PersistentAttributeType.ONE_TO_ONE);
@@ -145,6 +193,13 @@ public class JPAEdmAssociationEndTest extends JPAEdmTestModelView {
     assertTrue(associationEnd.isConsistent());
   }
 
+  /**
+   * Gets the association end.
+   *
+   * @param typeName the type name
+   * @param variant the variant
+   * @return the association end
+   */
   private AssociationEnd getAssociationEnd(final String typeName, final int variant) {
     AssociationEnd associationEnd = new AssociationEnd();
     associationEnd.setType(getFullQualifiedName(typeName));
@@ -160,58 +215,116 @@ public class JPAEdmAssociationEndTest extends JPAEdmTestModelView {
     return associationEnd;
   }
 
+  /**
+   * Gets the full qualified name.
+   *
+   * @param typeName the type name
+   * @return the full qualified name
+   */
   private FullQualifiedName getFullQualifiedName(final String typeName) {
     FullQualifiedName fullQualifiedName = new FullQualifiedName(PUNIT_NAME, typeName);
     return fullQualifiedName;
   }
 
 
+  /**
+   * The Class InnerMock.
+   */
   private static class InnerMock extends JPAEdmTestModelView {
 
+    /** The mock. */
     private final AttributeMock<Object, String> mock;
 
+    /**
+     * Instantiates a new inner mock.
+     *
+     * @param variant the variant
+     */
     public InnerMock(Attribute.PersistentAttributeType variant) {
       this.mock = new AttributeMock<Object, String>(variant);
     }
 
+    /**
+     * Gets the JPA attribute.
+     *
+     * @return the JPA attribute
+     */
     @Override
     public Attribute<?, ?> getJPAAttribute() {
       return getJPAAttributeLocal();
     }
 
+    /**
+     * Gets the p unit name.
+     *
+     * @return the p unit name
+     */
     @Override
     public String getpUnitName() {
       return PUNIT_NAME;
     }
 
+    /**
+     * Gets the edm entity type.
+     *
+     * @return the edm entity type
+     */
     @Override
     public EntityType getEdmEntityType() {
       EntityType entityType = new EntityType();
       entityType.setName(SimpleTypeA.NAME);
       return entityType;
     }
+    
+    /**
+     * Gets the JPA attribute local.
+     *
+     * @return the JPA attribute local
+     */
     private Attribute<?, ?> getJPAAttributeLocal() {
       return mock;
     }
 
   }
 
+    /**
+     * The Class AttributeMock.
+     *
+     * @param <Object> the generic type
+     * @param <String> the generic type
+     */
     // The inner class which gives us an replica of the jpa attribute
     @SuppressWarnings("hiding")
     private static class AttributeMock<Object, String> extends JPAAttributeMock<Object, String> {
 
+      /** The variant. */
       final private PersistentAttributeType variant;
 
+      /**
+       * Instantiates a new attribute mock.
+       *
+       * @param variant the variant
+       */
       public AttributeMock(PersistentAttributeType variant) {
         this.variant = variant;
       }
 
+      /**
+       * Gets the java type.
+       *
+       * @return the java type
+       */
       @SuppressWarnings("unchecked")
       @Override
       public Class<String> getJavaType() {
         return (Class<String>) SimpleType.SimpleTypeA.clazz;
       }
 
+      /**
+       * Gets the persistent attribute type.
+       *
+       * @return the persistent attribute type
+       */
       @Override
       public PersistentAttributeType getPersistentAttributeType() {
         return variant;

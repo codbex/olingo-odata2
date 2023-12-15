@@ -20,32 +20,60 @@ package org.apache.olingo.odata2.api.edm.provider;
 
 import org.apache.olingo.odata2.api.edm.EdmMapping;
 
+// TODO: Auto-generated Javadoc
 /**
  * Object of this class represent the mapping of a value to a MIME type.
  * 
  */
 public class Mapping implements EdmMapping {
 
+  /** The value. */
   private String value;
+  
+  /** The object. */
   private Object object;
+  
+  /** The media resource source key. */
   private String mediaResourceSourceKey;
+  
+  /** The media resource mime type key. */
   private String mediaResourceMimeTypeKey;
 
+  /**
+   * Gets the internal name.
+   *
+   * @return the internal name
+   */
   @Override
   public String getInternalName() {
     return value;
   }
 
+  /**
+   * Gets the object.
+   *
+   * @return the object
+   */
   @Override
   public Object getObject() {
     return object;
   }
 
+  /**
+   * Gets the media resource source key.
+   *
+   * @return the media resource source key
+   */
   @Override
   public String getMediaResourceSourceKey() {
     return mediaResourceSourceKey;
   }
 
+  /**
+   * Gets the media resource mime type key.
+   *
+   * @return the media resource mime type key
+   */
   @Override
   public String getMediaResourceMimeTypeKey() {
     return mediaResourceMimeTypeKey;
@@ -53,7 +81,8 @@ public class Mapping implements EdmMapping {
 
   /**
    * Sets the value for this {@link Mapping}.
-   * @param value
+   *
+   * @param value the value
    * @return {@link Mapping} for method chaining
    */
   public Mapping setInternalName(final String value) {
@@ -63,7 +92,8 @@ public class Mapping implements EdmMapping {
 
   /**
    * Sets an object. This method can be used by a provider to set whatever it wants to associate with this.
-   * @param object
+   *
+   * @param object the object
    * @return {@link Mapping} for method chaining
    */
   public Mapping setObject(final Object object) {
@@ -72,7 +102,8 @@ public class Mapping implements EdmMapping {
   }
 
   /**
-   * Sets the key for the resource source key which is used for the lookup in the data map
+   * Sets the key for the resource source key which is used for the lookup in the data map.
+   *
    * @param mediaResourceSourceKey under which the source can be found in the data map
    * @return {@link Mapping} for method chaining
    */
@@ -82,7 +113,8 @@ public class Mapping implements EdmMapping {
   }
 
   /**
-   * Sets the key for the resource mime type key which is used for the lookup in the data map
+   * Sets the key for the resource mime type key which is used for the lookup in the data map.
+   *
    * @param mediaResourceMimeTypeKey under which the mime type can be found in the data map
    * @return {@link Mapping} for method chaining
    */

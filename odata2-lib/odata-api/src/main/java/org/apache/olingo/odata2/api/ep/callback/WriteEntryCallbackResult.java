@@ -22,6 +22,7 @@ import java.util.Map;
 
 import org.apache.olingo.odata2.api.ep.EntityProviderWriteProperties;
 
+// TODO: Auto-generated Javadoc
 /**
  * Result of a callback. It contains the data of the entry which is to be expanded as well as the properties of this
  * entry.
@@ -29,10 +30,15 @@ import org.apache.olingo.odata2.api.ep.EntityProviderWriteProperties;
  */
 public class WriteEntryCallbackResult {
 
+  /** The inline properties. */
   EntityProviderWriteProperties inlineProperties;
+  
+  /** The one entry data. */
   Map<String, Object> oneEntryData;
 
   /**
+   * Gets the inline properties.
+   *
    * @return the inline properties
    */
   public EntityProviderWriteProperties getInlineProperties() {
@@ -40,14 +46,17 @@ public class WriteEntryCallbackResult {
   }
 
   /**
-   * Sets the inline properties for this entry
-   * @param inlineProperties
+   * Sets the inline properties for this entry.
+   *
+   * @param inlineProperties the new inline properties
    */
   public void setInlineProperties(final EntityProviderWriteProperties inlineProperties) {
     this.inlineProperties = inlineProperties;
   }
 
   /**
+   * Gets the entry data.
+   *
    * @return the data for the entry as a map
    */
   public Map<String, Object> getEntryData() {
@@ -55,6 +64,8 @@ public class WriteEntryCallbackResult {
   }
 
   /**
+   * Sets the entry data.
+   *
    * @param data for the entry as a map
    */
   public void setEntryData(final Map<String, Object> data) {

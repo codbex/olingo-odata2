@@ -41,18 +41,34 @@ import org.apache.olingo.odata2.core.ep.EntityProviderProducerException;
 import org.apache.olingo.odata2.core.ep.aggregator.EntityInfoAggregator;
 import org.apache.olingo.odata2.core.ep.util.FormatXml;
 
+// TODO: Auto-generated Javadoc
 /**
  * Serializes an ATOM feed.
  * 
  */
 public class AtomFeedProducer {
 
+  /** The properties. */
   private final EntityProviderWriteProperties properties;
 
+  /**
+   * Instantiates a new atom feed producer.
+   *
+   * @param properties the properties
+   */
   public AtomFeedProducer(final EntityProviderWriteProperties properties) {
     this.properties = properties == null ? EntityProviderWriteProperties.serviceRoot(null).build() : properties;
   }
 
+  /**
+   * Append.
+   *
+   * @param writer the writer
+   * @param eia the eia
+   * @param data the data
+   * @param isInline the is inline
+   * @throws EntityProviderException the entity provider exception
+   */
   public void append(final XMLStreamWriter writer, final EntityInfoAggregator eia,
       final List<Map<String, Object>> data, final boolean isInline) throws EntityProviderException {
     try {
@@ -93,6 +109,11 @@ public class AtomFeedProducer {
     }
   }
 
+  /**
+   * Gets the tombstone callback.
+   *
+   * @return the tombstone callback
+   */
   private TombstoneCallback getTombstoneCallback() {
     if (properties.getCallbacks() != null
         && properties.getCallbacks().containsKey(TombstoneCallback.CALLBACK_KEY_TOMBSTONE)) {
@@ -104,6 +125,14 @@ public class AtomFeedProducer {
     }
   }
 
+  /**
+   * Append deleted entries.
+   *
+   * @param writer the writer
+   * @param eia the eia
+   * @param callback the callback
+   * @throws EntityProviderException the entity provider exception
+   */
   private void appendDeletedEntries(final XMLStreamWriter writer, final EntityInfoAggregator eia,
       final TombstoneCallback callback) throws EntityProviderException {
     TombstoneCallbackResult callbackResult = callback.getTombstoneCallbackResult();
@@ -126,6 +155,13 @@ public class AtomFeedProducer {
     }
   }
 
+  /**
+   * Append next link.
+   *
+   * @param writer the writer
+   * @param nextLink the next link
+   * @throws EntityProviderException the entity provider exception
+   */
   private void appendNextLink(final XMLStreamWriter writer, final String nextLink) throws EntityProviderException {
     try {
       writer.writeStartElement(FormatXml.ATOM_LINK);
@@ -137,6 +173,14 @@ public class AtomFeedProducer {
     }
   }
 
+  /**
+   * Append entries.
+   *
+   * @param writer the writer
+   * @param eia the eia
+   * @param data the data
+   * @throws EntityProviderException the entity provider exception
+   */
   private void appendEntries(final XMLStreamWriter writer, final EntityInfoAggregator eia,
       final List<Map<String, Object>> data) throws EntityProviderException {
     AtomEntryEntityProducer entryProvider = new AtomEntryEntityProducer(properties);
@@ -145,6 +189,13 @@ public class AtomFeedProducer {
     }
   }
 
+  /**
+   * Append inline count.
+   *
+   * @param writer the writer
+   * @param inlineCount the inline count
+   * @throws EntityProviderException the entity provider exception
+   */
   private void appendInlineCount(final XMLStreamWriter writer, final Integer inlineCount)
       throws EntityProviderException {
     if (inlineCount == null || inlineCount < 0) {
@@ -159,6 +210,13 @@ public class AtomFeedProducer {
     }
   }
 
+  /**
+   * Append atom self link.
+   *
+   * @param writer the writer
+   * @param eia the eia
+   * @throws EntityProviderException the entity provider exception
+   */
   private void appendAtomSelfLink(final XMLStreamWriter writer, final EntityInfoAggregator eia)
       throws EntityProviderException {
 
@@ -180,6 +238,13 @@ public class AtomFeedProducer {
     }
   }
 
+  /**
+   * Creates the self link.
+   *
+   * @param eia the eia
+   * @return the string
+   * @throws EntityProviderException the entity provider exception
+   */
   private String createSelfLink(final EntityInfoAggregator eia) throws EntityProviderException {
     StringBuilder sb = new StringBuilder();
     if (!eia.isDefaultEntityContainer()) {
@@ -191,6 +256,13 @@ public class AtomFeedProducer {
     return sb.toString();
   }
 
+  /**
+   * Append atom mandatory parts.
+   *
+   * @param writer the writer
+   * @param eia the eia
+   * @throws EntityProviderException the entity provider exception
+   */
   private void appendAtomMandatoryParts(final XMLStreamWriter writer, final EntityInfoAggregator eia)
       throws EntityProviderException {
     try {
@@ -224,6 +296,13 @@ public class AtomFeedProducer {
     }
   }
 
+  /**
+   * Creates the atom id.
+   *
+   * @param eia the eia
+   * @return the string
+   * @throws EntityProviderException the entity provider exception
+   */
   private String createAtomId(final EntityInfoAggregator eia) throws EntityProviderException {
     return properties.getServiceRoot() + createSelfLink(eia);
   }

@@ -28,28 +28,53 @@ import org.apache.olingo.odata2.api.edm.EdmSimpleTypeKind;
 import org.apache.olingo.odata2.api.uri.expression.ExpressionParserException;
 import org.apache.olingo.odata2.core.edm.EdmSimpleTypeFacadeImpl;
 
+// TODO: Auto-generated Javadoc
 /**
- * Expression tokenizer
- * 
+ * Expression tokenizer.
  */
 public class Tokenizer {
 
+  /** The Constant OTHER_LIT. */
   private static final Pattern OTHER_LIT = Pattern.compile("(?:\\p{L}|\\p{Digit}|[-._~%!$&*+;:@])+");
+  
+  /** The Constant FUNK. */
   private static final Pattern FUNK =
       Pattern
           .compile("^(startswith|endswith|substring|substring|substringof|indexof|replace|tolower|toupper" +
               "|trim|concat|length|year|mounth|day|hour|minute|second|round|ceiling|floor)( *)\\(");
+  
+  /** The Constant AND_SUB1. */
   private static final Pattern AND_SUB1 = Pattern.compile("^(add|sub|mul|div|mod|not) ");
+  
+  /** The Constant AND_SUB. */
   private static final Pattern AND_SUB = Pattern.compile("^(and|or|eq|ne|lt|gt|le|ge) ");
+  
+  /** The Constant prefix. */
   private static final Pattern prefix = Pattern.compile("^(X|binary|guid|datetime|datetimeoffset|time)'");
+  
+  /** The flag include whitespace. */
   private boolean flagIncludeWhitespace = false;
+  
+  /** The type dectector. */
   private EdmSimpleTypeFacade typeDectector = null;
 
+  /** The cur position. */
   int curPosition;
+  
+  /** The expression. */
   final String expression;
+  
+  /** The expression length. */
   final int expressionLength;
+  
+  /** The tokens. */
   TokenList tokens;
 
+  /**
+   * Instantiates a new tokenizer.
+   *
+   * @param expression the expression
+   */
   public Tokenizer(final String expression) {
     typeDectector = new EdmSimpleTypeFacadeImpl();
     this.expression = expression;
@@ -68,8 +93,11 @@ public class Tokenizer {
   }
 
   /**
-   * Tokenizes an expression as defined per OData specification
+   * Tokenizes an expression as defined per OData specification.
+   *
    * @return Token list
+   * @throws TokenizerException the tokenizer exception
+   * @throws ExpressionParserException the expression parser exception
    */
   public TokenList tokenize() throws TokenizerException, ExpressionParserException {
     curPosition = 0;
@@ -161,6 +189,14 @@ public class Tokenizer {
     return tokens;
   }
 
+  /**
+   * Check for literal.
+   *
+   * @param oldPosition the old position
+   * @param curCharacter the cur character
+   * @param rem_expr the rem expr
+   * @return true, if successful
+   */
   private boolean checkForLiteral(final int oldPosition, final char curCharacter, final String rem_expr) {
     final Matcher matcher = OTHER_LIT.matcher(rem_expr);
     boolean isLiteral = false;
@@ -191,6 +227,13 @@ public class Tokenizer {
     return isLiteral;
   }
 
+  /**
+   * Check for boolean.
+   *
+   * @param oldPosition the old position
+   * @param rem_expr the rem expr
+   * @return true, if successful
+   */
   private boolean checkForBoolean(final int oldPosition, final String rem_expr) {
     boolean isBoolean = false;
     if ("true".equals(rem_expr) || "false".equals(rem_expr)) {
@@ -202,6 +245,12 @@ public class Tokenizer {
     return isBoolean;
   }
 
+  /**
+   * Eat white spaces.
+   *
+   * @param oldPosition the old position
+   * @param curCharacter the cur character
+   */
   private void eatWhiteSpaces(final int oldPosition, char curCharacter) {
     int lv_token_len;
     String expression_sub;
@@ -220,6 +269,13 @@ public class Tokenizer {
     }
   }
 
+  /**
+   * Check for method.
+   *
+   * @param oldPosition the old position
+   * @param rem_expr the rem expr
+   * @return true, if successful
+   */
   private boolean checkForMethod(final int oldPosition, final String rem_expr) {
     boolean isMethod = false;
     Matcher matcher = FUNK.matcher(rem_expr);
@@ -232,6 +288,13 @@ public class Tokenizer {
     return isMethod;
   }
 
+  /**
+   * Check for math.
+   *
+   * @param oldPosition the old position
+   * @param rem_expr the rem expr
+   * @return true, if successful
+   */
   private boolean checkForMath(final int oldPosition, final String rem_expr) {
     boolean isMath = false;
     Matcher matcher1 = AND_SUB1.matcher(rem_expr);
@@ -244,6 +307,13 @@ public class Tokenizer {
     return isMath;
   }
 
+  /**
+   * Check for binary.
+   *
+   * @param oldPosition the old position
+   * @param rem_expr the rem expr
+   * @return true, if successful
+   */
   private boolean checkForBinary(final int oldPosition, final String rem_expr) {
     boolean isBinary = false;
     Matcher matcher1 = AND_SUB.matcher(rem_expr);
@@ -256,6 +326,14 @@ public class Tokenizer {
     return isBinary;
   }
 
+  /**
+   * Check for prefix.
+   *
+   * @param rem_expr the rem expr
+   * @return true, if successful
+   * @throws ExpressionParserException the expression parser exception
+   * @throws TokenizerException the tokenizer exception
+   */
   private boolean checkForPrefix(final String rem_expr) throws ExpressionParserException, TokenizerException {
     boolean isPrefix = false;
     Matcher matcher = prefix.matcher(rem_expr);
@@ -272,16 +350,24 @@ public class Tokenizer {
     return isPrefix;
   }
 
+  /**
+   * Read literal.
+   *
+   * @param curCharacter the cur character
+   * @throws ExpressionParserException the expression parser exception
+   * @throws TokenizerException the tokenizer exception
+   */
   private void readLiteral(final char curCharacter) throws ExpressionParserException, TokenizerException {
     readLiteral(curCharacter, "");
   }
 
   /**
-   * Read up to single ' and move pointer to the following char and tries a type detection
-   * @param curCharacter
-   * @param token
-   * @throws ExpressionParserException
-   * @throws TokenizerException
+   * Read up to single ' and move pointer to the following char and tries a type detection.
+   *
+   * @param curCharacter the cur character
+   * @param token the token
+   * @throws ExpressionParserException the expression parser exception
+   * @throws TokenizerException the tokenizer exception
    */
   private void readLiteral(char curCharacter, String token) throws ExpressionParserException, TokenizerException {
     int offsetPos = -token.length();

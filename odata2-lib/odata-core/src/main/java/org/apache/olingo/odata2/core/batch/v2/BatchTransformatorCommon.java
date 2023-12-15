@@ -39,7 +39,18 @@ import org.apache.olingo.odata2.core.PathInfoImpl;
 import org.apache.olingo.odata2.core.batch.BatchHelper;
 import org.apache.olingo.odata2.core.batch.v2.Header.HeaderField;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BatchTransformatorCommon.
+ */
 public class BatchTransformatorCommon {
+  
+  /**
+   * Validate content type.
+   *
+   * @param headers the headers
+   * @throws BatchException the batch exception
+   */
   public static void validateContentType(final Header headers) throws BatchException {
     List<String> contentTypes = headers.getHeaders(HttpHeaders.CONTENT_TYPE);
 
@@ -53,6 +64,13 @@ public class BatchTransformatorCommon {
     }
   }
 
+  /**
+   * Validate content transfer encoding.
+   *
+   * @param headers the headers
+   * @param isChangeRequest the is change request
+   * @throws BatchException the batch exception
+   */
   public static void validateContentTransferEncoding(final Header headers, final boolean isChangeRequest)
       throws BatchException {
     final HeaderField contentTransferField = headers.getHeaderField(BatchHelper.HTTP_CONTENT_TRANSFER_ENCODING);
@@ -76,6 +94,13 @@ public class BatchTransformatorCommon {
     }
   }
 
+  /**
+   * Gets the content length.
+   *
+   * @param headers the headers
+   * @return the content length
+   * @throws BatchException the batch exception
+   */
   public static int getContentLength(final Header headers) throws BatchException {
     final HeaderField contentLengthField = headers.getHeaderField(HttpHeaders.CONTENT_LENGTH);
 
@@ -100,6 +125,13 @@ public class BatchTransformatorCommon {
     return -1;
   }
 
+  /**
+   * Validate host.
+   *
+   * @param headers the headers
+   * @param baseUri the base uri
+   * @throws BatchException the batch exception
+   */
   public static void validateHost(final Header headers, final String baseUri) throws BatchException {
     final HeaderField hostField = headers.getHeaderField(HttpHeaders.HOST);
 
@@ -112,17 +144,39 @@ public class BatchTransformatorCommon {
     }
   }
 
+  /**
+   * The Class HttpResponsetStatusLine.
+   */
   public static class HttpResponsetStatusLine {
+    
+    /** The Constant REG_EX_STATUS_LINE. */
     private static final String REG_EX_STATUS_LINE = "(?:HTTP/[0-9]\\.[0-9])\\s([0-9]{3})\\s([\\S ]+)\\s*";
+    
+    /** The http status line. */
     private Line httpStatusLine;
+    
+    /** The status code. */
     private String statusCode;
+    
+    /** The status info. */
     private String statusInfo;
 
+    /**
+     * Instantiates a new http responset status line.
+     *
+     * @param httpStatusLine the http status line
+     * @throws BatchException the batch exception
+     */
     public HttpResponsetStatusLine(final Line httpStatusLine) throws BatchException {
       this.httpStatusLine = httpStatusLine;
       parse();
     }
 
+    /**
+     * Parses the.
+     *
+     * @throws BatchException the batch exception
+     */
     private void parse() throws BatchException {
       final Pattern regexPattern = Pattern.compile(REG_EX_STATUS_LINE);
       final Matcher matcher = regexPattern.matcher(httpStatusLine.toString());
@@ -136,29 +190,66 @@ public class BatchTransformatorCommon {
       }
     }
 
+    /**
+     * Gets the status code.
+     *
+     * @return the status code
+     */
     public String getStatusCode() {
       return statusCode;
     }
 
+    /**
+     * Gets the status info.
+     *
+     * @return the status info
+     */
     public String getStatusInfo() {
       return statusInfo;
     }
   }
 
+  /**
+   * The Class HttpRequestStatusLine.
+   */
   public static class HttpRequestStatusLine {
+    
+    /** The Constant HTTP_BATCH_METHODS. */
     private static final Set<String> HTTP_BATCH_METHODS = new HashSet<String>(Arrays.asList(new String[] { "GET" }));
+    
+    /** The Constant HTTP_CHANGE_SET_METHODS. */
     private static final Set<String> HTTP_CHANGE_SET_METHODS = new HashSet<String>(Arrays.asList(new String[] { "POST",
         "PUT", "DELETE", "MERGE", "PATCH" }));
+    
+    /** The Constant HTTP_VERSION. */
     private static final String HTTP_VERSION = "HTTP/1.1";
     
+    /** The status line. */
     final private Line statusLine;
+    
+    /** The request base uri. */
     final String requestBaseUri;
+    
+    /** The batch request path info. */
     final PathInfo batchRequestPathInfo;
 
+    /** The method. */
     private ODataHttpMethod method;
+    
+    /** The path info. */
     private PathInfo pathInfo;
+    
+    /** The http version. */
     private String httpVersion;
 
+    /**
+     * Instantiates a new http request status line.
+     *
+     * @param httpStatusLine the http status line
+     * @param baseUri the base uri
+     * @param pathInfo the path info
+     * @throws BatchException the batch exception
+     */
     public HttpRequestStatusLine(final Line httpStatusLine, final String baseUri, final PathInfo pathInfo)
         throws BatchException {
       statusLine = httpStatusLine;
@@ -168,6 +259,11 @@ public class BatchTransformatorCommon {
       parse();
     }
 
+    /**
+     * Parses the.
+     *
+     * @throws BatchException the batch exception
+     */
     private void parse() throws BatchException {
       final String[] parts = statusLine.toString().split(" ");
 
@@ -185,6 +281,13 @@ public class BatchTransformatorCommon {
       }
     }
 
+    /**
+     * Parses the method.
+     *
+     * @param method the method
+     * @return the o data http method
+     * @throws BatchException the batch exception
+     */
     private ODataHttpMethod parseMethod(final String method) throws BatchException {
       try {
         return ODataHttpMethod.valueOf(method.trim());
@@ -193,6 +296,13 @@ public class BatchTransformatorCommon {
       }
     }
 
+    /**
+     * Parses the uri.
+     *
+     * @param uri the uri
+     * @return the path info
+     * @throws BatchException the batch exception
+     */
     private PathInfo parseUri(final String uri) throws BatchException {
       PathInfoImpl pInfo = new PathInfoImpl();
       pInfo.setServiceRoot(batchRequestPathInfo.getServiceRoot());
@@ -233,6 +343,12 @@ public class BatchTransformatorCommon {
       return pInfo;
     }
 
+    /**
+     * Parses the O data path segments.
+     *
+     * @param odataPathSegmentsAsString the odata path segments as string
+     * @return the list
+     */
     private List<PathSegment> parseODataPathSegments(final String odataPathSegmentsAsString) {
       final List<PathSegment> odataPathSegments = new ArrayList<PathSegment>();
       final String[] pathParts = odataPathSegmentsAsString.split("/");
@@ -244,6 +360,13 @@ public class BatchTransformatorCommon {
       return odataPathSegments;
     }
 
+    /**
+     * Parses the http version.
+     *
+     * @param httpVersion the http version
+     * @return the string
+     * @throws BatchException the batch exception
+     */
     private String parseHttpVersion(final String httpVersion) throws BatchException {
       if (!HTTP_VERSION.equals(httpVersion.trim())) {
         throw new BatchException(BatchException.INVALID_REQUEST_LINE
@@ -254,6 +377,12 @@ public class BatchTransformatorCommon {
       }
     }
 
+    /**
+     * Validate http method.
+     *
+     * @param isChangeSet the is change set
+     * @throws BatchException the batch exception
+     */
     public void validateHttpMethod(boolean isChangeSet) throws BatchException {
       Set<String> validMethods = (isChangeSet) ? HTTP_CHANGE_SET_METHODS : HTTP_BATCH_METHODS;
       
@@ -267,18 +396,38 @@ public class BatchTransformatorCommon {
       }
     }
 
+    /**
+     * Gets the method.
+     *
+     * @return the method
+     */
     public ODataHttpMethod getMethod() {
       return method;
     }
 
+    /**
+     * Gets the path info.
+     *
+     * @return the path info
+     */
     public PathInfo getPathInfo() {
       return pathInfo;
     }
 
+    /**
+     * Gets the http version.
+     *
+     * @return the http version
+     */
     public String getHttpVersion() {
       return httpVersion;
     }
 
+    /**
+     * Gets the line number.
+     *
+     * @return the line number
+     */
     public int getLineNumber() {
       return statusLine.getLineNumber();
     }

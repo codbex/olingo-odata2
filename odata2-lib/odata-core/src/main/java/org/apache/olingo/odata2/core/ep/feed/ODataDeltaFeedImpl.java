@@ -25,16 +25,38 @@ import org.apache.olingo.odata2.api.ep.entry.ODataEntry;
 import org.apache.olingo.odata2.api.ep.feed.FeedMetadata;
 import org.apache.olingo.odata2.api.ep.feed.ODataDeltaFeed;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ODataDeltaFeedImpl.
+ */
 public class ODataDeltaFeedImpl implements ODataDeltaFeed {
 
+  /** The entries. */
   private final List<ODataEntry> entries;
+  
+  /** The feed metadata. */
   private final FeedMetadata feedMetadata;
+  
+  /** The deleted entries. */
   private final List<DeletedEntryMetadata> deletedEntries;
 
+  /**
+   * Instantiates a new o data delta feed impl.
+   *
+   * @param entries the entries
+   * @param feedMetadata the feed metadata
+   */
   public ODataDeltaFeedImpl(final List<ODataEntry> entries, final FeedMetadata feedMetadata) {
     this(entries, feedMetadata, null);
   }
 
+  /**
+   * Instantiates a new o data delta feed impl.
+   *
+   * @param entries the entries
+   * @param feedMetadata the feed metadata
+   * @param deletedEntries the deleted entries
+   */
   public ODataDeltaFeedImpl(final List<ODataEntry> entries, final FeedMetadata feedMetadata,
       final List<DeletedEntryMetadata> deletedEntries) {
     this.entries = entries;
@@ -42,16 +64,31 @@ public class ODataDeltaFeedImpl implements ODataDeltaFeed {
     this.deletedEntries = deletedEntries;
   }
 
+  /**
+   * Gets the entries.
+   *
+   * @return the entries
+   */
   @Override
   public List<ODataEntry> getEntries() {
     return entries;
   }
 
+  /**
+   * Gets the feed metadata.
+   *
+   * @return the feed metadata
+   */
   @Override
   public FeedMetadata getFeedMetadata() {
     return feedMetadata;
   }
 
+  /**
+   * Gets the deleted entries.
+   *
+   * @return the deleted entries
+   */
   @Override
   public List<DeletedEntryMetadata> getDeletedEntries() {
     return deletedEntries;

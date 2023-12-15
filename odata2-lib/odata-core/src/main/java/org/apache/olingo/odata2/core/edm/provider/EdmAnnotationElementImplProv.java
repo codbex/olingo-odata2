@@ -25,36 +25,75 @@ import org.apache.olingo.odata2.api.edm.EdmAnnotationAttribute;
 import org.apache.olingo.odata2.api.edm.EdmAnnotationElement;
 import org.apache.olingo.odata2.api.edm.provider.AnnotationElement;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EdmAnnotationElementImplProv.
+ */
 public class EdmAnnotationElementImplProv implements EdmAnnotationElement {
 
+  /** The element. */
   private AnnotationElement element;
+  
+  /** The child elements. */
   ArrayList<EdmAnnotationElement> childElements;
+  
+  /** The attributes. */
   List<EdmAnnotationAttribute> attributes;
 
+  /**
+   * Instantiates a new edm annotation element impl prov.
+   *
+   * @param element the element
+   */
   public EdmAnnotationElementImplProv(final AnnotationElement element) {
     this.element = element;
   }
 
+  /**
+   * Gets the name.
+   *
+   * @return the name
+   */
   @Override
   public String getName() {
     return element.getName();
   }
 
+  /**
+   * Gets the namespace.
+   *
+   * @return the namespace
+   */
   @Override
   public String getNamespace() {
     return element.getNamespace();
   }
 
+  /**
+   * Gets the prefix.
+   *
+   * @return the prefix
+   */
   @Override
   public String getPrefix() {
     return element.getPrefix();
   }
 
+  /**
+   * Gets the text.
+   *
+   * @return the text
+   */
   @Override
   public String getText() {
     return element.getText();
   }
 
+  /**
+   * Gets the child elements.
+   *
+   * @return the child elements
+   */
   @Override
   public List<EdmAnnotationElement> getChildElements() {
     if (childElements == null && element.getChildElements() != null) {
@@ -66,6 +105,11 @@ public class EdmAnnotationElementImplProv implements EdmAnnotationElement {
     return childElements;
   }
 
+  /**
+   * Gets the attributes.
+   *
+   * @return the attributes
+   */
   @Override
   public List<EdmAnnotationAttribute> getAttributes() {
     if (attributes == null && element.getAttributes() != null) {

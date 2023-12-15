@@ -26,17 +26,28 @@ import java.net.URISyntaxException;
 import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
  * Tests for percent-encoding.
  * 
  */
 public class EncoderTest extends BaseTest {
 
+  /** The Constant RFC3986_UNRESERVED. */
   private final static String RFC3986_UNRESERVED = "-._~"; // + ALPHA + DIGIT
+  
+  /** The Constant RFC3986_GEN_DELIMS. */
   private final static String RFC3986_GEN_DELIMS = ":/?#[]@";
+  
+  /** The Constant RFC3986_SUB_DELIMS. */
   private final static String RFC3986_SUB_DELIMS = "!$&'()*+,;=";
+  
+  /** The Constant RFC3986_RESERVED. */
   private final static String RFC3986_RESERVED = RFC3986_GEN_DELIMS + RFC3986_SUB_DELIMS;
 
+  /**
+   * Ascii characters.
+   */
   @Test
   public void asciiCharacters() {
     final String s = "azAZ019";
@@ -44,43 +55,67 @@ public class EncoderTest extends BaseTest {
     assertEquals(s, Encoder.encode(s));
   }
 
+  /**
+   * Ascii control.
+   */
   @Test
   public void asciiControl() {
     assertEquals("%08%09%0A%0D", Encoder.encode("\b\t\n\r"));
   }
 
+  /**
+   * Unsafe.
+   */
   @Test
   public void unsafe() {
     assertEquals("%3C%3E%25%26", Encoder.encode("<>%&"));
     assertEquals("%22%5C%60%7B%7D%7C", Encoder.encode("\"\\`{}|"));
   }
 
+  /**
+   * Rfc 3986 unreserved.
+   */
   @Test
   public void rfc3986Unreserved() {
     assertEquals(RFC3986_UNRESERVED, Encoder.encode(RFC3986_UNRESERVED));
   }
 
+  /**
+   * Rfc 3986 gen delims.
+   */
   @Test
   public void rfc3986GenDelims() {
     assertEquals("%3A%2F%3F%23%5B%5D%40", Encoder.encode(RFC3986_GEN_DELIMS));
   }
 
+  /**
+   * Rfc 3986 sub delims.
+   */
   @Test
   public void rfc3986SubDelims() {
     assertEquals("%21%24%26'%28%29%2A%2B%2C%3B%3D", Encoder.encode(RFC3986_SUB_DELIMS));
   }
 
+  /**
+   * Rfc 3986 reserved.
+   */
   @Test
   public void rfc3986Reserved() {
     assertEquals("%3A%2F%3F%23%5B%5D%40%21%24%26'%28%29%2A%2B%2C%3B%3D", Encoder.encode(RFC3986_RESERVED));
   }
 
+  /**
+   * Unicode characters.
+   */
   @Test
   public void unicodeCharacters() {
     assertEquals("%E2%82%AC", Encoder.encode("€"));
     assertEquals("%EF%B7%BC", Encoder.encode("\uFDFC")); // RIAL SIGN
   }
 
+  /**
+   * Characters outside bmp.
+   */
   @Test
   public void charactersOutsideBmp() {
     // Unicode characters outside the Basic Multilingual Plane are stored
@@ -89,6 +124,11 @@ public class EncoderTest extends BaseTest {
     assertEquals("%F0%9F%98%83", Encoder.encode(s));
   }
 
+  /**
+   * Uri decoding.
+   *
+   * @throws URISyntaxException the URI syntax exception
+   */
   @Test
   public void uriDecoding() throws URISyntaxException {
     final String decodedValue = RFC3986_UNRESERVED + RFC3986_RESERVED + "0..1..a..z..A..Z..@"

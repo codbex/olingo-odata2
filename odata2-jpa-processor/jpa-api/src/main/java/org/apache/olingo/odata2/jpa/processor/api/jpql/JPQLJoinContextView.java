@@ -22,6 +22,7 @@ import java.util.List;
 
 import org.apache.olingo.odata2.jpa.processor.api.access.JPAJoinClause;
 
+// TODO: Auto-generated Javadoc
 /**
  * The interface provide a view on JPQL Join context.The interface provides
  * methods for accessing the Join Clause which can be part of JPQL Select

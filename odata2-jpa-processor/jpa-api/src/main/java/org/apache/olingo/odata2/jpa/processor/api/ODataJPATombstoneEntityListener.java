@@ -26,15 +26,27 @@ import jakarta.persistence.Query;
 import org.apache.olingo.odata2.api.uri.info.GetEntitySetUriInfo;
 import org.apache.olingo.odata2.jpa.processor.api.exception.ODataJPARuntimeException;
 
+// TODO: Auto-generated Javadoc
 /**
  * Extend this class and implement a JPA Entity Listener as specified in JSR 317 Java Persistence 2.0.
  * The class provides abstract methods that shall be implemented by JPA application to handle OData Tombstone features.
  * The implemented JPA Entity Listener classes will be called back from OData JPA Processor Library.
+ *
+ * @see ODataJPATombstoneEntityEvent
  */
 public abstract class ODataJPATombstoneEntityListener {
 
+  /**
+   * Instantiates a new o data JPA tombstone entity listener.
+   */
   public ODataJPATombstoneEntityListener() {}
 
+  /**
+   * Adds the to delta.
+   *
+   * @param entity the entity
+   * @param entityName the entity name
+   */
   protected final void addToDelta(final Object entity, final String entityName) {
     ODataJPATombstoneContext.addToDeltaResult(entity, entityName);
   }
@@ -44,9 +56,11 @@ public abstract class ODataJPATombstoneEntityListener {
    * OData requests. The query instance thus created can be used for handling delta JPA entities. The delta token passed
    * from OData request can
    * be accessed from {@link com.sap.core.odata.processor.api.jpa.ODataJPATombstoneContext}.
+   *
    * @param resultsView is a reference to OData request
    * @param em is a reference to {@link jakarta.persistence.EntityManager}
    * @return an instance of type {@link jakarta.persistence.Query}
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
    */
   public abstract Query getQuery(GetEntitySetUriInfo resultsView, EntityManager em) throws ODataJPARuntimeException;
 
@@ -59,7 +73,8 @@ public abstract class ODataJPATombstoneEntityListener {
   public abstract String generateDeltaToken(List<Object> deltas, Query query);
 
   /**
-   * Implement this method to indicate whether the extended class can handle OData Tombstone feature as well
+   * Implement this method to indicate whether the extended class can handle OData Tombstone feature as well.
+   *
    * @return true by default
    */
   public boolean isTombstoneSupported() {

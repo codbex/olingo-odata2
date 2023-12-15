@@ -47,26 +47,63 @@ import org.apache.olingo.odata2.jpa.processor.core.mock.model.JPAJavaMemberMock;
 import org.easymock.EasyMock;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPATypeConverterTest.
+ */
 public class JPATypeConverterTest {
 
+  /** The test case. */
   private static String testCase = "datetime";
 
+  /** The edm simple kind type string. */
   private EdmSimpleTypeKind edmSimpleKindTypeString;
+  
+  /** The edm simple kind type character. */
   private EdmSimpleTypeKind edmSimpleKindTypeCharacter;
+  
+  /** The edm simple kind type byte arr. */
   private EdmSimpleTypeKind edmSimpleKindTypeByteArr;
+  
+  /** The edm simple kind type long. */
   private EdmSimpleTypeKind edmSimpleKindTypeLong;
+  
+  /** The edm simple kind type short. */
   private EdmSimpleTypeKind edmSimpleKindTypeShort;
+  
+  /** The edm simple kind type integer. */
   private EdmSimpleTypeKind edmSimpleKindTypeInteger;
+  
+  /** The edm simple kind type double. */
   private EdmSimpleTypeKind edmSimpleKindTypeDouble;
+  
+  /** The edm simple kind type float. */
   private EdmSimpleTypeKind edmSimpleKindTypeFloat;
+  
+  /** The edm simple kind type big decimal. */
   private EdmSimpleTypeKind edmSimpleKindTypeBigDecimal;
+  
+  /** The edm simple kind type byte. */
   private EdmSimpleTypeKind edmSimpleKindTypeByte;
+  
+  /** The edm simple kind type boolean. */
   private EdmSimpleTypeKind edmSimpleKindTypeBoolean;
+  
+  /** The edm simple kind type UUID. */
   private EdmSimpleTypeKind edmSimpleKindTypeUUID;
+  
+  /** The edm simple kind type string from enum. */
   private EdmSimpleTypeKind edmSimpleKindTypeStringFromEnum;
 
-  enum SomeEnum {TEST}
+  /**
+   * The Enum SomeEnum.
+   */
+  enum SomeEnum {/** The test. */
+TEST}
 
+  /**
+   * Test convert to edm simple type.
+   */
   @Test
   public void testConvertToEdmSimpleType() {
     String str = "entity";
@@ -116,6 +153,9 @@ public class JPATypeConverterTest {
     assertEquals(EdmSimpleTypeKind.String, edmSimpleKindTypeStringFromEnum);
   }
 
+  /**
+   * Test convert type character.
+   */
   @Test
   public void testConvertTypeCharacter() {
     try {
@@ -127,6 +167,9 @@ public class JPATypeConverterTest {
     }
   }
 
+  /**
+   * Test convert type numbers.
+   */
   @Test
   public void testConvertTypeNumbers() {
     try {
@@ -142,6 +185,9 @@ public class JPATypeConverterTest {
     }
   }
 
+  /**
+   * Test convert type byte array.
+   */
   @Test
   public void testConvertTypeByteArray() {
     try {
@@ -151,6 +197,9 @@ public class JPATypeConverterTest {
     }
   }
 
+  /**
+   * Test convert type blob.
+   */
   @Test
   public void testConvertTypeBlob() {
     testCase = "lob";
@@ -162,6 +211,9 @@ public class JPATypeConverterTest {
     }
   }
 
+  /**
+   * Test convert type clob.
+   */
   @Test
   public void testConvertTypeClob() {
     testCase = "lob";
@@ -173,6 +225,9 @@ public class JPATypeConverterTest {
     }
   }
 
+  /**
+   * Test convert type B lob negative.
+   */
   @Test
   public void testConvertTypeBLobNegative() {
     try {
@@ -184,6 +239,9 @@ public class JPATypeConverterTest {
     fail("ExceptionExpected");
   }
 
+  /**
+   * Test convert type clob negative.
+   */
   @Test
   public void testConvertTypeClobNegative() {
     try {
@@ -195,6 +253,9 @@ public class JPATypeConverterTest {
     fail("ExceptionExpected");
   }
 
+  /**
+   * Test convert type calendar.
+   */
   @Test
   public void testConvertTypeCalendar() {
     try {
@@ -209,6 +270,9 @@ public class JPATypeConverterTest {
     }
   }
 
+  /**
+   * Test convert type temporal.
+   */
   @Test
   public void testConvertTypeTemporal() {
     testCase = "datetime";
@@ -220,6 +284,9 @@ public class JPATypeConverterTest {
     }
   }
 
+  /**
+   * Test convert type temporal time.
+   */
   @Test
   public void testConvertTypeTemporalTime() {
     testCase = "time";
@@ -231,6 +298,9 @@ public class JPATypeConverterTest {
     }
   }
 
+  /**
+   * Test convert type temporal null.
+   */
   @Test
   public void testConvertTypeTemporalNull() {
     testCase = "temporalnull";
@@ -242,6 +312,9 @@ public class JPATypeConverterTest {
     }
   }
 
+  /**
+   * Test convert type temporal null 2.
+   */
   @Test
   public void testConvertTypeTemporalNull2() {
     testCase = "temporalnull2";
@@ -254,6 +327,9 @@ public class JPATypeConverterTest {
     }
   }
   
+  /**
+   * Test convert property with xml adapter.
+   */
   @Test
   public void testConvertPropertyWithXmlAdapter() {
 	  try {
@@ -268,8 +344,16 @@ public class JPATypeConverterTest {
 	}
   }
 
+  /**
+   * The Class JPASimpleAttribute.
+   */
   private static class JPASimpleAttribute extends JPAAttributeMock<Object, String> {
 
+    /**
+     * Gets the java member.
+     *
+     * @return the java member
+     */
     @Override
     public Member getJavaMember() {
       if (testCase.equals("temporalNull2")) {
@@ -279,11 +363,24 @@ public class JPATypeConverterTest {
     }
   }
 
+  /**
+   * The Class JPAJavaMember.
+   */
   private static class JPAJavaMember extends JPAJavaMemberMock {
 
+    /** The temporal. */
     private Temporal temporal = null;
+    
+    /** The lob. */
     private Lob lob = null;
 
+    /**
+     * Gets the annotation.
+     *
+     * @param <T> the generic type
+     * @param annotationClass the annotation class
+     * @return the annotation
+     */
     @SuppressWarnings("unchecked")
     @Override
     public <T extends Annotation> T getAnnotation(final Class<T> annotationClass) {
@@ -316,13 +413,27 @@ public class JPATypeConverterTest {
     }
   }
   
+  /**
+   * The Class JPAAttributeWithXmlAdapterType.
+   */
   private static class JPAAttributeWithXmlAdapterType extends JPAAttributeMock<EntityWithXmlAdapterOnProperty, String> {
-	  @Override
+	  
+  	/**
+  	 * Gets the name.
+  	 *
+  	 * @return the name
+  	 */
+  	@Override
 	  public String getName() {
 		  return "self";
 	  }
 	  
-	  public ManagedType<EntityWithXmlAdapterOnProperty> getDeclaringType() {
+	  /**
+  	 * Gets the declaring type.
+  	 *
+  	 * @return the declaring type
+  	 */
+  	public ManagedType<EntityWithXmlAdapterOnProperty> getDeclaringType() {
 		ManagedType<EntityWithXmlAdapterOnProperty> mock = EasyMock.createMock(ManagedType.class);
 		EasyMock.expect(mock.getJavaType()).andStubReturn(EntityWithXmlAdapterOnProperty.class);
 		EasyMock.replay(mock);

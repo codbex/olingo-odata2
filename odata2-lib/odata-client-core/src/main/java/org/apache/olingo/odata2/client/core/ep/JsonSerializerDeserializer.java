@@ -54,13 +54,23 @@ import org.apache.olingo.odata2.core.ep.aggregator.EntityPropertyInfo;
 import org.apache.olingo.odata2.core.ep.consumer.JsonErrorDocumentConsumer;
 import org.apache.olingo.odata2.core.ep.util.CircleStreamBuffer;
 
+// TODO: Auto-generated Javadoc
 /**
- *  This class includes methods to serialize deserialize JSON Content type
+ *  This class includes methods to serialize deserialize JSON Content type.
  */
 public class JsonSerializerDeserializer implements ContentTypeBasedSerializer, ContentTypeBasedDeserializer {
 
+  /** The Constant DEFAULT_CHARSET. */
   private static final String DEFAULT_CHARSET = "UTF-8";
 
+  /**
+   * Write entry.
+   *
+   * @param entitySet the entity set
+   * @param data the data
+   * @return the o data response
+   * @throws EntityProviderException the entity provider exception
+   */
   @Override
   public ODataResponse writeEntry(EdmEntitySet entitySet, Entity data) 
       throws EntityProviderException {
@@ -92,12 +102,28 @@ public class JsonSerializerDeserializer implements ContentTypeBasedSerializer, C
   
   }
 
+  /**
+   * Read feed.
+   *
+   * @param entitySet the entity set
+   * @param content the content
+   * @return the o data feed
+   * @throws EntityProviderException the entity provider exception
+   */
   @Override
   public ODataFeed readFeed(EdmEntitySet entitySet, EntityStream content) 
       throws EntityProviderException {
     return new JsonEntityDeserializer().readFeed(entitySet, content);
   }
 
+  /**
+   * Read entry.
+   *
+   * @param entitySet the entity set
+   * @param content the content
+   * @return the o data entry
+   * @throws EntityProviderException the entity provider exception
+   */
   @Override
   public ODataEntry readEntry(EdmEntitySet entitySet, EntityStream content) 
       throws EntityProviderException {
@@ -105,11 +131,26 @@ public class JsonSerializerDeserializer implements ContentTypeBasedSerializer, C
   
   }
 
+  /**
+   * Read error document.
+   *
+   * @param errorDocument the error document
+   * @return the o data error context
+   * @throws EntityProviderException the entity provider exception
+   */
   @Override
   public ODataErrorContext readErrorDocument(InputStream errorDocument) throws EntityProviderException {
     return new JsonErrorDocumentConsumer().readError(errorDocument);
   }
 
+  /**
+   * Write feed.
+   *
+   * @param entitySet the entity set
+   * @param data the data
+   * @return the o data response
+   * @throws EntityProviderException the entity provider exception
+   */
   @Override
   public ODataResponse writeFeed(EdmEntitySet entitySet, EntityCollection data) throws EntityProviderException {
     final EntityCollectionSerializerProperties properties = data == null ? 
@@ -135,12 +176,26 @@ public class JsonSerializerDeserializer implements ContentTypeBasedSerializer, C
     }
   }
 
+  /**
+   * Write batch response.
+   *
+   * @param batchResponseParts the batch response parts
+   * @return the o data response
+   * @throws BatchException the batch exception
+   */
   @Override
   public ODataResponse writeBatchResponse(List<BatchResponsePart> batchResponseParts) throws BatchException {
     BatchResponseWriter batchWriter = new BatchResponseWriter();
     return batchWriter.writeResponse(batchResponseParts);
   }
 
+  /**
+   * Read batch request.
+   *
+   * @param batchParts the batch parts
+   * @param boundary the boundary
+   * @return the input stream
+   */
   @Override
   public InputStream readBatchRequest(List<BatchPart> batchParts,
       String boundary) {
@@ -148,6 +203,14 @@ public class JsonSerializerDeserializer implements ContentTypeBasedSerializer, C
     return batchWriter.writeBatchRequest(batchParts, boundary);
   }
 
+  /**
+   * Read function import.
+   *
+   * @param functionImport the function import
+   * @param content the content
+   * @return the object
+   * @throws EntityProviderException the entity provider exception
+   */
   @Override
   public Object readFunctionImport(EdmFunctionImport functionImport, EntityStream content)
       throws EntityProviderException {

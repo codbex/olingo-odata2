@@ -58,14 +58,24 @@ import org.apache.olingo.odata2.testutil.mock.MockFacade;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class JsonFeedEntityProducerTest.
  */
 public class JsonFeedEntityProducerTest extends BaseTest {
+  
+  /** The Constant BASE_URI. */
   protected static final String BASE_URI = "http://host:80/service/";
+  
+  /** The Constant DEFAULT_PROPERTIES. */
   protected static final EntityProviderWriteProperties DEFAULT_PROPERTIES =
       EntityProviderWriteProperties.serviceRoot(URI.create(BASE_URI)).build();
 
+  /**
+   * Feed.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void feed() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -97,6 +107,11 @@ public class JsonFeedEntityProducerTest extends BaseTest {
         json);
   }
 
+  /**
+   * Omit json wrapper must have no effect.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void omitJsonWrapperMustHaveNoEffect() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -130,6 +145,11 @@ public class JsonFeedEntityProducerTest extends BaseTest {
         json);
   }
   
+  /**
+   * Client flag must not have an effect.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void clientFlagMustNotHaveAnEffect() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -163,6 +183,11 @@ public class JsonFeedEntityProducerTest extends BaseTest {
         json);
   }
 
+  /**
+   * Inline count.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void inlineCount() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Buildings");
@@ -179,6 +204,11 @@ public class JsonFeedEntityProducerTest extends BaseTest {
     assertEquals("{\"d\":{\"__count\":\"42\",\"results\":[]}}", json);
   }
 
+  /**
+   * Next link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void nextLink() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");
@@ -206,6 +236,11 @@ public class JsonFeedEntityProducerTest extends BaseTest {
         json);
   }
   
+  /**
+   * Unbalanced property feed.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void unbalancedPropertyFeed() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Companys");
@@ -220,6 +255,11 @@ public class JsonFeedEntityProducerTest extends BaseTest {
     compareList(originalData, feed.getEntries());
   }
   
+  /**
+   * Unbalanced property feed with invalid property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void unbalancedPropertyFeedWithInvalidProperty() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Companys");
@@ -234,6 +274,11 @@ public class JsonFeedEntityProducerTest extends BaseTest {
     compareList(originalData, feed.getEntries());
   }
   
+  /**
+   * Unbalanced property feed with null key.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderProducerException.class)
   public void unbalancedPropertyFeedWithNullKey() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Companys");
@@ -242,6 +287,11 @@ public class JsonFeedEntityProducerTest extends BaseTest {
         EntityProviderWriteProperties.serviceRoot(URI.create(BASE_URI)).isDataBasedPropertySerialization(true).build());
   }
 
+  /**
+   * Unbalanced property feed without keys.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderProducerException.class)
   public void unbalancedPropertyFeedWithoutKeys() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Companys");
@@ -250,6 +300,11 @@ public class JsonFeedEntityProducerTest extends BaseTest {
         EntityProviderWriteProperties.serviceRoot(URI.create(BASE_URI)).isDataBasedPropertySerialization(true).build());
   }
   
+  /**
+   * Unbalanced property feed with empty data.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderProducerException.class)
   public void unbalancedPropertyFeedWithEmptyData() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Companys");
@@ -260,6 +315,11 @@ public class JsonFeedEntityProducerTest extends BaseTest {
         EntityProviderWriteProperties.serviceRoot(URI.create(BASE_URI)).isDataBasedPropertySerialization(true).build());
   }
   
+  /**
+   * Unbalanced property feed with select.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void unbalancedPropertyFeedWithSelect() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Companys");
@@ -281,6 +341,12 @@ public class JsonFeedEntityProducerTest extends BaseTest {
     compareList(originalData, feed.getEntries());
   }
   
+  /**
+   * Compare list.
+   *
+   * @param expectedList the expected list
+   * @param actualList the actual list
+   */
   private void compareList(List<Map<String, Object>> expectedList, List<ODataEntry> actualList) {
     assertEquals(expectedList.size(), actualList.size());
 
@@ -291,6 +357,13 @@ public class JsonFeedEntityProducerTest extends BaseTest {
     }
   }
 
+  /**
+   * Compare map.
+   *
+   * @param index the index
+   * @param expected the expected
+   * @param actual the actual
+   */
   @SuppressWarnings("unchecked")
   private void compareMap(int index, Map<String, Object> expected, Map<String, Object> actual) {
     
@@ -316,6 +389,12 @@ public class JsonFeedEntityProducerTest extends BaseTest {
     }
   }
 
+  /**
+   * Creates the data.
+   *
+   * @param includeKeys the include keys
+   * @return the list
+   */
   private List<Map<String, Object>> createData(boolean includeKeys) {
     List<Map<String, Object>> feedData = new ArrayList<Map<String, Object>>();
     Map<String, Object> entryData = new HashMap<String, Object>();
@@ -371,6 +450,12 @@ public class JsonFeedEntityProducerTest extends BaseTest {
     return feedData;
   }
   
+  /**
+   * Creates the data with key null.
+   *
+   * @param includeKeys the include keys
+   * @return the list
+   */
   private List<Map<String, Object>> createDataWithKeyNull(boolean includeKeys) {
     List<Map<String, Object>> feedData = new ArrayList<Map<String, Object>>();
     Map<String, Object> entryData = new HashMap<String, Object>();
@@ -386,6 +471,12 @@ public class JsonFeedEntityProducerTest extends BaseTest {
     return feedData;
   }
   
+  /**
+   * Creates the data without key.
+   *
+   * @param includeKeys the include keys
+   * @return the list
+   */
   private List<Map<String, Object>> createDataWithoutKey(boolean includeKeys) {
     List<Map<String, Object>> feedData = new ArrayList<Map<String, Object>>();
     Map<String, Object> entryData = new HashMap<String, Object>();
@@ -413,6 +504,12 @@ public class JsonFeedEntityProducerTest extends BaseTest {
     return feedData;
   }
   
+  /**
+   * Creates the data with invalid property.
+   *
+   * @param includeKeys the include keys
+   * @return the list
+   */
   private List<Map<String, Object>> createDataWithInvalidProperty(boolean includeKeys) {
     List<Map<String, Object>> feedData = new ArrayList<Map<String, Object>>();
     Map<String, Object> entryData = new HashMap<String, Object>();
@@ -429,6 +526,11 @@ public class JsonFeedEntityProducerTest extends BaseTest {
     return feedData;
   }
   
+  /**
+   * Unbalanced property entry with inline feed.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void unbalancedPropertyEntryWithInlineFeed() throws Exception {
     Edm edm = MockFacade.getMockEdm();

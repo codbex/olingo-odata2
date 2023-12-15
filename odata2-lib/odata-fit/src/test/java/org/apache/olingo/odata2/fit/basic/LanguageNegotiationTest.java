@@ -43,15 +43,27 @@ import org.junit.Before;
 import org.junit.Test;
 import org.xml.sax.SAXException;
 
+// TODO: Auto-generated Javadoc
 /**
- *
+ * The Class LanguageNegotiationTest.
  */
 public class LanguageNegotiationTest extends AbstractBasicTest {
 
+    /**
+     * Instantiates a new language negotiation test.
+     *
+     * @param servletType the servlet type
+     */
     public LanguageNegotiationTest(final ServletType servletType) {
         super(servletType);
     }
 
+    /**
+     * Creates the processor.
+     *
+     * @return the o data single processor
+     * @throws ODataException the o data exception
+     */
     @Override
     protected ODataSingleProcessor createProcessor() throws ODataException {
         final ODataSingleProcessor processor = mock(ODataSingleProcessor.class);
@@ -59,6 +71,9 @@ public class LanguageNegotiationTest extends AbstractBasicTest {
         return processor;
     }
 
+    /**
+     * Before.
+     */
     @Override
     @Before
     public void before() {
@@ -71,6 +86,14 @@ public class LanguageNegotiationTest extends AbstractBasicTest {
         disableLogging();
     }
 
+    /**
+     * Issue 61.
+     *
+     * @throws ClientProtocolException the client protocol exception
+     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws XpathException the xpath exception
+     * @throws SAXException the SAX exception
+     */
     @Test
     public void issue_61() throws ClientProtocolException, IOException, XpathException, SAXException {
         final HttpGet get = new HttpGet(URI.create(getEndpoint().toString() + "$metadata"));
@@ -81,6 +104,14 @@ public class LanguageNegotiationTest extends AbstractBasicTest {
         assertXpathExists("/m:error/m:message", content);
     }
 
+    /**
+     * Test error in italian language.
+     *
+     * @throws ClientProtocolException the client protocol exception
+     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws XpathException the xpath exception
+     * @throws SAXException the SAX exception
+     */
     @Test
     public void testErrorInItalianLanguage() throws ClientProtocolException, IOException, XpathException, SAXException {
         final HttpGet get = new HttpGet(URI.create(getEndpoint().toString() + "$metadata"));
@@ -96,6 +127,14 @@ public class LanguageNegotiationTest extends AbstractBasicTest {
 
     }
 
+    /**
+     * Test error no language.
+     *
+     * @throws ClientProtocolException the client protocol exception
+     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws XpathException the xpath exception
+     * @throws SAXException the SAX exception
+     */
     @Test
     public void testErrorNoLanguage() throws ClientProtocolException, IOException, XpathException, SAXException {
         final HttpGet get = new HttpGet(URI.create(getEndpoint().toString() + "$metadata"));
@@ -109,8 +148,15 @@ public class LanguageNegotiationTest extends AbstractBasicTest {
         assertXpathEvaluatesTo("Common exception", "/m:error/m:message/text()", content);
     }
 
+    /**
+     * The Class MyException.
+     */
     private static class MyException extends ODataMessageException {
+        
+        /** The Constant TEST. */
         private static final MessageReference TEST = createMessageReference(ODataMessageException.class, "COMMON");
+        
+        /** The Constant serialVersionUID. */
         private static final long serialVersionUID = 1L;
 
         /**
@@ -122,6 +168,11 @@ public class LanguageNegotiationTest extends AbstractBasicTest {
             super(TEST);
         }
 
+        /**
+         * Gets the message reference.
+         *
+         * @return the message reference
+         */
         @Override
         public MessageReference getMessageReference() {
             return TEST;

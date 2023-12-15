@@ -17,6 +17,7 @@ package org.apache.olingo.odata2.jpa.processor.api.model;
 import java.util.List;
 import org.apache.olingo.odata2.api.edm.provider.EntityType;
 
+// TODO: Auto-generated Javadoc
 /**
  * A view on Java Persistence entity types and EDM entity types. Java persistence entity types are
  * converted into EDM entity types.
@@ -25,15 +26,14 @@ import org.apache.olingo.odata2.api.edm.provider.EntityType;
  * The view acts as a container for consistent list of EDM entity types. An EDM entity type is said
  * to be consistent only if it has at least one consistent EDM property and at least one consistent
  * EDM key.
- *
- *
+ * 
+ * 
  * <p>
  *
- * @org.apache.olingo.odata2.DoNotImplement
  * @see org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmPropertyView
  * @see org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmKeyView
  * @see org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmNavigationPropertyView
- *
+ * @org.apache.olingo.odata2.DoNotImplement 
  */
 public interface JPAEdmEntityTypeView extends JPAEdmBaseView {
     /**

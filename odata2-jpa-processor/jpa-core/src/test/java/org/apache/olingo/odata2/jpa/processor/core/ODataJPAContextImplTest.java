@@ -37,15 +37,33 @@ import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ODataJPAContextImplTest.
+ */
 public class ODataJPAContextImplTest {
 
+  /** The odata context. */
   private ODataContext odataContext = null;
+  
+  /** The odata JPA context. */
   private ODataJPAContext odataJPAContext = null;
+  
+  /** The edm provider. */
   private EdmProvider edmProvider = null;
+  
+  /** The emf. */
   private EntityManagerFactory emf = null;
+  
+  /** The em. */
   private EntityManager em = null;
+  
+  /** The processor. */
   private ODataProcessor processor = null;
 
+  /**
+   * Setup.
+   */
   @Before
   public void setup() {
 
@@ -78,6 +96,9 @@ public class ODataJPAContextImplTest {
     odataJPAContext.setJPAEdmMappingModel(ODataJPAContextMock.MAPPING_MODEL);
   }
 
+  /**
+   * Testget methods of O data JPA context.
+   */
   @Test
   public void testgetMethodsOfODataJPAContext() {
 

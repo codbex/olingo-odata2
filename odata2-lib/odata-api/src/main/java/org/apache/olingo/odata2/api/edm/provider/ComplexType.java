@@ -22,22 +22,39 @@ import java.util.List;
 
 import org.apache.olingo.odata2.api.edm.FullQualifiedName;
 
+// TODO: Auto-generated Javadoc
 /**
- * Objects of this class represent a complex type
- * 
+ * Objects of this class represent a complex type.
  */
 public class ComplexType {
 
+  /** The name. */
   private String name;
+  
+  /** The base type. */
   private FullQualifiedName baseType;
+  
+  /** The is abstract. */
   private boolean isAbstract;
+  
+  /** The properties. */
   private List<Property> properties;
+  
+  /** The mapping. */
   private Mapping mapping;
+  
+  /** The documentation. */
   private Documentation documentation;
+  
+  /** The annotation attributes. */
   private List<AnnotationAttribute> annotationAttributes;
+  
+  /** The annotation elements. */
   private List<AnnotationElement> annotationElements;
 
   /**
+   * Gets the name.
+   *
    * @return <b>String</b> name
    */
   public String getName() {
@@ -45,6 +62,8 @@ public class ComplexType {
   }
 
   /**
+   * Gets the base type.
+   *
    * @return {@link FullQualifiedName} of the base type of this type (namespace and name)
    */
   public FullQualifiedName getBaseType() {
@@ -52,6 +71,8 @@ public class ComplexType {
   }
 
   /**
+   * Checks if is abstract.
+   *
    * @return <b>boolean</b> if this type is abstract
    */
   public boolean isAbstract() {
@@ -59,6 +80,8 @@ public class ComplexType {
   }
 
   /**
+   * Gets the properties.
+   *
    * @return List<{@link Property}> of all properties for this type
    */
   public List<Property> getProperties() {
@@ -66,6 +89,8 @@ public class ComplexType {
   }
 
   /**
+   * Gets the mapping.
+   *
    * @return {@link Mapping} for this type
    */
   public Mapping getMapping() {
@@ -73,6 +98,8 @@ public class ComplexType {
   }
 
   /**
+   * Gets the documentation.
+   *
    * @return {@link Documentation} documentation
    */
   public Documentation getDocumentation() {
@@ -80,6 +107,8 @@ public class ComplexType {
   }
 
   /**
+   * Gets the annotation attributes.
+   *
    * @return collection of {@link AnnotationAttribute} annotation attributes
    */
   public List<AnnotationAttribute> getAnnotationAttributes() {
@@ -87,6 +116,8 @@ public class ComplexType {
   }
 
   /**
+   * Gets the annotation elements.
+   *
    * @return collection of {@link AnnotationElement} annotation elements
    */
   public List<AnnotationElement> getAnnotationElements() {
@@ -94,8 +125,9 @@ public class ComplexType {
   }
 
   /**
-   * Sets the name
-   * @param name
+   * Sets the name.
+   *
+   * @param name the name
    * @return {@link ComplexType} for method chaining
    */
   public ComplexType setName(final String name) {
@@ -104,8 +136,9 @@ public class ComplexType {
   }
 
   /**
-   * Sets the {@link FullQualifiedName} of the base type
-   * @param baseType
+   * Sets the {@link FullQualifiedName} of the base type.
+   *
+   * @param baseType the base type
    * @return {@link ComplexType} for method chaining
    */
   public ComplexType setBaseType(final FullQualifiedName baseType) {
@@ -114,8 +147,9 @@ public class ComplexType {
   }
 
   /**
-   * Sets if it is abstract
-   * @param isAbstract
+   * Sets if it is abstract.
+   *
+   * @param isAbstract the is abstract
    * @return {@link ComplexType} for method chaining
    */
   public ComplexType setAbstract(final boolean isAbstract) {
@@ -124,8 +158,9 @@ public class ComplexType {
   }
 
   /**
-   * Sets the {@link Property}s
-   * @param properties
+   * Sets the {@link Property}s.
+   *
+   * @param properties the properties
    * @return {@link ComplexType} for method chaining
    */
   public ComplexType setProperties(final List<Property> properties) {
@@ -134,8 +169,9 @@ public class ComplexType {
   }
 
   /**
-   * Sets the {@link Mapping}
-   * @param mapping
+   * Sets the {@link Mapping}.
+   *
+   * @param mapping the mapping
    * @return {@link ComplexType} for method chaining
    */
   public ComplexType setMapping(final Mapping mapping) {
@@ -144,8 +180,9 @@ public class ComplexType {
   }
 
   /**
-   * Sets the {@link Documentation}
-   * @param documentation
+   * Sets the {@link Documentation}.
+   *
+   * @param documentation the documentation
    * @return {@link ComplexType} for method chaining
    */
   public ComplexType setDocumentation(final Documentation documentation) {
@@ -154,8 +191,9 @@ public class ComplexType {
   }
 
   /**
-   * Sets the collection of {@link AnnotationAttribute} for this {@link ComplexType}
-   * @param annotationAttributes
+   * Sets the collection of {@link AnnotationAttribute} for this {@link ComplexType}.
+   *
+   * @param annotationAttributes the annotation attributes
    * @return {@link ComplexType} for method chaining
    */
   public ComplexType setAnnotationAttributes(final List<AnnotationAttribute> annotationAttributes) {
@@ -164,8 +202,9 @@ public class ComplexType {
   }
 
   /**
-   * Sets the collection of {@link AnnotationElement} for this {@link ComplexType}
-   * @param annotationElements
+   * Sets the collection of {@link AnnotationElement} for this {@link ComplexType}.
+   *
+   * @param annotationElements the annotation elements
    * @return {@link ComplexType} for method chaining
    */
   public ComplexType setAnnotationElements(final List<AnnotationElement> annotationElements) {

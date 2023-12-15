@@ -52,14 +52,16 @@ import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class ODataExceptionWrapperTest.
  */
 public class ODataExceptionWrapperTest extends BaseTest {
 
   /**
    * Wrap an exception and verify that {@link PathInfo} is available and filled with correct values.
-   * 
+   *
+   * @throws Exception the exception
    */
   @Test
   public void testCallbackPathInfoAvailable() throws Exception {
@@ -90,6 +92,11 @@ public class ODataExceptionWrapperTest extends BaseTest {
     assertEquals("text/html", contentTypeHeader);
   }
   
+  /**
+   * Test callback with locales.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testCallbackWithLocales() throws Exception {
     ODataContextImpl context = getMockedContextWithLocale("http://localhost:80/test", "ODataServiceRoot");
@@ -122,6 +129,11 @@ public class ODataExceptionWrapperTest extends BaseTest {
     assertEquals("text/html", contentTypeHeader);
   }
   
+  /**
+   * Test callback with locales 1.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testCallbackWithLocales1() throws Exception {
     UriInfo uriInfo = getMockedUriInfo();
@@ -153,12 +165,26 @@ public class ODataExceptionWrapperTest extends BaseTest {
     assertEquals("text/html", contentTypeHeader);
   }
 
+  /**
+   * Gets the mocked uri info.
+   *
+   * @return the mocked uri info
+   */
   private UriInfo getMockedUriInfo() {
     UriInfo uriInfo = Mockito.mock(UriInfo.class);
     when(uriInfo.getRequestUri()).thenReturn(URI.create("http://localhost:80/test"));
     return uriInfo;
   }
 
+  /**
+   * Creates the wrapper 1.
+   *
+   * @param uriInfo the uri info
+   * @param httpHeaders the http headers
+   * @param errorCallback the error callback
+   * @return the o data exception wrapper
+   * @throws URISyntaxException the URI syntax exception
+   */
   private ODataExceptionWrapper createWrapper1(final UriInfo uriInfo,
       final HttpHeaders httpHeaders, ODataErrorCallback errorCallback) throws URISyntaxException {
     ODataExceptionWrapper exceptionWrapper = new ODataExceptionWrapper(uriInfo, httpHeaders, errorCallback);
@@ -166,6 +192,15 @@ public class ODataExceptionWrapperTest extends BaseTest {
     return exceptionWrapper;
   }
   
+  /**
+   * Creates the wrapper.
+   *
+   * @param context the context
+   * @param queryParameters the query parameters
+   * @param acceptContentTypes the accept content types
+   * @return the o data exception wrapper
+   * @throws URISyntaxException the URI syntax exception
+   */
   private ODataExceptionWrapper createWrapper(final ODataContextImpl context,
       final Map<String, String> queryParameters, final List<String> acceptContentTypes) throws URISyntaxException {
     ODataExceptionWrapper exceptionWrapper = new ODataExceptionWrapper(context, queryParameters, acceptContentTypes);
@@ -173,6 +208,15 @@ public class ODataExceptionWrapperTest extends BaseTest {
     return exceptionWrapper;
   }
 
+  /**
+   * Gets the mocked context.
+   *
+   * @param requestUri the request uri
+   * @param serviceRoot the service root
+   * @return the mocked context
+   * @throws ODataException the o data exception
+   * @throws URISyntaxException the URI syntax exception
+   */
   private ODataContextImpl getMockedContext(final String requestUri, final String serviceRoot) throws ODataException,
       URISyntaxException {
     ODataContextImpl context = Mockito.mock(ODataContextImpl.class);
@@ -184,6 +228,15 @@ public class ODataExceptionWrapperTest extends BaseTest {
     return context;
   }
   
+  /**
+   * Gets the mocked context with locale.
+   *
+   * @param requestUri the request uri
+   * @param serviceRoot the service root
+   * @return the mocked context with locale
+   * @throws ODataException the o data exception
+   * @throws URISyntaxException the URI syntax exception
+   */
   private ODataContextImpl getMockedContextWithLocale(final String requestUri, 
       final String serviceRoot) throws ODataException,
   URISyntaxException {
@@ -201,18 +254,42 @@ public class ODataExceptionWrapperTest extends BaseTest {
     return context;
     }
 
+  /**
+   * A factory for creating MapperService objects.
+   */
   public static final class MapperServiceFactory extends ODataServiceFactory {
+    
+    /** The error callback. */
     private ODataErrorCallback errorCallback;
 
+    /**
+     * Instantiates a new mapper service factory.
+     *
+     * @param callback the callback
+     */
     public MapperServiceFactory(final ODataErrorCallback callback) {
       errorCallback = callback;
     }
 
+    /**
+     * Creates a new MapperService object.
+     *
+     * @param ctx the ctx
+     * @return the o data service
+     * @throws ODataException the o data exception
+     */
     @Override
     public ODataService createService(final ODataContext ctx) throws ODataException {
       return null;
     }
 
+    /**
+     * Gets the callback.
+     *
+     * @param <T> the generic type
+     * @param callbackInterface the callback interface
+     * @return the callback
+     */
     @SuppressWarnings("unchecked")
     @Override
     public <T extends ODataCallback> T getCallback(final Class<T> callbackInterface) {

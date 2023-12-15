@@ -25,17 +25,24 @@ import org.apache.olingo.odata2.api.edm.EdmAnnotationElement;
 import org.apache.olingo.odata2.api.edm.EdmException;
 import org.apache.olingo.odata2.api.edm.EdmProperty;
 
+// TODO: Auto-generated Javadoc
 /**
- * Objects of this class represent a key for an entity type
- * 
+ * Objects of this class represent a key for an entity type.
  */
 public class EdmKeyImpl {
 
+  /** The keys. */
   private List<EdmProperty> keys;
+  
+  /** The annotation attributes. */
   private List<EdmAnnotationAttribute> annotationAttributes;
+  
+  /** The annotation elements. */
   private List<EdmAnnotationElement> annotationElements;
 
   /**
+   * Gets the keys.
+   *
    * @return List<{@link PropertyRef}> references to the key properties
    */
   public List<EdmProperty> getKeys() {
@@ -43,6 +50,8 @@ public class EdmKeyImpl {
   }
 
   /**
+   * Gets the annotation attributes.
+   *
    * @return List of {@link AnnotationAttribute} annotation attributes
    */
   public List<EdmAnnotationAttribute> getAnnotationAttributes() {
@@ -50,6 +59,8 @@ public class EdmKeyImpl {
   }
 
   /**
+   * Gets the annotation elements.
+   *
    * @return List of {@link AnnotationElement} annotation elements
    */
   public List<EdmAnnotationElement> getAnnotationElements() {
@@ -57,8 +68,9 @@ public class EdmKeyImpl {
   }
 
   /**
-   * Sets the {@link Property}s by their {@link PropertyRef} for this {@link EdmKeyImpl}
-   * @param keys
+   * Sets the {@link Property}s by their {@link PropertyRef} for this {@link EdmKeyImpl}.
+   *
+   * @param keys the keys
    * @return {@link EdmKeyImpl} for method chaining
    */
   public EdmKeyImpl setKeys(final List<EdmProperty> keys) {
@@ -67,8 +79,9 @@ public class EdmKeyImpl {
   }
 
   /**
-   * Sets the List of {@link AnnotationAttribute} for this {@link EdmKeyImpl}
-   * @param annotationAttributes
+   * Sets the List of {@link AnnotationAttribute} for this {@link EdmKeyImpl}.
+   *
+   * @param annotationAttributes the annotation attributes
    * @return {@link EdmKeyImpl} for method chaining
    */
   public EdmKeyImpl setAnnotationAttributes(final List<EdmAnnotationAttribute> annotationAttributes) {
@@ -77,14 +90,21 @@ public class EdmKeyImpl {
   }
 
   /**
-   * Sets the List of {@link AnnotationElement} for this {@link EdmKeyImpl}
-   * @param annotationElements
+   * Sets the List of {@link AnnotationElement} for this {@link EdmKeyImpl}.
+   *
+   * @param annotationElements the annotation elements
    * @return {@link EdmKeyImpl} for method chaining
    */
   public EdmKeyImpl setAnnotationElements(final List<EdmAnnotationElement> annotationElements) {
     this.annotationElements = annotationElements;
     return this;
   }
+  
+  /**
+   * To string.
+   *
+   * @return the string
+   */
   @Override
   public String toString() {
     StringBuffer keyValues = new StringBuffer();

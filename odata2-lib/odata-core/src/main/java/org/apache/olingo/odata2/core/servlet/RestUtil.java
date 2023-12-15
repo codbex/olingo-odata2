@@ -47,30 +47,57 @@ import org.apache.olingo.odata2.core.PathInfoImpl;
 import org.apache.olingo.odata2.core.commons.ContentType;
 import org.apache.olingo.odata2.core.commons.Decoder;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class RestUtil.
+ */
 public class RestUtil {
+  
+  /** The Constant REG_EX_OPTIONAL_WHITESPACE. */
   // RFC 2616, 4.2: linear white space
   private static final String REG_EX_OPTIONAL_WHITESPACE = "\\s*";
+  
+  /** The Constant REG_EX_FIELD_VALUE_SEPARATOR. */
   private static final String REG_EX_FIELD_VALUE_SEPARATOR = "," + REG_EX_OPTIONAL_WHITESPACE;
 
+  /** The Constant REG_EX_QVALUE. */
   // RFC 2616, 3.9: qvalue = ("0"["." 0*3DIGIT]) | ("1"["." 0*3("0")])
   private static final String REG_EX_QVALUE = "q=((?:1(?:\\.0{0,3})?)|(?:0(?:\\.[0-9]{0,3})?))";
 
+  /** The Constant REG_EX_PARAMETER. */
   // RFC 2616, 14.1: the media-range parameters
   private static final String REG_EX_PARAMETER = "(?:;\\s*(?:(?:[^qQ].*)|(?:[qQ]\\s*=\\s*(?:[^01].*))))*";
+  
+  /** The Constant REG_EX_ACCEPT. */
   private static final Pattern REG_EX_ACCEPT =
       Pattern.compile("([a-z\\*\\s]+/[a-zA-Z\\+\\*\\-=\\s]+" + REG_EX_PARAMETER + ")");
+  
+  /** The Constant REG_EX_ACCEPT_WITH_Q_FACTOR. */
   private static final Pattern REG_EX_ACCEPT_WITH_Q_FACTOR =
       Pattern.compile(REG_EX_ACCEPT + "(?:" + REG_EX_OPTIONAL_WHITESPACE + REG_EX_QVALUE + ")?");
 
+  /** The Constant REG_EX_ACCEPT_LANGUAGES. */
   // RFC 2616, 14.4: language-range = ((1*8ALPHA *("-" 1*8ALPHA)) | "*")
   private static final Pattern REG_EX_ACCEPT_LANGUAGES =
       Pattern.compile("((?:\\*)|(?:[a-z]{1,8}(?:\\-[a-zA-Z]{1,8})?))");
+  
+  /** The Constant REG_EX_ACCEPT_LANGUAGES_WITH_Q_FACTOR. */
   private static final Pattern REG_EX_ACCEPT_LANGUAGES_WITH_Q_FACTOR =
       Pattern.compile(REG_EX_ACCEPT_LANGUAGES + "(?:;" + REG_EX_OPTIONAL_WHITESPACE + REG_EX_QVALUE + ")?");
 
+  /** The Constant REG_EX_MATRIX_PARAMETER. */
   private static final Pattern REG_EX_MATRIX_PARAMETER = Pattern.compile("([^=]*)(?:=(.*))?");
+  
+  /** The Constant ACCEPT_FORM_ENCODING. */
   private static final String ACCEPT_FORM_ENCODING = "odata-accept-forms-encoding";
 
+  /**
+   * Extract request content type.
+   *
+   * @param contentType the content type
+   * @return the content type
+   * @throws ODataUnsupportedMediaTypeException the o data unsupported media type exception
+   */
   public static ContentType extractRequestContentType(final String contentType)
       throws ODataUnsupportedMediaTypeException {
     if (contentType == null || contentType.isEmpty()) {
@@ -88,6 +115,12 @@ public class RestUtil {
     }
   }
 
+  /**
+   * Extract query parameters.
+   *
+   * @param queryString the query string
+   * @return the map
+   */
   /*
    * Parses query parameters.
    */
@@ -110,6 +143,13 @@ public class RestUtil {
     return queryParametersMap;
   }
 
+  /**
+   * Extract all query parameters.
+   *
+   * @param queryString the query string
+   * @param formEncoding the form encoding
+   * @return the map
+   */
   public static Map<String, List<String>> extractAllQueryParameters(final String queryString, String formEncoding) {
     Map<String, List<String>> allQueryParameterMap = new HashMap<String, List<String>>();
     if(Boolean.parseBoolean(formEncoding)){
@@ -144,6 +184,12 @@ public class RestUtil {
     return allQueryParameterMap;
   }
 
+  /**
+   * Extract acceptable language.
+   *
+   * @param acceptableLanguageHeader the acceptable language header
+   * @return the list
+   */
   /*
    * Parses Accept-Language header. Returns a list sorted by quality parameter
    */
@@ -179,6 +225,12 @@ public class RestUtil {
     return acceptLanguages;
   }
 
+  /**
+   * Extract accept headers.
+   *
+   * @param acceptHeader the accept header
+   * @return the list
+   */
   /*
    * Parses Accept header. Returns a list of media ranges sorted by quality parameter
    */
@@ -202,6 +254,12 @@ public class RestUtil {
     return acceptHeaders;
   }
 
+  /**
+   * Extract headers.
+   *
+   * @param req the req
+   * @return the map
+   */
   @SuppressWarnings("unchecked")
   public static Map<String, List<String>> extractHeaders(final HttpServletRequest req) {
     Map<String, List<String>> requestHeaders = new HashMap<String, List<String>>();
@@ -221,6 +279,14 @@ public class RestUtil {
     return requestHeaders;
   }
 
+  /**
+   * Builds the O data path info.
+   *
+   * @param req the req
+   * @param pathSplit the path split
+   * @return the path info
+   * @throws ODataException the o data exception
+   */
   public static PathInfo buildODataPathInfo(final HttpServletRequest req, final int pathSplit) throws ODataException {
     PathInfoImpl pathInfo = splitPath(req, pathSplit);
 
@@ -229,6 +295,14 @@ public class RestUtil {
     return pathInfo;
   }
 
+  /**
+   * Builds the base uri.
+   *
+   * @param req the req
+   * @param precedingPathSegments the preceding path segments
+   * @return the uri
+   * @throws ODataException the o data exception
+   */
   private static URI buildBaseUri(final HttpServletRequest req, final List<PathSegment> precedingPathSegments)
       throws ODataException {
     try {
@@ -261,6 +335,12 @@ public class RestUtil {
     }
   }
 
+  /**
+   * Builds the request uri.
+   *
+   * @param servletRequest the servlet request
+   * @return the uri
+   */
   private static URI buildRequestUri(final HttpServletRequest servletRequest) {
     URI requestUri;
     StringBuilder stringBuilder = new StringBuilder();
@@ -276,6 +356,14 @@ public class RestUtil {
     return requestUri;
   }
 
+  /**
+   * Split path.
+   *
+   * @param servletRequest the servlet request
+   * @param pathSplit the path split
+   * @return the path info impl
+   * @throws ODataException the o data exception
+   */
   private static PathInfoImpl splitPath(final HttpServletRequest servletRequest, final int pathSplit)
       throws ODataException {
     PathInfoImpl pathInfo = new PathInfoImpl();
@@ -329,6 +417,12 @@ public class RestUtil {
     return pathInfo;
   }
 
+  /**
+   * Convert path segment list.
+   *
+   * @param pathSegments the path segments
+   * @return the list
+   */
   private static List<PathSegment> convertPathSegmentList(final List<String> pathSegments) {
     ArrayList<PathSegment> converted = new ArrayList<PathSegment>();
     for (final String segment : pathSegments) {
@@ -344,6 +438,13 @@ public class RestUtil {
     return converted;
   }
 
+  /**
+   * Extract matrix parameter.
+   *
+   * @param segment the segment
+   * @param index the index
+   * @return the map
+   */
   private static Map<String, List<String>> extractMatrixParameter(final String segment, final int index) {
     List<String> matrixParameters = Arrays.asList(segment.substring(index + 1).split(";"));
     String matrixParameterName = "";
@@ -365,6 +466,12 @@ public class RestUtil {
     return parameterMap;
   }
 
+  /**
+   * Extract path info.
+   *
+   * @param servletRequest the servlet request
+   * @return the string
+   */
   private static String extractPathInfo(final HttpServletRequest servletRequest) {
     String pathInfoString;
     final String requestUri = servletRequest.getRequestURI();
@@ -383,6 +490,11 @@ public class RestUtil {
     return pathInfoString;
   }
 
+  /**
+   * Gets the accept tree.
+   *
+   * @return the accept tree
+   */
   private static TreeSet<Accept> getAcceptTree() {
     TreeSet<Accept> treeSet = new TreeSet<Accept>(new Comparator<Accept>() {
       @Override
@@ -397,24 +509,47 @@ public class RestUtil {
     return treeSet;
   }
 
+  /**
+   * The Class Accept.
+   */
   /*
    * The class is used in order to sort headers by "q" parameter.
    * The object of this class contains a value of the Accept header or Accept-Language header and value of the
    * quality parameter.
    */
   private static class Accept {
+    
+    /** The quality. */
     private double quality;
+    
+    /** The value. */
     private String value;
 
+    /**
+     * Instantiates a new accept.
+     *
+     * @param headerValue the header value
+     * @param qualityFactor the quality factor
+     */
     public Accept(final String headerValue, final double qualityFactor) {
       value = headerValue;
       quality = qualityFactor;
     }
 
+    /**
+     * Gets the value.
+     *
+     * @return the value
+     */
     public String getValue() {
       return value;
     }
 
+    /**
+     * Gets the quality.
+     *
+     * @return the quality
+     */
     public double getQuality() {
       return quality;
     }

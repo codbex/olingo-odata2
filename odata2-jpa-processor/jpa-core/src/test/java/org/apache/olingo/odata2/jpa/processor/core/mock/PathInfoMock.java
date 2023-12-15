@@ -26,19 +26,42 @@ import org.apache.olingo.odata2.api.uri.PathInfo;
 import org.apache.olingo.odata2.api.uri.PathSegment;
 import org.easymock.EasyMock;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PathInfoMock.
+ */
 public class PathInfoMock {
 
+  /** The path segments. */
   private List<PathSegment> pathSegments;
+  
+  /** The uri. */
   private URI uri;
 
+  /**
+   * Sets the path segments.
+   *
+   * @param pathSegments the new path segments
+   */
   public void setPathSegments(final List<PathSegment> pathSegments) {
     this.pathSegments = pathSegments;
   }
 
+  /**
+   * Sets the service root URI.
+   *
+   * @param uriString the new service root URI
+   * @throws URISyntaxException the URI syntax exception
+   */
   public void setServiceRootURI(final String uriString) throws URISyntaxException {
     uri = new URI(uriString);
   }
 
+  /**
+   * Mock.
+   *
+   * @return the path info
+   */
   public PathInfo mock() {
     PathInfo pathInfo = EasyMock.createMock(PathInfo.class);
     EasyMock.expect(pathInfo.getODataSegments()).andReturn(pathSegments).anyTimes();

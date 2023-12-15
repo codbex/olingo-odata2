@@ -20,25 +20,43 @@ package org.apache.olingo.odata2.api.edm.provider;
 
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
 /**
- * Objects of this class represent a schema
- * 
+ * Objects of this class represent a schema.
  */
 public class Schema {
 
+  /** The namespace. */
   private String namespace;
+  
+  /** The alias. */
   private String alias;
+  
+  /** The usings. */
   private List<Using> usings;
+  
+  /** The entity types. */
   private List<EntityType> entityTypes;
+  
+  /** The complex types. */
   private List<ComplexType> complexTypes;
+  
+  /** The associations. */
   private List<Association> associations;
+  
+  /** The entity containers. */
   private List<EntityContainer> entityContainers;
+  
+  /** The annotation attributes. */
   private List<AnnotationAttribute> annotationAttributes;
+  
+  /** The annotation elements. */
   private List<AnnotationElement> annotationElements;
 
   /**
-   * Sets the namespace for this {@link Schema}
-   * @param namespace
+   * Sets the namespace for this {@link Schema}.
+   *
+   * @param namespace the namespace
    * @return {@link Schema} for method chaining
    */
   public Schema setNamespace(final String namespace) {
@@ -47,8 +65,9 @@ public class Schema {
   }
 
   /**
-   * Sets the alias for this {@link Schema}
-   * @param alias
+   * Sets the alias for this {@link Schema}.
+   *
+   * @param alias the alias
    * @return {@link Schema} for method chaining
    */
   public Schema setAlias(final String alias) {
@@ -57,8 +76,9 @@ public class Schema {
   }
 
   /**
-   * Sets the {@link Using} for this {@link Schema}
-   * @param usings
+   * Sets the {@link Using} for this {@link Schema}.
+   *
+   * @param usings the usings
    * @return {@link Schema} for method chaining
    */
   public Schema setUsings(final List<Using> usings) {
@@ -67,8 +87,9 @@ public class Schema {
   }
 
   /**
-   * Sets the {@link EntityType}s for this {@link Schema}
-   * @param entityTypes
+   * Sets the {@link EntityType}s for this {@link Schema}.
+   *
+   * @param entityTypes the entity types
    * @return {@link Schema} for method chaining
    */
   public Schema setEntityTypes(final List<EntityType> entityTypes) {
@@ -77,8 +98,9 @@ public class Schema {
   }
 
   /**
-   * Sets the {@link ComplexType}s for this {@link Schema}
-   * @param complexTypes
+   * Sets the {@link ComplexType}s for this {@link Schema}.
+   *
+   * @param complexTypes the complex types
    * @return {@link Schema} for method chaining
    */
   public Schema setComplexTypes(final List<ComplexType> complexTypes) {
@@ -87,8 +109,9 @@ public class Schema {
   }
 
   /**
-   * Sets the {@link Association}s for this {@link Schema}
-   * @param associations
+   * Sets the {@link Association}s for this {@link Schema}.
+   *
+   * @param associations the associations
    * @return {@link Schema} for method chaining
    */
   public Schema setAssociations(final List<Association> associations) {
@@ -97,8 +120,9 @@ public class Schema {
   }
 
   /**
-   * Sets the {@link EntityContainer}s for this {@link Schema}
-   * @param entityContainers
+   * Sets the {@link EntityContainer}s for this {@link Schema}.
+   *
+   * @param entityContainers the entity containers
    * @return {@link Schema} for method chaining
    */
   public Schema setEntityContainers(final List<EntityContainer> entityContainers) {
@@ -107,8 +131,9 @@ public class Schema {
   }
 
   /**
-   * Sets the List of {@link AnnotationAttribute} for this {@link Schema}
-   * @param annotationAttributes
+   * Sets the List of {@link AnnotationAttribute} for this {@link Schema}.
+   *
+   * @param annotationAttributes the annotation attributes
    * @return {@link Schema} for method chaining
    */
   public Schema setAnnotationAttributes(final List<AnnotationAttribute> annotationAttributes) {
@@ -117,8 +142,9 @@ public class Schema {
   }
 
   /**
-   * Sets the List of {@link AnnotationElement} for this {@link Schema}
-   * @param annotationElements
+   * Sets the List of {@link AnnotationElement} for this {@link Schema}.
+   *
+   * @param annotationElements the annotation elements
    * @return {@link Schema} for method chaining
    */
   public Schema setAnnotationElements(final List<AnnotationElement> annotationElements) {
@@ -127,6 +153,8 @@ public class Schema {
   }
 
   /**
+   * Gets the namespace.
+   *
    * @return <b>String</b> namespace of this {@link Schema}
    */
   public String getNamespace() {
@@ -134,6 +162,8 @@ public class Schema {
   }
 
   /**
+   * Gets the alias.
+   *
    * @return <b>String</b> alias of this {@link Schema}
    */
   public String getAlias() {
@@ -141,6 +171,8 @@ public class Schema {
   }
 
   /**
+   * Gets the usings.
+   *
    * @return List<{@link Using}> of this {@link Schema}
    */
   public List<Using> getUsings() {
@@ -148,6 +180,8 @@ public class Schema {
   }
 
   /**
+   * Gets the entity types.
+   *
    * @return List<{@link EntityType}> of this {@link Schema}
    */
   public List<EntityType> getEntityTypes() {
@@ -155,6 +189,8 @@ public class Schema {
   }
 
   /**
+   * Gets the complex types.
+   *
    * @return List<{@link ComplexType}> of this {@link Schema}
    */
   public List<ComplexType> getComplexTypes() {
@@ -162,6 +198,8 @@ public class Schema {
   }
 
   /**
+   * Gets the associations.
+   *
    * @return List<{@link Association}> of this {@link Schema}
    */
   public List<Association> getAssociations() {
@@ -169,6 +207,8 @@ public class Schema {
   }
 
   /**
+   * Gets the entity containers.
+   *
    * @return List<{@link EntityContainer}> of this {@link Schema}
    */
   public List<EntityContainer> getEntityContainers() {
@@ -176,6 +216,8 @@ public class Schema {
   }
 
   /**
+   * Gets the annotation attributes.
+   *
    * @return List of {@link AnnotationAttribute} annotation attributes
    */
   public List<AnnotationAttribute> getAnnotationAttributes() {
@@ -183,6 +225,8 @@ public class Schema {
   }
 
   /**
+   * Gets the annotation elements.
+   *
    * @return List of {@link AnnotationElement} annotation elements
    */
   public List<AnnotationElement> getAnnotationElements() {

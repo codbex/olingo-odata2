@@ -20,29 +20,56 @@ package org.apache.olingo.odata2.api.exception;
 
 import org.apache.olingo.odata2.api.commons.HttpStatusCodes;
 
+// TODO: Auto-generated Javadoc
 /**
  * Exceptions of this class will result in a HTTP status 405 (method not allowed).
  * 
  */
 public class ODataMethodNotAllowedException extends ODataHttpException {
 
+  /** The Constant serialVersionUID. */
   private static final long serialVersionUID = 1L;
 
+  /** The Constant DISPATCH. */
   public static final MessageReference DISPATCH = createMessageReference(ODataMethodNotAllowedException.class,
       "DISPATCH");
 
+  /**
+   * Instantiates a new o data method not allowed exception.
+   *
+   * @param messageReference the message reference
+   */
   public ODataMethodNotAllowedException(final MessageReference messageReference) {
     super(messageReference, HttpStatusCodes.METHOD_NOT_ALLOWED);
   }
 
+  /**
+   * Instantiates a new o data method not allowed exception.
+   *
+   * @param messageReference the message reference
+   * @param cause the cause
+   */
   public ODataMethodNotAllowedException(final MessageReference messageReference, final Throwable cause) {
     super(messageReference, cause, HttpStatusCodes.METHOD_NOT_ALLOWED);
   }
 
+  /**
+   * Instantiates a new o data method not allowed exception.
+   *
+   * @param messageReference the message reference
+   * @param errorCode the error code
+   */
   public ODataMethodNotAllowedException(final MessageReference messageReference, final String errorCode) {
     super(messageReference, HttpStatusCodes.METHOD_NOT_ALLOWED, errorCode);
   }
 
+  /**
+   * Instantiates a new o data method not allowed exception.
+   *
+   * @param messageReference the message reference
+   * @param cause the cause
+   * @param errorCode the error code
+   */
   public ODataMethodNotAllowedException(final MessageReference messageReference, final Throwable cause,
       final String errorCode) {
     super(messageReference, cause, HttpStatusCodes.METHOD_NOT_ALLOWED, errorCode);

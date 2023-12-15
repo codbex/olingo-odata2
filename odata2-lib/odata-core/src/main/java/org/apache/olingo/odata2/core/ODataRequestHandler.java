@@ -67,15 +67,28 @@ import org.apache.olingo.odata2.core.uri.UriInfoImpl;
 import org.apache.olingo.odata2.core.uri.UriParserImpl;
 import org.apache.olingo.odata2.core.uri.UriType;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class ODataRequestHandler.
  */
 public class ODataRequestHandler {
 
+  /** The service factory. */
   private final ODataServiceFactory serviceFactory;
+  
+  /** The service. */
   private final ODataService service;
+  
+  /** The context. */
   private final ODataContext context;
 
+  /**
+   * Instantiates a new o data request handler.
+   *
+   * @param factory the factory
+   * @param service the service
+   * @param context the context
+   */
   public ODataRequestHandler(final ODataServiceFactory factory, final ODataService service,
       final ODataContext context) {
     serviceFactory = factory;
@@ -169,6 +182,14 @@ public class ODataRequestHandler {
     }
   }
 
+  /**
+   * Gets the status code.
+   *
+   * @param odataResponse the odata response
+   * @param method the method
+   * @param uriType the uri type
+   * @return the status code
+   */
   private HttpStatusCodes getStatusCode(final ODataResponse odataResponse, final ODataHttpMethod method,
       final UriType uriType) {
     if (odataResponse.getStatus() == null) {
@@ -190,10 +211,23 @@ public class ODataRequestHandler {
     return odataResponse.getStatus();
   }
 
+  /**
+   * Gets the server data service version.
+   *
+   * @return the server data service version
+   * @throws ODataException the o data exception
+   */
   private String getServerDataServiceVersion() throws ODataException {
     return service.getVersion() == null ? ODataServiceVersion.V20 : service.getVersion();
   }
 
+  /**
+   * Validate data service version.
+   *
+   * @param serverDataServiceVersion the server data service version
+   * @param requestDataServiceVersion the request data service version
+   * @throws ODataException the o data exception
+   */
   private static void validateDataServiceVersion(final String serverDataServiceVersion,
       final String requestDataServiceVersion) throws ODataException {
     if (requestDataServiceVersion != null) {
@@ -210,6 +244,13 @@ public class ODataRequestHandler {
     }
   }
 
+  /**
+   * Validate method and uri.
+   *
+   * @param method the method
+   * @param uriInfo the uri info
+   * @throws ODataException the o data exception
+   */
   private static void validateMethodAndUri(final ODataHttpMethod method, final UriInfoImpl uriInfo)
       throws ODataException {
     validateUriMethod(method, uriInfo);
@@ -221,6 +262,13 @@ public class ODataRequestHandler {
     }
   }
 
+  /**
+   * Validate uri method.
+   *
+   * @param method the method
+   * @param uriInfo the uri info
+   * @throws ODataException the o data exception
+   */
   private static void validateUriMethod(final ODataHttpMethod method, final UriInfoImpl uriInfo) throws ODataException {
     switch (uriInfo.getUriType()) {
     case URI0:
@@ -297,6 +345,13 @@ public class ODataRequestHandler {
     }
   }
 
+  /**
+   * Check function import.
+   *
+   * @param method the method
+   * @param uriInfo the uri info
+   * @throws ODataException the o data exception
+   */
   private static void checkFunctionImport(final ODataHttpMethod method, final UriInfoImpl uriInfo)
       throws ODataException {
     if (uriInfo.getFunctionImport() != null && uriInfo.getFunctionImport().getHttpMethod() != null
@@ -305,6 +360,13 @@ public class ODataRequestHandler {
     }
   }
 
+  /**
+   * Check not get system query options.
+   *
+   * @param method the method
+   * @param uriInfo the uri info
+   * @throws ODataException the o data exception
+   */
   private static void checkNotGetSystemQueryOptions(final ODataHttpMethod method, final UriInfoImpl uriInfo)
       throws ODataException {
     switch (uriInfo.getUriType()) {
@@ -368,6 +430,12 @@ public class ODataRequestHandler {
     }
   }
 
+  /**
+   * Check number of navigation segments.
+   *
+   * @param uriInfo the uri info
+   * @throws ODataException the o data exception
+   */
   private static void checkNumberOfNavigationSegments(final UriInfoImpl uriInfo) throws ODataException {
     switch (uriInfo.getUriType()) {
     case URI1:
@@ -393,6 +461,13 @@ public class ODataRequestHandler {
     }
   }
 
+  /**
+   * Check property.
+   *
+   * @param method the method
+   * @param uriInfo the uri info
+   * @throws ODataException the o data exception
+   */
   private static void checkProperty(final ODataHttpMethod method, final UriInfoImpl uriInfo) throws ODataException {
     if ((uriInfo.getUriType() == UriType.URI4 || uriInfo.getUriType() == UriType.URI5)
         && (isPropertyKey(uriInfo) || method == ODataHttpMethod.DELETE && !isPropertyNullable(getProperty(uriInfo)))) {
@@ -400,15 +475,35 @@ public class ODataRequestHandler {
     }
   }
 
+  /**
+   * Gets the property.
+   *
+   * @param uriInfo the uri info
+   * @return the property
+   */
   private static EdmProperty getProperty(final UriInfo uriInfo) {
     final List<EdmProperty> propertyPath = uriInfo.getPropertyPath();
     return propertyPath == null || propertyPath.isEmpty() ? null : propertyPath.get(propertyPath.size() - 1);
   }
 
+  /**
+   * Checks if is property key.
+   *
+   * @param uriInfo the uri info
+   * @return true, if is property key
+   * @throws EdmException the edm exception
+   */
   private static boolean isPropertyKey(final UriInfo uriInfo) throws EdmException {
     return uriInfo.getTargetEntitySet().getEntityType().getKeyProperties().contains(getProperty(uriInfo));
   }
 
+  /**
+   * Checks if is property nullable.
+   *
+   * @param property the property
+   * @return true, if is property nullable
+   * @throws EdmException the edm exception
+   */
   private static boolean isPropertyNullable(final EdmProperty property) throws EdmException {
     return property != null && (property.getFacets() == null || property.getFacets().isNullable());
   }
@@ -473,6 +568,13 @@ public class ODataRequestHandler {
     return requested.hasMatch(allowedContentTypes);
   }
 
+  /**
+   * Gets the supported content types.
+   *
+   * @param property the property
+   * @return the supported content types
+   * @throws EdmException the edm exception
+   */
   private static List<ContentType> getSupportedContentTypes(final EdmProperty property) throws EdmException {
     if (property != null) {
       return property.getType() == EdmSimpleTypeKind.Binary.getEdmSimpleTypeInstance()
@@ -485,6 +587,14 @@ public class ODataRequestHandler {
     
   }
 
+  /**
+   * Gets the supported content types.
+   *
+   * @param uriInfo the uri info
+   * @param method the method
+   * @return the supported content types
+   * @throws ODataException the o data exception
+   */
   private List<String> getSupportedContentTypes(final UriInfoImpl uriInfo, final ODataHttpMethod method)
       throws ODataException {
     Class<? extends ODataProcessor> processorFeature = Dispatcher.mapUriTypeToProcessorFeature(uriInfo);
@@ -502,6 +612,13 @@ public class ODataRequestHandler {
     return service.getSupportedContentTypes(processorFeature);
   }
 
+  /**
+   * Gets the supported content types.
+   *
+   * @param processorFeature the processor feature
+   * @return the supported content types
+   * @throws ODataException the o data exception
+   */
   private List<ContentType> getSupportedContentTypes(final Class<? extends ODataProcessor> processorFeature)
       throws ODataException {
     return ContentType.createAsCustom(service.getSupportedContentTypes(processorFeature));
@@ -510,6 +627,14 @@ public class ODataRequestHandler {
   /**
    * A modifying request that targets an entity with enabled concurrency control
    * must contain at least one concurrency-control HTTP request header field.
+   *
+   * @param method the method
+   * @param uriInfo the uri info
+   * @param ifMatch the if match
+   * @param ifNoneMatch the if none match
+   * @param ifModifiedSince the if modified since
+   * @param ifUnmodifiedSince the if unmodified since
+   * @throws ODataException the o data exception
    */
   private static void checkConditions(final ODataHttpMethod method, final UriInfoImpl uriInfo,
       final String ifMatch, final String ifNoneMatch, final String ifModifiedSince, final String ifUnmodifiedSince)
@@ -523,11 +648,24 @@ public class ODataRequestHandler {
     }
   }
 
+  /**
+   * Check uri type.
+   *
+   * @param uriType the uri type
+   * @return true, if successful
+   */
   private static boolean checkUriType(UriType uriType) {
     return uriType == UriType.URI2 || uriType == UriType.URI6A || uriType == UriType.URI3
          || uriType == UriType.URI4 || uriType == UriType.URI5 || uriType == UriType.URI17;
   }
 
+  /**
+   * Checks for concurrency control.
+   *
+   * @param entityType the entity type
+   * @return true, if successful
+   * @throws EdmException the edm exception
+   */
   private static boolean hasConcurrencyControl(final EdmEntityType entityType) throws EdmException {
     boolean concurrency = false;
     for (final String propertyName : entityType.getPropertyNames()) {
@@ -541,6 +679,12 @@ public class ODataRequestHandler {
     return concurrency;
   }
 
+  /**
+   * Gets the query debug value.
+   *
+   * @param queryParameters the query parameters
+   * @return the query debug value
+   */
   private static String getQueryDebugValue(final Map<String, String> queryParameters) {
     final String debugValue = queryParameters.get(ODataDebugResponseWrapper.ODATA_DEBUG_QUERY_PARAMETER);
     return ODataDebugResponseWrapper.ODATA_DEBUG_JSON.equals(debugValue)

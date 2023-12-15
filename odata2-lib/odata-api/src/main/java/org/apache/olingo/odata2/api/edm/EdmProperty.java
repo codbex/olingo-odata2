@@ -18,6 +18,7 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.edm;
 
+// TODO: Auto-generated Javadoc
 /**
  * A CSDL Property element
  * <p>EdmProperty defines a simple type or a complex type.
@@ -27,24 +28,24 @@ package org.apache.olingo.odata2.api.edm;
 public interface EdmProperty extends EdmElement, EdmAnnotatable {
 
   /**
-   * Get customizable feed mappings for this property
-   * 
+   * Get customizable feed mappings for this property.
+   *
    * @return {@link EdmCustomizableFeedMappings}
-   * @throws EdmException
+   * @throws EdmException the edm exception
    */
   EdmCustomizableFeedMappings getCustomizableFeedMappings() throws EdmException;
 
   /**
-   * Get the related mime type for the property
-   * 
+   * Get the related mime type for the property.
+   *
    * @return mime type as String
-   * @throws EdmException
+   * @throws EdmException the edm exception
    */
   String getMimeType() throws EdmException;
 
   /**
-   * Get the info if the property is a simple property
-   * 
+   * Get the info if the property is a simple property.
+   *
    * @return true, if it is a simple property
    */
   boolean isSimple();

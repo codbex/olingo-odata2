@@ -25,16 +25,27 @@ import org.apache.olingo.odata2.api.commons.HttpContentType;
 import org.apache.olingo.odata2.testutil.server.ServletType;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
  * Tests employing the reference scenario reading a single entity in JSON format.
  * 
  */
 public class EntryJsonReadOnlyTest extends AbstractRefTest {
 
+  /**
+   * Instantiates a new entry json read only test.
+   *
+   * @param servletType the servlet type
+   */
   public EntryJsonReadOnlyTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /**
+   * Entry.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entry() throws Exception {
     final HttpResponse response = callUri("Rooms('3')?$format=json");
@@ -49,6 +60,11 @@ public class EntryJsonReadOnlyTest extends AbstractRefTest {
         getBody(response));
   }
 
+  /**
+   * Media link entry.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void mediaLinkEntry() throws Exception {
     final HttpResponse response = callUri("Employees('3')?$select=Age,EntryDate,ne_Team&$format=json");
@@ -62,6 +78,11 @@ public class EntryJsonReadOnlyTest extends AbstractRefTest {
         getBody(response));
   }
   
+  /**
+   * Media link entry with encoded system query parameters.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void mediaLinkEntryWithEncodedSystemQueryParameters() throws Exception {
     final HttpResponse response = callUri("Employees('3')?%24select=Age,EntryDate,ne_Team&%24format=json");
@@ -76,6 +97,11 @@ public class EntryJsonReadOnlyTest extends AbstractRefTest {
   }
 
   
+  /**
+   * Entry from non default container.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entryFromNonDefaultContainer() throws Exception {
     final HttpResponse response = callUri("Container2.Photos(Id=1,Type='image%2Fpng')?$format=json");
@@ -92,6 +118,11 @@ public class EntryJsonReadOnlyTest extends AbstractRefTest {
         getBody(response));
   }
 
+  /**
+   * Entry with inline entry.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entryWithInlineEntry() throws Exception {
     final HttpResponse response = callUri("Rooms('3')?$expand=nr_Building&$format=json");
@@ -108,6 +139,11 @@ public class EntryJsonReadOnlyTest extends AbstractRefTest {
         getBody(response));
   }
 
+  /**
+   * Entry with inline feed.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entryWithInlineFeed() throws Exception {
     final HttpResponse response = callUri("Buildings('2')?$expand=nb_Rooms&$format=json");
@@ -130,6 +166,11 @@ public class EntryJsonReadOnlyTest extends AbstractRefTest {
         getBody(response));
   }
 
+  /**
+   * Entry with two level inline.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entryWithTwoLevelInline() throws Exception {
     HttpResponse response =

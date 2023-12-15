@@ -22,6 +22,7 @@ import java.util.List;
 
 import org.apache.olingo.odata2.api.processor.ODataRequest;
 
+// TODO: Auto-generated Javadoc
 /**
  * A BatchPart
  * <p> BatchPart represents a distinct MIME part of a Batch Request body. It can be ChangeSet or Query Operation
@@ -29,7 +30,8 @@ import org.apache.olingo.odata2.api.processor.ODataRequest;
 public interface BatchRequestPart extends BatchParserResult {
 
   /**
-   * Get the info if a BatchPart is a ChangeSet
+   * Get the info if a BatchPart is a ChangeSet.
+   *
    * @return true or false
    */
   public boolean isChangeSet();

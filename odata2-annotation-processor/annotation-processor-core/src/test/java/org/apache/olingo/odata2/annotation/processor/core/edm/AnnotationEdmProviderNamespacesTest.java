@@ -34,10 +34,16 @@ import java.util.List;
 
 import static java.util.Collections.EMPTY_MAP;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AnnotationEdmProviderNamespacesTest.
+ */
 public class AnnotationEdmProviderNamespacesTest {
 
   /**
-   * Test with namespace in path segment
+   * Test with namespace in path segment.
+   *
+   * @throws Exception the exception
    */
   @SuppressWarnings("unchecked")
   @Test
@@ -53,6 +59,8 @@ public class AnnotationEdmProviderNamespacesTest {
    * Test with manual set default namespace for edm
    * (160211_mibo): This can actual not work because the option to manually set the default namespace is missing.
    *                However this test could be used to test the option to manually set the default namespace.
+   *
+   * @throws Exception the exception
    */
   @SuppressWarnings("unchecked")
   @Test
@@ -66,7 +74,9 @@ public class AnnotationEdmProviderNamespacesTest {
   }
 
   /**
-   * Test with namespace in path segment
+   * Test with namespace in path segment.
+   *
+   * @throws Exception the exception
    */
   @SuppressWarnings("unchecked")
   @Test
@@ -79,7 +89,9 @@ public class AnnotationEdmProviderNamespacesTest {
   }
 
   /**
-   * Test with namespace in path segment
+   * Test with namespace in path segment.
+   *
+   * @throws Exception the exception
    */
   @SuppressWarnings("unchecked")
   @Test
@@ -92,7 +104,9 @@ public class AnnotationEdmProviderNamespacesTest {
   }
 
   /**
-   * Test with namespace in path segment
+   * Test with namespace in path segment.
+   *
+   * @throws Exception the exception
    */
   @SuppressWarnings("unchecked")
   @Test
@@ -104,42 +118,73 @@ public class AnnotationEdmProviderNamespacesTest {
     uriParser.parse(Arrays.asList(ps1, ps2), EMPTY_MAP);
   }
 
+  /**
+   * Creates the uri parser.
+   *
+   * @param annotatedClasses the annotated classes
+   * @return the uri parser impl
+   * @throws ODataException the o data exception
+   */
   private UriParserImpl createUriParser(Class<?> ... annotatedClasses) throws ODataException {
     AnnotationEdmProvider provider = new AnnotationEdmProvider(Arrays.asList(annotatedClasses));
     EdmImplProv edm = new EdmImplProv(provider);
     return new UriParserImpl(edm);
   }
 
+  /**
+   * The Class A.
+   */
   @EdmEntityType(name = "A", namespace = "AB")
   @EdmEntitySet(name = "AA", container = "AB")
   private class A {
+    
+    /** The id. */
     @EdmKey
     @EdmProperty
     String id;
+    
+    /** The b. */
     @EdmNavigationProperty(toMultiplicity = Multiplicity.ZERO_OR_ONE, toType = B.class)
     B b;
   }
 
+  /**
+   * The Class B.
+   */
   @EdmEntityType(name = "B", namespace = "AB")
   @EdmEntitySet(container = "AB")
   private class B {
+    
+    /** The a. */
     @EdmNavigationProperty(toMultiplicity = Multiplicity.MANY, toType = A.class)
     List<A> a;
   }
 
+  /**
+   * The Class C.
+   */
   @EdmEntityType(name = "C", namespace = "CD")
   @EdmEntitySet(name = "CC", container = "CD")
   private class C {
+    
+    /** The id. */
     @EdmKey
     @EdmProperty
     String id;
+    
+    /** The d. */
     @EdmNavigationProperty(toMultiplicity = Multiplicity.ZERO_OR_ONE, toType = D.class)
     D d;
   }
 
+  /**
+   * The Class D.
+   */
   @EdmEntityType(name = "D", namespace = "CD")
   @EdmEntitySet(container = "CD")
   private class D {
+    
+    /** The c. */
     @EdmNavigationProperty(toMultiplicity = Multiplicity.MANY, toType = C.class)
     List<C> c;
   }

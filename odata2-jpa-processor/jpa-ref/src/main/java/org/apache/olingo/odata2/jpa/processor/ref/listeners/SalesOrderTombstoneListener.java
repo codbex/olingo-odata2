@@ -29,10 +29,28 @@ import org.apache.olingo.odata2.jpa.processor.api.ODataJPATombstoneContext;
 import org.apache.olingo.odata2.jpa.processor.api.ODataJPATombstoneEntityListener;
 import org.apache.olingo.odata2.jpa.processor.ref.model.SalesOrderHeader;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The listener interface for receiving salesOrderTombstone events.
+ * The class that is interested in processing a salesOrderTombstone
+ * event implements this interface, and the object created
+ * with that class is registered with a component using the
+ * component's <code>addSalesOrderTombstoneListener<code> method. When
+ * the salesOrderTombstone event occurs, that object's appropriate
+ * method is invoked.
+ *
+ * @see SalesOrderTombstoneEvent
+ */
 public class SalesOrderTombstoneListener extends ODataJPATombstoneEntityListener {
 
+  /** The entity name. */
   public static String ENTITY_NAME = "SalesOrderHeader";
 
+  /**
+   * Handle delta.
+   *
+   * @param entity the entity
+   */
   @PostLoad
   public void handleDelta(final Object entity) {
     SalesOrderHeader so = (SalesOrderHeader) entity;
@@ -46,11 +64,25 @@ public class SalesOrderTombstoneListener extends ODataJPATombstoneEntityListener
     }
   }
 
+  /**
+   * Generate delta token.
+   *
+   * @param deltas the deltas
+   * @param query the query
+   * @return the string
+   */
   @Override
   public String generateDeltaToken(final List<Object> deltas, final Query query) {
     return String.valueOf(System.currentTimeMillis());
   }
 
+  /**
+   * Gets the query.
+   *
+   * @param resultsView the results view
+   * @param em the em
+   * @return the query
+   */
   @Override
   public Query getQuery(final GetEntitySetUriInfo resultsView, final EntityManager em) {
     return null;

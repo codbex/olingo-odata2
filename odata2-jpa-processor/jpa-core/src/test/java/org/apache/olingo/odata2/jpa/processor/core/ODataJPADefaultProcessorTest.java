@@ -76,22 +76,44 @@ import jakarta.persistence.Query;
 import jakarta.persistence.metamodel.EntityType;
 import jakarta.persistence.metamodel.Metamodel;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ODataJPADefaultProcessorTest.
+ */
 public class ODataJPADefaultProcessorTest extends JPAEdmTestModelView {
 
+    /** The obj O data JPA processor default. */
     private ODataJPADefaultProcessor objODataJPAProcessorDefault;
 
+    /** The Constant STR_LOCAL_URI. */
     private static final String STR_LOCAL_URI = "http://localhost:8080/org.apache.olingo.odata2.processor.ref.web/";
+    
+    /** The Constant SALESORDERPROCESSING_CONTAINER. */
     private static final String SALESORDERPROCESSING_CONTAINER = "salesorderprocessingContainer";
+    
+    /** The Constant SO_ID. */
     private static final String SO_ID = "SoId";
+    
+    /** The Constant SALES_ORDER. */
     private static final String SALES_ORDER = "SalesOrder";
+    
+    /** The Constant SALES_ORDER_HEADERS. */
     private static final String SALES_ORDER_HEADERS = "SalesOrderHeaders";
+    
+    /** The Constant STR_CONTENT_TYPE. */
     private static final String STR_CONTENT_TYPE = "Content-Type";
 
+    /**
+     * Sets the up.
+     */
     @Before
     public void setUp() {
         objODataJPAProcessorDefault = new ODataJPADefaultProcessor(getLocalmockODataJPAContext()) {};
     }
 
+    /**
+     * Test read entity set get entity set uri info string.
+     */
     @Test
     public void testReadEntitySetGetEntitySetUriInfoString() {
         try {
@@ -105,6 +127,9 @@ public class ODataJPADefaultProcessorTest extends JPAEdmTestModelView {
 
     }
 
+    /**
+     * Testcount entity set.
+     */
     @Test
     public void testcountEntitySet() {
         try {
@@ -124,6 +149,9 @@ public class ODataJPADefaultProcessorTest extends JPAEdmTestModelView {
         }
     }
 
+    /**
+     * Test exists entity.
+     */
     @Test
     public void testExistsEntity() {
         try {
@@ -138,6 +166,9 @@ public class ODataJPADefaultProcessorTest extends JPAEdmTestModelView {
         }
     }
 
+    /**
+     * Test delete entity.
+     */
     @Test
     public void testDeleteEntity() {
         try {
@@ -147,6 +178,9 @@ public class ODataJPADefaultProcessorTest extends JPAEdmTestModelView {
         }
     }
 
+    /**
+     * Test create entity.
+     */
     @Test
     public void testCreateEntity() {
         try {
@@ -157,6 +191,9 @@ public class ODataJPADefaultProcessorTest extends JPAEdmTestModelView {
         }
     }
 
+    /**
+     * Test update entity.
+     */
     @Test
     public void testUpdateEntity() {
         try {
@@ -167,18 +204,38 @@ public class ODataJPADefaultProcessorTest extends JPAEdmTestModelView {
         }
     }
 
+    /**
+     * Gets the put uri info.
+     *
+     * @return the put uri info
+     */
     private PutMergePatchUriInfo getPutUriInfo() {
         return (PutMergePatchUriInfo) getDeletetUriInfo();
     }
 
+    /**
+     * Gets the post uri info.
+     *
+     * @return the post uri info
+     */
     private PostUriInfo getPostUriInfo() {
         return (PostUriInfo) getDeletetUriInfo();
     }
 
+    /**
+     * Gets the mocked input stream content.
+     *
+     * @return the mocked input stream content
+     */
     private InputStream getMockedInputStreamContent() {
         return new ByteArrayInputStream(getEntityBody().getBytes());
     }
 
+    /**
+     * Gets the entity body.
+     *
+     * @return the entity body
+     */
     private String getEntityBody() {
         return "<entry xmlns=\"http://www.w3.org/2005/Atom\" "
                 + "xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" "
@@ -193,14 +250,29 @@ public class ODataJPADefaultProcessorTest extends JPAEdmTestModelView {
                 + "</m:properties>" + "</content>" + "</entry>";
     }
 
+    /**
+     * Gets the entity set count uri info.
+     *
+     * @return the entity set count uri info
+     */
     private GetEntitySetCountUriInfo getEntitySetCountUriInfo() {
         return getLocalUriInfo();
     }
 
+    /**
+     * Gets the entity count uri info.
+     *
+     * @return the entity count uri info
+     */
     private GetEntityCountUriInfo getEntityCountUriInfo() {
         return getLocalUriInfo();
     }
 
+    /**
+     * Gets the deletet uri info.
+     *
+     * @return the deletet uri info
+     */
     private DeleteUriInfo getDeletetUriInfo() {
         UriInfo objUriInfo = EasyMock.createMock(UriInfo.class);
         EasyMock.expect(objUriInfo.getStartEntitySet())
@@ -231,12 +303,19 @@ public class ODataJPADefaultProcessorTest extends JPAEdmTestModelView {
         return objUriInfo;
     }
 
+    /**
+     * Gets the key predicates.
+     *
+     * @return the key predicates
+     */
     private List<KeyPredicate> getKeyPredicates() {
         return new ArrayList<KeyPredicate>();
     }
 
     /**
-     * @return
+     * Gets the local uri info.
+     *
+     * @return the local uri info
      */
     private UriInfo getLocalUriInfo() {
         UriInfo objUriInfo = EasyMock.createMock(UriInfo.class);
@@ -267,8 +346,9 @@ public class ODataJPADefaultProcessorTest extends JPAEdmTestModelView {
     }
 
     /**
-     * @return
-     * @throws EdmException
+     * Gets the local edm entity set.
+     *
+     * @return the local edm entity set
      */
     private EdmEntitySet getLocalEdmEntitySet() {
         EdmEntitySet edmEntitySet = EasyMock.createMock(EdmEntitySet.class);
@@ -287,8 +367,9 @@ public class ODataJPADefaultProcessorTest extends JPAEdmTestModelView {
     }
 
     /**
-     * @return
-     * @throws EdmException
+     * Gets the local edm entity type.
+     *
+     * @return the local edm entity type
      */
     private EdmEntityType getLocalEdmEntityType() {
         EdmEntityType edmEntityType = EasyMock.createMock(EdmEntityType.class);
@@ -320,26 +401,56 @@ public class ODataJPADefaultProcessorTest extends JPAEdmTestModelView {
         return edmEntityType;
     }
 
+    /**
+     * Gets the inline count.
+     *
+     * @return the inline count
+     */
     private InlineCount getInlineCount() {
         return InlineCount.NONE;
     }
 
+    /**
+     * Gets the filter.
+     *
+     * @return the filter
+     */
     private FilterExpression getFilter() {
         return null;
     }
 
+    /**
+     * Gets the skip.
+     *
+     * @return the skip
+     */
     private Integer getSkip() {
         return null;
     }
 
+    /**
+     * Gets the top.
+     *
+     * @return the top
+     */
     private Integer getTop() {
         return null;
     }
 
+    /**
+     * Gets the order by expression.
+     *
+     * @return the order by expression
+     */
     private OrderByExpression getOrderByExpression() {
         return null;
     }
 
+    /**
+     * Gets the localmock O data JPA context.
+     *
+     * @return the localmock O data JPA context
+     */
     private ODataJPAContext getLocalmockODataJPAContext() {
         ODataJPAContext odataJPAContext = EasyMock.createMock(ODataJPAContext.class);
         EasyMock.expect(odataJPAContext.getPageSize())
@@ -366,6 +477,11 @@ public class ODataJPADefaultProcessorTest extends JPAEdmTestModelView {
         return odataJPAContext;
     }
 
+    /**
+     * Gets the local jpa transaction.
+     *
+     * @return the local jpa transaction
+     */
     private ODataJPATransaction getLocalJpaTransaction() {
         ODataJPATransaction tx = EasyMock.createMock(ODataJPATransaction.class);
         tx.begin(); // testing void method
@@ -379,6 +495,11 @@ public class ODataJPADefaultProcessorTest extends JPAEdmTestModelView {
         return tx;
     }
 
+    /**
+     * Mock entity manager factory.
+     *
+     * @return the entity manager factory
+     */
     private EntityManagerFactory mockEntityManagerFactory() {
         EntityManagerFactory emf = EasyMock.createMock(EntityManagerFactory.class);
         EasyMock.expect(emf.getMetamodel())
@@ -389,6 +510,11 @@ public class ODataJPADefaultProcessorTest extends JPAEdmTestModelView {
         return emf;
     }
 
+    /**
+     * Mock entity manager factory 2.
+     *
+     * @return the entity manager factory
+     */
     private EntityManagerFactory mockEntityManagerFactory2() {// For create, to avoid stackoverflow
         EntityManagerFactory emf = EasyMock.createMock(EntityManagerFactory.class);
         EasyMock.expect(emf.getMetamodel())
@@ -397,6 +523,11 @@ public class ODataJPADefaultProcessorTest extends JPAEdmTestModelView {
         return emf;
     }
 
+    /**
+     * Gets the local entity manager.
+     *
+     * @return the local entity manager
+     */
     private EntityManager getLocalEntityManager() {
         EntityManager em = EasyMock.createMock(EntityManager.class);
         EasyMock.expect(em.createQuery("SELECT E1 FROM SalesOrderHeaders E1"))
@@ -420,6 +551,11 @@ public class ODataJPADefaultProcessorTest extends JPAEdmTestModelView {
         return em;
     }
 
+    /**
+     * Gets the local transaction.
+     *
+     * @return the local transaction
+     */
     private EntityTransaction getLocalTransaction() {
         EntityTransaction entityTransaction = EasyMock.createMock(EntityTransaction.class);
         entityTransaction.begin(); // testing void method
@@ -431,6 +567,11 @@ public class ODataJPADefaultProcessorTest extends JPAEdmTestModelView {
         return entityTransaction;
     }
 
+    /**
+     * Gets the query.
+     *
+     * @return the query
+     */
     private Query getQuery() {
         Query query = EasyMock.createMock(Query.class);
         EasyMock.expect(query.getResultList())
@@ -439,6 +580,11 @@ public class ODataJPADefaultProcessorTest extends JPAEdmTestModelView {
         return query;
     }
 
+    /**
+     * Gets the query for select count.
+     *
+     * @return the query for select count
+     */
     private Query getQueryForSelectCount() {
         Query query = EasyMock.createMock(Query.class);
         EasyMock.expect(query.getResultList())
@@ -447,25 +593,50 @@ public class ODataJPADefaultProcessorTest extends JPAEdmTestModelView {
         return query;
     }
 
+    /**
+     * Gets the result list.
+     *
+     * @return the result list
+     */
     private List<?> getResultList() {
         List<Object> list = new ArrayList<Object>();
         list.add(new Address());
         return list;
     }
 
+    /**
+     * Gets the result list for select count.
+     *
+     * @return the result list for select count
+     */
     private List<?> getResultListForSelectCount() {
         List<Object> list = new ArrayList<Object>();
         list.add(new Long(11));
         return list;
     }
 
+    /**
+     * The Class Address.
+     */
     class Address {
+        
+        /** The so id. */
         private final String soId = "12";
 
+        /**
+         * Gets the so id.
+         *
+         * @return the so id
+         */
         public String getSoId() {
             return soId;
         }
 
+        /**
+         * Hash code.
+         *
+         * @return the int
+         */
         @Override
         public int hashCode() {
             final int prime = 31;
@@ -474,6 +645,12 @@ public class ODataJPADefaultProcessorTest extends JPAEdmTestModelView {
             return prime * result + Objects.hash(soId);
         }
 
+        /**
+         * Equals.
+         *
+         * @param obj the obj
+         * @return true, if successful
+         */
         @Override
         public boolean equals(Object obj) {
             if (this == obj) {
@@ -492,12 +669,22 @@ public class ODataJPADefaultProcessorTest extends JPAEdmTestModelView {
             return Objects.equals(soId, other.soId);
         }
 
+        /**
+         * Gets the enclosing instance.
+         *
+         * @return the enclosing instance
+         */
         private ODataJPADefaultProcessorTest getEnclosingInstance() {
             return ODataJPADefaultProcessorTest.this;
         }
 
     }
 
+    /**
+     * Mock meta model.
+     *
+     * @return the metamodel
+     */
     private Metamodel mockMetaModel() {
         Metamodel metaModel = EasyMock.createMock(Metamodel.class);
         EasyMock.expect(metaModel.getEntities())
@@ -506,12 +693,22 @@ public class ODataJPADefaultProcessorTest extends JPAEdmTestModelView {
         return metaModel;
     }
 
+    /**
+     * Gets the local entities.
+     *
+     * @return the local entities
+     */
     private Set<EntityType<?>> getLocalEntities() {
         Set<EntityType<?>> entityTypeSet = new HashSet<EntityType<?>>();
         entityTypeSet.add(getLocalJPAEntityType());
         return entityTypeSet;
     }
 
+    /**
+     * Gets the local JPA entity type.
+     *
+     * @return the local JPA entity type
+     */
     @SuppressWarnings("rawtypes")
     private EntityType<EntityType> getLocalJPAEntityType() {
         @SuppressWarnings("unchecked")
@@ -522,6 +719,11 @@ public class ODataJPADefaultProcessorTest extends JPAEdmTestModelView {
         return entityType;
     }
 
+    /**
+     * Gets the entity uri info.
+     *
+     * @return the entity uri info
+     */
     private GetEntityUriInfo getEntityUriInfo() {
         GetEntityUriInfo getEntityView = EasyMock.createMock(GetEntityUriInfo.class);
         EdmEntitySet edmEntitySet = EasyMock.createMock(EdmEntitySet.class);
@@ -580,6 +782,11 @@ public class ODataJPADefaultProcessorTest extends JPAEdmTestModelView {
         return getEntityView;
     }
 
+    /**
+     * Gets the local edm entity container.
+     *
+     * @return the local edm entity container
+     */
     private EdmEntityContainer getLocalEdmEntityContainer() {
         EdmEntityContainer edmEntityContainer = EasyMock.createMock(EdmEntityContainer.class);
         EasyMock.expect(edmEntityContainer.isDefaultEntityContainer())
@@ -595,6 +802,12 @@ public class ODataJPADefaultProcessorTest extends JPAEdmTestModelView {
         return edmEntityContainer;
     }
 
+    /**
+     * Gets the edm typed mocked obj.
+     *
+     * @param propertyName the property name
+     * @return the edm typed mocked obj
+     */
     private EdmTyped getEdmTypedMockedObj(final String propertyName) {
         EdmProperty mockedEdmProperty = EasyMock.createMock(EdmProperty.class);
         try {
@@ -618,6 +831,11 @@ public class ODataJPADefaultProcessorTest extends JPAEdmTestModelView {
         return mockedEdmProperty;
     }
 
+    /**
+     * Gets the edm facets mocked obj.
+     *
+     * @return the edm facets mocked obj
+     */
     private EdmFacets getEdmFacetsMockedObj() {
         EdmFacets facets = EasyMock.createMock(EdmFacets.class);
         EasyMock.expect(facets.getConcurrencyMode())
@@ -627,6 +845,12 @@ public class ODataJPADefaultProcessorTest extends JPAEdmTestModelView {
         return facets;
     }
 
+    /**
+     * Gets the edm mapping mocked obj.
+     *
+     * @param propertyName the property name
+     * @return the edm mapping mocked obj
+     */
     private JPAEdmMapping getEdmMappingMockedObj(final String propertyName) {
         JPAEdmMappingImpl mockedEdmMapping = EasyMock.createMock(JPAEdmMappingImpl.class);
         if (propertyName.equalsIgnoreCase(SALES_ORDER)) {
@@ -644,12 +868,22 @@ public class ODataJPADefaultProcessorTest extends JPAEdmTestModelView {
         return mockedEdmMapping;
     }
 
+    /**
+     * Gets the local property names.
+     *
+     * @return the local property names
+     */
     private List<String> getLocalPropertyNames() {
         List<String> list = new ArrayList<String>();
         list.add(SO_ID);
         return list;
     }
 
+    /**
+     * Gets the local O data context.
+     *
+     * @return the local O data context
+     */
     private ODataContext getLocalODataContext() {
         ODataContext objODataContext = null;
         try {
@@ -664,6 +898,11 @@ public class ODataJPADefaultProcessorTest extends JPAEdmTestModelView {
         return objODataContext;
     }
 
+    /**
+     * Gets the local path info.
+     *
+     * @return the local path info
+     */
     private PathInfo getLocalPathInfo() {
         PathInfo pathInfo = EasyMock.createMock(PathInfo.class);
         EasyMock.expect(pathInfo.getServiceRoot())
@@ -672,6 +911,11 @@ public class ODataJPADefaultProcessorTest extends JPAEdmTestModelView {
         return pathInfo;
     }
 
+    /**
+     * Gets the local URI.
+     *
+     * @return the local URI
+     */
     private URI getLocalURI() {
         URI uri = null;
         try {

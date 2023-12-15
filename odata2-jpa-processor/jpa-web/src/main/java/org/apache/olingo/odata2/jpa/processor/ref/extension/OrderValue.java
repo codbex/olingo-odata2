@@ -18,23 +18,50 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.jpa.processor.ref.extension;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class OrderValue.
+ */
 public class OrderValue {
 
+  /** The amount. */
   private double amount;
+  
+  /** The currency. */
   private String currency;
 
+  /**
+   * Gets the amount.
+   *
+   * @return the amount
+   */
   public double getAmount() {
     return amount;
   }
 
+  /**
+   * Sets the amount.
+   *
+   * @param amount the new amount
+   */
   public void setAmount(final double amount) {
     this.amount = amount;
   }
 
+  /**
+   * Gets the currency.
+   *
+   * @return the currency
+   */
   public String getCurrency() {
     return currency;
   }
 
+  /**
+   * Sets the currency.
+   *
+   * @param currency the new currency
+   */
   public void setCurrency(final String currency) {
     this.currency = currency;
   }

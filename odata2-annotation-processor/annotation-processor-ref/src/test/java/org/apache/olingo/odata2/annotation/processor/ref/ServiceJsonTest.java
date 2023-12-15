@@ -35,15 +35,27 @@ import org.custommonkey.xmlunit.SimpleNamespaceContext;
 import org.custommonkey.xmlunit.XMLUnit;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
  * Tests employing the reference scenario reading the service document in JSON format.
  * 
  */
 public class ServiceJsonTest extends AbstractRefTest {
+  
+  /**
+   * Instantiates a new service json test.
+   *
+   * @param servletType the servlet type
+   */
   public ServiceJsonTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /**
+   * Service document dollar format json.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serviceDocumentDollarFormatJson() throws Exception {
     final HttpResponse response = callUri("?$format=json");
@@ -58,11 +70,23 @@ public class ServiceJsonTest extends AbstractRefTest {
     Assert.assertTrue(jsonDataResponseContains(body, "Teams"));
   }
 
+  /**
+   * Json data response contains.
+   *
+   * @param content the content
+   * @param containingValue the containing value
+   * @return true, if successful
+   */
   private boolean jsonDataResponseContains(final String content, final String containingValue) {
     return content.matches("\\{\"d\":\\{\"EntitySets\":\\[.*"
         + containingValue + ".*\"\\]\\}\\}");
   }
 
+  /**
+   * Service document accept header json.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serviceDocumentAcceptHeaderJson() throws Exception {
     final HttpResponse response = callUri("", HttpHeaders.ACCEPT, HttpContentType.APPLICATION_JSON);
@@ -76,6 +100,11 @@ public class ServiceJsonTest extends AbstractRefTest {
     Assert.assertTrue(jsonDataResponseContains(body, "Teams"));
   }
 
+  /**
+   * Service document accept header invalid charset.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void serviceDocumentAcceptHeaderInvalidCharset() throws Exception {
     final HttpResponse response =

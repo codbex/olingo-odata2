@@ -54,11 +54,13 @@ import org.apache.olingo.odata2.testutil.mock.MockFacade;
 import org.junit.Test;
 import junit.framework.Assert;
 
+// TODO: Auto-generated Javadoc
 /**
- *
+ * The Class ProviderFacadeImplTest.
  */
 public class ProviderFacadeImplTest extends AbstractConsumerTest {
 
+    /** The Constant EMPLOYEE_1_XML. */
     private static final String EMPLOYEE_1_XML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + "<entry xmlns=\"" + Edm.NAMESPACE_ATOM_2005
             + "\"" + " xmlns:m=\"" + Edm.NAMESPACE_M_2007_08 + "\"" + " xmlns:d=\"" + Edm.NAMESPACE_D_2007_08 + "\""
             + " xml:base=\"https://some.host.com/some.service.root.segment/ReferenceScenario.svc/\">"
@@ -79,6 +81,11 @@ public class ProviderFacadeImplTest extends AbstractConsumerTest {
             + "<d:CityName>Heidelberg</d:CityName>" + "</d:City>" + "</d:Location>" + "<d:Age>52</d:Age>"
             + "<d:EntryDate>1999-01-01T00:00:00</d:EntryDate>" + "<d:ImageUrl>Employee_1.png</d:ImageUrl>" + "</m:properties>" + "</entry>";
 
+    /**
+     * Read delta feed.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void readDeltaFeed() throws Exception {
 
@@ -111,6 +118,11 @@ public class ProviderFacadeImplTest extends AbstractConsumerTest {
                                     .getWhen());
     }
 
+    /**
+     * Read feed.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void readFeed() throws Exception {
         final String contentType = ContentType.APPLICATION_ATOM_XML_FEED.toContentTypeString();
@@ -129,6 +141,11 @@ public class ProviderFacadeImplTest extends AbstractConsumerTest {
                             .size());
     }
 
+    /**
+     * Read entry.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void readEntry() throws Exception {
         final String contentType = ContentType.APPLICATION_ATOM_XML_ENTRY.toContentTypeString();
@@ -157,6 +174,11 @@ public class ProviderFacadeImplTest extends AbstractConsumerTest {
                                .get("Age"));
     }
 
+    /**
+     * Read delta feed json.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void readDeltaFeedJson() throws Exception {
 
@@ -195,6 +217,11 @@ public class ProviderFacadeImplTest extends AbstractConsumerTest {
         }
     }
 
+    /**
+     * Read property value.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void readPropertyValue() throws Exception {
         final EdmProperty property = (EdmProperty) MockFacade.getMockEdm()
@@ -205,6 +232,11 @@ public class ProviderFacadeImplTest extends AbstractConsumerTest {
         assertEquals(1330477323000L, result);
     }
 
+    /**
+     * Read property.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void readProperty() throws Exception {
         final EdmProperty property = (EdmProperty) MockFacade.getMockEdm()
@@ -219,6 +251,11 @@ public class ProviderFacadeImplTest extends AbstractConsumerTest {
         assertEquals(42, result.get("Age"));
     }
 
+    /**
+     * Read function import.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void readFunctionImport() throws Exception {
         final EdmFunctionImport functionImport = MockFacade.getMockEdm()
@@ -231,6 +268,11 @@ public class ProviderFacadeImplTest extends AbstractConsumerTest {
         assertEquals((short) 42, result);
     }
 
+    /**
+     * Read multiple entity function import.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void readMultipleEntityFunctionImport() throws Exception {
         final EdmFunctionImport functionImport = MockFacade.getMockEdm()
@@ -266,6 +308,11 @@ public class ProviderFacadeImplTest extends AbstractConsumerTest {
         assertEquals("3", id);
     }
 
+    /**
+     * Read link.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void readLink() throws Exception {
         final EdmEntitySet entitySet = MockFacade.getMockEdm()
@@ -276,6 +323,11 @@ public class ProviderFacadeImplTest extends AbstractConsumerTest {
         assertEquals("http://somelink", result);
     }
 
+    /**
+     * Read links.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void readLinks() throws Exception {
         final EdmEntitySet entitySet = MockFacade.getMockEdm()
@@ -287,6 +339,11 @@ public class ProviderFacadeImplTest extends AbstractConsumerTest {
         assertEquals(Arrays.asList("http://somelink"), result);
     }
 
+    /**
+     * Read error document json.
+     *
+     * @throws EntityProviderException the entity provider exception
+     */
     @Test
     public void readErrorDocumentJson() throws EntityProviderException {
         ProviderFacadeImpl providerFacade = new ProviderFacadeImpl();
@@ -300,6 +357,11 @@ public class ProviderFacadeImplTest extends AbstractConsumerTest {
         LocaleAsserter.assertLocale("Wrong locale for lang", errorContext.getLocale(), Locale.US);
     }
 
+    /**
+     * Read error document xml.
+     *
+     * @throws EntityProviderException the entity provider exception
+     */
     @Test
     public void readErrorDocumentXml() throws EntityProviderException {
         ProviderFacadeImpl providerFacade = new ProviderFacadeImpl();
@@ -315,6 +377,11 @@ public class ProviderFacadeImplTest extends AbstractConsumerTest {
         LocaleAsserter.assertLocale("Wrong locale for lang", errorContext.getLocale(), Locale.US);
     }
 
+    /**
+     * Write feed.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void writeFeed() throws Exception {
         final EdmEntitySet entitySet = MockFacade.getMockEdm()
@@ -327,6 +394,11 @@ public class ProviderFacadeImplTest extends AbstractConsumerTest {
         assertEquals("{\"d\":{\"results\":[]}}", StringHelper.inputStreamToString((InputStream) result.getEntity()));
     }
 
+    /**
+     * Write entry.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void writeEntry() throws Exception {
         final EdmEntitySet entitySet = MockFacade.getMockEdm()
@@ -345,6 +417,11 @@ public class ProviderFacadeImplTest extends AbstractConsumerTest {
                 StringHelper.inputStreamToString((InputStream) result.getEntity()));
     }
 
+    /**
+     * Write property.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void writeProperty() throws Exception {
         final EdmProperty property = (EdmProperty) MockFacade.getMockEdm()
@@ -356,6 +433,11 @@ public class ProviderFacadeImplTest extends AbstractConsumerTest {
                                .endsWith("\">2001-04-19T04:25:21</EntryDate>"));
     }
 
+    /**
+     * Write link.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void writeLink() throws Exception {
         final EdmEntitySet entitySet = MockFacade.getMockEdm()
@@ -369,6 +451,11 @@ public class ProviderFacadeImplTest extends AbstractConsumerTest {
         assertEquals("{\"d\":{\"uri\":\"http://root/Rooms('42')\"}}", StringHelper.inputStreamToString((InputStream) result.getEntity()));
     }
 
+    /**
+     * Write links.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void writeLinks() throws Exception {
         final EdmEntitySet entitySet = MockFacade.getMockEdm()
@@ -386,6 +473,11 @@ public class ProviderFacadeImplTest extends AbstractConsumerTest {
                 StringHelper.inputStreamToString((InputStream) result.getEntity()));
     }
 
+    /**
+     * Write service document.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void writeServiceDocument() throws Exception {
         final ODataResponse result =
@@ -393,6 +485,11 @@ public class ProviderFacadeImplTest extends AbstractConsumerTest {
         assertEquals("{\"d\":{\"EntitySets\":[]}}", StringHelper.inputStreamToString((InputStream) result.getEntity()));
     }
 
+    /**
+     * Write property value.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void writePropertyValue() throws Exception {
         final EdmProperty property = (EdmProperty) MockFacade.getMockEdm()
@@ -404,6 +501,11 @@ public class ProviderFacadeImplTest extends AbstractConsumerTest {
         assertEquals("2001-04-19T04:25:21", StringHelper.inputStreamToString((InputStream) result.getEntity()));
     }
 
+    /**
+     * Write text.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void writeText() throws Exception {
         final ODataResponse result = new ProviderFacadeImpl().writeText("test");
@@ -411,6 +513,11 @@ public class ProviderFacadeImplTest extends AbstractConsumerTest {
         assertEquals("test", StringHelper.inputStreamToString((InputStream) result.getEntity()));
     }
 
+    /**
+     * Write binary.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void writeBinary() throws Exception {
         final ODataResponse result =
@@ -419,6 +526,11 @@ public class ProviderFacadeImplTest extends AbstractConsumerTest {
         assertEquals("foo", StringHelper.inputStreamToString((InputStream) result.getEntity()));
     }
 
+    /**
+     * Write binary no content.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void writeBinaryNoContent() throws Exception {
         final ODataResponse result = new ProviderFacadeImpl().writeBinary(HttpContentType.APPLICATION_OCTET_STREAM, null);
@@ -427,6 +539,11 @@ public class ProviderFacadeImplTest extends AbstractConsumerTest {
         assertEquals(HttpStatusCodes.NO_CONTENT, result.getStatus());
     }
 
+    /**
+     * Write function import.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void writeFunctionImport() throws Exception {
         final EdmFunctionImport function = MockFacade.getMockEdm()

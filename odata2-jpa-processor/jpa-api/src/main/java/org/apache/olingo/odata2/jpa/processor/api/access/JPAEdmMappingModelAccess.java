@@ -20,6 +20,7 @@ package org.apache.olingo.odata2.jpa.processor.api.access;
 
 import org.apache.olingo.odata2.jpa.processor.api.model.mapping.JPAEdmMappingModel;
 
+// TODO: Auto-generated Javadoc
 /**
  * Interface provides methods to access JPA EDM mapping model.
  * 
@@ -55,10 +56,9 @@ public interface JPAEdmMappingModelAccess {
   public JPAEdmMappingModel getJPAEdmMappingModel();
 
   /**
-   * The method returns EDM Schema namespace for the persistence unit name
-   * 
-   * @param persistenceUnitName
-   * is the Java persistence unit name
+   * The method returns EDM Schema namespace for the persistence unit name.
+   *
+   * @param persistenceUnitName is the Java persistence unit name
    * @return EDM schema name space mapped to Java persistence unit name or
    * null if no mapping is available
    */
@@ -66,10 +66,9 @@ public interface JPAEdmMappingModelAccess {
 
   /**
    * The method returns EDM entity type name for the Java persistence entity
-   * type name
-   * 
-   * @param jpaEntityTypeName
-   * is the Java persistence entity type name
+   * type name.
+   *
+   * @param jpaEntityTypeName is the Java persistence entity type name
    * @return EDM entity type name mapped to Java persistence entity type name
    * or null if no mapping is available
    */
@@ -77,10 +76,9 @@ public interface JPAEdmMappingModelAccess {
 
   /**
    * The method returns EDM entity set name for the Java persistence entity
-   * type name
-   * 
-   * @param jpaEntityTypeName
-   * is the Java persistence entity type name
+   * type name.
+   *
+   * @param jpaEntityTypeName is the Java persistence entity type name
    * @return EDM entity set name mapped to Java persistence entity type name
    * or null if no mapping is available
    */
@@ -138,54 +136,44 @@ public interface JPAEdmMappingModelAccess {
 
   /**
    * The method returns whether the JPA Entity should be excluded from EDM
-   * model
-   * 
-   * @param jpaEntityTypeName
-   * is the name of JPA Entity Type
+   * model.
+   *
+   * @param jpaEntityTypeName is the name of JPA Entity Type
    * @return <b>true</b> - if JPA Entity should be excluded<br>
    * <b>false</b> - if JPA Entity should be not be excluded
-   * 
    */
   public boolean checkExclusionOfJPAEntityType(String jpaEntityTypeName);
 
   /**
    * The method returns whether the JPA Attribute should be excluded from EDM
-   * Entity Type
-   * 
-   * @param jpaEntityTypeName
-   * is the name of JPA Entity Type
-   * @param jpaAttributeName
-   * is the name of JPA attribute
+   * Entity Type.
+   *
+   * @param jpaEntityTypeName is the name of JPA Entity Type
+   * @param jpaAttributeName is the name of JPA attribute
    * @return <b>true</b> - if JPA attribute should be excluded<br>
    * <b>false</b> - if JPA attribute should be not be excluded
-   * 
    */
   public boolean checkExclusionOfJPAAttributeType(String jpaEntityTypeName, String jpaAttributeName);
 
   /**
    * The method returns whether the JPA Embeddable Type should be excluded
-   * from EDM model
-   * 
-   * @param jpaEmbeddableTypeName
-   * is the name of JPA Embeddable Type
+   * from EDM model.
+   *
+   * @param jpaEmbeddableTypeName is the name of JPA Embeddable Type
    * @return <b>true</b> - if JPA Embeddable Type should be excluded<br>
    * <b>false</b> - if JPA Embeddable Type should be not be excluded
-   * 
    */
   public boolean checkExclusionOfJPAEmbeddableType(String jpaEmbeddableTypeName);
 
   /**
    * The method returns whether the JPA Embeddable Attribute Type should be
-   * excluded from EDM model
-   * 
-   * @param jpaEmbeddableTypeName
-   * is the name of JPA Embeddable Attribute Type
-   * @param jpaAttributeName
-   * is the name of JPA Attribute name
+   * excluded from EDM model.
+   *
+   * @param jpaEmbeddableTypeName is the name of JPA Embeddable Attribute Type
+   * @param jpaAttributeName is the name of JPA Attribute name
    * @return <b>true</b> - if JPA Embeddable Attribute Type should be excluded<br>
    * <b>false</b> - if JPA Embeddable Attribute Type should be not be
    * excluded
-   * 
    */
   public boolean checkExclusionOfJPAEmbeddableAttributeType(String jpaEmbeddableTypeName, String jpaAttributeName);
 }

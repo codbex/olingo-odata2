@@ -38,21 +38,38 @@ import org.apache.olingo.odata2.core.ep.aggregator.EntityComplexPropertyInfo;
 import org.apache.olingo.odata2.core.ep.aggregator.EntityPropertyInfo;
 import org.apache.olingo.odata2.core.ep.util.FormatXml;
 
+// TODO: Auto-generated Javadoc
 /**
  * Internal EntityProvider for simple and complex EDM properties which are pre-analyzed as {@link EntityPropertyInfo}.
  * 
  */
 public class XmlPropertyEntityProducer {
 
+  /** The include simple property type. */
   private final boolean includeSimplePropertyType;
+  
+  /** The validate facets. */
   private final boolean validateFacets;
+  
+  /** The is data based property serialization. */
   private boolean isDataBasedPropertySerialization = false;
 
+  /**
+   * Instantiates a new xml property entity producer.
+   *
+   * @param writeProperties the write properties
+   */
   public XmlPropertyEntityProducer(final EntityProviderWriteProperties writeProperties) {
     this(writeProperties.isIncludeSimplePropertyType(), writeProperties.isValidatingFacets());
     isDataBasedPropertySerialization = writeProperties.isDataBasedPropertySerialization();
   }
 
+  /**
+   * Instantiates a new xml property entity producer.
+   *
+   * @param includeSimplePropertyType the include simple property type
+   * @param validateFacets the validate facets
+   */
   public XmlPropertyEntityProducer(final boolean includeSimplePropertyType, final boolean validateFacets) {
     this.includeSimplePropertyType = includeSimplePropertyType;
     this.validateFacets = validateFacets;
@@ -61,12 +78,12 @@ public class XmlPropertyEntityProducer {
   /**
    * Append {@link Object} <code>value</code> based on {@link EntityPropertyInfo} to {@link XMLStreamWriter} in an
    * already existing XML structure inside the d namespace.
-   * 
-   * @param writer
+   *
+   * @param writer the writer
    * @param name Name of the outer XML tag
-   * @param propertyInfo
-   * @param value
-   * @throws EntityProviderException
+   * @param propertyInfo the property info
+   * @param value the value
+   * @throws EntityProviderException the entity provider exception
    */
   public void append(final XMLStreamWriter writer, final String name, final EntityPropertyInfo propertyInfo,
       final Object value) throws EntityProviderException {
@@ -87,6 +104,15 @@ public class XmlPropertyEntityProducer {
     }
   }
 
+  /**
+   * Append custom property.
+   *
+   * @param writer the writer
+   * @param name the name
+   * @param propertyInfo the property info
+   * @param value the value
+   * @throws EntityProviderException the entity provider exception
+   */
   public void appendCustomProperty(final XMLStreamWriter writer, final String name,
       final EntityPropertyInfo propertyInfo, final Object value) throws EntityProviderException {
     try {
@@ -106,11 +132,11 @@ public class XmlPropertyEntityProducer {
    * Append {@link Object} <code>value</code> based on {@link EntityPropertyInfo} to {@link XMLStreamWriter} as a
    * stand-alone XML structure, including writing of default namespace declarations.
    * The name of the outermost XML element comes from the {@link EntityPropertyInfo}.
-   * 
-   * @param writer
-   * @param propertyInfo
-   * @param value
-   * @throws EntityProviderException
+   *
+   * @param writer the writer
+   * @param propertyInfo the property info
+   * @param value the value
+   * @throws EntityProviderException the entity provider exception
    */
   public void append(final XMLStreamWriter writer, final EntityPropertyInfo propertyInfo, final Object value)
       throws EntityProviderException {
@@ -134,13 +160,14 @@ public class XmlPropertyEntityProducer {
   }
 
   /**
-   * 
-   * @param writer
-   * @param propertyInfo
-   * @param value
-   * @throws XMLStreamException
-   * @throws EdmException
-   * @throws EntityProviderException 
+   * Append property.
+   *
+   * @param writer the writer
+   * @param propertyInfo the property info
+   * @param value the value
+   * @throws XMLStreamException the XML stream exception
+   * @throws EdmException the edm exception
+   * @throws EntityProviderException the entity provider exception
    */
   private void appendProperty(final XMLStreamWriter writer, final EntityComplexPropertyInfo propertyInfo,
       final Object value) throws XMLStreamException, EdmException, EntityProviderException {
@@ -162,7 +189,10 @@ public class XmlPropertyEntityProducer {
 
   /**
    * Returns full qualified name of a type of a given PropertyInfo.
+   *
+   * @param propertyInfo the property info
    * @return Full qualified name
+   * @throws EdmException the edm exception
    */
   private String getFqnTypeName(final EntityComplexPropertyInfo propertyInfo) throws EdmException {
     return propertyInfo.getType().getNamespace() + Edm.DELIMITER + propertyInfo.getType().getName();
@@ -171,9 +201,9 @@ public class XmlPropertyEntityProducer {
   /**
    * If <code>value</code> is a {@link Map} the element with given <code>name</code> as key is returned.
    * If <code>value</code> is NOT a {@link Map} its {@link String#valueOf(Object)} result is returned.
-   * 
-   * @param value
-   * @param name
+   *
+   * @param value the value
+   * @param name the name
    * @return name or result (see above)
    */
   private Object extractChildValue(final Object value, final String name) {
@@ -186,12 +216,13 @@ public class XmlPropertyEntityProducer {
 
   /**
    * Appends a simple-property value to the XML stream.
+   *
    * @param writer the XML stream writer
    * @param prop property informations
    * @param value the value of the property
-   * @throws XMLStreamException
-   * @throws EdmException
-   * @throws EntityProviderProducerException 
+   * @throws XMLStreamException the XML stream exception
+   * @throws EdmException the edm exception
+   * @throws EntityProviderProducerException the entity provider producer exception
    */
   private void appendProperty(final XMLStreamWriter writer, final EntityPropertyInfo prop, final Object value)
       throws XMLStreamException, EdmException, EntityProviderProducerException {
@@ -231,12 +262,13 @@ public class XmlPropertyEntityProducer {
   }
 
   /**
-   * 
-   * @param writer
-   * @param prop
-   * @param name
-   * @throws XMLStreamException
-   * @throws EntityProviderException
+   * Write start element with custom namespace.
+   *
+   * @param writer the writer
+   * @param prop the prop
+   * @param name the name
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
    */
   private void writeStartElementWithCustomNamespace(final XMLStreamWriter writer, final EntityPropertyInfo prop,
       final String name) throws XMLStreamException, EntityProviderException {

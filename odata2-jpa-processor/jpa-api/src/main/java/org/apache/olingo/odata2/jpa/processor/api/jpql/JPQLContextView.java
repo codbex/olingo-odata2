@@ -18,6 +18,7 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.jpa.processor.api.jpql;
 
+// TODO: Auto-generated Javadoc
 /**
  * The interface provides a view on JPQL Context. The view can be used to access
  * different JPQL context type implementations.
@@ -45,20 +46,22 @@ public interface JPQLContextView {
   public String getJPAEntityAlias();
 
   /**
-   * The method returns a JPQL context type
-   * 
+   * The method returns a JPQL context type.
+   *
    * @return an instance of type {@link org.apache.olingo.odata2.jpa.processor.api.jpql.JPQLContextType}
    */
   public JPQLContextType getType();
   
   /**
-   * Set the JPQL Statement to the context
-   * @param jpqlStatement
+   * Set the JPQL Statement to the context.
+   *
+   * @param jpqlStatement the new JPQL statement
    */
   public void setJPQLStatement(String jpqlStatement);
   
   /**
-   * Return the JPQL Statement set in context
+   * Return the JPQL Statement set in context.
+   *
    * @return String JPQLStatement
    */
   public String getJPQLStatement();

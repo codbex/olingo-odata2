@@ -18,10 +18,14 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.commons;
 
+// TODO: Auto-generated Javadoc
 /**
- * Inlinecount constants as described in the OData protocol
- * 
+ * Inlinecount constants as described in the OData protocol.
  */
 public enum InlineCount {
-  ALLPAGES, NONE;
+  
+  /** The allpages. */
+  ALLPAGES, 
+ /** The none. */
+ NONE;
 }

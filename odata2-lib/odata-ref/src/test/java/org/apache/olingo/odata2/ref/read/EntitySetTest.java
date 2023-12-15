@@ -47,15 +47,24 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class EntitySetTest.
  */
 public class EntitySetTest extends BaseTest {
 
+  /** The data container. */
   private static DataContainer dataContainer;
+  
+  /** The data source. */
   private static ScenarioDataSource dataSource;
+  
+  /** The processor. */
   private static ListsProcessor processor;
 
+  /**
+   * Inits the.
+   */
   @BeforeClass
   public static void init() {
     dataContainer = new DataContainer();
@@ -64,6 +73,11 @@ public class EntitySetTest extends BaseTest {
     processor = new ListsProcessor(dataSource);
   }
 
+  /**
+   * Sets the up.
+   *
+   * @throws Exception the exception
+   */
   @Before
   public void setUp() throws Exception {
     ODataContext context = mock(ODataContext.class);
@@ -75,6 +89,14 @@ public class EntitySetTest extends BaseTest {
     processor.setContext(context);
   }
 
+  /**
+   * Mock uri result.
+   *
+   * @param entitySetName the entity set name
+   * @return the uri info
+   * @throws ODataException the o data exception
+   * @throws URISyntaxException the URI syntax exception
+   */
   private UriInfo mockUriResult(final String entitySetName) throws ODataException, URISyntaxException {
     EdmEntityType entityType = mock(EdmEntityType.class);
     when(entityType.getName()).thenReturn(entitySetName);
@@ -92,6 +114,13 @@ public class EntitySetTest extends BaseTest {
     return uriResult;
   }
 
+  /**
+   * Read content.
+   *
+   * @param response the response
+   * @return the string
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private String readContent(final ODataResponse response) throws IOException {
     CharBuffer content = CharBuffer.allocate(1000);
     new InputStreamReader((InputStream) response.getEntity()).read(content);
@@ -99,6 +128,11 @@ public class EntitySetTest extends BaseTest {
     return content.toString();
   }
 
+  /**
+   * Read employees.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readEmployees() throws Exception {
     final UriInfo uriResult = mockUriResult("Employees");
@@ -109,6 +143,11 @@ public class EntitySetTest extends BaseTest {
     assertTrue(readContent(response).contains("Employee"));
   }
 
+  /**
+   * Read teams.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readTeams() throws Exception {
     final UriInfo uriResult = mockUriResult("Teams");
@@ -119,6 +158,11 @@ public class EntitySetTest extends BaseTest {
     assertTrue(readContent(response).contains("Team"));
   }
 
+  /**
+   * Read rooms.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readRooms() throws Exception {
     final UriInfo uriResult = mockUriResult("Rooms");
@@ -129,6 +173,11 @@ public class EntitySetTest extends BaseTest {
     assertTrue(readContent(response).contains("Room"));
   }
 
+  /**
+   * Read managers.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readManagers() throws Exception {
     final UriInfo uriResult = mockUriResult("Managers");
@@ -139,6 +188,11 @@ public class EntitySetTest extends BaseTest {
     assertTrue(readContent(response).contains("Manager"));
   }
 
+  /**
+   * Read buildings.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readBuildings() throws Exception {
     final UriInfo uriResult = mockUriResult("Buildings");
@@ -149,6 +203,11 @@ public class EntitySetTest extends BaseTest {
     assertTrue(readContent(response).contains("Building"));
   }
 
+  /**
+   * Read photos.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readPhotos() throws Exception {
     final UriInfo uriResult = mockUriResult("Photos");

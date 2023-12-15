@@ -23,19 +23,39 @@ import java.util.Map;
 
 import org.apache.olingo.odata2.api.uri.PathSegment;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PathSegmentMock.
+ */
 public class PathSegmentMock implements PathSegment {
 
+  /** The path. */
   private String path;
 
+  /**
+   * Sets the path.
+   *
+   * @param path the new path
+   */
   public void setPath(final String path) {
     this.path = path;
   }
 
+  /**
+   * Gets the path.
+   *
+   * @return the path
+   */
   @Override
   public String getPath() {
     return path;
   }
 
+  /**
+   * Gets the matrix parameters.
+   *
+   * @return the matrix parameters
+   */
   @Override
   public Map<String, List<String>> getMatrixParameters() {
     return null;

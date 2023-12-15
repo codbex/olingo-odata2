@@ -26,28 +26,55 @@ import org.apache.olingo.odata2.api.ep.EntityProviderException;
 import org.apache.olingo.odata2.api.servicedocument.AtomInfo;
 import org.apache.olingo.odata2.api.servicedocument.ServiceDocument;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class ServiceDocumentImpl.
  */
 public class ServiceDocumentImpl implements ServiceDocument {
+  
+  /** The atom info. */
   private AtomInfo atomInfo;
+  
+  /** The entity sets. */
   private List<EdmEntitySetInfo> entitySets = new ArrayList<EdmEntitySetInfo>();
 
+  /**
+   * Sets the entity sets info.
+   *
+   * @param entitySets the entity sets
+   * @return the service document impl
+   */
   public ServiceDocumentImpl setEntitySetsInfo(final List<EdmEntitySetInfo> entitySets) {
     this.entitySets = entitySets;
     return this;
   }
 
+  /**
+   * Gets the entity sets info.
+   *
+   * @return the entity sets info
+   * @throws EntityProviderException the entity provider exception
+   */
   @Override
   public List<EdmEntitySetInfo> getEntitySetsInfo() throws EntityProviderException {
     return entitySets;
   }
 
+  /**
+   * Gets the atom info.
+   *
+   * @return the atom info
+   */
   @Override
   public AtomInfo getAtomInfo() {
     return atomInfo;
   }
 
+  /**
+   * Sets the atom info.
+   *
+   * @param atomInfo the new atom info
+   */
   public void setAtomInfo(final AtomInfo atomInfo) {
     this.atomInfo = atomInfo;
   }

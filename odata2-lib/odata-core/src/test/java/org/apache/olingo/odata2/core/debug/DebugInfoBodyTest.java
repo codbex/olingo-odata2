@@ -33,14 +33,23 @@ import org.apache.olingo.odata2.api.processor.ODataResponse;
 import org.apache.olingo.odata2.core.ep.util.JsonStreamWriter;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class DebugInfoBodyTest.
  */
 public class DebugInfoBodyTest {
 
+  /** The Constant STRING_CONTENT. */
   private static final String STRING_CONTENT = "StringContent";
+  
+  /** The Constant STRING_CONTENT_JSON. */
   private static final String STRING_CONTENT_JSON = "\"" + STRING_CONTENT + "\"";
 
+  /**
+   * Json string content.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void jsonStringContent() throws Exception {
     ODataResponse response = mock(ODataResponse.class);
@@ -52,6 +61,11 @@ public class DebugInfoBodyTest {
     assertEquals(STRING_CONTENT_JSON, appendJson(response));
   }
 
+  /**
+   * Json input stream content.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void jsonInputStreamContent() throws Exception {
     ODataResponse response = mock(ODataResponse.class);
@@ -67,6 +81,11 @@ public class DebugInfoBodyTest {
         appendJson(response));
   }
 
+  /**
+   * Json unsupported content.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = ClassCastException.class)
   public void jsonUnsupportedContent() throws Exception {
     ODataResponse response = mock(ODataResponse.class);
@@ -76,6 +95,13 @@ public class DebugInfoBodyTest {
     appendJson(response);
   }
 
+  /**
+   * Append json.
+   *
+   * @param response the response
+   * @return the string
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private String appendJson(final ODataResponse response) throws IOException {
     Writer writer = new StringWriter();
     DebugInfoBody body = new DebugInfoBody(response, null);

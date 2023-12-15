@@ -43,13 +43,27 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class DebugDisabledTest.
+ */
 @RunWith(Parameterized.class)
 public class DebugDisabledTest extends AbstractBasicTest {
 
+  /**
+   * Instantiates a new debug disabled test.
+   *
+   * @param servletType the servlet type
+   */
   public DebugDisabledTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /**
+   * Check no debug callback must result in no debug response.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void checkNoDebugCallbackMustResultInNoDebugResponse() throws Exception {
     startCustomServer(FitStaticServiceFactory.class);
@@ -71,6 +85,11 @@ public class DebugDisabledTest extends AbstractBasicTest {
     stopCustomServer();
   }
 
+  /**
+   * Check debug callback false must result in no debug response.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void checkDebugCallbackFalseMustResultInNoDebugResponse() throws Exception {
     startCustomServer(DebugCallbackFactoryFlase.class);
@@ -92,6 +111,11 @@ public class DebugDisabledTest extends AbstractBasicTest {
     stopCustomServer();
   }
 
+  /**
+   * Check debug callback true must result in debug response.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void checkDebugCallbackTrueMustResultInDebugResponse() throws Exception {
     startCustomServer(DebugCallbackFactoryTrue.class);
@@ -120,18 +144,30 @@ public class DebugDisabledTest extends AbstractBasicTest {
     stopCustomServer();
   }
 
+  /**
+   * Before.
+   */
   @Override
   @Before
   public void before() {
     // Do nothing here to stop default server from starting
   }
 
+  /**
+   * After.
+   */
   @Override
   @After
   public void after() {
     stopCustomServer();
   }
 
+  /**
+   * Creates the processor.
+   *
+   * @return the o data single processor
+   * @throws ODataException the o data exception
+   */
   @Override
   protected ODataSingleProcessor createProcessor() throws ODataException {
     final ODataSingleProcessor processor = mock(ODataSingleProcessor.class);

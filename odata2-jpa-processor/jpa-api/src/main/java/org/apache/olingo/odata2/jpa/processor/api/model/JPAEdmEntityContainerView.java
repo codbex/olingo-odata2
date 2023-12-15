@@ -22,6 +22,7 @@ import java.util.List;
 
 import org.apache.olingo.odata2.api.edm.provider.EntityContainer;
 
+// TODO: Auto-generated Javadoc
 /**
  * A view on JPA EDM entity container. JPA EDM entity container is built from
  * consistent JPA EDM entity set and consistent JPA EDM association set views.
@@ -31,12 +32,10 @@ import org.apache.olingo.odata2.api.edm.provider.EntityContainer;
  * view acts as container for JPA EDM entity containers. A JPA EDM entity
  * container is said to be consistent only if the JPA EDM association set and
  * JPA EDM Entity Set view are consistent.
- * 
- * 
- * @org.apache.olingo.odata2.DoNotImplement
+ *
  * @see org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmEntitySetView
  * @see org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmAssociationSetView
- * 
+ * @org.apache.olingo.odata2.DoNotImplement 
  */
 public interface JPAEdmEntityContainerView extends JPAEdmBaseView {
   /**
@@ -48,8 +47,8 @@ public interface JPAEdmEntityContainerView extends JPAEdmBaseView {
   public EntityContainer getEdmEntityContainer();
 
   /**
-   * The method returns a list of consistent EDM entity containers
-   * 
+   * The method returns a list of consistent EDM entity containers.
+   *
    * @return a list of consistent EDM entity containers
    */
   public List<EntityContainer> getConsistentEdmEntityContainerList();

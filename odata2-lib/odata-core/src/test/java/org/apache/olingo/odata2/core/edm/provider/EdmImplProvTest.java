@@ -40,10 +40,21 @@ import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.junit.Before;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EdmImplProvTest.
+ */
 public class EdmImplProvTest extends BaseTest {
 
+  /** The edm. */
   private static EdmImplProv edm;
 
+  /**
+   * Gets the edm impl.
+   *
+   * @return the edm impl
+   * @throws Exception the exception
+   */
   @Before
   public void getEdmImpl() throws Exception {
     EdmProvider edmProvider = mock(EdmProvider.class);
@@ -74,6 +85,11 @@ public class EdmImplProvTest extends BaseTest {
     edm = new EdmImplProv(edmProvider);
   }
 
+  /**
+   * Assert call with alias results in right caching.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void assertCallWithAliasResultsInRightCaching() throws Exception {
     EdmEntityType entityTypeWithAlias = edm.getEntityType("et1", "EntityType1");
@@ -95,6 +111,11 @@ public class EdmImplProvTest extends BaseTest {
     assertEquals(association, associationWithAlias);
   }
 
+  /**
+   * Test entity type.
+   *
+   * @throws EdmException the edm exception
+   */
   @Test
   public void testEntityType() throws EdmException {
     EdmEntityType entityType = edm.getEntityType("EntityType1Ns", "EntityType1");
@@ -106,6 +127,11 @@ public class EdmImplProvTest extends BaseTest {
     assertEquals(entityType, entityTypeWithAlias);
   }
 
+  /**
+   * Test complex type.
+   *
+   * @throws EdmException the edm exception
+   */
   @Test
   public void testComplexType() throws EdmException {
     EdmComplexType complexType = edm.getComplexType("ComplexType1Ns", "ComplexType1");
@@ -117,6 +143,11 @@ public class EdmImplProvTest extends BaseTest {
     assertEquals(complexType, complexTypeWithAlias);
   }
 
+  /**
+   * Test association.
+   *
+   * @throws EdmException the edm exception
+   */
   @Test
   public void testAssociation() throws EdmException {
     EdmAssociation association = edm.getAssociation("Association1Ns", "Association1");
@@ -128,6 +159,11 @@ public class EdmImplProvTest extends BaseTest {
     assertEquals(association, associationWithAlias);
   }
 
+  /**
+   * Test default entity container.
+   *
+   * @throws EdmException the edm exception
+   */
   @Test
   public void testDefaultEntityContainer() throws EdmException {
     assertEquals(edm.getEntityContainer("Container1"), edm.getDefaultEntityContainer());

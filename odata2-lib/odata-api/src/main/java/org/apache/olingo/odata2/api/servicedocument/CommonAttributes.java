@@ -20,28 +20,29 @@ package org.apache.olingo.odata2.api.servicedocument;
 
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
 /**
- * A CommonAttributes
- * 
+ * A CommonAttributes.
  */
 public interface CommonAttributes {
+  
   /**
-   * Get the a base URI
-   * 
+   * Get the a base URI.
+   *
    * @return base as String
    */
   public String getBase();
 
   /**
-   * Get the natural language for the element
-   * 
+   * Get the natural language for the element.
+   *
    * @return language as String
    */
   public String getLang();
 
   /**
-   * Get the list of any attributes
-   * 
+   * Get the list of any attributes.
+   *
    * @return list of {@link ExtensionAttribute}
    */
   public List<ExtensionAttribute> getAttributes();

@@ -51,16 +51,37 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPQLJoinSelectSingleContextTest.
+ */
 public class JPQLJoinSelectSingleContextTest {
 
+  /** The entity uri info. */
   GetEntityUriInfo entityUriInfo;
 
+  /**
+   * Sets the up before class.
+   *
+   * @throws Exception the exception
+   */
   @BeforeClass
   public static void setUpBeforeClass() throws Exception {}
 
+  /**
+   * Tear down after class.
+   *
+   * @throws Exception the exception
+   */
   @AfterClass
   public static void tearDownAfterClass() throws Exception {}
 
+  /**
+   * Sets the up.
+   *
+   * @param toThrowException the new up
+   * @throws Exception the exception
+   */
   public void setUp(final boolean toThrowException) throws Exception {
     entityUriInfo = EasyMock.createMock(GetEntityUriInfo.class);
     EdmEntitySet edmEntitySet = EasyMock.createMock(EdmEntitySet.class);
@@ -126,9 +147,19 @@ public class JPQLJoinSelectSingleContextTest {
 
   }
 
+  /**
+   * Tear down.
+   *
+   * @throws Exception the exception
+   */
   @After
   public void tearDown() throws Exception {}
 
+  /**
+   * Test get JPA outer join clauses.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testGetJPAOuterJoinClauses() throws Exception {
     setUp(false);
@@ -152,6 +183,11 @@ public class JPQLJoinSelectSingleContextTest {
     assertEquals("R1", joinClauses.get(1).getEntityRelationShipAlias());
   }
 
+  /**
+   * Test exception thrown.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testExceptionThrown() throws Exception {
     setUp(true);
@@ -168,6 +204,13 @@ public class JPQLJoinSelectSingleContextTest {
     }
   }
 
+  /**
+   * Creates the navigation property.
+   *
+   * @param z the z
+   * @return the edm navigation property
+   * @throws EdmException the edm exception
+   */
   private EdmNavigationProperty createNavigationProperty(final String z) throws EdmException {
     EdmNavigationProperty navigationProperty = EasyMock.createMock(EdmNavigationProperty.class);
     EdmAssociation association = EasyMock.createMock(EdmAssociation.class);
@@ -192,6 +235,13 @@ public class JPQLJoinSelectSingleContextTest {
     return navigationProperty;
   }
 
+  /**
+   * Creates the key predicates.
+   *
+   * @param toThrowException the to throw exception
+   * @return the list
+   * @throws EdmException the edm exception
+   */
   private List<KeyPredicate> createKeyPredicates(final boolean toThrowException) throws EdmException {
     KeyPredicate keyPredicate = EasyMock.createMock(KeyPredicate.class);
     EasyMock.expect(keyPredicate.getLiteral()).andStubReturn("1");

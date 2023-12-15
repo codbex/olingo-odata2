@@ -28,58 +28,115 @@ import org.apache.olingo.odata2.api.annotation.edm.EdmNavigationProperty.Multipl
 import org.apache.olingo.odata2.api.annotation.edm.EdmProperty;
 import org.apache.olingo.odata2.api.annotation.edm.EdmType;
 
+// TODO: Auto-generated Javadoc
 /**
-*  
-*/
+ * The Class Team.
+ */
 @EdmEntityType(name = "Team", namespace = ModelSharedConstants.NAMESPACE_1)
 @EdmEntitySet(name = "Teams")
 public class Team extends RefBase {
+  
+  /** The is scrum team. */
   @EdmProperty(type = EdmType.BOOLEAN)
   private Boolean isScrumTeam;
+  
+  /** The employees. */
   @EdmNavigationProperty(name = "nt_Employees", association = "TeamEmployees", toMultiplicity = Multiplicity.MANY)
   private List<Employee> employees = new ArrayList<Employee>();
+  
+  /** The sub team. */
   @EdmNavigationProperty
   private Team subTeam;
 
+  /**
+   * Instantiates a new team.
+   */
   public Team() {
     super(-1, null);
   }
 
+  /**
+   * Instantiates a new team.
+   *
+   * @param id the id
+   * @param name the name
+   */
   public Team(final int id, final String name) {
     super(id, name);
   }
 
+  /**
+   * Checks if is scrum team.
+   *
+   * @return the boolean
+   */
   public Boolean isScrumTeam() {
     return isScrumTeam;
   }
 
+  /**
+   * Sets the scrum team.
+   *
+   * @param isScrumTeam the new scrum team
+   */
   public void setScrumTeam(final Boolean isScrumTeam) {
     this.isScrumTeam = isScrumTeam;
   }
 
+  /**
+   * Adds the employee.
+   *
+   * @param e the e
+   */
   public void addEmployee(final Employee e) {
     employees.add(e);
   }
 
+  /**
+   * Gets the employees.
+   *
+   * @return the employees
+   */
   public List<Employee> getEmployees() {
     return employees;
   }
 
+  /**
+   * Gets the sub team.
+   *
+   * @return the sub team
+   */
   public Team getSubTeam() {
     return subTeam;
   }
 
+  /**
+   * Hash code.
+   *
+   * @return the int
+   */
   @Override
   public int hashCode() {
     return id;
   }
 
+  /**
+   * Equals.
+   *
+   * @param obj the obj
+   * @return true, if successful
+   */
   @Override
   public boolean equals(final Object obj) {
     return this == obj
         || obj != null && getClass() == obj.getClass() && id == ((Team) obj).id;
   }
 
+  /**
+   * To string.
+   *
+   * @return the string
+   */
   @Override
   public String toString() {
     return "{\"Id\":\"" + id + "\",\"Name\":\"" + name + "\",\"IsScrumTeam\":" + isScrumTeam + "}";

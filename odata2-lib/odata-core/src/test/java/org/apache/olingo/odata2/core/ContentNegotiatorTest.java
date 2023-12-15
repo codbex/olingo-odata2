@@ -36,17 +36,31 @@ import org.apache.olingo.odata2.core.uri.UriType;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class ContentNegotiatorTest.
  */
 public class ContentNegotiatorTest {
 
+  /**
+   * Negotiate content type.
+   *
+   * @param contentTypes the content types
+   * @param supportedTypes the supported types
+   * @param expected the expected
+   * @throws ODataException the o data exception
+   */
   private void negotiateContentType(final List<ContentType> contentTypes, final List<ContentType> supportedTypes,
       final String expected) throws ODataException {
     final ContentType contentType = new ContentNegotiator().contentNegotiation(contentTypes, supportedTypes);
     assertEquals(expected, contentType.toContentTypeString());
   }
 
+  /**
+   * Default content type for empty list.
+   *
+   * @throws ODataException the o data exception
+   */
   @Test
   public void defaultContentTypeForEmptyList() throws ODataException {
     List<ContentType> contentTypes = Arrays.asList();
@@ -55,12 +69,22 @@ public class ContentNegotiatorTest {
     negotiateContentType(contentTypes, supportedTypes, "application/atom+xml");
   }
 
+  /**
+   * Invalid content negotiator creation.
+   *
+   * @throws ODataException the o data exception
+   */
   @Test(expected = IllegalArgumentException.class)
   public void invalidContentNegotiatorCreation() throws ODataException {
     final ContentType contentType = new ContentNegotiator().doContentNegotiation(null, null, null);
     assertNull(contentType);
   }
 
+  /**
+   * Invalid content negotiator creation null request.
+   *
+   * @throws ODataException the o data exception
+   */
   @Test(expected = IllegalArgumentException.class)
   public void invalidContentNegotiatorCreationNullRequest() throws ODataException {
     UriInfoImpl uriInfo = Mockito.mock(UriInfoImpl.class);
@@ -69,6 +93,11 @@ public class ContentNegotiatorTest {
     assertNull(contentType);
   }
 
+  /**
+   * Invalid content negotiator creation null uri.
+   *
+   * @throws ODataException the o data exception
+   */
   @Test(expected = IllegalArgumentException.class)
   public void invalidContentNegotiatorCreationNullUri() throws ODataException {
     ODataRequest request = Mockito.mock(ODataRequest.class);
@@ -77,6 +106,11 @@ public class ContentNegotiatorTest {
     assertNull(contentType);
   }
 
+  /**
+   * Invalid content negotiator creation null supported.
+   *
+   * @throws ODataException the o data exception
+   */
   @Test(expected = IllegalArgumentException.class)
   public void invalidContentNegotiatorCreationNullSupported() throws ODataException {
     ODataRequest request = Mockito.mock(ODataRequest.class);
@@ -85,6 +119,11 @@ public class ContentNegotiatorTest {
     assertNull(contentType);
   }
 
+  /**
+   * Content negotiation empty request.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void contentNegotiationEmptyRequest() throws Exception {
     negotiateContentType(
@@ -93,6 +132,11 @@ public class ContentNegotiatorTest {
         "sup/111");
   }
 
+  /**
+   * Content negotiation concrete request.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void contentNegotiationConcreteRequest() throws Exception {
     negotiateContentType(
@@ -101,11 +145,21 @@ public class ContentNegotiatorTest {
         "sup/222");
   }
 
+  /**
+   * Content negotiation not supported.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = ODataNotAcceptableException.class)
   public void contentNegotiationNotSupported() throws Exception {
     negotiateContentType(contentTypes("image/gif"), contentTypes("sup/111", "sup/222"), null);
   }
 
+  /**
+   * Content negotiation supported wildcard.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void contentNegotiationSupportedWildcard() throws Exception {
     negotiateContentType(
@@ -114,6 +168,11 @@ public class ContentNegotiatorTest {
         "image/gif");
   }
 
+  /**
+   * Content negotiation supported sub wildcard.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void contentNegotiationSupportedSubWildcard() throws Exception {
     negotiateContentType(
@@ -122,6 +181,11 @@ public class ContentNegotiatorTest {
         "image/gif");
   }
 
+  /**
+   * Content negotiation request wildcard.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void contentNegotiationRequestWildcard() throws Exception {
     negotiateContentType(
@@ -130,6 +194,11 @@ public class ContentNegotiatorTest {
         "sup/111");
   }
 
+  /**
+   * Content negotiation request sub wildcard.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void contentNegotiationRequestSubWildcard() throws Exception {
     negotiateContentType(
@@ -138,6 +207,11 @@ public class ContentNegotiatorTest {
         "sup/222");
   }
 
+  /**
+   * Content negotiation request subtype wildcard.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void contentNegotiationRequestSubtypeWildcard() throws Exception {
     negotiateContentType(
@@ -146,11 +220,21 @@ public class ContentNegotiatorTest {
         "sup2/222");
   }
 
+  /**
+   * Content negotiation request response wildcard.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void contentNegotiationRequestResponseWildcard() throws Exception {
     negotiateContentType(contentTypes("*/*"), contentTypes("*/*"), "*/*");
   }
 
+  /**
+   * Content negotiation many requests.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void contentNegotiationManyRequests() throws Exception {
     negotiateContentType(
@@ -159,6 +243,11 @@ public class ContentNegotiatorTest {
         "sub2/222");
   }
 
+  /**
+   * Content negotiation charset not supported.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = ODataNotAcceptableException.class)
   public void contentNegotiationCharsetNotSupported() throws Exception {
     negotiateContentType(
@@ -167,6 +256,11 @@ public class ContentNegotiatorTest {
         "sup/222");
   }
 
+  /**
+   * Content negotiation with O data verbose.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void contentNegotiationWithODataVerbose() throws Exception {
     negotiateContentType(
@@ -175,26 +269,54 @@ public class ContentNegotiatorTest {
         "application/json;charset=utf-8");
   }
 
+  /**
+   * Content negotiation default charset.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void contentNegotiationDefaultCharset() throws Exception {
     negotiateContentTypeCharset("application/xml", "application/xml;charset=utf-8", false);
   }
 
+  /**
+   * Content negotiation default charset as dollar format.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void contentNegotiationDefaultCharsetAsDollarFormat() throws Exception {
     negotiateContentTypeCharset("application/xml", "application/xml;charset=utf-8", true);
   }
 
+  /**
+   * Content negotiation supported charset.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void contentNegotiationSupportedCharset() throws Exception {
     negotiateContentTypeCharset("application/xml; charset=utf-8", "application/xml;charset=utf-8", false);
   }
 
+  /**
+   * Content negotiation supported charset as dollar format.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void contentNegotiationSupportedCharsetAsDollarFormat() throws Exception {
     negotiateContentTypeCharset("application/xml; charset=utf-8", "application/xml;charset=utf-8", true);
   }
 
+  /**
+   * Negotiate content type charset.
+   *
+   * @param requestType the request type
+   * @param supportedType the supported type
+   * @param asFormat the as format
+   * @throws ODataException the o data exception
+   */
   private void
       negotiateContentTypeCharset(final String requestType, final String supportedType, final boolean asFormat)
           throws ODataException {
@@ -221,6 +343,12 @@ public class ContentNegotiatorTest {
     assertEquals(supportedType, negotiatedContentType);
   }
 
+  /**
+   * Content types.
+   *
+   * @param contentType the content type
+   * @return the list
+   */
   private List<ContentType> contentTypes(final String... contentType) {
     List<ContentType> ctList = new ArrayList<ContentType>();
     for (String ct : contentType) {

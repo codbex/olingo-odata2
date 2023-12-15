@@ -23,6 +23,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+// TODO: Auto-generated Javadoc
 /**
  * <p>Annotation for a EDM/CSDL EntityType element.</p>
  * <p>EdmEntityType holds a set of related information like EdmPrimitiveType, EdmComplexType

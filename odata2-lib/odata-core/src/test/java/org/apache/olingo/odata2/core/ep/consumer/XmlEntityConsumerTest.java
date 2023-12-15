@@ -63,20 +63,28 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class XmlEntityConsumerTest.
  */
 public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
 
+  /**
+   * Instantiates a new xml entity consumer test.
+   *
+   * @param type the type
+   */
   public XmlEntityConsumerTest(final StreamWriterImplType type) {
     super(type);
   }
 
+  /** The Constant LOG. */
   private static final Logger LOG = Logger.getLogger(XmlEntityConsumerTest.class.getName());
   static {
     LOG.setLevel(Level.OFF);
   }
 
+  /** The Constant EMPLOYEE_1_XML. */
   public static final String EMPLOYEE_1_XML =
       "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
           +
@@ -131,6 +139,7 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
           "  </m:properties>" +
           "</entry>";
 
+  /** The Constant EMPLOYEE_1_ROOM_XML. */
   public static final String EMPLOYEE_1_ROOM_XML =
       "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
           +
@@ -184,6 +193,7 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
           "  </m:properties>" +
           "</entry>";
 
+  /** The Constant EMPLOYEE_1_NULL_ROOM_XML. */
   public static final String EMPLOYEE_1_NULL_ROOM_XML =
       "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
           +
@@ -218,6 +228,7 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
           "  </m:properties>" +
           "</entry>";
 
+  /** The Constant ROOM_1_XML. */
   private static final String ROOM_1_XML =
       "<?xml version='1.0' encoding='UTF-8'?>"
           +
@@ -252,6 +263,7 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
           "  </content>" +
           "</entry>";
 
+  /** The Constant ROOM_1_NULL_EMPLOYEE_XML. */
   private static final String ROOM_1_NULL_EMPLOYEE_XML =
       "<?xml version='1.0' encoding='UTF-8'?>"
           +
@@ -289,6 +301,7 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
           "  </content>" +
           "</entry>";
 
+  /** The Constant PHOTO_XML. */
   private static final String PHOTO_XML =
       "<?xml version=\"1.0\" encoding=\"utf-8\"?>"
           +
@@ -318,6 +331,7 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
           "  </m:properties>" +
           "</entry>";
 
+  /** The Constant PHOTO_XML_INVALID_MAPPING. */
   private static final String PHOTO_XML_INVALID_MAPPING =
       "<?xml version=\"1.0\" encoding=\"utf-8\"?>"
           +
@@ -348,19 +362,39 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
           "  </m:properties>" +
           "</entry>";
 
+  /**
+   * The Class EmployeeCallback.
+   */
   private static class EmployeeCallback implements OnReadInlineContent {
+    
+    /** The employees. */
     List<ODataEntry> employees;
 
+    /**
+     * Handle read entry.
+     *
+     * @param context the context
+     */
     @Override
     public void handleReadEntry(final ReadEntryResult context) {
       handleEntry(context);
     }
 
+    /**
+     * Handle read feed.
+     *
+     * @param context the context
+     */
     @Override
     public void handleReadFeed(final ReadFeedResult context) {
       handleEntry(context);
     }
 
+    /**
+     * Handle entry.
+     *
+     * @param context the context
+     */
     private void handleEntry(final ReadResult context) {
       try {
         String navigationPropertyName = context.getNavigationProperty().getName();
@@ -374,6 +408,13 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
       }
     }
 
+    /**
+     * Receive read properties.
+     *
+     * @param readProperties the read properties
+     * @param navString the nav string
+     * @return the entity provider read properties
+     */
     @Override
     public EntityProviderReadProperties receiveReadProperties(final EntityProviderReadProperties readProperties,
         final EdmNavigationProperty navString) {
@@ -383,19 +424,39 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     }
   }
 
+  /**
+   * The Class DefaultCallback.
+   */
   private static class DefaultCallback implements OnReadInlineContent {
+    
+    /** The prop name 2 context. */
     private final Map<String, ReadResult> propName2Context = new HashMap<String, ReadResult>();
 
+    /**
+     * Handle read entry.
+     *
+     * @param context the context
+     */
     @Override
     public void handleReadEntry(final ReadEntryResult context) {
       handle(context);
     }
 
+    /**
+     * Handle read feed.
+     *
+     * @param context the context
+     */
     @Override
     public void handleReadFeed(final ReadFeedResult context) {
       handle(context);
     }
 
+    /**
+     * Handle.
+     *
+     * @param context the context
+     */
     private void handle(final ReadResult context) {
       try {
         String navigationPropertyName = context.getNavigationProperty().getName();
@@ -409,6 +470,12 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
       }
     }
 
+    /**
+     * Gets the object.
+     *
+     * @param name the name
+     * @return the object
+     */
     public Object getObject(final String name) {
       ReadResult context = propName2Context.get(name);
       if (context == null) {
@@ -418,14 +485,33 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
       }
     }
 
+    /**
+     * As entry.
+     *
+     * @param name the name
+     * @return the o data entry
+     */
     public ODataEntry asEntry(final String name) {
       return (ODataEntry) getObject(name);
     }
 
+    /**
+     * As feed.
+     *
+     * @param name the name
+     * @return the o data feed
+     */
     public ODataFeed asFeed(final String name) {
       return (ODataFeed) getObject(name);
     }
 
+    /**
+     * Receive read properties.
+     *
+     * @param readProperties the read properties
+     * @param navigationProperty the navigation property
+     * @return the entity provider read properties
+     */
     @Override
     public EntityProviderReadProperties receiveReadProperties(final EntityProviderReadProperties readProperties,
         final EdmNavigationProperty navigationProperty) {
@@ -433,6 +519,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     }
   }
 
+  /**
+   * Read content only employee.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readContentOnlyEmployee() throws Exception {
     // prepare
@@ -449,6 +540,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertEquals(9, result.getProperties().size());
   }
 
+  /**
+   * Read content only room.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readContentOnlyRoom() throws Exception {
     // prepare
@@ -465,6 +561,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertEquals(4, result.getProperties().size());
   }
 
+  /**
+   * Read content only employee with additional link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readContentOnlyEmployeeWithAdditionalLink() throws Exception {
     // prepare
@@ -484,6 +585,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertEquals("Managers('1')", associationUris.get(0));
   }
 
+  /**
+   * Read content only room with additional link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readContentOnlyRoomWithAdditionalLink() throws Exception {
     // prepare
@@ -503,6 +609,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertEquals("Buildings('1')", associationUris.get(0));
   }
 
+  /**
+   * Read delta link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readDeltaLink() throws Exception {
     // prepare
@@ -530,7 +641,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertEquals("http://thisisadeltalink", deltaLink);
   }
 
-  /** Teams('1')?$expand=nt_Employees */
+  /**
+   *  Teams('1')?$expand=nt_Employees.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readWithInlineContentAndCallback() throws Exception {
     // prepare
@@ -573,6 +688,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertEquals("Walldorf", emp2City.get("CityName"));
   }
 
+  /**
+   * Read with inline content and callback DEFAULT.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readWithInlineContentAndCallback_DEFAULT() throws Exception {
     // prepare
@@ -616,6 +736,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertEquals("Walldorf", emp2City.get("CityName"));
   }
 
+  /**
+   * Read inline building entry.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readInlineBuildingEntry() throws Exception {
     // prepare
@@ -653,7 +778,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertEquals("Rooms('1')/nr_Building", entry.getMetadata().getAssociationUris("nr_Building").get(0));
   }
 
-  /** Teams('1')?$expand=nt_Employees */
+  /**
+   *  Teams('1')?$expand=nt_Employees.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readWithInlineContent() throws Exception {
     // prepare
@@ -697,7 +826,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertEquals("Walldorf", emp2City.get("CityName"));
   }
 
-  /** Teams('1')?$expand=nt_Employees,nt_Employees/ne_Team */
+  /**
+   *  Teams('1')?$expand=nt_Employees,nt_Employees/ne_Team.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readWithDoubleInlineContent() throws Exception {
     // prepare
@@ -740,7 +873,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertEquals("Team 1", inlinedTeam.getProperties().get("Name"));
   }
 
-  /** Teams('1')?$expand=nt_Employees,nt_Employees/ne_Team */
+  /**
+   *  Teams('1')?$expand=nt_Employees,nt_Employees/ne_Team.
+   *
+   * @throws Exception the exception
+   */
   @Test
   @Ignore("Implementation doesn't support callback AND deep map")
   public void readWithDoubleInlineContentAndResendCallback() throws Exception {
@@ -787,7 +924,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertEquals("Team 1", inlinedTeam.getProperties().get("Name"));
   }
 
-  /** Teams('1')?$expand=nt_Employees,nt_Employees/ne_Team */
+  /**
+   *  Teams('1')?$expand=nt_Employees,nt_Employees/ne_Team.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void readWithDoubleInlineContentAndCallback() throws Exception {
@@ -840,6 +981,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertEquals("Team 1", inlinedTeam.getProperties().get("Name"));
   }
 
+  /**
+   * Read with inline content ignored.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readWithInlineContentIgnored() throws Exception {
     // prepare
@@ -863,9 +1009,9 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
   }
 
   /**
-   * Read an inline Room at an Employee
-   * 
-   * @throws Exception
+   * Read an inline Room at an Employee.
+   *
+   * @throws Exception the exception
    */
   @Test
   public void readWithInlineContentEmployeeRoomEntry() throws Exception {
@@ -902,6 +1048,8 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
 
   /**
    * Reads an inline Room at an Employee with specially formatted XML (see issue ODATAFORSAP-92).
+   *
+   * @throws Exception the exception
    */
   @Test
   public void readWithInlineContentEmployeeRoomEntrySpecialXml() throws Exception {
@@ -931,6 +1079,8 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
   /**
    * Reads an employee with inlined but <code>NULL</code> room navigation property
    * (which has {@link com.sap.core.odata.api.edm.EdmMultiplicity#ONE EdmMultiplicity#ONE}).
+   *
+   * @throws Exception the exception
    */
   @Test
   public void readWithInlineContentEmployeeNullRoomEntry() throws Exception {
@@ -955,6 +1105,8 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
   /**
    * Reads an employee with inlined but <code>NULL</code> room navigation property
    * (which has {@link com.sap.core.odata.api.edm.EdmMultiplicity#ONE EdmMultiplicity#ONE}).
+   *
+   * @throws Exception the exception
    */
   @Test
   public void readWithInlineContentEmployeeNullRoomEntrySpecialXmlFormat() throws Exception {
@@ -979,6 +1131,8 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
   /**
    * Reads a room with inlined but <code>NULL</code> employees navigation property
    * (which has {@link com.sap.core.odata.api.edm.EdmMultiplicity#MANY EdmMultiplicity#MANY}).
+   *
+   * @throws Exception the exception
    */
   @Test
   public void readWithInlineContentRoomNullEmployeesEntry() throws Exception {
@@ -1001,9 +1155,9 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
 
   /**
    * Teams('1')?$expand=nt_Employees
-   * -> Remove 'feed' start and end tags around expanded/inlined employees
-   * 
-   * @throws Exception
+   * -> Remove 'feed' start and end tags around expanded/inlined employees.
+   *
+   * @throws Exception the exception
    */
   @Test(expected = EntityProviderException.class)
   public void validateFeedForInlineContent() throws Exception {
@@ -1023,9 +1177,9 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
 
   /**
    * Teams('1')?$expand=nt_Employees
-   * -> Remove 'type' attribute at expanded/inlined employees link tag
-   * 
-   * @throws Exception
+   * -> Remove 'type' attribute at expanded/inlined employees link tag.
+   *
+   * @throws Exception the exception
    */
   @Test(expected = EntityProviderException.class)
   public void validateMissingTypeAttributeForInlineContent() throws Exception {
@@ -1044,9 +1198,9 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
 
   /**
    * Teams('1')?$expand=nt_Employees
-   * -> Replaced parameter 'type=feed' with 'type=entry' attribute at expanded/inlined employees link tag
-   * 
-   * @throws Exception
+   * -> Replaced parameter 'type=feed' with 'type=entry' attribute at expanded/inlined employees link tag.
+   *
+   * @throws Exception the exception
    */
   @Test(expected = EntityProviderException.class)
   public void validateWrongTypeAttributeForInlineContent() throws Exception {
@@ -1064,9 +1218,9 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
 
   /**
    * Teams('1')?$expand=nt_Employees
-   * -> Replaced parameter 'type=feed' with 'type=entry' attribute at expanded/inlined employees link tag
-   * 
-   * @throws Exception
+   * -> Replaced parameter 'type=feed' with 'type=entry' attribute at expanded/inlined employees link tag.
+   *
+   * @throws Exception the exception
    */
   @Test(expected = EntityProviderException.class)
   public void validateWrongTypeAttributeForInlineContentMany() throws Exception {
@@ -1084,8 +1238,8 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
 
   /**
    * We only support <code>UTF-8</code> as character encoding.
-   * 
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test(expected = EntityProviderException.class)
   public void validationOfWrongXmlEncodingUtf32() throws Exception {
@@ -1107,8 +1261,8 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
 
   /**
    * We only support <code>UTF-8</code> as character encoding.
-   * 
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test(expected = EntityProviderException.class)
   public void validationOfWrongXmlEncodingIso8859_1() throws Exception {
@@ -1131,8 +1285,8 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
   /**
    * Character encodings are case insensitive.
    * Hence <code>uTf-8</code> should work as well as <code>UTF-8</code>.
-   * 
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test
   public void validationCaseInsensitiveXmlEncodingUtf8() throws Exception {
@@ -1169,8 +1323,8 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
    * exception.
    * 
    * OData specification v2: 2.2.6.2.2 Entity Type (as an Atom Entry Element)
-   * 
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test(expected = EntityProviderException.class)
   public void validationOfWrongPropertiesTagPositionForNoneMediaLinkEntry() throws Exception {
@@ -1202,8 +1356,8 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
    * 
    * OData specification v2: 2.2.6.2.2 Entity Type (as an Atom Entry Element)
    * And RFC5023 [section 4.2]
-   * 
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test(expected = EntityProviderException.class)
   public void validationOfWrongPropertiesTagPositionForMediaLinkEntry() throws Exception {
@@ -1231,6 +1385,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
         .addContent("content"));
   }
 
+  /**
+   * Validation of namespaces success.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void validationOfNamespacesSuccess() throws Exception {
     String roomWithValidNamespaces =
@@ -1259,6 +1418,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertNotNull(result);
   }
 
+  /**
+   * Validation of namespace at properties success.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void validationOfNamespaceAtPropertiesSuccess() throws Exception {
     String roomWithValidNamespaces =
@@ -1282,6 +1446,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertNotNull(result);
   }
 
+  /**
+   * Validation of namespace at tags missing.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void validationOfNamespaceAtTagsMissing() throws Exception {
     String roomWithValidNamespaces =
@@ -1305,8 +1474,8 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
 
   /**
    * Use different namespace prefixes for <code>metadata (m)</code> and <code>data (d)</code>.
-   * 
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test
   public void validationOfDifferentNamespacesPrefixSuccess() throws Exception {
@@ -1341,8 +1510,8 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
 
   /**
    * Add <code>unknown property</code> in own namespace which is defined in entry tag.
-   * 
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test
   public void validationOfUnknownPropertyOwnNamespaceSuccess() throws Exception {
@@ -1379,8 +1548,8 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
 
   /**
    * Is allowed because <code>Id</code> is in default namespace (<code>xmlns=\"http://www.w3.org/2005/Atom\"</code>)
-   * 
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test
   public void validationOfUnknownPropertyDefaultNamespaceSuccess() throws Exception {
@@ -1413,8 +1582,8 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
 
   /**
    * Add <code>unknown property</code> in own namespace which is defined directly in unknown tag.
-   * 
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test
   public void validationOfUnknownPropertyInlineNamespaceSuccess() throws Exception {
@@ -1463,6 +1632,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertNotNull(result);
   }
 
+  /**
+   * Validation of namespaces missing xmlns.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void validationOfNamespacesMissingXmlns() throws Exception {
     String roomWithValidNamespaces =
@@ -1484,8 +1658,8 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
 
   /**
    * Double occurrence of <code>d:Name</code> tag must result in an exception.
-   * 
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test(expected = EntityProviderException.class)
   public void validationOfDuplicatedPropertyException() throws Exception {
@@ -1518,8 +1692,8 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
 
   /**
    * Double occurrence of <code>Name</code> tag within different namespace is allowed.
-   * 
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test
   public void validationOfDoublePropertyDifferentNamespace() throws Exception {
@@ -1555,8 +1729,8 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
 
   /**
    * Double occurrence of <code>Name</code> tag within ignored/unknown property AND different namespace is allowed.
-   * 
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test
   public void validationOfDoublePropertyDifferentTagHierachy() throws Exception {
@@ -1594,8 +1768,8 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
 
   /**
    * Double occurrence of <code>d:Name</code> tag within an unknown (and hence ignored) property is allowed.
-   * 
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test
   public void validationOfDoublePropertyDifferentTagHierachyD_Namespace() throws Exception {
@@ -1631,6 +1805,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertNotNull(result);
   }
 
+  /**
+   * Validation of namespaces missing M namespace at properties.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void validationOfNamespacesMissingM_NamespaceAtProperties() throws Exception {
     String roomWithValidNamespaces =
@@ -1659,8 +1838,8 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
 
   /**
    * Missing _d_ namespace at key property/tag (_id_) is allowed.
-   * 
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test
   public void validationOfNamespacesMissingD_NamespaceAtKeyPropertyTag() throws Exception {
@@ -1695,7 +1874,8 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
 
   /**
    * Missing _d_ namespace at non-nullable property/tag (_Version_) is allowed.
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   public void validationOfNamespacesMissingD_NamespaceAtNonNullableTag() throws Exception {
     String roomWithValidNamespaces =
@@ -1730,11 +1910,28 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertNotNull(result);
   }
 
+  /**
+   * Read and expect exception.
+   *
+   * @param entitySet the entity set
+   * @param reqContent the req content
+   * @param messageReference the message reference
+   * @throws ODataMessageException the o data message exception
+   */
   private void readAndExpectException(final EdmEntitySet entitySet, final InputStream reqContent,
       final MessageReference messageReference) throws ODataMessageException {
     readAndExpectException(entitySet, reqContent, true, messageReference);
   }
 
+  /**
+   * Read and expect exception.
+   *
+   * @param entitySet the entity set
+   * @param reqContent the req content
+   * @param merge the merge
+   * @param messageReference the message reference
+   * @throws ODataMessageException the o data message exception
+   */
   private void readAndExpectException(final EdmEntitySet entitySet, final InputStream reqContent, final boolean merge,
       final MessageReference messageReference) throws ODataMessageException {
     try {
@@ -1750,6 +1947,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     }
   }
 
+  /**
+   * Read entry atom properties.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readEntryAtomProperties() throws Exception {
     // prepare
@@ -1792,6 +1994,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertEquals("1", data.get("TeamId"));
   }
 
+  /**
+   * Read entry links.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readEntryLinks() throws Exception {
     // prepare
@@ -1815,6 +2022,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertEquals("Employees('1')/ne_Team", associationUris.get(0));
   }
 
+  /**
+   * Test read feed.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void testReadFeed() throws Exception {
@@ -1861,6 +2073,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertEquals("Employees('1')/$value", properties.get("ImageUrl"));
   }
 
+  /**
+   * Test read feed with inline count and next link.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void testReadFeedWithInlineCountAndNextLink() throws Exception {
@@ -1907,6 +2124,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertEquals("Employees('1')/$value", properties.get("ImageUrl"));
   }
 
+  /**
+   * Test read entry.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void testReadEntry() throws Exception {
@@ -1942,6 +2164,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertEquals("/SAP/PUBLIC/BC/NWDEMO_MODEL/IMAGES/Employee_1.png", properties.get("ImageUrl"));
   }
 
+  /**
+   * Test read entry with large property.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void testReadEntryWithLargeProperty() throws Exception {
@@ -1980,7 +2207,8 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
 
   /**
    * Missing 'key' properties are allowed for validation against Edm model.
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test
   @SuppressWarnings("unchecked")
@@ -2017,6 +2245,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertEquals("/SAP/PUBLIC/BC/NWDEMO_MODEL/IMAGES/Employee_1.png", properties.get("ImageUrl"));
   }
 
+  /**
+   * Read entry null property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readEntryNullProperty() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Employees");
@@ -2034,6 +2267,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertNull(properties.get("EntryDate"));
   }
   
+  /**
+   * Read entry null id.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void readEntryNullId() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Employees");
@@ -2050,6 +2288,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     }
   }
   
+  /**
+   * Read entry too many values.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void readEntryTooManyValues() throws Exception {
     // prepare
@@ -2072,6 +2315,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     }
   }
 
+  /**
+   * Test read entry with merge.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void testReadEntryWithMerge() throws Exception {
@@ -2111,6 +2359,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertEquals("/SAP/PUBLIC/BC/NWDEMO_MODEL/IMAGES/Employee_1.png", properties.get("ImageUrl"));
   }
 
+  /**
+   * Test read entry with merge and mappings.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void testReadEntryWithMergeAndMappings() throws Exception {
@@ -2151,6 +2404,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertEquals("/SAP/PUBLIC/BC/NWDEMO_MODEL/IMAGES/Employee_1.png", properties.get("ImageUrl"));
   }
 
+  /**
+   * Test read entry request.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void testReadEntryRequest() throws Exception {
@@ -2184,6 +2442,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertEquals("/SAP/PUBLIC/BC/NWDEMO_MODEL/IMAGES/Employee_1.png", properties.get("ImageUrl"));
   }
 
+  /**
+   * Test read entry request null mapping.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void testReadEntryRequestNullMapping() throws Exception {
@@ -2217,6 +2480,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertEquals("/SAP/PUBLIC/BC/NWDEMO_MODEL/IMAGES/Employee_1.png", properties.get("ImageUrl"));
   }
 
+  /**
+   * Test read entry request empty mapping.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void testReadEntryRequestEmptyMapping() throws Exception {
@@ -2249,6 +2517,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertEquals("/SAP/PUBLIC/BC/NWDEMO_MODEL/IMAGES/Employee_1.png", properties.get("ImageUrl"));
   }
 
+  /**
+   * Test read entry request invalid mapping.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void testReadEntryRequestInvalidMapping() throws Exception {
     XmlEntityConsumer xec = new XmlEntityConsumer();
@@ -2265,6 +2538,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertEquals(9, properties.size());
   }
 
+  /**
+   * Test read entry request object mapping.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testReadEntryRequestObjectMapping() throws Exception {
     XmlEntityConsumer xec = new XmlEntityConsumer();
@@ -2289,6 +2567,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertEquals("1", properties.get("TeamId"));
   }
 
+  /**
+   * Test read entry request with mapping.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void testReadEntryRequestWithMapping() throws Exception {
@@ -2323,6 +2606,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertEquals("/SAP/PUBLIC/BC/NWDEMO_MODEL/IMAGES/Employee_1.png", properties.get("ImageUrl"));
   }
 
+  /**
+   * Read customizable feed mappings.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readCustomizableFeedMappings() throws Exception {
     XmlEntityConsumer xec = new XmlEntityConsumer();
@@ -2343,6 +2631,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertNull(data.get("ignore"));
   }
 
+  /**
+   * Read customizable feed mappings with merge semantic.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readCustomizableFeedMappingsWithMergeSemantic() throws Exception {
     XmlEntityConsumer xec = new XmlEntityConsumer();
@@ -2364,6 +2657,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertNull(data.get("ignore"));
   }
 
+  /**
+   * Read customizable feed mappings bad request.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void readCustomizableFeedMappingsBadRequest() throws Exception {
     EdmEntitySet entitySet = MockFacade.getMockEdm().getEntityContainer("Container2").getEntitySet("Photos");
@@ -2372,6 +2670,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     readAndExpectException(entitySet, reqContent, false, EntityProviderException.INVALID_PROPERTY.addContent("ignore"));
   }
 
+  /**
+   * Read incomplete entry.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readIncompleteEntry() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");
@@ -2396,6 +2699,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertFalse(properties.containsKey("Seats"));
   }
 
+  /**
+   * Read incomplete entry merge.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readIncompleteEntryMerge() throws Exception {
     XmlEntityConsumer xec = new XmlEntityConsumer();
@@ -2425,6 +2733,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertEquals("Rooms('1')/nr_Employees", result.getMetadata().getAssociationUris("nr_Employees").get(0));
   }
 
+  /**
+   * Read property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readProperty() throws Exception {
     final EdmProperty property =
@@ -2439,6 +2752,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertEquals(Integer.valueOf(67), value.get("Age"));
   }
 
+  /**
+   * Read string property value.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readStringPropertyValue() throws Exception {
     String xml = "<EmployeeName xmlns=\"" + Edm.NAMESPACE_D_2007_08 + "\">Max Mustermann</EmployeeName>";
@@ -2451,6 +2769,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertEquals("Max Mustermann", result);
   }
 
+  /**
+   * Read large string property value.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readLargeStringPropertyValue() throws Exception {
     String name = StringHelper.generateData(77777);
@@ -2464,6 +2787,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertEquals(name, result);
   }
 
+  /**
+   * Test read integer property as long.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testReadIntegerPropertyAsLong() throws Exception {
     final EdmProperty property =
@@ -2479,6 +2807,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertEquals(Long.valueOf(42), value.get("Age"));
   }
 
+  /**
+   * Read string property value with invalid mapping.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void readStringPropertyValueWithInvalidMapping() throws Exception {
     String xml = "<EmployeeName xmlns=\"" + Edm.NAMESPACE_D_2007_08 + "\">Max Mustermann</EmployeeName>";
@@ -2489,6 +2822,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     new XmlEntityConsumer().readPropertyValue(property, content, Integer.class);
   }
 
+  /**
+   * Read property wrong namespace.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void readPropertyWrongNamespace() throws Exception {
     String xml = "<Age xmlns=\"" + Edm.NAMESPACE_M_2007_08 + "\">1</Age>";
@@ -2499,6 +2837,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     new XmlEntityConsumer().readPropertyValue(property, content, Integer.class);
   }
 
+  /**
+   * Read property wrong closing namespace.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void readPropertyWrongClosingNamespace() throws Exception {
     String xml =
@@ -2510,6 +2853,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     new XmlEntityConsumer().readPropertyValue(property, content, Integer.class);
   }
 
+  /**
+   * Test read skip tag.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testReadSkipTag() throws Exception {
     // prepare
@@ -2528,11 +2876,13 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     Map<String, Object> properties = result.getProperties();
     assertEquals(9, properties.size());
   }
+  
   /**
    * Employee with inline entity Room with inline entity Buildings 
    * Scenario of 1:1:1 navigation
    * E.g: Employees('1')?$expand=ne_Rooms/nr_Buildings
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test
   public void employeesEntryWithEmployeeToRoomToBuilding() throws Exception {
@@ -2562,7 +2912,8 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
    * Room has inline entity to Employees and has inline entry To Team
    * Scenario of 1:n:1 navigation 
    * E.g: Rooms('1')?$expand=nr_Employees/ne_Team
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test
   public void RoomEntryWithInlineEmployeeInlineTeam() throws Exception {
@@ -2592,7 +2943,8 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
   /**
    * Room has empty inline entity to Employees and has inline entry To Team
    * E.g: Rooms('10')?$expand=nr_Employees/ne_Team
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test
   public void RoomEntryWithEmptyInlineEmployeeInlineTeam() throws Exception {
@@ -2616,6 +2968,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
     assertEquals(0, ((ODataFeed)result.getProperties().get("nr_Employees")).getEntries().size());
   }
   
+  /**
+   * Rooms feed with room inline different.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void roomsFeedWithRoomInlineDifferent() throws Exception {
     InputStream stream = getFileAsStream("employeesWithDifferentInlines.xml");
@@ -2644,9 +3001,11 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
   
   
   /**
-   * @param inlineEntries
-   * @param feed
-   * @param entry
+   * Gets the expanded data.
+   *
+   * @param inlineEntries the inline entries
+   * @param entry the entry
+   * @return the expanded data
    */
   private void getExpandedData(Map<String, Object> inlineEntries, ODataEntry entry) {
     assertNotNull(entry);
@@ -2668,10 +3027,13 @@ public class XmlEntityConsumerTest extends AbstractXmlConsumerTest {
       }
     }
   }
+  
   /**
-   * @param inlineEntries
-   * @param feed
-   * @param entry
+   * Gets the expanded data.
+   *
+   * @param inlineEntries the inline entries
+   * @param feed the feed
+   * @return the expanded data
    */
   private void getExpandedData(Map<String, Object> inlineEntries, ODataFeed feed) {
     assertNotNull(feed.getEntries());

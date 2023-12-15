@@ -38,10 +38,18 @@ import org.apache.olingo.odata2.jpa.processor.core.model.JPAEdmModel;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ODataJPAEdmProviderNegativeTest.
+ */
 public class ODataJPAEdmProviderNegativeTest {
 
+  /** The edm provider. */
   private static ODataJPAEdmProvider edmProvider;
 
+  /**
+   * Setup.
+   */
   @BeforeClass
   public static void setup() {
 
@@ -71,6 +79,9 @@ public class ODataJPAEdmProviderNegativeTest {
 
   }
 
+  /**
+   * Test null get entity container info.
+   */
   @Test
   public void testNullGetEntityContainerInfo() {
     EntityContainerInfo entityContainer = null;
@@ -82,6 +93,9 @@ public class ODataJPAEdmProviderNegativeTest {
     assertNull(entityContainer);
   }
 
+  /**
+   * Test null get entity type.
+   */
   @Test
   public void testNullGetEntityType() {
     FullQualifiedName entityTypeName = new FullQualifiedName("salesorderprocessing", "SalesOrderHeader");
@@ -92,6 +106,9 @@ public class ODataJPAEdmProviderNegativeTest {
     }
   }
 
+  /**
+   * Test null get complex type.
+   */
   @Test
   public void testNullGetComplexType() {
     FullQualifiedName complexTypeName = new FullQualifiedName("salesorderprocessing", "Address");
@@ -102,6 +119,9 @@ public class ODataJPAEdmProviderNegativeTest {
     }
   }
 
+  /**
+   * Test get association full qualified name.
+   */
   @Test
   public void testGetAssociationFullQualifiedName() {
     Association association = null;
@@ -114,6 +134,9 @@ public class ODataJPAEdmProviderNegativeTest {
     assertNull(association);
   }
 
+  /**
+   * Test get entity set.
+   */
   @Test
   public void testGetEntitySet() {
     try {
@@ -123,6 +146,9 @@ public class ODataJPAEdmProviderNegativeTest {
     }
   }
 
+  /**
+   * Test get association set.
+   */
   @Test
   public void testGetAssociationSet() {
     try {
@@ -134,6 +160,9 @@ public class ODataJPAEdmProviderNegativeTest {
 
   }
 
+  /**
+   * Test null get function import.
+   */
   @Test
   public void testNullGetFunctionImport() {
 
@@ -145,6 +174,9 @@ public class ODataJPAEdmProviderNegativeTest {
 
   }
 
+  /**
+   * Test null get function import 2.
+   */
   @Test
   public void testNullGetFunctionImport2() {
 
@@ -179,6 +211,9 @@ public class ODataJPAEdmProviderNegativeTest {
 
   }
 
+  /**
+   * Test get schemas.
+   */
   @Test
   public void testGetSchemas() {
     try {

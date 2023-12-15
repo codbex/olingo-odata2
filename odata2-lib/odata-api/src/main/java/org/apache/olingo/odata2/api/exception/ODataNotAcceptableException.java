@@ -20,32 +20,62 @@ package org.apache.olingo.odata2.api.exception;
 
 import org.apache.olingo.odata2.api.commons.HttpStatusCodes;
 
+// TODO: Auto-generated Javadoc
 /**
- * Exceptions of this class will result in a HTTP status 406 not acceptable
- * 
+ * Exceptions of this class will result in a HTTP status 406 not acceptable.
  */
 public class ODataNotAcceptableException extends ODataHttpException {
 
+  /** The Constant serialVersionUID. */
   private static final long serialVersionUID = 1L;
 
+  /** The Constant COMMON. */
   public static final MessageReference COMMON = createMessageReference(ODataNotAcceptableException.class, "COMMON");
+  
+  /** The Constant NOT_SUPPORTED_CONTENT_TYPE. */
   public static final MessageReference NOT_SUPPORTED_CONTENT_TYPE = createMessageReference(
       ODataNotAcceptableException.class, "NOT_SUPPORTED_CONTENT_TYPE");
+  
+  /** The Constant NOT_SUPPORTED_ACCEPT_HEADER. */
   public static final MessageReference NOT_SUPPORTED_ACCEPT_HEADER = createMessageReference(
       ODataNotAcceptableException.class, "NOT_SUPPORTED_ACCEPT_HEADER");
 
+  /**
+   * Instantiates a new o data not acceptable exception.
+   *
+   * @param context the context
+   */
   public ODataNotAcceptableException(final MessageReference context) {
     super(context, HttpStatusCodes.NOT_ACCEPTABLE);
   }
 
+  /**
+   * Instantiates a new o data not acceptable exception.
+   *
+   * @param context the context
+   * @param cause the cause
+   */
   public ODataNotAcceptableException(final MessageReference context, final Throwable cause) {
     super(context, cause, HttpStatusCodes.NOT_ACCEPTABLE);
   }
 
+  /**
+   * Instantiates a new o data not acceptable exception.
+   *
+   * @param context the context
+   * @param errorCode the error code
+   */
   public ODataNotAcceptableException(final MessageReference context, final String errorCode) {
     super(context, HttpStatusCodes.NOT_ACCEPTABLE, errorCode);
   }
 
+  /**
+   * Instantiates a new o data not acceptable exception.
+   *
+   * @param context the context
+   * @param cause the cause
+   * @param errorCode the error code
+   */
   public ODataNotAcceptableException(final MessageReference context, final Throwable cause, final String errorCode) {
     super(context, cause, HttpStatusCodes.NOT_ACCEPTABLE, errorCode);
   }

@@ -40,11 +40,17 @@ import org.apache.olingo.odata2.testutil.helper.StringHelper;
 import org.apache.olingo.odata2.testutil.mock.MockFacade;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class JsonFunctionImportTest.
  */
 public class JsonFunctionImportTest extends BaseTest {
 
+  /**
+   * Single simple type.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void singleSimpleType() throws Exception {
     final EdmFunctionImport functionImport =
@@ -60,6 +66,11 @@ public class JsonFunctionImportTest extends BaseTest {
     assertEquals("{\"d\":{\"MaximalAge\":42}}", json);
   }
 
+  /**
+   * Single complex type.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void singleComplexType() throws Exception {
     final EdmFunctionImport functionImport =
@@ -85,6 +96,11 @@ public class JsonFunctionImportTest extends BaseTest {
         json);
   }
 
+  /**
+   * Collection of simple types.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void collectionOfSimpleTypes() throws Exception {
     final EdmFunctionImport functionImport =
@@ -103,6 +119,11 @@ public class JsonFunctionImportTest extends BaseTest {
         json);
   }
 
+  /**
+   * Collection of complex types.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void collectionOfComplexTypes() throws Exception {
     final EdmFunctionImport functionImport =
@@ -126,6 +147,11 @@ public class JsonFunctionImportTest extends BaseTest {
         json);
   }
 
+  /**
+   * Single entity type.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void singleEntityType() throws Exception {
     final EdmFunctionImport functionImport =
@@ -164,6 +190,11 @@ public class JsonFunctionImportTest extends BaseTest {
   }
   
   
+  /**
+   * No return type action.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void noReturnTypeAction() throws Exception {
     final EdmFunctionImport functionImport =

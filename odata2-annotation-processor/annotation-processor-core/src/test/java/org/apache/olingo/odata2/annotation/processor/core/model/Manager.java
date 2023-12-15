@@ -26,21 +26,34 @@ import org.apache.olingo.odata2.api.annotation.edm.EdmEntityType;
 import org.apache.olingo.odata2.api.annotation.edm.EdmNavigationProperty;
 import org.apache.olingo.odata2.api.annotation.edm.EdmNavigationProperty.Multiplicity;
 
+// TODO: Auto-generated Javadoc
 /**
- *
+ * The Class Manager.
  */
 @EdmEntityType(name = "Manager", namespace = ModelSharedConstants.NAMESPACE_1)
 @EdmEntitySet(name = "Managers")
 public class Manager extends Employee {
 
+  /** The employees. */
   @EdmNavigationProperty(name = "nm_Employees", association = "ManagerEmployees",
       toMultiplicity = Multiplicity.MANY)
   private List<Employee> employees = new ArrayList<Employee>();
 
+  /**
+   * Instantiates a new manager.
+   *
+   * @param id the id
+   * @param name the name
+   */
   public Manager(final String id, final String name) {
     super(id, name);
   }
 
+  /**
+   * Gets the employees.
+   *
+   * @return the employees
+   */
   public List<Employee> getEmployees() {
     return employees;
   }

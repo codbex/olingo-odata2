@@ -30,19 +30,45 @@ import org.apache.olingo.odata2.api.client.batch.BatchQueryPart;
 import org.apache.olingo.odata2.api.commons.HttpContentType;
 import org.apache.olingo.odata2.api.commons.HttpHeaders;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BatchRequestWriter.
+ */
 public class BatchRequestWriter {
+  
+  /** The Constant REG_EX_BOUNDARY. */
   private static final String REG_EX_BOUNDARY =
       "([a-zA-Z0-9_\\-\\.'\\+]{1,70})|\"([a-zA-Z0-9_\\-\\.'\\+\\s\\" +
           "(\\),/:=\\?]{1,69}[a-zA-Z0-9_\\-\\.'\\+\\(\\),/:=\\?])\""; // See RFC 2046
 
+  /** The Constant COLON. */
   private static final String COLON = ":";
+  
+  /** The Constant SP. */
   private static final String SP = " ";
+  
+  /** The Constant CRLF. */
   private static final String CRLF = "\r\n";
+  
+  /** The Constant BOUNDARY_PREAMBLE. */
   public static final String BOUNDARY_PREAMBLE = "changeset";
+  
+  /** The Constant HTTP_1_1. */
   public static final String HTTP_1_1 = "HTTP/1.1";
+  
+  /** The batch boundary. */
   private String batchBoundary;
+  
+  /** The writer. */
   private BatchHelper.BodyBuilder writer = new BatchHelper.BodyBuilder();
 
+  /**
+   * Write batch request.
+   *
+   * @param batchParts the batch parts
+   * @param boundary the boundary
+   * @return the input stream
+   */
   public InputStream writeBatchRequest(final List<BatchPart> batchParts, final String boundary) {
     if (boundary.matches(REG_EX_BOUNDARY)) {
       batchBoundary = boundary;
@@ -66,6 +92,11 @@ public class BatchRequestWriter {
   }
 
 
+  /**
+   * Append change set.
+   *
+   * @param batchChangeSet the batch change set
+   */
   private void appendChangeSet(final BatchChangeSet batchChangeSet) {
     String boundary = BatchHelper.generateBoundary(BOUNDARY_PREAMBLE);
     while (boundary.equals(batchBoundary) || !boundary.matches(REG_EX_BOUNDARY)) {
@@ -80,16 +111,35 @@ public class BatchRequestWriter {
     writer.append(CRLF).append("--").append(boundary).append("--").append(CRLF);
   }
 
+  /**
+   * Append request body part.
+   *
+   * @param request the request
+   */
   private void appendRequestBodyPart(final BatchQueryPart request) {
     appendRequestBodyPart(request.getMethod(), request.getUri(), request.getHeaders(),
         new BatchHelper.Body(), request.getContentId());
   }
 
+  /**
+   * Append request body part.
+   *
+   * @param request the request
+   */
   private void appendRequestBodyPart(final BatchChangeSetPart request) {
     appendRequestBodyPart(request.getMethod(), request.getUri(), request.getHeaders(),
         new BatchHelper.Body(request), request.getContentId());
   }
 
+  /**
+   * Append request body part.
+   *
+   * @param method the method
+   * @param uri the uri
+   * @param headers the headers
+   * @param body the body
+   * @param contentId the content id
+   */
   private void appendRequestBodyPart(final String method, final String uri, final Map<String, String> headers,
                                      final BatchHelper.Body body, final String contentId) {
 
@@ -122,6 +172,11 @@ public class BatchRequestWriter {
     }
   }
 
+  /**
+   * Append header.
+   *
+   * @param headers the headers
+   */
   private void appendHeader(final Map<String, String> headers) {
     for (Map.Entry<String, String> headerMap : headers.entrySet()) {
       String name = headerMap.getKey();
@@ -129,6 +184,13 @@ public class BatchRequestWriter {
     }
   }
 
+  /**
+   * Gets the header value.
+   *
+   * @param headers the headers
+   * @param headerName the header name
+   * @return the header value
+   */
   private String getHeaderValue(final Map<String, String> headers, final String headerName) {
     for (Map.Entry<String, String> header : headers.entrySet()) {
       if (headerName.equalsIgnoreCase(header.getKey())) {

@@ -51,14 +51,29 @@ import org.apache.olingo.odata2.core.PathInfoImpl;
 import org.apache.olingo.odata2.core.commons.ContentType;
 import org.apache.olingo.odata2.core.commons.Decoder;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class RestUtil.
  */
 public class RestUtil {
+  
+  /**
+   * Convert response.
+   *
+   * @param odataResponse the odata response
+   * @return the response
+   */
   public static Response convertResponse(final ODataResponse odataResponse) {
     return convertResponse(odataResponse, false);
   }
 
+  /**
+   * Convert response.
+   *
+   * @param odataResponse the odata response
+   * @param omitResponseBody the omit response body
+   * @return the response
+   */
   public static Response convertResponse(final ODataResponse odataResponse, final boolean omitResponseBody) {
     try {
       ResponseBuilder responseBuilder =
@@ -102,6 +117,13 @@ public class RestUtil {
     }
   }
 
+  /**
+   * Extract request content type.
+   *
+   * @param param the param
+   * @return the content type
+   * @throws ODataUnsupportedMediaTypeException the o data unsupported media type exception
+   */
   public static ContentType extractRequestContentType(final SubLocatorParameter param)
       throws ODataUnsupportedMediaTypeException {
 
@@ -123,9 +145,10 @@ public class RestUtil {
 
   /**
    * Extracts the request content from the servlet as input stream.
+   *
    * @param param initialization parameters
    * @return the request content as input stream
-   * @throws ODataException
+   * @throws ODataException the o data exception
    */
   public static ServletInputStream extractRequestContent(final SubLocatorParameter param) throws ODataException {
     try {
@@ -135,6 +158,14 @@ public class RestUtil {
     }
   }
 
+  /**
+   * Content as stream.
+   *
+   * @param <T> the generic type
+   * @param content the content
+   * @return the input stream
+   * @throws ODataException the o data exception
+   */
   public static <T> InputStream contentAsStream(final T content) throws ODataException {
     if (content == null) {
       throw new ODataBadRequestException(ODataBadRequestException.COMMON);
@@ -155,6 +186,13 @@ public class RestUtil {
     return inputStream;
   }
 
+  /**
+   * Extract accept headers.
+   *
+   * @param param the param
+   * @return the list
+   * @throws ODataBadRequestException the o data bad request exception
+   */
   public static List<String> extractAcceptHeaders(final SubLocatorParameter param) throws ODataBadRequestException {
     List<String> acceptHeaders = param.getHttpHeaders().getRequestHeader(HttpHeaders.ACCEPT);
 
@@ -172,6 +210,12 @@ public class RestUtil {
     return toSort;
   }
 
+  /**
+   * Extract request headers.
+   *
+   * @param httpHeaders the http headers
+   * @return the map
+   */
   public static Map<String, String> extractRequestHeaders(final jakarta.ws.rs.core.HttpHeaders httpHeaders) {
     final MultivaluedMap<String, String> headers = httpHeaders.getRequestHeaders();
     Map<String, String> headerMap = new HashMap<String, String>();
@@ -185,6 +229,13 @@ public class RestUtil {
     return headerMap;
   }
 
+  /**
+   * Builds the O data path info.
+   *
+   * @param param the param
+   * @return the path info impl
+   * @throws ODataException the o data exception
+   */
   public static PathInfoImpl buildODataPathInfo(final SubLocatorParameter param) throws ODataException {
     PathInfoImpl pathInfo = splitPath(param);
 
@@ -195,6 +246,13 @@ public class RestUtil {
     return pathInfo;
   }
 
+  /**
+   * Split path.
+   *
+   * @param param the param
+   * @return the path info impl
+   * @throws ODataException the o data exception
+   */
   private static PathInfoImpl splitPath(final SubLocatorParameter param) throws ODataException {
     PathInfoImpl pathInfo = new PathInfoImpl();
 
@@ -233,6 +291,15 @@ public class RestUtil {
     return pathInfo;
   }
 
+  /**
+   * Builds the base uri.
+   *
+   * @param uriInfo the uri info
+   * @param request the request
+   * @param precedingPathSegments the preceding path segments
+   * @return the uri
+   * @throws ODataException the o data exception
+   */
   private static URI buildBaseUri(final UriInfo uriInfo, final HttpServletRequest request,
       final List<PathSegment> precedingPathSegments) throws ODataException {
     try {
@@ -263,6 +330,12 @@ public class RestUtil {
     }
   }
 
+  /**
+   * Builds the request uri.
+   *
+   * @param servletRequest the servlet request
+   * @return the uri
+   */
   private static URI buildRequestUri(final HttpServletRequest servletRequest) {
     URI requestUri;
 
@@ -280,6 +353,12 @@ public class RestUtil {
     return requestUri;
   }
 
+  /**
+   * Convert path segment list.
+   *
+   * @param pathSegments the path segments
+   * @return the list
+   */
   private static List<PathSegment> convertPathSegmentList(final List<jakarta.ws.rs.core.PathSegment> pathSegments) {
     ArrayList<PathSegment> converted = new ArrayList<PathSegment>();
     for (final jakarta.ws.rs.core.PathSegment pathSegment : pathSegments) {
@@ -290,6 +369,12 @@ public class RestUtil {
     return converted;
   }
 
+  /**
+   * Convert to singlevalued map.
+   *
+   * @param multi the multi
+   * @return the map
+   */
   public static Map<String, String> convertToSinglevaluedMap(final MultivaluedMap<String, String> multi) {
     final Map<String, String> single = new HashMap<String, String>();
 

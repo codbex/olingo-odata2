@@ -29,11 +29,23 @@ import org.apache.olingo.odata2.core.batch.v2.BatchParser;
 import org.apache.olingo.odata2.testutil.helper.StringHelper;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BatchResponseParserTest.
+ */
 public class BatchResponseParserTest {
 
+    /** The Constant CRLF. */
     private static final String CRLF = "\r\n";
+    
+    /** The Constant LF. */
     private static final String LF = "\n";
 
+    /**
+     * Test simple batch response.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test
     public void testSimpleBatchResponse() throws BatchException {
         String getResponse = "--batch_123" + CRLF + "Content-Type: application/http" + CRLF + "Content-Transfer-Encoding: binary" + CRLF
@@ -56,6 +68,11 @@ public class BatchResponseParserTest {
         }
     }
 
+    /**
+     * Test simple batch response with linebreak.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test
     public void testSimpleBatchResponseWithLinebreak() throws BatchException {
         String getResponse = "--batch_123" + CRLF + "Content-Type: application/http" + CRLF + "Content-Transfer-Encoding: binary" + CRLF
@@ -78,6 +95,11 @@ public class BatchResponseParserTest {
         }
     }
 
+    /**
+     * Test no content response.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testNoContentResponse() throws Exception {
         String responseContent = "--ejjeeffe1\r\n" + "Content-Type: application/http\r\n" + "Content-Length: 96\r\n"
@@ -95,6 +117,12 @@ public class BatchResponseParserTest {
         }
     }
 
+    /**
+     * Test batch response.
+     *
+     * @throws BatchException the batch exception
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @Test
     public void testBatchResponse() throws BatchException, IOException {
         String fileName = "/batchResponse.batch";
@@ -116,6 +144,11 @@ public class BatchResponseParserTest {
         }
     }
 
+    /**
+     * Test response to change set.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test
     public void testResponseToChangeSet() throws BatchException {
         String putResponse = "--batch_123" + CRLF + "Content-Type: " + HttpContentType.MULTIPART_MIXED + ";boundary=changeset_12ks93js84d"
@@ -133,6 +166,11 @@ public class BatchResponseParserTest {
         }
     }
 
+    /**
+     * Test response change set body without CRLF.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test
     public void testResponseChangeSetBodyWithoutCRLF() throws BatchException {
         String putResponse = "--batch_123" + CRLF + "Content-Type: " + HttpContentType.MULTIPART_MIXED + ";boundary=changeset_12ks93js84d"
@@ -153,6 +191,11 @@ public class BatchResponseParserTest {
         }
     }
 
+    /**
+     * Test response change set body with CRLF.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test
     public void testResponseChangeSetBodyWithCRLF() throws BatchException {
         String putResponse = "--batch_123" + CRLF + "Content-Type: " + HttpContentType.MULTIPART_MIXED + ";boundary=changeset_12ks93js84d"
@@ -173,6 +216,11 @@ public class BatchResponseParserTest {
         }
     }
 
+    /**
+     * Test response to change set no content but content length.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test
     public void testResponseToChangeSetNoContentButContentLength() throws BatchException {
         String putResponse =
@@ -191,6 +239,11 @@ public class BatchResponseParserTest {
         }
     }
 
+    /**
+     * Test invalid mime header.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test(expected = BatchException.class)
     public void testInvalidMimeHeader() throws BatchException {
         String putResponse = "--batch_123" + CRLF + "Content-Type: " + HttpContentType.MULTIPART_MIXED + ";boundary=changeset_12ks93js84d"
@@ -202,6 +255,11 @@ public class BatchResponseParserTest {
         parseInvalidBatchResponseBody(putResponse);
     }
 
+    /**
+     * Test missing mime header.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test(expected = BatchException.class)
     public void testMissingMimeHeader() throws BatchException {
         String putResponse = "--batch_123" + CRLF + "Content-Type: " + HttpContentType.MULTIPART_MIXED + ";boundary=changeset_12ks93js84d"
@@ -211,6 +269,11 @@ public class BatchResponseParserTest {
         parseInvalidBatchResponseBody(putResponse);
     }
 
+    /**
+     * Test invalid content type.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test(expected = BatchException.class)
     public void testInvalidContentType() throws BatchException {
         String putResponse = "--batch_123" + CRLF + "Content-Type: " + HttpContentType.MULTIPART_MIXED + CRLF // Missing boundary parameter
@@ -221,6 +284,11 @@ public class BatchResponseParserTest {
         parseInvalidBatchResponseBody(putResponse);
     }
 
+    /**
+     * Test invalid status line.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test(expected = BatchException.class)
     public void testInvalidStatusLine() throws BatchException {
         String putResponse = "--batch_123" + CRLF + "Content-Type: " + HttpContentType.MULTIPART_MIXED + ";boundary=changeset_12ks93js84d"
@@ -232,6 +300,11 @@ public class BatchResponseParserTest {
 
     }
 
+    /**
+     * Test missing close delimiter.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test(expected = BatchException.class)
     public void testMissingCloseDelimiter() throws BatchException {
         String putResponse = "--batch_123" + CRLF + "Content-Type: " + HttpContentType.MULTIPART_MIXED + ";boundary=changeset_12ks93js84d"
@@ -243,6 +316,11 @@ public class BatchResponseParserTest {
 
     }
 
+    /**
+     * Too big content legth does not result in exception.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test
     public void tooBigContentLegthDoesNotResultInException() throws BatchException {
         String getResponse = "--batch_123" + CRLF + "Content-Type: application/http" + CRLF + "Content-Transfer-Encoding: binary" + CRLF
@@ -257,6 +335,11 @@ public class BatchResponseParserTest {
         assertEquals("Frederic Fall", response.getBody());
     }
 
+    /**
+     * Test invalid boundary.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test(expected = BatchException.class)
     public void testInvalidBoundary() throws BatchException {
         String getResponse = "--batch_321" + CRLF + "Content-Type: application/http" + CRLF + "Content-Transfer-Encoding: binary" + CRLF
@@ -266,6 +349,11 @@ public class BatchResponseParserTest {
         parseInvalidBatchResponseBody(getResponse);
     }
 
+    /**
+     * Boundary in body must be ignored.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test
     public void boundaryInBodyMustBeIgnored() throws BatchException {
         String getResponse = "--batch_123" + CRLF + "Content-Type: application/http" + CRLF + "Content-Transfer-Encoding: binary" + CRLF
@@ -280,6 +368,11 @@ public class BatchResponseParserTest {
         assertEquals("Frederic Fall", response.getBody());
     }
 
+    /**
+     * Parses the with additional line ending at the end.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void parseWithAdditionalLineEndingAtTheEnd() throws Exception {
         InputStream fileStream = getFileAsStream("BatchResponseWithAdditionalLineEnding.batch");
@@ -292,6 +385,11 @@ public class BatchResponseParserTest {
 
     }
 
+    /**
+     * Parses the with windows line endings in body.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void parseWithWindowsLineEndingsInBody() throws Exception {
         InputStream stream = getFileAsStream("BatchResponseWithLinesInBodyWin.batch");
@@ -305,6 +403,11 @@ public class BatchResponseParserTest {
         assertEquals(body, response.getBody());
     }
 
+    /**
+     * Parses the with unix line endings in body.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void parseWithUnixLineEndingsInBody() throws Exception {
         String body = "This is the body we need to parse. The line spaces in the body " + LF + LF + LF + "are " + LF + LF
@@ -320,6 +423,13 @@ public class BatchResponseParserTest {
         assertEquals(body, response.getBody());
     }
 
+    /**
+     * Read file.
+     *
+     * @param filename the filename
+     * @return the string
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     protected String readFile(final String filename) throws IOException {
         InputStream in = getFileAsStream(filename);
 
@@ -334,6 +444,13 @@ public class BatchResponseParserTest {
         return b.toString();
     }
 
+    /**
+     * Gets the file as stream.
+     *
+     * @param filename the filename
+     * @return the file as stream
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     private InputStream getFileAsStream(final String filename) throws IOException {
         InputStream in = Thread.currentThread()
                                .getContextClassLoader()
@@ -344,6 +461,12 @@ public class BatchResponseParserTest {
         return in;
     }
 
+    /**
+     * Parses the invalid batch response body.
+     *
+     * @param putResponse the put response
+     * @throws BatchException the batch exception
+     */
     private void parseInvalidBatchResponseBody(final String putResponse) throws BatchException {
         InputStream in = new ByteArrayInputStream(putResponse.getBytes());
         BatchParser parser = new BatchParser("multipart/mixed;boundary=batch_123", true);

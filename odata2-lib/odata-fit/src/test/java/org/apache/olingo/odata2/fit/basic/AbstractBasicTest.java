@@ -40,17 +40,30 @@ import org.apache.olingo.odata2.testutil.server.ServletType;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class AbstractBasicTest.
  */
 public abstract class AbstractBasicTest extends AbstractFitTest {
 
+  /**
+   * Instantiates a new abstract basic test.
+   *
+   * @param servletType the servlet type
+   */
   public AbstractBasicTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /** The context. */
   private ODataContext context;
 
+  /**
+   * Creates the service.
+   *
+   * @return the o data service
+   * @throws ODataException the o data exception
+   */
   @Override
   protected ODataService createService() throws ODataException {
     final EdmProvider provider = createEdmProvider();
@@ -77,12 +90,31 @@ public abstract class AbstractBasicTest extends AbstractFitTest {
     return new ODataSingleProcessorService(provider, processor) {};
   }
 
+  /**
+   * Creates the edm provider.
+   *
+   * @return the edm provider
+   */
   protected EdmProvider createEdmProvider() {
     return mock(EdmProvider.class);
   }
 
+  /**
+   * Creates the processor.
+   *
+   * @return the o data single processor
+   * @throws ODataException the o data exception
+   */
   protected abstract ODataSingleProcessor createProcessor() throws ODataException;
 
+  /**
+   * Execute get request.
+   *
+   * @param request the request
+   * @return the http response
+   * @throws ClientProtocolException the client protocol exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   protected HttpResponse executeGetRequest(final String request) throws ClientProtocolException, IOException {
     final HttpGet get = new HttpGet(URI.create(getEndpoint().toString() + request));
     return getHttpClient().execute(get);

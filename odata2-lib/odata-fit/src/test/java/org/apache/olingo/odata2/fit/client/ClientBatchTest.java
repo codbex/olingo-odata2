@@ -52,13 +52,29 @@ import org.apache.olingo.odata2.testutil.helper.StringHelper;
 import org.apache.olingo.odata2.testutil.server.ServletType;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ClientBatchTest.
+ */
 public class ClientBatchTest extends AbstractRefTest {
+  
+  /**
+   * Instantiates a new client batch test.
+   *
+   * @param servletType the servlet type
+   */
   public ClientBatchTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /** The Constant BOUNDARY. */
   private static final String BOUNDARY = "batch_123";
 
+  /**
+   * Simple batch.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void simpleBatch() throws Exception {
     List<BatchPart> batch = new ArrayList<BatchPart>();
@@ -84,6 +100,11 @@ public class ClientBatchTest extends AbstractRefTest {
     }
   }
 
+  /**
+   * Simple batch with absolute uri.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void simpleBatchWithAbsoluteUri() throws Exception {
     final String batchRequestBody = StringHelper.inputStreamToStringCRLFLineBreaks(
@@ -107,6 +128,11 @@ public class ClientBatchTest extends AbstractRefTest {
     assertNotNull(response.getHeader(HttpHeaders.CONTENT_LENGTH));
   }
 
+  /**
+   * Change set batch.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void changeSetBatch() throws Exception {
     List<BatchPart> batch = new ArrayList<BatchPart>();
@@ -153,6 +179,11 @@ public class ClientBatchTest extends AbstractRefTest {
     }
   }
 
+  /**
+   * Change set batch umlauts.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void changeSetBatchUmlauts() throws Exception {
     List<BatchPart> batch = new ArrayList<BatchPart>();
@@ -202,6 +233,11 @@ public class ClientBatchTest extends AbstractRefTest {
   }
 
 
+  /**
+   * Content id referencing.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void contentIdReferencing() throws Exception {
     List<BatchPart> batch = new ArrayList<BatchPart>();
@@ -265,6 +301,11 @@ public class ClientBatchTest extends AbstractRefTest {
     }
   }
 
+  /**
+   * Error batch.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void errorBatch() throws Exception {
     List<BatchPart> batch = new ArrayList<BatchPart>();
@@ -289,6 +330,13 @@ public class ClientBatchTest extends AbstractRefTest {
     }
   }
 
+  /**
+   * Execute.
+   *
+   * @param entity the entity
+   * @return the http response
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private HttpResponse execute(final HttpEntity entity) throws IOException {
     final HttpPost post = new HttpPost(URI.create(getEndpoint().toString() + "$batch"));
 
@@ -302,24 +350,53 @@ public class ClientBatchTest extends AbstractRefTest {
     return response;
   }
 
+  /**
+   * Execute.
+   *
+   * @param body the body
+   * @return the http response
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private HttpResponse execute(final String body) throws IOException {
     return execute(new StringEntity(body));
   }
 
+  /**
+   * Execute.
+   *
+   * @param body the body
+   * @return the http response
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private HttpResponse execute(final InputStream body) throws IOException {
     return execute(new InputStreamEntity(body, -1));
   }
 
+  /**
+   * Check mime headers.
+   *
+   * @param requestBody the request body
+   */
   private void checkMimeHeaders(final String requestBody) {
     assertTrue(requestBody.contains("Content-Type: application/http"));
     assertTrue(requestBody.contains("Content-Transfer-Encoding: binary"));
   }
 
+  /**
+   * Check boundary delimiters.
+   *
+   * @param requestBody the request body
+   */
   private void checkBoundaryDelimiters(final String requestBody) {
     assertTrue(requestBody.contains("--" + BOUNDARY));
     assertTrue(requestBody.contains("--" + BOUNDARY + "--"));
   }
   
+  /**
+   * Test content format error batch.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testContentFormatErrorBatch() throws Exception {
     List<BatchPart> batch = new ArrayList<BatchPart>();
@@ -352,6 +429,11 @@ public class ClientBatchTest extends AbstractRefTest {
     }
   }
   
+  /**
+   * Test content ID referencing.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testContentIDReferencing() throws Exception {
     final HttpPost post = new HttpPost(URI.create(getEndpoint().toString() + "$batch"));
@@ -377,6 +459,11 @@ public class ClientBatchTest extends AbstractRefTest {
     assertEquals("OK", responses.get(2).getStatusInfo());
   }
   
+  /**
+   * Test content ID referencingfail.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testContentIDReferencingfail() throws Exception {
     final HttpPost post = new HttpPost(URI.create(getEndpoint().toString() + "$batch"));
@@ -404,6 +491,11 @@ public class ClientBatchTest extends AbstractRefTest {
     assertEquals("OK", responses.get(3).getStatusInfo());
   }
   
+  /**
+   * Test content ID referencing with nav.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testContentIDReferencingWithNav() throws Exception {
     final HttpPost post = new HttpPost(URI.create(getEndpoint().toString() + "$batch"));
@@ -428,6 +520,11 @@ public class ClientBatchTest extends AbstractRefTest {
     assertTrue(responses.get(1).getBody().contains("Building 100"));
   }
   
+  /**
+   * Test content ID referencing with nav fail.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testContentIDReferencingWithNavFail() throws Exception {
     final HttpPost post = new HttpPost(URI.create(getEndpoint().toString() + "$batch"));

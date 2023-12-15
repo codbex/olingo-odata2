@@ -27,20 +27,41 @@ import java.util.List;
 import org.apache.olingo.odata2.api.processor.ODataContext.RuntimeMeasurement;
 import org.apache.olingo.odata2.core.ep.util.JsonStreamWriter;
 
+// TODO: Auto-generated Javadoc
 /**
  * Runtime debug information.
  */
 public class DebugInfoRuntime implements DebugInfo {
 
+  /**
+   * The Class RuntimeNode.
+   */
   private class RuntimeNode {
+    
+    /** The class name. */
     protected String className;
+    
+    /** The method name. */
     protected String methodName;
+    
+    /** The time started. */
     protected long timeStarted;
+    
+    /** The time stopped. */
     protected long timeStopped;
+    
+    /** The children. */
     protected List<RuntimeNode> children = new ArrayList<RuntimeNode>();
+    
+    /** The memory started. */
     protected long memoryStarted;
+    
+    /** The memory stopped. */
     protected long memoryStopped;
 
+    /**
+     * Instantiates a new runtime node.
+     */
     protected RuntimeNode() {
       timeStarted = 0;
       timeStopped = Long.MAX_VALUE;
@@ -48,6 +69,11 @@ public class DebugInfoRuntime implements DebugInfo {
       memoryStopped = 0;
     }
 
+    /**
+     * Instantiates a new runtime node.
+     *
+     * @param runtimeMeasurement the runtime measurement
+     */
     private RuntimeNode(final RuntimeMeasurement runtimeMeasurement) {
       className = runtimeMeasurement.getClassName();
       methodName = runtimeMeasurement.getMethodName();
@@ -57,6 +83,12 @@ public class DebugInfoRuntime implements DebugInfo {
       memoryStopped = runtimeMeasurement.getMemoryStopped();
     }
 
+    /**
+     * Adds the.
+     *
+     * @param runtimeMeasurement the runtime measurement
+     * @return true, if successful
+     */
     protected boolean add(final RuntimeMeasurement runtimeMeasurement) {
       if (timeStarted <= runtimeMeasurement.getTimeStarted()
           && timeStopped != 0 && timeStopped >= runtimeMeasurement.getTimeStopped()) {
@@ -102,8 +134,14 @@ public class DebugInfoRuntime implements DebugInfo {
     }
   }
 
+  /** The root node. */
   private final RuntimeNode rootNode;
 
+  /**
+   * Instantiates a new debug info runtime.
+   *
+   * @param runtimeMeasurements the runtime measurements
+   */
   public DebugInfoRuntime(final List<RuntimeMeasurement> runtimeMeasurements) {
     rootNode = new RuntimeNode();
     for (final RuntimeMeasurement runtimeMeasurement : runtimeMeasurements) {
@@ -112,16 +150,34 @@ public class DebugInfoRuntime implements DebugInfo {
     rootNode.combineRuntimeMeasurements();
   }
 
+  /**
+   * Gets the name.
+   *
+   * @return the name
+   */
   @Override
   public String getName() {
     return "Runtime";
   }
 
+  /**
+   * Append json.
+   *
+   * @param jsonStreamWriter the json stream writer
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Override
   public void appendJson(final JsonStreamWriter jsonStreamWriter) throws IOException {
     appendJsonChildren(jsonStreamWriter, rootNode);
   }
 
+  /**
+   * Append json node.
+   *
+   * @param jsonStreamWriter the json stream writer
+   * @param node the node
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private static void appendJsonNode(final JsonStreamWriter jsonStreamWriter, final RuntimeNode node)
       throws IOException {
     jsonStreamWriter.beginObject()
@@ -144,6 +200,13 @@ public class DebugInfoRuntime implements DebugInfo {
     jsonStreamWriter.endObject();
   }
 
+  /**
+   * Append json children.
+   *
+   * @param jsonStreamWriter the json stream writer
+   * @param node the node
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private static void appendJsonChildren(final JsonStreamWriter jsonStreamWriter, final RuntimeNode node)
       throws IOException {
     jsonStreamWriter.beginArray();
@@ -158,11 +221,26 @@ public class DebugInfoRuntime implements DebugInfo {
     jsonStreamWriter.endArray();
   }
 
+  /**
+   * Append html.
+   *
+   * @param writer the writer
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   @Override
   public void appendHtml(final Writer writer) throws IOException {
     appendRuntimeNode(rootNode, "", true, writer);
   }
 
+  /**
+   * Append runtime node.
+   *
+   * @param node the node
+   * @param draw the draw
+   * @param isLast the is last
+   * @param writer the writer
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private void appendRuntimeNode(final RuntimeNode node, final String draw, final boolean isLast, final Writer writer)
       throws IOException {
     if (node.className != null) {

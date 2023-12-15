@@ -25,6 +25,7 @@ import jakarta.persistence.metamodel.Attribute;
 import org.apache.olingo.odata2.api.edm.provider.Property;
 import org.apache.olingo.odata2.api.edm.provider.SimpleProperty;
 
+// TODO: Auto-generated Javadoc
 /**
  * A view on Java Persistence Entity Attributes and EDM properties. Java
  * Persistence Attributes of type
@@ -44,10 +45,10 @@ import org.apache.olingo.odata2.api.edm.provider.SimpleProperty;
  * 
  * 
  * <p>
- * @org.apache.olingo.odata2.DoNotImplement
+ *
  * @see org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmKeyView
  * @see org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmNavigationPropertyView
- * 
+ * @org.apache.olingo.odata2.DoNotImplement 
  */
 public interface JPAEdmPropertyView extends JPAEdmBaseView {
   /**
@@ -112,9 +113,9 @@ public interface JPAEdmPropertyView extends JPAEdmBaseView {
   JPAEdmComplexTypeView getJPAEdmComplexTypeView();
 
   /**
-   * The method returns a list of JPA Join Column Annotations for the given JPA Attribute
-   * @return
-   * a list of Array of Strings. First element in the Array represents the join column name and the second element in
+   * The method returns a list of JPA Join Column Annotations for the given JPA Attribute.
+   *
+   * @return a list of Array of Strings. First element in the Array represents the join column name and the second element in
    * the array represents the referencedColumn name
    */
   List<String[]> getJPAJoinColumns();

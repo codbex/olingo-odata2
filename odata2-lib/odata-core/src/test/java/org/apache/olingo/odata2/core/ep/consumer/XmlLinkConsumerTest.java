@@ -30,16 +30,25 @@ import org.apache.olingo.odata2.api.edm.Edm;
 import org.apache.olingo.odata2.api.ep.EntityProviderException;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class XmlLinkConsumerTest.
  */
 public class XmlLinkConsumerTest extends AbstractXmlConsumerTest {
 
+  /**
+   * Instantiates a new xml link consumer test.
+   *
+   * @param type the type
+   */
   public XmlLinkConsumerTest(final StreamWriterImplType type) {
     super(type);
   }
 
+  /** The Constant SERVICE_ROOT. */
   private static final String SERVICE_ROOT = "http://localhost:80/odata/";
+  
+  /** The Constant MANAGER_1_EMPLOYEES. */
   private static final String MANAGER_1_EMPLOYEES =
       "<links xmlns=\"" + Edm.NAMESPACE_D_2007_08 + "\">"
           + "<uri>" + SERVICE_ROOT + "Employees('1')</uri>"
@@ -47,9 +56,16 @@ public class XmlLinkConsumerTest extends AbstractXmlConsumerTest {
           + "<uri>" + SERVICE_ROOT + "Employees('3')</uri>"
           + "<uri>" + SERVICE_ROOT + "Employees('6')</uri>"
           + "</links>";
+  
+  /** The Constant SINGLE_LINK. */
   private static final String SINGLE_LINK =
       "<uri xmlns=\"" + Edm.NAMESPACE_D_2007_08 + "\">" + SERVICE_ROOT + "Employees('6')</uri>";
 
+  /**
+   * Read link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readLink() throws Exception {
     XMLStreamReader reader = createReaderForTest(SINGLE_LINK, true);
@@ -57,6 +73,11 @@ public class XmlLinkConsumerTest extends AbstractXmlConsumerTest {
     assertEquals(SERVICE_ROOT + "Employees('6')", link);
   }
 
+  /**
+   * Read links.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readLinks() throws Exception {
     XMLStreamReader reader = createReaderForTest(MANAGER_1_EMPLOYEES, true);
@@ -69,6 +90,11 @@ public class XmlLinkConsumerTest extends AbstractXmlConsumerTest {
     assertEquals(SERVICE_ROOT + "Employees('6')", links.get(3));
   }
 
+  /**
+   * Read empty list.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readEmptyList() throws Exception {
     final String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><links xmlns=\"" + Edm.NAMESPACE_D_2007_08 + "\"/>";
@@ -77,6 +103,11 @@ public class XmlLinkConsumerTest extends AbstractXmlConsumerTest {
     assertTrue(links.isEmpty());
   }
 
+  /**
+   * Read empty list 2.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readEmptyList2() throws Exception {
     final String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
@@ -86,6 +117,11 @@ public class XmlLinkConsumerTest extends AbstractXmlConsumerTest {
     assertTrue(links.isEmpty());
   }
 
+  /**
+   * With inline count.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void withInlineCount() throws Exception {
     final String xml = "<links xmlns=\"" + Edm.NAMESPACE_D_2007_08 + "\">"
@@ -96,12 +132,22 @@ public class XmlLinkConsumerTest extends AbstractXmlConsumerTest {
     assertEquals(1, links.size());
   }
 
+  /**
+   * Wrong namespace.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void wrongNamespace() throws Exception {
     new XmlLinkConsumer().readLink(createReaderForTest(SINGLE_LINK.replace(Edm.NAMESPACE_D_2007_08,
         Edm.NAMESPACE_M_2007_08), true), null);
   }
 
+  /**
+   * Xml content.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void xmlContent() throws Exception {
     final String xml = "<uri xmlns=\"" + Edm.NAMESPACE_D_2007_08 + "\"><uri>X</uri></uri>";

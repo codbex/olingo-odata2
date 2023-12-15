@@ -51,15 +51,32 @@ import org.custommonkey.xmlunit.XMLUnit;
 import org.junit.Before;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AtomServiceDocumentProducerTest.
+ */
 public class AtomServiceDocumentProducerTest extends AbstractXmlProducerTestHelper {
 
+  /** The edm. */
   private Edm edm;
+  
+  /** The schemas. */
   private List<Schema> schemas;
 
+  /**
+   * Instantiates a new atom service document producer test.
+   *
+   * @param type the type
+   */
   public AtomServiceDocumentProducerTest(final StreamWriterImplType type) {
     super(type);
   }
 
+  /**
+   * Before.
+   *
+   * @throws ODataException the o data exception
+   */
   @Before
   public void before() throws ODataException {
     Map<String, String> prefixMap = new HashMap<String, String>();
@@ -80,6 +97,11 @@ public class AtomServiceDocumentProducerTest extends AbstractXmlProducerTestHelp
     when(edm.getServiceMetadata()).thenReturn(edmServiceMetadata);
   }
 
+  /**
+   * Write empty service document over runtime delegate.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void writeEmptyServiceDocumentOverRuntimeDelegate() throws Exception {
     ODataResponse response =
@@ -92,6 +114,11 @@ public class AtomServiceDocumentProducerTest extends AbstractXmlProducerTestHelp
     assertXpathEvaluatesTo("Default", "/a:service/a:workspace/atom:title", xmlString);
   }
 
+  /**
+   * Write empty service document.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void writeEmptyServiceDocument() throws Exception {
     ODataResponse response = new AtomEntityProvider().writeServiceDocument(edm, "http://localhost");
@@ -103,6 +130,11 @@ public class AtomServiceDocumentProducerTest extends AbstractXmlProducerTestHelp
     assertXpathEvaluatesTo("Default", "/a:service/a:workspace/atom:title", xmlString);
   }
 
+  /**
+   * Write service document with one enity set one container one schema.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void writeServiceDocumentWithOneEnitySetOneContainerOneSchema() throws Exception {
     List<EntitySet> entitySets = new ArrayList<EntitySet>();
@@ -121,6 +153,11 @@ public class AtomServiceDocumentProducerTest extends AbstractXmlProducerTestHelp
     assertXpathEvaluatesTo("Employees", "/a:service/a:workspace/a:collection[@href='Employees']/atom:title", xmlString);
   }
 
+  /**
+   * Write service document with one enity set two containers one schema.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void writeServiceDocumentWithOneEnitySetTwoContainersOneSchema() throws Exception {
     List<EntitySet> entitySets = new ArrayList<EntitySet>();
@@ -146,6 +183,11 @@ public class AtomServiceDocumentProducerTest extends AbstractXmlProducerTestHelp
         xmlString);
   }
 
+  /**
+   * Write service document with one enity set two containers two schemas.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void writeServiceDocumentWithOneEnitySetTwoContainersTwoSchemas() throws Exception {
     List<EntitySet> entitySets = new ArrayList<EntitySet>();
@@ -188,6 +230,13 @@ public class AtomServiceDocumentProducerTest extends AbstractXmlProducerTestHelp
         xmlString);
   }
 
+  /**
+   * Verify response.
+   *
+   * @param response the response
+   * @return the string
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private String verifyResponse(final ODataResponse response) throws IOException {
     assertNotNull(response);
     assertNotNull(response.getEntity());

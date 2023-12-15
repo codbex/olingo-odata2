@@ -45,19 +45,41 @@ import org.apache.olingo.odata2.jpa.processor.core.mock.model.JPAEdmMockData.Com
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAEdmKeyTest.
+ */
 public class JPAEdmKeyTest extends JPAEdmTestModelView {
 
+  /** The key view. */
   private static JPAEdmKeyView keyView;
+  
+  /** The obj jpa edm key test. */
   private static JPAEdmKeyTest objJpaEdmKeyTest;
 
+  /**
+   * Setup.
+   */
   @BeforeClass
   public static void setup() {
     objJpaEdmKeyTest = new JPAEdmKeyTest();
     keyView = new JPAEdmKey(objJpaEdmKeyTest, objJpaEdmKeyTest);
   }
 
+  /**
+   * The Class JPAAttributeA.
+   *
+   * @param <Object> the generic type
+   * @param <ComplexTypeA> the generic type
+   */
   @SuppressWarnings("hiding")
   private class JPAAttributeA<Object, ComplexTypeA> extends JPAAttributeMock<Object, ComplexTypeA> {
+    
+    /**
+     * Gets the java type.
+     *
+     * @return the java type
+     */
     @SuppressWarnings("unchecked")
     @Override
     public Class<ComplexTypeA> getJavaType() {
@@ -65,6 +87,9 @@ public class JPAEdmKeyTest extends JPAEdmTestModelView {
     }
   }
 
+  /**
+   * Test build complex key.
+   */
   @Test
   public void testBuildComplexKey() {
     try {
@@ -84,6 +109,9 @@ public class JPAEdmKeyTest extends JPAEdmTestModelView {
 
   }
 
+  /**
+   * Test get builder idempotent.
+   */
   @Test
   public void testGetBuilderIdempotent() {
     JPAEdmBuilder builder1 = keyView.getBuilder();
@@ -92,17 +120,34 @@ public class JPAEdmKeyTest extends JPAEdmTestModelView {
     assertEquals(builder1.hashCode(), builder2.hashCode());
   }
 
+  /**
+   * Gets the JPA attribute.
+   *
+   * @return the JPA attribute
+   */
   @Override
   public Attribute<?, ?> getJPAAttribute() {
     return new JPAAttributeA<Object, ComplexTypeA>();
 
   }
 
+  /**
+   * Search edm complex type.
+   *
+   * @param arg0 the arg 0
+   * @return the complex type
+   */
   @Override
   public ComplexType searchEdmComplexType(final FullQualifiedName arg0) {
     return searchEdmComplexType(arg0.getName());
   }
 
+  /**
+   * Search edm complex type.
+   *
+   * @param arg0 the arg 0
+   * @return the complex type
+   */
   @Override
   public ComplexType searchEdmComplexType(final String arg0) {
     if (arg0.equals(JPAEdmMockData.ComplexType.ComplexTypeA.class.getName())) {
@@ -115,6 +160,11 @@ public class JPAEdmKeyTest extends JPAEdmTestModelView {
 
   }
 
+  /**
+   * Builds the complex type B.
+   *
+   * @return the complex type
+   */
   private ComplexType buildComplexTypeB() {
     ComplexType complexType = new ComplexType();
     complexType.setProperties(buildPropertiesB());
@@ -122,6 +172,11 @@ public class JPAEdmKeyTest extends JPAEdmTestModelView {
     return complexType;
   }
 
+  /**
+   * Builds the properties B.
+   *
+   * @return the list
+   */
   private List<Property> buildPropertiesB() {
     List<Property> propertyList = new ArrayList<Property>();
 
@@ -140,6 +195,11 @@ public class JPAEdmKeyTest extends JPAEdmTestModelView {
     return propertyList;
   }
 
+  /**
+   * Builds the complex type A.
+   *
+   * @return the complex type
+   */
   private ComplexType buildComplexTypeA() {
     ComplexType complexType = new ComplexType();
     complexType.setProperties(buildPropertiesA());
@@ -147,6 +207,11 @@ public class JPAEdmKeyTest extends JPAEdmTestModelView {
     return complexType;
   }
 
+  /**
+   * Builds the properties A.
+   *
+   * @return the list
+   */
   private List<Property> buildPropertiesA() {
 
     List<Property> propertyList = new ArrayList<Property>();

@@ -24,6 +24,7 @@ import org.apache.olingo.odata2.api.processor.ODataContext;
 import org.apache.olingo.odata2.api.processor.ODataSingleProcessor;
 import org.apache.olingo.odata2.api.rt.RuntimeDelegate;
 
+// TODO: Auto-generated Javadoc
 /**
  * Creates instance of custom OData service.
  * 
@@ -36,9 +37,7 @@ public abstract class ODataServiceFactory {
    */
   public static final String FACTORY_LABEL = "org.apache.olingo.odata2.service.factory";
 
-  /**
-   * Label used in core to access application class loader
-   */
+  /** Label used in core to access application class loader. */
   public static final String FACTORY_CLASSLOADER_LABEL = "org.apache.olingo.odata2.service.factory.classloader";
 
   /**
@@ -77,6 +76,8 @@ public abstract class ODataServiceFactory {
 
   /**
    * A service can return implementation classes for various callback interfaces.
+   *
+   * @param <T> the generic type
    * @param callbackInterface a interface type to query for implementation
    * @return a callback implementation for this interface or null
    */

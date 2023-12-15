@@ -28,6 +28,7 @@ import org.apache.olingo.odata2.api.edm.EdmLiteralKind;
 import org.apache.olingo.odata2.api.edm.EdmSimpleType;
 import org.apache.olingo.odata2.api.edm.EdmSimpleTypeException;
 
+// TODO: Auto-generated Javadoc
 /**
  * Implementation of the EDM simple type Decimal.
  * 
@@ -37,15 +38,29 @@ public class EdmDecimal extends AbstractSimpleType {
   // value-range limitation which is increased compared to general OData V2 specification
   // (according to the CSDL document the limit is 29 digits)
   // This is to support services which allows a higher precision for EdmDecimal without
+  /** The Constant PATTERN. */
   // breaking the backward capability of Olingo V2
   private static final Pattern PATTERN =
       Pattern.compile("(?:\\+|-)?(?:0*(\\p{Digit}+?))(?:\\.(\\p{Digit}+?)0*)?(M|m)?");
+  
+  /** The Constant instance. */
   private static final EdmDecimal instance = new EdmDecimal();
 
+  /**
+   * Gets the single instance of EdmDecimal.
+   *
+   * @return single instance of EdmDecimal
+   */
   public static EdmDecimal getInstance() {
     return instance;
   }
 
+  /**
+   * Checks if is compatible.
+   *
+   * @param simpleType the simple type
+   * @return true, if is compatible
+   */
   @Override
   public boolean isCompatible(final EdmSimpleType simpleType) {
     return simpleType instanceof Bit
@@ -60,11 +75,24 @@ public class EdmDecimal extends AbstractSimpleType {
         || simpleType instanceof EdmDecimal;
   }
 
+  /**
+   * Gets the default type.
+   *
+   * @return the default type
+   */
   @Override
   public Class<?> getDefaultType() {
     return BigDecimal.class;
   }
 
+  /**
+   * Validate.
+   *
+   * @param value the value
+   * @param literalKind the literal kind
+   * @param facets the facets
+   * @return true, if successful
+   */
   @Override
   public boolean validate(final String value, final EdmLiteralKind literalKind, final EdmFacets facets) {
     if (value == null) {
@@ -78,12 +106,26 @@ public class EdmDecimal extends AbstractSimpleType {
     return validateLiteral(value, literalKind) && validatePrecisionAndScale(value, facets);
   }
 
+  /**
+   * Validate literal.
+   *
+   * @param value the value
+   * @param literalKind the literal kind
+   * @return true, if successful
+   */
   private static boolean validateLiteral(final String value, final EdmLiteralKind literalKind) {
     final Matcher matcher = PATTERN.matcher(value);
     return matcher.matches()
         && (literalKind == EdmLiteralKind.URI) != (matcher.group(3) == null);
   }
 
+  /**
+   * Validate precision and scale.
+   *
+   * @param value the value
+   * @param facets the facets
+   * @return true, if successful
+   */
   private static boolean validatePrecisionAndScale(final String value, final EdmFacets facets) {
     if (facets == null || facets.getPrecision() == null && facets.getScale() == null) {
       return true;
@@ -97,6 +139,17 @@ public class EdmDecimal extends AbstractSimpleType {
         && (facets.getScale() == null || facets.getScale() >= decimals);
   }
 
+  /**
+   * Internal value of string.
+   *
+   * @param <T> the generic type
+   * @param value the value
+   * @param literalKind the literal kind
+   * @param facets the facets
+   * @param returnType the return type
+   * @return the t
+   * @throws EdmSimpleTypeException the edm simple type exception
+   */
   @Override
   protected <T> T internalValueOfString(final String value, final EdmLiteralKind literalKind, final EdmFacets facets,
       final Class<T> returnType) throws EdmSimpleTypeException {
@@ -148,6 +201,16 @@ public class EdmDecimal extends AbstractSimpleType {
     }
   }
 
+  /**
+   * Internal value to string.
+   *
+   * @param <T> the generic type
+   * @param value the value
+   * @param literalKind the literal kind
+   * @param facets the facets
+   * @return the string
+   * @throws EdmSimpleTypeException the edm simple type exception
+   */
   @Override
   protected <T> String internalValueToString(final T value, final EdmLiteralKind literalKind, final EdmFacets facets)
       throws EdmSimpleTypeException {
@@ -192,6 +255,13 @@ public class EdmDecimal extends AbstractSimpleType {
     return result;
   }
 
+  /**
+   * To uri literal.
+   *
+   * @param literal the literal
+   * @return the string
+   * @throws EdmSimpleTypeException the edm simple type exception
+   */
   @Override
   public String toUriLiteral(final String literal) throws EdmSimpleTypeException {
     return literal + "M";

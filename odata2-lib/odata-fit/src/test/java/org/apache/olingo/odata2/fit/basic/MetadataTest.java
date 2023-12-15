@@ -37,15 +37,27 @@ import org.apache.olingo.odata2.testutil.helper.StringHelper;
 import org.apache.olingo.odata2.testutil.server.ServletType;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class MetadataTest.
  */
 public class MetadataTest extends AbstractBasicTest {
 
+  /**
+   * Instantiates a new metadata test.
+   *
+   * @param servletType the servlet type
+   */
   public MetadataTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /**
+   * Creates the processor.
+   *
+   * @return the o data single processor
+   * @throws ODataException the o data exception
+   */
   @Override
   protected ODataSingleProcessor createProcessor() throws ODataException {
     final ODataSingleProcessor processor = mock(ODataSingleProcessor.class);
@@ -54,6 +66,13 @@ public class MetadataTest extends AbstractBasicTest {
     return processor;
   }
 
+  /**
+   * Read metadata.
+   *
+   * @throws ClientProtocolException the client protocol exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws ODataException the o data exception
+   */
   @Test
   public void readMetadata() throws ClientProtocolException, IOException, ODataException {
     final HttpResponse response = executeGetRequest("$metadata");
@@ -63,6 +82,13 @@ public class MetadataTest extends AbstractBasicTest {
     assertEquals("metadata", payload);
   }
   
+  /**
+   * Read metadata encoded.
+   *
+   * @throws ClientProtocolException the client protocol exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws ODataException the o data exception
+   */
   @Test
   public void readMetadataEncoded() throws ClientProtocolException, IOException, ODataException {
     final HttpResponse response = executeGetRequest("%24metadata");

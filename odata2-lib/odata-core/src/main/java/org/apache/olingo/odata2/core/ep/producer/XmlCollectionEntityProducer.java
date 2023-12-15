@@ -29,12 +29,20 @@ import org.apache.olingo.odata2.core.ep.EntityProviderProducerException;
 import org.apache.olingo.odata2.core.ep.aggregator.EntityPropertyInfo;
 import org.apache.olingo.odata2.core.ep.util.FormatXml;
 
+// TODO: Auto-generated Javadoc
 /**
- * Provider for writing a collection of simple-type or complex-type instances
- * 
+ * Provider for writing a collection of simple-type or complex-type instances.
  */
 public class XmlCollectionEntityProducer {
 
+  /**
+   * Append.
+   *
+   * @param writer the writer
+   * @param propertyInfo the property info
+   * @param data the data
+   * @throws EntityProviderException the entity provider exception
+   */
   public static void append(final XMLStreamWriter writer, final EntityPropertyInfo propertyInfo, final List<?> data)
       throws EntityProviderException {
     try {

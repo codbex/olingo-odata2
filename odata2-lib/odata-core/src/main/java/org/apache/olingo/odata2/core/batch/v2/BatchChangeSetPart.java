@@ -22,13 +22,32 @@ import java.util.List;
 
 import org.apache.olingo.odata2.api.batch.BatchException;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BatchChangeSetPart.
+ */
 public class BatchChangeSetPart extends BatchQueryOperation {
+  
+  /** The request. */
   private BatchQueryOperation request;
 
+  /**
+   * Instantiates a new batch change set part.
+   *
+   * @param message the message
+   * @param isStrict the is strict
+   * @throws BatchException the batch exception
+   */
   public BatchChangeSetPart(final List<Line> message, final boolean isStrict) throws BatchException {
     super(message, isStrict);
   }
 
+  /**
+   * Parses the.
+   *
+   * @return the batch change set part
+   * @throws BatchException the batch exception
+   */
   @Override
   public BatchChangeSetPart parse() throws BatchException {
     headers = BatchParserCommon.consumeHeaders(message);
@@ -39,15 +58,30 @@ public class BatchChangeSetPart extends BatchQueryOperation {
     return this;
   }
 
+  /**
+   * Gets the request.
+   *
+   * @return the request
+   */
   public BatchQueryOperation getRequest() {
     return request;
   }
 
+  /**
+   * Gets the body.
+   *
+   * @return the body
+   */
   @Override
   public List<Line> getBody() {
     return request.getBody();
   }
 
+  /**
+   * Gets the http status line.
+   *
+   * @return the http status line
+   */
   @Override
   public Line getHttpStatusLine() {
     return request.getHttpStatusLine();

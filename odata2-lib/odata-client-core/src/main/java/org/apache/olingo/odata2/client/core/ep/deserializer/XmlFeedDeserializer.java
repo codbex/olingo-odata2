@@ -43,6 +43,7 @@ import org.apache.olingo.odata2.core.ep.feed.FeedMetadataImpl;
 import org.apache.olingo.odata2.core.ep.feed.ODataDeltaFeedImpl;
 import org.apache.olingo.odata2.core.ep.util.FormatXml;
 
+// TODO: Auto-generated Javadoc
 /**
  * Atom/XML format reader/consumer for feeds.
  * 
@@ -55,12 +56,13 @@ import org.apache.olingo.odata2.core.ep.util.FormatXml;
 public class XmlFeedDeserializer {
 
   /**
-   * 
-   * @param reader
-   * @param eia
-   * @param readProperties
+   * Read feed.
+   *
+   * @param reader the reader
+   * @param eia the eia
+   * @param readProperties the read properties
    * @return {@link ODataDeltaFeed} object
-   * @throws EntityProviderException
+   * @throws EntityProviderException the entity provider exception
    */
   public ODataDeltaFeed readFeed(final XMLStreamReader reader, final EntityInfoAggregator eia,
       final DeserializerProperties readProperties) throws EntityProviderException {
@@ -139,6 +141,13 @@ public class XmlFeedDeserializer {
     return new ODataDeltaFeedImpl(results, metadata, deletedEntries);
   }
 
+  /**
+   * Read deleted entry metadata.
+   *
+   * @param reader the reader
+   * @return the deleted entry metadata impl
+   * @throws EntityProviderException the entity provider exception
+   */
   private DeletedEntryMetadataImpl readDeletedEntryMetadata(final XMLStreamReader reader)
       throws EntityProviderException {
     try {
@@ -158,6 +167,14 @@ public class XmlFeedDeserializer {
     }
   }
 
+  /**
+   * Read inline count.
+   *
+   * @param reader the reader
+   * @param metadata the metadata
+   * @throws XMLStreamException the XML stream exception
+   * @throws EntityProviderException the entity provider exception
+   */
   private void readInlineCount(final XMLStreamReader reader, final FeedMetadataImpl metadata)
       throws XMLStreamException,
       EntityProviderException {
@@ -177,12 +194,24 @@ public class XmlFeedDeserializer {
     }
   }
 
+  /**
+   * Read till next start tag.
+   *
+   * @param reader the reader
+   * @throws XMLStreamException the XML stream exception
+   */
   private void readTillNextStartTag(final XMLStreamReader reader) throws XMLStreamException {
     while (reader.hasNext() && !reader.isStartElement()) {
       reader.next();
     }
   }
 
+  /**
+   * Checks if is feed end tag.
+   *
+   * @param reader the reader
+   * @return true, if is feed end tag
+   */
   private boolean isFeedEndTag(final XMLStreamReader reader) {
     return reader.isEndElement()
         && Edm.NAMESPACE_ATOM_2005.equals(reader.getNamespaceURI())
@@ -209,9 +238,10 @@ public class XmlFeedDeserializer {
   }
 
   /**
-   * 
-   * @param foundPrefix2NamespaceUri
-   * @throws EntityProviderException
+   * Check all mandatory namespaces available.
+   *
+   * @param foundPrefix2NamespaceUri the found prefix 2 namespace uri
+   * @throws EntityProviderException the entity provider exception
    */
   private void checkAllMandatoryNamespacesAvailable(final Map<String, String> foundPrefix2NamespaceUri)
       throws EntityProviderException {

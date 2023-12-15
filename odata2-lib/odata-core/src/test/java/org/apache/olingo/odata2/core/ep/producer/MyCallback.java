@@ -36,19 +36,35 @@ import org.apache.olingo.odata2.api.ep.callback.WriteFeedCallbackResult;
 import org.apache.olingo.odata2.core.ep.AbstractProviderTest;
 import org.apache.olingo.odata2.core.exception.ODataRuntimeException;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class MyCallback.
  */
 public class MyCallback implements OnWriteEntryContent, OnWriteFeedContent {
 
+  /** The data provider. */
   private AbstractProviderTest dataProvider;
+  
+  /** The base uri. */
   private URI baseUri;
 
+  /**
+   * Instantiates a new my callback.
+   *
+   * @param dataProvider the data provider
+   * @param baseUri the base uri
+   */
   public MyCallback(final AbstractProviderTest dataProvider, final URI baseUri) {
     this.dataProvider = dataProvider;
     this.baseUri = baseUri;
   }
 
+  /**
+   * Retrieve feed result.
+   *
+   * @param context the context
+   * @return the write feed callback result
+   */
   @Override
   public WriteFeedCallbackResult retrieveFeedResult(final WriteFeedCallbackContext context) {
     WriteFeedCallbackResult result = new WriteFeedCallbackResult();
@@ -86,6 +102,12 @@ public class MyCallback implements OnWriteEntryContent, OnWriteFeedContent {
     return result;
   }
 
+  /**
+   * Retrieve entry result.
+   *
+   * @param context the context
+   * @return the write entry callback result
+   */
   @Override
   public WriteEntryCallbackResult retrieveEntryResult(final WriteEntryCallbackContext context) {
     WriteEntryCallbackResult result = new WriteEntryCallbackResult();

@@ -33,15 +33,26 @@ import org.junit.Test;
 
 import com.google.gson.internal.LinkedTreeMap;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class EntryJsonCreateInlineTest.
  */
 public class EntryJsonCreateInlineTest extends AbstractRefJsonTest {
 
+  /**
+   * Instantiates a new entry json create inline test.
+   *
+   * @param servletType the servlet type
+   */
   public EntryJsonCreateInlineTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /**
+   * Creates the three levels deep insert.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void createThreeLevelsDeepInsert() throws Exception {
     String content =
@@ -72,6 +83,11 @@ public class EntryJsonCreateInlineTest extends AbstractRefJsonTest {
     assertEquals(2, results.size());
   }
 
+  /**
+   * Creates the entry room with inline entry.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void createEntryRoomWithInlineEntry() throws Exception {
     String content = "{\"d\":{\"__metadata\":{\"id\":\"" + getEndpoint() + "Rooms('1')\","
@@ -116,6 +132,11 @@ public class EntryJsonCreateInlineTest extends AbstractRefJsonTest {
     assertEquals(getEndpoint() + "Buildings('4')", metadataMap2.get("uri"));
   }
 
+  /**
+   * Creates the entry room with inline empty feed array.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void createEntryRoomWithInlineEmptyFeedArray() throws Exception {
     String content = "{\"d\":{\"__metadata\":{\"id\":\"" + getEndpoint() + "Rooms('1')\","
@@ -143,6 +164,11 @@ public class EntryJsonCreateInlineTest extends AbstractRefJsonTest {
     assertEquals(getEndpoint() + "Rooms('104')", metadataMap.get("uri"));
   }
 
+  /**
+   * Creates the entry room with inline empty feed object.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void createEntryRoomWithInlineEmptyFeedObject() throws Exception {
     String content = "{\"d\":{\"__metadata\":{\"id\":\"" + getEndpoint() + "Rooms('1')\","
@@ -170,6 +196,11 @@ public class EntryJsonCreateInlineTest extends AbstractRefJsonTest {
     assertEquals(getEndpoint() + "Rooms('104')", metadataMap.get("uri"));
   }
 
+  /**
+   * Creates the entry room with inline feed array.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void createEntryRoomWithInlineFeedArray() throws Exception {
     String content = "{\"d\":{\"__metadata\":{\"id\":\"" + getEndpoint() + "Buildings('2')\","
@@ -227,6 +258,11 @@ public class EntryJsonCreateInlineTest extends AbstractRefJsonTest {
     assertEquals("2", body);
   }
 
+  /**
+   * Creates the entry room with inline feed object.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void createEntryRoomWithInlineFeedObject() throws Exception {
@@ -296,6 +332,11 @@ public class EntryJsonCreateInlineTest extends AbstractRefJsonTest {
     assertEquals("2", getBody(response));
   }
 
+  /**
+   * Creates the entry room with inline feed employee.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void createEntryRoomWithInlineFeedEmployee() throws Exception {
     String content = "{\"d\":{\"__metadata\":{\"id\":\"" + getEndpoint() + "Rooms('1')\","
@@ -337,6 +378,11 @@ public class EntryJsonCreateInlineTest extends AbstractRefJsonTest {
     assertEquals(getEndpoint() + "Rooms('104')", metadataMap.get("uri"));
   }
 
+  /**
+   * Creates the entry room with invalid feed.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void createEntryRoomWithInvalidFeed() throws Exception {
     String content = "{\"d\":{\"__metadata\":{\"id\":\"" + getEndpoint() + "Rooms('1')\","
@@ -349,6 +395,11 @@ public class EntryJsonCreateInlineTest extends AbstractRefJsonTest {
         HttpStatusCodes.BAD_REQUEST);
   }
 
+  /**
+   * Creates the entry room inline feed with invalid property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void createEntryRoomInlineFeedWithInvalidProperty() throws Exception {
     String content = "{\"d\":{\"__metadata\":{\"id\":\"" + getEndpoint() + "Buildings('2')\","

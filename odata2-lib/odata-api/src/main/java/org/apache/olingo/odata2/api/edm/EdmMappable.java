@@ -18,18 +18,19 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.edm;
 
+// TODO: Auto-generated Javadoc
 /**
- * @org.apache.olingo.odata2.DoNotImplement
- * EdmMappable can be applied to CSDL elements to associate additional information.
- * 
+ * The Interface EdmMappable.
+ *
+ * @org.apache.olingo.odata2.DoNotImplement EdmMappable can be applied to CSDL elements to associate additional information.
  */
 public interface EdmMappable {
 
   /**
-   * Get mapping information applied to an EDM element
-   * 
+   * Get mapping information applied to an EDM element.
+   *
    * @return {@link EdmMapping}
-   * @throws EdmException
+   * @throws EdmException the edm exception
    */
   EdmMapping getMapping() throws EdmException;
 }

@@ -30,6 +30,7 @@ import org.apache.olingo.odata2.api.edm.EdmFacets;
 import org.apache.olingo.odata2.api.edm.EdmLiteralKind;
 import org.apache.olingo.odata2.api.edm.EdmSimpleTypeException;
 
+// TODO: Auto-generated Javadoc
 /**
  * <p>Implementation of the EDM simple type Time.</p>
  * <p>Arguably, this type is intended to represent a time of day, not an instance in time.
@@ -40,22 +41,47 @@ import org.apache.olingo.odata2.api.edm.EdmSimpleTypeException;
  */
 public class EdmTime extends AbstractSimpleType {
   
+  /** The Constant PATTERN. */
   private static final Pattern PATTERN = Pattern.compile(
       "P(?:(\\p{Digit}{1,2})Y)?(?:(\\p{Digit}{1,2})M)?(?:(\\p{Digit}{1,2})D)?"
       + "T(?:(\\p{Digit}{1,2})H)?(?:(\\p{Digit}{1,4})M)?(?:(\\p{Digit}{1,5})(?:\\.(\\p{Digit}+?)0*)?S)?");
   
+  /** The Constant instance. */
   private static final EdmTime instance = new EdmTime();
+  
+  /** The Constant TIME_ZONE_GMT. */
   private static final TimeZone TIME_ZONE_GMT = TimeZone.getTimeZone("GMT");
 
+  /**
+   * Gets the single instance of EdmTime.
+   *
+   * @return single instance of EdmTime
+   */
   public static EdmTime getInstance() {
     return instance;
   }
 
+  /**
+   * Gets the default type.
+   *
+   * @return the default type
+   */
   @Override
   public Class<?> getDefaultType() {
     return Calendar.class;
   }
 
+  /**
+   * Internal value of string.
+   *
+   * @param <T> the generic type
+   * @param value the value
+   * @param literalKind the literal kind
+   * @param facets the facets
+   * @param returnType the return type
+   * @return the t
+   * @throws EdmSimpleTypeException the edm simple type exception
+   */
   @Override
   protected <T> T internalValueOfString(final String value, final EdmLiteralKind literalKind, final EdmFacets facets,
       final Class<T> returnType) throws EdmSimpleTypeException {
@@ -127,6 +153,16 @@ public class EdmTime extends AbstractSimpleType {
     }
   }
 
+  /**
+   * Internal value to string.
+   *
+   * @param <T> the generic type
+   * @param value the value
+   * @param literalKind the literal kind
+   * @param facets the facets
+   * @return the string
+   * @throws EdmSimpleTypeException the edm simple type exception
+   */
   @Override
   protected <T> String internalValueToString(final T value, final EdmLiteralKind literalKind, final EdmFacets facets)
       throws EdmSimpleTypeException {
@@ -168,6 +204,12 @@ public class EdmTime extends AbstractSimpleType {
     return result.toString();
   }
 
+  /**
+   * To uri literal.
+   *
+   * @param literal the literal
+   * @return the string
+   */
   @Override
   public String toUriLiteral(final String literal) {
     return "time'" + literal + "'";

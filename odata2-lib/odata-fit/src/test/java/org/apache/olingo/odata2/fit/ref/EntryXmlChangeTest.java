@@ -34,16 +34,27 @@ import org.apache.olingo.odata2.testutil.helper.StringHelper;
 import org.apache.olingo.odata2.testutil.server.ServletType;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
  * Tests employing the reference scenario changing entities in XML format.
  * 
  */
 public class EntryXmlChangeTest extends AbstractRefXmlTest {
 
+  /**
+   * Instantiates a new entry xml change test.
+   *
+   * @param servletType the servlet type
+   */
   public EntryXmlChangeTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /**
+   * Creates the.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void create() throws Exception {
     // Create an entry for a type that has no media resource.
@@ -92,6 +103,11 @@ public class EntryXmlChangeTest extends AbstractRefXmlTest {
     checkUri("Rooms('104')/nr_Employees('5')");
   }
 
+  /**
+   * Creates the with accept header entry.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void createWithAcceptHeaderEntry() throws Exception {
     // Create an entry for a type that has no media resource.
@@ -146,6 +162,11 @@ public class EntryXmlChangeTest extends AbstractRefXmlTest {
     checkUri("Rooms('104')/nr_Employees('5')");
   }
 
+  /**
+   * Creates the with large property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void createWithLargeProperty() throws Exception {
     final String largeTeamName = StringHelper.generateData(888888);
@@ -164,6 +185,11 @@ public class EntryXmlChangeTest extends AbstractRefXmlTest {
     assertXpathEvaluatesTo(largeTeamName, "/atom:entry/atom:content/m:properties/d:Name", getBody(response));
   }
 
+  /**
+   * Creates the minimal.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void createMinimal() throws Exception {
     final String requestBody = "<entry xmlns=\"" + Edm.NAMESPACE_ATOM_2005 + "\"" + "\n"
@@ -178,6 +204,11 @@ public class EntryXmlChangeTest extends AbstractRefXmlTest {
     assertEquals(getEndpoint() + "Teams('4')", response.getFirstHeader(HttpHeaders.LOCATION).getValue());
   }
 
+  /**
+   * Creates the invalid xml.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void createInvalidXml() throws Exception {
     getBody(callUri("Employees('7')", HttpStatusCodes.NOT_FOUND));
@@ -192,6 +223,11 @@ public class EntryXmlChangeTest extends AbstractRefXmlTest {
     assertXpathEvaluatesTo("7", "/atom:entry/m:properties/d:EmployeeId", requestBodyAfter);
   }
 
+  /**
+   * Creates the media resource.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void createMediaResource() throws Exception {
     HttpResponse response = postUri("Employees()", "plain text", HttpContentType.TEXT_PLAIN, HttpStatusCodes.CREATED);
@@ -214,6 +250,11 @@ public class EntryXmlChangeTest extends AbstractRefXmlTest {
     assertEquals("dummy", getBody(response));
   }
 
+  /**
+   * Creates the media resource with navigation.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void createMediaResourceWithNavigation() throws Exception {
     HttpResponse response =
@@ -227,6 +268,11 @@ public class EntryXmlChangeTest extends AbstractRefXmlTest {
     assertEquals("X", getBody(response));
   }
 
+  /**
+   * Creates the entry with inline feed.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void createEntryWithInlineFeed() throws Exception {
     final String buildingWithRooms = "<atom:entry xml:base=\"" + getEndpoint() + "\""
@@ -284,6 +330,11 @@ public class EntryXmlChangeTest extends AbstractRefXmlTest {
     assertEquals("5", getBody(callUri("Buildings('4')/nb_Rooms('105')/Seats/$value")));
   }
 
+  /**
+   * Update.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void update() throws Exception {
     final String requestBody = getBody(callUri("Employees('2')"))
@@ -303,6 +354,11 @@ public class EntryXmlChangeTest extends AbstractRefXmlTest {
     assertXpathEvaluatesTo("true", "/atom:entry/m:properties/d:EntryDate/@m:null", body);
   }
 
+  /**
+   * Update incomplete.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void updateIncomplete() throws Exception {
     final String requestBody = "<entry xmlns=\"" + Edm.NAMESPACE_ATOM_2005 + "\"" + "\n"
@@ -325,6 +381,11 @@ public class EntryXmlChangeTest extends AbstractRefXmlTest {
     assertXpathEvaluatesTo("true", "/atom:entry/m:properties/d:EmployeeName/@m:null", body2);
   }
 
+  /**
+   * Update unknown property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void updateUnknownProperty() throws Exception {
     final String requestBody = getBody(callUri("Employees('2')"))
@@ -336,6 +397,11 @@ public class EntryXmlChangeTest extends AbstractRefXmlTest {
     assertXpathEvaluatesTo(EMPLOYEE_2_AGE, "/atom:entry/m:properties/d:Age", getBody(callUri("Employees('2')")));
   }
 
+  /**
+   * Update invalid xml.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void updateInvalidXml() throws Exception {
     final String requestBodyBefore = getBody(callUri("Employees('2')"));
@@ -346,6 +412,11 @@ public class EntryXmlChangeTest extends AbstractRefXmlTest {
     assertEquals(requestBodyBefore, getBody(callUri("Employees('2')")));
   }
 
+  /**
+   * Patch and merge.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void patchAndMerge() throws Exception {
     String requestBody = "<entry xmlns=\"" + Edm.NAMESPACE_ATOM_2005 + "\"" + "\n"
@@ -383,6 +454,11 @@ public class EntryXmlChangeTest extends AbstractRefXmlTest {
     assertXpathEvaluatesTo("Room X", "/atom:entry/atom:content/m:properties/d:Name", getBody(callUri("Rooms('3')")));
   }
 
+  /**
+   * Delete.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void delete() throws Exception {
     final String uri = "Employees('2')";

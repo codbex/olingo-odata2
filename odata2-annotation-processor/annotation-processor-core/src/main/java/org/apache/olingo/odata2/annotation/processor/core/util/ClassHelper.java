@@ -37,18 +37,31 @@ import java.util.List;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
+// TODO: Auto-generated Javadoc
 /**
- *
+ * The Class ClassHelper.
  */
 public class ClassHelper {
 
+  /** The Constant JAR_FILE_ENDING. */
   private static final String JAR_FILE_ENDING = "jar";
+  
+  /** The Constant JAR_RESOURCE_SEPARATOR. */
   private static final String JAR_RESOURCE_SEPARATOR = "!";
+  
+  /** The Constant RESOURCE_SEPARATOR. */
   private static final char RESOURCE_SEPARATOR = '/';
+  
+  /** The Constant PACKAGE_SEPARATOR. */
   private static final char PACKAGE_SEPARATOR = '.';
+  
+  /** The Constant EMPTY_FILE_ARRAY. */
   private static final File[] EMPTY_FILE_ARRAY = new File[0];
+  
+  /** The Constant CLASSFILE_ENDING. */
   private static final String CLASSFILE_ENDING = ".class";
 
+  /** The Constant CLASSFILE_FILTER. */
   private static final FilenameFilter CLASSFILE_FILTER = new FilenameFilter() {
     @Override
     public boolean accept(final File dir, final String name) {
@@ -56,6 +69,7 @@ public class ClassHelper {
     }
   };
 
+  /** The Constant FOLDER_FILTER. */
   private static final FileFilter FOLDER_FILTER = new FileFilter() {
     @Override
     public boolean accept(final File pathname) {
@@ -63,10 +77,25 @@ public class ClassHelper {
     }
   };
 
+  /**
+   * Load classes.
+   *
+   * @param packageToScan the package to scan
+   * @param cv the cv
+   * @return the list
+   */
   public static List<Class<?>> loadClasses(final String packageToScan, final ClassValidator cv) {
     return loadClasses(packageToScan, CLASSFILE_FILTER, cv);
   }
 
+  /**
+   * Load classes.
+   *
+   * @param packageToScan the package to scan
+   * @param ff the ff
+   * @param cv the cv
+   * @return the list
+   */
   public static List<Class<?>> loadClasses(final String packageToScan, final FilenameFilter ff,
       final ClassValidator cv) {
     final ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
@@ -104,6 +133,13 @@ public class ClassHelper {
     return annotatedClasses;
   }
 
+  /**
+   * Gets the resource uri.
+   *
+   * @param packageToScan the package to scan
+   * @param classLoader the class loader
+   * @return the resource uri
+   */
   private static URI getResourceUri(final String packageToScan, final ClassLoader classLoader) {
     String folderToScan = packageToScan.replace(PACKAGE_SEPARATOR, RESOURCE_SEPARATOR);
     URL url = classLoader.getResource(folderToScan);
@@ -124,10 +160,24 @@ public class ClassHelper {
     }
   }
 
+  /**
+   * Checks if is jar file.
+   *
+   * @param uri the uri
+   * @return true, if is jar file
+   */
   private static boolean isJarFile(final URI uri) {
     return JAR_FILE_ENDING.equals(uri.getScheme());
   }
 
+  /**
+   * Gets the class fqn from dir.
+   *
+   * @param ff the ff
+   * @param folder the folder
+   * @param packageToScan the package to scan
+   * @return the class fqn from dir
+   */
   private static Collection<String> getClassFqnFromDir(final FilenameFilter ff, final File folder,
       final String packageToScan) {
     List<String> classFiles = new ArrayList<String>();
@@ -145,6 +195,13 @@ public class ClassHelper {
     return classFiles;
   }
 
+  /**
+   * Gets the class fqn from jar.
+   *
+   * @param uri the uri
+   * @param packageToScan the package to scan
+   * @return the class fqn from jar
+   */
   private static Collection<String> getClassFqnFromJar(final URI uri, final String packageToScan) {
     final String jarFilePath;
     String filepath = uri.toString();
@@ -201,6 +258,13 @@ public class ClassHelper {
   }
 
 
+  /**
+   * Gets the field value.
+   *
+   * @param instance the instance
+   * @param field the field
+   * @return the field value
+   */
   public static Object getFieldValue(final Object instance, final Field field) {
     try {
       synchronized (field) {
@@ -217,6 +281,13 @@ public class ClassHelper {
     }
   }
 
+  /**
+   * Sets the field value.
+   *
+   * @param instance the instance
+   * @param field the field
+   * @param value the value
+   */
   public static void setFieldValue(final Object instance, final Field field, final Object value) {
     try {
       synchronized (field) {
@@ -232,6 +303,12 @@ public class ClassHelper {
     }
   }
 
+  /**
+   * List sub folder.
+   *
+   * @param folder the folder
+   * @return the file[]
+   */
   private static File[] listSubFolder(final File folder) {
     File[] subfolders = folder.listFiles(FOLDER_FILTER);
     if (subfolders == null) {
@@ -240,7 +317,17 @@ public class ClassHelper {
     return subfolders;
   }
 
+  /**
+   * The Interface ClassValidator.
+   */
   public interface ClassValidator {
+    
+    /**
+     * Checks if is class valid.
+     *
+     * @param c the c
+     * @return true, if is class valid
+     */
     boolean isClassValid(Class<?> c);
   }
 }

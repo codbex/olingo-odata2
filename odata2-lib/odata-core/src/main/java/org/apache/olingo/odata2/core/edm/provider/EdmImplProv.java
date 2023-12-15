@@ -44,16 +44,35 @@ import org.apache.olingo.odata2.api.edm.provider.Schema;
 import org.apache.olingo.odata2.api.exception.ODataException;
 import org.apache.olingo.odata2.core.edm.EdmImpl;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EdmImplProv.
+ */
 public class EdmImplProv extends EdmImpl implements EdmProviderAccessor {
 
+  /** The edm provider. */
   protected EdmProvider edmProvider;
+  
+  /** The schemas. */
   private List<Schema> schemas;
 
+  /**
+   * Instantiates a new edm impl prov.
+   *
+   * @param edmProvider the edm provider
+   */
   public EdmImplProv(final EdmProvider edmProvider) {
     super(new EdmServiceMetadataImplProv(edmProvider));
     this.edmProvider = edmProvider;
   }
 
+  /**
+   * Creates the entity container.
+   *
+   * @param name the name
+   * @return the edm entity container
+   * @throws ODataException the o data exception
+   */
   @Override
   protected EdmEntityContainer createEntityContainer(final String name) throws ODataException {
     EntityContainerInfo enitityContainerInfo = edmProvider.getEntityContainerInfo(name);
@@ -63,6 +82,13 @@ public class EdmImplProv extends EdmImpl implements EdmProviderAccessor {
     return new EdmEntityContainerImplProv(this, enitityContainerInfo);
   }
 
+  /**
+   * Creates the entity type.
+   *
+   * @param fqName the fq name
+   * @return the edm entity type
+   * @throws ODataException the o data exception
+   */
   @Override
   protected EdmEntityType createEntityType(final FullQualifiedName fqName) throws ODataException {
     EntityType entityType = edmProvider.getEntityType(fqName);
@@ -73,6 +99,13 @@ public class EdmImplProv extends EdmImpl implements EdmProviderAccessor {
     return new EdmEntityTypeImplProv(this, entityType, fqName.getNamespace());
   }
 
+  /**
+   * Creates the complex type.
+   *
+   * @param fqName the fq name
+   * @return the edm complex type
+   * @throws ODataException the o data exception
+   */
   @Override
   protected EdmComplexType createComplexType(final FullQualifiedName fqName) throws ODataException {
     ComplexType complexType = edmProvider.getComplexType(fqName);
@@ -82,6 +115,13 @@ public class EdmImplProv extends EdmImpl implements EdmProviderAccessor {
     return new EdmComplexTypeImplProv(this, complexType, fqName.getNamespace());
   }
 
+  /**
+   * Creates the association.
+   *
+   * @param fqName the fq name
+   * @return the edm association
+   * @throws ODataException the o data exception
+   */
   @Override
   protected EdmAssociation createAssociation(final FullQualifiedName fqName) throws ODataException {
     Association association = edmProvider.getAssociation(fqName);
@@ -91,11 +131,22 @@ public class EdmImplProv extends EdmImpl implements EdmProviderAccessor {
     return new EdmAssociationImplProv(this, association, fqName.getNamespace());
   }
 
+  /**
+   * Gets the edm provider.
+   *
+   * @return the edm provider
+   */
   @Override
   public EdmProvider getEdmProvider() {
     return edmProvider;
   }
 
+  /**
+   * Creates the entity sets.
+   *
+   * @return the list
+   * @throws ODataException the o data exception
+   */
   @Override
   protected List<EdmEntitySet> createEntitySets() throws ODataException {
     List<EdmEntitySet> edmEntitySets = new ArrayList<EdmEntitySet>();
@@ -113,6 +164,12 @@ public class EdmImplProv extends EdmImpl implements EdmProviderAccessor {
     return edmEntitySets;
   }
 
+  /**
+   * Creates the function imports.
+   *
+   * @return the list
+   * @throws ODataException the o data exception
+   */
   @Override
   protected List<EdmFunctionImport> createFunctionImports() throws ODataException {
     List<EdmFunctionImport> edmFunctionImports = new ArrayList<EdmFunctionImport>();
@@ -130,6 +187,12 @@ public class EdmImplProv extends EdmImpl implements EdmProviderAccessor {
     return edmFunctionImports;
   }
 
+  /**
+   * Creates the alias to namespace info.
+   *
+   * @return the map
+   * @throws ODataException the o data exception
+   */
   @Override
   protected Map<String, String> createAliasToNamespaceInfo() throws ODataException {
     List<AliasInfo> aliasInfos = edmProvider.getAliasInfos();

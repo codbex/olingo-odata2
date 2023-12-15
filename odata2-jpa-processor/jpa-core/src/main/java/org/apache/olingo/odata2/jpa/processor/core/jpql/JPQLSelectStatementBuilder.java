@@ -25,15 +25,33 @@ import org.apache.olingo.odata2.jpa.processor.api.jpql.JPQLSelectContextView;
 import org.apache.olingo.odata2.jpa.processor.api.jpql.JPQLStatement;
 import org.apache.olingo.odata2.jpa.processor.api.jpql.JPQLStatement.JPQLStatementBuilder;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPQLSelectStatementBuilder.
+ */
 public class JPQLSelectStatementBuilder extends JPQLStatementBuilder {
 
+  /** The jpql statement. */
   JPQLStatement jpqlStatement;
+  
+  /** The context. */
   private JPQLSelectContextView context;
 
+  /**
+   * Instantiates a new JPQL select statement builder.
+   *
+   * @param context the context
+   */
   public JPQLSelectStatementBuilder(final JPQLContextView context) {
     this.context = (JPQLSelectContextView) context;
   }
 
+  /**
+   * Builds the.
+   *
+   * @return the JPQL statement
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   @Override
   public JPQLStatement build() throws ODataJPARuntimeException {
     jpqlStatement = createStatement(createJPQLQuery());
@@ -42,6 +60,12 @@ public class JPQLSelectStatementBuilder extends JPQLStatementBuilder {
 
   }
 
+  /**
+   * Creates the JPQL query.
+   *
+   * @return the string
+   * @throws ODataJPARuntimeException the o data JPA runtime exception
+   */
   private String createJPQLQuery() throws ODataJPARuntimeException {
 
     StringBuilder jpqlQuery = new StringBuilder();

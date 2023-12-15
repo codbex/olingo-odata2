@@ -45,15 +45,27 @@ import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class EdmFunctionImportImplProvTest.
  */
 public class EdmFunctionImportImplProvTest extends BaseTest {
 
+  /** The edm function import. */
   private static EdmFunctionImportImplProv edmFunctionImport;
+  
+  /** The edm function import without parameters. */
   private static EdmFunctionImportImplProv edmFunctionImportWithoutParameters;
+  
+  /** The edm entity container. */
   private static EdmEntityContainerImplProv edmEntityContainer;
 
+  /**
+   * Gets the edm entity container impl.
+   *
+   * @return the edm entity container impl
+   * @throws Exception the exception
+   */
   @BeforeClass
   public static void getEdmEntityContainerImpl() throws Exception {
     EdmProvider edmProvider = mock(EdmProvider.class);
@@ -93,17 +105,32 @@ public class EdmFunctionImportImplProvTest extends BaseTest {
         new EdmFunctionImportImplProv(edmImplProv, functionImportBar, edmEntityContainer);
   }
 
+  /**
+   * Function import.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void functionImport() throws Exception {
     assertEquals("foo", edmFunctionImport.getName());
     assertEquals("GET", edmFunctionImport.getHttpMethod());
   }
 
+  /**
+   * Container name.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void containerName() throws Exception {
     assertEquals(edmEntityContainer, edmFunctionImport.getEntityContainer());
   }
 
+  /**
+   * Return type.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void returnType() throws Exception {
     EdmTyped returnType = edmFunctionImport.getReturnType();
@@ -112,6 +139,11 @@ public class EdmFunctionImportImplProvTest extends BaseTest {
     assertEquals(EdmMultiplicity.ONE, returnType.getMultiplicity());
   }
 
+  /**
+   * Entity set.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entitySet() throws Exception {
     EdmEntitySet entitySet = edmFunctionImport.getEntitySet();
@@ -120,6 +152,11 @@ public class EdmFunctionImportImplProvTest extends BaseTest {
     assertEquals(edmEntityContainer.getEntitySet("fooEntitySet"), entitySet);
   }
 
+  /**
+   * Parameter existing.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parameterExisting() throws Exception {
     List<String> parameterNames = edmFunctionImport.getParameterNames();
@@ -145,6 +182,11 @@ public class EdmFunctionImportImplProvTest extends BaseTest {
   }
 
 
+  /**
+   * Parameters are sorted.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parametersAreSorted() throws Exception {
     List<String> parameterNames = edmFunctionImport.getParameterNames();
@@ -169,6 +211,11 @@ public class EdmFunctionImportImplProvTest extends BaseTest {
     assertEquals("fooParameter3", parameter.getName());
   }
 
+  /**
+   * Parameter not existing.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parameterNotExisting() throws Exception {
     assertNotNull(edmFunctionImportWithoutParameters.getParameterNames());
@@ -183,11 +230,21 @@ public class EdmFunctionImportImplProvTest extends BaseTest {
     assertNull(parameter);
   }
 
+  /**
+   * Nulll return type.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void nulllReturnType() throws Exception {
     assertNull(edmFunctionImportWithoutParameters.getReturnType());
   }
 
+  /**
+   * Parameter annotations.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void parameterAnnotations() throws Exception {
     EdmParameter parameter = edmFunctionImport.getParameter("fooParameter1");
@@ -198,6 +255,12 @@ public class EdmFunctionImportImplProvTest extends BaseTest {
     assertNull(annotations.getAnnotationElements());
   }
 
+  /**
+   * Gets the annotations.
+   *
+   * @return the annotations
+   * @throws Exception the exception
+   */
   @Test
   public void getAnnotations() throws Exception {
     EdmAnnotatable annotatable = edmFunctionImport;

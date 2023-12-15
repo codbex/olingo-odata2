@@ -37,19 +37,47 @@ import org.apache.olingo.odata2.testutil.helper.StringHelper;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BatchRequestParserTest.
+ */
 public class BatchRequestParserTest {
 
+    /** The Constant CRLF. */
     private static final String CRLF = "\r\n";
+    
+    /** The Constant CONTENT_ID_REFERENCE. */
     private static final String CONTENT_ID_REFERENCE = "NewEmployee";
+    
+    /** The Constant PUT_MIME_HEADER_CONTENT_ID. */
     private static final String PUT_MIME_HEADER_CONTENT_ID = "BBB_MIMEPART1";
+    
+    /** The Constant PUT_REQUEST_HEADER_CONTENT_ID. */
     private static final String PUT_REQUEST_HEADER_CONTENT_ID = "BBB_REQUEST1";
+    
+    /** The Constant SERVICE_ROOT. */
     private static final String SERVICE_ROOT = "http://localhost/odata/";
+    
+    /** The batch properties. */
     private static EntityProviderBatchProperties batchProperties;
+    
+    /** The Constant BOUNDARY. */
     private static final String BOUNDARY = "batch_8194-cf13-1f56";
+    
+    /** The Constant contentType. */
     private static final String contentType = "multipart/mixed;boundary=" + BOUNDARY;
+    
+    /** The Constant MIME_HEADERS. */
     private static final String MIME_HEADERS = "Content-Type: application/http" + CRLF + "Content-Transfer-Encoding: binary" + CRLF;
+    
+    /** The Constant GET_REQUEST. */
     private static final String GET_REQUEST = MIME_HEADERS + CRLF + "GET Employees('1')/EmployeeName HTTP/1.1" + CRLF + CRLF + CRLF;
 
+    /**
+     * Sets the properties.
+     *
+     * @throws URISyntaxException the URI syntax exception
+     */
     @BeforeClass
     public static void setProperties() throws URISyntaxException {
         PathInfoImpl pathInfo = new PathInfoImpl();
@@ -59,6 +87,13 @@ public class BatchRequestParserTest {
                                                        .build();
     }
 
+    /**
+     * Test.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws BatchException the batch exception
+     * @throws URISyntaxException the URI syntax exception
+     */
     @Test
     public void test() throws IOException, BatchException, URISyntaxException {
         String fileName = "/batchWithPost.batch";
@@ -137,6 +172,13 @@ public class BatchRequestParserTest {
         }
     }
 
+    /**
+     * Test image in content.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws BatchException the batch exception
+     * @throws URISyntaxException the URI syntax exception
+     */
     @Test
     public void testImageInContent() throws IOException, BatchException, URISyntaxException {
         String fileName = "/batchWithContent.batch";
@@ -180,6 +222,13 @@ public class BatchRequestParserTest {
         }
     }
 
+    /**
+     * Test post without body.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws BatchException the batch exception
+     * @throws URISyntaxException the URI syntax exception
+     */
     @Test
     public void testPostWithoutBody() throws IOException, BatchException, URISyntaxException {
         String fileName = "/batchWithContent.batch";
@@ -206,6 +255,11 @@ public class BatchRequestParserTest {
         }
     }
 
+    /**
+     * Test boundary parameter with quotas.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test
     public void testBoundaryParameterWithQuotas() throws BatchException {
         String contentType = "multipart/mixed; boundary=\"batch_1.2+34:2j)0?\"";
@@ -218,6 +272,11 @@ public class BatchRequestParserTest {
         assertEquals(false, batchRequestParts.isEmpty());
     }
 
+    /**
+     * Test batch with invalid content type.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test(expected = BatchException.class)
     public void testBatchWithInvalidContentType() throws BatchException {
         String invalidContentType = "multipart;boundary=batch_1740-bb84-2f7f";
@@ -228,6 +287,11 @@ public class BatchRequestParserTest {
         parser.parseBatchRequest(in);
     }
 
+    /**
+     * Test batch without boundary parameter.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test(expected = BatchException.class)
     public void testBatchWithoutBoundaryParameter() throws BatchException {
         String invalidContentType = "multipart/mixed";
@@ -237,6 +301,11 @@ public class BatchRequestParserTest {
         parser.parseBatchRequest(in);
     }
 
+    /**
+     * Test boundary parameter without quota.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test(expected = BatchException.class)
     public void testBoundaryParameterWithoutQuota() throws BatchException {
         String invalidContentType = "multipart/mixed;boundary=batch_1740-bb:84-2f7f";
@@ -246,12 +315,22 @@ public class BatchRequestParserTest {
         parser.parseBatchRequest(in);
     }
 
+    /**
+     * Test wrong boundary string.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test(expected = BatchException.class)
     public void testWrongBoundaryString() throws BatchException {
         String batch = "--batch_8194-cf13-1f5" + CRLF + GET_REQUEST + "--" + BOUNDARY + "--";
         parseInvalidBatchBody(batch);
     }
 
+    /**
+     * Test missing http version.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test(expected = BatchException.class)
     public void testMissingHttpVersion() throws BatchException {
         String batch = "" + "--" + BOUNDARY + CRLF + "Content-Type: application/http" + CRLF + "Content-Transfer-Encoding:binary" + CRLF
@@ -260,6 +339,11 @@ public class BatchRequestParserTest {
         parseInvalidBatchBody(batch);
     }
 
+    /**
+     * Test missing http version 2.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test(expected = BatchException.class)
     public void testMissingHttpVersion2() throws BatchException {
         String batch = "" + "--" + BOUNDARY + CRLF + "Content-Type: application/http" + CRLF + "Content-Transfer-Encoding:binary" + CRLF
@@ -268,6 +352,11 @@ public class BatchRequestParserTest {
         parseInvalidBatchBody(batch);
     }
 
+    /**
+     * Test missing http version 3.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test(expected = BatchException.class)
     public void testMissingHttpVersion3() throws BatchException {
         String batch = "" + "--" + BOUNDARY + CRLF + "Content-Type: application/http" + CRLF + "Content-Transfer-Encoding:binary" + CRLF
@@ -276,12 +365,22 @@ public class BatchRequestParserTest {
         parseInvalidBatchBody(batch);
     }
 
+    /**
+     * Test boundary without hyphen.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test(expected = BatchException.class)
     public void testBoundaryWithoutHyphen() throws BatchException {
         String batch = "--" + BOUNDARY + CRLF + GET_REQUEST + BOUNDARY + CRLF + GET_REQUEST + "--" + BOUNDARY + "--";
         parseInvalidBatchBody(batch);
     }
 
+    /**
+     * Test no boundary string.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test(expected = BatchException.class)
     public void testNoBoundaryString() throws BatchException {
         String batch = "--" + BOUNDARY + CRLF + GET_REQUEST
@@ -291,6 +390,11 @@ public class BatchRequestParserTest {
         parseInvalidBatchBody(batch);
     }
 
+    /**
+     * Test batch boundary equals change set boundary.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test(expected = BatchException.class)
     public void testBatchBoundaryEqualsChangeSetBoundary() throws BatchException {
         String batch = "--" + BOUNDARY + CRLF + "Content-Type: multipart/mixed;boundary=batch_8194-cf13-1f56" + CRLF + CRLF + "--"
@@ -301,6 +405,11 @@ public class BatchRequestParserTest {
         parseInvalidBatchBody(batch);
     }
 
+    /**
+     * Test content type charset.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test
     public void testContentTypeCharset() throws BatchException {
         final String contentType = "multipart/mixed; charset=UTF-8;boundary=" + BOUNDARY;
@@ -311,6 +420,11 @@ public class BatchRequestParserTest {
         assertEquals(1, parts.size());
     }
 
+    /**
+     * Test content type charset wrong boundary at end.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test
     public void testContentTypeCharsetWrongBoundaryAtEnd() throws BatchException {
         final String contentType = "multipart/mixed; charset=UTF-8;boundary=" + BOUNDARY + ";boundary=wrong_boundary";
@@ -321,6 +435,11 @@ public class BatchRequestParserTest {
         assertEquals(1, parts.size());
     }
 
+    /**
+     * Test content type charset wrong boundary at beginning.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test(expected = BatchException.class)
     public void testContentTypeCharsetWrongBoundaryAtBeginning() throws BatchException {
         final String contentType = "multipart/mixed; charset=UTF-8;boundary=wrong_boundary;boundary=" + BOUNDARY;
@@ -331,6 +450,11 @@ public class BatchRequestParserTest {
         assertEquals(1, parts.size());
     }
 
+    /**
+     * Test no content type.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test(expected = BatchException.class)
     public void testNoContentType() throws BatchException {
         String batch = "--" + BOUNDARY + CRLF + "Content-Transfer-Encoding: binary" + CRLF + CRLF
@@ -338,6 +462,11 @@ public class BatchRequestParserTest {
         parseInvalidBatchBody(batch);
     }
 
+    /**
+     * Test mime header content type.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test(expected = BatchException.class)
     public void testMimeHeaderContentType() throws BatchException {
         String batch = "--" + BOUNDARY + CRLF + "Content-Type: text/plain" + CRLF + "Content-Transfer-Encoding: binary" + CRLF + CRLF
@@ -345,6 +474,11 @@ public class BatchRequestParserTest {
         parseInvalidBatchBody(batch);
     }
 
+    /**
+     * Test mime header encoding.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test(expected = BatchException.class)
     public void testMimeHeaderEncoding() throws BatchException {
         String batch = "--" + BOUNDARY + CRLF + "Content-Type: application/http" + CRLF + "Content-Transfer-Encoding: 8bit" + CRLF + CRLF
@@ -352,6 +486,11 @@ public class BatchRequestParserTest {
         parseInvalidBatchBody(batch);
     }
 
+    /**
+     * Test get request missing CRLF.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test(expected = BatchException.class)
     public void testGetRequestMissingCRLF() throws BatchException {
         String batch =
@@ -363,6 +502,11 @@ public class BatchRequestParserTest {
         parseInvalidBatchBody(batch);
     }
 
+    /**
+     * Test invalid method for batch.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test(expected = BatchException.class)
     public void testInvalidMethodForBatch() throws BatchException {
         String batch = "--" + BOUNDARY + CRLF + MIME_HEADERS + CRLF + "POST Employees('1')/EmployeeName HTTP/1.1" + CRLF + CRLF + "--"
@@ -370,18 +514,33 @@ public class BatchRequestParserTest {
         parseInvalidBatchBody(batch);
     }
 
+    /**
+     * Test no boundary found.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test(expected = BatchException.class)
     public void testNoBoundaryFound() throws BatchException {
         String batch = "--" + BOUNDARY + CRLF + MIME_HEADERS + CRLF + "POST Employees('1')/EmployeeName HTTP/1.1" + CRLF + CRLF;
         parseInvalidBatchBody(batch);
     }
 
+    /**
+     * Test bad request.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test(expected = BatchException.class)
     public void testBadRequest() throws BatchException {
         String batch = "This is a bad request. There is no syntax and also no semantic";
         parseInvalidBatchBody(batch);
     }
 
+    /**
+     * Test no method.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test(expected = BatchException.class)
     public void testNoMethod() throws BatchException {
         String batch = "--" + BOUNDARY + CRLF + MIME_HEADERS + CRLF + /* GET */"Employees('1')/EmployeeName HTTP/1.1" + CRLF + CRLF + "--"
@@ -389,6 +548,11 @@ public class BatchRequestParserTest {
         parseInvalidBatchBody(batch);
     }
 
+    /**
+     * Test invalid method for changeset.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test(expected = BatchException.class)
     public void testInvalidMethodForChangeset() throws BatchException {
         String batch = "--" + BOUNDARY + CRLF + "Content-Type: multipart/mixed; boundary=changeset_f980-1cb6-94dd" + CRLF + CRLF
@@ -398,6 +562,11 @@ public class BatchRequestParserTest {
         parseInvalidBatchBody(batch);
     }
 
+    /**
+     * Test invalid change set boundary.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test(expected = BatchException.class)
     public void testInvalidChangeSetBoundary() throws BatchException {
         String batch = "--" + BOUNDARY + CRLF + "Content-Type: multipart/mixed;boundary=changeset_f980-1cb6-94dd" + CRLF + CRLF
@@ -407,6 +576,11 @@ public class BatchRequestParserTest {
         parseInvalidBatchBody(batch);
     }
 
+    /**
+     * Test nested changeset.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test(expected = BatchException.class)
     public void testNestedChangeset() throws BatchException {
         String batch = "--" + BOUNDARY + CRLF + "Content-Type: multipart/mixed;boundary=changeset_f980-1cb6-94dd" + CRLF + CRLF
@@ -418,6 +592,11 @@ public class BatchRequestParserTest {
         parse(batch);
     }
 
+    /**
+     * Test missing content transfer encoding.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test(expected = BatchException.class)
     public void testMissingContentTransferEncoding() throws BatchException {
         String batch = "--" + BOUNDARY + CRLF + "Content-Type: multipart/mixed;boundary=changeset_f980-1cb6-94dd" + CRLF + CRLF
@@ -428,6 +607,11 @@ public class BatchRequestParserTest {
         parseInvalidBatchBody(batch);
     }
 
+    /**
+     * Test missing content type.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test(expected = BatchException.class)
     public void testMissingContentType() throws BatchException {
         String batch = "--" + BOUNDARY + CRLF + "Content-Type: multipart/mixed;boundary=changeset_f980-1cb6-94dd" + CRLF + CRLF
@@ -439,18 +623,33 @@ public class BatchRequestParserTest {
         parseInvalidBatchBody(batch);
     }
 
+    /**
+     * Test no close delimiter.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test(expected = BatchException.class)
     public void testNoCloseDelimiter() throws BatchException {
         String batch = "--" + BOUNDARY + CRLF + GET_REQUEST;
         parseInvalidBatchBody(batch);
     }
 
+    /**
+     * Test no close delimiter 2.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test(expected = BatchException.class)
     public void testNoCloseDelimiter2() throws BatchException {
         String batch = "--" + BOUNDARY + CRLF + MIME_HEADERS + CRLF + "GET Employees('1')/EmployeeName HTTP/1.1" + CRLF;
         parseInvalidBatchBody(batch);
     }
 
+    /**
+     * Test invalid uri.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test(expected = BatchException.class)
     public void testInvalidUri() throws BatchException {
         String batch = "--" + BOUNDARY + CRLF + MIME_HEADERS + CRLF + "GET http://localhost/aa/odata/Employees('1')/EmployeeName HTTP/1.1"
@@ -458,6 +657,11 @@ public class BatchRequestParserTest {
         parseInvalidBatchBody(batch);
     }
 
+    /**
+     * Uri with absolute path.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void uriWithAbsolutePath() throws Exception {
         final String batch = "--" + BOUNDARY + CRLF + MIME_HEADERS + CRLF + "GET /odata/Employees('1')/EmployeeName HTTP/1.1" + CRLF + CRLF
@@ -473,6 +677,11 @@ public class BatchRequestParserTest {
         assertEquals(ODataHttpMethod.GET, request.getMethod());
     }
 
+    /**
+     * Uri with wrong absolute path.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test(expected = BatchException.class)
     public void uriWithWrongAbsolutePath() throws BatchException {
         String batch = "--" + BOUNDARY + CRLF + MIME_HEADERS + CRLF + "GET /wrong/Employees('1')/EmployeeName HTTP/1.1" + CRLF + CRLF + CRLF
@@ -480,6 +689,11 @@ public class BatchRequestParserTest {
         parseInvalidBatchBody(batch);
     }
 
+    /**
+     * Wrong host.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test(expected = BatchException.class)
     public void wrongHost() throws BatchException {
         String batch = "--" + BOUNDARY + CRLF + MIME_HEADERS + CRLF + "GET /odata/Employees('1')/EmployeeName HTTP/1.1" + CRLF
@@ -487,12 +701,23 @@ public class BatchRequestParserTest {
         parseInvalidBatchBody(batch);
     }
 
+    /**
+     * Test no close delimiter 3.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test(expected = BatchException.class)
     public void testNoCloseDelimiter3() throws BatchException {
         String batch = "--" + BOUNDARY + CRLF + GET_REQUEST + "--" + BOUNDARY + "-";
         parseInvalidBatchBody(batch);
     }
 
+    /**
+     * Test accept headers.
+     *
+     * @throws BatchException the batch exception
+     * @throws URISyntaxException the URI syntax exception
+     */
     @Test
     public void testAcceptHeaders() throws BatchException, URISyntaxException {
         String batch = "--" + BOUNDARY + CRLF + MIME_HEADERS + CRLF + "GET Employees('2')/EmployeeName HTTP/1.1" + CRLF
@@ -519,6 +744,12 @@ public class BatchRequestParserTest {
         }
     }
 
+    /**
+     * Test accept headers 2.
+     *
+     * @throws BatchException the batch exception
+     * @throws URISyntaxException the URI syntax exception
+     */
     @Test
     public void testAcceptHeaders2() throws BatchException, URISyntaxException {
         String batch = "--" + BOUNDARY + CRLF + MIME_HEADERS + CRLF + "GET Employees('2')/EmployeeName HTTP/1.1" + CRLF
@@ -547,6 +778,12 @@ public class BatchRequestParserTest {
         }
     }
 
+    /**
+     * Test accept headers 3.
+     *
+     * @throws BatchException the batch exception
+     * @throws URISyntaxException the URI syntax exception
+     */
     @Test
     public void testAcceptHeaders3() throws BatchException, URISyntaxException {
         String batch = "--" + BOUNDARY + CRLF + MIME_HEADERS + CRLF + "GET Employees('2')/EmployeeName HTTP/1.1" + CRLF
@@ -576,6 +813,12 @@ public class BatchRequestParserTest {
         }
     }
 
+    /**
+     * Test negative content length change set.
+     *
+     * @throws BatchException the batch exception
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @Test
     public void testNegativeContentLengthChangeSet() throws BatchException, IOException {
         String batch = "--" + BOUNDARY + CRLF + "Content-Type: multipart/mixed; boundary=changeset_f980-1cb6-94dd" + CRLF + CRLF
@@ -588,6 +831,12 @@ public class BatchRequestParserTest {
         parser.parseBatchRequest(in);
     }
 
+    /**
+     * Test negative content length request.
+     *
+     * @throws BatchException the batch exception
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @Test(expected = BatchException.class)
     public void testNegativeContentLengthRequest() throws BatchException, IOException {
         String batch = "--" + BOUNDARY + CRLF + "Content-Type: multipart/mixed; boundary=changeset_f980-1cb6-94dd" + CRLF + CRLF
@@ -600,6 +849,12 @@ public class BatchRequestParserTest {
         parser.parseBatchRequest(in);
     }
 
+    /**
+     * Test content length greather than body length.
+     *
+     * @throws BatchException the batch exception
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @Test
     public void testContentLengthGreatherThanBodyLength() throws BatchException, IOException {
         String batch = "--" + BOUNDARY + CRLF + "Content-Type: multipart/mixed; boundary=changeset_f980-1cb6-94dd" + CRLF + CRLF
@@ -622,6 +877,12 @@ public class BatchRequestParserTest {
         }
     }
 
+    /**
+     * Test content length smaller than body length.
+     *
+     * @throws BatchException the batch exception
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @Test
     public void testContentLengthSmallerThanBodyLength() throws BatchException, IOException {
         String batch = "--" + BOUNDARY + CRLF + "Content-Type: multipart/mixed; boundary=changeset_f980-1cb6-94dd" + CRLF + CRLF
@@ -644,6 +905,11 @@ public class BatchRequestParserTest {
         }
     }
 
+    /**
+     * Test non numeric content length.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test(expected = BatchException.class)
     public void testNonNumericContentLength() throws BatchException {
         String batch = "--" + BOUNDARY + CRLF + "Content-Type: multipart/mixed; boundary=changeset_f980-1cb6-94dd" + CRLF + CRLF
@@ -656,6 +922,12 @@ public class BatchRequestParserTest {
         parser.parseBatchRequest(in);
     }
 
+    /**
+     * Test non strict parser.
+     *
+     * @throws BatchException the batch exception
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @Test
     public void testNonStrictParser() throws BatchException, IOException {
         String batch = "--" + BOUNDARY + CRLF + "Content-Type: multipart/mixed;boundary=changeset_8194-cf13-1f56" + CRLF
@@ -684,6 +956,11 @@ public class BatchRequestParserTest {
         assertEquals(ODataHttpMethod.PUT, changeRequest.getMethod());
     }
 
+    /**
+     * Test non strict parser more CRLF.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test(expected = BatchException.class)
     public void testNonStrictParserMoreCRLF() throws BatchException {
         String batch = "--" + BOUNDARY + CRLF + "Content-Type: multipart/mixed;boundary=changeset_8194-cf13-1f56" + CRLF
@@ -698,6 +975,11 @@ public class BatchRequestParserTest {
         parser.parseBatchRequest(in);
     }
 
+    /**
+     * Test content id.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test
     public void testContentId() throws BatchException {
         String batch = "--" + BOUNDARY + CRLF + MIME_HEADERS + CRLF + "GET Employees HTTP/1.1" + CRLF
@@ -742,6 +1024,11 @@ public class BatchRequestParserTest {
         }
     }
 
+    /**
+     * Test no content id.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test
     public void testNoContentId() throws BatchException {
         String batch = "--" + BOUNDARY + CRLF + MIME_HEADERS + CRLF + "GET Employees HTTP/1.1" + CRLF
@@ -758,6 +1045,12 @@ public class BatchRequestParserTest {
         assertNotNull(batchRequestParts);
     }
 
+    /**
+     * Test preamble.
+     *
+     * @throws BatchException the batch exception
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @Test
     public void testPreamble() throws BatchException, IOException {
         String batch = "" + "This is a preamble and must be ignored" + CRLF + CRLF + CRLF + "----1242" + CRLF + "--" + BOUNDARY + CRLF
@@ -798,6 +1091,12 @@ public class BatchRequestParserTest {
                                                                                            .getBody()));
     }
 
+    /**
+     * Test content type case insensitive.
+     *
+     * @throws BatchException the batch exception
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @SuppressWarnings("unused")
     @Test
     public void testContentTypeCaseInsensitive() throws BatchException, IOException {
@@ -811,6 +1110,12 @@ public class BatchRequestParserTest {
         List<BatchRequestPart> batchRequestParts = parser.parseBatchRequest(in);
     }
 
+    /**
+     * Test content type boundary case insensitive.
+     *
+     * @throws BatchException the batch exception
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @Test
     public void testContentTypeBoundaryCaseInsensitive() throws BatchException, IOException {
         String batch = "--" + BOUNDARY + CRLF + "Content-Type: multipart/mixed; bOunDaRy=changeset_f980-1cb6-94dd" + CRLF + CRLF
@@ -831,6 +1136,12 @@ public class BatchRequestParserTest {
                                          .size());
     }
 
+    /**
+     * Test epilog.
+     *
+     * @throws BatchException the batch exception
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @Test
     public void testEpilog() throws BatchException, IOException {
         String batch = "--" + BOUNDARY + CRLF + MIME_HEADERS + CRLF + "GET Employees HTTP/1.1" + CRLF
@@ -871,6 +1182,12 @@ public class BatchRequestParserTest {
                                                                                            .getBody()));
     }
 
+    /**
+     * Test large batch.
+     *
+     * @throws BatchException the batch exception
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @Test
     public void testLargeBatch() throws BatchException, IOException {
         String fileName = "/batchLarge.batch";
@@ -884,6 +1201,11 @@ public class BatchRequestParserTest {
         parser.parseBatchRequest(in);
     }
 
+    /**
+     * Test non strict get request with missing CRLF.
+     *
+     * @throws BatchException the batch exception
+     */
     @Test
     public void testNonStrictGetRequestWithMissingCRLF() throws BatchException {
         String batch =
@@ -895,10 +1217,25 @@ public class BatchRequestParserTest {
         parse(batch, false);
     }
 
+    /**
+     * Parses the.
+     *
+     * @param batch the batch
+     * @return the list
+     * @throws BatchException the batch exception
+     */
     private List<BatchRequestPart> parse(final String batch) throws BatchException {
         return parse(batch, true);
     }
 
+    /**
+     * Parses the.
+     *
+     * @param batch the batch
+     * @param isStrict the is strict
+     * @return the list
+     * @throws BatchException the batch exception
+     */
     private List<BatchRequestPart> parse(final String batch, final boolean isStrict) throws BatchException {
         InputStream in = new ByteArrayInputStream(batch.getBytes());
         BatchParser parser = new BatchParser(contentType, batchProperties, isStrict);
@@ -908,12 +1245,25 @@ public class BatchRequestParserTest {
         return batchRequestParts;
     }
 
+    /**
+     * Parses the invalid batch body.
+     *
+     * @param batch the batch
+     * @throws BatchException the batch exception
+     */
     private void parseInvalidBatchBody(final String batch) throws BatchException {
         InputStream in = new ByteArrayInputStream(batch.getBytes());
         BatchParser parser = new BatchParser(contentType, batchProperties, true);
         parser.parseBatchRequest(in);
     }
 
+    /**
+     * Input stream to string.
+     *
+     * @param in the in
+     * @return the string
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     private String inputStreamToString(final InputStream in) throws IOException {
         int input;
         final StringBuilder builder = new StringBuilder();

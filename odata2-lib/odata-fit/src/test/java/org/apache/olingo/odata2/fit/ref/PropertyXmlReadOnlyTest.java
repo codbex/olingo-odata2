@@ -30,15 +30,27 @@ import org.apache.olingo.odata2.api.commons.HttpStatusCodes;
 import org.apache.olingo.odata2.testutil.server.ServletType;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
  * Tests employing the reference scenario reading properties in XML format.
  * 
  */
 public class PropertyXmlReadOnlyTest extends AbstractRefXmlTest {
+  
+  /**
+   * Instantiates a new property xml read only test.
+   *
+   * @param servletType the servlet type
+   */
   public PropertyXmlReadOnlyTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /**
+   * Simple property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void simpleProperty() throws Exception {
     HttpResponse response = callUri("Employees('2')/Age/$value");
@@ -85,6 +97,11 @@ public class PropertyXmlReadOnlyTest extends AbstractRefXmlTest {
     badRequest("Employees('2')/Age()");
   }
 
+  /**
+   * Navigation simple property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void navigationSimpleProperty() throws Exception {
     HttpResponse response = callUri("Employees('2')/ne_Room/nr_Employees('6')/Age");
@@ -100,6 +117,11 @@ public class PropertyXmlReadOnlyTest extends AbstractRefXmlTest {
     assertXpathEvaluatesTo(CITY_2_NAME, "/d:CityName", getBody(response));
   }
 
+  /**
+   * Complex property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void complexProperty() throws Exception {
     HttpResponse response = callUri("Employees('2')/Location/City/CityName/$value");

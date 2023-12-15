@@ -20,32 +20,37 @@ package org.apache.olingo.odata2.api.edm;
 
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
 /**
- * @org.apache.olingo.odata2.DoNotImplement
- * A CSDL EntityContainer element
+ * The Interface EdmEntityContainer.
+ *
+ * @org.apache.olingo.odata2.DoNotImplement A CSDL EntityContainer element
  * 
  * <p>EdmEntityContainer hold the information of EntitySets, FunctionImports and AssociationSets contained
- * 
  */
 public interface EdmEntityContainer extends EdmNamed, EdmAnnotatable {
 
   /**
+   * Checks if is default entity container.
+   *
    * @return <b>boolean</b> true if this is the default container
    */
   boolean isDefaultEntityContainer();
   
   /**
+   * Gets the namespace.
+   *
    * @return <b>String</b> namepspace of the container
-   * @throws EdmException
+   * @throws EdmException the edm exception
    */
   String getNamespace() throws EdmException;
 
   /**
-   * Get contained EntitySet by name
-   * 
-   * @param name
+   * Get contained EntitySet by name.
+   *
+   * @param name the name
    * @return {@link EdmEntitySet}
-   * @throws EdmException
+   * @throws EdmException the edm exception
    */
   EdmEntitySet getEntitySet(String name) throws EdmException;
 
@@ -53,28 +58,28 @@ public interface EdmEntityContainer extends EdmNamed, EdmAnnotatable {
    * <b>ATTENTION:</b> This method does not support <b>LAZY LOADING</b>.
    * <br/>
    * Get list of all contained EntitySets.
-   * 
+   *
    * @return with all contained {@link EdmEntitySet}
-   * @throws EdmException
+   * @throws EdmException the edm exception
    */
   List<EdmEntitySet> getEntitySets() throws EdmException;
 
   /**
-   * Get contained FunctionImport by name
-   * 
-   * @param name
+   * Get contained FunctionImport by name.
+   *
+   * @param name the name
    * @return {@link EdmFunctionImport}
-   * @throws EdmException
+   * @throws EdmException the edm exception
    */
   EdmFunctionImport getFunctionImport(String name) throws EdmException;
 
   /**
-   * Get contained AssociationSet by providing the source entity set and the navigation property
-   * 
+   * Get contained AssociationSet by providing the source entity set and the navigation property.
+   *
    * @param sourceEntitySet of type {@link EdmEntitySet}
    * @param navigationProperty of type {@link EdmNavigationProperty}
    * @return {@link EdmAssociationSet}
-   * @throws EdmException
+   * @throws EdmException the edm exception
    */
   EdmAssociationSet getAssociationSet(EdmEntitySet sourceEntitySet, EdmNavigationProperty navigationProperty)
       throws EdmException;
@@ -83,9 +88,9 @@ public interface EdmEntityContainer extends EdmNamed, EdmAnnotatable {
    * <b>ATTENTION:</b> This method does not support <b>LAZY LOADING</b>.
    * <br/>
    * Get list of all contained AssociationSets
-   * 
+   *
    * @return list with all contained {@link EdmAssociationSet}
-   * @throws EdmException
+   * @throws EdmException the edm exception
    */
   List<EdmAssociationSet> getAssociationSets() throws EdmException;
 }

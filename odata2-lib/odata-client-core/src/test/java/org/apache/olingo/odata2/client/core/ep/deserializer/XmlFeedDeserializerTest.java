@@ -45,14 +45,28 @@ import org.junit.Test;
 
 import junit.framework.Assert;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class XmlFeedDeserializerTest.
+ */
 public class XmlFeedDeserializerTest extends AbstractXmlDeserializerTest {
 
+  /**
+   * Instantiates a new xml feed deserializer test.
+   *
+   * @param type the type
+   */
   public XmlFeedDeserializerTest(final StreamWriterImplType type) {
     super(type);
   }
 
   
 
+  /**
+   * Read large employees feed.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readLargeEmployeesFeed() throws Exception {
     InputStream file = getFileAsStream("LargeEmployeeFeed.xml");
@@ -72,11 +86,24 @@ public class XmlFeedDeserializerTest extends AbstractXmlDeserializerTest {
     assertNotNull(feedMetadata);
   }
 
+  /**
+   * Creates the stream reader.
+   *
+   * @param xml the xml
+   * @return the input stream
+   * @throws XMLStreamException the XML stream exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   private InputStream createStreamReader(final String xml) throws
   XMLStreamException, UnsupportedEncodingException {
     return new ByteArrayInputStream(xml.getBytes("UTF-8"));
   }
   
+  /**
+   * Read products feed end to end.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readProductsFeedEndToEnd() throws Exception {
     XmlMetadataDeserializer parser = new XmlMetadataDeserializer();
@@ -107,7 +134,8 @@ public class XmlFeedDeserializerTest extends AbstractXmlDeserializerTest {
   /**
    * Rooms navigate to Employees and has inline entry Teams
    * E.g: Rooms('1')/nr_Employees?$expand=ne_Team
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test
   public void roomsFeedWithRoomsToEmployeesInlineTeams() throws Exception {
@@ -131,6 +159,11 @@ public class XmlFeedDeserializerTest extends AbstractXmlDeserializerTest {
     }
   }
  
+  /**
+   * Read employees feed with inline count valid.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readEmployeesFeedWithInlineCountValid() throws Exception {
     // prepare
@@ -162,6 +195,11 @@ public class XmlFeedDeserializerTest extends AbstractXmlDeserializerTest {
     assertEquals(6, inlineCount);
   }
 
+  /**
+   * Read employees feed with inline count negative.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void readEmployeesFeedWithInlineCountNegative() throws Exception {
     // prepare
@@ -189,6 +227,11 @@ public class XmlFeedDeserializerTest extends AbstractXmlDeserializerTest {
     Assert.fail("Exception expected");
   }
 
+  /**
+   * Read employees feed with inline count letters.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void readEmployeesFeedWithInlineCountLetters() throws Exception {
     // prepare
@@ -215,6 +258,12 @@ public class XmlFeedDeserializerTest extends AbstractXmlDeserializerTest {
 
     Assert.fail("Exception expected");
   }
+  
+  /**
+   * Read delta feed.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readDeltaFeed() throws Exception {
     // prepare

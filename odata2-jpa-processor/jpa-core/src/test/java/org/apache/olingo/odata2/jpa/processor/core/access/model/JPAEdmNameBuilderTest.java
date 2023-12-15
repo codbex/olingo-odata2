@@ -31,8 +31,15 @@ import org.apache.olingo.odata2.jpa.processor.core.mock.model.JPAEntityTypeMock;
 import org.easymock.EasyMock;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAEdmNameBuilderTest.
+ */
 public class JPAEdmNameBuilderTest {
 
+  /**
+   * Test build JPA edm property view.
+   */
   @SuppressWarnings({ "unchecked", "rawtypes" })
   @Test
   public void testBuildJPAEdmPropertyView() {
@@ -53,6 +60,9 @@ public class JPAEdmNameBuilderTest {
     assertEquals("Id", simpleProperty.getName());
   }
 
+  /**
+   * Test build JPA edm property view with no default naming.
+   */
   @SuppressWarnings({ "unchecked", "rawtypes" })
   @Test
   public void testBuildJPAEdmPropertyViewWithNoDefaultNaming() {
@@ -73,6 +83,9 @@ public class JPAEdmNameBuilderTest {
     assertEquals("id", simpleProperty.getName());
   }
 
+  /**
+   * Test build JPA edm complex property view.
+   */
   @SuppressWarnings({ "rawtypes", "unchecked" })
   @Test
   public void testBuildJPAEdmComplexPropertyView() {
@@ -98,6 +111,9 @@ public class JPAEdmNameBuilderTest {
 
   }
 
+  /**
+   * Test build JPA edm complex property view with no default naming.
+   */
   @SuppressWarnings({ "rawtypes", "unchecked" })
   @Test
   public void testBuildJPAEdmComplexPropertyViewWithNoDefaultNaming() {
@@ -123,14 +139,30 @@ public class JPAEdmNameBuilderTest {
 
   }
 
+  /**
+   * The Class JPAAttribute.
+   *
+   * @param <Object> the generic type
+   * @param <String> the generic type
+   */
   @SuppressWarnings("hiding")
   class JPAAttribute<Object, String> extends JPAAttributeMock<Object, java.lang.String> {
 
+    /**
+     * Gets the name.
+     *
+     * @return the name
+     */
     @Override
     public java.lang.String getName() {
       return "id";
     }
 
+    /**
+     * Gets the java type.
+     *
+     * @return the java type
+     */
     @Override
     public Class<java.lang.String> getJavaType() {
       return java.lang.String.class;
@@ -138,9 +170,19 @@ public class JPAEdmNameBuilderTest {
 
   }
 
+  /**
+   * The Class JPAEntityType.
+   *
+   * @param <Object> the generic type
+   */
   @SuppressWarnings("hiding")
   class JPAEntityType<Object> extends JPAEntityTypeMock<Object> {
 
+    /**
+     * Gets the name.
+     *
+     * @return the name
+     */
     @Override
     public java.lang.String getName() {
       return "SalesOrderHeader";

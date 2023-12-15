@@ -18,13 +18,20 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.ref.model;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class ModelException.
  */
 public class ModelException extends RuntimeException {
 
+  /** The Constant serialVersionUID. */
   private static final long serialVersionUID = 1L;
 
+  /**
+   * Instantiates a new model exception.
+   *
+   * @param e the e
+   */
   public ModelException(final Exception e) {
     super(e);
   }

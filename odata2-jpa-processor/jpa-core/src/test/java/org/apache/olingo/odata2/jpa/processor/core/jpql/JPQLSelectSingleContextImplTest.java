@@ -42,15 +42,32 @@ import org.apache.olingo.odata2.jpa.processor.core.jpql.JPQLSelectSingleContext.
 import org.easymock.EasyMock;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPQLSelectSingleContextImplTest.
+ */
 public class JPQLSelectSingleContextImplTest {
 
+  /** The entity type name. */
   private static String entityTypeName = "MockEntity";
+  
+  /** The fields. */
   private static String[] fields = { "Field1", "Field2" };
+  
+  /** The key predicates. */
   private static List<KeyPredicate> keyPredicates;
 
+  /** The builder. */
   private static JPQLSelectSingleContextBuilder builder;
+  
+  /** The select context. */
   private static JPQLSelectSingleContext selectContext;
 
+  /**
+   * Builds the context builder.
+   *
+   * @param isSelectNull the is select null
+   */
   private void buildContextBuilder(final boolean isSelectNull) {
     builder = null;
     selectContext = null;
@@ -123,6 +140,9 @@ public class JPQLSelectSingleContextImplTest {
     }
   }
 
+  /**
+   * Test entity name throwing exception.
+   */
   @Test
   public void testEntityNameThrowingException() {
     // buildSelectContext(false, false, false);
@@ -157,6 +177,9 @@ public class JPQLSelectSingleContextImplTest {
     }
   }
 
+  /**
+   * Test slected fields as null.
+   */
   @Test
   public void testSlectedFieldsAsNull() {
     buildContextBuilder(true);
@@ -170,6 +193,11 @@ public class JPQLSelectSingleContextImplTest {
     }
   }
 
+  /**
+   * Gets the key predicates.
+   *
+   * @return the key predicates
+   */
   @Test
   public void getKeyPredicates() {
     buildContextBuilder(false);
@@ -177,18 +205,27 @@ public class JPQLSelectSingleContextImplTest {
     assertEquals(keyPredicates, selectContext.getKeyPredicates());
   }
 
+  /**
+   * Test get JPA entity name.
+   */
   @Test
   public void testGetJPAEntityName() {
     buildContextBuilder(false);
     assertEquals(JPQLSelectSingleContextImplTest.entityTypeName, selectContext.getJPAEntityName());
   }
 
+  /**
+   * Test get type.
+   */
   @Test
   public void testGetType() {
     buildContextBuilder(false);
     assertEquals(JPQLContextType.SELECT_SINGLE, selectContext.getType());
   }
 
+  /**
+   * Test create builder.
+   */
   @Test
   public void testCreateBuilder() {
     buildContextBuilder(false);

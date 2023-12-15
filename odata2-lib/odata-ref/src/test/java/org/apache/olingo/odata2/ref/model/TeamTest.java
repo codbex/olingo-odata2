@@ -28,25 +28,36 @@ import java.util.List;
 import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class TeamTest.
  */
 public class TeamTest extends BaseTest {
 
+  /** The Constant VALUE_NAME. */
   private static final String VALUE_NAME = "Team 1";
 
+  /**
+   * Test id.
+   */
   @Test
   public void testId() {
     Team team1 = new Team(1, null);
     assertNotNull(team1.getId());
   }
 
+  /**
+   * Test name.
+   */
   @Test
   public void testName() {
     Team team1 = new Team(1, VALUE_NAME);
     assertEquals(team1.getName(), VALUE_NAME);
   }
 
+  /**
+   * Test is scrum team.
+   */
   @Test
   public void testIsScrumTeam() {
     Team team1 = new Team(1, null);
@@ -54,6 +65,9 @@ public class TeamTest extends BaseTest {
     assertTrue(team1.isScrumTeam());
   }
 
+  /**
+   * Test employees.
+   */
   @Test
   public void testEmployees() {
     Team team1 = new Team(1, VALUE_NAME);

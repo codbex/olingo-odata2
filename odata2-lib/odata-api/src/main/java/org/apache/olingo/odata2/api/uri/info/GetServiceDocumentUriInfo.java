@@ -20,6 +20,7 @@ package org.apache.olingo.odata2.api.uri.info;
 
 import java.util.Map;
 
+// TODO: Auto-generated Javadoc
 /**
  * Access to the parts of the request URI that are relevant for GET requests
  * of the service document.

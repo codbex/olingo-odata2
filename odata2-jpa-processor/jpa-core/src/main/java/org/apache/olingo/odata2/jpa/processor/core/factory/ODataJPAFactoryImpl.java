@@ -57,29 +57,61 @@ import org.apache.olingo.odata2.jpa.processor.core.jpql.JPQLSelectStatementBuild
 import org.apache.olingo.odata2.jpa.processor.core.model.JPAEdmMappingImpl;
 import org.apache.olingo.odata2.jpa.processor.core.model.JPAEdmModel;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ODataJPAFactoryImpl.
+ */
 public class ODataJPAFactoryImpl extends ODataJPAFactory {
 
+  /**
+   * Gets the JPQL builder factory.
+   *
+   * @return the JPQL builder factory
+   */
   @Override
   public JPQLBuilderFactory getJPQLBuilderFactory() {
     return JPQLBuilderFactoryImpl.create();
   };
 
+  /**
+   * Gets the JPA access factory.
+   *
+   * @return the JPA access factory
+   */
   @Override
   public JPAAccessFactory getJPAAccessFactory() {
     return JPAAccessFactoryImpl.create();
   };
 
+  /**
+   * Gets the o data JPA access factory.
+   *
+   * @return the o data JPA access factory
+   */
   @Override
   public ODataJPAAccessFactory getODataJPAAccessFactory() {
     return ODataJPAAccessFactoryImpl.create();
   };
 
+  /**
+   * The Class JPQLBuilderFactoryImpl.
+   */
   private static class JPQLBuilderFactoryImpl implements JPQLBuilderFactory {
 
+    /** The factory. */
     private static JPQLBuilderFactoryImpl factory = null;
 
+    /**
+     * Instantiates a new JPQL builder factory impl.
+     */
     private JPQLBuilderFactoryImpl() {}
 
+    /**
+     * Gets the statement builder.
+     *
+     * @param context the context
+     * @return the statement builder
+     */
     @Override
     public JPQLStatementBuilder getStatementBuilder(final JPQLContextView context) {
       JPQLStatementBuilder builder = null;
@@ -105,6 +137,12 @@ public class ODataJPAFactoryImpl extends ODataJPAFactory {
       return builder;
     }
 
+    /**
+     * Gets the context builder.
+     *
+     * @param contextType the context type
+     * @return the context builder
+     */
     @Override
     public JPQLContextBuilder getContextBuilder(final JPQLContextType contextType) {
       JPQLContextBuilder contextBuilder = null;
@@ -141,6 +179,11 @@ public class ODataJPAFactoryImpl extends ODataJPAFactory {
       return contextBuilder;
     }
 
+    /**
+     * Creates the.
+     *
+     * @return the JPQL builder factory
+     */
     private static JPQLBuilderFactory create() {
       if (factory == null) {
         return new JPQLBuilderFactoryImpl();
@@ -149,6 +192,12 @@ public class ODataJPAFactoryImpl extends ODataJPAFactory {
       }
     }
 
+    /**
+     * Gets the JPA method context builder.
+     *
+     * @param contextType the context type
+     * @return the JPA method context builder
+     */
     @Override
     public JPAMethodContextBuilder getJPAMethodContextBuilder(final JPQLContextType contextType) {
 
@@ -167,27 +216,56 @@ public class ODataJPAFactoryImpl extends ODataJPAFactory {
 
   }
 
+  /**
+   * The Class ODataJPAAccessFactoryImpl.
+   */
   private static class ODataJPAAccessFactoryImpl implements ODataJPAAccessFactory {
 
+    /** The factory. */
     private static ODataJPAAccessFactoryImpl factory = null;
 
+    /**
+     * Instantiates a new o data JPA access factory impl.
+     */
     private ODataJPAAccessFactoryImpl() {}
 
+    /**
+     * Creates the O data processor.
+     *
+     * @param oDataJPAContext the o data JPA context
+     * @return the o data single processor
+     */
     @Override
     public ODataSingleProcessor createODataProcessor(final ODataJPAContext oDataJPAContext) {
       return new ODataJPADefaultProcessor(oDataJPAContext) { };
     }
 
+    /**
+     * Creates the JPA edm provider.
+     *
+     * @param oDataJPAContext the o data JPA context
+     * @return the edm provider
+     */
     @Override
     public EdmProvider createJPAEdmProvider(final ODataJPAContext oDataJPAContext) {
       return new ODataJPAEdmProvider(oDataJPAContext);
     }
 
+    /**
+     * Creates the O data JPA context.
+     *
+     * @return the o data JPA context
+     */
     @Override
     public ODataJPAContext createODataJPAContext() {
       return new ODataJPAContextImpl();
     }
 
+    /**
+     * Creates the.
+     *
+     * @return the o data JPA access factory impl
+     */
     private static ODataJPAAccessFactoryImpl create() {
       if (factory == null) {
         return new ODataJPAAccessFactoryImpl();
@@ -196,11 +274,23 @@ public class ODataJPAFactoryImpl extends ODataJPAFactory {
       }
     }
 
+    /**
+     * Gets the o data JPA message service.
+     *
+     * @param locale the locale
+     * @return the o data JPA message service
+     */
     @Override
     public ODataJPAMessageService getODataJPAMessageService(final Locale locale) {
       return ODataJPAMessageServiceDefault.getInstance(locale);
     }
 
+    /**
+     * Gets the o data JPA response builder.
+     *
+     * @param oDataJPAContext the o data JPA context
+     * @return the o data JPA response builder
+     */
     @Override
     public ODataJPAResponseBuilder getODataJPAResponseBuilder(final ODataJPAContext oDataJPAContext) {
       return new ODataJPAResponseBuilderDefault(oDataJPAContext);
@@ -208,12 +298,25 @@ public class ODataJPAFactoryImpl extends ODataJPAFactory {
 
   }
 
+  /**
+   * The Class JPAAccessFactoryImpl.
+   */
   private static class JPAAccessFactoryImpl implements JPAAccessFactory {
 
+    /** The factory. */
     private static JPAAccessFactoryImpl factory = null;
 
+    /**
+     * Instantiates a new JPA access factory impl.
+     */
     private JPAAccessFactoryImpl() {}
 
+    /**
+     * Gets the JPA edm model view.
+     *
+     * @param oDataJPAContext the o data JPA context
+     * @return the JPA edm model view
+     */
     @Override
     public JPAEdmModelView getJPAEdmModelView(final ODataJPAContext oDataJPAContext) {
       JPAEdmModelView view = null;
@@ -222,6 +325,12 @@ public class ODataJPAFactoryImpl extends ODataJPAFactory {
       return view;
     }
 
+    /**
+     * Gets the JPA processor.
+     *
+     * @param oDataJPAContext the o data JPA context
+     * @return the JPA processor
+     */
     @Override
     public JPAProcessor getJPAProcessor(final ODataJPAContext oDataJPAContext) {
       JPAProcessor jpaProcessor = new JPAProcessorImpl(oDataJPAContext);
@@ -229,6 +338,11 @@ public class ODataJPAFactoryImpl extends ODataJPAFactory {
       return jpaProcessor;
     }
 
+    /**
+     * Creates the.
+     *
+     * @return the JPA access factory impl
+     */
     private static JPAAccessFactoryImpl create() {
       if (factory == null) {
         return new JPAAccessFactoryImpl();
@@ -237,6 +351,12 @@ public class ODataJPAFactoryImpl extends ODataJPAFactory {
       }
     }
 
+    /**
+     * Gets the JPA edm mapping model access.
+     *
+     * @param oDataJPAContext the o data JPA context
+     * @return the JPA edm mapping model access
+     */
     @Override
     public JPAEdmMappingModelAccess getJPAEdmMappingModelAccess(final ODataJPAContext oDataJPAContext) {
       JPAEdmMappingModelAccess mappingModelAccess = new JPAEdmMappingModelService(oDataJPAContext);
@@ -244,6 +364,11 @@ public class ODataJPAFactoryImpl extends ODataJPAFactory {
       return mappingModelAccess;
     }
 
+    /**
+     * Gets the JPA edm mapping instance.
+     *
+     * @return the JPA edm mapping instance
+     */
     @Override
     public JPAEdmMapping getJPAEdmMappingInstance() {
       return new JPAEdmMappingImpl();

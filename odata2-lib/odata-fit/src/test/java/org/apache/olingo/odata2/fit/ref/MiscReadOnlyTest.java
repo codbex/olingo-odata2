@@ -27,16 +27,26 @@ import org.apache.http.HttpResponse;
 import org.apache.olingo.odata2.testutil.server.ServletType;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- * Read-only tests employing the reference scenario that use neither XML nor JSON
- * 
+ * Read-only tests employing the reference scenario that use neither XML nor JSON.
  */
 public class MiscReadOnlyTest extends AbstractRefTest {
 
+  /**
+   * Instantiates a new misc read only test.
+   *
+   * @param servletType the servlet type
+   */
   public MiscReadOnlyTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /**
+   * Check urls.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void checkUrls() throws Exception {
     checkUri("/");
@@ -62,6 +72,11 @@ public class MiscReadOnlyTest extends AbstractRefTest {
     checkUri("Employees('2')/ne_Manager/nm_Employees('3')/Age");
   }
 
+  /**
+   * Count.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void count() throws Exception {
     assertEquals("103", getBody(callUri("Rooms()/$count")));
@@ -76,6 +91,11 @@ public class MiscReadOnlyTest extends AbstractRefTest {
     notFound("Managers('3')/nm_Employees('1')/$count");
   }
 
+  /**
+   * Media resource.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void mediaResource() throws Exception {
     HttpResponse response = callUri("Employees('3')/$value");

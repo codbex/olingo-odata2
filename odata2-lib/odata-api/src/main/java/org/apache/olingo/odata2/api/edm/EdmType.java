@@ -18,21 +18,25 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.edm;
 
+// TODO: Auto-generated Javadoc
 /**
- * @org.apache.olingo.odata2.DoNotImplement
- * EdmType holds the namespace of a given type and its type as {@link EdmTypeKind}.
- * 
+ * The Interface EdmType.
+ *
+ * @org.apache.olingo.odata2.DoNotImplement EdmType holds the namespace of a given type and its type as {@link EdmTypeKind}.
  */
 public interface EdmType extends EdmNamed {
 
   /**
-   * Namespace of this {@link EdmType}
+   * Namespace of this {@link EdmType}.
+   *
    * @return namespace as String
-   * @throws EdmException
+   * @throws EdmException the edm exception
    */
   String getNamespace() throws EdmException;
 
   /**
+   * Gets the kind.
+   *
    * @return {@link EdmTypeKind} of this {@link EdmType}
    */
   EdmTypeKind getKind();

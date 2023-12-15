@@ -22,6 +22,7 @@ import java.util.HashMap;
 
 import org.apache.olingo.odata2.api.edm.provider.Schema;
 
+// TODO: Auto-generated Javadoc
 /**
  * <p>
  * A view on Java Persistence Model and Entity Data Model Schema. Each java
@@ -40,11 +41,11 @@ import org.apache.olingo.odata2.api.edm.provider.Schema;
  * 
  * 
  * <p>
- * @org.apache.olingo.odata2.DoNotImplement
+ *
  * @see org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmAssociationView
  * @see org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmEntityContainerView
  * @see org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmComplexTypeView
- * 
+ * @org.apache.olingo.odata2.DoNotImplement 
  */
 public interface JPAEdmSchemaView extends JPAEdmBaseView {
   /**

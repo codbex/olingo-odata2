@@ -20,6 +20,7 @@ package org.apache.olingo.odata2.api.exception;
 
 import org.apache.olingo.odata2.api.rt.RuntimeDelegate;
 
+// TODO: Auto-generated Javadoc
 /**
  * <p>DO NOT EXTEND THIS EXCEPTION</p>
  * APPLICATION DEVELOPERS: please use {@link ODataApplicationException} o throw custom exceptions.
@@ -33,14 +34,16 @@ import org.apache.olingo.odata2.api.rt.RuntimeDelegate;
  */
 public abstract class ODataMessageException extends ODataException {
 
+  /** The Constant serialVersionUID. */
   private static final long serialVersionUID = 42L;
 
-  /** Message reference for exception which is used for internationalization */
+  /**  Message reference for exception which is used for internationalization. */
   protected final MessageReference messageReference;
-  /** OData error code */
+  
+  /**  OData error code. */
   protected final String errorCode;
 
-  /** Reference to common message for a {@link ODataMessageException} */
+  /**  Reference to common message for a {@link ODataMessageException}. */
   public static final MessageReference COMMON = createMessageReference(ODataMessageException.class, "COMMON");
 
   /**

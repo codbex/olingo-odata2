@@ -42,30 +42,48 @@ import org.apache.olingo.odata2.api.uri.expression.UnaryOperator;
 import org.apache.olingo.odata2.core.edm.EdmBoolean;
 import org.apache.olingo.odata2.core.edm.EdmSimpleTypeFacadeImpl;
 
+// TODO: Auto-generated Javadoc
 /**
- *
+ * The Class FilterParserImpl.
  */
 public class FilterParserImpl implements FilterParser {
+    
+    /** The available binary operators. */
     /* do the static initialization */
     protected static Map<String, InfoBinaryOperator> availableBinaryOperators;
+    
+    /** The available methods. */
     protected static Map<String, InfoMethod> availableMethods;
+    
+    /** The available unary operators. */
     protected static Map<String, InfoUnaryOperator> availableUnaryOperators;
 
     static {
         initAvailTables();
     }
 
+    /** The resource entity type. */
     /* instance attributes */
     protected EdmEntityType resourceEntityType = null;
+    
+    /** The token list. */
     protected TokenList tokenList = null;
+    
+    /** The cur expression. */
     protected String curExpression;
+    
+    /** The original filter string. */
     protected String originalFilterString = "";
+    
+    /** The decoded filter string. */
     protected String decodedFilterString = "";
+    
+    /** The strict filter. */
     private boolean strictFilter = true;
 
 
     /**
-     * Creates a new FilterParser implementation
+     * Creates a new FilterParser implementation.
      *
      * @param resourceEntityType EntityType of the resource on which the filter is applied
      */
@@ -74,7 +92,7 @@ public class FilterParserImpl implements FilterParser {
     }
 
     /**
-     * Creates a new FilterParser implementation
+     * Creates a new FilterParser implementation.
      *
      * @param resourceEntityType EntityType of the resource on which the filter is applied
      * @param strictFilter boolean check to decide weather to validate filter
@@ -85,7 +103,7 @@ public class FilterParserImpl implements FilterParser {
     }
 
     /**
-     * Creates a new FilterParser implementation
+     * Creates a new FilterParser implementation.
      *
      * @param resourceEntityType EntityType of the resource on which the filter is applied
      * @param strictFilter boolean check to decide weather to validate filter
@@ -97,12 +115,29 @@ public class FilterParserImpl implements FilterParser {
         this.originalFilterString = originalFilterString;
     }
 
+    /**
+     * Parses the filter string.
+     *
+     * @param filterExpression the filter expression
+     * @return the filter expression
+     * @throws ExpressionParserException the expression parser exception
+     * @throws ExpressionParserInternalError the expression parser internal error
+     */
     @Override
     public FilterExpression parseFilterString(final String filterExpression)
             throws ExpressionParserException, ExpressionParserInternalError {
         return parseFilterString(filterExpression, false);
     }
 
+    /**
+     * Parses the filter string.
+     *
+     * @param filterExpression the filter expression
+     * @param allowOnlyBinary the allow only binary
+     * @return the filter expression
+     * @throws ExpressionParserException the expression parser exception
+     * @throws ExpressionParserInternalError the expression parser internal error
+     */
     public FilterExpression parseFilterString(final String filterExpression, final boolean allowOnlyBinary)
             throws ExpressionParserException, ExpressionParserInternalError {
         CommonExpression node = null;
@@ -149,6 +184,15 @@ public class FilterParserImpl implements FilterParser {
         return new FilterExpressionImpl(decodedFilterString, node);
     }
 
+    /**
+     * Read elements.
+     *
+     * @param leftExpression the left expression
+     * @param priority the priority
+     * @return the common expression
+     * @throws ExpressionParserException the expression parser exception
+     * @throws ExpressionParserInternalError the expression parser internal error
+     */
     protected CommonExpression readElements(final CommonExpression leftExpression, final int priority)
             throws ExpressionParserException, ExpressionParserInternalError {
         CommonExpression leftNode = leftExpression;
@@ -232,7 +276,7 @@ public class FilterParserImpl implements FilterParser {
      *
      * @return An expression which reflects the content within the parenthesis
      * @throws ExpressionParserException While reading the elements in the parenthesis an error occurred
-     * @throws TokenizerMessage The next token did not match the expected token
+     * @throws ExpressionParserInternalError the expression parser internal error
      */
     protected CommonExpression readParenthesis() throws ExpressionParserException, ExpressionParserInternalError {
         // The existing of a '(' is verified BEFORE this method is called --> so it's a internal error
@@ -254,14 +298,14 @@ public class FilterParserImpl implements FilterParser {
     }
 
     /**
-     * Read the parameters of a method expression
+     * Read the parameters of a method expression.
      *
      * @param methodInfo Signature information about the method whose parameters should be read
      * @param methodExpression Method expression to which the read parameters are added
+     * @param methodToken the method token
      * @return The method expression input parameter
-     * @throws ExpressionParserException
-     * @throws ExpressionParserInternalError
-     * @throws TokenizerExpectError The next token did not match the expected token
+     * @throws ExpressionParserException the expression parser exception
+     * @throws ExpressionParserInternalError the expression parser internal error
      */
     protected MethodExpression readParameters(final InfoMethod methodInfo, final MethodExpressionImpl methodExpression,
             final Token methodToken) throws ExpressionParserException, ExpressionParserInternalError {
@@ -338,6 +382,14 @@ public class FilterParserImpl implements FilterParser {
         return methodExpression;
     }
 
+    /**
+     * Read element.
+     *
+     * @param leftExpression the left expression
+     * @return the common expression
+     * @throws ExpressionParserException the expression parser exception
+     * @throws ExpressionParserInternalError the expression parser internal error
+     */
     protected CommonExpression readElement(final CommonExpression leftExpression)
             throws ExpressionParserException, ExpressionParserInternalError {
         return readElement(leftExpression, null);
@@ -350,10 +402,10 @@ public class FilterParserImpl implements FilterParser {
      * @param leftExpression Used while parsing properties. In this case ( e.g. parsing "a/b") the
      *        property "a" ( as leftExpression of "/") is relevant to verify whether the property "b"
      *        exists inside the edm
+     * @param leftOperator the left operator
      * @return a CommonExpression
-     * @throws ExpressionParserException
-     * @throws ExpressionParserInternalError
-     * @throws TokenizerMessage
+     * @throws ExpressionParserException the expression parser exception
+     * @throws ExpressionParserInternalError the expression parser internal error
      */
     protected CommonExpression readElement(final CommonExpression leftExpression, final ActualBinaryOperator leftOperator)
             throws ExpressionParserException, ExpressionParserInternalError {
@@ -411,6 +463,15 @@ public class FilterParserImpl implements FilterParser {
         throw ExpressionParserInternalError.createCOMMON();
     }
 
+    /**
+     * Read unaryoperator.
+     *
+     * @param lookToken the look token
+     * @param unaryOperator the unary operator
+     * @return the common expression
+     * @throws ExpressionParserException the expression parser exception
+     * @throws ExpressionParserInternalError the expression parser internal error
+     */
     protected CommonExpression readUnaryoperator(final Token lookToken, final InfoUnaryOperator unaryOperator)
             throws ExpressionParserException, ExpressionParserInternalError {
         tokenList.expectToken(lookToken.getUriLiteral(), true);
@@ -422,6 +483,15 @@ public class FilterParserImpl implements FilterParser {
         return unaryExpression;
     }
 
+    /**
+     * Read method.
+     *
+     * @param token the token
+     * @param methodOperator the method operator
+     * @return the common expression
+     * @throws ExpressionParserException the expression parser exception
+     * @throws ExpressionParserInternalError the expression parser internal error
+     */
     protected CommonExpression readMethod(final Token token, final InfoMethod methodOperator)
             throws ExpressionParserException, ExpressionParserInternalError {
         MethodExpressionImpl method = new MethodExpressionImpl(methodOperator);
@@ -432,6 +502,11 @@ public class FilterParserImpl implements FilterParser {
         return method;
     }
 
+    /**
+     * Read binary operator.
+     *
+     * @return the actual binary operator
+     */
     protected ActualBinaryOperator readBinaryOperator() {
         InfoBinaryOperator operator = null;
         Token token = tokenList.lookToken();
@@ -468,6 +543,13 @@ public class FilterParserImpl implements FilterParser {
         return null;
     }
 
+    /**
+     * Checks if is method.
+     *
+     * @param token the token
+     * @param lookToken the look token
+     * @return the info method
+     */
     protected InfoMethod isMethod(final Token token, final Token lookToken) {
         if ((lookToken != null) && (lookToken.getKind() == TokenKind.OPENPAREN)) {
             return availableMethods.get(token.getUriLiteral());
@@ -475,6 +557,16 @@ public class FilterParserImpl implements FilterParser {
         return null;
     }
 
+    /**
+     * Validate edm property.
+     *
+     * @param leftExpression the left expression
+     * @param property the property
+     * @param propertyToken the property token
+     * @param actBinOp the act bin op
+     * @throws ExpressionParserException the expression parser exception
+     * @throws ExpressionParserInternalError the expression parser internal error
+     */
     protected void validateEdmProperty(final CommonExpression leftExpression, final PropertyExpressionImpl property,
             final Token propertyToken, final ActualBinaryOperator actBinOp)
             throws ExpressionParserException, ExpressionParserInternalError {
@@ -527,6 +619,15 @@ public class FilterParserImpl implements FilterParser {
         }
     }
 
+    /**
+     * Validate edm property of structured type.
+     *
+     * @param parentType the parent type
+     * @param property the property
+     * @param propertyToken the property token
+     * @throws ExpressionParserException the expression parser exception
+     * @throws ExpressionParserInternalError the expression parser internal error
+     */
     protected void validateEdmPropertyOfStructuredType(final EdmStructuralType parentType, final PropertyExpressionImpl property,
             final Token propertyToken) throws ExpressionParserException, ExpressionParserInternalError {
         try {
@@ -556,7 +657,7 @@ public class FilterParserImpl implements FilterParser {
     }
 
     /**
-     * Check if the property name is the last or only element of the filter
+     * Check if the property name is the last or only element of the filter.
      *
      * @param propertyName name of the property
      * @return <code>true</code> if this is the last or only otherwise <code>false</code>
@@ -565,6 +666,12 @@ public class FilterParserImpl implements FilterParser {
         return curExpression.contains(propertyName + " ");
     }
 
+    /**
+     * Validate unary operator types.
+     *
+     * @param unaryExpression the unary expression
+     * @throws ExpressionParserInternalError the expression parser internal error
+     */
     protected void validateUnaryOperatorTypes(final UnaryExpression unaryExpression) throws ExpressionParserInternalError {
         InfoUnaryOperator unOpt = availableUnaryOperators.get(unaryExpression.getOperator()
                                                                              .toUriLiteral());
@@ -584,6 +691,13 @@ public class FilterParserImpl implements FilterParser {
         }
     }
 
+    /**
+     * Validate binary operator types.
+     *
+     * @param binaryExpression the binary expression
+     * @throws ExpressionParserException the expression parser exception
+     * @throws ExpressionParserInternalError the expression parser internal error
+     */
     protected void validateBinaryOperatorTypes(final BinaryExpression binaryExpression)
             throws ExpressionParserException, ExpressionParserInternalError {
         InfoBinaryOperator binOpt = availableBinaryOperators.get(binaryExpression.getOperator()
@@ -628,6 +742,14 @@ public class FilterParserImpl implements FilterParser {
         binaryExpression.setEdmType(parameterSet.getReturnType());
     }
 
+    /**
+     * Validate method types.
+     *
+     * @param methodExpression the method expression
+     * @param methodToken the method token
+     * @throws ExpressionParserException the expression parser exception
+     * @throws ExpressionParserInternalError the expression parser internal error
+     */
     protected void validateMethodTypes(final MethodExpression methodExpression, final Token methodToken)
             throws ExpressionParserException, ExpressionParserInternalError {
         InfoMethod methOpt = availableMethods.get(methodExpression.getUriLiteral());
@@ -660,6 +782,13 @@ public class FilterParserImpl implements FilterParser {
         methodExpression.setEdmType(parameterSet.getReturnType());
     }
 
+    /**
+     * Gets the encoded uri literal.
+     *
+     * @param uriLiteral the uri literal
+     * @param pos the pos
+     * @return the encoded uri literal
+     */
     /*
      * In case we have + in the string literal and is replaced with ' '(space) in UriParserImpl it needs
      * to be changed back to +
@@ -677,6 +806,9 @@ public class FilterParserImpl implements FilterParser {
         return uriLiteral;
     }
 
+    /**
+     * Inits the avail tables.
+     */
     static void initAvailTables() {
         Map<String, InfoBinaryOperator> lAvailableBinaryOperators = new HashMap<String, InfoBinaryOperator>();
         Map<String, InfoMethod> lAvailableMethods = new HashMap<String, InfoMethod>();

@@ -41,18 +41,31 @@ import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.junit.Before;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class EdmImplTest.
  */
 public class EdmImplTest extends BaseTest {
 
+  /** The edm. */
   private ForEdmImplTest edm;
 
+  /**
+   * Gets the edm impl.
+   *
+   * @return the edm impl
+   * @throws EdmException the edm exception
+   */
   @Before
   public void getEdmImpl() throws EdmException {
     edm = new ForEdmImplTest();
   }
 
+  /**
+   * Test entity container cache.
+   *
+   * @throws EdmException the edm exception
+   */
   @Test
   public void testEntityContainerCache() throws EdmException {
     assertEquals(edm.getEntityContainer("foo"), edm.getEntityContainer("foo"));
@@ -61,40 +74,78 @@ public class EdmImplTest extends BaseTest {
     assertNotSame(edm.getDefaultEntityContainer(), edm.getEntityContainer(""));
   }
 
+  /**
+   * Test entity type cache.
+   *
+   * @throws EdmException the edm exception
+   */
   @Test
   public void testEntityTypeCache() throws EdmException {
     assertEquals(edm.getEntityType("foo", "bar"), edm.getEntityType("foo", "bar"));
     assertNotSame(edm.getEntityType("foo", "bar"), edm.getEntityType("bar", "foo"));
   }
 
+  /**
+   * Test complex type cache.
+   *
+   * @throws EdmException the edm exception
+   */
   @Test
   public void testComplexTypeCache() throws EdmException {
     assertEquals(edm.getComplexType("foo", "bar"), edm.getComplexType("foo", "bar"));
     assertNotSame(edm.getComplexType("foo", "bar"), edm.getComplexType("bar", "foo"));
   }
 
+  /**
+   * Test association cache.
+   *
+   * @throws EdmException the edm exception
+   */
   @Test
   public void testAssociationCache() throws EdmException {
     assertEquals(edm.getAssociation("foo", "bar"), edm.getAssociation("foo", "bar"));
     assertNotSame(edm.getAssociation("foo", "bar"), edm.getAssociation("bar", "foo"));
   }
 
+  /**
+   * Test entity sets cache.
+   *
+   * @throws EdmException the edm exception
+   */
   @Test
   public void testEntitySetsCache() throws EdmException {
     assertEquals(edm.getEntitySets(), edm.getEntitySets());
   }
 
+  /**
+   * Test function import cache.
+   *
+   * @throws EdmException the edm exception
+   */
   @Test
   public void testFunctionImportCache() throws EdmException {
     assertEquals(edm.getFunctionImports(), edm.getFunctionImports());
   }
 
+  /**
+   * The Class ForEdmImplTest.
+   */
   private class ForEdmImplTest extends EdmImpl {
 
+    /**
+     * Instantiates a new for edm impl test.
+     */
     public ForEdmImplTest() {
       super(null);
     }
 
+    /**
+     * Creates the entity container.
+     *
+     * @param name the name
+     * @return the edm entity container
+     * @throws ODataException the o data exception
+     */
     @Override
     protected EdmEntityContainer createEntityContainer(final String name) throws ODataException {
       EdmEntityContainer edmEntityContainer = mock(EdmEntityContainer.class);
@@ -102,6 +153,13 @@ public class EdmImplTest extends BaseTest {
       return edmEntityContainer;
     }
 
+    /**
+     * Creates the entity type.
+     *
+     * @param fqName the fq name
+     * @return the edm entity type
+     * @throws ODataException the o data exception
+     */
     @Override
     protected EdmEntityType createEntityType(final FullQualifiedName fqName) throws ODataException {
       EdmEntityType edmEntityType = mock(EdmEntityType.class);
@@ -110,6 +168,13 @@ public class EdmImplTest extends BaseTest {
       return edmEntityType;
     }
 
+    /**
+     * Creates the complex type.
+     *
+     * @param fqName the fq name
+     * @return the edm complex type
+     * @throws ODataException the o data exception
+     */
     @Override
     protected EdmComplexType createComplexType(final FullQualifiedName fqName) throws ODataException {
       EdmComplexType edmComplexType = mock(EdmComplexType.class);
@@ -118,6 +183,13 @@ public class EdmImplTest extends BaseTest {
       return edmComplexType;
     }
 
+    /**
+     * Creates the association.
+     *
+     * @param fqName the fq name
+     * @return the edm association
+     * @throws ODataException the o data exception
+     */
     @Override
     protected EdmAssociation createAssociation(final FullQualifiedName fqName) throws ODataException {
       EdmAssociation edmAssociation = mock(EdmAssociation.class);
@@ -126,18 +198,36 @@ public class EdmImplTest extends BaseTest {
       return edmAssociation;
     }
 
+    /**
+     * Creates the entity sets.
+     *
+     * @return the list
+     * @throws ODataException the o data exception
+     */
     @Override
     protected List<EdmEntitySet> createEntitySets() throws ODataException {
       List<EdmEntitySet> edmEntitySets = new ArrayList<EdmEntitySet>();
       return edmEntitySets;
     }
 
+    /**
+     * Creates the function imports.
+     *
+     * @return the list
+     * @throws ODataException the o data exception
+     */
     @Override
     protected List<EdmFunctionImport> createFunctionImports() throws ODataException {
       List<EdmFunctionImport> edmFunctionImports = new ArrayList<EdmFunctionImport>();
       return edmFunctionImports;
     }
 
+    /**
+     * Creates the alias to namespace info.
+     *
+     * @return the map
+     * @throws ODataException the o data exception
+     */
     @Override
     protected Map<String, String> createAliasToNamespaceInfo() throws ODataException {
       return new HashMap<String, String>();

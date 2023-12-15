@@ -21,6 +21,7 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
 
+// TODO: Auto-generated Javadoc
 /**
  * <p>
  * Java class for JPAEmbeddableTypesMapType complex type.
@@ -48,6 +49,7 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "JPAEmbeddableTypesMapType", propOrder = {"jpaEmbeddableType"})
 public class JPAEmbeddableTypesMapType {
 
+    /** The jpa embeddable type. */
     @XmlElement(name = "JPAEmbeddableType")
     protected List<JPAEmbeddableTypeMapType> jpaEmbeddableType;
 
@@ -69,8 +71,8 @@ public class JPAEmbeddableTypesMapType {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list {@link JPAEmbeddableTypeMapType }
-     * 
-     * 
+     *
+     * @return the JPA embeddable type
      */
     public List<JPAEmbeddableTypeMapType> getJPAEmbeddableType() {
         if (jpaEmbeddableType == null) {

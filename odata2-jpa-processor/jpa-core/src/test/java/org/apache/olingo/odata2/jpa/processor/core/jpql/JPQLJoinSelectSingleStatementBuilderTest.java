@@ -41,15 +41,37 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPQLJoinSelectSingleStatementBuilderTest.
+ */
 public class JPQLJoinSelectSingleStatementBuilderTest {
+  
+  /** The context. */
   JPQLJoinSelectSingleContextView context = null;
 
+  /**
+   * Sets the up before class.
+   *
+   * @throws Exception the exception
+   */
   @BeforeClass
   public static void setUpBeforeClass() throws Exception {}
 
+  /**
+   * Tear down after class.
+   *
+   * @throws Exception the exception
+   */
   @AfterClass
   public static void tearDownAfterClass() throws Exception {}
 
+  /**
+   * Sets the up.
+   *
+   * @param joinClauseList the new up
+   * @throws Exception the exception
+   */
   public void setUp(final List<JPAJoinClause> joinClauseList) throws Exception {
     context = EasyMock.createMock(JPQLJoinSelectSingleContextView.class);
     EasyMock.expect(context.getJPAEntityAlias()).andStubReturn("gt1");
@@ -64,6 +86,11 @@ public class JPQLJoinSelectSingleStatementBuilderTest {
     EasyMock.replay(context);
   }
 
+  /**
+   * Gets the join clause list.
+   *
+   * @return the join clause list
+   */
   private List<JPAJoinClause> getJoinClauseList() {
     List<JPAJoinClause> joinClauseList = new ArrayList<JPAJoinClause>();
     JPAJoinClause jpaOuterJoinClause =
@@ -78,9 +105,19 @@ public class JPQLJoinSelectSingleStatementBuilderTest {
     return joinClauseList;
   }
 
+  /**
+   * Tear down.
+   *
+   * @throws Exception the exception
+   */
   @After
   public void tearDown() throws Exception {}
 
+  /**
+   * Test build.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testBuild() throws Exception {
     setUp(getJoinClauseList());
@@ -98,6 +135,12 @@ public class JPQLJoinSelectSingleStatementBuilderTest {
 
   }
 
+  /**
+   * Creates the key predicates.
+   *
+   * @return the list
+   * @throws EdmException the edm exception
+   */
   private List<KeyPredicate> createKeyPredicates() throws EdmException {
     KeyPredicate keyPredicate = EasyMock.createMock(KeyPredicate.class);
     EasyMock.expect(keyPredicate.getLiteral()).andStubReturn("1");
@@ -115,6 +158,11 @@ public class JPQLJoinSelectSingleStatementBuilderTest {
     return keyPredicates;
   }
 
+  /**
+   * Test join clause as null.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testJoinClauseAsNull() throws Exception {
     setUp(null);
@@ -128,6 +176,11 @@ public class JPQLJoinSelectSingleStatementBuilderTest {
     }
   }
 
+  /**
+   * Test join clause list as empty.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testJoinClauseListAsEmpty() throws Exception {
     List<JPAJoinClause> joinClauseList = new ArrayList<JPAJoinClause>();

@@ -18,42 +18,126 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.commons;
 
+// TODO: Auto-generated Javadoc
 /**
  * HTTP status codes as defined in RFC2616-sec10
- * and additional status codes as defined in RFC6585
- * 
+ * and additional status codes as defined in RFC6585.
  */
 public enum HttpStatusCodes {
 
-  OK(200, "OK"), CREATED(201, "Created"), ACCEPTED(202, "Accepted"), NO_CONTENT(204, "No Content"), RESET_CONTENT(205,
-      "Reset Content"), PARTIAL_CONTENT(206, "Partial Content"),
+  /** The ok. */
+  OK(200, "OK"), /** The created. */
+ CREATED(201, "Created"), /** The accepted. */
+ ACCEPTED(202, "Accepted"), /** The no content. */
+ NO_CONTENT(204, "No Content"), /** The reset content. */
+ RESET_CONTENT(205,
+      "Reset Content"), 
+ /** The partial content. */
+ PARTIAL_CONTENT(206, "Partial Content"),
 
-  MOVED_PERMANENTLY(301, "Moved Permanently"), FOUND(302, "Found"), SEE_OTHER(303, "See Other"), NOT_MODIFIED(304,
-      "Not Modified"), USE_PROXY(305, "Use Proxy"), TEMPORARY_REDIRECT(307, "Temporary Redirect"),
+  /** The moved permanently. */
+  MOVED_PERMANENTLY(301, "Moved Permanently"), /** The found. */
+ FOUND(302, "Found"), /** The see other. */
+ SEE_OTHER(303, "See Other"), /** The not modified. */
+ NOT_MODIFIED(304,
+      "Not Modified"), 
+ /** The use proxy. */
+ USE_PROXY(305, "Use Proxy"), 
+ /** The temporary redirect. */
+ TEMPORARY_REDIRECT(307, "Temporary Redirect"),
 
-  BAD_REQUEST(400, "Bad Request"), UNAUTHORIZED(401, "Unauthorized"), PAYMENT_REQUIRED(402, "Payment Required"),
+  /** The bad request. */
+  BAD_REQUEST(400, "Bad Request"), /** The unauthorized. */
+ UNAUTHORIZED(401, "Unauthorized"), /** The payment required. */
+ PAYMENT_REQUIRED(402, "Payment Required"),
+  
+  /** The forbidden. */
   FORBIDDEN(
-      403, "Forbidden"), NOT_FOUND(404, "Not Found"), METHOD_NOT_ALLOWED(405, "Method Not Allowed"), NOT_ACCEPTABLE(
-      406, "Not Acceptable"), PROXY_AUTHENTICATION_REQUIRED(407, "Proxy Authentication Required"), REQUEST_TIMEOUT(408,
-      "Request Timeout"), CONFLICT(409, "Conflict"), GONE(410, "Gone"), LENGTH_REQUIRED(411, "Length Required"),
-  PRECONDITION_FAILED(412, "Precondition Failed"), REQUEST_ENTITY_TOO_LARGE(413, "Request Entity Too Large"),
-  REQUEST_URI_TOO_LONG(414, "Request-URI Too Long"), UNSUPPORTED_MEDIA_TYPE(415, "Unsupported Media Type"),
+      403, "Forbidden"), 
+ /** The not found. */
+ NOT_FOUND(404, "Not Found"), 
+ /** The method not allowed. */
+ METHOD_NOT_ALLOWED(405, "Method Not Allowed"), 
+ /** The not acceptable. */
+ NOT_ACCEPTABLE(
+      406, "Not Acceptable"), 
+ /** The proxy authentication required. */
+ PROXY_AUTHENTICATION_REQUIRED(407, "Proxy Authentication Required"), 
+ /** The request timeout. */
+ REQUEST_TIMEOUT(408,
+      "Request Timeout"), 
+ /** The conflict. */
+ CONFLICT(409, "Conflict"), 
+ /** The gone. */
+ GONE(410, "Gone"), 
+ /** The length required. */
+ LENGTH_REQUIRED(411, "Length Required"),
+  
+  /** The precondition failed. */
+  PRECONDITION_FAILED(412, "Precondition Failed"), 
+ /** The request entity too large. */
+ REQUEST_ENTITY_TOO_LARGE(413, "Request Entity Too Large"),
+  
+  /** The request uri too long. */
+  REQUEST_URI_TOO_LONG(414, "Request-URI Too Long"), 
+ /** The unsupported media type. */
+ UNSUPPORTED_MEDIA_TYPE(415, "Unsupported Media Type"),
+  
+  /** The requested range not satisfiable. */
   REQUESTED_RANGE_NOT_SATISFIABLE(416, "Requested Range Not Satisfiable"),
-  EXPECTATION_FAILED(417, "Expectation Failed"),  MISDIRECTED_REQUEST(421, "Misdirected Request"),
-  UNPROCESSABLE_ENTITY(422, "Unprocessable Entity"), LOCKED(423, "Locked"),
+  
+  /** The expectation failed. */
+  EXPECTATION_FAILED(417, "Expectation Failed"),  
+  /** The misdirected request. */
+  MISDIRECTED_REQUEST(421, "Misdirected Request"),
+  
+  /** The unprocessable entity. */
+  UNPROCESSABLE_ENTITY(422, "Unprocessable Entity"), 
+ /** The locked. */
+ LOCKED(423, "Locked"),
+  
+  /** The failed dependency. */
   FAILED_DEPENDENCY(424, "Failed Dependency"),
-  PRECONDITION_REQUIRED(428, "Precondition Required"),TOO_MANY_REQUESTS(429, "Too Many Requests"),
+  
+  /** The precondition required. */
+  PRECONDITION_REQUIRED(428, "Precondition Required"),
+/** The too many requests. */
+TOO_MANY_REQUESTS(429, "Too Many Requests"),
+  
+  /** The method failed. */
   METHOD_FAILED(420, "Method Failed"),
+  
+  /** The request header field too large. */
   REQUEST_HEADER_FIELD_TOO_LARGE(431, "Request Header Fields Too Large"),
+  
+  /** The unavailable for legal reasons. */
   UNAVAILABLE_FOR_LEGAL_REASONS(451, "Unavailable For Legal Reasons"),
 
-  INTERNAL_SERVER_ERROR(500, "Internal Server Error"), NOT_IMPLEMENTED(501, "Not Implemented"), BAD_GATEWAY(502,
-      "Bad Gateway"), SERVICE_UNAVAILABLE(503, "Service Unavailable"), GATEWAY_TIMEOUT(504, "Gateway Timeout"),
+  /** The internal server error. */
+  INTERNAL_SERVER_ERROR(500, "Internal Server Error"), /** The not implemented. */
+ NOT_IMPLEMENTED(501, "Not Implemented"), /** The bad gateway. */
+ BAD_GATEWAY(502,
+      "Bad Gateway"), 
+ /** The service unavailable. */
+ SERVICE_UNAVAILABLE(503, "Service Unavailable"), 
+ /** The gateway timeout. */
+ GATEWAY_TIMEOUT(504, "Gateway Timeout"),
+  
+  /** The http version not supported. */
   HTTP_VERSION_NOT_SUPPORTED(505, "HTTP Version Not Supported");
 
+  /** The code. */
   private final int code;
+  
+  /** The info. */
   private final String info;
 
+  /**
+   * Instantiates a new http status codes.
+   *
+   * @param statusCode the status code
+   * @param info the info
+   */
   HttpStatusCodes(final int statusCode, final String info) {
     code = statusCode;
     this.info = info;

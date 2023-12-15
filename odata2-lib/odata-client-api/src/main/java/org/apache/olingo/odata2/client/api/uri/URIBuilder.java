@@ -21,9 +21,9 @@ package org.apache.olingo.odata2.client.api.uri;
 import java.net.URI;
 import java.util.Map;
 
+// TODO: Auto-generated Javadoc
 /**
- * This is a URIBuilder class
- *
+ * This is a URIBuilder class.
  */
 public interface URIBuilder {
   
@@ -162,23 +162,26 @@ public interface URIBuilder {
   URIBuilder skip(int skip);
   
   /**
-   * Adds custom query option
-   * @param paramName parameter name 
+   * Adds custom query option.
+   *
+   * @param paramName parameter name
    * @param paramValue parameter value
    * @return current URIBuilder instance
    */
   URIBuilder addCustomQueryOption(String paramName, Object paramValue);
   
   /**
-   * Appends function import to the uri
-   * @param functionImport
+   * Appends function import to the uri.
+   *
+   * @param functionImport the function import
    * @return current URIBuilder instance
    */
   URIBuilder appendFunctionImportSegment(String functionImport);
   
   /**
-   * Appends function import parameters to the uri
-   * @param functionImportParams
+   * Appends function import parameters to the uri.
+   *
+   * @param functionImportParams the function import params
    * @return current URIBuilder instance
    */
   URIBuilder appendFunctionImportParameters(Map<String, Object> functionImportParams);

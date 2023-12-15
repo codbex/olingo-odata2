@@ -25,15 +25,27 @@ import org.apache.olingo.odata2.api.commons.HttpContentType;
 import org.apache.olingo.odata2.testutil.server.ServletType;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
  * Tests employing the reference scenario reading properties in JSON format.
  * 
  */
 public class PropertyJsonReadOnlyTest extends AbstractRefTest {
+  
+  /**
+   * Instantiates a new property json read only test.
+   *
+   * @param servletType the servlet type
+   */
   public PropertyJsonReadOnlyTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /**
+   * Simple property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void simpleProperty() throws Exception {
     HttpResponse response = callUri("Employees('2')/Age?$format=json");
@@ -50,6 +62,11 @@ public class PropertyJsonReadOnlyTest extends AbstractRefTest {
     assertEquals("{\"d\":{\"Image\":\"" + PHOTO_DEFAULT_IMAGE + "\"}}", getBody(response));
   }
 
+  /**
+   * Complex property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void complexProperty() throws Exception {
     HttpResponse response = callUri("Employees('2')/Location/City?$format=json");

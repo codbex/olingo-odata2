@@ -21,29 +21,62 @@ package org.apache.olingo.odata2.jpa.processor.ref.model;
 import java.io.Serializable;
 import java.util.Arrays;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CategoryKey.
+ */
 public class CategoryKey implements Serializable {
 
+  /** The Constant serialVersionUID. */
   private static final long serialVersionUID = 1L;
 
+  /** The code. */
   private char code[] = new char[2];
+  
+  /** The id. */
   private long id;
 
+  /**
+   * Gets the code.
+   *
+   * @return the code
+   */
   public char[] getCode() {
     return code;
   }
 
+  /**
+   * Sets the code.
+   *
+   * @param code the new code
+   */
   public void setCode(char[] code) {
     this.code = code;
   }
 
+  /**
+   * Gets the id.
+   *
+   * @return the id
+   */
   public long getId() {
     return id;
   }
 
+  /**
+   * Sets the id.
+   *
+   * @param id the new id
+   */
   public void setId(long id) {
     this.id = id;
   }
 
+  /**
+   * Hash code.
+   *
+   * @return the int
+   */
   @Override
   public int hashCode() {
     final int prime = 31;
@@ -53,6 +86,12 @@ public class CategoryKey implements Serializable {
     return result;
   }
 
+  /**
+   * Equals.
+   *
+   * @param obj the obj
+   * @return true, if successful
+   */
   @Override
   public boolean equals(Object obj) {
     if (this == obj) {

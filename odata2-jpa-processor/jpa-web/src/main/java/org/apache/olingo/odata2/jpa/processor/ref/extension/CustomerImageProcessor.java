@@ -25,8 +25,18 @@ import org.apache.olingo.odata2.api.annotation.edm.EdmFunctionImport.ReturnType.
 import org.apache.olingo.odata2.api.annotation.edm.EdmFunctionImportParameter;
 import org.apache.olingo.odata2.jpa.processor.ref.util.CustomerImageLoader;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CustomerImageProcessor.
+ */
 public class CustomerImageProcessor {
 
+  /**
+   * Gets the image.
+   *
+   * @param customerId the customer id
+   * @return the image
+   */
   @EdmFunctionImport(returnType = @ReturnType(type = Type.SIMPLE))
   public byte[] getImage(
       @EdmFunctionImportParameter(name = "CustomerId", facets = @EdmFacets(nullable = false)) Long customerId) {

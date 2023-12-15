@@ -35,8 +35,27 @@ import org.apache.olingo.odata2.jpa.processor.api.jpql.JPQLContext;
 import org.apache.olingo.odata2.jpa.processor.api.jpql.JPQLContextType;
 import org.apache.olingo.odata2.jpa.processor.api.jpql.JPQLStatement;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The listener interface for receiving salesOrderItemTombstone events.
+ * The class that is interested in processing a salesOrderItemTombstone
+ * event implements this interface, and the object created
+ * with that class is registered with a component using the
+ * component's <code>addSalesOrderItemTombstoneListener<code> method. When
+ * the salesOrderItemTombstone event occurs, that object's appropriate
+ * method is invoked.
+ *
+ * @see SalesOrderItemTombstoneEvent
+ */
 public class SalesOrderItemTombstoneListener extends ODataJPATombstoneEntityListener {
 
+  /**
+   * Gets the query.
+   *
+   * @param resultsView the results view
+   * @param em the em
+   * @return the query
+   */
   @Override
   public Query getQuery(final GetEntitySetUriInfo resultsView, final EntityManager em) {
     JPQLContextType contextType = null;
@@ -83,6 +102,13 @@ public class SalesOrderItemTombstoneListener extends ODataJPATombstoneEntityList
     }
   }
 
+  /**
+   * Generate delta token.
+   *
+   * @param deltas the deltas
+   * @param query the query
+   * @return the string
+   */
   @Override
   public String generateDeltaToken(final List<Object> deltas, final Query query) {
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.000");

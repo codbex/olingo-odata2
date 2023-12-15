@@ -21,40 +21,78 @@ package org.apache.olingo.odata2.annotation.processor.ref.model;
 import org.apache.olingo.odata2.api.annotation.edm.EdmComplexType;
 import org.apache.olingo.odata2.api.annotation.edm.EdmProperty;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class City.
  */
 @EdmComplexType(name = "c_City", namespace = ModelSharedConstants.NAMESPACE_1)
 public class City {
 
+  /** The postal code. */
   @EdmProperty
   private String postalCode;
+  
+  /** The city name. */
   @EdmProperty
   private String cityName;
 
+  /**
+   * Instantiates a new city.
+   */
   public City() {}
 
+  /**
+   * Instantiates a new city.
+   *
+   * @param postalCode the postal code
+   * @param name the name
+   */
   public City(final String postalCode, final String name) {
     this.postalCode = postalCode;
     cityName = name;
   }
 
+  /**
+   * Sets the postal code.
+   *
+   * @param postalCode the new postal code
+   */
   public void setPostalCode(final String postalCode) {
     this.postalCode = postalCode;
   }
 
+  /**
+   * Gets the postal code.
+   *
+   * @return the postal code
+   */
   public String getPostalCode() {
     return postalCode;
   }
 
+  /**
+   * Sets the city name.
+   *
+   * @param cityName the new city name
+   */
   public void setCityName(final String cityName) {
     this.cityName = cityName;
   }
 
+  /**
+   * Gets the city name.
+   *
+   * @return the city name
+   */
   public String getCityName() {
     return cityName;
   }
 
+  /**
+   * To string.
+   *
+   * @return the string
+   */
   @Override
   public String toString() {
     return String.format("%s, %s", cityName, postalCode);

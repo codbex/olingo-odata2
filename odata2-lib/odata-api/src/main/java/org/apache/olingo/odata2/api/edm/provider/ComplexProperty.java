@@ -23,15 +23,19 @@ import java.util.List;
 import org.apache.olingo.odata2.api.edm.EdmFacets;
 import org.apache.olingo.odata2.api.edm.FullQualifiedName;
 
+// TODO: Auto-generated Javadoc
 /**
  * Objects of this class represent a complex property.
  * 
  */
 public class ComplexProperty extends Property {
 
+  /** The type. */
   private FullQualifiedName type;
 
   /**
+   * Gets the type.
+   *
    * @return {@link FullQualifiedName} of this property
    */
   public FullQualifiedName getType() {
@@ -39,8 +43,9 @@ public class ComplexProperty extends Property {
   }
 
   /**
-   * Sets the {@link FullQualifiedName} for this {@link Property}
-   * @param type
+   * Sets the {@link FullQualifiedName} for this {@link Property}.
+   *
+   * @param type the type
    * @return {@link Property} for method chaining
    */
   public ComplexProperty setType(final FullQualifiedName type) {
@@ -48,48 +53,96 @@ public class ComplexProperty extends Property {
     return this;
   }
 
+  /**
+   * Sets the name.
+   *
+   * @param name the name
+   * @return the complex property
+   */
   @Override
   public ComplexProperty setName(final String name) {
     super.setName(name);
     return this;
   }
 
+  /**
+   * Sets the facets.
+   *
+   * @param facets the facets
+   * @return the complex property
+   */
   @Override
   public ComplexProperty setFacets(final EdmFacets facets) {
     super.setFacets(facets);
     return this;
   }
 
+  /**
+   * Sets the customizable feed mappings.
+   *
+   * @param customizableFeedMappings the customizable feed mappings
+   * @return the complex property
+   */
   @Override
   public ComplexProperty setCustomizableFeedMappings(final CustomizableFeedMappings customizableFeedMappings) {
     super.setCustomizableFeedMappings(customizableFeedMappings);
     return this;
   }
 
+  /**
+   * Sets the mime type.
+   *
+   * @param mimeType the mime type
+   * @return the complex property
+   */
   @Override
   public ComplexProperty setMimeType(final String mimeType) {
     super.setMimeType(mimeType);
     return this;
   }
 
+  /**
+   * Sets the mapping.
+   *
+   * @param mapping the mapping
+   * @return the complex property
+   */
   @Override
   public ComplexProperty setMapping(final Mapping mapping) {
     super.setMapping(mapping);
     return this;
   }
 
+  /**
+   * Sets the documentation.
+   *
+   * @param documentation the documentation
+   * @return the complex property
+   */
   @Override
   public ComplexProperty setDocumentation(final Documentation documentation) {
     super.setDocumentation(documentation);
     return this;
   }
 
+  /**
+   * Sets the annotation attributes.
+   *
+   * @param annotationAttributes the annotation attributes
+   * @return the complex property
+   */
   @Override
   public ComplexProperty setAnnotationAttributes(final List<AnnotationAttribute> annotationAttributes) {
     super.setAnnotationAttributes(annotationAttributes);
     return this;
   }
 
+  /**
+   * Sets the annotation elements.
+   *
+   * @param annotationElements the annotation elements
+   * @return the complex property
+   */
   @Override
   public ComplexProperty setAnnotationElements(final List<AnnotationElement> annotationElements) {
     super.setAnnotationElements(annotationElements);

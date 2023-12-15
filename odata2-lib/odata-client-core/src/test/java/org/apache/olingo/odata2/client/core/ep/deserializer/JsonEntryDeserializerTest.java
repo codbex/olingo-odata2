@@ -44,22 +44,42 @@ import org.apache.olingo.odata2.client.api.ep.EntityStream;
 import org.apache.olingo.odata2.testutil.mock.MockFacade;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class JsonEntryDeserializerTest.
  */
 public class JsonEntryDeserializerTest extends AbstractDeserializerTest {
 
+  /** The Constant SIMPLE_ENTRY_BUILDING. */
   private static final String SIMPLE_ENTRY_BUILDING = "JsonBuilding.json";
+  
+  /** The Constant SIMPLE_ENTRY_ROOM. */
   private static final String SIMPLE_ENTRY_ROOM = "JsonRoom.json";
+  
+  /** The Constant SIMPLE_ENTRY_EMPLOYEE. */
   private static final String SIMPLE_ENTRY_EMPLOYEE = "JsonEmployee.json";
+  
+  /** The Constant SIMPLE_ENTRY_TEAM. */
   private static final String SIMPLE_ENTRY_TEAM = "JsonTeam.json";
+  
+  /** The Constant INVALID_ENTRY_TEAM_DOUBLE_NAME_PROPERTY. */
   private static final String INVALID_ENTRY_TEAM_DOUBLE_NAME_PROPERTY = "JsonInvalidTeamDoubleNameProperty.json";
+  
+  /** The Constant SIMPLE_ENTRY_BUILDING_WITHOUT_D. */
   private static final String SIMPLE_ENTRY_BUILDING_WITHOUT_D = "JsonBuildingWithoutD.json";
 
+  /** The Constant negativeJsonStart_1. */
   // Negative Test jsonStart
   private static final String negativeJsonStart_1 = "{ \"abc\": {";
+  
+  /** The Constant negativeJsonStart_2. */
   private static final String negativeJsonStart_2 = "{ \"d\": [a: 1, b: 2] }";
 
+  /**
+   * Read content only employee.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readContentOnlyEmployee() throws Exception {
     // prepare
@@ -79,6 +99,11 @@ public class JsonEntryDeserializerTest extends AbstractDeserializerTest {
     assertEquals(9, result.getProperties().size());
   }
 
+  /**
+   * Read content only room.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readContentOnlyRoom() throws Exception {
     // prepare
@@ -98,6 +123,11 @@ public class JsonEntryDeserializerTest extends AbstractDeserializerTest {
     assertEquals(4, result.getProperties().size());
   }
 
+  /**
+   * Read content only employee with additional link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readContentOnlyEmployeeWithAdditionalLink() throws Exception {
     // prepare
@@ -120,6 +150,11 @@ public class JsonEntryDeserializerTest extends AbstractDeserializerTest {
     assertEquals("http://host:8080/ReferenceScenario.svc/Managers('1')", associationUris.get(0));
   }
 
+  /**
+   * Read content only room with additional link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readContentOnlyRoomWithAdditionalLink() throws Exception {
     // prepare
@@ -142,6 +177,11 @@ public class JsonEntryDeserializerTest extends AbstractDeserializerTest {
     assertEquals("http://host:8080/ReferenceScenario.svc/Buildings('1')", associationUris.get(0));
   }
 
+  /**
+   * Double closing brackets at the end.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void doubleClosingBracketsAtTheEnd() throws Exception {
     String invalidJson = "{ \"Id\" : \"1\", \"Seats\" : 1, \"Version\" : 1}}";
@@ -156,6 +196,11 @@ public class JsonEntryDeserializerTest extends AbstractDeserializerTest {
     xec.readEntry(entitySet, entityStream);
   }
 
+  /**
+   * Read simple room entry.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readSimpleRoomEntry() throws Exception {
     ODataEntry roomEntry = prepareAndExecuteEntry(SIMPLE_ENTRY_ROOM, "Rooms", DEFAULT_PROPERTIES);
@@ -181,6 +226,11 @@ public class JsonEntryDeserializerTest extends AbstractDeserializerTest {
     assertEquals("W/\"1\"", metadata.getEtag());
   }
 
+  /**
+   * Read simple employee entry.
+   *
+   * @throws Exception the exception
+   */
   @SuppressWarnings("unchecked")
   @Test
   public void readSimpleEmployeeEntry() throws Exception {
@@ -227,6 +277,11 @@ public class JsonEntryDeserializerTest extends AbstractDeserializerTest {
     assertNull(mediaMetadata.getEtag());
   }
 
+  /**
+   * Read simple team entry.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readSimpleTeamEntry() throws Exception {
     ODataEntry result = prepareAndExecuteEntry(SIMPLE_ENTRY_TEAM, "Teams", DEFAULT_PROPERTIES);
@@ -245,6 +300,11 @@ public class JsonEntryDeserializerTest extends AbstractDeserializerTest {
     checkMediaDataInitial(result.getMediaMetadata());
   }
 
+  /**
+   * Read simple building entry.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readSimpleBuildingEntry() throws Exception {
     ODataEntry result = prepareAndExecuteEntry(SIMPLE_ENTRY_BUILDING, "Buildings", DEFAULT_PROPERTIES);
@@ -263,6 +323,11 @@ public class JsonEntryDeserializerTest extends AbstractDeserializerTest {
     checkMediaDataInitial(result.getMediaMetadata());
   }
 
+  /**
+   * Read simple building entry without D.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readSimpleBuildingEntryWithoutD() throws Exception {
     ODataEntry result = prepareAndExecuteEntry(SIMPLE_ENTRY_BUILDING_WITHOUT_D, "Buildings", DEFAULT_PROPERTIES);
@@ -281,6 +346,11 @@ public class JsonEntryDeserializerTest extends AbstractDeserializerTest {
     checkMediaDataInitial(result.getMediaMetadata());
   }
 
+  /**
+   * Read minimal entry.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readMinimalEntry() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -299,6 +369,11 @@ public class JsonEntryDeserializerTest extends AbstractDeserializerTest {
     checkMediaDataInitial(result.getMediaMetadata());
   }
 
+  /**
+   * Read entry with null property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readEntryWithNullProperty() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Rooms");
@@ -321,6 +396,11 @@ public class JsonEntryDeserializerTest extends AbstractDeserializerTest {
     
   }
 
+  /**
+   * Read with double property on team.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void readWithDoublePropertyOnTeam() throws Exception {
     // The file contains the name property two times
@@ -332,6 +412,11 @@ public class JsonEntryDeserializerTest extends AbstractDeserializerTest {
     }
   }
 
+  /**
+   * Entry with metadata element properties.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void entryWithMetadataElementProperties() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -346,6 +431,11 @@ public class JsonEntryDeserializerTest extends AbstractDeserializerTest {
     checkMediaDataInitial(result.getMediaMetadata());
   }
 
+  /**
+   * Check media data initial.
+   *
+   * @param mediaMetadata the media metadata
+   */
   private void checkMediaDataInitial(final MediaMetadata mediaMetadata) {
     assertNull(mediaMetadata.getContentType());
     assertNull(mediaMetadata.getEditLink());
@@ -353,6 +443,11 @@ public class JsonEntryDeserializerTest extends AbstractDeserializerTest {
     assertNull(mediaMetadata.getSourceLink());
   }
 
+  /**
+   * Empty entry.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void emptyEntry() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -362,6 +457,11 @@ public class JsonEntryDeserializerTest extends AbstractDeserializerTest {
     new JsonEntityDeserializer().readEntry(entitySet, entityStream);
   }
 
+  /**
+   * Wrong start.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void wrongStart() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -372,6 +472,11 @@ public class JsonEntryDeserializerTest extends AbstractDeserializerTest {
     new JsonEntityDeserializer().readEntry(entitySet, entityStream);
   }
 
+  /**
+   * Wrong start 2.
+   *
+   * @throws Exception the exception
+   */
   @Test(expected = EntityProviderException.class)
   public void wrongStart2() throws Exception {
     final EdmEntitySet entitySet = MockFacade.getMockEdm().getDefaultEntityContainer().getEntitySet("Teams");
@@ -386,7 +491,8 @@ public class JsonEntryDeserializerTest extends AbstractDeserializerTest {
    * Employee with inline entity Room with inline entity Buildings 
    * Scenario of 1:1:1 navigation
    * E.g: Employees('1')?$expand=ne_Room/nr_Building
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test
   public void employeesEntryWithEmployeeToRoomToBuilding() throws Exception {
@@ -407,11 +513,13 @@ public class JsonEntryDeserializerTest extends AbstractDeserializerTest {
     assertEquals(3, ((ODataEntry)((ODataEntry)result.getProperties().get("ne_Room")).getProperties()
         .get("nr_Building")).getProperties().size());
   }
+  
   /**
    * Employee with inline entity Room with inline entity Buildings 
    * Scenario of 1:1:1 navigation
    * E.g: Employees('1')?$expand=ne_Room/nr_Building
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test
   public void employeesEntryWithEmployeeToRoomToBuildingWithTypeMappings() throws Exception {
@@ -435,11 +543,13 @@ public class JsonEntryDeserializerTest extends AbstractDeserializerTest {
     assertEquals(3, ((ODataEntry)((ODataEntry)result.getProperties().get("ne_Room")).getProperties()
         .get("nr_Building")).getProperties().size());
   }
+  
   /**
    * Room has inline entity to Employees and has inline entry To Team
    * Scenario of 1:n:1 navigation 
    * E.g: Rooms('1')?$expand=nr_Employees/ne_Team
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test
   public void RoomEntryWithInlineEmployeeInlineTeam() throws Exception {
@@ -461,10 +571,12 @@ public class JsonEntryDeserializerTest extends AbstractDeserializerTest {
       assertEquals(3, ((ODataEntry)employeeEntry.getProperties().get("ne_Team")).getProperties().size());
     }
   }
+  
   /**
    * Room has empty inline entity to Employees and has inline entry To Team
    * E.g: Rooms('10')?$expand=nr_Employees/ne_Team
-   * @throws Exception
+   *
+   * @throws Exception the exception
    */
   @Test
   public void RoomEntryWithEmptyInlineEmployeeInlineTeam() throws Exception {
@@ -483,10 +595,13 @@ public class JsonEntryDeserializerTest extends AbstractDeserializerTest {
     assertEquals(5, result.getProperties().size());
     assertEquals(0, ((ODataFeed)result.getProperties().get("nr_Employees")).getEntries().size());
   }
+  
   /**
-   * @param inlineEntries
-   * @param feed
-   * @param entry
+   * Gets the expanded data.
+   *
+   * @param inlineEntries the inline entries
+   * @param entry the entry
+   * @return the expanded data
    */
   private void getExpandedData(Map<String, Object> inlineEntries, ODataEntry entry) {
     assertNotNull(entry);
@@ -508,10 +623,13 @@ public class JsonEntryDeserializerTest extends AbstractDeserializerTest {
       }
     }
   }
+  
   /**
-   * @param inlineEntries
-   * @param feed
-   * @param entry
+   * Gets the expanded data.
+   *
+   * @param inlineEntries the inline entries
+   * @param feed the feed
+   * @return the expanded data
    */
   private void getExpandedData(Map<String, Object> inlineEntries, ODataFeed feed) {
     assertNotNull(feed.getEntries());

@@ -18,6 +18,7 @@
  ******************************************************************************/
 package org.apache.olingo.odata2.api.edm.provider;
 
+// TODO: Auto-generated Javadoc
 /**
  * This interface can be used to access the {@link EdmProvider} within an application.
  * 
@@ -26,6 +27,8 @@ package org.apache.olingo.odata2.api.edm.provider;
 public interface EdmProviderAccessor {
 
   /**
+   * Gets the edm provider.
+   *
    * @return {@link EdmProvider} of this service
    */
   public EdmProvider getEdmProvider();

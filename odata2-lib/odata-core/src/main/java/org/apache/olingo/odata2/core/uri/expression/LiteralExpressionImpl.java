@@ -25,39 +25,81 @@ import org.apache.olingo.odata2.api.uri.expression.ExpressionKind;
 import org.apache.olingo.odata2.api.uri.expression.ExpressionVisitor;
 import org.apache.olingo.odata2.api.uri.expression.LiteralExpression;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class LiteralExpressionImpl.
+ */
 public class LiteralExpressionImpl implements LiteralExpression {
 
+  /** The edm type. */
   private EdmType edmType;
+  
+  /** The edm literal. */
   private EdmLiteral edmLiteral;
+  
+  /** The uri literal. */
   private String uriLiteral;
 
+  /**
+   * Instantiates a new literal expression impl.
+   *
+   * @param uriLiteral the uri literal
+   * @param javaLiteral the java literal
+   */
   public LiteralExpressionImpl(final String uriLiteral, final EdmLiteral javaLiteral) {
     this.uriLiteral = uriLiteral;
     edmLiteral = javaLiteral;
     edmType = edmLiteral.getType();
   }
 
+  /**
+   * Gets the edm type.
+   *
+   * @return the edm type
+   */
   @Override
   public EdmType getEdmType() {
     return edmType;
   }
 
+  /**
+   * Sets the edm type.
+   *
+   * @param edmType the edm type
+   * @return the common expression
+   */
   @Override
   public CommonExpression setEdmType(final EdmType edmType) {
     this.edmType = edmType;
     return this;
   }
 
+  /**
+   * Gets the kind.
+   *
+   * @return the kind
+   */
   @Override
   public ExpressionKind getKind() {
     return ExpressionKind.LITERAL;
   }
 
+  /**
+   * Gets the uri literal.
+   *
+   * @return the uri literal
+   */
   @Override
   public String getUriLiteral() {
     return uriLiteral;
   }
 
+  /**
+   * Accept.
+   *
+   * @param visitor the visitor
+   * @return the object
+   */
   @Override
   public Object accept(final ExpressionVisitor visitor) {
     Object ret = visitor.visitLiteral(this, edmLiteral);

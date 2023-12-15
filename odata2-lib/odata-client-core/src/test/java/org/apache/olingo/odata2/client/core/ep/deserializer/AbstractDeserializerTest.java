@@ -43,18 +43,35 @@ import org.apache.olingo.odata2.client.api.ep.EntityStream;
 import org.apache.olingo.odata2.testutil.fit.BaseTest;
 import org.apache.olingo.odata2.testutil.mock.MockFacade;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class AbstractDeserializerTest.
  */
 public abstract class AbstractDeserializerTest extends BaseTest {
 
+  /** The Constant DEFAULT_PROPERTIES. */
   protected static final DeserializerProperties DEFAULT_PROPERTIES = DeserializerProperties.init()
       .build();
 
+  /**
+   * Creates the reader for test.
+   *
+   * @param input the input
+   * @return the XML stream reader
+   * @throws XMLStreamException the XML stream exception
+   */
   protected XMLStreamReader createReaderForTest(final String input) throws XMLStreamException {
     return createReaderForTest(input, false);
   }
 
+  /**
+   * Creates the reader for test.
+   *
+   * @param input the input
+   * @param namespaceAware the namespace aware
+   * @return the XML stream reader
+   * @throws XMLStreamException the XML stream exception
+   */
   protected XMLStreamReader createReaderForTest(final String input, final boolean namespaceAware)
       throws XMLStreamException {
     XMLInputFactory factory = XMLInputFactory.newInstance();
@@ -66,12 +83,26 @@ public abstract class AbstractDeserializerTest extends BaseTest {
     return streamReader;
   }
 
+  /**
+   * Creates the type mappings.
+   *
+   * @param key the key
+   * @param value the value
+   * @return the map
+   */
   protected Map<String, Object> createTypeMappings(final String key, final Object value) {
     Map<String, Object> typeMappings = new HashMap<String, Object>();
     typeMappings.put(key, value);
     return typeMappings;
   }
 
+  /**
+   * Gets the file as stream.
+   *
+   * @param filename the filename
+   * @return the file as stream
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   protected InputStream getFileAsStream(final String filename) throws IOException {
     InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream(filename);
     if (in == null) {
@@ -80,6 +111,13 @@ public abstract class AbstractDeserializerTest extends BaseTest {
     return in;
   }
 
+  /**
+   * Read file.
+   *
+   * @param filename the filename
+   * @return the string
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   protected String readFile(final String filename) throws IOException {
     InputStream in = getFileAsStream(filename);
 
@@ -103,9 +141,9 @@ public abstract class AbstractDeserializerTest extends BaseTest {
    * createTypeMappings("someKey", Integer.class, "anotherKey", Long.class);
    * </code>
    * </p>
-   * 
-   * @param firstKeyThenMappingClass
-   * @return
+   *
+   * @param firstKeyThenMappingClass the first key then mapping class
+   * @return the map
    */
   protected Map<String, Object> createTypeMappings(final Object... firstKeyThenMappingClass) {
     Map<String, Object> typeMappings = new HashMap<String, Object>();
@@ -120,16 +158,24 @@ public abstract class AbstractDeserializerTest extends BaseTest {
     return typeMappings;
   }
 
+  /**
+   * Creates the content as stream.
+   *
+   * @param content the content
+   * @return the input stream
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
   protected InputStream createContentAsStream(final String content) throws UnsupportedEncodingException {
     return new ByteArrayInputStream(content.getBytes("UTF-8"));
   }
 
   /**
-   * 
-   * @param content
+   * Creates the content as stream.
+   *
+   * @param content the content
    * @param replaceWhitespaces if <code>true</code> all XML not necessary whitespaces between tags are
-   * @return
-   * @throws UnsupportedEncodingException
+   * @return the input stream
+   * @throws UnsupportedEncodingException the unsupported encoding exception
    */
   protected InputStream createContentAsStream(final String content, final boolean replaceWhitespaces)
       throws UnsupportedEncodingException {
@@ -141,6 +187,19 @@ public abstract class AbstractDeserializerTest extends BaseTest {
     return new ByteArrayInputStream(contentForStream.getBytes("UTF-8"));
   }
 
+  /**
+   * Prepare and execute entry.
+   *
+   * @param fileName the file name
+   * @param entitySetName the entity set name
+   * @param readProperties the read properties
+   * @return the o data entry
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws EdmException the edm exception
+   * @throws ODataException the o data exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   * @throws EntityProviderException the entity provider exception
+   */
   protected ODataEntry prepareAndExecuteEntry(final String fileName, final String entitySetName,
       final DeserializerProperties readProperties) throws IOException, EdmException, ODataException,
       UnsupportedEncodingException, EntityProviderException {
@@ -160,6 +219,19 @@ public abstract class AbstractDeserializerTest extends BaseTest {
     return result;
   }
 
+  /**
+   * Prepare and execute feed.
+   *
+   * @param fileName the file name
+   * @param entitySetName the entity set name
+   * @param readProperties the read properties
+   * @return the o data feed
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws EdmException the edm exception
+   * @throws ODataException the o data exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   * @throws EntityProviderException the entity provider exception
+   */
   protected ODataFeed prepareAndExecuteFeed(final String fileName, final String entitySetName,
       final DeserializerProperties readProperties) throws IOException, EdmException, ODataException,
       UnsupportedEncodingException, EntityProviderException {

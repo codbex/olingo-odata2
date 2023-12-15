@@ -23,16 +23,31 @@ import java.util.List;
 import org.apache.olingo.odata2.api.edm.EdmType;
 import org.apache.olingo.odata2.api.uri.expression.UnaryOperator;
 
+// TODO: Auto-generated Javadoc
 /**
- * Describes a unary operator which is allowed in OData expressions
- * 
+ * Describes a unary operator which is allowed in OData expressions.
  */
 class InfoUnaryOperator {
+  
+  /** The operator. */
   UnaryOperator operator;
+  
+  /** The category. */
   private String category;
+  
+  /** The syntax. */
   private String syntax;
+  
+  /** The combination. */
   ParameterSetCombination combination;
 
+  /**
+   * Instantiates a new info unary operator.
+   *
+   * @param operator the operator
+   * @param category the category
+   * @param combination the combination
+   */
   public InfoUnaryOperator(final UnaryOperator operator, final String category,
       final ParameterSetCombination combination) {
     this.operator = operator;
@@ -41,18 +56,40 @@ class InfoUnaryOperator {
     this.combination = combination;
   }
 
+  /**
+   * Gets the category.
+   *
+   * @return the category
+   */
   public String getCategory() {
     return category;
   }
 
+  /**
+   * Gets the syntax.
+   *
+   * @return the syntax
+   */
   public String getSyntax() {
     return syntax;
   }
 
+  /**
+   * Gets the operator.
+   *
+   * @return the operator
+   */
   public UnaryOperator getOperator() {
     return operator;
   }
 
+  /**
+   * Validate parameter set.
+   *
+   * @param actualParameterTypes the actual parameter types
+   * @return the parameter set
+   * @throws ExpressionParserInternalError the expression parser internal error
+   */
   public ParameterSet validateParameterSet(final List<EdmType> actualParameterTypes)
       throws ExpressionParserInternalError {
     return combination.validate(actualParameterTypes);

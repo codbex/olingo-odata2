@@ -28,51 +28,97 @@ import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.core.Response;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class ODataRedirectLocator.
  */
 public class ODataRedirectLocator {
 
+  /**
+   * Redirect get.
+   *
+   * @return the response
+   */
   @GET
   public Response redirectGet() {
     return redirect();
   }
 
+  /**
+   * Redirect put.
+   *
+   * @return the response
+   */
   @PUT
   public Response redirectPut() {
     return redirect();
   }
 
+  /**
+   * Redirect post.
+   *
+   * @return the response
+   */
   @POST
   public Response redirectPost() {
     return redirect();
   }
 
+  /**
+   * Redirect delete.
+   *
+   * @return the response
+   */
   @DELETE
   public Response redirectDelete() {
     return redirect();
   }
 
+  /**
+   * Redirect options.
+   *
+   * @return the response
+   */
   @OPTIONS
   public Response redirectOptions() {
     return redirect();
   }
 
+  /**
+   * Redirect head.
+   *
+   * @return the response
+   */
   @HEAD
   public Response redirectHead() {
     return redirect();
   }
 
+  /**
+   * Redirect patch.
+   *
+   * @return the response
+   */
   @PATCH
   public Response redirectPatch() {
     return redirect();
   }
 
+  /**
+   * Redirect merge.
+   *
+   * @return the response
+   */
   @MERGE
   public Response redirectMerge() {
     return redirect();
   }
 
+  /**
+   * Redirect.
+   *
+   * @return the response
+   */
   private Response redirect() {
     return Response.temporaryRedirect(URI.create("/")).build();
   }

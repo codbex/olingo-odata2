@@ -25,17 +25,38 @@ import org.apache.olingo.odata2.api.exception.ODataException;
 import org.apache.olingo.odata2.api.processor.ODataContext;
 import org.apache.olingo.odata2.api.processor.ODataErrorCallback;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ODataServiceFactoryWithCallbackImpl.
+ */
 public class ODataServiceFactoryWithCallbackImpl extends ODataServiceFactory {
 
+  /**
+   * Instantiates a new o data service factory with callback impl.
+   */
   public ODataServiceFactoryWithCallbackImpl() {
     super();
   }
 
+  /**
+   * Creates the service.
+   *
+   * @param ctx the ctx
+   * @return the o data service
+   * @throws ODataException the o data exception
+   */
   @Override
   public ODataService createService(final ODataContext ctx) throws ODataException {
     return null;
   }
 
+  /**
+   * Gets the callback.
+   *
+   * @param <T> the generic type
+   * @param callbackInterface the callback interface
+   * @return the callback
+   */
   @SuppressWarnings("unchecked")
   @Override
   public <T extends ODataCallback> T getCallback(final Class<T> callbackInterface) {

@@ -23,14 +23,27 @@ import org.apache.olingo.odata2.jpa.processor.api.ODataJPATransaction;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ODataJPATransactionLocalDefault.
+ */
 public class ODataJPATransactionLocalDefault implements ODataJPATransaction {
 
+  /** The tx. */
   private EntityTransaction tx = null;
 
+  /**
+   * Instantiates a new o data JPA transaction local default.
+   *
+   * @param em the em
+   */
   public ODataJPATransactionLocalDefault(EntityManager em) {
     this.tx = em.getTransaction();
   }
 
+  /**
+   * Begin.
+   */
   @Override
   public void begin() {
     if (!isActive()) {
@@ -38,16 +51,27 @@ public class ODataJPATransactionLocalDefault implements ODataJPATransaction {
     }
   }
 
+  /**
+   * Commit.
+   */
   @Override
   public void commit() {
     tx.commit();
   }
 
+  /**
+   * Rollback.
+   */
   @Override
   public void rollback() {
     tx.rollback();
   }
 
+  /**
+   * Checks if is active.
+   *
+   * @return true, if is active
+   */
   @Override
   public boolean isActive() {
     return tx.isActive();

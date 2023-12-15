@@ -24,6 +24,7 @@ import java.util.Map;
 
 import org.apache.olingo.odata2.api.ep.callback.OnReadInlineContent;
 
+// TODO: Auto-generated Javadoc
 /**
  * <p>The {@link EntityProviderReadProperties} contains all necessary settings
  * to read an entity with the {@link EntityProvider}.</p>
@@ -51,32 +52,63 @@ public class EntityProviderReadProperties {
    * Supported mappings are documented in {@link org.apache.olingo.odata2.api.edm.EdmSimpleType}.
    */
   final private Map<String, Object> typeMappings;
-  /** whether the constraints expressed in properties' facets are validated */
+  
+  /**  whether the constraints expressed in properties' facets are validated. */
   private boolean validatingFacets = true;
 
+  /** The validated prefix 2 namespace uri. */
   final private Map<String, String> validatedPrefix2NamespaceUri;
 
+  /**
+   * Instantiates a new entity provider read properties.
+   */
   private EntityProviderReadProperties() {
     typeMappings = new HashMap<String, Object>();
     validatedPrefix2NamespaceUri = new HashMap<String, String>();
   }
 
+  /**
+   * Inits the.
+   *
+   * @return the entity provider read properties builder
+   */
   public static EntityProviderReadPropertiesBuilder init() {
     return new EntityProviderReadPropertiesBuilder();
   }
 
+  /**
+   * Inits the from.
+   *
+   * @param properties the properties
+   * @return the entity provider read properties builder
+   */
   public static EntityProviderReadPropertiesBuilder initFrom(final EntityProviderReadProperties properties) {
     return new EntityProviderReadPropertiesBuilder(properties);
   }
 
+  /**
+   * Gets the validated prefix namespace uris.
+   *
+   * @return the validated prefix namespace uris
+   */
   public Map<String, String> getValidatedPrefixNamespaceUris() {
     return Collections.unmodifiableMap(validatedPrefix2NamespaceUri);
   }
 
+  /**
+   * Gets the type mappings.
+   *
+   * @return the type mappings
+   */
   public Map<String, Object> getTypeMappings() {
     return Collections.unmodifiableMap(typeMappings);
   }
 
+  /**
+   * Gets the callback.
+   *
+   * @return the callback
+   */
   public OnReadInlineContent getCallback() {
     return callback;
   }
@@ -88,11 +120,18 @@ public class EntityProviderReadProperties {
    * HTTP verbs <code>MERGE</code> or <code>PATCH</code> in a server application).
    * Otherwise the request, even if not all data are supplied, is supposed to
    * overwrite the existing entity completely.</p>
+   *
+   * @return the merge semantic
    */
   public boolean getMergeSemantic() {
     return merge;
   }
 
+  /**
+   * Checks if is validating facets.
+   *
+   * @return true, if is validating facets
+   */
   public boolean isValidatingFacets() {
     return validatingFacets;
   }
@@ -101,10 +140,20 @@ public class EntityProviderReadProperties {
    * Builder for {@link EntityProviderReadProperties}.
    */
   public static class EntityProviderReadPropertiesBuilder {
+    
+    /** The properties. */
     private final EntityProviderReadProperties properties = new EntityProviderReadProperties();
 
+    /**
+     * Instantiates a new entity provider read properties builder.
+     */
     public EntityProviderReadPropertiesBuilder() {}
 
+    /**
+     * Instantiates a new entity provider read properties builder.
+     *
+     * @param propertiesFrom the properties from
+     */
     public EntityProviderReadPropertiesBuilder(final EntityProviderReadProperties propertiesFrom) {
       properties.merge = propertiesFrom.merge;
       properties.callback = propertiesFrom.callback;
@@ -115,7 +164,9 @@ public class EntityProviderReadProperties {
 
     /**
      * Sets the merge semantics.
+     *
      * @param mergeSemantic whether merge semantics is requested
+     * @return the entity provider read properties builder
      * @see EntityProviderReadProperties#getMergeSemantic()
      */
     public EntityProviderReadPropertiesBuilder mergeSemantic(final boolean mergeSemantic) {
@@ -123,11 +174,23 @@ public class EntityProviderReadProperties {
       return this;
     }
 
+    /**
+     * Callback.
+     *
+     * @param callback the callback
+     * @return the entity provider read properties builder
+     */
     public EntityProviderReadPropertiesBuilder callback(final OnReadInlineContent callback) {
       properties.callback = callback;
       return this;
     }
 
+    /**
+     * Adds the validated prefixes.
+     *
+     * @param prefix2NamespaceUri the prefix 2 namespace uri
+     * @return the entity provider read properties builder
+     */
     public EntityProviderReadPropertiesBuilder addValidatedPrefixes(final Map<String, String> prefix2NamespaceUri) {
       if (prefix2NamespaceUri != null) {
         properties.validatedPrefix2NamespaceUri.putAll(prefix2NamespaceUri);
@@ -135,6 +198,12 @@ public class EntityProviderReadProperties {
       return this;
     }
 
+    /**
+     * Adds the type mappings.
+     *
+     * @param typeMappings the type mappings
+     * @return the entity provider read properties builder
+     */
     public EntityProviderReadPropertiesBuilder addTypeMappings(final Map<String, Object> typeMappings) {
       if (typeMappings != null) {
         properties.typeMappings.putAll(typeMappings);
@@ -142,11 +211,22 @@ public class EntityProviderReadProperties {
       return this;
     }
 
+    /**
+     * Checks if is validating facets.
+     *
+     * @param validatingFacets the validating facets
+     * @return the entity provider read properties builder
+     */
     public EntityProviderReadPropertiesBuilder isValidatingFacets(final boolean validatingFacets) {
       properties.validatingFacets = validatingFacets;
       return this;
     }
 
+    /**
+     * Builds the.
+     *
+     * @return the entity provider read properties
+     */
     public EntityProviderReadProperties build() {
       return properties;
     }

@@ -68,15 +68,26 @@ import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ODataJPAResponseBuilderTest.
+ */
 public class ODataJPAResponseBuilderTest extends JPAEdmTestModelView {
 
+    /** The response builder. */
     private ODataJPAResponseBuilder responseBuilder;
 
+    /**
+     * Inits the.
+     */
     @Before
     public void init() {
         responseBuilder = new ODataJPAResponseBuilderDefault(getODataJPAContext());
     }
 
+    /**
+     * Test get entity provider properties query.
+     */
     /*
      * This Unit is supposed to test the building of Entity Provider Properties for query with $expand
      */
@@ -107,6 +118,9 @@ public class ODataJPAResponseBuilderTest extends JPAEdmTestModelView {
         }
     }
 
+    /**
+     * Test get entity provider properties read.
+     */
     /*
      * This Unit is supposed to test the building of Entity Provider Properties for read with $expand
      */
@@ -134,6 +148,9 @@ public class ODataJPAResponseBuilderTest extends JPAEdmTestModelView {
 
     }
 
+    /**
+     * Test construct listof nav property.
+     */
     @SuppressWarnings("unchecked")
     @Test
     public void testConstructListofNavProperty() {
@@ -165,6 +182,9 @@ public class ODataJPAResponseBuilderTest extends JPAEdmTestModelView {
 
     }
 
+    /**
+     * Test build list of T get entity set uri info string O data JPA context.
+     */
     @Test
     public void testBuildListOfTGetEntitySetUriInfoStringODataJPAContext() {
         try {
@@ -175,6 +195,9 @@ public class ODataJPAResponseBuilderTest extends JPAEdmTestModelView {
 
     }
 
+    /**
+     * Test build negatives.
+     */
     @Test
     public void testBuildNegatives() {// Bad content type
         try {
@@ -196,6 +219,11 @@ public class ODataJPAResponseBuilderTest extends JPAEdmTestModelView {
 
     }
 
+    /**
+     * Test build object get entity uri info string O data JPA context.
+     *
+     * @throws ODataNotFoundException the o data not found exception
+     */
     @Test
     public void testBuildObjectGetEntityUriInfoStringODataJPAContext() throws ODataNotFoundException {
         try {
@@ -205,6 +233,9 @@ public class ODataJPAResponseBuilderTest extends JPAEdmTestModelView {
         }
     }
 
+    /**
+     * Test build null selects.
+     */
     @Test
     public void testBuildNullSelects() {// Bad content type
         try {
@@ -214,6 +245,9 @@ public class ODataJPAResponseBuilderTest extends JPAEdmTestModelView {
         }
     }
 
+    /**
+     * Test build get count.
+     */
     @Test
     public void testBuildGetCount() {
         ODataResponse objODataResponse = null;
@@ -225,6 +259,11 @@ public class ODataJPAResponseBuilderTest extends JPAEdmTestModelView {
         assertNotNull(objODataResponse);
     }
 
+    /**
+     * Gets the o data JPA context.
+     *
+     * @return the o data JPA context
+     */
     private ODataJPAContext getODataJPAContext() {
         ODataJPAContext objODataJPAContext = EasyMock.createMock(ODataJPAContext.class);
         EasyMock.expect(objODataJPAContext.getODataContext())
@@ -238,6 +277,11 @@ public class ODataJPAResponseBuilderTest extends JPAEdmTestModelView {
         return objODataJPAContext;
     }
 
+    /**
+     * Gets the local O data context.
+     *
+     * @return the local O data context
+     */
     private ODataContext getLocalODataContext() {
         ODataContext objODataContext = EasyMock.createMock(ODataContext.class);
         try {
@@ -250,6 +294,11 @@ public class ODataJPAResponseBuilderTest extends JPAEdmTestModelView {
         return objODataContext;
     }
 
+    /**
+     * Mock JPA paging.
+     *
+     * @return the JPA paging
+     */
     private JPAPaging mockJPAPaging() {
         return new JPAPaging() {
 
@@ -275,6 +324,11 @@ public class ODataJPAResponseBuilderTest extends JPAEdmTestModelView {
         };
     }
 
+    /**
+     * Gets the local path info.
+     *
+     * @return the local path info
+     */
     private PathInfo getLocalPathInfo() {
         PathInfo pathInfo = EasyMock.createMock(PathInfo.class);
         EasyMock.expect(pathInfo.getServiceRoot())
@@ -285,6 +339,11 @@ public class ODataJPAResponseBuilderTest extends JPAEdmTestModelView {
         return pathInfo;
     }
 
+    /**
+     * Gets the request URI.
+     *
+     * @return the request URI
+     */
     private URI getRequestURI() {
         URI uri = null;
         try {
@@ -295,6 +354,11 @@ public class ODataJPAResponseBuilderTest extends JPAEdmTestModelView {
         return uri;
     }
 
+    /**
+     * Gets the local URI.
+     *
+     * @return the local URI
+     */
     private URI getLocalURI() {
         URI uri = null;
         try {
@@ -305,6 +369,11 @@ public class ODataJPAResponseBuilderTest extends JPAEdmTestModelView {
         return uri;
     }
 
+    /**
+     * Gets the results view.
+     *
+     * @return the results view
+     */
     private GetEntitySetUriInfo getResultsView() {
         GetEntitySetUriInfo objGetEntitySetUriInfo = EasyMock.createMock(GetEntitySetUriInfo.class);
         EasyMock.expect(objGetEntitySetUriInfo.getInlineCount())
@@ -321,10 +390,20 @@ public class ODataJPAResponseBuilderTest extends JPAEdmTestModelView {
         return objGetEntitySetUriInfo;
     }
 
+    /**
+     * Gets the expand list.
+     *
+     * @return the expand list
+     */
     private List<ArrayList<NavigationPropertySegment>> getExpandList() {
         return new ArrayList<ArrayList<NavigationPropertySegment>>();
     }
 
+    /**
+     * Gets the results view with null selects.
+     *
+     * @return the results view with null selects
+     */
     private GetEntitySetUriInfo getResultsViewWithNullSelects() {
         GetEntitySetUriInfo objGetEntitySetUriInfo = EasyMock.createMock(GetEntitySetUriInfo.class);
         EasyMock.expect(objGetEntitySetUriInfo.getInlineCount())
@@ -342,6 +421,11 @@ public class ODataJPAResponseBuilderTest extends JPAEdmTestModelView {
         return objGetEntitySetUriInfo;
     }
 
+    /**
+     * Gets the local get URI info.
+     *
+     * @return the local get URI info
+     */
     private GetEntityUriInfo getLocalGetURIInfo() {
         GetEntityUriInfo objGetEntityUriInfo = EasyMock.createMock(GetEntityUriInfo.class);
         EasyMock.expect(objGetEntityUriInfo.getSelect())
@@ -354,12 +438,22 @@ public class ODataJPAResponseBuilderTest extends JPAEdmTestModelView {
         return objGetEntityUriInfo;
     }
 
+    /**
+     * Gets the select item list.
+     *
+     * @return the select item list
+     */
     private List<SelectItem> getSelectItemList() {
         List<SelectItem> selectItems = new ArrayList<SelectItem>();
         selectItems.add(getSelectItem());
         return selectItems;
     }
 
+    /**
+     * Gets the select item.
+     *
+     * @return the select item
+     */
     private SelectItem getSelectItem() {
         SelectItem selectItem = EasyMock.createMock(SelectItem.class);
         EasyMock.expect(selectItem.getProperty())
@@ -374,6 +468,11 @@ public class ODataJPAResponseBuilderTest extends JPAEdmTestModelView {
         return selectItem;
     }
 
+    /**
+     * Gets the edm property for select.
+     *
+     * @return the edm property for select
+     */
     private EdmProperty getEdmPropertyForSelect() {
         EdmSimpleType edmType = EasyMock.createMock(EdmSimpleType.class);
         EasyMock.expect(edmType.getKind())
@@ -420,6 +519,11 @@ public class ODataJPAResponseBuilderTest extends JPAEdmTestModelView {
 
     }
 
+    /**
+     * Gets the local target entity set.
+     *
+     * @return the local target entity set
+     */
     private EdmEntitySet getLocalTargetEntitySet() {
         EdmEntitySet objEdmEntitySet = EasyMock.createMock(EdmEntitySet.class);
         try {
@@ -437,6 +541,11 @@ public class ODataJPAResponseBuilderTest extends JPAEdmTestModelView {
         return objEdmEntitySet;
     }
 
+    /**
+     * Gets the local edm entity container.
+     *
+     * @return the local edm entity container
+     */
     private EdmEntityContainer getLocalEdmEntityContainer() {
         EdmEntityContainer edmEntityContainer = EasyMock.createMock(EdmEntityContainer.class);
         EasyMock.expect(edmEntityContainer.isDefaultEntityContainer())
@@ -452,6 +561,11 @@ public class ODataJPAResponseBuilderTest extends JPAEdmTestModelView {
         return edmEntityContainer;
     }
 
+    /**
+     * Gets the local edm entity type.
+     *
+     * @return the local edm entity type
+     */
     private EdmEntityType getLocalEdmEntityType() {
         EdmEntityType objEdmEntityType = EasyMock.createMock(EdmEntityType.class);
         try {
@@ -484,6 +598,11 @@ public class ODataJPAResponseBuilderTest extends JPAEdmTestModelView {
         return objEdmEntityType;
     }
 
+    /**
+     * Gets the key properties.
+     *
+     * @return the key properties
+     */
     private List<EdmProperty> getKeyProperties() {
         List<EdmProperty> edmProperties = new ArrayList<EdmProperty>();
         EdmType edmType = EasyMock.createMock(EdmType.class);
@@ -511,37 +630,80 @@ public class ODataJPAResponseBuilderTest extends JPAEdmTestModelView {
         return edmProperties;
     }
 
+    /**
+     * Gets the local inline count.
+     *
+     * @return the local inline count
+     */
     private InlineCount getLocalInlineCount() {
         return InlineCount.NONE;
     }
 
+    /**
+     * The Class SalesOrderHeader.
+     */
     class SalesOrderHeader {
+        
+        /** The so id. */
         private int soId;
+        
+        /** The Field 1. */
         private int Field1;
 
+        /**
+         * Instantiates a new sales order header.
+         *
+         * @param soId the so id
+         * @param field the field
+         */
         public SalesOrderHeader(final int soId, final int field) {
             this.soId = soId;
             Field1 = field;
         }
 
+        /**
+         * Gets the field 1.
+         *
+         * @return the field 1
+         */
         public int getField1() {
             return Field1;
         }
 
+        /**
+         * Sets the field 1.
+         *
+         * @param field1 the new field 1
+         */
         public void setField1(final int field1) {
             Field1 = field1;
         }
 
+        /**
+         * Gets the so id.
+         *
+         * @return the so id
+         */
         public int getSoId() {
             return soId;
         }
 
+        /**
+         * Sets the so id.
+         *
+         * @param soId the new so id
+         */
         public void setSoId(final int soId) {
             this.soId = soId;
         }
 
     }
 
+    /**
+     * Gets the JPA entities.
+     *
+     * @return the JPA entities
+     */
     private List<Object> getJPAEntities() {
         List<Object> listJPAEntities = new ArrayList<Object>();
         SalesOrderHeader entity;
@@ -550,10 +712,20 @@ public class ODataJPAResponseBuilderTest extends JPAEdmTestModelView {
         return listJPAEntities;
     }
 
+    /**
+     * Gets the entity.
+     *
+     * @return the entity
+     */
     private Object getEntity() {
         return new SalesOrderHeader(10, 34);
     }
 
+    /**
+     * Mock entity uri info for expand.
+     *
+     * @return the gets the entity uri info
+     */
     private GetEntityUriInfo mockEntityUriInfoForExpand() {
 
         List<SelectItem> selectItemList = new ArrayList<SelectItem>();
@@ -587,6 +759,11 @@ public class ODataJPAResponseBuilderTest extends JPAEdmTestModelView {
         return entityUriInfo;
     }
 
+    /**
+     * Mock entity set uri info for expand.
+     *
+     * @return the gets the entity set uri info
+     */
     private GetEntitySetUriInfo mockEntitySetUriInfoForExpand() {
 
         List<SelectItem> selectItemList = new ArrayList<SelectItem>();
@@ -633,6 +810,11 @@ public class ODataJPAResponseBuilderTest extends JPAEdmTestModelView {
         return entitySetUriInfo;
     }
 
+    /**
+     * Gets the target entity set for expand.
+     *
+     * @return the target entity set for expand
+     */
     private EdmEntitySet getTargetEntitySetForExpand() {
         EdmEntitySet entitySet = EasyMock.createMock(EdmEntitySet.class);
         try {
@@ -647,6 +829,12 @@ public class ODataJPAResponseBuilderTest extends JPAEdmTestModelView {
         return entitySet;
     }
 
+    /**
+     * Gets the navigation property segment.
+     *
+     * @param navPropertyName the nav property name
+     * @return the navigation property segment
+     */
     private NavigationPropertySegment getNavigationPropertySegment(final String navPropertyName) {
         EdmNavigationProperty navigationProperty = EasyMock.createMock(EdmNavigationProperty.class);
         try {
@@ -663,6 +851,11 @@ public class ODataJPAResponseBuilderTest extends JPAEdmTestModelView {
         return navPropertySegment;
     }
 
+    /**
+     * Mock function import uri info.
+     *
+     * @return the gets the function import uri info
+     */
     private GetFunctionImportUriInfo mockFunctionImportUriInfo() {
 
         List<SelectItem> selectItemList = new ArrayList<SelectItem>();
@@ -703,6 +896,11 @@ public class ODataJPAResponseBuilderTest extends JPAEdmTestModelView {
         return functionImportUriInfo;
     }
 
+    /**
+     * Mock edm function import.
+     *
+     * @return the edm function import
+     */
     private EdmFunctionImport mockEdmFunctionImport() {
         EdmFunctionImport funcImport = EasyMock.createMock(EdmFunctionImport.class);
         try {
@@ -729,6 +927,9 @@ public class ODataJPAResponseBuilderTest extends JPAEdmTestModelView {
         return funcImport;
     }
 
+    /**
+     * Test function import provider properties.
+     */
     /*
      * This Unit is supposed to test the building of Entity Provider Properties for function import
      */
@@ -762,6 +963,11 @@ public class ODataJPAResponseBuilderTest extends JPAEdmTestModelView {
 
     }
 
+    /**
+     * Test build list of get functionimport uri info.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testBuildListOfGetFunctionimportUriInfo() throws Exception {
         try {
@@ -772,6 +978,11 @@ public class ODataJPAResponseBuilderTest extends JPAEdmTestModelView {
 
     }
 
+    /**
+     * Gets the FI results view.
+     *
+     * @return the FI results view
+     */
     private GetFunctionImportUriInfo getFIResultsView() {
         GetFunctionImportUriInfo objGetFunctionImportUriInfo = EasyMock.createMock(GetFunctionImportUriInfo.class);
         EasyMock.expect(objGetFunctionImportUriInfo.getInlineCount())

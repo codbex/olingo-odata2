@@ -24,23 +24,32 @@ import org.apache.olingo.odata2.api.ep.EntityProviderWriteProperties;
 import org.apache.olingo.odata2.core.ep.util.FormatJson;
 import org.apache.olingo.odata2.core.ep.util.JsonStreamWriter;
 
+// TODO: Auto-generated Javadoc
 /**
  * Producer for writing a link in JSON.
  * 
  */
 public class JsonLinkEntitySerializer {
 
+  /** The properties. */
   private final EntityProviderWriteProperties properties; //NOSONAR
 
   /**
-   * 
-   * @param properties
-   * @throws EntityProviderException
+   * Instantiates a new json link entity serializer.
+   *
+   * @param properties the properties
    */
   public JsonLinkEntitySerializer(final EntityProviderWriteProperties properties) {
     this.properties = properties == null ? EntityProviderWriteProperties.serviceRoot(null).build() : properties;
   }
 
+  /**
+   * Append uri.
+   *
+   * @param jsonStreamWriter the json stream writer
+   * @param uri the uri
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   protected static void appendUri(final JsonStreamWriter jsonStreamWriter, final String uri) throws IOException {
     jsonStreamWriter.beginObject()
         .namedStringValue(FormatJson.URI, uri)

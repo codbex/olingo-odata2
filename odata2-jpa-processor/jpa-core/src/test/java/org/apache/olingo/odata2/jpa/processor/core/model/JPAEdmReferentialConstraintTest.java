@@ -46,12 +46,24 @@ import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPAEdmReferentialConstraintTest.
+ */
 public class JPAEdmReferentialConstraintTest extends JPAEdmTestModelView {
 
+  /** The obj JPA edm referential constraint. */
   private static JPAEdmReferentialConstraint objJPAEdmReferentialConstraint = null;
+  
+  /** The obj JPA edm referential constraint test. */
   private static JPAEdmReferentialConstraintTest objJPAEdmReferentialConstraintTest = null;
+  
+  /** The join column names. */
   private List<String[]> joinColumnNames = null;
 
+  /**
+   * Sets the up.
+   */
   @Before
   public void setUp() {
     objJPAEdmReferentialConstraintTest = new JPAEdmReferentialConstraintTest();
@@ -67,11 +79,17 @@ public class JPAEdmReferentialConstraintTest extends JPAEdmTestModelView {
     }
   }
 
+  /**
+   * Test get builder.
+   */
   @Test
   public void testGetBuilder() {
     assertNotNull(objJPAEdmReferentialConstraint.getBuilder());
   }
 
+  /**
+   * Test get builder idempotent.
+   */
   @Test
   public void testGetBuilderIdempotent() {
     JPAEdmBuilder builder1 = objJPAEdmReferentialConstraint.getBuilder();
@@ -80,11 +98,17 @@ public class JPAEdmReferentialConstraintTest extends JPAEdmTestModelView {
     assertEquals(builder1.hashCode(), builder2.hashCode());
   }
 
+  /**
+   * Test get edm referential constraint.
+   */
   @Test
   public void testGetEdmReferentialConstraint() {
     assertNotNull(objJPAEdmReferentialConstraint.getEdmReferentialConstraint());
   }
 
+  /**
+   * Test is exists true.
+   */
   @Test
   public void testIsExistsTrue() {
     objJPAEdmReferentialConstraintTest = new JPAEdmReferentialConstraintTest();
@@ -102,11 +126,19 @@ public class JPAEdmReferentialConstraintTest extends JPAEdmTestModelView {
     assertTrue(objJPAEdmReferentialConstraint.isExists());
   }
 
+  /**
+   * Test get relation ship name.
+   */
   @Test
   public void testGetRelationShipName() {
     assertEquals("Assoc_SalesOrderHeader_SalesOrderItem", objJPAEdmReferentialConstraint.getEdmRelationShipName());
   }
 
+  /**
+   * Gets the edm association.
+   *
+   * @return the edm association
+   */
   @Override
   public Association getEdmAssociation() {
     Association association = new Association();
@@ -118,16 +150,31 @@ public class JPAEdmReferentialConstraintTest extends JPAEdmTestModelView {
     return association;
   }
 
+  /**
+   * Gets the JPA attribute local.
+   *
+   * @return the JPA attribute local
+   */
   private Attribute<?, ?> getJPAAttributeLocal() {
     AttributeMock<Object, String> attr = new AttributeMock<Object, String>();
     return attr;
   }
 
+  /**
+   * Gets the JPA attribute.
+   *
+   * @return the JPA attribute
+   */
   @Override
   public Attribute<?, ?> getJPAAttribute() {
     return getJPAAttributeLocal();
   }
 
+  /**
+   * Gets the JPA join columns.
+   *
+   * @return the JPA join columns
+   */
   @Override
   public List<String[]> getJPAJoinColumns() {
     if (joinColumnNames == null) {
@@ -139,35 +186,71 @@ public class JPAEdmReferentialConstraintTest extends JPAEdmTestModelView {
     return joinColumnNames;
   }
 
+  /**
+   * The Class AttributeMock.
+   *
+   * @param <Object> the generic type
+   * @param <String> the generic type
+   */
   @SuppressWarnings("hiding")
   private class AttributeMock<Object, String> extends JPAAttributeMock<Object, String> {
 
+    /**
+     * Gets the java member.
+     *
+     * @return the java member
+     */
     @Override
     public Member getJavaMember() {
       return new JavaMemberMock();
     }
 
+    /**
+     * Gets the java type.
+     *
+     * @return the java type
+     */
     @SuppressWarnings("unchecked")
     @Override
     public Class<String> getJavaType() {
       return (Class<String>) java.lang.String.class;
     }
 
+    /**
+     * Gets the declaring type.
+     *
+     * @return the declaring type
+     */
     @SuppressWarnings("unchecked")
     @Override
     public ManagedType<Object> getDeclaringType() {
       return (ManagedType<Object>) getManagedTypeLocal();
     }
 
+    /**
+     * Gets the managed type local.
+     *
+     * @return the managed type local
+     */
     private ManagedType<?> getManagedTypeLocal() {
       ManagedTypeMock<String> managedTypeMock = new ManagedTypeMock<String>();
       return managedTypeMock;
     }
   }
 
+  /**
+   * The Class ManagedTypeMock.
+   *
+   * @param <String> the generic type
+   */
   @SuppressWarnings("hiding")
   private class ManagedTypeMock<String> extends JPAManagedTypeMock<String> {
 
+    /**
+     * Gets the java type.
+     *
+     * @return the java type
+     */
     @SuppressWarnings("unchecked")
     @Override
     public Class<String> getJavaType() {
@@ -175,7 +258,18 @@ public class JPAEdmReferentialConstraintTest extends JPAEdmTestModelView {
     }
   }
 
+  /**
+   * The Class JavaMemberMock.
+   */
   private class JavaMemberMock extends JPAJavaMemberMock {
+    
+    /**
+     * Gets the annotation.
+     *
+     * @param <T> the generic type
+     * @param annotationClass the annotation class
+     * @return the annotation
+     */
     @SuppressWarnings("unchecked")
     @Override
     public <T extends Annotation> T getAnnotation(final Class<T> annotationClass) {

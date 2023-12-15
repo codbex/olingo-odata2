@@ -20,6 +20,7 @@ import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
 
+// TODO: Auto-generated Javadoc
 /**
  *
  * By default Java Persistence Unit name is taken as EDM schema name. This can be overriden using
@@ -55,12 +56,19 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "JPAPersistenceUnitMapType", propOrder = {"edmSchemaNamespace", "jpaEntityTypes", "jpaEmbeddableTypes"})
 public class JPAPersistenceUnitMapType {
 
+    /** The edm schema namespace. */
     @XmlElement(name = "EDMSchemaNamespace")
     protected String edmSchemaNamespace;
+    
+    /** The jpa entity types. */
     @XmlElement(name = "JPAEntityTypes", required = true)
     protected JPAEntityTypesMapType jpaEntityTypes;
+    
+    /** The jpa embeddable types. */
     @XmlElement(name = "JPAEmbeddableTypes", required = true)
     protected JPAEmbeddableTypesMapType jpaEmbeddableTypes;
+    
+    /** The name. */
     @XmlAttribute(name = "name", required = true)
     protected String name;
 

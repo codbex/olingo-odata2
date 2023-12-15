@@ -27,12 +27,29 @@ import org.apache.olingo.odata2.api.annotation.edm.EdmFunctionImport.ReturnType;
 import org.apache.olingo.odata2.api.annotation.edm.EdmFunctionImport.ReturnType.Type;
 import org.apache.olingo.odata2.api.annotation.edm.EdmFunctionImportParameter;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JPACustomProcessorMock.
+ */
 public class JPACustomProcessorMock {
 
+  /** The Constant className. */
   public static final String className = "JPACustomProcessorMock";
+  
+  /** The Constant edmName. */
   public static final String edmName = "JPACustomProcessor";
+  
+  /** The Constant nonJPAEmbeddableType. */
   public static final String nonJPAEmbeddableType = "JPACustomProcessorMock$JPANonComplexTestMock";
 
+  /**
+   * Method 1.
+   *
+   * @param param1 the param 1
+   * @param param2 the param 2
+   * @param param3 the param 3
+   * @return the list
+   */
   @EdmFunctionImport(name = "Method1", entitySet = "MockSet", returnType = @ReturnType(type = Type.ENTITY,
       isCollection = true))
   public List<JPACustomProcessorMock> method1(@EdmFunctionImportParameter(name = "Param1", facets = @EdmFacets(
@@ -42,6 +59,12 @@ public class JPACustomProcessorMock {
     return new ArrayList<JPACustomProcessorMock>();
   }
 
+  /**
+   * Method 2.
+   *
+   * @param param2 the param 2
+   * @return the list
+   */
   @EdmFunctionImport(name = "Method2", entitySet = "MockSet", returnType = @ReturnType(type = Type.ENTITY,
       isCollection = true))
   public List<JPACustomProcessorMock> method2(
@@ -49,35 +72,64 @@ public class JPACustomProcessorMock {
     return new ArrayList<JPACustomProcessorMock>();
   }
 
+  /**
+   * Method 3.
+   *
+   * @param param3 the param 3
+   * @return the int
+   */
   @EdmFunctionImport(returnType = @ReturnType(type = Type.SIMPLE))
   public int method3(@EdmFunctionImportParameter(name = "Param3") final String param3) {
     return 0;
   }
 
+  /**
+   * Method 7.
+   *
+   * @return the JPA custom processor mock
+   */
   @EdmFunctionImport(returnType = @ReturnType(type = Type.ENTITY,
       isCollection = false), entitySet = "MockSet")
   public JPACustomProcessorMock method7() {
     return null;
   }
 
+  /**
+   * Method 9.
+   *
+   * @return the JPA custom processor mock
+   */
   @EdmFunctionImport(returnType = @ReturnType(type = Type.COMPLEX,
       isCollection = false))
   public JPACustomProcessorMock method9() {
     return null;
   }
 
+  /**
+   * Method 10.
+   *
+   * @return the list
+   */
   @EdmFunctionImport(returnType = @ReturnType(type = Type.COMPLEX,
       isCollection = true))
   public List<JPACustomProcessorMock> method10() {
     return null;
   }
 
+  /**
+   * Method 18.
+   *
+   * @return the JPA non complex test mock
+   */
   @EdmFunctionImport(returnType = @ReturnType(type = Type.COMPLEX,
       isCollection = false))
   public JPANonComplexTestMock method18() {
     return null;
   }
 
+  /**
+   * The Interface JPANonComplexTestMock.
+   */
   public static interface JPANonComplexTestMock {
 
   }

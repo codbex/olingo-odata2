@@ -22,24 +22,28 @@ import org.apache.olingo.odata2.api.exception.ODataException;
 import org.apache.olingo.odata2.api.processor.ODataRequest;
 import org.apache.olingo.odata2.api.processor.ODataResponse;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Interface BatchHandler.
  */
 public interface BatchHandler {
+  
   /**
    * <p>Handles the {@link BatchRequestPart} in a way that it results in a corresponding {@link BatchResponsePart}.</p>
+   *
    * @param batchRequestPart the incoming MIME part
    * @return the corresponding result
-   * @throws ODataException
+   * @throws ODataException the o data exception
    */
   public BatchResponsePart handleBatchPart(BatchRequestPart batchRequestPart) throws ODataException;
 
   /**
    * <p>Delegates a handling of the request {@link ODataRequest} to the request handler and provides ODataResponse
    * {@link ODataResponse}.</p>
+   *
    * @param request the incoming request
    * @return the corresponding result
-   * @throws ODataException
+   * @throws ODataException the o data exception
    */
   public ODataResponse handleRequest(ODataRequest request) throws ODataException;
 }

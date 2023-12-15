@@ -43,18 +43,33 @@ import org.junit.Test;
 
 import com.google.gson.JsonParser;
 
+// TODO: Auto-generated Javadoc
 /**
- *
+ * The Class ExpandSelectTreeCreatorImplTest.
  */
 public class ExpandSelectTreeCreatorImplTest extends BaseTest {
+  
+  /** The edm. */
   private static Edm edm;
+  
+  /** The parser. */
   private static JsonParser parser = new JsonParser();
 
+  /**
+   * Sets the edm.
+   *
+   * @throws ODataException the o data exception
+   */
   @BeforeClass
   public static void setEdm() throws ODataException {
     edm = MockFacade.getMockEdm();
   }
 
+  /**
+   * All null.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void allNull() throws Exception {
     // {"all":true,"properties":[],"links":[]}
@@ -63,6 +78,11 @@ public class ExpandSelectTreeCreatorImplTest extends BaseTest {
     assertEquals(expected, actual);
   }
 
+  /**
+   * One property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void oneProperty() throws Exception {
     // {"all":false,"properties":["Age"],"links":[]}
@@ -73,6 +93,11 @@ public class ExpandSelectTreeCreatorImplTest extends BaseTest {
     assertEquals(expected, actual);
   }
 
+  /**
+   * Complex property.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void complexProperty() throws Exception {
     final ExpandSelectTreeNode actual = getExpandSelectTree("Location", null);
@@ -83,6 +108,11 @@ public class ExpandSelectTreeCreatorImplTest extends BaseTest {
     assertTrue(actual.getLinks().isEmpty());
   }
 
+  /**
+   * Only property and expand link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void onlyPropertyAndExpandLink() throws Exception {
     // {"all":false,"properties":["Age"],"links":[]}
@@ -94,6 +124,11 @@ public class ExpandSelectTreeCreatorImplTest extends BaseTest {
 
   }
 
+  /**
+   * Star and expand link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void starAndExpandLink() throws Exception {
     // {"all":true,"properties":[],"links":[]}
@@ -112,6 +147,11 @@ public class ExpandSelectTreeCreatorImplTest extends BaseTest {
     assertEquals(expected, actual);
   }
 
+  /**
+   * One select link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void oneSelectLink() throws Exception {
     // {"all":false,"properties":[],"links":[{"ne_Room":null}]}
@@ -122,6 +162,11 @@ public class ExpandSelectTreeCreatorImplTest extends BaseTest {
     assertEquals(expected, actual);
   }
 
+  /**
+   * Star and nav prop in select and expand.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void starAndNavPropInSelectAndExpand() throws Exception {
     // {"all":false,"properties":[],"links":[{\"ne_Room\":{\"all\":true,\"properties\":[],\"links\":[]}}]}
@@ -149,6 +194,11 @@ public class ExpandSelectTreeCreatorImplTest extends BaseTest {
     assertEquals(expected, actual);
   }
 
+  /**
+   * Same link in select and expand.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void sameLinkInSelectAndExpand() throws Exception {
     // {"all":false,"properties":[],"links":[{"ne_Room":{"all":true,"properties":[],"links":[]}}]}
@@ -164,6 +214,11 @@ public class ExpandSelectTreeCreatorImplTest extends BaseTest {
     assertEquals(expected, actual);
   }
 
+  /**
+   * Deep link in select and expand.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void deepLinkInSelectAndExpand() throws Exception {
     // {"all":false,"properties":[],"links":[{"ne_Room":{"all":false,"properties":[],
@@ -180,6 +235,11 @@ public class ExpandSelectTreeCreatorImplTest extends BaseTest {
     assertEquals(expected, actual);
   }
 
+  /**
+   * Third level.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void thirdLevel() throws Exception {
     assertEquals(parser.parse("{\"all\":false,\"properties\":[],\"links\":["
@@ -191,6 +251,11 @@ public class ExpandSelectTreeCreatorImplTest extends BaseTest {
             .toJsonString()));
   }
 
+  /**
+   * Expand one link.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void expandOneLink() throws Exception {
     // {"all":true,"properties":[],"links":[{"ne_Room":{"all":true,"properties":[],"links":[]}}]}
@@ -202,6 +267,11 @@ public class ExpandSelectTreeCreatorImplTest extends BaseTest {
     assertEquals(expected, actual);
   }
 
+  /**
+   * Complex select expand.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void complexSelectExpand() throws Exception {
     // {"all":false,"properties":["Age"],"links":[{"ne_Room":{"all":false,"properties":["Seats"],
@@ -239,6 +309,11 @@ public class ExpandSelectTreeCreatorImplTest extends BaseTest {
     }
   }
 
+  /**
+   * Two properties.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void twoProperties() throws Exception {
     // {"all":false,"properties":["Age","EmployeeId"],"links":[]}
@@ -249,6 +324,11 @@ public class ExpandSelectTreeCreatorImplTest extends BaseTest {
     assertEquals(expected, actual);
   }
 
+  /**
+   * Same properties.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void sameProperties() throws Exception {
     // {"all":false,"properties":["EmployeeId","Age"],"links":[]}
@@ -258,6 +338,11 @@ public class ExpandSelectTreeCreatorImplTest extends BaseTest {
     assertEquals(expected, actual);
   }
 
+  /**
+   * Properties and star.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void propertiesAndStar() throws Exception {
     // {"all":true,"properties":[],"links":[]}
@@ -272,6 +357,11 @@ public class ExpandSelectTreeCreatorImplTest extends BaseTest {
     assertEquals(expected, actual);
   }
 
+  /**
+   * Multi select link without expand.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void multiSelectLinkWithoutExpand() throws Exception {
     // {"all":false,"properties":[],"links":[{"ne_Manager":null}]}
@@ -300,6 +390,11 @@ public class ExpandSelectTreeCreatorImplTest extends BaseTest {
     assertEquals(expected, actual);
   }
 
+  /**
+   * Same select links.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void sameSelectLinks() throws Exception {
     // {"all":false,"properties":[],"links":[{"ne_Manager":null}]}
@@ -310,6 +405,11 @@ public class ExpandSelectTreeCreatorImplTest extends BaseTest {
     assertEquals(expected, actual);
   }
 
+  /**
+   * Same expand links.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void sameExpandLinks() throws Exception {
     // {"all":true,"properties":[],"links":[{"ne_Manager":{"all":true,"properties":[],"links":[]}}]}
@@ -321,6 +421,11 @@ public class ExpandSelectTreeCreatorImplTest extends BaseTest {
     assertEquals(expected, actual);
   }
 
+  /**
+   * Multi expand link without select.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void multiExpandLinkWithoutSelect() throws Exception {
     // {"all":true,"properties":[],"links":[{"ne_Manager":{"all":true,"properties":[],
@@ -334,6 +439,11 @@ public class ExpandSelectTreeCreatorImplTest extends BaseTest {
     assertEquals(parser.parse(expected), parser.parse(actual));
   }
 
+  /**
+   * Two select links.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void twoSelectLinks() throws Exception {
     // One of the two is expected but the order of links is not defined
@@ -348,6 +458,11 @@ public class ExpandSelectTreeCreatorImplTest extends BaseTest {
     }
   }
 
+  /**
+   * One select deep expand.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void oneSelectDeepExpand() throws Exception {
     // {"all":false,"properties":[],"links":[{"ne_Manager":{"all":true,"properties":[],"links":[{
@@ -378,6 +493,11 @@ public class ExpandSelectTreeCreatorImplTest extends BaseTest {
     assertEquals(parser.parse(expected), parser.parse(actual));
   }
 
+  /**
+   * Star at end with expand.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void starAtEndWithExpand() throws Exception {
 
@@ -395,6 +515,11 @@ public class ExpandSelectTreeCreatorImplTest extends BaseTest {
     assertEquals(parser.parse(expected), parser.parse(actual));
   }
 
+  /**
+   * Property at end with expand.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void propertyAtEndWithExpand() throws Exception {
 
@@ -414,6 +539,11 @@ public class ExpandSelectTreeCreatorImplTest extends BaseTest {
     assertEquals(expected, actual);
   }
 
+  /**
+   * Star test.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void starTest() throws Exception {
 
@@ -430,6 +560,11 @@ public class ExpandSelectTreeCreatorImplTest extends BaseTest {
     assertEquals(expected, actual);
   }
 
+  /**
+   * Two expands two selects.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void twoExpandsTwoSelects() throws Exception {
 
@@ -456,6 +591,11 @@ public class ExpandSelectTreeCreatorImplTest extends BaseTest {
     assertEquals(parser.parse(expected), parser.parse(actual));
   }
 
+  /**
+   * Two expands test.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void twoExpandsTest() throws Exception {
 
@@ -509,6 +649,11 @@ public class ExpandSelectTreeCreatorImplTest extends BaseTest {
     }
   }
 
+  /**
+   * One expands four selects.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void oneExpandsFourSelects() throws Exception {
 
@@ -528,6 +673,14 @@ public class ExpandSelectTreeCreatorImplTest extends BaseTest {
     assertEquals(parser.parse(expected), parser.parse(actual));
   }
 
+  /**
+   * Gets the expand select tree.
+   *
+   * @param selectString the select string
+   * @param expandString the expand string
+   * @return the expand select tree
+   * @throws Exception the exception
+   */
   private ExpandSelectTreeNodeImpl getExpandSelectTree(final String selectString, final String expandString)
       throws Exception {
     final List<PathSegment> pathSegments =

@@ -27,13 +27,28 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SalesOrderItem.
+ */
 @Entity
 @Table(name = "T_SALESORDERITEM")
 @EntityListeners(org.apache.olingo.odata2.jpa.processor.ref.listeners.SalesOrderItemTombstoneListener.class)
 public class SalesOrderItem {
 
+  /**
+   * Instantiates a new sales order item.
+   */
   public SalesOrderItem() {}
 
+  /**
+   * Instantiates a new sales order item.
+   *
+   * @param quantity the quantity
+   * @param amount the amount
+   * @param discount the discount
+   * @param material the material
+   */
   public SalesOrderItem(final int quantity, final double amount,
       final double discount, final Material material) {
     super();
@@ -43,92 +58,180 @@ public class SalesOrderItem {
     this.material = material;
   }
 
+  /** The sales order item key. */
   @EmbeddedId
   private SalesOrderItemKey salesOrderItemKey;
 
+  /** The quantity. */
   @Column
   private int quantity;
 
+  /** The amount. */
   @Column
   private double amount;
 
+  /** The discount. */
   @Column
   private double discount;
 
+  /** The net amount. */
   @Transient
   private double netAmount;
 
+  /** The delivered. */
   @Column
   private boolean delivered;
 
+  /**
+   * Checks if is delivered.
+   *
+   * @return true, if is delivered
+   */
   public boolean isDelivered() {
     return delivered;
   }
 
+  /**
+   * Sets the delivered.
+   *
+   * @param deliveryStatus the new delivered
+   */
   public void setDelivered(final boolean deliveryStatus) {
     delivered = deliveryStatus;
   }
 
+  /** The material. */
   @JoinColumn(name = "Material_Id")
   @ManyToOne
   private Material material;
 
+  /** The sales order header. */
   @JoinColumn(name = "Sales_Order_Id", referencedColumnName = "SO_ID", insertable = false, updatable = false)
   @ManyToOne
   private SalesOrderHeader salesOrderHeader;
 
+  /**
+   * Gets the sales order item key.
+   *
+   * @return the sales order item key
+   */
   public SalesOrderItemKey getSalesOrderItemKey() {
     return salesOrderItemKey;
   }
 
+  /**
+   * Sets the sales order item key.
+   *
+   * @param salesOrderItemKey the new sales order item key
+   */
   public void setSalesOrderItemKey(final SalesOrderItemKey salesOrderItemKey) {
     this.salesOrderItemKey = salesOrderItemKey;
   }
 
+  /**
+   * Gets the quantity.
+   *
+   * @return the quantity
+   */
   public int getQuantity() {
     return quantity;
   }
 
+  /**
+   * Sets the quantity.
+   *
+   * @param quantity the new quantity
+   */
   public void setQuantity(final int quantity) {
     this.quantity = quantity;
   }
 
+  /**
+   * Gets the amount.
+   *
+   * @return the amount
+   */
   public double getAmount() {
     return amount;
   }
 
+  /**
+   * Sets the amount.
+   *
+   * @param amount the new amount
+   */
   public void setAmount(final double amount) {
     this.amount = amount;
   }
 
+  /**
+   * Gets the discount.
+   *
+   * @return the discount
+   */
   public double getDiscount() {
     return discount;
   }
 
+  /**
+   * Sets the discount.
+   *
+   * @param discount the new discount
+   */
   public void setDiscount(final double discount) {
     this.discount = discount;
   }
 
+  /**
+   * Gets the net amount.
+   *
+   * @return the net amount
+   */
   public double getNetAmount() {
     return netAmount;
   }
 
+  /**
+   * Sets the net amount.
+   *
+   * @param netAmount the new net amount
+   */
   public void setNetAmount(final double netAmount) {
     this.netAmount = netAmount;
   }
 
+  /**
+   * Gets the material.
+   *
+   * @return the material
+   */
   public Material getMaterial() {
     return material;
   }
 
+  /**
+   * Sets the material.
+   *
+   * @param material the new material
+   */
   public void setMaterial(final Material material) {
     this.material = material;
   }
 
+  /**
+   * Gets the sales order header.
+   *
+   * @return the sales order header
+   */
   public SalesOrderHeader getSalesOrderHeader() {
     return salesOrderHeader;
   }
 
+  /**
+   * Sets the sales order header.
+   *
+   * @param salesOrderHeader the new sales order header
+   */
   public void setSalesOrderHeader(final SalesOrderHeader salesOrderHeader) {
     this.salesOrderHeader = salesOrderHeader;
   }

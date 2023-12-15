@@ -62,21 +62,33 @@ import org.apache.olingo.odata2.testutil.mock.MockFacade;
 import org.apache.olingo.odata2.testutil.server.ServletType;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- *  
+ * The Class BasicBatchTest.
  */
 public class BasicBatchTest extends AbstractBasicTest {
 
+  /**
+   * Instantiates a new basic batch test.
+   *
+   * @param servletType the servlet type
+   */
   public BasicBatchTest(final ServletType servletType) {
     super(servletType);
   }
 
+  /** The Constant CRLF. */
   private static final String CRLF = "\r\n";
+  
+  /** The Constant REG_EX_BOUNDARY. */
   private static final String REG_EX_BOUNDARY =
       "(([a-zA-Z0-9_\\-\\.'\\+]{1,70})|\"([a-zA-Z0-9_\\-\\.'\\+\\s\\(\\),/:=\\?]" +
           "{1,69}[a-zA-Z0-9_\\-\\.'\\+\\(\\),/:=\\?])\")";
+  
+  /** The Constant REG_EX. */
   private static final String REG_EX = "multipart/mixed;\\s*boundary=" + REG_EX_BOUNDARY + "\\s*";
 
+  /** The Constant REQUEST_PAYLOAD. */
   private static final String REQUEST_PAYLOAD =
       "--batch_98c1-8b13-36bb" + CRLF
           + "Content-Type: application/http" + CRLF
@@ -111,6 +123,11 @@ public class BasicBatchTest extends AbstractBasicTest {
           + CRLF
           + "--batch_98c1-8b13-36bb--";
 
+  /**
+   * Test batch.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testBatch() throws Exception {
     final HttpPost post = new HttpPost(URI.create(getEndpoint().toString() + "$batch"));
@@ -135,6 +152,11 @@ public class BasicBatchTest extends AbstractBasicTest {
     assertTrue(body.contains("Content-Id: requestHeaderContentId2"));
   }
 
+  /**
+   * Test batch with O data batch request headers.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testBatchWithODataBatchRequestHeaders() throws Exception {
     final HttpPost post = new HttpPost(URI.create(getEndpoint().toString() + "$batch"));
@@ -160,6 +182,11 @@ public class BasicBatchTest extends AbstractBasicTest {
     assertTrue(body.contains("Content-Id: requestHeaderContentId2"));
   }
   
+  /**
+   * Test batch uri encoded.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testBatchUriEncoded() throws Exception {
     final HttpPost post = new HttpPost(URI.create(getEndpoint().toString() + "%24batch"));
@@ -184,6 +211,11 @@ public class BasicBatchTest extends AbstractBasicTest {
     assertTrue(body.contains("Content-Id: requestHeaderContentId2"));
   }
   
+  /**
+   * Test batch invalid content type for put.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testBatchInvalidContentTypeForPut() throws Exception {
     final HttpPost post = new HttpPost(URI.create(getEndpoint().toString() + "$batch"));
@@ -213,7 +245,12 @@ public class BasicBatchTest extends AbstractBasicTest {
   * parameter does not begin  with the "$" character. Any URI exposed by 
   * an OData service may include one or more Custom Query Options.*/
   
-  @Test
+  /**
+  * Test batch for custom query.
+  *
+  * @throws Exception the exception
+  */
+ @Test
   public void testBatchForCustomQuery() throws Exception {
     final HttpPost post = new HttpPost(URI.create(getEndpoint().toString() + 
         "$batch?language=de"));
@@ -238,6 +275,11 @@ public class BasicBatchTest extends AbstractBasicTest {
     assertTrue(body.contains("Content-Id: requestHeaderContentId2"));
   }
   
+  /**
+   * Test batch for custom query fail.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testBatchForCustomQueryFail() throws Exception {
     final HttpPost post = new HttpPost(URI.create(getEndpoint().toString() + 
@@ -250,6 +292,11 @@ public class BasicBatchTest extends AbstractBasicTest {
 
   }
   
+  /**
+   * Test batch for custom query 2.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testBatchForCustomQuery2() throws Exception {
     final HttpPost post = new HttpPost(URI.create(getEndpoint().toString() + 
@@ -275,6 +322,11 @@ public class BasicBatchTest extends AbstractBasicTest {
     assertTrue(body.contains("Content-Id: requestHeaderContentId2"));
   }
   
+  /**
+   * Test batch for custom query 3.
+   *
+   * @throws Exception the exception
+   */
   @Test
   public void testBatchForCustomQuery3() throws Exception {
     final HttpPost post = new HttpPost(URI.create(getEndpoint().toString() + 
@@ -300,7 +352,19 @@ public class BasicBatchTest extends AbstractBasicTest {
     assertTrue(body.contains("Content-Id: requestHeaderContentId2"));
   }
 
+  /**
+   * The Class TestSingleProc.
+   */
   static class TestSingleProc extends ODataSingleProcessor {
+    
+    /**
+     * Execute batch.
+     *
+     * @param handler the handler
+     * @param requestContentType the request content type
+     * @param content the content
+     * @return the o data response
+     */
     @SuppressWarnings("unchecked")
     @Override
     public ODataResponse executeBatch(final BatchHandler handler, final String requestContentType,
@@ -335,6 +399,14 @@ public class BasicBatchTest extends AbstractBasicTest {
       return batchResponse;
     }
 
+    /**
+     * Execute change set.
+     *
+     * @param handler the handler
+     * @param requests the requests
+     * @return the batch response part
+     * @throws ODataException the o data exception
+     */
     @Override
     public BatchResponsePart executeChangeSet(final BatchHandler handler, final List<ODataRequest> requests)
         throws ODataException {
@@ -354,6 +426,14 @@ public class BasicBatchTest extends AbstractBasicTest {
       return BatchResponsePart.responses(responses).changeSet(true).build();
     }
 
+    /**
+     * Read entity simple property.
+     *
+     * @param uriInfo the uri info
+     * @param contentType the content type
+     * @return the o data response
+     * @throws ODataException the o data exception
+     */
     @Override
     public ODataResponse readEntitySimpleProperty(final GetSimplePropertyUriInfo uriInfo, final String contentType)
         throws ODataException {
@@ -382,6 +462,16 @@ public class BasicBatchTest extends AbstractBasicTest {
       return oDataResponse;
     }
 
+    /**
+     * Update entity simple property.
+     *
+     * @param uriInfo the uri info
+     * @param content the content
+     * @param requestContentType the request content type
+     * @param contentType the content type
+     * @return the o data response
+     * @throws ODataException the o data exception
+     */
     @Override
     public ODataResponse updateEntitySimpleProperty(final PutMergePatchUriInfo uriInfo, final InputStream content,
         final String requestContentType, final String contentType) throws ODataException {
@@ -392,11 +482,23 @@ public class BasicBatchTest extends AbstractBasicTest {
     }
   }
 
+  /**
+   * Creates the processor.
+   *
+   * @return the o data single processor
+   * @throws ODataException the o data exception
+   */
   @Override
   protected ODataSingleProcessor createProcessor() throws ODataException {
     return new TestSingleProc();
   }
 
+  /**
+   * Creates the service.
+   *
+   * @return the o data service
+   * @throws ODataException the o data exception
+   */
   @Override
   protected ODataService createService() throws ODataException {
     final EdmProvider provider = createEdmProvider();

@@ -23,6 +23,7 @@ import java.io.Writer;
 
 import org.apache.olingo.odata2.core.ep.util.JsonStreamWriter;
 
+// TODO: Auto-generated Javadoc
 /**
  * Debug information.
  */
@@ -37,13 +38,17 @@ public interface DebugInfo {
   /**
    * Appends the content of this debug information part
    * to the given JSON stream writer.
+   *
    * @param jsonStreamWriter a JSON stream writer
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public void appendJson(JsonStreamWriter jsonStreamWriter) throws IOException;
 
   /**
    * Appends the content of this debug information part to the given writer.
+   *
    * @param writer a {@link Writer}
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public void appendHtml(Writer writer) throws IOException;
 }
