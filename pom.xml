@@ -398,10 +398,66 @@ governing permissions and limitations under
 						<artifactId>maven-javadoc-plugin</artifactId>
 						<executions>
 							<execution>
-								<id>attach-javadocs</id>
+								<id>javadoc-jar</id>
+								<phase>${javadoc.phase}</phase>
 								<goals>
-									<goal>jar</goal>
+									<goal>aggregate-jar</goal>
 								</goals>
+								<configuration>
+									<!-- <tags>
+										<tag>
+											<name>
+												org.apache.olingo.odata2.DoNotImplement</name>
+											<placement>a</placement>
+											<head>Do not implement this
+												interface or derive from class.</head>
+										</tag>
+									</tags> -->
+									<!-- <excludePackageNames>
+										org.apache.olingo.odata2.core:org.apache.olingo.odata2.core.*:org.apache.olingo.odata2.jpa.processor.core:org.apache.olingo.odata2.jpa.processor.core.*:org.apache.olingo.odata2.annotation.processor.core:org.apache.olingo.odata2.annotation.processor.core.*:org.apache.olingo.odata2.testutil:org.apache.olingo.odata2.testutil.*
+									</excludePackageNames> -->
+									<additionalparam>-Xdoclint:none</additionalparam>
+									<additionalOptions>-Xdoclint:none</additionalOptions>
+									<additionalJOptions>
+										<additionalJOption>-quiet</additionalJOption>
+										<additionalJOption>-Xdoclint:none</additionalJOption>
+										<additionalJOption>-Xdoclint:all</additionalJOption>
+										<additionalJOption>-Xdoclint:-missing</additionalJOption>
+									</additionalJOptions>
+									<!-- <groups>
+										<group>
+											<title>OData Lib</title>
+											<packages>
+												org.apache.olingo.odata2.api:org.apache.olingo.odata2.api.*</packages>
+										</group>
+										<group>
+											<title>OData Reference Scenario</title>
+											<packages>
+												org.apache.olingo.odata2.ref:org.apache.olingo.odata2.ref.*</packages>
+										</group>
+										<group>
+											<title>OData JPA Processor</title>
+											<packages>
+												org.apache.olingo.odata2.jpa.processor.api:org.apache.olingo.odata2.jpa.processor.api.*</packages>
+										</group>
+										<group>
+											<title>OData Annotation Processor</title>
+											<packages>
+												org.apache.olingo.odata2.annotation.processor.api:org.apache.olingo.odata2.annotation.processor.api.*</packages>
+										</group>
+										<group>
+											<title>OData JPA Reference Scenario</title>
+											<packages>
+												org.apache.olingo.odata2.jpa.processor.ref:org.apache.olingo.odata2.jpa.processor.ref.*</packages>
+										</group>
+										<group>
+											<title>OData Annotation Reference
+												Scenario</title>
+											<packages>
+												org.apache.olingo.odata2.annotation.processor.ref:org.apache.olingo.odata2.annotation.processor.ref.*</packages>
+										</group>
+									</groups> -->
+								</configuration>
 							</execution>
 						</executions>
 					</plugin>
