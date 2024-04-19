@@ -51,10 +51,12 @@ import org.apache.olingo.odata2.api.edm.EdmNamed;
  */
 public abstract class EdmNamedImplProv implements EdmNamed {
 
+  private static final Pattern DEFAULT_PATTERN_VALID_NAME = Pattern.compile(
+          "\\A[_\\p{L}\\p{Nl}][_\\p{L}\\p{Nl}\\p{Nd}\\p{Mn}\\p{Mc}\\p{Pc}\\p{Cf}]{0,}\\Z");
+
   /** The Constant PATTERN_VALID_NAME. */
-  private static final Pattern PATTERN_VALID_NAME = Pattern.compile(
-      "\\A[_\\p{L}\\p{Nl}][_\\p{L}\\p{Nl}\\p{Nd}\\p{Mn}\\p{Mc}\\p{Pc}\\p{Cf}]{0,}\\Z");
-  
+  private static Pattern PATTERN_VALID_NAME = DEFAULT_PATTERN_VALID_NAME;
+
   /** The edm. */
   protected EdmImplProv edm;
   
@@ -97,5 +99,9 @@ public abstract class EdmNamedImplProv implements EdmNamed {
       return name;
     }
     throw new EdmException(EdmException.NAMINGERROR.addContent(name));
+  }
+
+  public static void setValidNamePattern(Pattern pattern) {
+    PATTERN_VALID_NAME = pattern;
   }
 }
